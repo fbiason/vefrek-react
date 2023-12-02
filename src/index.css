@@ -1,13 +1,112 @@
+/*INCLUIR ESTILOS GLOBALES*/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.logo {
+  margin: 0;
+}
+
+input {
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+/* Estilos tipo Bootstrap */
+/* Corroborar que funcionen perfectamente como en Boostrap 5*/
+.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.justify-content-lg-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.order-last {
+  order: 2; /* o el valor que desees, en este caso 2 para colocar el elemento al final */
+}
+
+.order-lg-0 {
+  order: 0;
+}
+
+.scrollto {
+  cursor: pointer;
+  /* Otros estilos según sea necesario */
+}
+
+.navbar {
+  padding: 10px 20px; /* Relleno de la barra de navegación */
+}
+
+.bi {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5rem; /* Tamaño del icono, ajusta según sea necesario */
+  line-height: 1; /* Alinea verticalmente el icono */
+  /* Otros estilos según sea necesario */
+}
+
+.bi-list {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5rem; /* Tamaño del icono, ajusta según sea necesario */
+  line-height: 1; /* Alinea verticalmente el icono */
+  /* Otros estilos según sea necesario */
+  color: #007bff; /* Color del icono, puedes ajustar el color */
+}
+
+.get-started-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Color de fondo del botón, puedes ajustar el color */
+  color: #fff; /* Color del texto del botón, puedes ajustar el color */
+  /* Otros estilos según sea necesario */
 }

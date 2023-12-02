@@ -1,0 +1,51 @@
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff; /* Color de fondo */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
+  z-index: 1000;
+  transition: all 0.5s;
+  padding: 15px 0;
+}
+
+#header.header-scrolled,
+#header.header-inner-pages {
+  background: rgba(0, 0, 0, 0.8);
+}
+#header .logo {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+#header .logo a {
+  color: #fff;
+}
+#header .logo a span {
+  color: #14ba75;
+}
+#header .logo img {
+  max-height: 40px;
+}
+.info-web {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Estilos para el botón "¡PUBLICA AHORA!" */
+.get-started-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
