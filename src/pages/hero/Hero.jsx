@@ -13,7 +13,7 @@ const Hero = () => {
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <div>
+          <div className="col-xl-6 col-lg-8">
             <img
               src="/images/logos/logo-vefrek-white.png"
               width="480px"
