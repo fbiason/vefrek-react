@@ -1,11 +1,6 @@
 #header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #fff; /* Color de fondo */
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
-  z-index: 1000;
   transition: all 0.5s;
+  z-index: 997;
   padding: 15px 0;
 }
 
@@ -13,6 +8,7 @@
 #header.header-inner-pages {
   background: rgba(0, 0, 0, 0.8);
 }
+
 #header .logo {
   font-size: 32px;
   margin: 0;
@@ -22,25 +18,23 @@
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 #header .logo a {
   color: #fff;
 }
+
 #header .logo a span {
   color: #14ba75;
 }
+
 #header .logo img {
   max-height: 40px;
 }
+
 .info-web {
   background: rgba(0, 0, 0, 0.8);
 }
 
-a {
-  text-decoration: none;
-  color: #333;
-}
-
-/* Estilos para el botón "¡PUBLICA AHORA!" */
 .get-started-btn {
   background-color: #007bff;
   color: #fff;
@@ -48,4 +42,200 @@ a {
   border: none;
   border-radius: 5px;
   text-decoration: none;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover > a {
+  color: #14ba75;
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 14px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+}
+
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+  text-transform: none;
+  color: #151515;
+  font-weight: 400;
+}
+
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover > a {
+  background-color: #14ba75;
+}
+
+.navbar .dropdown:hover > ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover > ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+.vefrek-logo {
+  width: 40%;
+}
+
+/*--------------------------------------------------------------
+# Publica Ahora
+--------------------------------------------------------------*/
+
+#hero-publicacion .container {
+  position: relative;
+  padding-top: 74px;
+  text-align: center;
+}
+
+#hero-publicacion h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero-publicacion h1 span {
+  color: white;
+}
+
+#hero-publicacion h2 {
+  color: #14ba75;
+  font-family: "roboto", sans-serif;
+  font-weight: 550;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+#hero-publicacion h3 {
+  color: whitesmoke;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+#hero-publicacion .icon-box {
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 2px solid grey;
+  height: 100%;
+  text-align: center;
+}
+
+#hero-publicacion .icon-box i {
+  font-size: 32px;
+  line-height: 1;
+  color: #14ba75;
+}
+
+#hero-publicacion .icon-box h3 {
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#hero-publicacion .icon-box h3 a {
+  color: whitesmoke;
+  transition: ease-in-out 0.3s;
+}
+
+#hero-publicacion .icon-box h3 a:hover {
+  color: #14ba75;
+}
+
+#hero-publicacion .icon-box:hover {
+  border-color: #14ba75;
+}
+
+@media (min-width: 1024px) {
+  #hero-publicacion {
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 768px) {
+  #hero-publicacion {
+    height: auto;
+  }
+  #hero-publicacion h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero-publicacion h2 {
+    font-size: 22px;
+    line-height: 24px;
+  }
 }

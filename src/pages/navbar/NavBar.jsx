@@ -7,7 +7,7 @@ const NavBar = () => {
       <div className="container d-flex align-items-center justify-content-lg-between">
         <a href="index.html" className="logo me-auto me-lg-0">
           <img
-            src="public/images/logos/logo vefrek.png"
+            src="/images/logos/logo vefrek.png"
             alt="Logo Vefrek"
             className="img-fluid"
           />
@@ -22,7 +22,7 @@ const NavBar = () => {
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
             <li>
-              <a className="nav-link scrollto mt-5" href="#hero">
+              <a className="nav-link scrollto" href="#hero">
                 Lista de Precios
               </a>
             </li>
@@ -45,7 +45,6 @@ const NavBar = () => {
               </a>
             </li>
           </ul>
-          <i className="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <a href="html/publica-ahora.html" className="get-started-btn scrollto">
           ¡PUBLICA AHORA!

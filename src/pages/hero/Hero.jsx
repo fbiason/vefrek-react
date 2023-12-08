@@ -13,11 +13,11 @@ const Hero = () => {
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <div className="col-xl-6 col-lg-8">
+          <div>
             <img
-              src="assets/img/logos/logo-vefrek-white.png"
+              src="/images/logos/logo-vefrek-white.png"
               width="480px"
-              alt=""
+              alt="Vefrek"
             />
             <div>&nbsp;</div>
             <h2>La guía más completa del rubro automotor</h2>
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="row gy-4 mt-5 justify-content-center"
+          className="row justify-content-center"
           data-aos="zoom-in"
           data-aos-delay="250"
         >

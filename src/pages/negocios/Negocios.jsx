@@ -34,11 +34,11 @@ const Negocios = () => {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          {/* Elemento 1 */}
+          {/* Negocio 1 */}
           <div className="col-lg-4 col-md-6 portfolio-item filter-agencias">
             <div className="portfolio-wrap">
               <img
-                src="assets/img/premium-rgl/consecionarias/biason-rgl.jpeg"
+                src="images/premium-rgl/consecionarias/biason-rgl.jpeg"
                 className="img-fluid"
                 alt=""
               />
@@ -47,7 +47,7 @@ const Negocios = () => {
                 <p>más info...</p>
                 <div className="portfolio-links">
                   <a
-                    href="assets/img/portfolio/portfolio-1.jpg"
+                    href="images/portfolio/portfolio-1.jpg"
                     data-gallery="portfolioGallery"
                     className="portfolio-lightbox"
                     title="App 1"
@@ -62,11 +62,11 @@ const Negocios = () => {
             </div>
           </div>
 
-          {/* Elemento 2 */}
+          {/* Negocio 2 */}
           <div className="col-lg-4 col-md-6 portfolio-item filter-web">
             <div className="portfolio-wrap">
               <img
-                src="assets/img/premium-rgl/gomerias/moster-rgl.jpg"
+                src="images/premium-rgl/gomerias/moster-rgl.jpg"
                 className="img-fluid"
                 alt=""
               />
@@ -75,7 +75,7 @@ const Negocios = () => {
                 <p>más info...</p>
                 <div className="portfolio-links">
                   <a
-                    href="assets/img/portfolio/portfolio-2.jpg"
+                    href="images/portfolio/portfolio-2.jpg"
                     data-gallery="portfolioGallery"
                     className="portfolio-lightbox"
                     title="Web 3"
@@ -90,7 +90,7 @@ const Negocios = () => {
             </div>
           </div>
 
-          {/* ... (resto de los elementos) */}
+          {/* ... (resto de los Negocios) */}
         </div>
       </div>
     </section>
