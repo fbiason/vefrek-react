@@ -1,2 +1,3 @@
-Bootstrap React
-https://react-bootstrap.netlify.app/docs/getting-started/introduction/
+Vefrek 1.0.0
+
+1.- Aplique url de Bootstrap 5 en el Index
