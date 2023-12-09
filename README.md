@@ -1,8 +1,19 @@
-Vefrek 1.0.0
+Vefrek 1.0.1
 
-1.- Aplique url de Bootstrap 5 en el Index
-2.- Incorpore images al home
-3.- Navbar scroll
+Tareas a realizar:
+
+1. Section: Negocios Recomendados.
+2. Favicon
+3. Counts: números
+4. Preium: img fondo
+   /-------------------/
+   Otras tareas:
+   A. Urls
+   B. Registro Usuario.
+   C. Política Privacidad
+   D. Términos y Condiciones
+   E. Carga negocios (tipo ecommerce)
+
 //=======================//
 
 /\*--------------------------------------------------------------
