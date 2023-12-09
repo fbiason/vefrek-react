@@ -4,7 +4,7 @@ import "./ppc.css";
 const Pcc = () => {
   return (
     <section id="ppc" className="ppc">
-      <div className="container" data-aos="zoom-in">
+      <div className="container-fluid" data-aos="zoom-in">
         <div className="text-center">
           <h3>POTENCIA AÚN MÁS A TU EMPRESA</h3>
           <p>

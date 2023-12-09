@@ -5,7 +5,7 @@ const Valores = () => {
   return (
     <section id="features" className="features">
       <div className="container" data-aos="fade-up">
-        <div className="row">
+        <div className="row container-fluid">
           <div
             className="image col-lg-6"
             style={{ backgroundImage: "url('images/valores-prueba.png')" }}

@@ -306,7 +306,7 @@ const Home = () => {
     })();
   }, []);
 
-  return <div>Bienvenido a Vefrek</div>;
+  return <div></div>;
 };
 
 export default Home;

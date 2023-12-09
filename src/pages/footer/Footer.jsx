@@ -106,11 +106,11 @@ const Footer = () => {
 
       <div className="container">
         <div className="copyright">
-          &copy; Copyright{" "}
+          &copy; Copyright 2023{" "}
           <strong>
             <span>Vefrek</span>
           </strong>
-          . Todos los derechos reservados
+          . Todos los derechos reservados.
         </div>
       </div>
     </footer>

@@ -17,10 +17,10 @@ function App() {
       <NavBar />
       <Hero />
       <Negocios />
+      <Valores />
       <Pcc />
       <Counts />
       <About />
-      <Valores />
       <Premium />
       <Contacto />
       <Routes>

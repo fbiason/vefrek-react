@@ -4,10 +4,10 @@ import "./negocios.css";
 const Negocios = () => {
   return (
     <section id="portfolio" className="portfolio">
-      <div className="container" data-aos="fade-up">
-        <div className="section-title">
+      <div className="container-fluid" data-aos="fade-up">
+        <div className="section-title container">
           <h2>Encontra lo que tu vehículo necesita</h2>
-          <p>negocios recomendados</p>
+          <p>Negocios recomendados</p>
         </div>
 
         <div className="row" data-aos="fade-up" data-aos-delay="100">
@@ -35,7 +35,7 @@ const Negocios = () => {
           data-aos-delay="200"
         >
           {/* Negocio 1 */}
-          <div className="col-lg-4 col-md-6 portfolio-item filter-agencias">
+          <div className="col-lg-4 col-md-6 portfolio-item filter-agencias container">
             <div className="portfolio-wrap">
               <img
                 src="images/premium-rgl/consecionarias/biason-rgl.jpeg"
@@ -63,7 +63,7 @@ const Negocios = () => {
           </div>
 
           {/* Negocio 2 */}
-          <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div className="col-lg-4 col-md-6 portfolio-item filter-web container">
             <div className="portfolio-wrap">
               <img
                 src="images/premium-rgl/gomerias/moster-rgl.jpg"

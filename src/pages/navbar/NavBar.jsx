@@ -22,31 +22,28 @@ const NavBar = () => {
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
             <li>
-              <a className="nav-link scrollto" href="#hero">
+              <a className="nav-link scrollto" href="">
                 Lista de Precios
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="#services">
+              <a className="nav-link scrollto" href="">
                 Premium
               </a>
             </li>
             <li>
-              <a className="nav-link scrollto" href="html/login.html">
+              <a className="nav-link scrollto" href="">
                 Ingresa
               </a>
             </li>
             <li>
-              <a
-                className="nav-link scrollto"
-                href="html/dashboard/dashboard.html"
-              >
+              <a className="nav-link scrollto" href="">
                 Perfil
               </a>
             </li>
           </ul>
         </nav>
-        <a href="html/publica-ahora.html" className="get-started-btn scrollto">
+        <a href="" className="get-started-btn scrollto">
           ¡PUBLICA AHORA!
         </a>
       </div>

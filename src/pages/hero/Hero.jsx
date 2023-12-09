@@ -7,7 +7,7 @@ const Hero = () => {
       id="hero"
       className="d-flex align-items-center justify-content-center"
     >
-      <div className="container" data-aos="fade-up">
+      <div className="container-fluid" data-aos="fade-up">
         <div
           className="row justify-content-center"
           data-aos="fade-up"
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="row justify-content-center"
+          className="row justify-content-center mt-3"
           data-aos="zoom-in"
           data-aos-delay="250"
         >
