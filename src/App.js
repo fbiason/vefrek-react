@@ -7,8 +7,6 @@ import Valores from "./pages/valores/Valores";
 import Pcc from "./pages/ppc/Pcc";
 import Footer from "./pages/footer/Footer";
 import About from "./pages/about/About";
-import Premium from "./pages/premium/Premium";
-import Counts from "./pages/counts/Counts";
 import Contacto from "./pages/contacto/Contacto";
 
 function App() {
@@ -19,9 +17,7 @@ function App() {
       <Negocios />
       <Valores />
       <Pcc />
-      <Counts />
       <About />
-      <Premium />
       <Contacto />
       <Routes>
         <Route path="/" element={<Home />} />

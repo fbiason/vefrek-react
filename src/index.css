@@ -62,3 +62,37 @@ section {
   font-family: "Poppins", sans-serif;
   color: #151515;
 }
+
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  margin: 1rem;
+  bottom: 15px;
+  z-index: 996;
+  background: #14ba75;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #151515;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #151515;
+}
+
+.back-to-top:hover i {
+  color: #14ba75;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
