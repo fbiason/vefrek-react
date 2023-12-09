@@ -2,17 +2,16 @@ Vefrek 1.0.1
 
 Tareas a realizar:
 
-1. Section: Negocios Recomendados.
-2. Favicon
-3. Counts: números
-4. Preium: img fondo
-   /-------------------/
-   Otras tareas:
-   A. Urls
-   B. Registro Usuario.
-   C. Política Privacidad
-   D. Términos y Condiciones
-   E. Carga negocios (tipo ecommerce)
+- Section: Negocios Recomendados.
+- Counts: números
+- Preium: img fondo
+- Urls
+- Registro Usuario.
+- Política Privacidad
+- Términos y Condiciones
+- Carga negocios (tipo ecommerce)
+- Scroll up
+- Mail
 
 //=======================//
 
