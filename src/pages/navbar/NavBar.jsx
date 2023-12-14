@@ -28,11 +28,6 @@ const NavBar = () => {
             </li>
             <li>
               <a className="nav-link scrollto" href="">
-                Premium
-              </a>
-            </li>
-            <li>
-              <a className="nav-link scrollto" href="">
                 Ingresa
               </a>
             </li>
