@@ -10,3 +10,6 @@ Tareas a realizar:
 - Carga negocios (tipo ecommerce)
 - Mail
 - Responsive
+
+
+- HOLA ARIEL!
