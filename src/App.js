@@ -8,6 +8,7 @@ import Pcc from "./pages/ppc/Pcc";
 import Footer from "./pages/footer/Footer";
 import About from "./pages/about/About";
 import Contacto from "./pages/contacto/Contacto";
+import LoginApp from "./pages/login/Login";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Contacto />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginApp />} />
       </Routes>
       <Footer />
     </BrowserRouter>

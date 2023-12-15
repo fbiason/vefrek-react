@@ -1,17 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 
 const NavBar = () => {
   return (
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center justify-content-lg-between">
-        <a href="index.html" className="logo me-auto me-lg-0">
+        <Link to="/" className="logo me-auto me-lg-0">
           <img
             src="/images/logos/logo vefrek.png"
             alt="Logo Vefrek"
             className="img-fluid"
           />
-        </a>
+        </Link>
         <input
           type="text"
           name="buscar"
@@ -22,25 +23,23 @@ const NavBar = () => {
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
             <li>
-              <a className="nav-link scrollto" href="">
+              <Link to="/" className="nav-link scrollto">
                 Lista de Precios
-              </a>
+              </Link>
             </li>
+            <Link to="/login" className="nav-link scrollto">
+              Ingresa
+            </Link>
             <li>
-              <a className="nav-link scrollto" href="">
-                Ingresa
-              </a>
-            </li>
-            <li>
-              <a className="nav-link scrollto" href="">
+              <Link to="/" className="nav-link scrollto">
                 Perfil
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
-        <a href="" className="get-started-btn scrollto">
+        <Link to="/" className="get-started-btn scrollto">
           ¡PUBLICA AHORA!
-        </a>
+        </Link>
       </div>
     </header>
   );
