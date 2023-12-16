@@ -14,12 +14,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Hero />
-      <Negocios />
-      <Valores />
-      <Pcc />
-      <About />
-      <Contacto />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />

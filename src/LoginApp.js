@@ -20,4 +20,4 @@ function LoginApp() {
   );
 }
 
-export default LoginApp;
+// export default LoginApp;
