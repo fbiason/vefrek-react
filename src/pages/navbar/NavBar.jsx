@@ -11,15 +11,13 @@ import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
 const NavBar = () => {
-
   const navigate = useNavigate();
   const { userData, show } = useContext(UserContext);
 
   useEffect(() => {
-
     /***************************** CORRIGE ERROR DE REDIRECCION AL LOGUEARSE CON FACEBOOK -NO BORRAR* */
 
-    if (window.location.hash.includes('_=_')) {
+    if (window.location.hash.includes("_=_")) {
       navigate("/");
     }
 
@@ -330,7 +328,7 @@ const NavBar = () => {
       <div className="container d-flex align-items-center justify-content-lg-between">
         <Link to="/" className="logo me-auto me-lg-0">
           <img
-            src="/images/logos/logo vefrek.png"
+            src="/images/logos/logo-vefrek.png"
             alt="Logo Vefrek"
             className="img-fluid"
           />
@@ -345,22 +343,17 @@ const NavBar = () => {
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
             <li>
-              <Link to="/" className="nav-link scrollto">
-                Lista de Precios
-              </Link>
-            </li>
-              {!userData.isLogged && show &&
-                <Link to="/login" className="nav-link scrollto">
-                  Ingresa
-                </Link>
-              }
-            <li>
-              {userData.isLogged && show &&
+              {userData.isLogged && show && (
                 <Link to="/" className="nav-link scrollto">
                   Perfil
                 </Link>
-              }
+              )}
             </li>
+            {!userData.isLogged && show && (
+              <Link to="/login" className="nav-link scrollto">
+                Ingresa
+              </Link>
+            )}
           </ul>
         </nav>
         <Link to="/" className="get-started-btn scrollto">

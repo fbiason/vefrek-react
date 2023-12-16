@@ -7,9 +7,9 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
 import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
+import Perfil from "./pages/perfil/Perfil";
 
 function App() {
-
   const { updateUserData, setShow } = useContext(UserContext);
 
   useEffect(() => {
@@ -21,10 +21,10 @@ function App() {
         updateUserData({ email: "", name: "", isLogged: false });
       }
       setShow(true);
-    }
+    };
     verifiLog();
-    // eslint-disable-next-line 
-  }, [])
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <BrowserRouter>
@@ -32,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
+        <Route path="/perfil" element={<Perfil />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

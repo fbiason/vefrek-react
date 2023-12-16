@@ -7,8 +7,13 @@ const Login = () => {
     <div className="login-container">
       <div className="benefits">
         <p>
-          Acceda a todos los beneficios de Vefrek para incrementar sus ventas
-          ¡TOTALMENTE GRATIS!
+          Acceda a todos los beneficios de{" "}
+          <img
+            src="/images/logos/logo-vefrek.png"
+            alt="Vefrek"
+            className="vefrek-logo"
+          />{" "}
+          para incrementar sus ventas ¡TOTALMENTE GRATIS!
         </p>
       </div>
       <div className="login-card">
