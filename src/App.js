@@ -1,22 +1,37 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import NavBar from "./pages/navbar/NavBar";
-import Hero from "./pages/hero/Hero";
-import Negocios from "./pages/negocios/Negocios";
-import Valores from "./pages/valores/Valores";
-import Pcc from "./pages/ppc/Pcc";
-import Footer from "./pages/footer/Footer";
-import About from "./pages/about/About";
-import Contacto from "./pages/contacto/Contacto";
 import LoginApp from "./pages/login/Login";
+import { isLogged } from "./utils/auth/isLogged";
+import { useContext, useEffect } from "react";
+import { UserContext } from "./context/userContext";
+import Footer from "./pages/footer/Footer";
+import { Navigate } from "react-router-dom";
 
 function App() {
+
+  const { updateUserData } = useContext(UserContext);
+
+  useEffect(() => {
+    const verifiLog = async () => {
+      const response = await isLogged();
+      if (response.userData) {
+        updateUserData(response.userData);
+      } else {
+        updateUserData({ email: "", name: "", isLogged: false });
+      }
+    }
+    verifiLog();
+    // eslint-disable-next-line 
+  }, [])
+
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
     </BrowserRouter>

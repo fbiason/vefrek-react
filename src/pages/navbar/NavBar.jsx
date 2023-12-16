@@ -6,10 +6,22 @@ import Swiper from "swiper";
 import Isotope from "isotope-layout";
 import AOS from "aos";
 import GLightbox from "glightbox";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+
+    /***************************** CORRIGE ERROR DE REDIRECCION AL LOGUEARSE CON FACEBOOK -NO BORRAR* */
+
+    if (window.location.hash.includes('_=_')) {
+      navigate("/");
+    }
+
+    /***************************************************************************************************/
+
     (function () {
       "use strict";
 

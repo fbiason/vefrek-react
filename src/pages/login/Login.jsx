@@ -1,5 +1,6 @@
 import React from "react";
 import "./login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -37,9 +38,11 @@ const Login = () => {
         <hr className="divider" />
 
         <div className="social-buttons">
-          <button className="facebook-button">
-            Iniciar sesión con Facebook
-          </button>
+          <Link to={`${process.env.REACT_APP_API_URL}api/auth/facebook`}>
+            <button className="facebook-button">
+              Iniciar sesión con Facebook
+            </button>
+          </Link>
           <button className="google-button">Iniciar sesión con Google</button>
         </div>
       </div>
