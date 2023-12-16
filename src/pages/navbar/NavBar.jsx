@@ -7,10 +7,13 @@ import Isotope from "isotope-layout";
 import AOS from "aos";
 import GLightbox from "glightbox";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 const NavBar = () => {
 
   const navigate = useNavigate();
+  const { userData, show } = useContext(UserContext);
 
   useEffect(() => {
 
@@ -346,13 +349,17 @@ const NavBar = () => {
                 Lista de Precios
               </Link>
             </li>
-            <Link to="/login" className="nav-link scrollto">
-              Ingresa
-            </Link>
+              {!userData.isLogged && show &&
+                <Link to="/login" className="nav-link scrollto">
+                  Ingresa
+                </Link>
+              }
             <li>
-              <Link to="/" className="nav-link scrollto">
-                Perfil
-              </Link>
+              {userData.isLogged && show &&
+                <Link to="/" className="nav-link scrollto">
+                  Perfil
+                </Link>
+              }
             </li>
           </ul>
         </nav>

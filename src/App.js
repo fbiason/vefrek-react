@@ -10,7 +10,7 @@ import { Navigate } from "react-router-dom";
 
 function App() {
 
-  const { updateUserData } = useContext(UserContext);
+  const { updateUserData, setShow } = useContext(UserContext);
 
   useEffect(() => {
     const verifiLog = async () => {
@@ -20,6 +20,7 @@ function App() {
       } else {
         updateUserData({ email: "", name: "", isLogged: false });
       }
+      setShow(true);
     }
     verifiLog();
     // eslint-disable-next-line 
