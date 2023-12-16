@@ -30,7 +30,9 @@ const Login = () => {
             <label htmlFor="terms">Acepto Términos y Condiciones</label>
           </div>
 
-          <button type="submit">Iniciar Sesión</button>
+          <Link to="/perfil">
+            <button className="button">Iniciar Sesión</button>
+          </Link>
         </form>
 
         <div className="additional-options">

@@ -1,14 +1,26 @@
 .perfil-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: hsl(218deg, 41%, 15%);
 }
 
-h2 {
-  text-align: center;
+.perfil-card {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+}
+
+.perfil-container h2 {
+  text-align: left;
+  color: #ffc451;
+  margin-bottom: 20px;
 }
 
 form {
@@ -18,25 +30,27 @@ form {
 
 label {
   margin-bottom: 10px;
+  text-align: left;
 }
 
 input {
   padding: 8px;
   margin-top: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #b1b1b1;
   border-radius: 3px;
 }
 
 button {
   padding: 10px;
-  background-color: #007bff;
+  background-color: #14ba75;
   color: #fff;
-  border: none;
   border-radius: 3px;
   cursor: pointer;
+  border: 1px solid #000; /* Borde sólido negro */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #ffc451;
+  color: #000;
 }
