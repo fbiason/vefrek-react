@@ -1,13 +1,15 @@
 Vefrek 1.0.2
 
-- Actualice la parte estética de Login
+- Actualice la parte estética de Login (falta ajustar algunas cosas)
+- Incorpore el Perfil (falta ajustar algunas cosas)
+- Cree la página Publicación, me da un error
 
 Tareas a realizar:
 BIASON (front)
 
 - Login
 - Perfil (dashboard)
-- Formulario para carga de negocio
+- Formulario para carga de negocio --> Publicación --> Formulario para carga
 - Visualización de página de categorías
 - Página de negocio
 
