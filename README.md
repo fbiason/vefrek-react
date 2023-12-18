@@ -15,7 +15,6 @@ BIASON (front)
 
 ARIEL (back)
 
-- Registro usuario (Google / Facebook)
 - Edición de Perfil
 - Carga de negocios
 - Filtro de negocios

@@ -5,8 +5,6 @@ const Perfil = () => {
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
-    contrasena: "",
-    confirmacion: "",
     correo: "",
     provincia: "",
     localidad: "",
@@ -49,24 +47,6 @@ const Perfil = () => {
             />
           </label>
           <label>
-            Contraseña:
-            <input
-              type="text"
-              name="contrasena"
-              value={formData.contrasena}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Confirmar Contraseña:
-            <input
-              type="text"
-              name="confirmacion"
-              value={formData.confirmacion}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
             Provincia:
             <input
               type="text"
@@ -81,15 +61,6 @@ const Perfil = () => {
               type="text"
               name="localidad"
               value={formData.localidad}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Correo:
-            <input
-              type="email"
-              name="correo"
-              value={formData.correo}
               onChange={handleChange}
             />
           </label>

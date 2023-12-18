@@ -1,6 +1,5 @@
 import React from "react";
 import "./publicacion.css";
-import { Link } from "react-router-dom";
 
 const Publicacion = () => {
   return (

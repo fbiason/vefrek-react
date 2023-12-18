@@ -8,7 +8,7 @@ import { UserContext } from "./context/userContext";
 import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
-import Publicacion from "./pages/publicacion/publicacion";
+/*import Publicacion from "./pages/publicacion/publicacion";*/
 
 function App() {
   const { updateUserData, setShow } = useContext(UserContext);
@@ -34,7 +34,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
         <Route path="/perfil" element={<Perfil />} />
-        <Route path="/publicacion" element={<Publicacion />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
