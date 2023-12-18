@@ -50,7 +50,11 @@ const Login = () => {
               Iniciar sesión con Facebook
             </button>
           </Link>
-          <button className="google-button">Iniciar sesión con Google</button>
+          <Link to={`${process.env.REACT_APP_API_URL}api/auth/google`}>
+            <button className="google-button">
+              Iniciar sesión con Google
+            </button>
+          </Link>
         </div>
       </div>
     </div>

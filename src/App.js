@@ -8,7 +8,7 @@ import { UserContext } from "./context/userContext";
 import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
-/*import Publicacion from "./pages/publicacion/publicacion";*/
+import Publicacion from "./pages/publicacion/publicacion";
 
 function App() {
   const { updateUserData, setShow } = useContext(UserContext);
