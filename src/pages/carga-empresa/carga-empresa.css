@@ -8,7 +8,8 @@
 }
 
 .perfil-card {
-  width: 80%;
+  width: 100%;
+  margin-top: 3rem;
   max-width: 35rem;
   padding: 20px;
   border: 1px solid #ddd;
@@ -17,6 +18,24 @@
   background-color: #aaa9a9;
   color: #000;
   margin: auto;
+}
+
+.card-descripcion {
+  width: 100%;
+  max-width: 35rem;
+  margin: 2rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.descripcion {
+  width: 90%;
+  margin-top: 1rem;
 }
 
 .wide-input {

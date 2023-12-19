@@ -1,0 +1,66 @@
+.pagina-empresa-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 4rem; /* Añade espacio superior para evitar superposición con el encabezado */
+}
+
+.column-1 {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.nombre-slogan-container {
+  margin-top: 20px;
+}
+
+.informacion-container,
+.reseña-container {
+  margin-top: 20px;
+}
+
+.column-2 {
+  flex: 1;
+}
+
+/* Puedes ajustar estos estilos según tus necesidades específicas */
+
+.ubicacion-container {
+  margin-bottom: 20px;
+  /* Agrega estilos para el contenedor del mapa de Google */
+}
+
+.telefono-container,
+.redes-sociales-container,
+.sitio-web-container,
+.horarios-container,
+.reportar-negocio-container,
+.contactar-propietario-container {
+  margin-bottom: 20px;
+}
+
+.reportar-negocio-container button {
+  background-color: #14ba75;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.reportar-negocio-container button:hover {
+  background-color: #ffc451;
+}
+
+.contactar-propietario-container a {
+  color: #14ba75;
+  text-decoration: none;
+}
+
+.contactar-propietario-container a:hover {
+  text-decoration: underline;
+}

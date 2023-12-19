@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./hero.css";
 
 const Hero = () => {
@@ -34,9 +35,12 @@ const Hero = () => {
           <div className="col-xl-2 col-md-4">
             <div className="icon-box">
               <i className="ri-store-2-line"></i>
-              <h3>
-                <a href="">Clasificados</a>
-              </h3>
+
+              <Link to="/PaginaEmpresa">
+                <h3>
+                  <a>Clasificados</a>
+                </h3>
+              </Link>
             </div>
           </div>
           <div className="col-xl-2 col-md-4">

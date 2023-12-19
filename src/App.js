@@ -10,6 +10,7 @@ import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
+import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 
 function App() {
   const { updateUserData, setShow } = useContext(UserContext);
@@ -36,6 +37,7 @@ function App() {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/Publicacion" element={<Publicacion />} />
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
+        <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
