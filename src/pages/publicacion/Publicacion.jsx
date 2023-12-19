@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./publicacion.css";
 
 const Publicacion = () => {
@@ -10,12 +11,12 @@ const Publicacion = () => {
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <div className="col-xl-6 col-lg-8">
+          <div className="col-xl-6 col-lg-8 logo-publicacion">
             <img
-              src="../assets/img/logos/logo-vefrek-white.png"
-              width="480px"
-              alt=""
-            />
+              src="/images/logos/logo-vefrek-white.png"
+              alt="Vefrek"
+              className="vefrek-logo"
+            />{" "}
             <div>&nbsp;</div>
             <h2>REALIZA UNA PUBLICACION</h2>
             <div>&nbsp;</div>
@@ -40,7 +41,9 @@ const Publicacion = () => {
             <div className="icon-box">
               <i className="ri-building-line"></i>
               <h3>
-                <a href="">Empresa</a>
+                <Link to="/CargaEmpresa">
+                  <a>Empresa</a>
+                </Link>
               </h3>
             </div>
           </div>

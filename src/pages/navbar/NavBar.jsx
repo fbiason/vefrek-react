@@ -356,7 +356,7 @@ const NavBar = () => {
             )}
           </ul>
         </nav>
-        <Link to="/publicacion" className="get-started-btn scrollto">
+        <Link to="/Publicacion" className="get-started-btn scrollto">
           ¡PUBLICA AHORA!
         </Link>
       </div>

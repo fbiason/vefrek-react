@@ -8,7 +8,8 @@ import { UserContext } from "./context/userContext";
 import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
-import Publicacion from "./pages/publicacion/publicacion";
+import Publicacion from "./pages/publicacion/Publicacion";
+import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 
 function App() {
   const { updateUserData, setShow } = useContext(UserContext);
@@ -24,7 +25,6 @@ function App() {
       setShow(true);
     };
     verifiLog();
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -34,6 +34,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/Publicacion" element={<Publicacion />} />
+        <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
