@@ -19,6 +19,13 @@
   height: auto;
 }
 
+.slick-slider img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  padding: 0 15px;
+}
+
 .nombre-slogan-container {
   margin-top: 20px;
 }
@@ -29,18 +36,57 @@
 }
 
 .logo-empresa {
-  width: 40%;
+  width: 50%;
+  height: 50%;
+}
+
+.logo-nombre-container {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+}
+
+.logo-container {
+  flex: 1; /* Ocupa el 20% de la fila */
+}
+
+.nombre-slogan-container {
+  flex: 4; /* Ocupa el 80% de la fila */
+}
+
+.carrusel-item {
+  padding: 0 30px; /* Ajusta el espacio entre las imágenes según tus necesidades */
+}
+
+.custom-arrow {
+  width: 30px;
+  height: 30px;
+  background-color: #fff; /* Ajusta el color de fondo según tus necesidades */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.custom-prev-arrow {
+  left: 10px; /* Ajusta la posición izquierda según tus necesidades */
+}
+
+.custom-next-arrow {
+  right: 10px; /* Ajusta la posición derecha según tus necesidades */
 }
 
 .column-2 {
   flex: 1;
+  max-width: 70%;
+}
+
+.column-2 .perfil-card {
   flex-basis: 100%;
 }
 
 .perfil-card-element1 {
   width: 100%;
   margin-top: 3rem;
-  max-width: 35rem;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -106,4 +152,15 @@
 
 .contactar-propietario-container a:hover {
   text-decoration: underline;
+}
+
+.redes-sociales-container {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.redes-sociales-container a {
+  text-decoration: none;
+  font-size: 24px;
 }
