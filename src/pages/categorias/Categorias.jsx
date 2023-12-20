@@ -30,13 +30,13 @@ const Categorias = () => {
 
   const cards = [
     {
-      image: "/images/logo-ba.png",
+      image: "/images/portfolio/biasonautomotores.jpeg",
       title: "Card 1",
       telefono: "123-456-7890",
       direccion: "Rivadavia 1333",
     },
     {
-      image: "/images/logo-ba.png",
+      image: "/images/portfolio/biasonautomotores.jpeg",
       title: "Card 2",
       telefono: "987-654-3210",
       direccion: "Rivadavia 1333",
