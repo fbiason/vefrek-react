@@ -2,7 +2,9 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  margin-top: 4rem; /* Añade espacio superior para evitar superposición con el encabezado */
+  margin-top: 10rem;
+  padding-top: 10rem;
+  margin: 2rem;
 }
 
 .column-1 {
@@ -12,6 +14,12 @@
 
 .column-1 .perfil-card {
   flex-basis: 100%;
+}
+
+.logo-container {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .logo-container img {
@@ -111,18 +119,14 @@
   margin: auto;
 }
 
-/* Puedes ajustar estos estilos según tus necesidades específicas */
-
 .ubicacion-container {
   margin-bottom: 20px;
-  /* Agrega estilos para el contenedor del mapa de Google */
 }
 
-.telefono-container,
 .redes-sociales-container,
 .sitio-web-container,
 .horarios-container,
-.reportar-negocio-container,
+.reportar,
 .contactar-propietario-container {
   margin-bottom: 20px;
 }
@@ -133,16 +137,19 @@
   margin-bottom: 20px;
 }
 
-.reportar-negocio-container button {
-  background-color: #14ba75;
-  color: #fff;
+.reportar button {
+  background: transparent;
+  border: 2px solid red;
+  color: red;
   padding: 10px;
-  border: none;
-  cursor: pointer;
+  background: white;
+  transition: background 0.3s, border 0.3s, color 0.3s;
 }
 
-.reportar-negocio-container button:hover {
-  background-color: #ffc451;
+.reportar button:hover {
+  background: red;
+  border: 2px solid white;
+  color: white;
 }
 
 .contactar-propietario-container a {

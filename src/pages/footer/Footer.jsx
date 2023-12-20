@@ -95,10 +95,15 @@ const Footer = () => {
                 Suscríbete para que te enviemos todas las noticias de nuestro
                 sitio
               </p>
-              <form action="" method="post">
-                <input type="email" name="email" />
-                <input type="submit" value="Subscribe" />
-              </form>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Ingresa tu correo para suscribirte"
+              />
+              <button type="submit" className="btn ml-2">
+                Suscribirse
+              </button>
             </div>
           </div>
         </div>

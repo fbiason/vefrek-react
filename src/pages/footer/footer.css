@@ -200,10 +200,10 @@
   color: rgb(15, 14, 14);
 }
 
-.boton {
+.btn {
   width: 100%;
-  background: #475015;
-  border: none;
+  background: #14ba75;
+  border: black;
   padding: 12px;
   color: white;
   margin: 16px 0;

@@ -114,6 +114,9 @@ const PaginaEmpresa = () => {
 
             <div className="redes-sociales-container">
               <a href="#" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-whatsapp"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-facebook"></i>
               </a>
               <a href="#" target="_blank" rel="noopener noreferrer">
@@ -140,11 +143,8 @@ const PaginaEmpresa = () => {
             <div className="horarios-container">
               <p>Horarios: Lunes a Viernes: 9:00 AM - 6:00 PM</p>
             </div>
-            <div className="reportar-negocio-container">
+            <div className="reportar">
               <button>Reportar Negocio</button>
-            </div>
-            <div className="contactar-propietario-container">
-              <a href="#">Contactar a propietario</a>
             </div>
           </div>
         </div>

@@ -191,3 +191,121 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.bienvenido {
+  padding: 2rem;
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bienvenido h2 {
+  margin-bottom: 20px;
+}
+.bienvenido .card {
+  margin: 10rem;
+  width: 100%;
+  max-height: 80vh;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.txt-form .label {
+  flex: 1;
+  margin-right: 10px;
+  width: 100%;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.acepto1:hover {
+  color: #14ba75;
+  font-weight: bold;
+}
+
+.acepto2:hover {
+  color: gray;
+  font-weight: bold;
+}
+
+.acepto3:hover {
+  color: red;
+  font-weight: bold;
+}
+
+.txt-form .input {
+  margin-left: 5px;
+  display: flex;
+}
+
+.btn-inicio {
+  background-color: #14ba75;
+  color: black;
+  border: 1px solid black;
+  margin-top: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  width: 50%;
+  transition: color 0.3s;
+}
+
+.btn-inicio:hover {
+  background-color: #ffc451;
+  color: black;
+}
+
+.facebook-button {
+  background-color: transparent;
+  color: #1877f2;
+  border: 1px solid #1877f2;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.facebook-button svg {
+  fill: #1877f2;
+  transition: fill 0.3s;
+}
+
+.facebook-button:hover {
+  background-color: #1877f2;
+  color: white;
+}
+
+.facebook-button:hover svg {
+  fill: white;
+}
+
+.google-button {
+  background-color: transparent;
+  color: rgb(234, 68, 68);
+  border: 1px solid rgb(234, 68, 68);
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.google-button svg {
+  fill: rgb(234, 68, 68);
+  transition: fill 0.3s;
+}
+
+.google-button:hover {
+  background-color: rgb(234, 68, 68);
+  color: white;
+}
+
+.google-button:hover svg {
+  fill: white; /* Cambia el color del ícono al hacer hover */
+}

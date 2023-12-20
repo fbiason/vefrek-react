@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="row justify-content-center mt-3"
+          className="row justify-content-center mt-5"
           data-aos="zoom-in"
           data-aos-delay="250"
         >
