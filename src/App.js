@@ -13,7 +13,7 @@ import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 
 function App() {
-  const { updateUserData, setShow } = useContext(UserContext);
+  const { updateUserData, setShow, userData } = useContext(UserContext);
 
   useEffect(() => {
     const verifiLog = async () => {
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
-        <Route path="/perfil" element={<Perfil />} />
+        {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}    
         <Route path="/Publicacion" element={<Publicacion />} />
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
