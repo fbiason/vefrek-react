@@ -12,6 +12,7 @@ import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import Categorias from "./pages/categorias/Categorias";
+import { Keep } from "./pages/keep/Keep";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
@@ -40,6 +41,9 @@ function App() {
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
         <Route path="/Categorias" element={<Categorias />} />
+
+        <Route path="/keep" element={<Keep />} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
