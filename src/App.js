@@ -11,6 +11,7 @@ import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
+import Categorias from "./pages/categorias/Categorias";
 
 function App() {
   const { updateUserData, setShow } = useContext(UserContext);
@@ -38,6 +39,7 @@ function App() {
         <Route path="/Publicacion" element={<Publicacion />} />
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
+        <Route path="/Categorias" element={<Categorias />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

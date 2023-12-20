@@ -46,9 +46,11 @@ const Hero = () => {
           <div className="col-xl-2 col-md-4">
             <div className="icon-box">
               <i className="ri-tools-line"></i>
-              <h3>
-                <a href="">Reparación y Mantenimiento</a>
-              </h3>
+              <Link to="/Categorias">
+                <h3>
+                  <a>Reparación y Mantenimieto</a>
+                </h3>
+              </Link>
             </div>
           </div>
           <div className="col-xl-2 col-md-4">
