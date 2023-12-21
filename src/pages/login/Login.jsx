@@ -26,13 +26,8 @@ const Login = () => {
             </h1>
           </div>
 
-          <div className="bienvenido">
-            <div
-              id="radius-shape-1"
-              className="position-absolute rounded-circle shadow-5-strong"
-            ></div>
-            <div id="radius-shape-2" className="shadow-5-strong"></div>
-            <div className="container py-5 h-100">
+          <div className="bienvenido mt-5">
+            <div className="container py-5 h-100 mt-5">
               <div className="row justify-content-center align-items-center h-100">
                 <div
                   className="card shadow-2-strong"
@@ -62,14 +57,14 @@ const Login = () => {
                       <label className="form-check-label text-center">
                         <a className="acepto1" href="#">
                           Acepto Términos y Condiciones
-                        </a>
+                        </a>{" "}
+                        <input
+                          type="checkbox"
+                          id="connected"
+                          name="connected"
+                          className="form-check-input"
+                        />
                       </label>
-                      <input
-                        type="checkbox"
-                        id="connected"
-                        name="connected"
-                        className="form-check-input"
-                      />
                     </div>
 
                     <div className="my-3 login">

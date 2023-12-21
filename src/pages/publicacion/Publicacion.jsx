@@ -19,8 +19,6 @@ const Publicacion = () => {
             />{" "}
             <div>&nbsp;</div>
             <h2>REALIZA UNA PUBLICACION</h2>
-            <div>&nbsp;</div>
-            <h3>¿Qué desea publicar?</h3>
           </div>
         </div>
 
@@ -31,18 +29,10 @@ const Publicacion = () => {
         >
           <div className="col-xl-2 col-md-4">
             <div className="icon-box">
-              <i className="ri-car-line"></i>
-              <h3>
-                <a href="">Vehiculo</a>
-              </h3>
-            </div>
-          </div>
-          <div className="col-xl-2 col-md-4">
-            <div className="icon-box">
               <i className="ri-building-line"></i>
               <h3>
                 <Link to="/CargaEmpresa">
-                  <a>Empresa</a>
+                  <a>Publica tu empresa</a>
                 </Link>
               </h3>
             </div>
