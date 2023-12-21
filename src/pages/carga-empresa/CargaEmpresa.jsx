@@ -5,7 +5,7 @@ import { addCompany, updateCompany, findCompany } from "../../utils/apiDb/apiDbA
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
-
+import { swalPopUp } from "../../utils/swal";
 const CargaEmpresa = () => {
 
     const {userData} = useContext(UserContext);
@@ -72,11 +72,7 @@ const CargaEmpresa = () => {
         downloadData();
 
     }, []);
-
-    const uploadData = () => {
-
-    }
-
+  
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -93,9 +89,57 @@ const CargaEmpresa = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Datos del formulario:", formData);
+        
+        const forms = document.querySelectorAll(".companyUpdateForm")
+        const formsArr = Array.from(forms);
+        const formsDataArr = formsArr.map((form) => new FormData(form));
+        let formsDataArrJoin = [];
+        formsDataArr.forEach((form) =>{
+            formsDataArrJoin = [...formsDataArrJoin, ...form]
+        })
+        const data = Object.fromEntries(formsDataArrJoin);
+
+        const companyData = {
+            name: data.name,
+            slogan: data.slogan,
+            location: data.location,
+            phone: data.phone,
+            phone2: data.phone2,
+            
+            website: data.website,
+            
+            category: data.category,
+            closing: data.closing,
+            social: {
+                whatsapp: data.whatsapp,
+                facebook: data.facebook,
+                instagram: data.instagram,
+                twitter: data.twitter,
+                linkedin: data.linkedin,
+                tiktok: data.tiktok,
+                youtube: data.youtube,
+                email: data.email,
+            },
+            description: data.description,
+            logo: data.logo,
+            frontimage: data.frontimage,
+            images: [],
+            opening: "09:00",
+        }
+
+
+        // data.registeremail = userData.email;
+        // const entries = Object.values(data);    
+        // if (entries.every((value) => value.trim() !== "")) {
+        //     const response = await updateCompany(data);
+        //     response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
+        // } else {
+        //     swalPopUp("Ops!", "Todos los campos son obligatorios", "warning")
+        // }
+
+        // console.log("Datos del formulario:", formData);
     };
 
     return (
@@ -103,7 +147,7 @@ const CargaEmpresa = () => {
             <div className="container">
                 <div className="perfil-card container">
                     <h2>Carga tu negocio:</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Nombre de empresa:</label>
@@ -226,7 +270,7 @@ const CargaEmpresa = () => {
 
             <div className="container">
                 <div className="card-descripcion">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <a>Descripción (hasta 300 caracteres): </a>
@@ -244,7 +288,7 @@ const CargaEmpresa = () => {
 
                 <div className="perfil-card mt-3">
                     {" "}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Whatsapp:</label>
@@ -339,7 +383,7 @@ const CargaEmpresa = () => {
 
             <div className="container">
                 <div className="perfil-card">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Horario de apertura: </label>
@@ -354,7 +398,7 @@ const CargaEmpresa = () => {
                 </div>
 
                 <div className="perfil-card mt-3">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label className="img-form">Logo de la empresa (82x82): </label>
