@@ -17,7 +17,7 @@ const CargaEmpresa = () => {
     socialMedia: {
       facebook: "",
       instagram: "",
-      twitter: "",
+      x: "",
       linkedin: "",
       tiktok: "",
       youtube: "",
@@ -52,7 +52,7 @@ const CargaEmpresa = () => {
 
   return (
     <div className="perfil-container">
-      <div className="container">
+      <div className="container card-carga">
         <div className="perfil-card container">
           <h2>Carga tu negocio:</h2>
           <form onSubmit={handleSubmit}>
@@ -108,7 +108,9 @@ const CargaEmpresa = () => {
             </div>
             <div className="form-row">
               <div className="form-col">
-                <label>Teléfono alternativo (opcional):</label>
+                <label className="full-width-label">
+                  Teléfono alternativo (opcional):
+                </label>
                 <input
                   type="text"
                   name="telefono2"
@@ -130,6 +132,7 @@ const CargaEmpresa = () => {
                 />
               </div>
             </div>
+
             <div className="form-row">
               <div className="form-col">
                 <label>Categoría: </label>
@@ -137,37 +140,52 @@ const CargaEmpresa = () => {
                   name="categoria"
                   value={formData.categoria}
                   onChange={handleChange}
+                  className="select-custom-width"
                 >
-                  <option value="">Selecciona una categoría</option>
-                  <option>Reparación y Mantenimiento</option>
+                  <option value="" disabled hidden>
+                    <span>Selecciona una categoría</span>
+                  </option>
+                  <option disabled style={{ color: "darkgray" }}>
+                    - Reparación y Mantenimiento
+                  </option>
                   <option value="gomerias">
-                    Gomerías (arreglo y venta de cubiertas, alineación y
+                    -- Gomerías (arreglo y venta de cubiertas, alineación y
                     balanceo)
                   </option>
                   <option value="talleres">
-                    Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
+                    -- Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
                   </option>
-                  <option value="repuestos">Repuestos (Autopartes)</option>
-                  <option value="lubricentros">Lubricentros</option>
-                  <option value="venta_alquiler">
-                    Venta y Alquiler de vehículos
+                  <option value="repuestos">-- Repuestos (Autopartes)</option>
+                  <option value="lubricentros">-- Lubricentros</option>
+                  <option
+                    disabled
+                    style={{ color: "darkgray" }}
+                    value="venta_alquiler"
+                  >
+                    - Venta y Alquiler de vehículos
                   </option>
                   <option value="agencia">
-                    Agencia (Concesionaria oficiales y Agencias particulares)
+                    -- Agencia (Concesionaria oficiales y Agencias particulares)
                   </option>
                   <option value="rent_car">
-                    Rent a Car (Alquiler de autos)
+                    -- Rent a Car (Alquiler de autos)
                   </option>
-                  <option value="otros_servicios">Otros Servicios</option>
-                  <option value="aseguradoras">Aseguradoras</option>
+                  <option
+                    disabled
+                    style={{ color: "darkgray" }}
+                    value="otros_servicios"
+                  >
+                    - Otros Servicios
+                  </option>
+                  <option value="aseguradoras">-- Aseguradoras</option>
                   <option value="estaciones_servicio">
-                    Estaciones de Servicios
+                    -- Estaciones de Servicios
                   </option>
                   <option value="estetica_automotor">
-                    Estética del Automotor (Lavaderos, Polarizados)
+                    -- Estética del Automotor (Lavaderos, Polarizados)
                   </option>
                   <option value="servicios_emergencia">
-                    Servicios de emergencia (Grúas, Cerrajeros)
+                    -- Servicios de emergencia (Grúas, Cerrajeros)
                   </option>
                 </select>
               </div>
@@ -176,8 +194,8 @@ const CargaEmpresa = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="card-descripcion">
+      <div className="container card-carga">
+        <div className="card-descripcion ">
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-col">
@@ -195,111 +213,124 @@ const CargaEmpresa = () => {
         </div>
 
         <div className="perfil-card mt-3">
-          {" "}
           <form onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Whatsapp:</label>
-                <input
-                  type="text"
-                  name="whatsapp"
-                  value={formData.whatsapp}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Facebook: </label>
-                <input
-                  type="text"
-                  name="socialMedia.facebook"
-                  value={formData.socialMedia.facebook}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Instagram: </label>
-                <input
-                  type="text"
-                  name="socialMedia.instagram"
-                  value={formData.socialMedia.instagram}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Twitter: </label>
-                <input
-                  type="text"
-                  name="socialMedia.twitter"
-                  value={formData.socialMedia.twitter}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Linkedin: </label>
-                <input
-                  type="text"
-                  name="socialMedia.linkedin"
-                  value={formData.socialMedia.linkedin}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Tik Tok: </label>
-                <input
-                  type="text"
-                  name="socialMedia.tiktok"
-                  value={formData.socialMedia.tiktok}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Youtube: </label>
-                <input
-                  type="text"
-                  name="socialMedia.youtube"
-                  value={formData.socialMedia.youtube}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Mail: </label>
-                <input
-                  type="text"
-                  name="mail"
-                  value={formData.mail}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+            <div className="row">
+              {/* Primera columna */}
+              <div className="col-md-6">
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-whatsapp me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="WhatsApp"
+                  />
+                </div>
 
-      <div className="container">
-        <div className="perfil-card">
-          <form onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-col">
-                <label>Horario de apertura: </label>
-                <TimePicker
-                  name="horarioApertura"
-                  onChange={(value) => handleChange("horarioApertura", value)}
-                  value={formData.horarioApertura}
-                />
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-facebook me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.facebook"
+                    value={formData.socialMedia.facebook}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Facebook"
+                  />
+                </div>
+
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-instagram me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.instagram"
+                    value={formData.socialMedia.instagram}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Instagram"
+                  />
+                </div>
+
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-tiktok me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.tiktok"
+                    value={formData.socialMedia.tiktok}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="TikTok"
+                  />
+                </div>
+              </div>
+
+              {/* Segunda columna */}
+              <div className="col-md-6">
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-linkedin me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.linkedin"
+                    value={formData.socialMedia.linkedin}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="LinkedIn"
+                  />
+                </div>
+
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-x me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.x"
+                    value={formData.socialMedia.x}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="X"
+                  />
+                </div>
+
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fab fa-youtube me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.youtube"
+                    value={formData.socialMedia.youtube}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Youtube"
+                  />
+                </div>
+
+                <div className="form-col red-whith d-flex align-items-center">
+                  <label>
+                    <i className="fas fa-envelope me-2"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="socialMedia.mail"
+                    value={formData.socialMedia.mail}
+                    onChange={handleChange}
+                    className="form-control"
+                    placeholder="Mail"
+                  />
+                </div>
               </div>
             </div>
           </form>
@@ -318,21 +349,11 @@ const CargaEmpresa = () => {
                 />
               </div>
             </div>
-            <div className="form-row">
-              <div className="form-col">
-                <label className="img-form">Imagen de portada (360x200):</label>
-                <input
-                  type="file"
-                  name="imagenPortada"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />{" "}
-              </div>
-            </div>
+
             <div className="form-row">
               <div className="form-col">
                 <label className="img-form">
-                  Otras imágenes (límite hasta 6):{" "}
+                  Cargar imágenes (límite hasta 6):{" "}
                 </label>
                 <input
                   type="file"
@@ -344,6 +365,23 @@ const CargaEmpresa = () => {
               </div>
             </div>
             <button type="submit">Guardar Cambios</button>
+          </form>
+        </div>
+      </div>
+
+      <div className="container card-carga">
+        <div className="perfil-card">
+          <form onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="form-col">
+                <label>Horario de apertura: </label>
+                <TimePicker
+                  name="horarioApertura"
+                  onChange={(value) => handleChange("horarioApertura", value)}
+                  value={formData.horarioApertura}
+                />
+              </div>
+            </div>
           </form>
         </div>
       </div>

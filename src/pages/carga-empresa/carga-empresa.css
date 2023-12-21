@@ -7,6 +7,19 @@
   background-color: hsl(218deg, 41%, 15%);
 }
 
+.container.card-carga {
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  padding: 4rem;
+}
+
+.full-width-label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .perfil-card {
   width: 100%;
   margin-top: 3rem;
@@ -34,12 +47,19 @@
 }
 
 .descripcion {
-  width: 90%;
+  width: 100%;
   margin-top: 1rem;
 }
 
 .wide-input {
   width: 90%;
+}
+
+.red-whith {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  font-size: 24px;
 }
 
 .img-form {
@@ -85,4 +105,9 @@ button {
 button:hover {
   background-color: #ffc451;
   color: #000;
+}
+
+.select-custom-width {
+  width: 80%;
+  border-radius: 2rem;
 }
