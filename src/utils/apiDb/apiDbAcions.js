@@ -55,8 +55,8 @@ export const findCompany = async (field, value, fieldsSelected) => {
 export const addCompany = async (companyData) => {
 
     try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/addcompnay`, {
-            method: 'put',
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/addcompany`, {
+            method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import TimePicker from "react-time-picker";
 import "./carga-empresa.css";
-import { addCompany, updateCompany, findCompany } from "../../utils/apiDb/apiDbAcions";
-import { useEffect } from "react";
+import { addCompany } from "../../utils/apiDb/apiDbAcions";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
@@ -34,45 +33,7 @@ const CargaEmpresa = () => {
         images: [],
         opening: "09:00",
     });
-
-    useEffect(() => {
-        
-        const downloadData = async () => {
-            const response = await findCompany("registeremail", userData.email, "")
-            if (response.companyData) {
-                const data = response.companyData;
-                setFormData({
-                    name: data.name,
-                    slogan: data.slogan,
-                    location: data.location,
-                    phone: data.phone,
-                    phone2: data.phone2,
-                    whatsapp: data.social? data.social.whatsapp : "",
-                    website: data.website,
-                    email: data.social? data.social.email : "",
-                    category: data.category,
-                    closing: data.schedule? data.schedule.closing : "",
-                    social: {
-                        facebook: data.social? data.social.facebook : "",
-                        instagram: data.social? data.social.instagram : "",
-                        twitter: data.social? data.social.twitter : "",
-                        linkedin: data.social? data.social.linkedin : "",
-                        tiktok: data.social? data.social.tiktok : "",
-                        youtube: data.social? data.social.youtube : "",
-                    },
-                    description: data.description,
-                    logo: data.logo,
-                    frontimage: data.frontimage,
-                    images: [],
-                    opening: "09:00",
-                })
-            }
-        }
-        
-        downloadData();
-
-    }, []);
-  
+      
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -107,11 +68,9 @@ const CargaEmpresa = () => {
             location: data.location,
             phone: data.phone,
             phone2: data.phone2,
-            
             website: data.website,
-            
             category: data.category,
-            closing: data.closing,
+            description: data.description,
             social: {
                 whatsapp: data.whatsapp,
                 facebook: data.facebook,
@@ -122,23 +81,17 @@ const CargaEmpresa = () => {
                 youtube: data.youtube,
                 email: data.email,
             },
-            description: data.description,
-            logo: data.logo,
-            frontimage: data.frontimage,
-            images: [],
-            opening: "09:00",
+            schedule: {
+                opening: "09:00",
+                closing: data.closing,
+            },
         }
 
+        console.log(companyData)
 
-        // data.registeremail = userData.email;
-        // const entries = Object.values(data);    
-        // if (entries.every((value) => value.trim() !== "")) {
-        //     const response = await updateCompany(data);
-        //     response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
-        // } else {
-        //     swalPopUp("Ops!", "Todos los campos son obligatorios", "warning")
-        // }
-
+        companyData.registeremail = userData.email;
+        const response = await addCompany(companyData);
+        response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
         // console.log("Datos del formulario:", formData);
     };
 
