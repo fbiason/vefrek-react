@@ -41,9 +41,6 @@ function App() {
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
         <Route path="/Categorias" element={<Categorias />} />
-
-        <Route path="/keep" element={<Keep />} />
-
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
