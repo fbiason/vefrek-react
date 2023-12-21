@@ -344,7 +344,7 @@ const NavBar = () => {
           <ul>
             <li>
               {userData.isLogged && show && (
-                <Link to="/perfil" className="nav-link scrollto">
+                <Link to="/" className="nav-link scrollto">
                   Perfil
                 </Link>
               )}
@@ -356,7 +356,7 @@ const NavBar = () => {
             )}
           </ul>
         </nav>
-        <Link to="/Publicacion" className="get-started-btn scrollto">
+        <Link to="/publicacion" className="get-started-btn scrollto">
           ¡PUBLICA AHORA!
         </Link>
       </div>

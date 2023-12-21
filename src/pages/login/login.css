@@ -30,7 +30,7 @@
   color: #14ba75;
 }
 .login-container p {
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.517);
 }
 .login-container h3 {
   color: rgb(117, 116, 116);
@@ -174,7 +174,7 @@ button {
 }
 
 .facebook-button {
-  background-color: #1877f2;
+  background-color: transparent;
   color: white;
   padding: 10px;
   border: none;
@@ -184,12 +184,16 @@ button {
 }
 
 .google-button {
-  background-color: #4285f4;
+  background-color: transparent;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.link-red {
+  color: black;
 }
 
 .bienvenido {
