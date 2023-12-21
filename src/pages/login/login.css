@@ -30,7 +30,7 @@
   color: #14ba75;
 }
 .login-container p {
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.517);
 }
 .login-container h3 {
   color: rgb(117, 116, 116);
@@ -77,25 +77,6 @@
 
 .vefrek-logo {
   width: 40%;
-}
-
-#radius-shape-1 {
-  height: 220px;
-  width: 220px;
-  top: -60px;
-  left: -130px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
-}
-
-#radius-shape-2 {
-  border-radius: 38% 62% 63% 37%/70% 33% 67% 30%;
-  bottom: -60px;
-  right: -110px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
 }
 
 .bg-glass {
@@ -174,7 +155,7 @@ button {
 }
 
 .facebook-button {
-  background-color: #1877f2;
+  background-color: transparent;
   color: white;
   padding: 10px;
   border: none;
@@ -184,7 +165,7 @@ button {
 }
 
 .google-button {
-  background-color: #4285f4;
+  background-color: transparent;
   color: white;
   padding: 10px;
   border: none;
@@ -192,16 +173,18 @@ button {
   cursor: pointer;
 }
 
+.link-red {
+  color: black;
+}
+
 .bienvenido {
   padding: 2rem;
-  width: 50%;
-  float: left;
+  width: 40%;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .bienvenido h2 {
@@ -222,6 +205,10 @@ button {
   width: 100%;
   white-space: nowrap;
   transition: color 0.3s;
+}
+
+.txt-form {
+  width: 100%;
 }
 
 .acepto1:hover {
@@ -251,7 +238,7 @@ button {
   margin-top: 1rem;
   border-radius: 4px;
   font-weight: bold;
-  width: 50%;
+  width: 60%;
   transition: color 0.3s;
 }
 

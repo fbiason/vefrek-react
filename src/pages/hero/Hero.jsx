@@ -8,7 +8,7 @@ const Hero = () => {
       id="hero"
       className="d-flex align-items-center justify-content-center"
     >
-      <div className="container-fluid" data-aos="fade-up">
+      <div className="container-fluid container;" data-aos="fade-up">
         <div
           className="row justify-content-center"
           data-aos="fade-up"
@@ -33,41 +33,30 @@ const Hero = () => {
           data-aos-delay="250"
         >
           <div className="col-xl-2 col-md-4">
-            <div className="icon-box">
-              <i className="ri-store-2-line"></i>
+            <Link to="/Categorias">
+              <div className="btn-categoria  icon-box">
+                <i className="ri-tools-line"></i>
+                <h3>Reparación y Mantenimieto</h3>
+              </div>
+            </Link>
+          </div>
 
-              <Link to="/PaginaEmpresa">
-                <h3>
-                  <a>Clasificados</a>
-                </h3>
-              </Link>
-            </div>
-          </div>
           <div className="col-xl-2 col-md-4">
-            <div className="icon-box">
-              <i className="ri-tools-line"></i>
-              <Link to="/Categorias">
-                <h3>
-                  <a>Reparación y Mantenimieto</a>
-                </h3>
-              </Link>
-            </div>
+            <Link to="/PaginaEmpresa">
+              <div className="btn-categoria icon-box">
+                <i className="ri-car-line"></i>
+                <h3>Venta y Alquiler de Vehículos</h3>
+              </div>
+            </Link>
           </div>
+
           <div className="col-xl-2 col-md-4">
-            <div className="icon-box">
-              <i className="ri-car-line"></i>
-              <h3>
-                <a href="">Venta y Alquiler de Vehículos</a>
-              </h3>
-            </div>
-          </div>
-          <div className="col-xl-2 col-md-4">
-            <div className="icon-box">
-              <i className="ri-gas-station-line"></i>
-              <h3>
-                <a href="">Otros Servicios</a>
-              </h3>
-            </div>
+            <Link to="/PaginaEmpresa">
+              <div className="btn-categoria icon-box">
+                <i className="ri-gas-station-line"></i>
+                <h3>Otros Servicios</h3>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

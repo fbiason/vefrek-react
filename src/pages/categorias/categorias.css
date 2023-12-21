@@ -1,33 +1,5 @@
-.categorias-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.categorias-section,
-.subcategorias-section,
-.card-section {
-  margin-bottom: 20px;
-}
-
-.categorias-section {
-  display: flex;
-}
-
-.dropdown-section {
-  margin-left: 20px;
-}
-
-.card {
-  border: 1px solid #ccc;
-  color: black;
-  border-radius: 8px;
-  padding: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  width: 200px;
-}
-
-.card p {
+.CardNegocio span {
   color: black;
 }
+
+/*@import "keep-react/css";*/
