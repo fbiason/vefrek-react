@@ -10,17 +10,17 @@ const CargaEmpresa = () => {
 
     const {userData} = useContext(UserContext);
     const [formData, setFormData] = useState({
-        empresa: "",
+        name: "",
         slogan: "",
-        ubicacion: "",
-        telefono: "",
-        telefono2: "",
+        location: "",
+        phone: "",
+        phone2: "",
         whatsapp: "",
-        sitioWeb: "",
-        mail: "",
-        categoria: "",
-        horarioApertura: "",
-        socialMedia: {
+        website: "",
+        email: "",
+        category: "",
+        closing: "",
+        social: {
             facebook: "",
             instagram: "",
             twitter: "",
@@ -28,31 +28,31 @@ const CargaEmpresa = () => {
             tiktok: "",
             youtube: "",
         },
-        descripcion: "",
+        description: "",
         logo: null,
-        imagenPortada: null,
-        otrasImagenes: [],
-        horarioApertura: "09:00",
+        frontimage: null,
+        images: [],
+        opening: "09:00",
     });
 
     useEffect(() => {
         
-        const loadData = async () => {
+        const downloadData = async () => {
             const response = await findCompany("registeremail", userData.email, "")
             if (response.companyData) {
                 const data = response.companyData;
                 setFormData({
-                    empresa: data.name,
+                    name: data.name,
                     slogan: data.slogan,
-                    ubicacion: data.location,
-                    telefono: data.phone,
-                    telefono2: data.phone2,
+                    location: data.location,
+                    phone: data.phone,
+                    phone2: data.phone2,
                     whatsapp: data.social? data.social.whatsapp : "",
-                    sitioWeb: data.website,
-                    mail: data.social? data.social.email : "",
-                    categoria: data.category,
-                    horarioApertura: data.schedule? data.schedule.closing : "",
-                    socialMedia: {
+                    website: data.website,
+                    email: data.social? data.social.email : "",
+                    category: data.category,
+                    closing: data.schedule? data.schedule.closing : "",
+                    social: {
                         facebook: data.social? data.social.facebook : "",
                         instagram: data.social? data.social.instagram : "",
                         twitter: data.social? data.social.twitter : "",
@@ -60,18 +60,22 @@ const CargaEmpresa = () => {
                         tiktok: data.social? data.social.tiktok : "",
                         youtube: data.social? data.social.youtube : "",
                     },
-                    descripcion: data.description,
+                    description: data.description,
                     logo: data.logo,
-                    imagenPortada: data.frontimage,
-                    otrasImagenes: [],
-                    horarioApertura: "09:00",
+                    frontimage: data.frontimage,
+                    images: [],
+                    opening: "09:00",
                 })
             }
         }
         
-        loadData();
+        downloadData();
 
     }, []);
+
+    const uploadData = () => {
+
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -106,8 +110,8 @@ const CargaEmpresa = () => {
                                 <div>
                                     <input
                                         type="text"
-                                        name="empresa"
-                                        value={formData.empresa}
+                                        name="name"
+                                        value={formData.name}
                                         onChange={handleChange}
                                         className="wide-input"
                                     />
@@ -131,8 +135,8 @@ const CargaEmpresa = () => {
                                 <label>Ubicación:</label>{" "}
                                 <input
                                     type="text"
-                                    name="ubicacion"
-                                    value={formData.ubicacion}
+                                    name="location"
+                                    value={formData.location}
                                     onChange={handleChange}
                                     className="wide-input"
                                 />
@@ -143,8 +147,8 @@ const CargaEmpresa = () => {
                                 <label> Teléfono: </label>
                                 <input
                                     type="text"
-                                    name="telefono"
-                                    value={formData.telefono}
+                                    name="phone"
+                                    value={formData.phone}
                                     onChange={handleChange}
                                     className="wide-input"
                                 />
@@ -155,8 +159,8 @@ const CargaEmpresa = () => {
                                 <label>Teléfono alternativo (opcional):</label>
                                 <input
                                     type="text"
-                                    name="telefono2"
-                                    value={formData.telefono2}
+                                    name="phone2"
+                                    value={formData.phone2}
                                     onChange={handleChange}
                                     className="wide-input"
                                 />
@@ -167,8 +171,8 @@ const CargaEmpresa = () => {
                                 <label>Sitio Web (opcional): </label>
                                 <input
                                     type="text"
-                                    name="sitioWeb"
-                                    value={formData.sitioWeb}
+                                    name="website"
+                                    value={formData.website}
                                     onChange={handleChange}
                                     className="wide-input"
                                 />
@@ -178,8 +182,8 @@ const CargaEmpresa = () => {
                             <div className="form-col">
                                 <label>Categoría: </label>
                                 <select
-                                    name="categoria"
-                                    value={formData.categoria}
+                                    name="category"
+                                    value={formData.category}
                                     onChange={handleChange}
                                 >
                                     <option value="">Selecciona una categoría</option>
@@ -227,8 +231,8 @@ const CargaEmpresa = () => {
                             <div className="form-col">
                                 <a>Descripción (hasta 300 caracteres): </a>
                                 <textarea
-                                    name="descripcion"
-                                    value={formData.descripcion}
+                                    name="description"
+                                    value={formData.description}
                                     onChange={handleChange}
                                     maxLength="300"
                                     className="descripcion"
@@ -257,8 +261,8 @@ const CargaEmpresa = () => {
                                 <label>Facebook: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.facebook"
-                                    value={formData.socialMedia.facebook}
+                                    name="facebook"
+                                    value={formData.social.facebook}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -268,8 +272,8 @@ const CargaEmpresa = () => {
                                 <label>Instagram: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.instagram"
-                                    value={formData.socialMedia.instagram}
+                                    name="instagram"
+                                    value={formData.social.instagram}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -279,8 +283,8 @@ const CargaEmpresa = () => {
                                 <label>Twitter: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.twitter"
-                                    value={formData.socialMedia.twitter}
+                                    name="twitter"
+                                    value={formData.social.twitter}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -290,8 +294,8 @@ const CargaEmpresa = () => {
                                 <label>Linkedin: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.linkedin"
-                                    value={formData.socialMedia.linkedin}
+                                    name="linkedin"
+                                    value={formData.social.linkedin}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -301,8 +305,8 @@ const CargaEmpresa = () => {
                                 <label>Tik Tok: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.tiktok"
-                                    value={formData.socialMedia.tiktok}
+                                    name="tiktok"
+                                    value={formData.social.tiktok}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -312,8 +316,8 @@ const CargaEmpresa = () => {
                                 <label>Youtube: </label>
                                 <input
                                     type="text"
-                                    name="socialMedia.youtube"
-                                    value={formData.socialMedia.youtube}
+                                    name="youtube"
+                                    value={formData.social.youtube}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -323,8 +327,8 @@ const CargaEmpresa = () => {
                                 <label>Mail: </label>
                                 <input
                                     type="text"
-                                    name="mail"
-                                    value={formData.mail}
+                                    name="email"
+                                    value={formData.email}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -340,9 +344,9 @@ const CargaEmpresa = () => {
                             <div className="form-col">
                                 <label>Horario de apertura: </label>
                                 <TimePicker
-                                    name="horarioApertura"
+                                    name="opening"
                                     onChange={(value) => handleChange("horarioApertura", value)}
-                                    value={formData.horarioApertura}
+                                    value={formData.opening}
                                 />
                             </div>
                         </div>
@@ -367,7 +371,7 @@ const CargaEmpresa = () => {
                                 <label className="img-form">Imagen de portada (360x200):</label>
                                 <input
                                     type="file"
-                                    name="imagenPortada"
+                                    name="frontimage"
                                     accept="image/*"
                                     onChange={handleFileChange}
                                 />{" "}
@@ -380,7 +384,7 @@ const CargaEmpresa = () => {
                                 </label>
                                 <input
                                     type="file"
-                                    name="otrasImagenes"
+                                    name="images"
                                     accept="image/*"
                                     multiple
                                     onChange={handleFileChange}
