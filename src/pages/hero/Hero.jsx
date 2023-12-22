@@ -33,7 +33,7 @@ const Hero = () => {
           data-aos-delay="250"
         >
           <div className="col-xl-2 col-md-4">
-            <Link to="/Categorias">
+            <Link to="/Reparacion">
               <div className="btn-categoria  icon-box">
                 <i className="ri-tools-line"></i>
                 <h3>Reparación y Mantenimieto</h3>
@@ -42,7 +42,7 @@ const Hero = () => {
           </div>
 
           <div className="col-xl-2 col-md-4">
-            <Link to="/PaginaEmpresa">
+            <Link to="/Venta">
               <div className="btn-categoria icon-box">
                 <i className="ri-car-line"></i>
                 <h3>Venta y Alquiler de Vehículos</h3>
@@ -51,7 +51,7 @@ const Hero = () => {
           </div>
 
           <div className="col-xl-2 col-md-4">
-            <Link to="/PaginaEmpresa">
+            <Link to="/OtrosServicios">
               <div className="btn-categoria icon-box">
                 <i className="ri-gas-station-line"></i>
                 <h3>Otros Servicios</h3>

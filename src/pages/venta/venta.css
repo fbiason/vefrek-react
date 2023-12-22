@@ -1,0 +1,9 @@
+.cards-row {
+  justify-content: center;
+}
+
+.cards-col {
+  width: 100%;
+  padding: 1rem;
+  justify-content: center;
+}

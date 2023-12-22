@@ -11,9 +11,11 @@ import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
-import Categorias from "./pages/categorias/Categorias";
 import { NextUIProvider } from "@nextui-org/react";
 import * as React from "react";
+import Reparacion from "./pages/reparacion/Reparacion";
+import Venta from "./pages/venta/Venta";
+import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
@@ -42,7 +44,9 @@ function App() {
           <Route path="/Publicacion" element={<Publicacion />} />
           {<Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
           <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
-          <Route path="/Categorias" element={<Categorias />} />
+          <Route path="/Reparacion" element={<Reparacion />} />
+          <Route path="/Venta" element={<Venta />} />
+          <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
