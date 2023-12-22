@@ -96,14 +96,14 @@ const CargaEmpresa = () => {
             completeData.append("files", file);
         }      
         const response = await addCompany(completeData);
-        response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
+        response.success ? swalPopUp("Tarea completada", response.message, "success") : swalPopUp("Error", response.message, "error");
         // console.log("Datos del formulario:", formData);
     };
 
     return (
-        <div className="perfil-container">
+        <div className="perfil-container"> 
             <div className="container">
-                <div className="perfil-card container">
+                <div className="perfil-card container"> 
                     <h2>Carga tu negocio:</h2>
                     <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
