@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import TimePicker from "react-time-picker";
 import "./carga-empresa.css";
-import { addCompany, updateCompany, findCompany } from "../../utils/apiDb/apiDbAcions";
-import { useEffect } from "react";
+import { addCompany } from "../../utils/apiDb/apiDbAcions";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
-
+import { swalPopUp } from "../../utils/swal";
 const CargaEmpresa = () => {
 
     const {userData} = useContext(UserContext);
@@ -34,49 +33,7 @@ const CargaEmpresa = () => {
         images: [],
         opening: "09:00",
     });
-
-    useEffect(() => {
-        
-        const downloadData = async () => {
-            const response = await findCompany("registeremail", userData.email, "")
-            if (response.companyData) {
-                const data = response.companyData;
-                setFormData({
-                    name: data.name,
-                    slogan: data.slogan,
-                    location: data.location,
-                    phone: data.phone,
-                    phone2: data.phone2,
-                    whatsapp: data.social? data.social.whatsapp : "",
-                    website: data.website,
-                    email: data.social? data.social.email : "",
-                    category: data.category,
-                    closing: data.schedule? data.schedule.closing : "",
-                    social: {
-                        facebook: data.social? data.social.facebook : "",
-                        instagram: data.social? data.social.instagram : "",
-                        twitter: data.social? data.social.twitter : "",
-                        linkedin: data.social? data.social.linkedin : "",
-                        tiktok: data.social? data.social.tiktok : "",
-                        youtube: data.social? data.social.youtube : "",
-                    },
-                    description: data.description,
-                    logo: data.logo,
-                    frontimage: data.frontimage,
-                    images: [],
-                    opening: "09:00",
-                })
-            }
-        }
-        
-        downloadData();
-
-    }, []);
-
-    const uploadData = () => {
-
-    }
-
+      
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -93,9 +50,54 @@ const CargaEmpresa = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Datos del formulario:", formData);
+        
+        const forms = document.querySelectorAll(".companyUpdateForm")
+        const formsArr = Array.from(forms);
+        const formsDataArr = formsArr.map((form) => new FormData(form));
+        let formsDataArrJoin = [];
+        formsDataArr.forEach((form) =>{
+            formsDataArrJoin = [...formsDataArrJoin, ...form]
+        })
+        const data = Object.fromEntries(formsDataArrJoin);
+        const companyData = {
+            name: data.name,
+            slogan: data.slogan,
+            location: data.location,
+            phone: data.phone,
+            phone2: data.phone2,
+            website: data.website,
+            category: data.category,
+            description: data.description,
+            social: {
+                whatsapp: data.whatsapp,
+                facebook: data.facebook,
+                instagram: data.instagram,
+                twitter: data.twitter,
+                linkedin: data.linkedin,
+                tiktok: data.tiktok,
+                youtube: data.youtube,
+                email: data.email,
+            },
+            schedule: {
+                opening: "09:00",
+                closing: data.closing,
+            },
+        }
+        companyData.registeremail = userData.email;
+
+        const completeData = new FormData();      
+        completeData.append("companyTextData", JSON.stringify(companyData));
+        completeData.append("files", data.logo);
+        completeData.append("files", data.frontimage);
+        const files = document.querySelector(".multiplefiles").files          
+        for (const file of files) {
+            completeData.append("files", file);
+        }      
+        const response = await addCompany(completeData);
+        response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
+        // console.log("Datos del formulario:", formData);
     };
 
     return (
@@ -103,7 +105,7 @@ const CargaEmpresa = () => {
             <div className="container">
                 <div className="perfil-card container">
                     <h2>Carga tu negocio:</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Nombre de empresa:</label>
@@ -226,7 +228,7 @@ const CargaEmpresa = () => {
 
             <div className="container">
                 <div className="card-descripcion">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <a>Descripción (hasta 300 caracteres): </a>
@@ -244,7 +246,7 @@ const CargaEmpresa = () => {
 
                 <div className="perfil-card mt-3">
                     {" "}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Whatsapp:</label>
@@ -339,7 +341,7 @@ const CargaEmpresa = () => {
 
             <div className="container">
                 <div className="perfil-card">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label>Horario de apertura: </label>
@@ -354,7 +356,7 @@ const CargaEmpresa = () => {
                 </div>
 
                 <div className="perfil-card mt-3">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
                             <div className="form-col">
                                 <label className="img-form">Logo de la empresa (82x82): </label>
@@ -382,11 +384,12 @@ const CargaEmpresa = () => {
                                 <label className="img-form">
                                     Otras imágenes (límite hasta 6):{" "}
                                 </label>
-                                <input
+                                <input className="multiplefiles"
                                     type="file"
                                     name="images"
                                     accept="image/*"
                                     multiple
+                                    max={6}
                                     onChange={handleFileChange}
                                 />
                             </div>
