@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
+    "@nextui-org/react": "^2.2.9",
     "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -11,6 +12,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.2",
     "env-cmd": "^10.1.0",
+    "framer-motion": "^10.16.16",
     "glightbox": "^3.2.0",
     "isotope": "^1.0.0-alpha.3",
     "isotope-layout": "^3.0.6",
@@ -51,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
   }
 }

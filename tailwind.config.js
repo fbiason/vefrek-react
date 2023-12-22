@@ -1,9 +1,15 @@
-import keepPreset from "keep-react/preset";
-export default {
-    content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-        "node_modules/keep-react/**/*.{js,jsx,ts,tsx}"
-    ],
-    presets: [keepPreset],
+// tailwind.config.js
+const { nextui } = require("@nextui-org/react");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{html,js}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  darkMode: "class",
+  plugins: [nextui()],
 };

@@ -9,7 +9,7 @@ const Categorias = () => {
         <div className="col">
           <div className="CardNegocio card">
             <CardNegocio
-              imagen="https://images.prismic.io/staticmania/56ae80e7-4d23-4bd9-a2f3-01bd6f923a8b_product-2.avif?auto=compress,format"
+              imagen="images/portfolio/biasonautomotores.jpeg"
               telefono="2966449951"
               direccion="Rio Gallegos"
             ></CardNegocio>
