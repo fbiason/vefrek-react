@@ -103,7 +103,7 @@ const CargaEmpresa = () => {
     return (
         <div className="perfil-container"> 
             <div className="container">
-                <div className="perfil-card container">
+                <div className="perfil-card container"> 
                     <h2>Carga tu negocio:</h2>
                     <form onSubmit={handleSubmit} className="companyUpdateForm">
                         <div className="form-row">
