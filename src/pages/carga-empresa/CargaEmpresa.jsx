@@ -61,7 +61,6 @@ const CargaEmpresa = () => {
             formsDataArrJoin = [...formsDataArrJoin, ...form]
         })
         const data = Object.fromEntries(formsDataArrJoin);
-
         const companyData = {
             name: data.name,
             slogan: data.slogan,
@@ -86,11 +85,17 @@ const CargaEmpresa = () => {
                 closing: data.closing,
             },
         }
-
-        console.log(companyData)
-
         companyData.registeremail = userData.email;
-        const response = await addCompany(companyData);
+
+        const completeData = new FormData();      
+        completeData.append("companyTextData", JSON.stringify(companyData));
+        completeData.append("files", data.logo);
+        completeData.append("files", data.frontimage);
+        const files = document.querySelector(".multiplefiles").files          
+        for (const file of files) {
+            completeData.append("files", file);
+        }      
+        const response = await addCompany(completeData);
         response.success ? swalPopUp("Datos de empresa actualizados con éxito", response.message, "success") : swalPopUp("Error", response.message, "error");
         // console.log("Datos del formulario:", formData);
     };
@@ -379,11 +384,12 @@ const CargaEmpresa = () => {
                                 <label className="img-form">
                                     Otras imágenes (límite hasta 6):{" "}
                                 </label>
-                                <input
+                                <input className="multiplefiles"
                                     type="file"
                                     name="images"
                                     accept="image/*"
                                     multiple
+                                    max={6}
                                     onChange={handleFileChange}
                                 />
                             </div>

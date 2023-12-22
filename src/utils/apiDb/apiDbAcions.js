@@ -57,10 +57,7 @@ export const addCompany = async (companyData) => {
     try {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/addcompany`, {
             method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(companyData),
+            body: companyData,
             credentials: "include"
         });
         const responseOBJ = await responseJSON.json();
