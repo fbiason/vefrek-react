@@ -1,7 +1,18 @@
 import React from "react";
 import "./footer.css";
+import { swalPopUp } from "../../utils/swal";
 
 const Footer = () => {
+  const toTerminos = (e) => {
+    e.preventDefault();
+    swalPopUp("Ups!", "Tienes que loguerte para puclicar");
+  };
+
+  const toPolitica = (e) => {
+    e.preventDefault();
+    swalPopUp("Ups!", "Tienes que loguerte para puclicar");
+  };
+
   return (
     <footer id="footer">
       <div className="footer-top">
@@ -50,14 +61,14 @@ const Footer = () => {
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="html/termino-condiciones.html">
-                    Términos y condiciones
+                  <a href="/">
+                    <a onClick={toTerminos}>Términos y Condiciones</a>
                   </a>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="html/politica-privacidad.html">
-                    Política de Privacidad
+                  <a href="/">
+                    <a onClick={toPolitica}>Politica de Privacidad</a>
                   </a>
                 </li>
               </ul>
