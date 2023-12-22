@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: fit-content;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   background-color: hsl(218deg, 41%, 15%);
   background-image: radial-gradient(
       650px circle at 0% 0%,

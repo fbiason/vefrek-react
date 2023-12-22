@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginApp />} />
-        {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}    
+        {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
         <Route path="/Publicacion" element={<Publicacion />} />
         <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
         <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
