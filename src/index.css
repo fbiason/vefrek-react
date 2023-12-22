@@ -24,7 +24,7 @@ a:hover {
 }
 
 section {
-  padding: 60px 0;
+  padding: 10rem 3rem 3rem 3rem;
   overflow: hidden;
   box-sizing: none;
 }
@@ -98,4 +98,6 @@ section {
   opacity: 1;
 }
 
-/*@import "keep-react/css";*/
+/*@tailwind base;*/
+@tailwind components;
+@tailwind utilities;

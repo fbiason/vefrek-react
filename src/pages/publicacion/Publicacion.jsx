@@ -6,17 +6,16 @@ import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 
 const Publicacion = () => {
-
   const { userData } = useContext(UserContext);
 
   const toEmpresa = (e) => {
     e.preventDefault();
     if (userData.isLogged) {
-      e.target.parentNode.click()
+      e.target.parentNode.click();
     } else {
-      swalPopUp("Ups!", "Tienes que loguerte para puclicar", "info")
+      swalPopUp("Ups!", "Tienes que loguerte para puclicar", "info");
     }
-  }
+  };
 
   return (
     <section id="hero-publicacion" className="d-flex background">

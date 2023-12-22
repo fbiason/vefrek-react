@@ -1,9 +1,6 @@
 .pagina-empresa-container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  margin-top: 10rem;
-  padding-top: 10rem;
   margin: 2rem;
 }
 

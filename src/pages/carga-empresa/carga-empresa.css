@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: fit-content;
   background-color: hsl(218deg, 41%, 15%);
 }
 
@@ -11,7 +10,6 @@
   justify-content: center;
   align-items: center;
   height: 70vh;
-  padding: 4rem;
 }
 
 .full-width-label {
@@ -63,7 +61,7 @@
 }
 
 .img-form {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .perfil-container h2 {

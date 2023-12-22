@@ -12,6 +12,8 @@ import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import Categorias from "./pages/categorias/Categorias";
+import { NextUIProvider } from "@nextui-org/react";
+import * as React from "react";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
@@ -31,18 +33,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginApp />} />
-        {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}    
-        <Route path="/Publicacion" element={<Publicacion />} />
-        {userData.isLogged && <Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
-        <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
-        <Route path="/Categorias" element={<Categorias />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-      <Footer />
+      <NextUIProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginApp />} />
+          {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
+          <Route path="/Publicacion" element={<Publicacion />} />
+          {userData.isLogged && (
+            <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
+          )}
+          <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
+          <Route path="/Categorias" element={<Categorias />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </NextUIProvider>
     </BrowserRouter>
   );
 }
