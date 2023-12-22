@@ -1,5 +1,48 @@
-.CardNegocio span {
-  color: black;
+.categoria-card {
+  position: relative;
+  height: 300px;
+  width: 25%;
+  grid-column: 4;
+  opacity: 1;
+  overflow: hidden;
 }
 
-/*@import "keep-react/css";*/
+.card-overlay-red {
+  background-color: #10593cbc;
+}
+
+.card-overlay-black {
+  background-color: rgba(24, 23, 23, 0.5);
+}
+
+.bg-blue-transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo-categoria {
+  width: 40px;
+  height: 40px;
+}
+
+.btn-card {
+  font-size: 1rem;
+  width: fit-content;
+  margin-top: 8px;
+}
+
+.text-categoria {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.btn-card {
+  font-size: 1rem;
+  width: fit-content;
+  margin-top: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-card:hover {
+  background-color: #ffc451;
+  color: black;
+}

@@ -1,41 +1,48 @@
+// Categorias.jsx
+
 import React from "react";
+import { Card, Button } from "react-bootstrap";
 import "./categorias.css";
-import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 
 const Categorias = () => {
   return (
     <section className="background">
-      <Card isFooterBlurred className="h-[300px] col-span-12 sm:col-span-7">
-        <CardHeader className="absolute z-10 top-1 flex-col items-start">
-          <p className="text-tiny uppercase font-bold">
+      <Card className="categoria-card h-100 col-12 col-sm-7 position-relative">
+        {/* Fondo rojo */}
+        <div className="card-overlay-red position-absolute top-0 start-0 w-100 h-25"></div>
+        {/* Fondo negro */}
+        <div className="card-overlay-black position-absolute top-25 start-0 w-100 h-25"></div>
+
+        <Card.Header className="bg-transparent text-white position-absolute top-0 start-0 w-100 z-index-2">
+          <p className="card-header-text uppercase font-bold mb-0">
             Compra Venta de Vehículos
           </p>
-          <h4 className="font-medium text-xl">Biason Automotores</h4>
-        </CardHeader>
-        <Image
-          removeWrapper
-          alt="Relaxing app background"
-          className="z-0 w-full h-full object-cover"
+          <h4 className="card-header-h4 text-xl mb-0">Biason Automotores</h4>
+        </Card.Header>
+
+        <Card.Img
+          variant="top"
           src="/images/portfolio/biasonautomotores.jpeg"
+          alt="Relaxing app background"
+          className="w-100"
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-          <div className="flex flex-grow gap-2 items-center">
-            <Image
-              alt="Breathing app icon"
-              className="rounded-full w-10 h-11 bg-black"
-              src="/images/portfolio/biasonautomotores.jpeg"
+
+        <Card.Footer className="categoria-footer bg-blue-transparent text-white border-t-1 border-default-600 dark:border-default-100 position-absolute bottom-0 start-0 w-100 z-index-2 d-flex justify-content-between align-items-center">
+          <div className="d-flex align-items-center gap-2">
+            <img
+              alt="Breathing app icon logo-categoria"
+              className="rounded-circle logo-categoria"
+              src="/images/logo-ba.png"
             />
             <div className="flex flex-col">
-              <p className="text-tiny text-white/60">
-                Dirección: Rivadavia 1.333
-              </p>
-              <p className="text-tiny text-white/60">Teléfono: 2966 449951</p>
+              <p className="text-categoria">📍 Dirección: Rivadavia 1.333</p>
+              <p className="text-categoria">📞Teléfono: 2966 449951</p>
             </div>
           </div>
-          <Button radius="full" size="sm">
+          <Button variant="dark" className="rounded-pill btn-card">
             Más info
           </Button>
-        </CardFooter>
+        </Card.Footer>
       </Card>
     </section>
   );
