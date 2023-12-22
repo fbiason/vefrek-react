@@ -13,6 +13,7 @@ import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import Categorias from "./pages/categorias/Categorias";
 import { NextUIProvider } from "@nextui-org/react";
+import * as React from "react";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);

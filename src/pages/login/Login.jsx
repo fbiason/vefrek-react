@@ -26,8 +26,8 @@ const Login = () => {
             </h1>
           </div>
 
-          <div className="bienvenido mt-5">
-            <div className="container py-5 h-100 mt-5">
+          <div className="bienvenido">
+            <div className="container">
               <div className="row justify-content-center align-items-center h-100">
                 <div
                   className="card shadow-2-strong"
