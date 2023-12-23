@@ -198,15 +198,15 @@ const CargaEmpresa = () => {
                                     <option disabled style={{ color: "darkgray" }}>
                                         - Reparación y Mantenimiento
                                     </option>
-                                    <option value="rep_mant, gomerias">
+                                    <option value="rep_mant, Gomería">
                                         -- Gomerías (arreglo y venta de cubiertas, alineación y
                                         balanceo)
                                     </option>
-                                    <option value="rep_mant, talleres">
+                                    <option value="rep_mant, Taller Mecánico">
                                         -- Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
                                     </option>
-                                    <option value="rep_mant, repuestos">-- Repuestos (Autopartes)</option>
-                                    <option value="rep_mant, lubricentros">-- Lubricentros</option>
+                                    <option value="rep_mant, Repuestos">-- Repuestos (Autopartes)</option>
+                                    <option value="rep_mant, Lubricentro">-- Lubricentros</option>
                                     <option
                                         disabled
                                         style={{ color: "darkgray" }}
@@ -214,10 +214,10 @@ const CargaEmpresa = () => {
                                     >
                                         - Venta y Alquiler de vehículos
                                     </option>
-                                    <option value="venta_alq_v, agencia">
+                                    <option value="venta_alq_v, Agencia">
                                         -- Agencia (Concesionaria oficiales y Agencias particulares)
                                     </option>
-                                    <option value="venta_alq_v, rent_car">
+                                    <option value="venta_alq_v, Rent a Car">
                                         -- Rent a Car (Alquiler de autos)
                                     </option>
                                     <option
@@ -227,14 +227,14 @@ const CargaEmpresa = () => {
                                     >
                                         - Otros Servicios
                                     </option>
-                                    <option value="otras, aseguradoras">-- Aseguradoras</option>
-                                    <option value="otras, estaciones_servicio">
+                                    <option value="otras, Aseguradoras">-- Aseguradoras</option>
+                                    <option value="otras, Estacion de Servicio">
                                         -- Estaciones de Servicios
                                     </option>
-                                    <option value="otras, estetica_automotor">
+                                    <option value="otras, Estética del automotor">
                                         -- Estética del Automotor (Lavaderos, Polarizados)
                                     </option>
-                                    <option value="otras, servicios_emergencia">
+                                    <option value="otras, Servicios de Emergencia">
                                         -- Servicios de emergencia (Grúas, Cerrajeros)
                                     </option>
                                 </select>

@@ -11,12 +11,12 @@ const Reparacion = () => {
     useEffect(() => {
         
         const downloadData = async () => {
-            const response = await findCompanys("category", "rep_mant", "description name images location phone _id");
+            const response = await findCompanys("category", "rep_mant", "subcategory name images location phone _id");
             if (response.success && response.companysData) {
                 const jsxArr = response.companysData.map((company) => 
                     <div className="col-12 col-md-6 col-lg-4 cards-col" key={company._id}>
                         <CardNegocio2 
-                            description={company.description} 
+                            subcategory={company.subcategory} 
                             name={company.name} 
                             imgUrl={company.images.images[0].url} 
                             logoUrl={company.images.logo.url} 

@@ -11,7 +11,7 @@ const CardNegocio2 = (props) => {
 
       <Card.Header className="bg-transparent text-white position-absolute top-0 start-0 w-100 z-index-2">
         <p className="card-header-text uppercase font-bold mb-0">
-          {props.description}
+          {props.subcategory}
         </p>
         <h4 className="card-header-h4 text-xl mb-0">{props.name}</h4>
       </Card.Header>
