@@ -344,7 +344,7 @@ const NavBar = () => {
           <ul>
             <li>
               {userData.isLogged && show && (
-                <Link to="/" className="nav-link scrollto">
+                <Link to="/perfil" className="nav-link scrollto">
                   Perfil
                 </Link>
               )}

@@ -68,7 +68,8 @@ const CargaEmpresa = () => {
             phone: data.phone || "",
             phone2: data.phone2 || "",
             website: data.website || "",
-            category: data.category || "",
+            category: data.category ? data.category.split(",")[0] : "",
+            subcategory: data.category ? data.category.split(",")[1] : "",
             description: data.description,
             social: {
                 whatsapp: data.whatsapp || "",
@@ -86,8 +87,6 @@ const CargaEmpresa = () => {
             },
         }
         companyData.registeremail = userData.email;
-
-        console.log(companyData)
         
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
@@ -199,15 +198,15 @@ const CargaEmpresa = () => {
                                     <option disabled style={{ color: "darkgray" }}>
                                         - Reparación y Mantenimiento
                                     </option>
-                                    <option value="gomerias">
+                                    <option value="rep_mant, gomerias">
                                         -- Gomerías (arreglo y venta de cubiertas, alineación y
                                         balanceo)
                                     </option>
-                                    <option value="talleres">
+                                    <option value="rep_mant, talleres">
                                         -- Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
                                     </option>
-                                    <option value="repuestos">-- Repuestos (Autopartes)</option>
-                                    <option value="lubricentros">-- Lubricentros</option>
+                                    <option value="rep_mant, repuestos">-- Repuestos (Autopartes)</option>
+                                    <option value="rep_mant, lubricentros">-- Lubricentros</option>
                                     <option
                                         disabled
                                         style={{ color: "darkgray" }}
@@ -215,10 +214,10 @@ const CargaEmpresa = () => {
                                     >
                                         - Venta y Alquiler de vehículos
                                     </option>
-                                    <option value="agencia">
+                                    <option value="venta_alq_v, agencia">
                                         -- Agencia (Concesionaria oficiales y Agencias particulares)
                                     </option>
-                                    <option value="rent_car">
+                                    <option value="venta_alq_v, rent_car">
                                         -- Rent a Car (Alquiler de autos)
                                     </option>
                                     <option
@@ -228,14 +227,14 @@ const CargaEmpresa = () => {
                                     >
                                         - Otros Servicios
                                     </option>
-                                    <option value="aseguradoras">-- Aseguradoras</option>
-                                    <option value="estaciones_servicio">
+                                    <option value="otras, aseguradoras">-- Aseguradoras</option>
+                                    <option value="otras, estaciones_servicio">
                                         -- Estaciones de Servicios
                                     </option>
-                                    <option value="estetica_automotor">
+                                    <option value="otras, estetica_automotor">
                                         -- Estética del Automotor (Lavaderos, Polarizados)
                                     </option>
-                                    <option value="servicios_emergencia">
+                                    <option value="otras, servicios_emergencia">
                                         -- Servicios de emergencia (Grúas, Cerrajeros)
                                     </option>
                                 </select>
