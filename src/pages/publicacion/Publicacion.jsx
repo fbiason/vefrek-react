@@ -3,19 +3,21 @@ import { Link } from "react-router-dom";
 import "./publicacion.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
-// import { swalPopUp } from "../../utils/swal";
+import { swalPopUp } from "../../utils/swal";
+import { useNavigate } from "react-router-dom";
 
 const Publicacion = () => {
-  // const { userData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  // const toEmpresa = (e) => {
-  //   e.preventDefault();
-  //   if (userData.isLogged) {
-  //     e.target.parentNode.click();
-  //   } else {
-  //     swalPopUp("Ups!", "Tienes que loguerte para puclicar", "info");
-  //   }
-  // };
+  const toEmpresa = (e) => {
+    e.preventDefault();
+    if (userData.isLogged) {
+      navigate("/CargaEmpresa");
+    } else {
+      swalPopUp("Ups!", "Tienes que loguerte para puclicar", "info");
+    }
+  };
 
   return (
     <section id="hero-publicacion" className="d-flex background">
@@ -42,13 +44,13 @@ const Publicacion = () => {
           data-aos-delay="250"
         >
           <div className="col-xl-2 col-md-4">
-            <Link to="/CargaEmpresa">
+            <Link to="/CargaEmpresa" onClick={toEmpresa}>
               <div className="icon-box">
                 <i className="ri-building-line"></i>
                 <h3>
                   <a>Publica tu empresa</a>
                 </h3>
-              </div>{" "}
+              </div>
             </Link>
           </div>
         </div>

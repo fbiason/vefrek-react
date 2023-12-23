@@ -43,7 +43,7 @@ function App() {
           <Route path="/login" element={<LoginApp />} />
           {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
           <Route path="/Publicacion" element={<Publicacion />} />
-          {<Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
+          {userData.isLogged && <Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
           <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />

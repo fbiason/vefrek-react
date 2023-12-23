@@ -52,6 +52,23 @@ export const findCompany = async (field, value, fieldsSelected) => {
     }
 }
 
+export const findCompanys = async (field, value, fieldsSelected) => {
+
+    try {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys?field=${field}&value=${value}&fieldsSelected=${fieldsSelected}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include"
+        });
+        const responseOBJ = await responseJSON.json();
+        return responseOBJ.success ? { success: true, companysData: responseOBJ.companysData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
+    } catch (error) {
+        return { success: false, message: error.message }
+    }
+}
+
 export const addCompany = async (companyData) => {
 
     try {
