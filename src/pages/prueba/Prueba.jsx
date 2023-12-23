@@ -33,22 +33,23 @@ const Prueba = () => {
     
     const [formData, setFormData] = useState(formDataInitial)
 
-    // useEffect(() => {
-    //     const find = async () => {
-    //         const response = await findUser("email", userData.email, "name lastname state city");
-    //         if (response.success) {
-    //             setFormData({
-    //                 name: response.userData.name,
-    //                 lastname: response.userData.lastname,
-    //                 state: response.userData.state,
-    //                 city: response.userData.city,
-    //             });
-    //         } else {
-    //             swalPopUp("Error", response.message, "error");
-    //         }
-    //     }
-    //     find();
-    // }, []);
+    useEffect(() => {
+        const find = async () => {
+            console.log(userData.email)
+            const response = await findUser("email", userData.email, "");
+            if (response.success) {
+                setFormData({
+                    name: response.userData.name,
+                    lastname: response.userData.lastname,
+                    state: response.userData.state,
+                    city: response.userData.city,
+                });
+            } else {
+                swalPopUp("Error", response.message, "error");
+            }
+        }
+        find();
+    }, []);
 
     const handleSubmit = async (e) => {             /* Actualizacion de datos de usuario */
         e.preventDefault();
