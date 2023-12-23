@@ -27,7 +27,7 @@ const Contacto = () => {
             <div className="info">
               <div className="address">
                 <i className="bi bi-geo-alt"></i>
-                <h4>Localización:</h4>
+                <h4>Dirección:</h4>
                 <p>Alberdi 1144, Depto 4, Río Gallegos, Santa Cruz</p>
               </div>
 

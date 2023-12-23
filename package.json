@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
+    "@heroicons/react": "^2.1.1",
     "@nextui-org/react": "^2.2.9",
     "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -20,6 +21,7 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
+    "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
