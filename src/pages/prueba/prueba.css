@@ -14,3 +14,14 @@
   padding: 0.5rem 1rem;
   width: 30%;
 }
+
+.perfil_avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.perfil_file_input {
+  display: none;
+}
