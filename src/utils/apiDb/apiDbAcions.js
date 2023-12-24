@@ -3,10 +3,7 @@ export const updateUser = async (userData) => {
     try {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updateuser`, {
             method: 'put',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData),
+            body: userData,
             credentials: "include"
         });
         const responseOBJ = await responseJSON.json();
