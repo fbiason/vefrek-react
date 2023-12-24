@@ -51,7 +51,6 @@ const Perfil = () => {
 
     useEffect(() => {
         find();
-        showSpinner(true)
     }, []);
 
     useEffect(() => {
