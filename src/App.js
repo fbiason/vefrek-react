@@ -17,9 +17,11 @@ import Reparacion from "./pages/reparacion/Reparacion";
 import Venta from "./pages/venta/Venta";
 import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 import PruebaCarga from "./pages/prueba-carga/PruebaCarga";
+import { SpinnerContext } from "./context/spinnerContext";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
+  const { spinner } = useContext(SpinnerContext);
 
   useEffect(() => {
     const verifiLog = async () => {
@@ -37,6 +39,7 @@ function App() {
   return (
     <BrowserRouter>
       <NextUIProvider>
+        {spinner}
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
