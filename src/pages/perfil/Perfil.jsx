@@ -41,12 +41,14 @@ const Perfil = () => {
     const [formData, setFormData] = useState(formDataInitial);
     
     const find = async () => {
+        showSpinner(true);
         const response = await findUser("email", userData.email, "");
         if (response.success) {
             setFormData(response.userData);
         } else {
             swalPopUp("Error", response.message, "error");
         }
+        showSpinner(false);
     }
 
     useEffect(() => {
