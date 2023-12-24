@@ -6,10 +6,12 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
+import { SpinnerContext } from "../../context/spinnerContext";
 
 const Perfil = () => {
 
     const {userData} = useContext(UserContext);
+    const {showSpinner} = useContext(SpinnerContext);
     let formDataRef = useRef();
 
     const formDataInitial = {
@@ -48,15 +50,12 @@ const Perfil = () => {
     }
 
     useEffect(() => {
-        if (userData.email) {
-            find();
-        }
-    }, [userData]);
+        find();
+        showSpinner(true)
+    }, []);
 
     useEffect(() => {
-
         formDataRef = formData
-       
     }, [formData]);
 
     const handleSubmit = async (e) => {             /* Actualizacion de datos de usuario */
@@ -66,6 +65,7 @@ const Perfil = () => {
         if (!formDataRef.country) formDataRef.country = "Argentina";
         formData.append("file", document.querySelector(".perfil_file_input").files[0]);
         formData.append("userData", JSON.stringify(formDataRef));
+        showSpinner(true);
         const response = await updateUser(formData);
         if (response.success) {
             find();
@@ -73,6 +73,7 @@ const Perfil = () => {
         } else {
             swalPopUp("Error", response.message, "error");
         }  
+        showSpinner(false);
     };
 
     const handleChange = (e) => {
