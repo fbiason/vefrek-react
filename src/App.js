@@ -17,6 +17,7 @@ import Reparacion from "./pages/reparacion/Reparacion";
 import Venta from "./pages/venta/Venta";
 import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 import Prueba from "./pages/prueba/Prueba";
+import PruebaCarga from "./pages/prueba-carga/PruebaCarga";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
@@ -43,11 +44,14 @@ function App() {
           <Route path="/login" element={<LoginApp />} />
           {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
           <Route path="/Publicacion" element={<Publicacion />} />
-          {userData.isLogged && <Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
+          {userData.isLogged && (
+            <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
+          )}
           <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
           <Route path="/Prueba" element={<Prueba />} />
+          <Route path="/PruebaCarga" element={<PruebaCarga />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

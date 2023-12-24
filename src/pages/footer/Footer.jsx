@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.css";
 import { swalPopUp } from "../../utils/swal";
 
@@ -20,8 +21,15 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-3 col-md-6">
               <div className="footer-info">
-                <h3>VEFREK</h3>
-                <p>
+                <Link to="/PruebaCarga">
+                  {" "}
+                  <img
+                    src="/images/logos/logo-vefrek-white.png"
+                    alt="Vefrek"
+                    className="vefrek-logo"
+                  />
+                </Link>
+                <p className="mt-3">
                   Alberdi 1144, Depto 4 <br />
                   Rio Gallegos, Santa Cruz
                   <br />
@@ -49,9 +57,6 @@ const Footer = () => {
               <h4>Links útiles</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Home</a>
-                </li>
-                <li>
                   <i className="bx bx-chevron-right"></i>{" "}
                   <a href="#">Servicios</a>
                 </li>
@@ -77,10 +82,6 @@ const Footer = () => {
             <div className="col-lg-3 col-md-6 footer-links">
               <h4>Servicios más consultados</h4>
               <ul>
-                <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Agencias</a>
-                </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
                   <a href="#">Mecánicos</a>
