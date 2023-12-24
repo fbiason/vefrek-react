@@ -2,7 +2,7 @@ import React from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
 import "./prueba.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
@@ -10,6 +10,7 @@ import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
 const Prueba = () => {
 
     const {userData} = useContext(UserContext);
+    let formDataRef = useRef();
 
     const formDataInitial = {
         username: "",
@@ -28,37 +29,37 @@ const Prueba = () => {
             same_email: false,
             none: true,
         },
-        avatar_image: [],
+        avatar_image_name: "",
     }
+        
+    const [formData, setFormData] = useState(formDataInitial);
     
-    const [formData, setFormData] = useState(formDataInitial)
+    useEffect(() => {
+        if (userData.email) {
+            const find = async () => {
+                const response = await findUser("email", userData.email, "");
+                if (response.success) {
+                    setFormData(response.userData);
+                } else {
+                    swalPopUp("Error", response.message, "error");
+                }
+            }
+            find();
+        }
+    }, [userData]);
 
     useEffect(() => {
-        const find = async () => {
-            console.log(userData.email)
-            const response = await findUser("email", userData.email, "");
-            if (response.success) {
-                setFormData({
-                    name: response.userData.name,
-                    lastname: response.userData.lastname,
-                    state: response.userData.state,
-                    city: response.userData.city,
-                });
-            } else {
-                swalPopUp("Error", response.message, "error");
-            }
-        }
-        find();
-    }, []);
+
+        formDataRef = formData
+       
+    }, [formData]);
 
     const handleSubmit = async (e) => {             /* Actualizacion de datos de usuario */
         e.preventDefault();
-        setFormData(formDataInitial)
-        // const formData = new FormData(document.querySelector(".userUpdateForm"));
-        // const data = Object.fromEntries(formData);
-        // data.email = userData.email;
-        // const response = await updateUser(data);
-        // response.success ? swalPopUp("Perfil Actualizado", response.message, "success") : swalPopUp("Error", response.message, "error");
+        formDataRef.email = userData.email;
+        if (!formDataRef.country) formDataRef.country = "Argentina";
+        const response = await updateUser(formDataRef);
+        response.success ? swalPopUp("Perfil Actualizado", response.message, "success") : swalPopUp("Error", response.message, "error");
     };
 
     const handleChange = (e) => {
@@ -73,7 +74,7 @@ const Prueba = () => {
         const { name, files } = e.target;
         setFormData({
             ...formData,
-            [name]: files[0],
+            [name]: files[0].name,
         });
     };
 
@@ -184,12 +185,12 @@ const Prueba = () => {
                                     <input 
                                         className="perfil_file_input"
                                         type="file"
-                                        name="avatar_image"
+                                        name="avatar_image_name"
                                         accept="image/*"
                                         single="true"
                                         onChange={handleFileChange}
                                         />
-                                    {formData.avatar_image.name ?? ""}
+                                    {formData.avatar_image_name}
                                 </div>
                             </div>
                         </div>
