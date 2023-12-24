@@ -1,7 +1,7 @@
 .categoria-card {
   position: relative;
   height: 300px;
-  width: 25%;
+  width: 80%;
   grid-column: 4;
   opacity: 1;
   overflow: hidden;

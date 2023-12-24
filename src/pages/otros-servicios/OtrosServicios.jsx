@@ -22,7 +22,6 @@ const OtrosServicios = () => {
 
       <div className="row filter-row mt-3">
         <div className="filtro">
-          <label>Filtrar por:</label>
           <select value={selectedOption} onChange={handleSelectChange}>
             <option value="" disabled hidden>
               {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
@@ -40,6 +39,9 @@ const OtrosServicios = () => {
       </div>
 
       <div className="row cards-row justify-content-center mt-5">
+        <div className="col-12 col-md-6 col-lg-4 cards-col">
+          <CardNegocio />
+        </div>
         <div className="col-12 col-md-6 col-lg-4 cards-col">
           <CardNegocio />
         </div>
