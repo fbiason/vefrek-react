@@ -11,3 +11,7 @@
 .cargar-img:hover {
   color: #14ba75;
 }
+
+.company_logo_file {
+  display: none;
+}

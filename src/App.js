@@ -9,14 +9,13 @@ import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
-import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
+import CargaEmpresa from "./pages/carga-empresa/PruebaCarga";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import { NextUIProvider } from "@nextui-org/react";
 import * as React from "react";
 import Reparacion from "./pages/reparacion/Reparacion";
 import Venta from "./pages/venta/Venta";
 import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
-import PruebaCarga from "./pages/prueba-carga/PruebaCarga";
 import { SpinnerContext } from "./context/spinnerContext";
 
 function App() {
@@ -52,7 +51,6 @@ function App() {
           <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
-          <Route path="/PruebaCarga" element={<PruebaCarga />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
