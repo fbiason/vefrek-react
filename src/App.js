@@ -9,7 +9,7 @@ import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
 import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
-import CargaEmpresa from "./pages/carga-empresa/PruebaCarga";
+import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import { NextUIProvider } from "@nextui-org/react";
 import * as React from "react";
