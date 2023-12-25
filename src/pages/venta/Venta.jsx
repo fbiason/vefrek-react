@@ -22,23 +22,27 @@ const Venta = () => {
 
       <div className="row filter-row mt-3">
         <div className="filtro">
-          <label>Filtrar por:</label>
           <select value={selectedOption} onChange={handleSelectChange}>
             <option value="" disabled hidden>
               {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
             </option>
-            <option value="agencia">Agencia</option>
+            <option value="agencias">Agencias</option>
             <option value="rentacar">Rent a Car</option>
           </select>
         </div>
       </div>
 
       <div className="row cards-row justify-content-center mt-5">
-        <div className="col-12 col-md-6 col-lg-4 cards-col">
-          <CardNegocio />
-        </div>
-        <div className="col-12 col-md-6 col-lg-4 cards-col">
-          <CardNegocio />
+        <div className="d-flex flex-wrap justify-content-center">
+          <div className="col-xs-12 col-sm-6 col-md-4 cards-col">
+            <CardNegocio />
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-4 cards-col">
+            <CardNegocio />
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-4 cards-col">
+            <CardNegocio />
+          </div>
         </div>
       </div>
     </section>

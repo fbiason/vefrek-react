@@ -3,7 +3,6 @@
 }
 
 .cards-col {
-  width: 100%;
-  padding: 1rem;
-  justify-content: center;
+  width: calc(33.33% - 2rem);
+  box-sizing: border-box;
 }
