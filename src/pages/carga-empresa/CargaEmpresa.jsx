@@ -372,7 +372,7 @@ const CargaEmpresa = () => {
                                         -- Gomerías (arreglo y venta de cubiertas, alineación y
                                         balanceo)
                                     </option>
-                                    <option value="Reparación y mantenimiento, Taller Mecánico">
+                                    <option value="Reparación y mantenimiento, Taller mecánico">
                                         -- Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
                                     </option>
                                     <option value="Reparación y mantenimiento, Repuestos">
