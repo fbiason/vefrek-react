@@ -65,10 +65,10 @@ const Reparacion = () => {
                         <option value="" disabled hidden>
                             {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
                         </option>
-                        <option value="Gomeria">
+                        <option value="Gomería">
                             Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
                         </option>
-                        <option value="Taller Mecánico">
+                        <option value="Taller mecánico">
                             Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
                         </option>
                         <option value="Repuestos">Repuestos (Autopartes)</option>
