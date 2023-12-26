@@ -399,7 +399,7 @@ const CargaEmpresa = () => {
                                     >
                                         - Otros Servicios
                                     </option>
-                                    <option value="Otros servicios, Aseguradoras">-- Aseguradoras</option>
+                                    <option value="Otros servicios, Aseguradora">-- Aseguradoras</option>
                                     <option value="Otros servicios, Estación de Servicio">
                                         -- Estaciones de Servicios
                                     </option>
