@@ -9,6 +9,7 @@ import GLightbox from "glightbox";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import Dropdown from "../dropdown/Dropdown";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -345,7 +346,7 @@ const NavBar = () => {
             <li>
               {userData.isLogged && show && (
                 <Link to="/perfil" className="nav-link scrollto">
-                  Perfil
+                  <Dropdown />
                 </Link>
               )}
             </li>

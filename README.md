@@ -5,13 +5,11 @@ BIASON (front)
 
 - Política Privacidad
 - Términos y Condiciones
-- Página de negocio
-- Portfolio (home)
-- Dashboard
 
 ARIEL (back)
 
-- Filtro de negocios
+- Página Negocio
+- Portfolio
 - Mail para Admin
 
 Otras tareas:
