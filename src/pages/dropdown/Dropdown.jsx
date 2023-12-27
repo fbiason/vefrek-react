@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./dropdown.css";
-import { Link } from "react-router-dom"; /
+import { Link } from "react-router-dom";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const Dropdown = () => {
       </button>
       {isOpen && (
         <div className="dropdown-content">
-        <Link to="/perfil">
+          <Link to="/perfil">
             <p>
               <i className="fas fa-edit" /> Editar
             </p>
