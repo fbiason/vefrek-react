@@ -77,15 +77,19 @@ const Negocios = () => {
           data-aos-delay="200"
         >
           {/* Negocio 1 */}
-          <div className="col" style={cardStyle}>
+          <div className="col-md-3" style={cardStyle}>
             <CardNegocio></CardNegocio>
           </div>
           {/* Negocio 2 */}
-          <div className="col" style={cardStyle}>
+          <div className="col-md-3" style={cardStyle}>
             <CardNegocio></CardNegocio>
           </div>
           {/* Negocio 3 */}
-          <div className="col" style={cardStyle}>
+          <div className="col-md-3" style={cardStyle}>
+            <CardNegocio></CardNegocio>
+          </div>
+          {/* Negocio 4 */}
+          <div className="col-md-3" style={cardStyle}>
             <CardNegocio></CardNegocio>
           </div>
         </div>
