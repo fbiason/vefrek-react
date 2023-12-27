@@ -42,7 +42,7 @@ const PaginaEmpresa = () => {
       <div className="pagina-empresa-container container">
         {/* Columna 1 */}
         <div className="column-1">
-          <div className="perfil-card-element1">
+          <div className="perfil-card-element1 card-empresa ">
             <div className="logo-nombre-container">
               <div className="logo-container">
                 <img
@@ -57,7 +57,7 @@ const PaginaEmpresa = () => {
               </div>
             </div>
 
-            <div className="grid gap-4">
+            <div className="grid gap-4 img-negocio">
               <div>
                 <img
                   className={`h-72 w-128 cursor-pointer ${
@@ -74,7 +74,7 @@ const PaginaEmpresa = () => {
 
               <div className="grid grid-cols-5 gap-4">
                 {Array.from({ length: 5 }, (_, index) => (
-                  <div className="img-negocio" key={index}>
+                  <div key={index}>
                     <img
                       className={`h-72 w-128 cursor-pointer  ${
                         imagenSeleccionada === index + 1
@@ -94,7 +94,7 @@ const PaginaEmpresa = () => {
             </div>
           </div>
 
-          <div className="perfil-card-element1 mt-3">
+          <div className="perfil-card-element1 mt-3 card-empresa ">
             <div className="informacion-container">
               <h2>Información</h2>
               <p>
@@ -104,7 +104,7 @@ const PaginaEmpresa = () => {
             </div>
           </div>
 
-          <div className="perfil-card-element1 mt-3">
+          <div className="perfil-card-element1 mt-3 card-empresa ">
             <div className="reseña-container">
               <h2>Reseña, Calificación, Comentarios</h2>
             </div>
@@ -135,7 +135,7 @@ const PaginaEmpresa = () => {
         {/* Fin Columna 1 */}
 
         {/* Columna 2 */}
-        <div className="perfil-card-element2 d-flex flex-column">
+        <div className="perfil-card-element2 card-empresa ">
           <div className="column-2 flex-grow-1">
             <div className="ubicacion-container">
               <LoadScript googleMapsApiKey="TU_API_KEY">
@@ -147,7 +147,7 @@ const PaginaEmpresa = () => {
                 />
               </LoadScript>
             </div>
-            <div className="telefono-container">
+            <div className="telefono-container mt-5">
               <p>Direccion: Rivadavia 1.333, Rio Grande, Tierra del Fuego</p>
             </div>
             <div className="telefono-container">
@@ -179,11 +179,11 @@ const PaginaEmpresa = () => {
               </a>
             </div>
 
-            <div className="sitio-web-container">
+            <div className="sitio-web-container mt-3">
               <p>Sitio Web: www.biasonautomotores.com.ar</p>
             </div>
-            <div className="reportar">
-              <button>Reportar Negocio</button>
+            <div>
+              <button className="reportar">Reportar Negocio</button>
             </div>
           </div>
         </div>
