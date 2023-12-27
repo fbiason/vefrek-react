@@ -29,14 +29,14 @@ const Negocios = () => {
   };
 
   return (
-    <section id="portfolio" className="portfolio">
-      <div className="container-fluid" data-aos="fade-up">
+    <section id="portfolio">
+      <div data-aos="fade-up">
         <div className="section-title container">
           <h2>Encontra lo que tu vehículo necesita</h2>
           <p>Negocios recomendados</p>
         </div>
 
-        <div className="container mx-auto mt-8">
+        <div className="container mx-auto">
           <div className="flex justify-center mb-4">
             {categories.map((category) => (
               <button
@@ -72,7 +72,7 @@ const Negocios = () => {
         </div>
 
         <div
-          className="row portfolio-container"
+          className="row container mx-auto portfolio-container"
           data-aos="fade-up"
           data-aos-delay="200"
         >

@@ -1,12 +1,4 @@
-Vefrek 1.0.4
-
-Tareas a realizar:
-BIASON (front)
-
-- Política Privacidad
-- Términos y Condiciones
-
-ARIEL (back)
+Vefrek 1.0.0
 
 - Página Negocio
 - Portfolio
