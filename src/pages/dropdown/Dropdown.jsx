@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./dropdown.css";
+import { Link } from "react-router-dom"; /
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +17,11 @@ const Dropdown = () => {
       </button>
       {isOpen && (
         <div className="dropdown-content">
-          <p>
-            <i className="fas fa-edit" /> Editar
-          </p>
+        <Link to="/perfil">
+            <p>
+              <i className="fas fa-edit" /> Editar
+            </p>
+          </Link>
           <p>
             <i className="fas fa-bullhorn" /> Mis anuncios
           </p>

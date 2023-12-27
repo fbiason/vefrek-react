@@ -343,13 +343,7 @@ const NavBar = () => {
         />
         <nav id="navbar" className="navbar order-last order-lg-0">
           <ul>
-            <li>
-              {userData.isLogged && show && (
-                <Link to="/perfil" className="nav-link scrollto">
-                  <Dropdown />
-                </Link>
-              )}
-            </li>
+            <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (
               <Link to="/login" className="nav-link scrollto">
                 Ingresa
