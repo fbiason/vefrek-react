@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 const mapContainerStyle = {
   width: "100%",
-  height: "300px", // Ajusta la altura según tus necesidades
+  height: "300px",
 };
 
 const center = {
@@ -16,36 +15,27 @@ const center = {
 };
 
 const options = {
-  disableDefaultUI: true, // Puedes personalizar esto según tus necesidades
+  disableDefaultUI: true,
 };
 
 const PaginaEmpresa = () => {
-  const imagenesCarrusel = [
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
+  const [imagenes, setImagenes] = useState([
+    "/images/portfolio/ba (1).jpeg",
+    "/images/portfolio/ba (2).jpeg",
+    "/images/portfolio/ba (3).jpeg",
+    "/images/portfolio/ba (4).jpeg",
+    "/images/portfolio/ba (5).jpeg",
     "/images/portfolio/biasonautomotores.jpeg",
-    "/images/portfolio/biasonautomotores.jpeg",
-    "/images/portfolio/biasonautomotores.jpeg",
-    "/images/portfolio/biasonautomotores.jpeg",
-    "/images/portfolio/biasonautomotores.jpeg",
-    "/images/portfolio/biasonautomotores.jpeg",
-  ];
+  ]);
 
-  const carruselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />,
+  const intercambiarImagen = (index) => {
+    const nuevasImagenes = [...imagenes];
+    const temp = nuevasImagenes[0];
+    nuevasImagenes[0] = nuevasImagenes[index];
+    nuevasImagenes[index] = temp;
+    setImagenes(nuevasImagenes);
   };
-
-  function CustomPrevArrow(props) {
-    return <div className="custom-arrow custom-prev-arrow" {...props} />;
-  }
-
-  function CustomNextArrow(props) {
-    return <div className="custom-arrow custom-next-arrow" {...props} />;
-  }
 
   return (
     <section className="d-flex background">
@@ -67,13 +57,41 @@ const PaginaEmpresa = () => {
               </div>
             </div>
 
-            <Slider {...carruselSettings}>
-              {imagenesCarrusel.map((imagen, index) => (
-                <div key={index} className="carrusel-item">
-                  <img src={imagen} alt={`Imagen ${index + 1}`} />
-                </div>
-              ))}
-            </Slider>
+            <div className="grid gap-4">
+              <div>
+                <img
+                  className={`h-72 w-128 cursor-pointer ${
+                    imagenSeleccionada === 0 ? "imagen-seleccionada" : ""
+                  }`}
+                  src={imagenes[0]}
+                  alt=""
+                  onClick={() => {
+                    setImagenSeleccionada(0);
+                    intercambiarImagen(0);
+                  }}
+                />
+              </div>
+
+              <div className="grid grid-cols-5 gap-4">
+                {Array.from({ length: 5 }, (_, index) => (
+                  <div className="img-negocio" key={index}>
+                    <img
+                      className={`h-72 w-128 cursor-pointer  ${
+                        imagenSeleccionada === index + 1
+                          ? "imagen-seleccionada"
+                          : ""
+                      }`}
+                      src={imagenes[index + 1]}
+                      alt=""
+                      onClick={() => {
+                        setImagenSeleccionada(index + 1);
+                        intercambiarImagen(index + 1);
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="perfil-card-element1 mt-3">
@@ -90,24 +108,48 @@ const PaginaEmpresa = () => {
             <div className="reseña-container">
               <h2>Reseña, Calificación, Comentarios</h2>
             </div>
+            <div className="max-w-lg shadow-md mt-4">
+              <form action="" className="w-full p-2">
+                <div className="mb-2">
+                  <label htmlFor="comment" className="text-gray-600 w-full">
+                    Deja tu comentario sobre la empresa
+                  </label>
+                  <textarea
+                    className="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1"
+                    name="comment"
+                    placeholder=""
+                  ></textarea>
+                </div>
+
+                <div className="flex items-center mb-2">
+                  <span className="text-gray-600">Valoración: </span>
+                  ⭐⭐⭐⭐⭐
+                </div>
+                <button className="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded">
+                  Comentar
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         {/* Fin Columna 1 */}
 
         {/* Columna 2 */}
-        <div className="perfil-card-element2">
-          <div className="column-2">
+        <div className="perfil-card-element2 d-flex flex-column">
+          <div className="column-2 flex-grow-1">
             <div className="ubicacion-container">
               <LoadScript googleMapsApiKey="TU_API_KEY">
                 <GoogleMap
                   mapContainerStyle={mapContainerStyle}
                   center={center}
-                  zoom={15} // Puedes ajustar el nivel de zoom según tus necesidades
+                  zoom={15}
                   options={options}
                 />
               </LoadScript>
             </div>
-
+            <div className="telefono-container">
+              <p>Direccion: Rivadavia 1.333, Rio Grande, Tierra del Fuego</p>
+            </div>
             <div className="telefono-container">
               <p>Teléfono: +54 2966449951</p>
             </div>
@@ -139,9 +181,6 @@ const PaginaEmpresa = () => {
 
             <div className="sitio-web-container">
               <p>Sitio Web: www.biasonautomotores.com.ar</p>
-            </div>
-            <div className="horarios-container">
-              <p>Horarios: Lunes a Viernes: 9:00 AM - 6:00 PM</p>
             </div>
             <div className="reportar">
               <button>Reportar Negocio</button>

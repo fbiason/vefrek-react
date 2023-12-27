@@ -1,6 +1,7 @@
 .pagina-empresa-container {
   display: flex;
   justify-content: space-between;
+
   margin: 2rem;
 }
 
@@ -21,14 +22,13 @@
 
 .logo-container img {
   max-width: 100%;
-  height: auto;
+  padding: 0.5rem;
 }
 
 .slick-slider img {
   width: 300px;
   height: 300px;
   object-fit: cover;
-  padding: 0 15px;
 }
 
 .nombre-slogan-container {
@@ -40,131 +40,57 @@
   margin-top: 20px;
 }
 
-.logo-empresa {
-  width: 50%;
-  height: 50%;
+.perfil-card-element1 .logo-empresa {
+  width: 70%;
+  height: auto;
+  padding: 1rem;
 }
-
 .logo-nombre-container {
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  align-items: center;
+  gap: 20px;
 }
 
 .logo-container {
-  flex: 1; /* Ocupa el 20% de la fila */
+  flex: 1;
+  text-align: start;
 }
 
 .nombre-slogan-container {
-  flex: 4; /* Ocupa el 80% de la fila */
+  flex: 4;
+  text-align: start;
 }
 
-.carrusel-item {
-  padding: 0 30px; /* Ajusta el espacio entre las imágenes según tus necesidades */
+.slick-list {
+  box-sizing: none;
 }
 
-.custom-arrow {
-  width: 30px;
-  height: 30px;
-  background-color: #fff; /* Ajusta el color de fondo según tus necesidades */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.custom-prev-arrow {
-  left: 10px; /* Ajusta la posición izquierda según tus necesidades */
-}
-
-.custom-next-arrow {
-  right: 10px; /* Ajusta la posición derecha según tus necesidades */
-}
-
-.column-2 {
-  flex: 1;
-  max-width: 70%;
-}
-
-.column-2 .perfil-card {
-  flex-basis: 100%;
-}
-
-.perfil-card-element1 {
+.perfil-card-element1 img {
   width: 100%;
-  margin-top: 3rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
+  height: auto;
+  max-width: 1280px;
+  max-height: 720px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.perfil-card-element2 {
-  flex-basis: 15%;
-  margin-bottom: 20px;
+.imagen-seleccionada {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+  border: 2px solid #14ba75;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.max-w-lg {
+  background-color: rgb(223, 223, 223);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.img-negocio {
+  object-fit: cover !important;
   width: 100%;
-  margin-top: 3rem;
-  max-width: 35rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
-}
-
-.ubicacion-container {
-  margin-bottom: 20px;
-}
-
-.redes-sociales-container,
-.sitio-web-container,
-.horarios-container,
-.reportar,
-.contactar-propietario-container {
-  margin-bottom: 20px;
-}
-
-.nombre-slogan-container h2 {
-  text-align: left;
-  color: #ffc451;
-  margin-bottom: 20px;
-}
-
-.reportar button {
-  background: transparent;
-  border: 2px solid red;
-  color: red;
-  padding: 10px;
-  background: white;
-  transition: background 0.3s, border 0.3s, color 0.3s;
-}
-
-.reportar button:hover {
-  background: red;
-  border: 2px solid white;
-  color: white;
-}
-
-.contactar-propietario-container a {
-  color: #14ba75;
-  text-decoration: none;
-}
-
-.contactar-propietario-container a:hover {
-  text-decoration: underline;
-}
-
-.redes-sociales-container {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 15px;
-}
-
-.redes-sociales-container a {
-  text-decoration: none;
-  font-size: 24px;
+  height: 100%;
+  overflow: hidden;
 }
