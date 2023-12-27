@@ -69,7 +69,7 @@ const Footer = () => {
             </div>
 
             <div className="col-lg-2 col-md-6 footer-links">
-              <h4>Links útiles</h4>
+              <h4 className="text-start">Links útiles</h4>
               <ul>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
@@ -458,7 +458,7 @@ const Footer = () => {
             </div>
 
             <div className="col-lg-3 col-md-6 footer-links">
-              <h4>Servicios más consultados</h4>
+              <h4 className="text-start">Servicios más consultados</h4>
               <ul>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
