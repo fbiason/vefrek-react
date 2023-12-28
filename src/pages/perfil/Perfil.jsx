@@ -373,7 +373,7 @@ const Perfil = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="postal-code"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
                 >
                   *Código Postal
                 </label>
@@ -390,7 +390,7 @@ const Perfil = () => {
                 </div>
               </div>
               <div>
-                <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
+                <span className="select-none items-center pl-3 text-gray-500  w-full ">
                   *Campos obligatorios
                 </span>
               </div>
