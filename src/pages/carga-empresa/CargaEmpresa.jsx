@@ -181,7 +181,7 @@ const CargaEmpresa = () => {
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Nombre de Empresa
+                <i className="obligatorio">* </i>Nombre de Empresa
               </label>
               <div className="mt-2">
                 <input
@@ -221,7 +221,7 @@ const CargaEmpresa = () => {
                 htmlFor="street-address"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Dirección
+                <i className="obligatorio">* </i>Dirección
               </label>
               <div className="mt-2">
                 <input
@@ -241,7 +241,7 @@ const CargaEmpresa = () => {
                 htmlFor="city"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Ciudad
+                <i className="obligatorio">* </i>Ciudad
               </label>
               <div className="mt-2">
                 <input
@@ -261,7 +261,7 @@ const CargaEmpresa = () => {
                 htmlFor="region"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Provincia
+                <i className="obligatorio">* </i>Provincia
               </label>
               <div className="mt-2">
                 <input
@@ -281,7 +281,7 @@ const CargaEmpresa = () => {
                 htmlFor="postal-code"
                 className="block text-sm w-full font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Código Postal
+                <i className="obligatorio">* </i>Código Postal
               </label>
               <div className="mt-2">
                 <input
@@ -301,7 +301,7 @@ const CargaEmpresa = () => {
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Teléfono
+                <i className="obligatorio">* </i>Teléfono
               </label>
               <div className="mt-2">
                 <input
@@ -359,7 +359,7 @@ const CargaEmpresa = () => {
             <div className="sm:col-span-3">
               <div className="block text-sm font-medium leading-6 text-gray-900">
                 <label>
-                  <p className="obligatorio">*</p>Categoría:{" "}
+                  <i className="obligatorio">* </i>Categoría:{" "}
                 </label>
                 <select
                   name="category"
@@ -432,7 +432,7 @@ const CargaEmpresa = () => {
                 htmlFor="username"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Ingrese la URL de su sitio web
+                <i className="obligatorio">* </i>Ingrese la URL de su sitio web
                 comercial:
               </label>
               <div className="mt-2">
@@ -459,7 +459,7 @@ const CargaEmpresa = () => {
                 htmlFor="about"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                <p className="obligatorio">*</p>Descripción
+                <i className="obligatorio">* </i>Descripción
               </label>
               <div className="mt-2">
                 <textarea
@@ -605,7 +605,7 @@ const CargaEmpresa = () => {
               htmlFor="photo"
               className="block text-sm font-medium leading-6 text-gray-900 mt-3"
             >
-              <p className="obligatorio">*</p>Logo de su empresa
+              <i className="obligatorio">* </i>Logo de su empresa
             </label>
             <div className="mt-2 flex items-center gap-x-3">
               <UserCircleIcon
@@ -634,7 +634,7 @@ const CargaEmpresa = () => {
             htmlFor="cover-photo"
             className="block text-sm font-medium leading-6 text-gray-900 mt-5 col-span-full"
           >
-            <p className="obligatorio">*</p>Cargar imágenes de su negocio
+            <i className="obligatorio">* </i>Cargar imágenes de su negocio
             (máximo 6):
           </label>
 
