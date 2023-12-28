@@ -179,7 +179,7 @@ const CargaEmpresa = () => {
             <div className="sm:col-span-3">
               <label
                 htmlFor="first-name"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm w-full font-medium leading-6 text-gray-900"
               >
                 <i className="obligatorio">* </i>Nombre de Empresa
               </label>

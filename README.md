@@ -1,11 +1,8 @@
 Vefrek 1.0.0
 
-- Carga Empresa y Perfil: Asterísco color rojo indicando campos obligatorios
-- Dropdown: text-start
-- Portfolio: tiene que cargar las cards2
+- Home-Portfolio: tiene que cargar las cards2
 
 - Cateogría:
-  a. ERROR FETCH
   b. El footer se ve blanco cuando carga.
 
 - Mails:
