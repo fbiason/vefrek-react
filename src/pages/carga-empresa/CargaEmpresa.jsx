@@ -279,7 +279,7 @@ const CargaEmpresa = () => {
             <div className="sm:col-span-2">
               <label
                 htmlFor="postal-code"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm w-full font-medium leading-6 text-gray-900"
               >
                 *Código Postal
               </label>
