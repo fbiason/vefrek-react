@@ -390,7 +390,7 @@ const Perfil = () => {
                 </div>
               </div>
               <div>
-                <span className="select-none items-center pl-3 text-gray-500  w-full ">
+                <span className="select-none items-center text-gray-500 w-full ">
                   *Campos obligatorios
                 </span>
               </div>

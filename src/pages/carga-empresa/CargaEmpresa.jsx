@@ -665,7 +665,7 @@ const CargaEmpresa = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="mt-5">
             <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
               *Campos obligatorios
             </span>
