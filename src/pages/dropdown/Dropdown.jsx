@@ -35,17 +35,23 @@ const Dropdown = () => {
       </button>
       {isOpen && (
         <div className="dropdown-content">
-          <Link to="/perfil">
+          <Link className="link-dropdown" to="/perfil">
             <p>
               <i className="fas fa-edit text-start" /> Editar
             </p>
           </Link>
-          <p>
-            <i className="fas fa-bullhorn text-start" /> Mis anuncios
-          </p>
-          <p>
-            <i className="fas fa-sign-out-alt text-start" /> Logout
-          </p>
+          <Link className="link-dropdown" to="/">
+            {" "}
+            <p>
+              <i className="fas fa-bullhorn text-start" /> Mis anuncios
+            </p>{" "}
+          </Link>
+          <Link className="link-dropdown" to="/">
+            {" "}
+            <p>
+              <i className="fas fa-sign-out-alt text-start" /> Logout
+            </p>
+          </Link>
         </div>
       )}
     </div>

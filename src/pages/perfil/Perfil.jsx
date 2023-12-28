@@ -142,7 +142,7 @@ const Perfil = () => {
                   htmlFor="username"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Nombre de usuario
+                  <p className="obligatorio">*</p>Nombre de usuario
                 </label>
                 <div className="mt-2">
                   <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -232,7 +232,7 @@ const Perfil = () => {
                   htmlFor="first-name"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Nombre
+                  <p className="obligatorio">*</p>Nombre
                 </label>
                 <div className="mt-2">
                   <input
@@ -252,7 +252,7 @@ const Perfil = () => {
                   htmlFor="last-name"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Apellido
+                  <p className="obligatorio">*</p>Apellido
                 </label>
                 <div className="mt-2">
                   <input
@@ -272,7 +272,7 @@ const Perfil = () => {
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Mail
+                  <p className="obligatorio">*</p>Mail
                 </label>
                 <div className="mt-2">
                   <input
@@ -292,7 +292,7 @@ const Perfil = () => {
                   htmlFor="country"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *País
+                  <p className="obligatorio">*</p>País
                 </label>
                 <div className="mt-2">
                   <select
@@ -315,7 +315,7 @@ const Perfil = () => {
                   htmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Dirección
+                  <p className="obligatorio">*</p>Dirección
                 </label>
                 <div className="mt-2">
                   <input
@@ -335,7 +335,7 @@ const Perfil = () => {
                   htmlFor="city"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Ciudad
+                  <p className="obligatorio">*</p>Ciudad
                 </label>
                 <div className="mt-2">
                   <input
@@ -355,7 +355,7 @@ const Perfil = () => {
                   htmlFor="region"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  *Provincia
+                  <p className="obligatorio">*</p>Provincia
                 </label>
                 <div className="mt-2">
                   <input
@@ -375,7 +375,7 @@ const Perfil = () => {
                   htmlFor="postal-code"
                   className="block text-sm font-medium leading-6 text-gray-900 w-full "
                 >
-                  *Código Postal
+                  <p className="obligatorio">*</p>Código Postal
                 </label>
                 <div className="mt-2">
                   <input
@@ -389,11 +389,9 @@ const Perfil = () => {
                   />
                 </div>
               </div>
-              <div>
-                <span className="select-none items-center text-gray-500 w-full ">
-                  *Campos obligatorios
-                </span>
-              </div>
+              <span className="select-none  text-gray-500 w-full ">
+                *Campos obligatorios
+              </span>
             </div>
           </div>
 

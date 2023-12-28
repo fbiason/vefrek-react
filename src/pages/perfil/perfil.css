@@ -25,3 +25,7 @@
 .perfil_file_input {
   display: none;
 }
+
+.obligatorio {
+  color: red;
+}
