@@ -138,14 +138,13 @@ const PaginaEmpresa = () => {
         <div className="perfil-card-element2 card-empresa ">
           <div className="column-2 flex-grow-1">
             <div className="ubicacion-container">
-              <LoadScript googleMapsApiKey="TU_API_KEY">
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  center={center}
-                  zoom={15}
-                  options={options}
-                />
-              </LoadScript>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9427.429538499919!2d-67.7075095!3d-53.7920258!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6f95528b0ed55%3A0x52935c003ba20eef!2sBiason%20Automotores!5e0!3m2!1ses-419!2sar!4v1703777982199!5m2!1ses-419!2sar"
+                className="google-map"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
             <div className="telefono-container mt-5">
               <p>Direccion: Rivadavia 1.333, Rio Grande, Tierra del Fuego</p>

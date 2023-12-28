@@ -19,14 +19,14 @@ const Dropdown = () => {
         <div className="dropdown-content">
           <Link to="/perfil">
             <p>
-              <i className="fas fa-edit" /> Editar
+              <i className="fas fa-edit text-start" /> Editar
             </p>
           </Link>
           <p>
-            <i className="fas fa-bullhorn" /> Mis anuncios
+            <i className="fas fa-bullhorn text-start" /> Mis anuncios
           </p>
           <p>
-            <i className="fas fa-sign-out-alt" /> Logout
+            <i className="fas fa-sign-out-alt text-start" /> Logout
           </p>
         </div>
       )}

@@ -136,3 +136,9 @@
 .redes-sociales-container i {
   font-size: 36px;
 }
+
+.google-map {
+  width: 430px;
+  height: 250px;
+  border: 0;
+}

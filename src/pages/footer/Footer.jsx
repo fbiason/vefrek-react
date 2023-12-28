@@ -328,7 +328,7 @@ const Footer = () => {
                     <a
                       href="/"
                       data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
+                      data-bs-target="#ModalPrivacidad"
                     >
                       Política de Privacidad
                     </a>
