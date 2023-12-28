@@ -94,3 +94,4 @@ export const updateCompany = async (companyData) => {
         return { success: false, message: error.message }
     }
 }
+

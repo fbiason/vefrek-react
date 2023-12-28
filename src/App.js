@@ -49,7 +49,7 @@ function App() {
           {userData.isLogged && (
             <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
           )}
-          <Route path="/PaginaEmpresa" element={<PaginaEmpresa />} />
+          <Route path="/PaginaEmpresa/:id" element={<PaginaEmpresa />} />
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />

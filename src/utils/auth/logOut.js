@@ -1,11 +1,11 @@
 export const logOut = async () => {
     try {
         if (process.env.REACT_APP_API_URL) {
-            const response = await fetch (`${process.env.REACT_APP_API_URL}api/logout`, {
+            const respJSON = await fetch (`${process.env.REACT_APP_API_URL}api/logout`, {
                 method: "POST",
                 credentials: "include"
             })
-            const respOBJ = await response.json();
+            const respOBJ = await respJSON.json();
             return respOBJ;
         } else {
             return ({
@@ -16,8 +16,7 @@ export const logOut = async () => {
     } catch (err) {
         return ({
             success: false, 
-            message: `Error de deslogueo: ${err instanceof Error ? err.message : `Error de deslogueo: Problema desconocido`}`
+            message: `Error de deslogueo: ${err.message}`
         }); 
     }
 }
-

@@ -26,6 +26,7 @@ const Venta = () => {
                         logoUrl={company.images.logo.url}
                         location={company.location}
                         phone={company.phone}
+                        id={company._id}
                     />
                 </div>
             )
