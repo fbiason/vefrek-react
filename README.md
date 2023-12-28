@@ -1,6 +1,6 @@
 Vefrek 1.0.0
 
-- Págnia negocio:
+- PágniaEmpresa:
   a. Ajustar img grande a 1280x720 (Biason)
   b. Mapa Google: buscar como vincularlo automáticamente (Biason)
   c. Reseña rating
