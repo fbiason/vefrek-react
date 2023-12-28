@@ -603,7 +603,7 @@ const CargaEmpresa = () => {
           <div className="col-span-full">
             <label
               htmlFor="photo"
-              className="block text-sm font-medium leading-6 text-gray-900 mt-3"
+              className="button-small rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
               <i className="obligatorio">* </i>Logo de su empresa
             </label>

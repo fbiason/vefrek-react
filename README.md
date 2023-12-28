@@ -1,6 +1,13 @@
 Vefrek 1.0.0
 
-- Home-Portfolio: tiene que cargar las cards2
+- Págnia negocio:
+  a. Ajustar img grande a 1280x720 (Biason)
+  b. Mapa Google: buscar como vincularlo automáticamente (Biason)
+  c. Reseña rating
+  d. Las redes que no estén cargadas tienen que desaparecer.
+  e. Reseña, Calificación, Comentarios.
+
+- Home-Portfolio: tiene que cargar las cards2 (Ariel)
 
 - Cateogría:
   b. El footer se ve blanco cuando carga.
@@ -8,13 +15,6 @@ Vefrek 1.0.0
 - Mails:
   a. Suscripción.
   b. Reporte.
-
-- Págnia negocio:
-  a. Ajustar img grande a 1280x720
-  b. Mapa Google: buscar como vincularlo automáticamente
-  c. Reseña rating
-  d. Las redes que no estén cargadas tienen que desaparecer.
-  e. Reseña, Calificación, Comentarios.
 
   Otras tareas:
 
