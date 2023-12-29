@@ -5,12 +5,9 @@ Vefrek 1.0.0
    b. Reseña, Calificación, Comentarios.
 
 2. Home-Portfolio:
-   a. Cargar las cards2
+   a. Cargar las cards2.
 
-3. Cateogrías:
-   a. El footer se ve blanco cuando carga.
-
-4. Mails:
+3. Mails:
    a. Suscripción.
    b. Reporte.
 

@@ -20,7 +20,7 @@ const Publicacion = () => {
   };
 
   return (
-    <section id="hero-publicacion" className="d-flex background">
+    <section id="hero-publicacion" className="d-flex background ">
       <div className="container" data-aos="fade-up">
         <div
           className="row justify-content-center"

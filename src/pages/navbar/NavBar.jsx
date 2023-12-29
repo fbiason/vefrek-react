@@ -327,7 +327,7 @@ const NavBar = () => {
   return (
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center justify-content-lg-between">
-        <Link to="/Prueba" className="logo me-auto me-lg-0">
+        <Link to="/" className="logo me-auto me-lg-0">
           <img
             src="/images/logos/logo-vefrek.png"
             alt="Logo Vefrek"

@@ -59,30 +59,32 @@ const Reparacion = () => {
 
   return (
     <section className="background">
-      <div className="row title-row">
-        <h1>Reparación y Mantenimiento</h1>
-      </div>
-
-      <div className="row filter-row mt-3">
-        <div className="filtro">
-          <select value={selectedOption} onChange={handleSelectChange}>
-            <option value="" disabled hidden>
-              {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
-            </option>
-            <option value="Gomería">
-              Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
-            </option>
-            <option value="Taller mecánico">
-              Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
-            </option>
-            <option value="Repuestos">Repuestos (Autopartes)</option>
-            <option value="Lubricentro">Lubricentros</option>
-          </select>
+      <div className="container text-center text-lg-start my-5">
+        <div className="row gx-lg-5 align-items-center mb-5">
+          <h1>Reparación y Mantenimiento</h1>
         </div>
-      </div>
 
-      <div className="row cards-row justify-content-center text-center mt-5">
-        {data}
+        <div className="row filter-row mt-3">
+          <div className="filtro">
+            <select value={selectedOption} onChange={handleSelectChange}>
+              <option value="" disabled hidden>
+                {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
+              </option>
+              <option value="Gomería">
+                Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
+              </option>
+              <option value="Taller mecánico">
+                Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
+              </option>
+              <option value="Repuestos">Repuestos (Autopartes)</option>
+              <option value="Lubricentro">Lubricentros</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="row cards-row justify-content-center text-center mt-5">
+          {data}
+        </div>
       </div>
     </section>
   );
