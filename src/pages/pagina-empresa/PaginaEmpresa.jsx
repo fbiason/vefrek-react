@@ -257,72 +257,85 @@ const PaginaEmpresa = () => {
             </div>
 
             <div className="redes-sociales-container">
-              <a
-                href={
-                  companyData.social.whatsapp.includes("http")
-                    ? companyData.social.whatsapp
-                    : `https://${companyData.social.whatsapp}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-whatsapp"></i>
-              </a>
-              <a
-                href={
-                  companyData.social.facebook.includes("http")
-                    ? companyData.social.facebook
-                    : `https://${companyData.social.facebook}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-facebook"></i>
-              </a>
-              <a
-                href={
-                  companyData.social.x.includes("http")
-                    ? companyData.social.x
-                    : `https://${companyData.social.x}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-x"></i>
-              </a>
-              <a
-                href={
-                  companyData.social.youtube.includes("http")
-                    ? companyData.social.youtube
-                    : `https://${companyData.social.youtube}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a
-                href={
-                  companyData.social.linkedIn.includes("http")
-                    ? companyData.social.linkedIn
-                    : `https://${companyData.social.linkedIn}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a
-                href={
-                  companyData.social.instagram.includes("http")
-                    ? companyData.social.instagram
-                    : `https://${companyData.social.instagram}`
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
+              {" "}
+              {companyData.social.whatsapp && (
+                <a
+                  href={
+                    companyData.social.whatsapp.includes("http")
+                      ? companyData.social.whatsapp
+                      : `https://${companyData.social.whatsapp}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+              )}
+              {companyData.social.facebook && (
+                <a
+                  href={
+                    companyData.social.facebook.includes("http")
+                      ? companyData.social.facebook
+                      : `https://${companyData.social.facebook}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-facebook"></i>
+                </a>
+              )}
+              {companyData.social.x && (
+                <a
+                  href={
+                    companyData.social.x.includes("http")
+                      ? companyData.social.x
+                      : `https://${companyData.social.x}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-x"></i>
+                </a>
+              )}
+              {companyData.social.youtube && (
+                <a
+                  href={
+                    companyData.social.youtube.includes("http")
+                      ? companyData.social.youtube
+                      : `https://${companyData.social.youtube}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-youtube"></i>
+                </a>
+              )}
+              {companyData.social.linkedIn && (
+                <a
+                  href={
+                    companyData.social.linkedIn.includes("http")
+                      ? companyData.social.linkedIn
+                      : `https://${companyData.social.linkedIn}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-linkedin"></i>
+                </a>
+              )}
+              {companyData.social.instagram && (
+                <a
+                  href={
+                    companyData.social.instagram.includes("http")
+                      ? companyData.social.instagram
+                      : `https://${companyData.social.instagram}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+              )}
             </div>
 
             <div className="sitio-web-container mt-3">

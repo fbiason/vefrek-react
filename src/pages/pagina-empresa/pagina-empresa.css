@@ -130,11 +130,16 @@
 }
 
 .redes-sociales-container a {
-  margin: 10px 5px 10px;
+  margin: 5px;
 }
 
 .redes-sociales-container i {
   font-size: 36px;
+  transition: color 0.3s ease-in-out;
+}
+
+.redes-sociales-container i:hover {
+  color: #14ba75;
 }
 
 .google-map {
