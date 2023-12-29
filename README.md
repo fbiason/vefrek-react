@@ -1,20 +1,20 @@
 Vefrek 1.0.0
 
-- PágniaEmpresa:
-  a. Ajustar img grande a 1280x720 (Biason)
-  b. Las redes que no estén cargadas tienen que desaparecer.
-  c. Reseña, Calificación, Comentarios.
+1. PágniaEmpresa:
+   a. Ajustar img grande a 1280x720
+   b. Reseña, Calificación, Comentarios.
 
-- Home-Portfolio: tiene que cargar las cards2 (Ariel)
+2. Home-Portfolio:
+   a. Cargar las cards2
 
-- Cateogría:
-  b. El footer se ve blanco cuando carga.
+3. Cateogrías:
+   a. El footer se ve blanco cuando carga.
 
-- Mails:
-  a. Suscripción.
-  b. Reporte.
+4. Mails:
+   a. Suscripción.
+   b. Reporte.
 
-  Otras tareas:
+Otras tareas:
 
 - Controlar Urls
 - Responsive
