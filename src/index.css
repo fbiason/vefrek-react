@@ -29,6 +29,12 @@ section {
   box-sizing: none;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 3rem 3rem 3rem;
+  }
+}
+
 .section-title {
   padding-bottom: 40px;
 }

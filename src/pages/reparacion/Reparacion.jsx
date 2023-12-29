@@ -61,12 +61,18 @@ const Reparacion = () => {
     <section className="background">
       <div className="container text-center text-lg-start my-5">
         <div className="row gx-lg-5 align-items-center mb-5">
-          <h1>Reparación y Mantenimiento</h1>
+          <div className="col-12">
+            <h1>Reparación y Mantenimiento</h1>
+          </div>
         </div>
 
         <div className="row filter-row mt-3">
-          <div className="filtro">
-            <select value={selectedOption} onChange={handleSelectChange}>
+          <div className="col-md-6 col-lg-4 filtro">
+            <select
+              value={selectedOption}
+              onChange={handleSelectChange}
+              className="form-select"
+            >
               <option value="" disabled hidden>
                 {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
               </option>
