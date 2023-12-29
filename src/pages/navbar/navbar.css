@@ -71,6 +71,10 @@
   visibility: visible;
 }
 
+ul li {
+  list-style-type: none;
+}
+
 .navbar .dropdown .dropdown ul {
   top: 0;
   left: calc(100% - 30px);

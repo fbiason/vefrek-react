@@ -341,22 +341,8 @@ const NavBar = () => {
         {/* Barra de Búsqueda, Ingresa, Publica Ahora */}
         <div className="col-lg-8 col-md-12">
           <div className="row align-items-center">
-            {/* Ingresa (Mostrar solo si no está logueado) */}
-            {!userData.isLogged && show && (
-              <div className="col-md-4 mb-3 mb-md-0 text-center order-md-2">
-                <li className="d-none">
-                  {userData.isLogged && show && <Dropdown />}
-                </li>
-                {!userData.isLogged && show && (
-                  <Link to="/login" className="ingresa scrollto">
-                    Ingresa
-                  </Link>
-                )}
-              </div>
-            )}
-
             {/* Barra de Búsqueda */}
-            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center order-md-1">
+            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
               <input
                 type="text"
                 name="buscar"
@@ -367,8 +353,20 @@ const NavBar = () => {
               />
             </div>
 
+            <div className="col-md-4 mb-3 mb-md-0 justify-content-center">
+              {" "}
+              <ul className="d-flex justify-content-center p-0">
+                <li>{userData.isLogged && show && <Dropdown />}</li>
+                {!userData.isLogged && show && (
+                  <Link to="/login" className="nav-link scrollto">
+                    Ingresa
+                  </Link>
+                )}
+              </ul>
+            </div>
+
             {/* Publica Ahora */}
-            <div className="col-md-4 text-center order-md-3">
+            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
               <Link
                 to="/publicacion"
                 className="btn btn-primary get-started-btn scrollto"

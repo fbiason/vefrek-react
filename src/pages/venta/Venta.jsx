@@ -80,10 +80,8 @@ const Venta = () => {
           </div>
         </div>
 
-        <div className="row cards-row justify-content-center mt-5">
-          <div className="d-flex flex-wrap justify-content-center text-center">
-            {data}
-          </div>
+        <div className="row cards-row justify-content-center text-center mt-5">
+          {data}
         </div>
       </div>
     </section>

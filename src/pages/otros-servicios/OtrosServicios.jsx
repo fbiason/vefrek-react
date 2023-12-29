@@ -65,7 +65,7 @@ const OtrosServicios = () => {
         </div>
 
         <div className="row filter-row mt-3">
-          <div className="filtro">
+          <div className="col-md-6 col-lg-4 filtro">
             <select
               value={selectedOption}
               onChange={handleSelectChange}

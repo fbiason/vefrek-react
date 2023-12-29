@@ -140,7 +140,7 @@ const Perfil = () => {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 text-gray-900  w-full"
                 >
                   <i className="obligatorio">* </i>Nombre de usuario
                 </label>
