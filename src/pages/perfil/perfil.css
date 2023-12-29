@@ -29,3 +29,9 @@
 .obligatorio {
   color: red;
 }
+
+@media (max-width: 768px) {
+  .form-prueba {
+    width: 100%;
+  }
+}
