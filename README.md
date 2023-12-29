@@ -15,15 +15,8 @@ Vefrek 1.0.0
    a. Enlaces
 
 5. Responsive:
-   5.1. Home
-   5.2 Reparacion
-   5.3 Ventas
-   5.4 Otros Servicios
-   5.5 Login
-   5.6 Editar Perfil
-   5.7 Publica
-   5.8 Cargar Negocio
-   5.9 Página Negocio
+   5.1. Home: portfolio + hero
+   5.2 Página Negocio
 
 6. Subir a la Web
 
