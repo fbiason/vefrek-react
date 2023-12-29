@@ -2,27 +2,44 @@ import React, { useState, useEffect, useContext } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useParams } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 
-const mapContainerStyle = {
-  width: "100%",
-  height: "300px",
-};
-
-const center = {
-  lat: -53.788625,
-  lng: -67.701736,
-};
-
-const options = {
-  disableDefaultUI: true,
-};
+const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
 
 const PaginaEmpresa = () => {
+  const address = "Rivadavia 1333, Rio Grande Tierra del Fuego";
+  const [location, setLocation] = useState({ lat: 0, lng: 0 });
+  const [error, setError] = useState(null);
+
+  const getLocationFromAddress = async () => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+          address
+        )}&key=${apiKey}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al obtener las coordenadas");
+      }
+
+      const data = await response.json();
+      const { lat, lng } = data.results[0].geometry.location;
+      setLocation({ lat, lng });
+    } catch (error) {
+      console.error("Error al obtener las coordenadas:", error);
+      setError("No se pudo obtener la ubicación. Verifica la dirección.");
+    }
+  };
+
+  useEffect(() => {
+    getLocationFromAddress();
+  }, []);
+
   const { showSpinner } = useContext(SpinnerContext);
   const { id } = useParams();
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
@@ -220,17 +237,18 @@ const PaginaEmpresa = () => {
         <div className="perfil-card-element2 card-empresa ">
           <div className="column-2 flex-grow-1">
             <div className="ubicacion-container">
-              <LoadScript googleMapsApiKey="TU_API_KEY">
+              <LoadScript googleMapsApiKey={apiKey}>
                 <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  center={center}
+                  mapContainerStyle={{ width: "100%", height: "400px" }}
+                  center={location}
                   zoom={15}
-                  options={options}
-                />
+                >
+                  {error ? <div>{error}</div> : <Marker position={location} />}
+                </GoogleMap>
               </LoadScript>
             </div>
             <div className="telefono-container mt-5">
-              <p>{`Direccion: ${companyData.location}`}</p>
+              <p>{`Direccion: ${companyData.location}, CIUDAD, PROVINCIA`}</p>
             </div>
             <div className="telefono-container">
               <p>{`Teléfono: ${companyData.phone}`}</p>
