@@ -39,12 +39,6 @@
   width: 100%;
 }
 
-#hero-publicacion .container {
-  position: relative;
-  padding-top: 74px;
-  text-align: center;
-}
-
 #hero-publicacion h1 {
   margin: 0;
   font-size: 56px;
@@ -109,16 +103,13 @@
 #hero-publicacion .icon-box:hover {
   border-color: #14ba75;
 }
-
+/*--- Responsive ---*/
 @media (min-width: 1024px) {
   #hero-publicacion {
     background-attachment: fixed;
   }
 }
 @media (max-width: 768px) {
-  #hero-publicacion {
-    height: auto;
-  }
   #hero-publicacion h1 {
     font-size: 28px;
     line-height: 36px;
