@@ -66,7 +66,11 @@ const OtrosServicios = () => {
 
         <div className="row filter-row mt-3">
           <div className="filtro">
-            <select value={selectedOption} onChange={handleSelectChange}>
+            <select
+              value={selectedOption}
+              onChange={handleSelectChange}
+              className="form-select"
+            >
               <option value="" disabled hidden>
                 {selectedOption === "" ? "Seleccionar Subcategoría" : ""}
               </option>
