@@ -89,6 +89,8 @@ const PaginaEmpresa = () => {
         name: companyData.name,
         slogan: companyData.slogan,
         location: companyData.location,
+        city: companyData.city,
+        state: companyData.state,
         phone: companyData.phone,
         phone2: companyData.phone2,
         website: companyData.website,
@@ -248,7 +250,7 @@ const PaginaEmpresa = () => {
               </LoadScript>
             </div>
             <div className="telefono-container mt-5">
-              <p>{`Direccion: ${companyData.location}, CIUDAD, PROVINCIA`}</p>
+              <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
             </div>
             <div className="telefono-container">
               <p>{`Teléfono: ${companyData.phone}`}</p>
