@@ -3,8 +3,7 @@ Vefrek 1.0.0
 Biason:
 
 2. Home Responsive:
-   b. Valores
-   c. Portfolio
+   a. Portfolio: Cards
 1. Footer Enlaces:
    a. Politica Privacidad
    b. Enlaces más usados

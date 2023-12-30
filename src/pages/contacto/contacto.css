@@ -1,3 +1,7 @@
+.contact {
+  padding: 5px 0 50px 0;
+}
+
 .contact .info {
   width: 100%;
   background: #fff;
@@ -138,5 +142,11 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 2rem;
   }
 }
