@@ -1,10 +1,5 @@
 Vefrek 1.0.0
 
-Biason:
-
-1. Login: Acepto Terminos y Condiciones
-2. Footer Enlaces: Politica Privacidad
-
 Ariel:
 
 1. Mails: Suscripción + reporte

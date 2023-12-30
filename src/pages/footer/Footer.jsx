@@ -1,25 +1,26 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import { swalPopUp } from "../../utils/swal";
 
 const Footer = () => {
-  const myModalRef = useRef(null);
+  const myModalAvisoRef = useRef(null);
+  const myModalPoliticaRef = useRef(null);
   const myInputRef = useRef(null);
 
   useEffect(() => {
-    const myModal = myModalRef.current;
+    const myModalAviso = myModalAvisoRef.current;
+    const myModalPolitica = myModalPoliticaRef.current;
     const myInput = myInputRef.current;
 
-    if (myModal && myInput) {
+    if (myModalAviso && myInput) {
       const handleModalShown = () => {
         myInput.focus();
       };
 
-      myModal.addEventListener("shown.bs.modal", handleModalShown);
+      myModalAviso.addEventListener("shown.bs.modal", handleModalShown);
 
       return () => {
-        myModal.removeEventListener("shown.bs.modal", handleModalShown);
+        myModalAviso.removeEventListener("shown.bs.modal", handleModalShown);
       };
     }
   }, []);
@@ -93,7 +94,7 @@ const Footer = () => {
                       tabIndex="-1"
                       aria-labelledby="exampleModalLabel"
                       aria-hidden="true"
-                      ref={myModalRef}
+                      ref={myModalAvisoRef}
                     >
                       <div className="modal-dialog">
                         <div className="modal-content">
@@ -331,11 +332,11 @@ const Footer = () => {
 
                     <div
                       className="modal fade"
-                      id="exampleModal"
+                      id="ModalPrivacidad" // Cambiado el ID del modal
                       tabIndex="-1"
-                      aria-labelledby="exampleModalLabel"
+                      aria-labelledby="ModalPrivacidadLabel"
                       aria-hidden="true"
-                      ref={myModalRef}
+                      ref={myModalPoliticaRef} // Asignado el ref correcto
                     >
                       <div className="modal-dialog">
                         <div className="modal-content">
