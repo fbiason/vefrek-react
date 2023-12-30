@@ -2,12 +2,11 @@ Vefrek 1.0.0
 
 Biason:
 
-6. Página empresa: sacar Reseña
-7. Página empresa: Hacerlo responsive
-8. Página empresa: Centrar img grande
-9. Home-Portfolio: Cambiar el CSS
-10. Footer: Enlaces
-11. Home Responsive
+5. Página empresa: sacar Reseña
+6. Página empresa: Hacerlo responsive
+7. Página empresa: Centrar img grande
+8. Footer: Enlaces
+9. Home Responsive
 
 Ariel:
 

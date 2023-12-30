@@ -17,11 +17,16 @@
   background-color: #10593cbc;
 }
 
+.card-header-text,
+p {
+  color: white;
+}
+
 /*--- Footer Card ---*/
 .card-footer {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border-top: 1px solid #6c757d;
+  border-top: 1px solid #5d6369;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -29,6 +34,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.text-categoria,
+p {
+  color: white;
 }
 
 .logo-categoria {
@@ -54,7 +64,7 @@
 }
 
 .categoria-card .card-footer {
-  background-color: rgba(0, 0, 0, 0.411);
+  background-color: rgba(0, 0, 0, 0.692);
 }
 /*--- Responsive ---*/
 
