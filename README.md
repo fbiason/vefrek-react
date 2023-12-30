@@ -2,11 +2,8 @@ Vefrek 1.0.0
 
 Biason:
 
-2. Home Responsive:
-   a. Portfolio: Cards
-1. Footer Enlaces:
-   a. Politica Privacidad
-   b. Enlaces más usados
+1. Login: Acepto Terminos y Condiciones
+2. Footer Enlaces: Politica Privacidad
 
 Ariel:
 

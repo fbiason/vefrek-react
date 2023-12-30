@@ -24,11 +24,6 @@ const Footer = () => {
     }
   }, []);
 
-  const toTerminos = (e) => {
-    e.preventDefault();
-    swalPopUp("Ups!", "Tienes que loguerte para puclicar");
-  };
-
   return (
     <footer id="footer">
       <div className="footer-top">
@@ -36,7 +31,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-lg-3 col-md-6">
               <div className="footer-info">
-                <Link to="/PruebaCarga">
+                <Link to="/">
                   {" "}
                   <img
                     src="/images/logos/logo-vefrek-white.png"
@@ -462,20 +457,30 @@ const Footer = () => {
               <h4 className="text-start">Servicios más consultados</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Mecánicos</a>
+                  {" "}
+                  <Link to="/Reparacion">
+                    <i className="bx bx-chevron-right"></i>{" "}
+                    <a href="#">Mecánicos</a>
+                  </Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Gomerías</a>
+                  <Link to="/Reparacion">
+                    <i className="bx bx-chevron-right"></i>{" "}
+                    <a href="#">Gomerías</a>
+                  </Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Serv. Emergencia</a>
+                  <Link to="/OtrosServicios">
+                    <i className="bx bx-chevron-right"></i>{" "}
+                    <a href="#">Serv. Emergencia</a>
+                  </Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Repuestos</a>
+                  {" "}
+                  <Link to="/Reparacion">
+                    <i className="bx bx-chevron-right"></i>{" "}
+                    <a href="#">Repuestos</a>
+                  </Link>
                 </li>
               </ul>
             </div>

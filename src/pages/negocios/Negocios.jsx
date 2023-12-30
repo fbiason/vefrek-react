@@ -11,11 +11,6 @@ const Negocios = () => {
   const { showSpinner } = useContext(SpinnerContext);
   const images = [];
 
-  const cardStyle = {
-    width: "30%",
-    padding: "1rem",
-  };
-
   const categories = [
     "Todos",
     "Agencias",
@@ -57,7 +52,7 @@ const Negocios = () => {
       );
       if (response.success && response.companysData) {
         const jsxArr = response.companysData.map((company) => (
-          <div className="col-md-3" style={cardStyle} key={company._id}>
+          <div className="col-md-3 card-portfolio" key={company._id}>
             <CardNegocio2
               subcategory={company.subcategory}
               name={company.name}
@@ -137,7 +132,7 @@ const Negocios = () => {
       </div>
 
       <div
-        className="row cards-row justify-content-center text-center mt-5"
+        className="row cards-row justify-content-center text-center"
         data-aos="fade-up"
         data-aos-delay="200"
       >
