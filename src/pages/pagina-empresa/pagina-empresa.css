@@ -1,3 +1,28 @@
+/*--- Nombre y Slogan Empresa ---*/
+.logo-nombre-container {
+  display: flex;
+  align-items: center;
+}
+
+.nombre-slogan-container {
+  flex: 4;
+  text-align: start;
+}
+/*--- Logo Empresa ---*/
+
+.perfil-card-element1 .logo-empresa {
+  width: 20%;
+  padding: 1rem;
+  text-align: start;
+  width: 80%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*---  ---*/
+
 .image-container {
   width: auto;
   height: 400px;
@@ -25,12 +50,6 @@
   flex-basis: 100%;
 }
 
-.logo-container {
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
 .slick-slider img {
   width: 300px;
   height: 300px;
@@ -41,23 +60,6 @@
 .reseña-container,
 .nombre-slogan-container {
   margin-top: 20px;
-}
-
-.perfil-card-element1 .logo-empresa {
-  width: 70%;
-  height: auto;
-  padding: 1rem;
-}
-
-.logo-nombre-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nombre-slogan-container {
-  flex: 4;
-  text-align: start;
 }
 
 .slick-list {
@@ -115,7 +117,7 @@
 
 .first-image-carousel {
   display: block;
-  margin: 0 auto; /* Esto centrará la imagen horizontalmente */
+  margin: 0 auto;
 }
 
 .image-container img {
@@ -124,29 +126,9 @@
   object-fit: cover;
 }
 
-.logo-container img {
-  max-width: 100%;
-  padding: 0.5rem;
-}
-
-.nombre-slogan-container {
-  margin-top: 20px;
-}
-
 .informacion-container,
 .reseña-container {
   margin-top: 20px;
-}
-
-.logo-nombre-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nombre-slogan-container {
-  flex: 4;
-  text-align: start;
 }
 
 .slick-list {
@@ -231,8 +213,8 @@
 
 @media (max-width: 768px) {
   .perfil-card-element1 .logo-empresa {
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
   }
 
   .image-container {
@@ -254,6 +236,5 @@
 
   .nombre-slogan-container {
     text-align: center;
-    margin-top: 10px;
   }
 }

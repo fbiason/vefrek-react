@@ -151,15 +151,15 @@ const PaginaEmpresa = () => {
             <div className="row">
               <div className="col-md-12">
                 <div className="perfil-card-element1 card-empresa">
-                  <div className="logo-nombre-container">
-                    <div className="logo-container">
+                  <div className="row logo-nombre-container">
+                    <div className="logo-container col-lg-2 text-center">
                       <img
                         src={companyData.images.logo.url}
                         alt="Logo de la empresa"
                         className="logo-empresa img-fluid"
                       />
                     </div>
-                    <div className="nombre-slogan-container">
+                    <div className="nombre-slogan-container col-lg-10">
                       <h2>{companyData.name}</h2>
                       <p>{companyData.slogan}</p>
                     </div>
