@@ -16,9 +16,14 @@
 }
 
 .perfil_avatar {
-  width: 50%;
-  height: 50%;
-  border-radius: 50%;
+  /* width: 50%;          /* <-------------Lineas comentadas */ 
+  /*height: 50%;
+  border-radius: 50%; */ 
+                          
+  width: 100px;          /* <-------------Lineas Agregadas */
+  height: 100px;
+  border-radius: 50px;
+
   object-fit: cover;
 }
 
