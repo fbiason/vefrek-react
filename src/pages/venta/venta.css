@@ -3,6 +3,6 @@
 }
 
 .cards-col {
-  width: calc(33.33% - 2rem);
+  margin-top: 2rem;
   box-sizing: border-box;
 }

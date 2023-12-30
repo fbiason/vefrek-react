@@ -12,16 +12,26 @@
 
 .button-small {
   padding: 0.5rem 1rem;
-  width: 30%;
+  width: 40%;
 }
 
 .perfil_avatar {
-  width: 39px;
-  height: 39px;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .perfil_file_input {
   display: none;
+}
+
+.obligatorio {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .form-prueba {
+    width: 100%;
+  }
 }

@@ -33,3 +33,7 @@
 .dropdown-content p:hover {
   background-color: #f1f1f1;
 }
+
+.link-dropdown {
+  padding-left: 3px;
+}

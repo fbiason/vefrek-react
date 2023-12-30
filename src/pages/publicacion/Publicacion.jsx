@@ -20,18 +20,18 @@ const Publicacion = () => {
   };
 
   return (
-    <section id="hero-publicacion" className="d-flex background">
+    <section id="hero-publicacion" className="d-flex background ">
       <div className="container" data-aos="fade-up">
         <div
           className="row justify-content-center"
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <div className="col-xl-6 col-lg-8 logo-publicacion">
+          <div className="col-xl-6 col-lg-8">
             <img
               src="/images/logos/logo-vefrek-white.png"
               alt="Vefrek"
-              className="vefrek-logo"
+              className="logo-publicacion"
             />{" "}
             <div>&nbsp;</div>
             <h2>REALIZA UNA PUBLICACION</h2>
@@ -39,7 +39,7 @@ const Publicacion = () => {
         </div>
 
         <div
-          className="row gy-4 mt-5 justify-content-center"
+          className="row gy-4 mt-3 justify-content-center"
           data-aos="zoom-in"
           data-aos-delay="250"
         >

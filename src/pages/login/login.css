@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  align-items: center;
-  justify-content: center;
   min-height: fit-content;
   background-color: hsl(218deg, 41%, 15%);
   background-image: radial-gradient(
@@ -35,42 +33,6 @@
   color: rgb(117, 116, 116);
 }
 .login-container li {
-  color: whitesmoke;
-}
-
-.login-container-2 {
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: hsl(218deg, 41%, 15%);
-  background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(218deg, 41%, 19%) 15%,
-      hsl(218deg, 41%, 35%) 80%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(218deg, 41%, 45%) 55%,
-      hsl(218deg, 41%, 30%) 85%,
-      hsl(218deg, 41%, 20%) 15%,
-      hsl(218deg, 41%, 19%) 20%,
-      transparent 100%
-    );
-}
-.login-container-2 h1 {
-  text-align: center;
-  color: #14ba75;
-}
-.login-container-2 p {
-  color: whitesmoke;
-}
-.login-container-2 h3 {
-  color: rgb(117, 116, 116);
-}
-.login-container-2 li {
   color: whitesmoke;
 }
 
@@ -179,9 +141,6 @@ button {
 .bienvenido {
   width: 40%;
   box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   border-radius: 8px;
 }
 
@@ -291,4 +250,14 @@ button {
 
 .google-button:hover svg {
   fill: white; /* Cambia el color del ícono al hacer hover */
+}
+/*--- Responsive ---*/
+@media (max-width: 767px) {
+  .vefrek-logo {
+    width: 70%;
+  }
+
+  .bienvenido {
+    width: 100%;
+  }
 }

@@ -326,34 +326,56 @@ const NavBar = () => {
 
   return (
     <header id="header" className="fixed-top">
-      <div className="container d-flex align-items-center justify-content-lg-between">
-        <Link to="/Prueba" className="logo me-auto me-lg-0">
-          <img
-            src="/images/logos/logo-vefrek.png"
-            alt="Logo Vefrek"
-            className="img-fluid"
-          />
-        </Link>
-        <input
-          type="text"
-          name="buscar"
-          id="buscar"
-          size="35"
-          placeholder="Buscar..."
-        />
-        <nav id="navbar" className="navbar order-last order-lg-0">
-          <ul>
-            <li>{userData.isLogged && show && <Dropdown />}</li>
-            {!userData.isLogged && show && (
-              <Link to="/login" className="nav-link scrollto">
-                Ingresa
+      <div className="row align-items-center justify-content-center">
+        {/* Logo */}
+        <div className="col-lg-4 col-md-12 mb-3 mb-lg-0 text-center">
+          <Link to="/">
+            <img
+              src="/images/logos/logo-vefrek.png"
+              alt="Logo Vefrek"
+              className="img-fluid"
+            />
+          </Link>
+        </div>
+
+        {/* Barra de Búsqueda, Ingresa, Publica Ahora */}
+        <div className="col-lg-8 col-md-12">
+          <div className="row align-items-center">
+            {/* Barra de Búsqueda */}
+            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
+              <input
+                type="text"
+                name="buscar"
+                id="buscar"
+                size="35"
+                placeholder="Buscar..."
+                className="form-control"
+              />
+            </div>
+
+            <div className="col-md-4 mb-3 mb-md-0 justify-content-center">
+              {" "}
+              <ul className="d-flex justify-content-center p-0">
+                <li>{userData.isLogged && show && <Dropdown />}</li>
+                {!userData.isLogged && show && (
+                  <Link to="/login" className="nav-link scrollto">
+                    Ingresa
+                  </Link>
+                )}
+              </ul>
+            </div>
+
+            {/* Publica Ahora */}
+            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
+              <Link
+                to="/publicacion"
+                className="btn btn-primary get-started-btn scrollto"
+              >
+                ¡PUBLICA AHORA!
               </Link>
-            )}
-          </ul>
-        </nav>
-        <Link to="/publicacion" className="get-started-btn scrollto">
-          ¡PUBLICA AHORA!
-        </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );
