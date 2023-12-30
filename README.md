@@ -1,8 +1,7 @@
 Vefrek 1.0.0
 
 1. PágniaEmpresa:
-   a. Ajustar img grande a 1280x720
-   b. Reseña, Calificación, Comentarios.
+   a. Reseña, Calificación, Comentarios.
 
 2. Home-Portfolio:
    a. Cargar las cards2.
@@ -11,14 +10,19 @@ Vefrek 1.0.0
    a. Suscripción.
    b. Reporte.
 
-4. Footer:
+=================
+
+4. PágniaEmpresa:
+   a. Centrar img grande
+
+5. Footer:
    a. Enlaces
 
-5. Responsive:
+6. Responsive:
    5.1. Home: portfolio + hero
    5.2 Página Negocio
 
-6. Subir a la Web
+7. Subir a la Web
 
 ==================
 
