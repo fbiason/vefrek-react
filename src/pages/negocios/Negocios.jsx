@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./negocios.css";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
-import CardNegocio2 from "../../components/CardNegocio2";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import CardNegocio2 from "../../components/CardNegocio2";
 
 const Negocios = () => {
   const [filter, setFilter] = useState("all");
@@ -94,57 +94,56 @@ const Negocios = () => {
   };
 
   return (
-    <section id="portfolio">
-      <div data-aos="fade-up">
-        <div className="section-title container">
-          <h2>Encontra lo que tu vehículo necesita</h2>
-          <p>Negocios recomendados</p>
+    <div
+      className="container text-center text-lg-start my-5 hero"
+      data-aos="fade-up"
+    >
+      <div className="row gx-lg-5 mb-5">
+        <h5>Encontra lo que tu vehículo necesita</h5>
+        <h1>Negocios recomendados</h1>
+      </div>
+
+      <div className="row filter-row">
+        <div className="col filter-hero justify-center mb-4 ">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`filter-button mt-2 mr-2 filter-button-default ${
+                filter === category.toLowerCase() ? "filter-button-active" : ""
+              }`}
+              onClick={() => applyFilter(category.toLowerCase())}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        <div className="container mx-auto">
-          <div className="flex justify-center mb-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`filter-button mr-2 filter-button-default ${
-                  filter === category.toLowerCase()
-                    ? "filter-button-active"
-                    : ""
-                }`}
-                onClick={() => applyFilter(category.toLowerCase())}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`filter ${
-                  filter === "all" ? "" : `filter-${filter}`
-                } hover:opacity-80 transition duration-300 ease-in-out`}
-              >
-                <img
-                  src={image}
-                  alt={`Image ${index + 1}`}
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          className="row cards-row justify-content-center text-center mt-5"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          {data}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`filter ${
+                filter === "all" ? "" : `filter-${filter}`
+              } hover:opacity-80 transition duration-300 ease-in-out`}
+            >
+              <img
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="w-full h-full object-cover rounded"
+              />
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+
+      <div
+        className="row cards-row justify-content-center text-center mt-5"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        {data}
+      </div>
+    </div>
   );
 };
 
