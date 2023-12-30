@@ -41,7 +41,7 @@ const PaginaEmpresa = () => {
   }, []);
 
   const { showSpinner } = useContext(SpinnerContext);
-  const { id } = useParams();
+  const { name } = useParams();
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
   const [imagenes, setImagenes] = useState([]);
   const [companyData, setCompanyData] = useState({
@@ -78,7 +78,7 @@ const PaginaEmpresa = () => {
 
   const find = async () => {
     showSpinner(true);
-    const response = await findCompany("_id", id, "");
+    const response = await findCompany("name", name, "");
     if (response.success && response.companyData) {
       const companyData = response.companyData;
       const imagesUrlsArr = companyData.images.images.map(

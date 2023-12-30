@@ -44,13 +44,14 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/:name" element={<PaginaEmpresa />} />
           <Route path="/login" element={<LoginApp />} />
           {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
           <Route path="/Publicacion" element={<Publicacion />} />
           {userData.isLogged && (
             <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
           )}
-          <Route path="/PaginaEmpresa/:id" element={<PaginaEmpresa />} />
+          {/* <Route path="/PaginaEmpresa/:id" element={<PaginaEmpresa />} /> */}
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
