@@ -19,6 +19,7 @@ import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./pages/dropdown/Dropdown";
 import Prueba from "./pages/prueba/Prueba";
+import EditarEmpresa from "./pages/editar-empresa/EditarEmpresa";
 
 function App() {
   const { updateUserData, setShow, userData } = useContext(UserContext);
@@ -57,6 +58,7 @@ function App() {
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Prueba" element={<Prueba />} />
+          <Route path="/EditarEmpresa" element={<EditarEmpresa />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />

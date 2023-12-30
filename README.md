@@ -2,20 +2,19 @@ Vefrek 1.0.0
 
 Biason:
 
-1. Crear componente con una fila de una tabla, ver paint
-2. Página empresa: sacar Reseña
-3. Página empresa: Hacerlo responsive
-4. Página empresa: Centrar img grande
-5. Home-Portfolio: Cambiar el CSS
-6. Footer: Enlaces
-7. Home Responsive
+6. Página empresa: sacar Reseña
+7. Página empresa: Hacerlo responsive
+8. Página empresa: Centrar img grande
+9. Home-Portfolio: Cambiar el CSS
+10. Footer: Enlaces
+11. Home Responsive
 
 Ariel:
 
-1. Mails: Suscripción.
-2. Mails: Reporte.
-3. Campo Name, que se pueda repetir.
-4. Editar Anuncios
+4. Mails: Suscripción.
+5. Mails: Reporte.
+6. Campo Name, que se pueda repetir.
+7. Editar Anuncios
 
 =================
 
