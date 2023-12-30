@@ -2,22 +2,17 @@ Vefrek 1.0.0
 
 Biason:
 
-5. Página empresa: sacar Reseña
-6. Página empresa: Hacerlo responsive
-7. Página empresa: Centrar img grande
-8. Footer: Enlaces
-9. Home Responsive
+1. Footer: Enlaces
+2. Home Responsive
 
 Ariel:
 
-4. Mails: Suscripción.
-5. Mails: Reporte.
-6. Campo Name, que se pueda repetir.
-7. Editar Anuncios
-
-=================
-
-Subir a la Web
+1. Mails: Suscripción.
+2. Mails: Reporte.
+3. Campo Name, que se pueda repetir.
+4. Vincular Mps con Direccion
+5. Editar Anuncios
+6. Subir a la Web
 
 ==================
 

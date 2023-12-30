@@ -146,7 +146,7 @@ const PaginaEmpresa = () => {
       <div>
         <div className="row">
           {/* Columna 1 - Imágenes de la empresa */}
-          <div className="col-md-8">
+          <div className="col-md-8 col-sm-6">
             {/* Fila 1 */}
             <div className="row">
               <div className="col-md-12">
@@ -184,11 +184,11 @@ const PaginaEmpresa = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-5 gap-4 col-md-12 col-sm-6">
+                    <div className="grid grid-cols-5 gap-4 col-md-12 col-sm-6 ">
                       {Array.from({ length: 5 }, (_, index) => (
                         <div key={index}>
                           <img
-                            className={`h-72 w-128 cursor-pointer  ${
+                            className={`h-72 w-128 cursor-pointer ${
                               imagenSeleccionada === index + 1
                                 ? "imagen-seleccionada"
                                 : ""
@@ -221,7 +221,7 @@ const PaginaEmpresa = () => {
             </div>
 
             {/* Fila 3 */}
-            <div className="row">
+            {/* <div className="row">
               <div className="col-md-12">
                 <div className="perfil-card-element1 mt-3 card-empresa ">
                   <div className="reseña-container">
@@ -254,7 +254,7 @@ const PaginaEmpresa = () => {
                   </div>
                 </div>
               </div>
-            </div>
+                          </div> */}
           </div>
 
           {/* Columna 2 - Ubicación y Redes Sociales */}

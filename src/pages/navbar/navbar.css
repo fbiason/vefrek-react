@@ -187,6 +187,12 @@ ul li {
 }
 .scrollto {
   cursor: pointer;
+  color: white;
+  font-weight: 600;
+}
+
+.scrollto:hover {
+  color: #14ba75;
 }
 /*====== RESPONSIVE ======*/
 
