@@ -11,9 +11,11 @@ const Pcc = () => {
             Te brindamos la posibilidad de difundir más a tu negocio e
             incrementar el alcance de los vehículos que publiques para la venta
           </p>
-          <a className="ppc-btn" href="#">
-            PUBLICITÁ AHORA
-          </a>
+          <Link to="/publicacion">
+            <a className="ppc-btn" href="#">
+              PUBLICITÁ AHORA
+            </a>
+          </Link>
         </div>
       </div>
     </section>
