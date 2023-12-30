@@ -29,8 +29,12 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="dropdown-container">
-      <button onClick={toggleDropdown} className="dropdown-button">
+    <div
+      className="dropdown-container"
+      onClick={toggleDropdown}
+      onMouseLeave={toggleDropdown}
+    >
+      <button className="dropdown-button">
         <i className="fas fa-user-circle text-start" /> Perfil
       </button>
       {isOpen && (

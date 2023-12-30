@@ -1,37 +1,33 @@
 Vefrek 1.0.0
 
-1. PágniaEmpresa:
-   a. Reseña, Calificación, Comentarios.
+Biason:
 
-2. Home-Portfolio:
-   a. Cargar las cards2.
+1. Crear componente con una fila de una tabla, ver paint
+2. Página empresa: sacar Reseña
+3. Página empresa: Hacerlo responsive
+4. Página empresa: Centrar img grande
+5. Home-Portfolio: Cambiar el CSS
+6. Footer: Enlaces
+7. Home Responsive
 
-3. Mails:
-   a. Suscripción.
-   b. Reporte.
+Ariel:
+
+1. Mails: Suscripción.
+2. Mails: Reporte.
+3. Campo Name, que se pueda repetir.
+4. Editar Anuncios
 
 =================
 
-4. PágniaEmpresa:
-   a. Centrar img grande
-
-5. Footer:
-   a. Enlaces
-
-6. Responsive:
-   5.1. Home: portfolio + hero
-   5.2 Página Negocio
-
-7. Subir a la Web
+Subir a la Web
 
 ==================
 
 FASE 2:
 
-- PaginaNegocio: horarios
+- PaginaNegocio: Horarios
 - Categorías: Faviritos
 - Dashboard
-- Home: ubicación tiempo actual para los Negocios Recomendaos
+- Home: ubicación dinámica tiempo actual para los Negocios Recomendaos
+- Reseña, Calificación, Comentarios.
 - SEO
-
-=================
