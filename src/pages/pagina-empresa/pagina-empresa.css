@@ -1,23 +1,17 @@
-.pagina-empresa-container {
-  display: flex;
-  justify-content: space-between;
-
-  margin: 2rem;
+.image-container {
+  width: 720px;
+  height: 360px;
 }
 
-.column-1 {
-  flex: 1;
-  max-width: 70%;
+.first-image-carousel {
+  display: block;
+  margin: 0 auto; /* Esto centrará la imagen horizontalmente */
 }
 
-.column-1 .perfil-card {
-  flex-basis: 100%;
-}
-
-.logo-container {
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logo-container img {
@@ -51,11 +45,6 @@
   gap: 20px;
 }
 
-.logo-container {
-  flex: 1;
-  text-align: start;
-}
-
 .nombre-slogan-container {
   flex: 4;
   text-align: start;
@@ -86,13 +75,6 @@
   border-radius: 8px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.card-empresa {
-  background-color: rgb(186, 185, 185);
-  padding: 2rem;
-  margin: 2rem;
-  border-radius: 2rem;
 }
 
 .img-negocio img {
@@ -146,4 +128,19 @@
   width: 430px;
   height: 250px;
   border: 0;
+}
+
+@media (max-width: 768px) {
+  .column-1 {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .imagen-seleccionada {
+    transform: scale(1); /* O ajusta según sea necesario */
+    border: none; /* O ajusta según sea necesario */
+    box-shadow: none; /* O ajusta según sea necesario */
+  }
 }
