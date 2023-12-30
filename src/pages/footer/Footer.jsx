@@ -72,12 +72,13 @@ const Footer = () => {
               <h4 className="text-start">Links útiles</h4>
               <ul>
                 <li>
+                  {" "}
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Servicios</a>
+                  <a href="#contact">Contacto</a>{" "}
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Nosotros</a>
+                  <a href="#about">Nosotros</a>
                 </li>
                 <li>
                   {" "}

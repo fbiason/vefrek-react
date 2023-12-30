@@ -2,16 +2,20 @@ Vefrek 1.0.0
 
 Biason:
 
-1. Footer: Enlaces
-2. Home Responsive
+2. Home Responsive:
+   b. Valores
+   c. Portfolio
+1. Footer Enlaces:
+   a. Politica Privacidad
+   b. Enlaces más usados
 
 Ariel:
 
-1. Mails: Suscripción.
-2. Mails: Reporte.
-3. Campo Name, que se pueda repetir.
-4. Vincular Mps con Direccion
-5. Editar Anuncios
+1. Mails: Suscripción + reporte
+2. Campo Name que se pueda repetir.
+3. Vincular Maps con Direccion
+4. Editar Anuncios
+5. Buscador controlar
 6. Subir a la Web
 
 ==================
