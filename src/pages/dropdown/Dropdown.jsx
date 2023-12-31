@@ -50,7 +50,7 @@ const Dropdown = () => {
               <i className="fas fa-bullhorn" /> Mis anuncios
             </p>{" "}
           </Link>
-          <Link className="link-dropdown" to="/">
+          <Link className="link-dropdown" to="/" onClick={exit}>
             {" "}
             <p className=" text-start">
               <i className="fas fa-sign-out-alt" /> Logout
