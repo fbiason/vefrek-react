@@ -7,7 +7,10 @@ Ariel:
 3. Vincular Maps con Direccion
 4. Editar Anuncios
 5. Buscador controlar
-6. Subir a la Web
+
+==================
+
+Subir a la Web
 
 ==================
 
@@ -19,3 +22,4 @@ FASE 2:
 - Home: ubicación dinámica tiempo actual para los Negocios Recomendaos
 - Reseña, Calificación, Comentarios.
 - SEO
+- Vincular con Google Search
