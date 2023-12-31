@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { useParams } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
@@ -11,8 +10,7 @@ import { SpinnerContext } from "../../context/spinnerContext";
 
 const PaginaEmpresa = () => {
     const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
-    const [location, setLocation] = useState({ lat: 0, lng: 0 });
-    const [error, setError] = useState(null);
+    const [map, setMap] = useState(null);
 
     const getLocationFromAddress = async (address) => {
         try {
@@ -28,10 +26,21 @@ const PaginaEmpresa = () => {
 
             const data = await response.json();
             const { lat, lng } = data.results[0].geometry.location;
-            setLocation({ lat, lng });
+            const url = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${lat},${lng}&maptype=roadmap`
+            setMap(
+                <iframe
+                    title="map"
+                    src={url}
+                    width="100%"
+                    height={400}
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+            )
         } catch (error) {
             console.error("Error al obtener las coordenadas:", error);
-            setError("No se pudo obtener la ubicación. Verifica la dirección.");
         }
     };
 
@@ -116,7 +125,7 @@ const PaginaEmpresa = () => {
                     opening: "",
                     closing: "",
                 },
-            });
+            });            
             getLocationFromAddress(`${companyData.location},${companyData.city},${companyData.state}`);
         } else if (response.success && !response.companyData) {
             swalPopUp("Ops", response.message, "warning");
@@ -260,19 +269,7 @@ const PaginaEmpresa = () => {
                         <div className="perfil-card-element2 card-empresa h-100">
                             <div className="column-2 flex-grow-1">
                                 <div className="ubicacion-container">
-                                    <LoadScript googleMapsApiKey={apiKey}>
-                                        <GoogleMap
-                                            mapContainerStyle={{ width: "100%", height: "400px" }}
-                                            center={location}
-                                            zoom={15}
-                                        >
-                                            {error ? (
-                                                <div>{error}</div>
-                                            ) : (
-                                                <Marker position={location} />
-                                            )}
-                                        </GoogleMap>
-                                    </LoadScript>
+                                    {map}
                                 </div>
                                 <div className="telefono-container mt-5">
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
