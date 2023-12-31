@@ -3,10 +3,8 @@ Vefrek 1.0.0
 Ariel:
 
 1. Mails: Suscripción + reporte
-2. Campo Name que se pueda repetir.
-3. Vincular Maps con Direccion
-4. Editar Anuncios
-5. Buscador controlar
+2. Editar Anuncios
+3. Buscador controlar
 
 ==================
 
