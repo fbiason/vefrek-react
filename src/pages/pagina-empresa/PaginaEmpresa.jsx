@@ -20,10 +20,6 @@ const PaginaEmpresa = () => {
                 )}&key=${apiKey}`
             );
 
-            if (!response.ok) {
-                throw new Error("Error al obtener las coordenadas");
-            }
-
             const data = await response.json();
             const { lat, lng } = data.results[0].geometry.location;
             const url = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${lat},${lng}&maptype=roadmap`
@@ -43,10 +39,6 @@ const PaginaEmpresa = () => {
             console.error("Error al obtener las coordenadas:", error);
         }
     };
-
-    useEffect(() => {
-        getLocationFromAddress();
-    }, []);
 
     const { showSpinner } = useContext(SpinnerContext);
     const { name } = useParams();
