@@ -3,7 +3,9 @@ export const isLogged = async () => {
         if (process.env.REACT_APP_API_URL) {
             const respJSON = await fetch(`${process.env.REACT_APP_API_URL}api/islogged`, {
                 method: "GET",
-                credentials: "include",
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`,
+                }
             })
             const respOBJ = await respJSON.json();
             if (respOBJ.userData) {

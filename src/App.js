@@ -18,54 +18,54 @@ import Venta from "./pages/venta/Venta";
 import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./pages/dropdown/Dropdown";
-import Prueba from "./pages/prueba/Prueba";
 import EditarEmpresa from "./pages/editar-empresa/EditarEmpresa";
 import Contacto from "./pages/contacto/Contacto";
+import LoginUser from "./pages/loginUser/LoginUser";
 
 function App() {
-  const { updateUserData, setShow, userData } = useContext(UserContext);
-  const { spinner } = useContext(SpinnerContext);
+	const { updateUserData, setShow, userData } = useContext(UserContext);
+	const { spinner } = useContext(SpinnerContext);
 
-  useEffect(() => {
-    const verifiLog = async () => {
-      const response = await isLogged();
-      if (response.userData) {
-        updateUserData(response.userData);
-      } else {
-        updateUserData({ email: "", name: "", isLogged: false });
-      }
-      setShow(true);
-    };
-    verifiLog();
-  }, []);
+	useEffect(() => {
+		const verifiLog = async () => {
+			const response = await isLogged();
+			if (response.userData) {
+				updateUserData(response.userData);
+			} else {
+				updateUserData({ email: "", name: "", isLogged: false });
+			}
+			setShow(true);
+		};
+		verifiLog();
+	}, []);
 
-  return (
-    <BrowserRouter>
-      <NextUIProvider>
-        {spinner}
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:name" element={<PaginaEmpresa />} />
-          <Route path="/login" element={<LoginApp />} />
-          {userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
-          <Route path="/Publicacion" element={<Publicacion />} />
-          {userData.isLogged && (
-            <Route path="/CargaEmpresa" element={<CargaEmpresa />} />
-          )}
-          {/* <Route path="/PaginaEmpresa/:id" element={<PaginaEmpresa />} /> */}
-          <Route path="/Reparacion" element={<Reparacion />} />
-          <Route path="/Venta" element={<Venta />} />
-          <Route path="/OtrosServicios" element={<OtrosServicios />} />
-          <Route path="/Dropdown" element={<Dropdown />} />
-          <Route path="/Contacto" element={<Contacto />} />
-          <Route path="/EditarEmpresa" element={<EditarEmpresa />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
-      </NextUIProvider>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<NextUIProvider>
+				{spinner}
+				<NavBar />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/:name" element={<PaginaEmpresa />} />
+					<Route path="/login" element={<LoginApp />} />
+					{userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
+					<Route path="/Publicacion" element={<Publicacion />} />
+					{userData.isLogged && (
+						<Route path="/CargaEmpresa" element={<CargaEmpresa />} />
+					)}
+					<Route path="/loginuser/:token?" element={<LoginUser />} />
+					<Route path="/Reparacion" element={<Reparacion />} />
+					<Route path="/Venta" element={<Venta />} />
+					<Route path="/OtrosServicios" element={<OtrosServicios />} />
+					<Route path="/Dropdown" element={<Dropdown />} />
+					<Route path="/Contacto" element={<Contacto />} />
+					<Route path="/EditarEmpresa" element={<EditarEmpresa />} />
+					<Route path="*" element={<Navigate to="/" />} />
+				</Routes>
+				<Footer />
+			</NextUIProvider>
+		</BrowserRouter>
+	);
 }
 
 export default App;

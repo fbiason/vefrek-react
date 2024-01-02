@@ -4,7 +4,9 @@ export const updateUser = async (userData) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updateuser`, {
             method: 'put',
             body: userData,
-            credentials: "include"
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
@@ -17,7 +19,9 @@ export const findUser = async (field, value, fieldsSelected) => {
     try {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/finduser?field=${field}&value=${value}&fieldsSelected=${fieldsSelected}`, {
             method: 'get',
-            credentials: "include"
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, userData: responseOBJ.userData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
@@ -34,9 +38,9 @@ export const findCompany = async (field, value, fieldsSelected) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompany?field=${field}&value=${value}&fieldsSelected=${fieldsSelected}`, {
             method: 'get',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
-            credentials: "include"
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, companyData: responseOBJ.userData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
@@ -51,9 +55,9 @@ export const findCompanys = async (query, fieldsSelected) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys?query=${query}&fieldsSelected=${fieldsSelected}`, {
             method: 'get',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
-            credentials: "include"
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, companysData: responseOBJ.companysData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
@@ -68,7 +72,7 @@ export const addCompany = async (companyData) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/addcompany`, {
             method: 'post',
             body: companyData,
-            credentials: "include"
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
@@ -83,10 +87,10 @@ export const updateCompany = async (companyData) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompany`, {
             method: 'put',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify(companyData),
-            credentials: "include"
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };

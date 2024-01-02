@@ -1,31 +1,21 @@
 import { useState, useContext } from "react";
 import "./dropdown.css";
 import { Link } from "react-router-dom";
-import { logOut } from "../../utils/auth/logOut";
 import { swalPopUp } from "../../utils/swal";
-import { SpinnerContext } from "../../context/spinnerContext";
 import { UserContext } from "../../context/userContext";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { showSpinner } = useContext(SpinnerContext);
   const { updateUserData } = useContext(UserContext);
 
   const toggleDropdown = () => {
-    console.log("Toggle dropdown");
     setIsOpen(!isOpen);
   };
 
   const exit = async () => {
-    showSpinner(true);
-    const response = await logOut();
-    showSpinner(false);
-    if (response.userData) {
-      updateUserData(response.userData);
-      swalPopUp("Sesión cerrada", response.message, "success");
-    } else {
-      swalPopUp("Error al cerrar sesión", response.message, "error");
-    }
+    localStorage.setItem("token", "");
+    updateUserData({ email: "", name: "", isLogged: false });
+    swalPopUp("LogOut", "Cierre de sesión exitoso", "success");
   };
 
   return (
