@@ -1,11 +1,5 @@
 Vefrek 1.0.0
 
-1. Mails: Suscripción + reporte
-2. Editar Anuncios
-3. Buscador controlar
-
-==================
-
 FASE 2:
 
 - PaginaNegocio: Horarios
