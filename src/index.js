@@ -10,7 +10,7 @@ root.render(
   <SpinnerProvider>
     <UserProvider>
       {/*<React.StrictMode>*/}
-      <App />
+      <App /> 
       {/* </React.StrictMode>*/}
     </UserProvider>
   </SpinnerProvider>
