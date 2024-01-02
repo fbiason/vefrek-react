@@ -72,7 +72,9 @@ export const addCompany = async (companyData) => {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/addcompany`, {
             method: 'post',
             body: companyData,
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };

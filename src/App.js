@@ -37,6 +37,7 @@ function App() {
 			setShow(true);
 		};
 		verifiLog();
+		// eslint-disable-next-line
 	}, []);
 
 	return (
@@ -53,7 +54,7 @@ function App() {
 					{userData.isLogged && (
 						<Route path="/CargaEmpresa" element={<CargaEmpresa />} />
 					)}
-					<Route path="/loginuser/:token?" element={<LoginUser />} />
+					{!userData.isLogged && <Route path="/loginuser/:token?" element={<LoginUser />} />}
 					<Route path="/Reparacion" element={<Reparacion />} />
 					<Route path="/Venta" element={<Venta />} />
 					<Route path="/OtrosServicios" element={<OtrosServicios />} />
