@@ -1,5 +1,6 @@
 on: push
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -7,6 +8,7 @@ jobs:
     steps:
       - name: Configurar CI a false
         run: echo "CI=false" >> $GITHUB_ENV
+
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
