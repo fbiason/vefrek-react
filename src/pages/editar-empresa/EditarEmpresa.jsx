@@ -29,34 +29,37 @@ const EditarEmpresa = () => {
   };
 
   return (
-    <div className="editar-empresa-container">
-      <div className="card-editar-empresa">
-        <div className="row-editar-empresa">
-          <div className="col-editar-empresa">
-            <span>{companyData.name}</span>
+    <section className="background">
+      {" "}
+      <div className="editar-empresa-container">
+        <div className="card-editar-empresa">
+          <div className="row-editar-empresa">
+            <div className="col-editar-empresa">
+              <span>{companyData.name}</span>
+            </div>
+            <div className="col-editar-empresa">
+              <span>{companyData.url}</span>
+            </div>
+            <div className="col-editar-empresa">
+              <span role="img" aria-label="Editar">
+                ✏️ Editar
+              </span>
+            </div>
+            <div className="col-editar-empresa">
+              <span role="img" aria-label="Pausar">
+                ⏸️ Pausar
+              </span>
+            </div>
+            <div className="col-editar-empresa">
+              <span role="img" aria-label="Eliminar">
+                🗑️ Eliminar
+              </span>
+            </div>
           </div>
-          <div className="col-editar-empresa">
-            <span>{companyData.url}</span>
-          </div>
-          <div className="col-editar-empresa">
-            <span role="img" aria-label="Editar">
-              ✏️ Editar
-            </span>
-          </div>
-          <div className="col-editar-empresa">
-            <span role="img" aria-label="Pausar">
-              ⏸️ Pausar
-            </span>
-          </div>
-          <div className="col-editar-empresa">
-            <span role="img" aria-label="Eliminar">
-              🗑️ Eliminar
-            </span>
-          </div>
+          <hr style={{ borderColor: "red" }} />
         </div>
-        <hr style={{ borderColor: "red" }} />
       </div>
-    </div>
+    </section>
   );
 };
 
