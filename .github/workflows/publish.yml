@@ -1,0 +1,28 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: "82.180.172.105"
+          username: "u168381280"
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: "./build/" # Asegúrate de que este directorio coincida con el directorio de construcción de tu proyecto React
+          server-dir: "/public_html/" # El directorio en tu servidor de Hostinger donde deseas desplegar los archivos

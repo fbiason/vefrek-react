@@ -6,10 +6,6 @@ Vefrek 1.0.0
 
 ==================
 
-Subir a la Web
-
-==================
-
 FASE 2:
 
 - PaginaNegocio: Horarios
