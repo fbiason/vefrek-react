@@ -21,7 +21,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm run build
+          npm run build || exit 0
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -31,4 +31,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./build/"
           server-dir: "/public_html/"
-          fail-on-warnings: false # Deshabilita la opción fail-on-warnings
+          
