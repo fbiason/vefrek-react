@@ -8,4 +8,4 @@ FASE 2:
 - Home: ubicación dinámica tiempo actual para los Negocios Recomendaos
 - Reseña, Calificación, Comentarios.
 - SEO
-- Vincular con Google Search
+- Vincular con Google Search 
