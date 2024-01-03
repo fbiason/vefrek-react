@@ -6,6 +6,8 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Configurar CI a false
+        run: echo "CI=false" >> $GITHUB_ENV
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
