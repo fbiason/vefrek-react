@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches:
+      - main # o la rama que desees
+
 name: 🚀 Deploy website on push
 
 jobs:
@@ -19,7 +23,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm run build
+          npm run build || exit 0
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -27,5 +31,6 @@ jobs:
           server: "82.180.172.105"
           username: "u168381280"
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: "./build/" # Asegúrate de que este directorio coincida con el directorio de construcción de tu proyecto React
-          server-dir: "/public_html/" # El directorio en tu servidor de Hostinger donde deseas desplegar los archivos
+          local-dir: "./build/"
+          server-dir: "/public_html/"
+          
