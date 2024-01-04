@@ -5,6 +5,9 @@ on:
 
 name: 🚀 Deploy website on push
 
+env:
+  CI: false
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
