@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import "./editar-empresa.css";
+import "./misEmpresas.css";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
+import { Link } from "react-router-dom";
 
-const EditarEmpresa = () => {
+const MisEmpresas = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const [companysData, setCompanysData] = useState([]);
     const { userData } = useContext(UserContext);
@@ -23,11 +24,11 @@ const EditarEmpresa = () => {
                     <div className="col-editar-empresa">
                         <span>{company.location}</span>
                     </div>
-                    <div className="col-editar-empresa">
+                    <Link to={`/EditarEmpresa/${company._id}`} className="col-editar-empresa">
                         <span role="img" aria-label="Editar">
                             ✏️ Editar
                         </span>
-                    </div>
+                    </Link>
                     <div className="col-editar-empresa">
                         <span role="img" aria-label="Pausar">
                             ⏸️ Pausar
@@ -67,4 +68,4 @@ const EditarEmpresa = () => {
     );
 };
 
-export default EditarEmpresa;
+export default MisEmpresas;

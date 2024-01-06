@@ -83,16 +83,15 @@ export const addCompany = async (companyData) => {
     }
 }
 
-export const updateCompany = async (companyData) => {
+export const updateCompany = async (id, companyData) => {
 
     try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompany`, {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompany?id=${id}`, {
             method: 'put',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
-            body: JSON.stringify(companyData),
+            body: companyData,
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };

@@ -1,15 +1,17 @@
+import "./editarEmpresa.css";
 import React, { useState, useRef, useEffect } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import "./carga-empresa.css";
-import "./carga-empresa2.css";
-import { addCompany } from "../../utils/apiDb/apiDbAcions";
+import { updateCompany, findCompany } from "../../utils/apiDb/apiDbAcions";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { useParams } from "react-router-dom";
 
-const CargaEmpresa = () => {
+
+export default function EditarEmpresa() {
+    const {id} = useParams();
     const { userData } = useContext(UserContext);
     const formRef = useRef();
     const { showSpinner } = useContext(SpinnerContext);
@@ -49,6 +51,8 @@ const CargaEmpresa = () => {
         },
         logo_image_name: "",
         images_names: "",
+        logo_image_url: "",
+        images_urls_arr: [],
     });
 
     const handleChange = (e) => {
@@ -140,24 +144,68 @@ const CargaEmpresa = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        formRef.current.registeremail = userData.email;
         const companyData = formRef.current;
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
-        const lofoFile = document.querySelector(".company_logo_file").files[0];
-        completeData.append("files", lofoFile);
+        const logoFile = document.querySelector(".company_logo_file").files[0];
+        completeData.append("logo", logoFile);
         const files = document.querySelector(".company_images_files").files;
         for (const file of files) {
-            completeData.append("files", file);
+            completeData.append("images", file);
         }
         showSpinner(true);
-        const response = await addCompany(completeData);
+        const response = await updateCompany(id, completeData);
         response.success
             ? swalPopUp("Tarea completada", response.message, "success")
             : swalPopUp("Error", response.message, "error");
         showSpinner(false);
-        // console.log("Datos del formulario:", formData);
     };
+
+    const find = async () => {
+        const response = await findCompany("registeremail", userData.email, "");
+        const companyData = response.companyData;
+        setFormData({
+            name: companyData.name,
+            slogan: companyData.slogan,
+            location: companyData.location,
+            city: companyData.city,
+            state: companyData.state,
+            postal_code: companyData.postal_code,
+            phone: companyData.phone,
+            phone2: companyData.phone2,
+            website: companyData.website,
+            vefrek_website: companyData.vefrek_website,
+            category: companyData.category,
+            closing: companyData.schedule.closing,
+            social: {
+                email: companyData.social.email,
+                whatsapp: companyData.social.whatsapp,
+                facebook: companyData.social.facebook,
+                instagram: companyData.social.instagram,
+                x: companyData.social.x,
+                linkedin: companyData.social.linkedin,
+                tiktok: companyData.social.tiktok,
+                youtube: companyData.social.youtube,
+            },
+            description: companyData.description,
+            opening: companyData.schedule.opening,
+            email_notifications: {
+                comments: companyData.email_notifications.comments,
+                news: companyData.email_notifications.news,
+            },
+            sms_notifications: {
+                all: companyData.sms_notifications.all,
+                same_email:  companyData.sms_notifications.same_email,
+                none:  companyData.sms_notifications.none,
+            },
+            logo_image_url: companyData.images.logo.url,
+            images_urls_arr: companyData.images.images.map((data) => data.url),
+        })
+    }
+
+    useEffect(() => {
+       find()
+    }, []);
 
     return (
         <section className="background">
@@ -168,7 +216,7 @@ const CargaEmpresa = () => {
                 >
                     <div className="border-b border-gray-900/10 pb-12">
                         <h1 className="font-semibold leading-7 text-gray-900 mt-3">
-                            Carga de negocio
+                            Edición de negocio
                         </h1>
                         <p className="mt-5 text-sm leading-6 text-gray-600">
                             Si es propietario de un negocio referido al rubro automotor puede
@@ -611,16 +659,21 @@ const CargaEmpresa = () => {
                                 <i className="obligatorio">* </i>Logo de su empresa
                             </label>
                             <div className="mt-2 flex items-center gap-x-3">
+
+                                {formData.logo_image_url ? 
+                                <img src={formData.logo_image_url} alt="Logo" className="editarEmpresa_logo"/> :               
                                 <UserCircleIcon
                                     className="h-12 w-12 text-gray-300"
                                     aria-hidden="true"
                                 />
+                                }     
+
                                 <button
                                     onClick={loadFile}
                                     type="button"
                                     className="button-small rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                                 >
-                                    Cargar
+                                    Cambiar
                                 </button>
                                 <input
                                     onChange={handleFileChange}
@@ -672,6 +725,20 @@ const CargaEmpresa = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="editarEmpresa_imagenes_cont flex wrap">
+                            {
+                                formData.images_urls_arr.length > 0  ?
+                                formData.images_urls_arr.map((imgUrl) =>
+                                <div className="editarEmpresa_imagen_cont">
+                                    <img src={imgUrl} alt="Imágenes empresa" className="editarEmpresa_imagen" />
+                                    <img src="/images/icons/delete.png" alt="Delete" className="editarEmpresa_delete_icon" />
+                                </div>)
+                                :
+                                <></>
+                            }
+                        </div>        
+
                         <div className="mt-5">
                             <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
                                 *Campos obligatorios
@@ -811,6 +878,4 @@ const CargaEmpresa = () => {
             </div>
         </section>
     );
-};
-
-export default CargaEmpresa;
+}
