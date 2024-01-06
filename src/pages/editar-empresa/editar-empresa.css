@@ -10,17 +10,22 @@
   border-radius: 12px;
   padding: 20px;
   margin: 20px;
-  height: 50%;
+  height: fit-content;
   width: 80%;
   background-color: gray;
   color: white;
+}
+
+.card-editar-empresa div.row-editar-empresa:first-child {
+  border-top: 1px solid lightgray;
 }
 
 .row-editar-empresa {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid lightgray;
 }
 
 .col-editar-empresa {
