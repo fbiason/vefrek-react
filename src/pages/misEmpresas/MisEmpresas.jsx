@@ -43,7 +43,7 @@ const MisEmpresas = () => {
             );
             setCompanysData(companysDataJSX);
         } else if (response.success && !response.companysData) {
-            swalPopUp("Ops", response.message, "warning");
+            swalPopUp("Ops!", "No tienes empresas cargadas. Selecciona la opción 'Publicar Ahora' para cargar tu empresa", "info");
             showSpinner(false);
             // window.location = "/";
         } else {
@@ -54,6 +54,7 @@ const MisEmpresas = () => {
 
     useEffect(() => {
         if(userData.email) find();
+    // eslint-disable-next-line
     }, [userData.email]);
 
     return (
