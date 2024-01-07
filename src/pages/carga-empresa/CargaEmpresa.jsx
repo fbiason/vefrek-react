@@ -156,7 +156,6 @@ const CargaEmpresa = () => {
             ? swalPopUp("Tarea completada", response.message, "success")
             : swalPopUp("Error", response.message, "error");
         showSpinner(false);
-        // console.log("Datos del formulario:", formData);
     };
 
     return (
