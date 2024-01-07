@@ -11,6 +11,7 @@ import { UserContext } from "../../context/userContext";
 export default function EditarEmpresa() {
     const {id} = useParams();
     const formRef = useRef(); 
+    const initialData = useRef();
     const { userData } = useContext(UserContext);
     const { showSpinner } = useContext(SpinnerContext);
     const [formData, setFormData] = useState({
@@ -142,6 +143,23 @@ export default function EditarEmpresa() {
         formRef.current = formData;
     }, [formData]);
 
+    const verifyIfHasChanges = (childObject, parentObject) => {
+        let hasChanged = false;
+        const verify = (childObject, parentObject) => {
+            for (const key in childObject) {
+                if (typeof childObject[key] === "object") {
+                    verify(childObject[key], parentObject[key]);
+                } else {
+                    if (childObject[key] !== parentObject[key]) {
+                        hasChanged = true;
+                    }
+                }
+            }
+        }
+        verify(childObject, parentObject);
+        return hasChanged;
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const companyData = formRef.current;
@@ -152,6 +170,11 @@ export default function EditarEmpresa() {
         completeData.append("logo", logoFile);
         const imagesInput = document.querySelector(".company_images_input");
         const imagesFiles = imagesInput.files;
+
+        if (!verifyIfHasChanges(initialData.current, formRef.current) && logoInput.files.length === 0 && imagesInput.files.length === 0) {
+            swalPopUp("Ops!", "No hay cambios para guardar", "warning");
+            return;
+        }    
 
         for (const file of imagesFiles) {
             completeData.append("images", file);
@@ -185,7 +208,7 @@ export default function EditarEmpresa() {
         };
         showSpinner(false);
 
-        setFormData({
+        const auxFormData = {
             registeremail: companyData.registeremail,
             name: companyData.name,
             slogan: companyData.slogan,
@@ -225,7 +248,10 @@ export default function EditarEmpresa() {
                 logo: companyData.images.logo,
                 images: companyData.images.images,
             },
-        });
+        }
+
+        setFormData(structuredClone(auxFormData));
+        initialData.current = structuredClone(auxFormData);
 
         const optionsSelect = document.querySelector(".form_select");
         if (optionsSelect) {
@@ -785,6 +811,7 @@ export default function EditarEmpresa() {
                                     <img 
                                         src="/images/icons/delete.png" 
                                         alt="Delete" 
+                                        title="Eliminar imagen"
                                         className="editarEmpresa_delete_icon" 
                                         onClick={() => deleteImg(data.delete)}
                                     />
