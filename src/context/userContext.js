@@ -6,11 +6,11 @@ const UserProvider = ({children}) => {
     
     const [userData, setUserData] = useState ({email: "", name: "", isLogged: false});
     const [show, setShow] = useState(false);
-     
+
     const updateUserData = (userData) => {
-        setUserData(userData)
+        setUserData(userData);
     }    
-              
+                
     return (      
         <UserContext.Provider value={{userData, updateUserData, setShow, show}}>
             {children}

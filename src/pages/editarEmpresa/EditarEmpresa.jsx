@@ -7,12 +7,11 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
-import NoAutorizado from "../noAutorizado/NoAutorizado";
 
 export default function EditarEmpresa() {
-    const { userData } = useContext(UserContext);
     const {id} = useParams();
-    const formRef = useRef();
+    const formRef = useRef(); 
+    const { userData } = useContext(UserContext);
     const { showSpinner } = useContext(SpinnerContext);
     const [formData, setFormData] = useState({
         name: "",
@@ -148,16 +147,21 @@ export default function EditarEmpresa() {
         const companyData = formRef.current;
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
-        const logoFile = document.querySelector(".company_logo_file").files[0];
+        const logoInput = document.querySelector(".company_logo_input"); 
+        const logoFile = logoInput.files[0];
         completeData.append("logo", logoFile);
-        const files = document.querySelector(".company_images_files").files;
-        for (const file of files) {
+        const imagesInput = document.querySelector(".company_images_input");
+        const imagesFiles = imagesInput.files;
+
+        for (const file of imagesFiles) {
             completeData.append("images", file);
         }
         showSpinner(true);
         const response = await updateCompany(id, completeData);
         if (response.success) {
             find();
+            logoInput.value = "";           //Vaciamos inputs de imagenes
+            imagesInput.value = "";
             swalPopUp("Tarea completada", response.message, "success")
         } else {
             swalPopUp("Error", response.message, "error");
@@ -168,6 +172,15 @@ export default function EditarEmpresa() {
     const find = async () => {
         const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
+               
+        if(companyData && companyData.registeremail !== userData.email) {
+            swalPopUp("Ops!", "No puedes editar esta empresa", "warning");
+            return;
+        } else if (!companyData) {
+            swalPopUp("Ops!", "No se encontro la empresa por su ID", "warning");
+            return;
+        };
+
         setFormData({
             registeremail: companyData.registeremail,
             name: companyData.name,
@@ -181,6 +194,7 @@ export default function EditarEmpresa() {
             website: companyData.website,
             vefrek_website: companyData.vefrek_website,
             category: companyData.category,
+            subcategory: companyData.subcategory,
             closing: companyData.schedule.closing,
             social: {
                 email: companyData.social.email,
@@ -207,14 +221,24 @@ export default function EditarEmpresa() {
                 logo: companyData.images.logo,
                 images: companyData.images.images,
             },
-        })
+        });
+
+        const optionsSelect = document.querySelector(".form_select");
+        if (optionsSelect) {
+            const options = optionsSelect.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value.split(",")[1] && options[i].value.split(",")[1].trim() === companyData.subcategory) {
+                    options[i].selected = true;
+                    break;
+                }
+            }
+        }
     }
 
     useEffect(() => {
-       find()
-    // eslint-disable-next-line
-    }, []);
-
+        if (userData.isLogged) find();
+    }, [userData]);
+       
     const deleteImg = async (deletePath) => {
         try {
             const response = await deleteImageOfFirebase(deletePath);
@@ -230,8 +254,6 @@ export default function EditarEmpresa() {
     }
 
     return (
-        userData.isLogged && formData.registeremail === userData.email ?
-        
         <section className="background">
             <div className="container">
                 <form
@@ -436,9 +458,8 @@ export default function EditarEmpresa() {
                                     </label>
                                     <select
                                         name="category"
-                                        value={formData.category}
                                         onChange={handleCategoryChange}
-                                        className="form-select"
+                                        className="form_select"
                                     >
                                         <option value="" disabled hidden>
                                             <span>Selecciona una categoría</span>
@@ -701,7 +722,7 @@ export default function EditarEmpresa() {
                                 </button>
                                 <input
                                     onChange={handleFileChange}
-                                    className="company_logo_file"
+                                    className="company_logo_input"
                                     type="file"
                                     name="logo_image_name"
                                     accept="image/*"
@@ -729,13 +750,13 @@ export default function EditarEmpresa() {
                                         htmlFor="file-upload"
                                         className="relative cursor-pointer font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 cargar-img"
                                     >
-                                        <span>Cargar imagen </span>
+                                        <span>Cargar imagenes </span>
                                         <input
                                             onChange={handleFilesChange}
                                             id="file-upload"
                                             name="file-upload"
                                             type="file"
-                                            className="sr-only company_images_files"
+                                            className="sr-only company_images_input"
                                             multiple={true}
                                             max={6}
                                         />
@@ -905,8 +926,6 @@ export default function EditarEmpresa() {
                     </div>
                 </form>
             </div>
-        </section> :
-
-        <NoAutorizado/>
+        </section> 
     );
 }
