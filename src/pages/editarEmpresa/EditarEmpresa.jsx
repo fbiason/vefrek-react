@@ -1,18 +1,17 @@
 import "./editarEmpresa.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import { updateCompany, findCompany } from "../../utils/apiDb/apiDbAcions";
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
+import { updateCompany, findCompany, deleteImageOfFirebase } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams } from "react-router-dom";
-
+import { UserContext } from "../../context/userContext";
+import NoAutorizado from "../noAutorizado/NoAutorizado";
 
 export default function EditarEmpresa() {
-    const {id} = useParams();
     const { userData } = useContext(UserContext);
+    const {id} = useParams();
     const formRef = useRef();
     const { showSpinner } = useContext(SpinnerContext);
     const [formData, setFormData] = useState({
@@ -49,10 +48,12 @@ export default function EditarEmpresa() {
             same_email: false,
             none: true,
         },
+        images: {
+            logo: {url: "", delete: ""},
+            images: [],
+        },
         logo_image_name: "",
         images_names: "",
-        logo_image_url: "",
-        images_urls_arr: [],
     });
 
     const handleChange = (e) => {
@@ -155,16 +156,20 @@ export default function EditarEmpresa() {
         }
         showSpinner(true);
         const response = await updateCompany(id, completeData);
-        response.success
-            ? swalPopUp("Tarea completada", response.message, "success")
-            : swalPopUp("Error", response.message, "error");
+        if (response.success) {
+            find();
+            swalPopUp("Tarea completada", response.message, "success")
+        } else {
+            swalPopUp("Error", response.message, "error");
+        }
         showSpinner(false);
     };
 
     const find = async () => {
-        const response = await findCompany("registeremail", userData.email, "");
+        const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
         setFormData({
+            registeremail: companyData.registeremail,
             name: companyData.name,
             slogan: companyData.slogan,
             location: companyData.location,
@@ -198,16 +203,35 @@ export default function EditarEmpresa() {
                 same_email:  companyData.sms_notifications.same_email,
                 none:  companyData.sms_notifications.none,
             },
-            logo_image_url: companyData.images.logo.url,
-            images_urls_arr: companyData.images.images.map((data) => data.url),
+            images: {
+                logo: companyData.images.logo,
+                images: companyData.images.images,
+            },
         })
     }
 
     useEffect(() => {
        find()
+    // eslint-disable-next-line
     }, []);
 
+    const deleteImg = async (deletePath) => {
+        try {
+            const response = await deleteImageOfFirebase(deletePath);
+            if (response.success) {
+                swalPopUp("Tarea completada", response.message);
+                find();
+            } else {
+                swalPopUp("Ops!", response.message, "warning");
+            }   
+        } catch (err) {
+            swalPopUp("Ops!", `Error al eliminar imagen del servidor: ${err.message}`, "error");
+        }
+    }
+
     return (
+        userData.isLogged && formData.registeremail === userData.email ?
+        
         <section className="background">
             <div className="container">
                 <form
@@ -660,8 +684,8 @@ export default function EditarEmpresa() {
                             </label>
                             <div className="mt-2 flex items-center gap-x-3">
 
-                                {formData.logo_image_url ? 
-                                <img src={formData.logo_image_url} alt="Logo" className="editarEmpresa_logo"/> :               
+                                {formData.images.logo.url ? 
+                                <img src={formData.images.logo.url} alt="Logo" className="editarEmpresa_logo"/> :               
                                 <UserCircleIcon
                                     className="h-12 w-12 text-gray-300"
                                     aria-hidden="true"
@@ -728,11 +752,16 @@ export default function EditarEmpresa() {
 
                         <div className="editarEmpresa_imagenes_cont flex wrap">
                             {
-                                formData.images_urls_arr.length > 0  ?
-                                formData.images_urls_arr.map((imgUrl) =>
+                                formData.images.images.length > 0  ?
+                                formData.images.images.map((data) =>
                                 <div className="editarEmpresa_imagen_cont">
-                                    <img src={imgUrl} alt="Imágenes empresa" className="editarEmpresa_imagen" />
-                                    <img src="/images/icons/delete.png" alt="Delete" className="editarEmpresa_delete_icon" />
+                                    <img src={data.url} alt="Imágenes empresa" className="editarEmpresa_imagen" />
+                                    <img 
+                                        src="/images/icons/delete.png" 
+                                        alt="Delete" 
+                                        className="editarEmpresa_delete_icon" 
+                                        onClick={() => deleteImg(data.delete)}
+                                    />
                                 </div>)
                                 :
                                 <></>
@@ -876,6 +905,8 @@ export default function EditarEmpresa() {
                     </div>
                 </form>
             </div>
-        </section>
+        </section> :
+
+        <NoAutorizado/>
     );
 }

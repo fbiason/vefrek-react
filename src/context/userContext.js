@@ -1,8 +1,9 @@
 import { createContext, useState } from 'react';
 
-const UserContext = createContext ({userData: {email: "", name: "", isLogged: false }, updateUserData: () => {}});
+const UserContext = createContext ();
 
 const UserProvider = ({children}) => {
+    
     const [userData, setUserData] = useState ({email: "", name: "", isLogged: false});
     const [show, setShow] = useState(false);
      

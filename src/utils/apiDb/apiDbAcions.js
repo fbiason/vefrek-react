@@ -100,3 +100,14 @@ export const updateCompany = async (id, companyData) => {
     }
 }
 
+export const deleteImageOfFirebase = async (deletePath) => {
+    const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/deleteimage?delete=${deletePath}`, {
+        method: 'delete',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+    const responseOBJ = await responseJSON.json();
+    return responseOBJ;
+}
+

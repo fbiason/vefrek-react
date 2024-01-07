@@ -62,7 +62,7 @@ function App() {
 					<Route path="/Dropdown" element={<Dropdown />} />
 					<Route path="/Contacto" element={<Contacto />} />
 					{userData.isLogged && <Route path="/MisEmpresas" element={<MisEmpresas />} />}
-					{userData.isLogged && <Route path="/EditarEmpresa/:id" element={<EditarEmpresa />} />}
+					<Route path="/EditarEmpresa/:id" element={<EditarEmpresa />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 				<Footer />
