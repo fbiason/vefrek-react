@@ -23,21 +23,22 @@ const Negocios = () => {
         "Est. de Servicios",
         "Estética Automotor",
     ];
-
-    const dbQuerys = [
-        { Todos: { $exists: true } },
-        { Agencias: "Agencia" },
-        { "Rent a Car": "Rent a Car" },
-        { Gomerias: "Gomería" },
-        { Mecánicos: "Taller mecánico" },
-        { Repuestos: "Repuestos" },
-        { Lubricentros: "Lubricentro" },
-        { Aseguradoras: "Aseguradora" },
-        { "Est. de Servicios": "Estación de Servicio" },
-        { "Estética Automotor": "Estética del automotor" },
-    ];
-
+    
     useEffect(() => {
+
+        const dbQuerys = [
+            { Todos: { $exists: true } },
+            { Agencias: "Agencia" },
+            { "Rent a Car": "Rent a Car" },
+            { Gomerias: "Gomería" },
+            { Mecánicos: "Taller mecánico" },
+            { Repuestos: "Repuestos" },
+            { Lubricentros: "Lubricentro" },
+            { Aseguradoras: "Aseguradora" },
+            { "Est. de Servicios": "Estación de Servicio" },
+            { "Estética Automotor": "Estética del automotor" },
+        ];
+
         const setCompanys = async (subcategory) => {
             const queryToAppy = dbQuerys.find(
                 (query) => Object.keys(query)[0] === subcategory
@@ -82,6 +83,7 @@ const Negocios = () => {
                 setCompanys(button.innerHTML);
             });
         });
+    // eslint-disable-next-line
     }, []);
 
     const applyFilter = (newFilter) => {
@@ -121,7 +123,7 @@ const Negocios = () => {
                         >
                             <img
                                 src={image}
-                                alt={`Image ${index + 1}`}
+                                alt={`Im ${index + 1}`}
                                 className="w-full h-full object-cover rounded"
                             />
                         </div>

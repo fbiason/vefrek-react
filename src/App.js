@@ -22,35 +22,29 @@ import MisEmpresas from "./pages/misEmpresas/MisEmpresas";
 import Contacto from "./pages/contacto/Contacto";
 import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
-import { Spinner, BgSpinner } from "./components/spinner/Spinner";
+import { BgSpinner } from "./components/spinner/Spinner";
 import NoAutorizado from "./pages/noAutorizado/NoAutorizado";
 
 function App() {
 	const { updateUserData, setShow, userData } = useContext(UserContext);
 	const { spinner } = useContext(SpinnerContext);
-	const [editCompanyRoute, setEditCompanyRoute] = useState(<Route path="/EditarEmpresa/:id" element={<BgSpinner />} />);
+	const [logging, setLogging] = useState(false);
 
 	useEffect(() => {
 		const verifiLog = async () => {
-			setEditCompanyRoute(<Route path="/EditarEmpresa/:id" element={<BgSpinner />} />);
+			setLogging(true);
 			const response = await isLogged();
 			if (response.userData) {
 				updateUserData(response.userData);
-
-				response.userData.isLogged ? 
-				setEditCompanyRoute(<Route path="/EditarEmpresa/:id" element={<EditarEmpresa />} />) :
-				setEditCompanyRoute(<Route path="/EditarEmpresa/:id" element={<NoAutorizado />} />)
 			} else {
 				updateUserData({ email: "", name: "", isLogged: false });
-				setEditCompanyRoute(<Route path="/EditarEmpresa/:id" element={<NoAutorizado />} />);
 			}
 			setShow(true);
+			setLogging(false);
 		};
 		verifiLog();
 		// eslint-disable-next-line
 	}, []);
-
-	
 
 	return (
 		<BrowserRouter>
@@ -73,7 +67,18 @@ function App() {
 					<Route path="/Dropdown" element={<Dropdown />} />
 					<Route path="/Contacto" element={<Contacto />} />
 					{userData.isLogged && <Route path="/MisEmpresas" element={<MisEmpresas />} />}
-					{editCompanyRoute}
+
+					{
+						(logging
+							&& <Route path="/EditarEmpresa/:id" element={<BgSpinner />} />
+						) ||
+						(!logging &&
+							((userData.isLogged && <Route path="/EditarEmpresa/:id" element={<EditarEmpresa />} />)
+								||
+								(!userData.isLogged && <Route path="/EditarEmpresa/:id" element={<NoAutorizado />} />))
+						)
+					}			
+
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 				<Footer />

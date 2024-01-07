@@ -237,6 +237,7 @@ export default function EditarEmpresa() {
 
     useEffect(() => {
         if (userData.isLogged) find();
+    // eslint-disable-next-line
     }, [userData]);
        
     const deleteImg = async (deletePath) => {
