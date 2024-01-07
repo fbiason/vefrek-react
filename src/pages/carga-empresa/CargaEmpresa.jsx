@@ -364,7 +364,6 @@ const CargaEmpresa = () => {
                                     </label>
                                     <select
                                         name="category"
-                                        value={formData.category}
                                         onChange={handleCategoryChange}
                                         className="form-select"
                                     >
