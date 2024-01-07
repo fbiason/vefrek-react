@@ -53,7 +53,7 @@ function App() {
 				<NavBar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/:name" element={<PaginaEmpresa />} />
+					<Route path="/:vefrek_website" element={<PaginaEmpresa />} />
 					<Route path="/login" element={<LoginApp />} />
 					{userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
 					<Route path="/Publicacion" element={<Publicacion />} />

@@ -32,7 +32,7 @@ const CardNegocio2 = (props) => {
             <p className="text-categoria">{`📞 Teléfono: ${props.phone}`}</p>
           </div>
         </div>
-        <Link to={`/${props.name}`}>
+        <Link to={`/${props.vefrek_website}`}>
           {" "}
           <Button variant="dark" className="rounded-pill btn-card">
             Más info

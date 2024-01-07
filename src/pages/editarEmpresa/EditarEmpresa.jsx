@@ -170,16 +170,20 @@ export default function EditarEmpresa() {
     };
 
     const find = async () => {
+        showSpinner(true);
         const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
                
         if(companyData && companyData.registeremail !== userData.email) {
             swalPopUp("Ops!", "No puedes editar esta empresa", "warning");
+            showSpinner(false);
             return;
         } else if (!companyData) {
             swalPopUp("Ops!", "No se encontro la empresa por su ID", "warning");
+            showSpinner(false);
             return;
         };
+        showSpinner(false);
 
         setFormData({
             registeremail: companyData.registeremail,
