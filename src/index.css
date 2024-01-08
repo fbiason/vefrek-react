@@ -35,6 +35,20 @@ section {
   }
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
 .section-title h2 {
   font-size: 14px;
   font-weight: 500;

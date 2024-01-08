@@ -24,20 +24,20 @@ const Negocios = () => {
     "Estética Automotor",
   ];
 
-  const dbQuerys = [
-    { Todos: { $exists: true } },
-    { Agencias: "Agencia" },
-    { "Rent a Car": "Rent a Car" },
-    { Gomerias: "Gomería" },
-    { Mecánicos: "Taller mecánico" },
-    { Repuestos: "Repuestos" },
-    { Lubricentros: "Lubricentro" },
-    { Aseguradoras: "Aseguradora" },
-    { "Est. de Servicios": "Estación de Servicio" },
-    { "Estética Automotor": "Estética del automotor" },
-  ];
-
   useEffect(() => {
+    const dbQuerys = [
+      { Todos: { $exists: true } },
+      { Agencias: "Agencia" },
+      { "Rent a Car": "Rent a Car" },
+      { Gomerias: "Gomería" },
+      { Mecánicos: "Taller mecánico" },
+      { Repuestos: "Repuestos" },
+      { Lubricentros: "Lubricentro" },
+      { Aseguradoras: "Aseguradora" },
+      { "Est. de Servicios": "Estación de Servicio" },
+      { "Estética Automotor": "Estética del automotor" },
+    ];
+
     const setCompanys = async (subcategory) => {
       const queryToAppy = dbQuerys.find(
         (query) => Object.keys(query)[0] === subcategory
@@ -48,7 +48,7 @@ const Negocios = () => {
       showSpinner(true);
       const response = await findCompanys(
         queryJSON,
-        "subcategory name images location phone _id"
+        "subcategory name images location phone _id vefrek_website"
       );
       if (response.success && response.companysData) {
         const jsxArr = response.companysData.map((company) => (
@@ -56,11 +56,14 @@ const Negocios = () => {
             <CardNegocio2
               subcategory={company.subcategory}
               name={company.name}
-              imgUrl={company.images.images[0].url}
+              imgUrl={
+                company.images.images[0] ? company.images.images[0].url : ""
+              }
               logoUrl={company.images.logo.url}
               location={company.location}
               phone={company.phone}
               id={company._id}
+              vefrek_website={company.vefrek_website}
             />
           </div>
         ));
@@ -82,6 +85,7 @@ const Negocios = () => {
         setCompanys(button.innerHTML);
       });
     });
+    // eslint-disable-next-line
   }, []);
 
   const applyFilter = (newFilter) => {
@@ -98,44 +102,36 @@ const Negocios = () => {
         <h1>Negocios recomendados</h1>
       </div>
 
-      <div className="container-fluid">
-        <div className="row filter-row">
-          <div className="col filter-hero justify-center mb-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`filter-button mt-2 mr-2 filter-button-default ${
-                  filter === category.toLowerCase()
-                    ? "filter-button-active"
-                    : ""
-                }`}
-                onClick={() => applyFilter(category.toLowerCase())}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+      <div className="row filter-row">
+        <div className="col filter-hero justify-center mb-4 ">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`filter-button mt-2 mr-2 filter-button-default ${
+                filter === category.toLowerCase() ? "filter-button-active" : ""
+              }`}
+              onClick={() => applyFilter(category.toLowerCase())}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        <div className="row">
-          <div className="col-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className={`filter ${
-                    filter === "all" ? "" : `filter-${filter}`
-                  } hover:opacity-80 transition duration-300 ease-in-out`}
-                >
-                  <img
-                    src={image}
-                    alt={`Image ${index + 1}`}
-                    className="w-full h-full object-cover rounded"
-                  />
-                </div>
-              ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`filter ${
+                filter === "all" ? "" : `filter-${filter}`
+              } hover:opacity-80 transition duration-300 ease-in-out`}
+            >
+              <img
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="w-full h-full object-cover rounded"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
 

@@ -83,21 +83,31 @@ export const addCompany = async (companyData) => {
     }
 }
 
-export const updateCompany = async (companyData) => {
+export const updateCompany = async (id, companyData) => {
 
     try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompany`, {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompany?id=${id}`, {
             method: 'put',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
-            body: JSON.stringify(companyData),
+            body: companyData,
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
     } catch (error) {
         return { success: false, message: error.message }
     }
+}
+
+export const deleteImageOfFirebase = async (deletePath) => {
+    const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/deleteimage?delete=${deletePath}`, {
+        method: 'delete',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+    const responseOBJ = await responseJSON.json();
+    return responseOBJ;
 }
 

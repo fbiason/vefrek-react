@@ -21,3 +21,7 @@
     opacity: 0.5;
     pointer-events: none;
 }
+
+.bgSpinner {
+    background-color: rgb(35, 35, 35);
+}

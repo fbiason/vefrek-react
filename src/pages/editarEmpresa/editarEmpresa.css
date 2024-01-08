@@ -1,0 +1,30 @@
+.editarEmpresa_logo {
+    width: 70px;
+    height: 70px;
+}
+
+.editarEmpresa_imagenes_cont {
+    width: 100%;
+    margin: 10px 0;
+    justify-content: flex-start;
+}
+
+.editarEmpresa_imagen_cont {
+    position: relative;
+    margin: 5px 10px;
+}
+
+.editarEmpresa_imagen {
+    height: 100px;
+    width: 150px;
+    object-fit: contain;
+}
+
+.editarEmpresa_delete_icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}

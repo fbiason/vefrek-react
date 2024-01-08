@@ -5,13 +5,14 @@ on:
 
 name: 🚀 Deploy website on push
 
+env:
+  CI: false
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Configurar CI a false
-        run: echo "CI=false" >> $GITHUB_ENV
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
@@ -23,14 +24,14 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm run build || exit 0
+          npm run build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: "82.180.172.105"
-          username: "u168381280"
+          username: "u168381280.vefrek.com"
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: "./build/"
-          server-dir: "/public_html/"
+          server-dir: "/public_html/" 
           
