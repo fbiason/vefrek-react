@@ -2,14 +2,14 @@
   margin-top: 1rem;
 }
 
-.filter-button {
+/*.filter-button {
   padding: 0.75rem 1.5rem;
   margin-right: 0.5rem;
   border: 2px solid transparent;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
     border 0.3s ease-in-out;
-}
+}*/
 
 .filter-hero {
   display: flex;
@@ -26,6 +26,23 @@
   border-color: #14ba75;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 1018px) {
+  .hero {
+    padding: 1rem 3rem 3rem 3rem;
+    overflow: hidden;
+    box-sizing: none;
+  }
+
+  .filter-row {
+    display: flex;
+  }
+
+  .filter-hero {
+    display: block;
+    justify-content: initial;
+  }
 }
 
 @media (max-width: 768px) {

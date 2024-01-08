@@ -98,36 +98,44 @@ const Negocios = () => {
         <h1>Negocios recomendados</h1>
       </div>
 
-      <div className="row filter-row">
-        <div className="col filter-hero justify-center mb-4 ">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`filter-button mt-2 mr-2 filter-button-default ${
-                filter === category.toLowerCase() ? "filter-button-active" : ""
-              }`}
-              onClick={() => applyFilter(category.toLowerCase())}
-            >
-              {category}
-            </button>
-          ))}
+      <div className="container-fluid">
+        <div className="row filter-row">
+          <div className="col filter-hero justify-center mb-4">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`filter-button mt-2 mr-2 filter-button-default ${
+                  filter === category.toLowerCase()
+                    ? "filter-button-active"
+                    : ""
+                }`}
+                onClick={() => applyFilter(category.toLowerCase())}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`filter ${
-                filter === "all" ? "" : `filter-${filter}`
-              } hover:opacity-80 transition duration-300 ease-in-out`}
-            >
-              <img
-                src={image}
-                alt={`Image ${index + 1}`}
-                className="w-full h-full object-cover rounded"
-              />
+        <div className="row">
+          <div className="col-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`filter ${
+                    filter === "all" ? "" : `filter-${filter}`
+                  } hover:opacity-80 transition duration-300 ease-in-out`}
+                >
+                  <img
+                    src={image}
+                    alt={`Image ${index + 1}`}
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
