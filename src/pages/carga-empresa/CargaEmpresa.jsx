@@ -145,10 +145,10 @@ const CargaEmpresa = () => {
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
         const lofoFile = document.querySelector(".company_logo_file").files[0];
-        completeData.append("files", lofoFile);
+        completeData.append("logo", lofoFile);
         const files = document.querySelector(".company_images_files").files;
         for (const file of files) {
-            completeData.append("files", file);
+            completeData.append("images", file);
         }
         showSpinner(true);
         const response = await addCompany(completeData);
