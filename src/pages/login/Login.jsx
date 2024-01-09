@@ -27,9 +27,9 @@ const Login = () => {
 
   return (
     <section className="login-container">
-      <div className="container text-center text-lg-start my-5">
-        <div className="row gx-lg-5 align-items-center mb-5">
-          <div className="col-lg-6 mb-5 mb-lg-0">
+      <div className="container text-center text-lg-start my-5 mx-auto">
+        <div className="row gx-lg-5 align-items-center mb-5 ">
+          <div className="col-lg-6 mb-5 mb-lg-0 mx-auto">
             <h1
               className="my-5 display-5 fw-bold ls-tight"
               style={{ color: "hsl(218, 81%, 95%)" }}
@@ -48,7 +48,7 @@ const Login = () => {
             </h1>
           </div>
 
-          <div className="bienvenido col-lg-6 mb-5 mb-lg-0">
+          <div className="bienvenido col-lg-6 mb-5 mb-lg-0 mx-auto">
             <div
               className="card shadow-2-strong"
               style={{ borderRadius: "1rem" }}
