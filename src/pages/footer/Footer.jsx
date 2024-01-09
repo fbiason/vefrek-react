@@ -324,6 +324,7 @@ const Footer = () => {
                   <>
                     <a
                       href="/"
+                      className="text-start"
                       data-bs-toggle="modal"
                       data-bs-target="#ModalPrivacidad"
                     >
