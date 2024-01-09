@@ -122,3 +122,14 @@ export const deleteCompanyById = async (id) => {
     return responseOBJ;
 }
 
+export const updateCompanyState = async (id, newState) => {
+    const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/updatecompanystate?id=${id}&newstate=${JSON.stringify(newState)}`, {
+        method: 'put',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+    const responseOBJ = await responseJSON.json();
+    return responseOBJ;
+}
+

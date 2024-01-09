@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./misEmpresas.css";
 import { SpinnerContext } from "../../context/spinnerContext";
-import { findCompanys, deleteCompanyById } from "../../utils/apiDb/apiDbAcions";
+import { findCompanys, deleteCompanyById, updateCompanyState } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp, swalPopUpWithCallback ,swalPopUpWhitOptionsAndCallback } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
@@ -36,9 +36,21 @@ const MisEmpresas = () => {
         )
     }
 
+    const handleCompnayState = (id, newState) => {
+        return async () => {
+            const response = await updateCompanyState(id, newState);
+            if (response.success) {
+                swalPopUpWithCallback("Acción completada", response.message, "success", find);
+                find();
+            } else {
+                swalPopUp("Error", response.message, "error");
+            }
+        }
+    }
+
     const find = async () => {
         showSpinner(true);
-        const response = await findCompanys(JSON.stringify({"registeremail": userData.email}), "name location");
+        const response = await findCompanys(JSON.stringify({"registeremail": userData.email}), "name location play");
         if (response.success && response.companysData) {
             const companysDataFromDB = response.companysData;
             const companysDataJSX = companysDataFromDB.map((company) => 
@@ -54,11 +66,23 @@ const MisEmpresas = () => {
                             ✏️ Editar
                         </span>
                     </Link>
-                    <div className="col-editar-empresa">
-                        <span role="img" aria-label="Pausar">
-                            ⏸️ Pausar
-                        </span>
-                    </div>
+                    {   (company.play &&
+                        <div className="col-editar-empresa" onClick={handleCompnayState(company._id, false)}>
+                            <span role="img" aria-label="Pausar">
+                                ⏸️ Pausar
+                            </span>
+                        </div>)
+
+                        ||
+
+                        (!company.play &&
+                        <div className="col-editar-empresa" onClick={handleCompnayState(company._id, true)}>
+                            <span role="img" aria-label="Pausar">
+                                ▶️ Reactivar
+                            </span>
+                        </div>)
+
+                    }
                     <div className="col-editar-empresa" onClick={() => deleteCompanyConfirm(company._id)}>
                         <span role="img" aria-label="Eliminar">
                             🗑️ Eliminar
