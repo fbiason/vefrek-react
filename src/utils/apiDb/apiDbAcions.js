@@ -111,3 +111,14 @@ export const deleteImageOfFirebase = async (deletePath) => {
     return responseOBJ;
 }
 
+export const deleteCompanyById = async (id) => {
+    const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/deletecompany?id=${id}`, {
+        method: 'delete',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
+    const responseOBJ = await responseJSON.json();
+    return responseOBJ;
+}
+

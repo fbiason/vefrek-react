@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./misEmpresas.css";
 import { SpinnerContext } from "../../context/spinnerContext";
-import { findCompanys } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp } from "../../utils/swal";
+import { findCompanys, deleteCompanyById } from "../../utils/apiDb/apiDbAcions";
+import { swalPopUp, swalPopUpWhitOptionsAndCallback } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,29 @@ const MisEmpresas = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const [companysData, setCompanysData] = useState([]);
     const { userData } = useContext(UserContext);
+
+    const deleteComp = async (id) => {
+        const response = await deleteCompanyById(id);
+        if (response.success) {
+            swalPopUp("Éxito", response.message, "success");
+            find();
+        } else {
+            swalPopUp("Error", response.message, "error");
+        }
+    }
+
+    const deleteCompanyConfirm = (id) => {
+        swalPopUpWhitOptionsAndCallback(
+            "warning", 
+            "Quieres eliminar la empresa? los datos no podrán recuperarse", 
+            "Eliminar", 
+            "Cancelar",
+            false,
+            "",
+            "",
+            
+        )
+    }
 
     const find = async () => {
         showSpinner(true);
@@ -34,7 +57,7 @@ const MisEmpresas = () => {
                             ⏸️ Pausar
                         </span>
                     </div>
-                    <div className="col-editar-empresa">
+                    <div className="col-editar-empresa" onClick={() => deleteCompanyConfirm(company._id)}>
                         <span role="img" aria-label="Eliminar">
                             🗑️ Eliminar
                         </span>
