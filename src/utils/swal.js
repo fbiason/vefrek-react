@@ -19,6 +19,23 @@ const swalPopUp = (title, text, icon) => {
     })                                                                                                    
 }
 
+export const swalPopUpWithCallback = (title, text, icon, cb) => {
+    Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        confirmButtonColor: '#71706f',
+        color: '#71706f',       
+        scrollbarPadding: false,     
+        allowOutsideClick: false,
+        customClass: {      
+            confirmButton: 'sweetConfirmBoton',        
+        },
+    }).then((result) => {
+        if (result.isConfirmed) cb();
+    });                                                                                                     // el usuario no siga figurando como logueado  
+}
+
 export const swalPopUpWhitOptionsAndCallback = (
     mainIcon,
     text,

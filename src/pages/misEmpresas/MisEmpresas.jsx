@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "./misEmpresas.css";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { findCompanys, deleteCompanyById } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp, swalPopUpWhitOptionsAndCallback } from "../../utils/swal";
+import { swalPopUp, swalPopUpWithCallback ,swalPopUpWhitOptionsAndCallback } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
 
@@ -14,13 +14,12 @@ const MisEmpresas = () => {
     const deleteComp = async (id) => {
         const response = await deleteCompanyById(id);
         if (response.success) {
-            swalPopUp("Éxito", response.message, "success");
-            find();
+            swalPopUpWithCallback("Éxito", response.message, "success", find);
         } else {
             swalPopUp("Error", response.message, "error");
         }
     }
-
+  
     const deleteCompanyConfirm = (id) => {
         swalPopUpWhitOptionsAndCallback(
             "warning", 
@@ -30,7 +29,10 @@ const MisEmpresas = () => {
             false,
             "",
             "",
-            
+            () => deleteComp(id),
+            true,
+            "Eliminación cancelada",
+            "success",
         )
     }
 
@@ -66,9 +68,9 @@ const MisEmpresas = () => {
             );
             setCompanysData(companysDataJSX);
         } else if (response.success && !response.companysData) {
+            setCompanysData([]);
             swalPopUp("Ops!", "No tienes empresas cargadas. Selecciona la opción 'Publicar Ahora' para cargar tu empresa", "info");
             showSpinner(false);
-            // window.location = "/";
         } else {
             swalPopUp("Error", response.message, "error");
         }
@@ -82,11 +84,14 @@ const MisEmpresas = () => {
 
     return (
         <section className="background">
-            {" "}
             <div className="editar-empresa-container">
-                <div className="card-editar-empresa">
-                    {companysData}
-                </div>
+                {companysData.length ?
+                    <div className="card-editar-empresa">
+                        {companysData}
+                    </div>
+                    :
+                    <></>
+                }
             </div>
         </section>
     );

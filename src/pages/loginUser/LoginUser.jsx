@@ -12,7 +12,7 @@ const LoginUser = () => {
         if (token) {
             localStorage.setItem('token', token);
         }
-        window.location = "/"
+        window.location = "/";
     }, []);
 
     return (

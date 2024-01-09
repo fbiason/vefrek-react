@@ -55,18 +55,47 @@ function App() {
 					<Route path="/" element={<Home />} />
 					<Route path="/:vefrek_website" element={<PaginaEmpresa />} />
 					<Route path="/login" element={<LoginApp />} />
-					{userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
 					<Route path="/Publicacion" element={<Publicacion />} />
-					{userData.isLogged && (
-						<Route path="/CargaEmpresa" element={<CargaEmpresa />} />
-					)}
+				
+					{
+						(logging
+							&& <Route path="/perfil" element={<BgSpinner />} />
+						) ||
+						(!logging &&
+							((userData.isLogged && <Route path="/perfil" element={<Perfil />} />)
+								||
+								(!userData.isLogged && <Route path="/perfil" element={<NoAutorizado />} />))
+						)
+					}			
+
+					{
+						(logging
+							&& <Route path="/CargaEmpresa" element={<BgSpinner />} />
+						) ||
+						(!logging &&
+							((userData.isLogged && <Route path="/CargaEmpresa" element={<CargaEmpresa />} />)
+								||
+								(!userData.isLogged && <Route path="/CargaEmpresa" element={<NoAutorizado />} />))
+						)
+					}			
+
 					{!userData.isLogged && <Route path="/loginuser/:token?" element={<LoginUser />} />}
 					<Route path="/Reparacion" element={<Reparacion />} />
 					<Route path="/Venta" element={<Venta />} />
 					<Route path="/OtrosServicios" element={<OtrosServicios />} />
 					<Route path="/Dropdown" element={<Dropdown />} />
 					<Route path="/Contacto" element={<Contacto />} />
-					{userData.isLogged && <Route path="/MisEmpresas" element={<MisEmpresas />} />}
+				
+					{
+						(logging
+							&& <Route path="/MisEmpresas" element={<BgSpinner />} />
+						) ||
+						(!logging &&
+							((userData.isLogged && <Route path="/MisEmpresas" element={<MisEmpresas />} />)
+								||
+								(!userData.isLogged && <Route path="/MisEmpresas" element={<NoAutorizado />} />))
+						)
+					}		
 
 					{
 						(logging
