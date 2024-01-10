@@ -133,7 +133,7 @@ button {
 }
 
 .bienvenido {
-  width: 40%;
+  width: 45%;
   box-sizing: border-box;
   border-radius: 8px;
 }
@@ -253,5 +253,25 @@ button {
 
   .bienvenido {
     width: 100%;
+  }
+}
+
+@media (max-width: 970px) {
+  .vefrek-logo {
+    width: 70%;
+  }
+
+  .bienvenido {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1020px) {
+  .vefrek-logo {
+    width: 90%;
+  }
+
+  .bienvenido {
+    width: 80%;
   }
 }
