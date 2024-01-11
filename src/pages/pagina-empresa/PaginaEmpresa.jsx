@@ -1,16 +1,51 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp } from "../../utils/swal";
+import { swalPopUp, swalPopUpWithInputAndCb, swalPopUpWithCallback } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { reportCompany } from "../../utils/report";
+import { UserContext } from "../../context/userContext";
 
 
 const PaginaEmpresa = () => {
     const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
     const [map, setMap] = useState(null);
+    const companyDataRef = useRef();
+    const {userData} = useContext(UserContext);
+    const { showSpinner } = useContext(SpinnerContext);
+    
+    const sendReport = async (reason) => {
+        if (userData.isLogged === false) {
+            swalPopUp("Ops!", "Debes iniciar sesión para reportar una empresa", "warning");
+            return;
+        }
+       
+        const reportData = {
+            reportingUser: userData.email,
+            reason: reason,
+            reportedCompany: {
+                id: companyDataRef.current._id,
+                name: companyDataRef.current.name,
+                date: new Date().toLocaleString(),
+            },
+        }
+        showSpinner(true);
+        const response = await reportCompany(reportData);
+        if (response.success) {
+            showSpinner(false);
+            swalPopUp("Acción completada", response.message, "success");
+        } else {
+            showSpinner(false);
+            swalPopUpWithCallback("Ops!", response.message, "error", () => window.location.reload());
+        }
+    }
+
+    const report = async () => {
+        swalPopUpWithInputAndCb("Por favor, ingresa el motivo del reporte", "Debes ingresar un motivo para poder envíar el reporte", sendReport)
+    }
 
     const getLocationFromAddress = async (address) => {
         try {
@@ -39,8 +74,7 @@ const PaginaEmpresa = () => {
             console.error("Error al obtener las coordenadas:", error);
         }
     };
-
-    const { showSpinner } = useContext(SpinnerContext);
+    
     const { vefrek_website } = useParams();
     const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
     const [imagenes, setImagenes] = useState([]);
@@ -84,6 +118,7 @@ const PaginaEmpresa = () => {
             const imagesUrlsArr = companyData.images.images.map(
                 (imageData) => imageData.url
             );
+            companyDataRef.current = companyData;    //Datos para envio de reportes
             setImagenes(imagesUrlsArr);
             setCompanyData({
                 name: companyData.name,
@@ -355,7 +390,7 @@ const PaginaEmpresa = () => {
                                 <div className="sitio-web-container mt-3">
                                     <p>{`Sitio Web: ${companyData.website}`}</p>
                                 </div>
-                                <div>
+                                <div onClick={report}>
                                     <button className="reportar">Reportar Negocio</button>
                                 </div>
                             </div>
