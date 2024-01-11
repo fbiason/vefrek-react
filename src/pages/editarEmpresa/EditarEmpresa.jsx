@@ -7,6 +7,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import { verifyIfHasChanges } from "../../utils/utils";
 
 export default function EditarEmpresa() {
     const {id} = useParams();
@@ -142,26 +143,7 @@ export default function EditarEmpresa() {
     useEffect(() => {
         formRef.current = formData;
     }, [formData]);
-
-    const verifyIfHasChanges = (childObject, parentObject) => {
-        let hasChanged = false;
-        const verify = (childObject, parentObject) => {
-            if (hasChanged) return;
-            for (const key in childObject) {
-                if (typeof childObject[key] === "object") {
-                    verify(childObject[key], parentObject[key]);
-                } else {
-                    if (childObject[key] !== parentObject[key]) {
-                        hasChanged = true;
-                        return;
-                    }
-                }
-            }
-        }
-        verify(childObject, parentObject);
-        return hasChanged;
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const companyData = formRef.current;
