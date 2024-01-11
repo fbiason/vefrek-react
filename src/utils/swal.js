@@ -1,5 +1,18 @@
 import Swal from "sweetalert2";
 
+export const swalPopUpWithInputAndCb = async (text, noInputText, cb) => {
+
+    const { value: message } = await Swal.fire({
+        text: text,
+        input: "text",
+    });
+    if (message) {
+       cb(message);
+    } else {
+        Swal.fire({text: noInputText});
+    }
+}
+
 const swalPopUp = (title, text, icon) => {
     Swal.fire({
         icon: icon,

@@ -7,6 +7,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import { verifyIfHasChanges } from "../../utils/utils";
 
 export default function EditarEmpresa() {
     const {id} = useParams();
@@ -142,24 +143,7 @@ export default function EditarEmpresa() {
     useEffect(() => {
         formRef.current = formData;
     }, [formData]);
-
-    const verifyIfHasChanges = (childObject, parentObject) => {
-        let hasChanged = false;
-        const verify = (childObject, parentObject) => {
-            for (const key in childObject) {
-                if (typeof childObject[key] === "object") {
-                    verify(childObject[key], parentObject[key]);
-                } else {
-                    if (childObject[key] !== parentObject[key]) {
-                        hasChanged = true;
-                    }
-                }
-            }
-        }
-        verify(childObject, parentObject);
-        return hasChanged;
-    }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const companyData = formRef.current;
@@ -170,7 +154,7 @@ export default function EditarEmpresa() {
         completeData.append("logo", logoFile);
         const imagesInput = document.querySelector(".company_images_input");
         const imagesFiles = imagesInput.files;
-
+                      
         if (!verifyIfHasChanges(initialData.current, formRef.current) && logoInput.files.length === 0 && imagesInput.files.length === 0) {
             swalPopUp("Ops!", "No hay cambios para guardar", "warning");
             return;
@@ -252,7 +236,7 @@ export default function EditarEmpresa() {
 
         setFormData(structuredClone(auxFormData));
         initialData.current = structuredClone(auxFormData);
-
+             
         const optionsSelect = document.querySelector(".form_select");
         if (optionsSelect) {
             const options = optionsSelect.options;
@@ -324,7 +308,7 @@ export default function EditarEmpresa() {
 
                             <div className="sm:col-span-3">
                                 <label
-                                    htmlFor="last-name"
+                                    htmlFor="slogan"
                                     className="block text-sm font-medium leading-6 text-gray-900 w-full "
                                 >
                                     Slogan (opcional)
@@ -335,7 +319,7 @@ export default function EditarEmpresa() {
                                         value={formData.slogan}
                                         type="text"
                                         name="slogan"
-                                        id="last-name"
+                                        id="slogan"
                                         autoComplete="family-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -424,7 +408,7 @@ export default function EditarEmpresa() {
 
                             <div className="sm:col-span-5">
                                 <label
-                                    htmlFor="first-name"
+                                    htmlFor="phone"
                                     className="block text-sm font-medium leading-6 text-gray-900"
                                 >
                                     <i className="obligatorio">* </i>Teléfono
@@ -435,7 +419,7 @@ export default function EditarEmpresa() {
                                         value={formData.phone}
                                         type="text"
                                         name="phone"
-                                        id="first-name"
+                                        id="phone"
                                         autoComplete="given-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -444,7 +428,7 @@ export default function EditarEmpresa() {
 
                             <div className="sm:col-span-5">
                                 <label
-                                    htmlFor="last-name"
+                                    htmlFor="phone2"
                                     className="block text-sm font-medium leading-6 text-gray-900 w-full "
                                 >
                                     Teléfono Alternativo (opcional)
@@ -455,7 +439,7 @@ export default function EditarEmpresa() {
                                         value={formData.phone2}
                                         type="text"
                                         name="phone2"
-                                        id="last-name"
+                                        id="phone2"
                                         autoComplete="family-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -464,7 +448,7 @@ export default function EditarEmpresa() {
 
                             <div className="sm:col-span-5">
                                 <label
-                                    htmlFor="last-name"
+                                    htmlFor="website"
                                     className="block text-sm font-medium leading-6 text-gray-900 w-full "
                                 >
                                     Sitio Web (opcional):
@@ -475,7 +459,7 @@ export default function EditarEmpresa() {
                                         value={formData.website}
                                         type="text"
                                         name="website"
-                                        id="last-name"
+                                        id="website"
                                         autoComplete="family-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -596,7 +580,6 @@ export default function EditarEmpresa() {
                                         name="description"
                                         rows={3}
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        defaultValue={""}
                                         placeholder=" Describa brevemente su empresa."
                                     />
                                 </div>
@@ -805,8 +788,8 @@ export default function EditarEmpresa() {
                         <div className="editarEmpresa_imagenes_cont flex wrap">
                             {
                                 formData.images.images.length > 0  ?
-                                formData.images.images.map((data) =>
-                                <div className="editarEmpresa_imagen_cont">
+                                formData.images.images.map((data, i) =>
+                                <div className="editarEmpresa_imagen_cont" key={i}>
                                     <img src={data.url} alt="Imágenes empresa" className="editarEmpresa_imagen" />
                                     <img 
                                         src="/images/icons/delete.png" 
@@ -866,13 +849,13 @@ export default function EditarEmpresa() {
                                             <input
                                                 onChange={handleCheckChange}
                                                 checked={formData.email_notifications.news}
-                                                id="comments"
+                                                id="news"
                                                 name="news"
                                                 type="checkbox"
                                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                             />{" "}
                                             <label
-                                                htmlFor="comments"
+                                                htmlFor="news"
                                                 className="text-sm leading-6 pl-3 font-medium text-gray-900"
                                             >
                                                 Novedades de Vefrek

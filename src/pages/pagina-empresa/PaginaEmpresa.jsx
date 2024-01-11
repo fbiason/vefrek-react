@@ -1,15 +1,58 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp } from "../../utils/swal";
+import { swalPopUp, swalPopUpWithInputAndCb } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { reportCompany } from "../../utils/report";
+import { UserContext } from "../../context/userContext";
 
 const PaginaEmpresa = () => {
   const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
   const [map, setMap] = useState(null);
+  const companyDataRef = useRef();
+  const { userData } = useContext(UserContext);
+  const { showSpinner } = useContext(SpinnerContext);
+
+  const sendReport = async (reason) => {
+    if (userData.isLogged === false) {
+      swalPopUp(
+        "Ops!",
+        "Debes iniciar sesión para reportar una empresa",
+        "warning"
+      );
+      return;
+    }
+
+    const reportData = {
+      reportingUser: userData.email,
+      reason: reason,
+      reportedCompany: {
+        id: companyDataRef.current._id,
+        name: companyDataRef.current.name,
+        date: new Date().toLocaleString(),
+      },
+    };
+    showSpinner(true);
+    const response = await reportCompany(reportData);
+    if (response.success) {
+      showSpinner(false);
+      swalPopUp("Acción completada", response.message, "success");
+    } else {
+      showSpinner(false);
+      swalPopUp("Ops!", response.message, "error");
+    }
+  };
+
+  const report = async () => {
+    swalPopUpWithInputAndCb(
+      "Por favor, ingresa el motivo del reporte",
+      "Debes ingresar un motivo para poder envíar el reporte",
+      sendReport
+    );
+  };
 
   const getLocationFromAddress = async (address) => {
     try {
@@ -39,7 +82,6 @@ const PaginaEmpresa = () => {
     }
   };
 
-  const { showSpinner } = useContext(SpinnerContext);
   const { vefrek_website } = useParams();
   const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
   const [imagenes, setImagenes] = useState([]);
@@ -83,6 +125,7 @@ const PaginaEmpresa = () => {
       const imagesUrlsArr = companyData.images.images.map(
         (imageData) => imageData.url
       );
+      companyDataRef.current = companyData; //Datos para envio de reportes
       setImagenes(imagesUrlsArr);
       setCompanyData({
         name: companyData.name,
@@ -145,10 +188,10 @@ const PaginaEmpresa = () => {
 
   return (
     <section className="background">
-      <div className="container">
+      <div>
         <div className="row">
           {/* Columna 1 - Imágenes de la empresa */}
-          <div className="col-lg-8 col-md-12 mt-5">
+          <div className="col-md-8 col-sm-6">
             {/* Fila 1 */}
             <div className="row">
               <div className="col-md-12">
@@ -260,8 +303,8 @@ const PaginaEmpresa = () => {
           </div>
 
           {/* Columna 2 - Ubicación y Redes Sociales */}
-          <div className="col-lg-4 col-md-12 d-flex flex-column mt-5">
-            <div className="perfil-card-element2 card-empresa card h-100 mb-4">
+          <div className="col-md-4 col-sm-12 d-flex flex-column">
+            <div className="perfil-card-element2 card-empresa h-100">
               <div className="column-2 flex-grow-1">
                 <div className="ubicacion-container">{map}</div>
                 <div className="telefono-container mt-5">
@@ -356,11 +399,8 @@ const PaginaEmpresa = () => {
                 <div className="sitio-web-container mt-3">
                   <p>{`Sitio Web: ${companyData.website}`}</p>
                 </div>
-
-                <div>
-                  <button type="button" class="btn btn-primary reportar">
-                    Reportar Negocio
-                  </button>
+                <div onClick={report}>
+                  <button className="reportar">Reportar Negocio</button>
                 </div>
               </div>
             </div>
