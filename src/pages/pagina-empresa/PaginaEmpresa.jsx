@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useParams } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp, swalPopUpWithInputAndCb, swalPopUpWithCallback } from "../../utils/swal";
+import { swalPopUp, swalPopUpWithInputAndCb } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { reportCompany } from "../../utils/report";
 import { UserContext } from "../../context/userContext";
@@ -39,7 +39,7 @@ const PaginaEmpresa = () => {
             swalPopUp("Acción completada", response.message, "success");
         } else {
             showSpinner(false);
-            swalPopUpWithCallback("Ops!", response.message, "error", () => window.location.reload());
+            swalPopUp("Ops!", response.message, "error");
         }
     }
 
