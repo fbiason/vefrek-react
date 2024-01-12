@@ -9,7 +9,7 @@ const Footer = () => {
 
   useEffect(() => {
     const myModalAviso = myModalAvisoRef.current;
-    const myModalPolitica = myModalPoliticaRef.current;
+    // const myModalPolitica = myModalPoliticaRef.current;
     const myInput = myInputRef.current;
 
     if (myModalAviso && myInput) {

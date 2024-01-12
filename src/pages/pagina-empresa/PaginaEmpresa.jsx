@@ -308,7 +308,7 @@ const PaginaEmpresa = () => {
                                 <div className="telefono-container mt-5">
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                                 </div>
-                                <a className="telefono-container" href={`tel:${companyData.phone}`}>
+                                <a className="telefono-container" href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}>
                                     <p>{`Teléfono: ${companyData.phone}`}</p>
                                 </a>
 
@@ -319,7 +319,7 @@ const PaginaEmpresa = () => {
                                             href={
                                                 companyData.social.whatsapp.includes("http")
                                                     ? companyData.social.whatsapp
-                                                    : `https://wa.me/${companyData.social.whatsapp}`
+                                                    : `https://wa.me/${companyData.social.whatsapp.replace(/[\s-]/g, "")}`
                                             }
                                             target="_blank"
                                             rel="noopener noreferrer"
