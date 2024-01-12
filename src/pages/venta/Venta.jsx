@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import CardNegocio2 from "../../components/CardNegocio2";
+import CardNegocio from "../../components/CardNegocio";
 import "./venta.css";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
@@ -22,7 +22,7 @@ const Venta = () => {
     if (response.success && response.companysData) {
       const jsxArr = response.companysData.map((company) => (
         <div className="col-12 col-md-6 col-lg-4 cards-col" key={company._id}>
-          <CardNegocio2
+          <CardNegocio
             subcategory={company.subcategory}
             name={company.name}
             imgUrl={company.images.images[0].url}
