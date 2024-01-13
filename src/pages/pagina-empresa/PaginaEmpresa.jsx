@@ -176,7 +176,7 @@ const PaginaEmpresa = () => {
     useEffect(() => {
         find();
         // eslint-disable-next-line
-    }, []);
+    }, [vefrek_website]);
 
     const intercambiarImagen = (index) => {
         const nuevasImagenes = [...imagenes];
