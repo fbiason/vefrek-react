@@ -33,7 +33,7 @@ const NavBar = () => {
                     to={`/${result.vefrek_website}`}
                     onClick={(e) => {
                         inputSearch.value = "";
-                        e.target.parentNode.style.opacity = 0
+                        e.target.parentNode.style.opacity = 0;
                     }}
                     className="searchResult">
                     {`${result.subcategory} - ${result.name} - ${result.location} - ${result.city} - ${result.state}`}
@@ -65,15 +65,15 @@ const NavBar = () => {
         // eslint-disable-next-line
     }, [results]);
     
+    const getcompanysFullCollection = async () => {
+        const response = await findCompanys(JSON.stringify( {$or: [{play: true}, {play:{$exists: false}}]} ), "name location city state postal_code phone phone2 website category subcategory description vefrek_website");
+        if (response.success && response.companysData) {
+            companyFullCollection.current = response.companysData;
+        } 
+    }
+
     useEffect(() => {
         window.addEventListener("orientationchange", setSearchResultsStyle);
-
-        const getcompanysFullCollection = async () => {
-            const response = await findCompanys(JSON.stringify({}), "name location city state postal_code phone phone2 website category subcategory description vefrek_website");
-            if (response.success && response.companysData) {
-                companyFullCollection.current = response.companysData;
-            } 
-        }
         getcompanysFullCollection();
         
         /***************************** CORRIGE ERROR DE REDIRECCION AL LOGUEARSE CON FACEBOOK -NO BORRAR* */

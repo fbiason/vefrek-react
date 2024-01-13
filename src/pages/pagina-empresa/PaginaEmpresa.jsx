@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import "./pagina-empresa.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { findCompany } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp, swalPopUpWithInputAndCb } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
@@ -15,6 +15,7 @@ const PaginaEmpresa = () => {
     const companyDataRef = useRef();
     const { userData } = useContext(UserContext);
     const { showSpinner } = useContext(SpinnerContext);
+    const navigate = useNavigate();
 
     const sendReport = async (reason) => {
         if (userData.isLogged === false) {
@@ -166,7 +167,7 @@ const PaginaEmpresa = () => {
         } else if (response.success && !response.companyData) {
             swalPopUp("Ops", response.message, "warning");
             showSpinner(false);
-            window.location = "/";
+            navigate("/");
         } else {
             swalPopUp("Error", response.message, "error");
         }
