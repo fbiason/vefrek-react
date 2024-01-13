@@ -2,7 +2,7 @@ import "./editarEmpresa.css";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import { updateCompany, findCompany, deleteImageOfFirebase } from "../../utils/apiDb/apiDbAcions";
+import { updateCompany, findCompanyToEdit, deleteImageOfFirebase } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams } from "react-router-dom";
@@ -178,7 +178,7 @@ export default function EditarEmpresa() {
 
     const find = async () => {
         showSpinner(true);
-        const response = await findCompany("_id", id, "");
+        const response = await findCompanyToEdit("_id", id, "");
         const companyData = response.companyData;
                
         if(!response.success) {
