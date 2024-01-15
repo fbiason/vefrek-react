@@ -102,7 +102,7 @@ const Negocios = () => {
       className="container text-center text-lg-start my-5 hero"
       data-aos="fade-up"
     >
-      <div className="row gx-lg-5 mb-5">
+      <div className="row gx-lg-5 mb-4">
         <h5>Encontra lo que tu vehículo necesita</h5>
         <h1>Negocios recomendados</h1>
       </div>

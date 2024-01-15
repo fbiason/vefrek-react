@@ -15,8 +15,6 @@ const Hero = () => {
             <img src="/images/logos/logo-vefrek-white.png" alt="Vefrek" />
             <div>&nbsp;</div>
             <h2>La guía más completa del rubro automotor</h2>
-            <div>&nbsp;</div>
-            <h3>Todos los servicios en un solo lugar.</h3>
           </div>
         </div>
 
