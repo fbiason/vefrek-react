@@ -7,12 +7,14 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams, useNavigate } from "react-router-dom";
 import { verifyIfHasChanges } from "../../utils/utils";
+import { UserContext } from "../../context/userContext";
 
 export default function EditarEmpresa() {
     const {id} = useParams();
     const navigate = useNavigate();
     const formRef = useRef(); 
     const initialData = useRef();
+    const { userData } = useContext(UserContext);   
     const { showSpinner } = useContext(SpinnerContext);
     const [formData, setFormData] = useState({
         name: "",
@@ -177,6 +179,12 @@ export default function EditarEmpresa() {
 
     const find = async () => {
         showSpinner(true);
+        if (!id) {
+            showSpinner(false);
+            swalPopUp("Ops!", "No se ingresó el ID de la empresa a editar", "warning");
+            navigate("/");
+            return;
+        }
         const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
                
@@ -251,9 +259,9 @@ export default function EditarEmpresa() {
     }
 
     useEffect(() => {
-        find();
+        if(userData.isLogged) find();
     // eslint-disable-next-line
-    }, [id]);
+    }, [id, userData]);
        
     const deleteImg = async (deletePath) => {
         try {

@@ -56,7 +56,7 @@ function App() {
 					<Route path="/Dropdown" element={<Dropdown />} />
 					<Route path="/Contacto" element={<Contacto />} />
 					<Route path="/MisEmpresas" element={((!show || userData.isLogged) && <MisEmpresas />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
-					<Route path="/EditarEmpresa/:id" element={((!show || userData.isLogged) && <EditarEmpresa />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
+					<Route path="/EditarEmpresa/:id?" element={((!show || userData.isLogged) && <EditarEmpresa />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
 					<Route path="/CargaEmpresa" element={((!show || userData.isLogged) && <CargaEmpresa />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
 					<Route path="/perfil" element={((!show || userData.isLogged) && <Perfil />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
 					{!userData.isLogged && <Route path="/loginuser/:token?" element={<LoginUser />} />}
