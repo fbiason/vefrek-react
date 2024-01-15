@@ -35,7 +35,7 @@ const CardNegocio = (props) => {
         <Link to={`/${props.vefrek_website}`}>
           {" "}
           <Button variant="dark" className="rounded-pill btn-card">
-            Más info
+            +
           </Button>{" "}
         </Link>
       </Card.Footer>
