@@ -121,7 +121,7 @@ const PaginaEmpresa = () => {
     const find = async () => {
         showSpinner(true);
         const response = await findCompany("vefrek_website", vefrek_website, "");
-        if (response.success && response.companyData) {
+        if (response.success) {
             const companyData = response.companyData;
             const imagesUrlsArr = companyData.images.images.map(
                 (imageData) => imageData.url
@@ -164,13 +164,11 @@ const PaginaEmpresa = () => {
             getLocationFromAddress(
                 `${companyData.location},${companyData.city},${companyData.state}`
             );
-        } else if (response.success && !response.companyData) {
+        } else if (!response.success) {
             swalPopUp("Ops", response.message, "warning");
             showSpinner(false);
             navigate("/");
-        } else {
-            swalPopUp("Error", response.message, "error");
-        }
+        } 
         showSpinner(false);
     };
 

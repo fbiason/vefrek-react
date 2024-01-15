@@ -48,7 +48,6 @@ function App() {
 				<NavBar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					{show && <Route path="/:vefrek_website" element={<PaginaEmpresa />} />}
 					<Route path="/login" element={<LoginApp />} />
 					<Route path="/Publicacion" element={<Publicacion />} />
 					<Route path="/Reparacion" element={<Reparacion />} />
@@ -56,12 +55,13 @@ function App() {
 					<Route path="/OtrosServicios" element={<OtrosServicios />} />
 					<Route path="/Dropdown" element={<Dropdown />} />
 					<Route path="/Contacto" element={<Contacto />} />
-					{userData.isLogged && <Route path="/perfil" element={<Perfil />} />}
-					{userData.isLogged && <Route path="/CargaEmpresa" element={<CargaEmpresa />} />}
-					{userData.isLogged && <Route path="/MisEmpresas" element={<MisEmpresas />} />}
-					{userData.isLogged && <Route path="/EditarEmpresa/:id" element={<EditarEmpresa />} />}
+					<Route path="/MisEmpresas" element={((!show || userData.isLogged) && <MisEmpresas />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
+					<Route path="/EditarEmpresa/:id" element={((!show || userData.isLogged) && <EditarEmpresa />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
+					<Route path="/CargaEmpresa" element={((!show || userData.isLogged) && <CargaEmpresa />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
+					<Route path="/perfil" element={((!show || userData.isLogged) && <Perfil />) || (((show || !userData.isLogged)) && <Navigate to="/"/>)} />
 					{!userData.isLogged && <Route path="/loginuser/:token?" element={<LoginUser />} />}
-					{show * <Route path="*" element={<Navigate to="/" />} />}
+					<Route path="/:vefrek_website" element={<PaginaEmpresa />} />
+					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 				<Footer />
 			</NextUIProvider>

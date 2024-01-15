@@ -49,23 +49,6 @@ export const findCompany = async (field, value, fieldsSelected) => {
     }
 }
 
-export const findCompanyToEdit = async (field, value, fieldsSelected) => {
-
-    try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanytoedit?field=${field}&value=${value}&fieldsSelected=${fieldsSelected}`, {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            },
-        });
-        const responseOBJ = await responseJSON.json();
-        return responseOBJ;
-    } catch (error) {
-        return { success: false, message: error.message }
-    }
-}
-
 export const findCompanys = async (query, fieldsSelected) => {
 
     try {
