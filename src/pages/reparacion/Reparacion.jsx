@@ -45,6 +45,7 @@ const Reparacion = () => {
 
   useEffect(() => {
     downloadData("Reparación y mantenimiento");
+  // eslint-disable-next-line
   }, []);
 
   const handleSelectChange = (e) => {

@@ -45,6 +45,7 @@ const Venta = () => {
 
   useEffect(() => {
     downloadData("Venta y alquiler de vehículos");
+  // eslint-disable-next-line
   }, []);
 
   const handleSelectChange = (e) => {

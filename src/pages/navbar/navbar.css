@@ -1,94 +1,95 @@
 #header {
-  transition: all 0.5s;
-  z-index: 997;
-  padding: 15px 20px 20px;
-  padding-top: 2rem;
-  position: fixed;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 15px 20px 20px;
+    padding-top: 2rem;
+    position: fixed;
 }
 
 #header.header-scrolled,
 #header.header-inner-pages {
-  background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 #header img {
-  max-height: 50px;
+    max-height: 50px;
 }
 
 .info-web {
-  background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .ingresa {
-  font-weight: 800;
-  color: white;
+    font-weight: 800;
+    color: white;
 }
 
 .ingresa:hover {
-  color: #14ba75;
+    color: #14ba75;
 }
 
 .navbar .dropdown ul {
-  display: block;
-  position: absolute;
-  left: 14px;
-  top: calc(100% + 30px);
-  margin: 0;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  transition: 0.3s;
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.3s;
 }
 
 .navbar .dropdown ul li {
-  min-width: 200px;
+    min-width: 200px;
 }
 
 .navbar .dropdown ul a {
-  padding: 10px 20px;
-  font-size: 14px;
-  text-transform: none;
-  color: #151515;
-  font-weight: 400;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: none;
+    color: #151515;
+    font-weight: 400;
 }
 
 .navbar .dropdown ul a i {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover > a {
-  background-color: #14ba75;
+.navbar .dropdown ul li:hover>a {
+    background-color: #14ba75;
 }
 
-.navbar .dropdown:hover > ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
+.navbar .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
 }
 
 ul li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover > ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
+.navbar .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
 }
+
 .vefrek-logo {
-  width: 40%;
+    width: 40%;
 }
 
 /*--------------------------------------------------------------
@@ -96,167 +97,215 @@ ul li {
 --------------------------------------------------------------*/
 
 #hero-publicacion .container {
-  position: relative;
-  padding-top: 74px;
-  text-align: center;
+    position: relative;
+    padding-top: 74px;
+    text-align: center;
 }
 
 #hero-publicacion h1 {
-  margin: 0;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  color: white;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 64px;
+    color: white;
+    font-family: "Poppins", sans-serif;
 }
 
 #hero-publicacion h1 span {
-  color: white;
+    color: white;
 }
 
 #hero-publicacion h2 {
-  color: #14ba75;
-  font-family: "roboto", sans-serif;
-  font-weight: 550;
-  margin: 12px 0 0 0;
-  font-size: 26px;
+    color: #14ba75;
+    font-family: "roboto", sans-serif;
+    font-weight: 550;
+    margin: 12px 0 0 0;
+    font-size: 26px;
 }
 
 #hero-publicacion h3 {
-  color: whitesmoke;
-  margin: 12px 0 0 0;
-  font-size: 26px;
+    color: whitesmoke;
+    margin: 12px 0 0 0;
+    font-size: 26px;
 }
 
 #hero-publicacion .icon-box {
-  border-radius: 1rem;
-  cursor: pointer;
-  padding: 30px 20px;
-  transition: ease-in-out 0.3s;
-  border: 2px solid grey;
-  height: 100%;
-  text-align: center;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding: 30px 20px;
+    transition: ease-in-out 0.3s;
+    border: 2px solid grey;
+    height: 100%;
+    text-align: center;
 }
 
 #hero-publicacion .icon-box i {
-  font-size: 32px;
-  line-height: 1;
-  color: #14ba75;
+    font-size: 32px;
+    line-height: 1;
+    color: #14ba75;
 }
 
 #hero-publicacion .icon-box h3 {
-  font-weight: 700;
-  margin: 10px 0 0 0;
-  padding: 0;
-  line-height: 1;
-  font-size: 20px;
-  line-height: 26px;
+    font-weight: 700;
+    margin: 10px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 20px;
+    line-height: 26px;
 }
 
 #hero-publicacion .icon-box h3 a {
-  color: whitesmoke;
-  transition: ease-in-out 0.3s;
+    color: whitesmoke;
+    transition: ease-in-out 0.3s;
 }
 
 #hero-publicacion .icon-box h3 a:hover {
-  color: #14ba75;
+    color: #14ba75;
 }
 
 #hero-publicacion .icon-box:hover {
-  border-color: #14ba75;
+    border-color: #14ba75;
 }
 
 #header .get-started-btn {
-  color: #fff;
-  border-radius: 12px;
-  padding: 10px 20px;
-  margin: 1rem;
-  width: auto;
-  white-space: nowrap;
-  transition: 0.3s;
-  font-size: 16px;
-  display: inline-block;
-  border: 3px solid #14ba75;
-  background-color: transparent; /* Fondo transparente */
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 1rem;
+    width: auto;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 16px;
+    display: inline-block;
+    border: 3px solid #14ba75;
+    background-color: transparent;
+    /* Fondo transparente */
 }
 
 #header .get-started-btn:hover {
-  background: #14ba75; /* Fondo verde completo al hacer hover */
-  color: #fff; /* Letras blancas al hacer hover */
-  border-color: #14ba75; /* Borde verde completo al hacer hover */
+    background: #14ba75;
+    /* Fondo verde completo al hacer hover */
+    color: #fff;
+    /* Letras blancas al hacer hover */
+    border-color: #14ba75;
+    /* Borde verde completo al hacer hover */
 }
+
 .scrollto {
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
 }
 
 .scrollto:hover {
-  color: #14ba75;
+    color: #14ba75;
 }
+
 /*====== RESPONSIVE ======*/
 
 @media (min-width: 1024px) {
-  #hero-publicacion {
-    background-attachment: fixed;
-  }
+    #hero-publicacion {
+        background-attachment: fixed;
+    }
 }
+
 @media (max-width: 768px) {
-  #hero-publicacion {
-    height: auto;
-  }
-  #hero-publicacion h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-  #hero-publicacion h2 {
-    font-size: 22px;
-    line-height: 24px;
-  }
+    #hero-publicacion {
+        height: auto;
+    }
+
+    #hero-publicacion h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #hero-publicacion h2 {
+        font-size: 22px;
+        line-height: 24px;
+    }
 }
 
 @media (max-width: 992px) {
-  #header .logo img {
-    max-height: 30px;
-  }
+    #header .logo img {
+        max-height: 30px;
+    }
 }
 
 @media (max-width: 768px) {
-  .get-started-btn {
-    padding: 8px 15px;
-  }
+    .get-started-btn {
+        padding: 8px 15px;
+    }
 }
 
 @media (max-width: 768px) {
-  #header input[type="text"] {
-    width: 80%;
-  }
+    #header input[type="text"] {
+        width: 80%;
+    }
 }
 
 @media (max-width: 768px) {
-  #hero-publicacion h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
+    #hero-publicacion h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
 
-  #hero-publicacion h2 {
-    font-size: 18px;
-    line-height: 20px;
-  }
+    #hero-publicacion h2 {
+        font-size: 18px;
+        line-height: 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  #header {
-    background-color: black; /* Fondo negro */
-    position: relative; /* Posición relativa */
-  }
+    #header {
+        background-color: black;
+        /* Fondo negro */
+        position: relative;
+        /* Posición relativa */
+    }
 
-  #header .row {
-    padding: 10px;
-  }
+    #header .row {
+        padding: 10px;
+    }
 
-  #header .get-started-btn {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
+    #header .get-started-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+.searchBarCont {
+    position: relative;
+}
+
+.resultsCont {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: white;
+    width: max-content;
+    max-width: calc(100vw - 17px);
+    align-items: flex-start;
+    opacity: 0;
+    z-index: 500;
+}
+
+.searchResult {
+    padding: 0.5rem 1rem;
+    padding-left: 0.5rem;
+    text-align: left;
+    color: rgb(75, 75, 75);
+    border-bottom: 1px solid rgb(223, 223, 223);
+    width: 100%;
+}
+
+
+.searchResult:hover {
+    color: black;
+}
+
+@media only screen and (orientation: portrait) {
+
+    .resultsCont {
+        max-width: 100vw;
+    }
 }

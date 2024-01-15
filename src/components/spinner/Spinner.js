@@ -21,12 +21,4 @@ const ImageSpinner = () => {
     );
 }
 
-const BgSpinner = () => {
-    return (
-        <div className="contSpinners bgSpinner flex">
-            <PuffLoader color="green" size={100}/>
-        </div>
-    );
-}
-
-export {Spinner, ImageSpinner, BgSpinner};
+export {Spinner, ImageSpinner};

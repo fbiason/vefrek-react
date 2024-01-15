@@ -5,15 +5,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { updateCompany, findCompany, deleteImageOfFirebase } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
-import { useParams } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import { useParams, useNavigate } from "react-router-dom";
 import { verifyIfHasChanges } from "../../utils/utils";
 
 export default function EditarEmpresa() {
     const {id} = useParams();
+    const navigate = useNavigate();
     const formRef = useRef(); 
     const initialData = useRef();
-    const { userData } = useContext(UserContext);
     const { showSpinner } = useContext(SpinnerContext);
     const [formData, setFormData] = useState({
         name: "",
@@ -181,13 +180,15 @@ export default function EditarEmpresa() {
         const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
                
-        if(companyData && companyData.registeremail !== userData.email) {
-            swalPopUp("Ops!", "No puedes editar esta empresa", "warning");
+        if(!response.success && !response.message.includes("pausado")) {
             showSpinner(false);
+            swalPopUp("Ops!", response.message, "error");
+            navigate("/");
             return;
-        } else if (!companyData) {
-            swalPopUp("Ops!", "No se encontro la empresa por su ID", "warning");
+        } else if (!response.success && response.message.includes("pausado")) {
             showSpinner(false);
+            swalPopUp("Ops!", "No Autorizado: No tienes los permisos necesarios para editar esta empresa", "warning");
+            navigate("/");
             return;
         };
         showSpinner(false);
@@ -250,9 +251,9 @@ export default function EditarEmpresa() {
     }
 
     useEffect(() => {
-        if (userData.isLogged) find();
+        find();
     // eslint-disable-next-line
-    }, [userData]);
+    }, [id]);
        
     const deleteImg = async (deletePath) => {
         try {

@@ -13,9 +13,9 @@ const Pcc = () => {
             incrementar el alcance de los vehículos que publiques para la venta
           </p>
           <Link to="/publicacion">
-            <a className="ppc-btn" href="#">
+            <div className="ppc-btn">
               PUBLICITÁ AHORA
-            </a>
+            </div>
           </Link>
         </div>
       </div>

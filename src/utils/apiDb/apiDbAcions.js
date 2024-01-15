@@ -43,7 +43,7 @@ export const findCompany = async (field, value, fieldsSelected) => {
             },
         });
         const responseOBJ = await responseJSON.json();
-        return responseOBJ.success ? { success: true, companyData: responseOBJ.userData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
+        return responseOBJ;
     } catch (error) {
         return { success: false, message: error.message }
     }
@@ -60,7 +60,7 @@ export const findCompanys = async (query, fieldsSelected) => {
             },
         });
         const responseOBJ = await responseJSON.json();
-        return responseOBJ.success ? { success: true, companysData: responseOBJ.companysData, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
+        return responseOBJ;
     } catch (error) {
         return { success: false, message: error.message }
     }
