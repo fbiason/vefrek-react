@@ -59,9 +59,9 @@ const Perfil = () => {
     };
 
     useEffect(() => {
-        find();
+        if (userData.isLogged) find();
     // eslint-disable-next-line
-    }, []);
+    }, [userData]);
 
     useEffect(() => {
         formDataRef.current = formData;

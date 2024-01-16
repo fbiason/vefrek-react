@@ -4,12 +4,13 @@ import { SpinnerContext } from "../../context/spinnerContext";
 import { findCompanys, deleteCompanyById, updateCompanyState } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp, swalPopUpWithCallback ,swalPopUpWhitOptionsAndCallback } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MisEmpresas = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const [companysData, setCompanysData] = useState([]);
     const { userData } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const deleteComp = async (id) => {
         const response = await deleteCompanyById(id);
@@ -95,16 +96,17 @@ const MisEmpresas = () => {
             setCompanysData([]);
             swalPopUp("Ops!", "No tienes empresas cargadas. Selecciona la opción 'Publicar Ahora' para cargar tu empresa", "info");
             showSpinner(false);
+            navigate("/")
         } else {
             swalPopUp("Error", response.message, "error");
         }
         showSpinner(false);
-    };
+    }
 
     useEffect(() => {
-        if(userData.email) find();
+        if(userData.isLogged) find();
     // eslint-disable-next-line
-    }, [userData.email]);
+    }, [userData]);
 
     return (
         <section className="background">

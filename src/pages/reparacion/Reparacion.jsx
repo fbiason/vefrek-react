@@ -17,7 +17,7 @@ const Reparacion = () => {
     showSpinner(true);
     const response = await findCompanys(
       queryJSON,
-      "subcategory name images location phone _id"
+      "subcategory name images location phone _id vefrek_website"
     );
     if (response.success && response.companysData) {
       const jsxArr = response.companysData.map((company) => (
@@ -30,6 +30,7 @@ const Reparacion = () => {
             location={company.location}
             phone={company.phone}
             id={company._id}
+            vefrek_website={company.vefrek_website}
           />
         </div>
       ));
@@ -43,6 +44,10 @@ const Reparacion = () => {
     showSpinner(false);
   };
 
+  useEffect(() => {
+    downloadData("Reparación y mantenimiento");
+    // eslint-disable-next-line
+  }, []);
   useEffect(() => {
     downloadData("Reparación y mantenimiento");
     // eslint-disable-next-line
