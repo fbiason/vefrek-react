@@ -18,6 +18,21 @@ const Hero = () => {
           </div>
         </div>
 
+        <div className="row justify-content-center">
+          <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center searchBarCont mt-5">
+            <input
+              // onChange={findData}
+              type="text"
+              name="buscar"
+              id="buscar"
+              size="35"
+              placeholder="Buscar..."
+              className="form-control search_navbar"
+            />
+            {/* <div className="resultsCont flex column">{results}</div>*/}
+          </div>
+        </div>
+
         <div
           className="row justify-content-center mt-5"
           data-aos="zoom-in"

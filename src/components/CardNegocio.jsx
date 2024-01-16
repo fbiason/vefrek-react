@@ -1,45 +1,25 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./cardnegocio.css";
 
 const CardNegocio = (props) => {
   return (
-    <Card className="categoria-card h-100 col-12 col-sm-7 position-relative">
-      <Card.Header>
-        <p className="card-header-text uppercase font-bold mb-0">
-          {props.subcategory}
-        </p>
-        <h4 className="card-header-h4 text-xl mb-0">{props.name}</h4>
-      </Card.Header>
-
-      <Card.Img
-        variant="top"
-        src={props.imgUrl}
-        alt="Relaxing app background"
-        className="w-100"
-      />
-
-      <Card.Footer>
-        <div className="d-flex align-items-center gap-2">
-          <img
-            alt="Breathing app icon logo-categoria"
-            className="rounded-circle logo-categoria"
-            src={props.logoUrl}
-          />
-          <div className="flex flex-col">
-            <p className="text-categoria">{`📍 Dirección: ${props.location}`}</p>
-            <p className="text-categoria">{`📞 Teléfono: ${props.phone}`}</p>
+    <div>
+      <div className="container-card">
+        <div className="card">
+          <figure>
+            <img src={props.imgUrl} alt="Diseño Gráfico" />
+          </figure>
+          <div className="contenido-card">
+            <h5>{props.subcategory}</h5>
+            <h2>{props.name}</h2>
+            <p>{`📍 Dirección: ${props.location}`}</p>
+            <p>{`📞 Teléfono: ${props.phone}`}</p>
+            <Link to={`/${props.vefrek_website}`}> Más Info </Link>
           </div>
         </div>
-        <Link to={`/${props.vefrek_website}`}>
-          {" "}
-          <Button variant="dark" className="rounded-pill btn-card">
-            +
-          </Button>{" "}
-        </Link>
-      </Card.Footer>
-    </Card>
+      </div>
+    </div>
   );
 };
 
