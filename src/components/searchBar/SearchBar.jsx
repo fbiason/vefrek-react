@@ -46,18 +46,20 @@ export default function SearchBar() {
     const setSearchResultsStyle = () => {
         setTimeout(() => {
             const resultsCont = document.querySelector(".resultsCont");
+            const toLeft = resultsCont.getBoundingClientRect().left;
             if (
-                window.innerHeight > window.innerWidth &&
+                window.innerHeight > window.innerWidth &&                   //Portrait
                 resultsRef.current &&
                 resultsRef.current.length > 0
             ) {
-                const toLeft = resultsCont.getBoundingClientRect().left;
                 if (toLeft) resultsCont.style.transform = `translateX(-${toLeft}px)`;
-            } else if (
+                resultsCont.style.maxWidth = "100vw";
+            } else if (                                                     //landscape
                 window.innerHeight < window.innerWidth &&
                 resultsRef.current &&
                 resultsRef.current.length > 0
             ) {
+                resultsCont.style.maxWidth = `calc(100vw - 17px - ${toLeft}px)`;
                 resultsCont.style.transform = `unset`;
             }
         }, 100);
@@ -81,6 +83,7 @@ export default function SearchBar() {
 
     useEffect(() => {
         window.addEventListener("orientationchange", setSearchResultsStyle);
+        setSearchResultsStyle();
         getcompanysFullCollection();
     }, []);
 
