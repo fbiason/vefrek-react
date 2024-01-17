@@ -7,7 +7,6 @@ import Negocios from "../negocios/Negocios";
 import Valores from "../valores/Valores";
 
 const Home = () => {
-  
   return (
     <>
       <Hero />
