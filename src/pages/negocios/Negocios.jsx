@@ -43,12 +43,7 @@ const Negocios = () => {
                 (query) => Object.keys(query)[0] === subcategory
             );
             const subcategoryParse = Object.values(queryToAppy)[0];
-            const queryJSON = JSON.stringify({
-                $and: [
-                    { subcategory: subcategoryParse },
-                    { $or: [{ play: true }, { play: { $exists: false } }] },
-                ],
-            });
+            const queryJSON = JSON.stringify({ subcategory: subcategoryParse });
 
             showSpinner(true);
             const response = await findCompanys(

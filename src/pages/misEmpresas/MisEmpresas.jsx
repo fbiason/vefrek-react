@@ -49,7 +49,7 @@ const MisEmpresas = () => {
         }
     }
 
-    const find = async () => {
+    const find = async () => { 
         showSpinner(true);
         const response = await findCompanys(JSON.stringify({"registeremail": userData.email}), "name location play");
         if (response.success && response.companysData) {

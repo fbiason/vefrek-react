@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./hero.css";
+import SearchBar from "../../components/searchBar/SearchBar";
 
 const Hero = () => {
   return (
@@ -20,16 +21,7 @@ const Hero = () => {
 
         <div className="row justify-content-center">
           <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center searchBarCont mt-5">
-            <input
-              // onChange={findData}
-              type="text"
-              name="buscar"
-              id="buscar"
-              size="35"
-              placeholder="Buscar..."
-              className="form-control search_navbar"
-            />
-            {/* <div className="resultsCont flex column">{results}</div>*/}
+            {<SearchBar />}
           </div>
         </div>
 
