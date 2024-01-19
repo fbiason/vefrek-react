@@ -125,7 +125,7 @@ const PaginaEmpresa = () => {
 
     const find = async () => {
         showSpinner(true);
-        const response = await findCompany("vefrek_website", vefrek_website, "");
+        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail -reviews.comment -reviews.date -reviews._id");
         if (response.success) {
             const companyData = response.companyData;
             const imagesUrlsArr = companyData.images.images.map(
@@ -176,14 +176,20 @@ const PaginaEmpresa = () => {
             if (reviewsArr && reviewsArr.length > 0) {
                 const reviewsAverage = reviewsArr.reduce((acc, review) => acc + review.numberOfStars, 0) / reviewsArr.length;
                 setStars(
-                    <StyledRating
-                        name="star-rating"
-                        precision={0.1}
-                        defaultValue={reviewsAverage.toFixed(1)}
-                        icon={<Star/>}
-                        emptyIcon={<Star/>}
-                        readOnly
-                    />
+                    <div className="starsCont flex">
+                        <p className="starsNumbers" title="Calificación promedio">{`${reviewsAverage.toFixed(1)}`}</p>
+                        <div className="starsComponentCont flex">
+                            <StyledRating
+                                name="star-rating"
+                                precision={0.1}
+                                defaultValue={reviewsAverage.toFixed(1)}
+                                icon={<Star/>}
+                                emptyIcon={<Star/>}
+                                readOnly
+                             />
+                        </div>
+                        <p className="starsNumbers" title="Número de reseñas">({`${reviewsArr.length}`})</p>
+                    </div>
                 )
             }
             

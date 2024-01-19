@@ -336,3 +336,19 @@
   }
 }
 
+.starsCont {
+  display: inline-flex;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.starsComponentCont {
+  margin: 0 0.5rem;
+  align-items: flex-end;
+}
+
+.starsNumbers {
+  margin: 0;
+  color: #444444 !important;
+  font-weight: 500;
+}
