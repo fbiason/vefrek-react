@@ -125,7 +125,7 @@ const PaginaEmpresa = () => {
 
     const find = async () => {
         showSpinner(true);
-        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail -reviews.comment -reviews.date -reviews._id");
+        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail -reviews.comment -reviews.date -reviews._id");     //Campos excluidos con "-"
         if (response.success) {
             const companyData = response.companyData;
             const imagesUrlsArr = companyData.images.images.map(
