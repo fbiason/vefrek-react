@@ -165,6 +165,7 @@ const PaginaEmpresa = () => {
                     opening: "",
                     closing: "",
                 },
+                creationdate: companyData.creationdate,
             });
             getLocationFromAddress(
                 `${companyData.location},${companyData.city},${companyData.state}`
@@ -322,7 +323,7 @@ const PaginaEmpresa = () => {
                                             <p>{companyData.slogan}</p>
                                         </div>
                                         <div className="mt-4">
-                                            <h5>Fecha de Carga: 21/01/2024</h5>
+                                            <h5>Fecha de Carga: {new Date(companyData.creationdate).toLocaleString().split(",")[0]}</h5>
                                         </div>
                                     </div>
 
