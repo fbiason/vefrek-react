@@ -165,7 +165,6 @@ const PaginaEmpresa = () => {
                     opening: "",
                     closing: "",
                 },
-                creationdate: companyData.creationdate,
             });
             getLocationFromAddress(
                 `${companyData.location},${companyData.city},${companyData.state}`
@@ -200,7 +199,7 @@ const PaginaEmpresa = () => {
 
                 /***************** Seteo de comentarios **********************/
 
-                const reviewsArrJSX = reviewsArr.map((review) =>
+                const reviewsArrJSX = reviewsArr.map((review) => 
                     <div className="row container mt-5" key={review._id}>
                         <div className="col-6">
                             {" "}
@@ -216,7 +215,7 @@ const PaginaEmpresa = () => {
                         <p>
                             {review.comment}
                         </p>
-                    </div>
+                    </div>    
                 )
                 setComments(reviewsArrJSX);
 
@@ -261,12 +260,8 @@ const PaginaEmpresa = () => {
 
     const sendFeedback = async () => {
         try {
-            if (!userData.isLogged)
-                throw new Error("Debes iniciar sesión para enviar una reseña");
-
-            const hasStars = document
-                .querySelector(".starsFeedback")
-                .querySelector("input[type='radio']:checked");
+            if (!userData.isLogged) throw new Error("Debes iniciar sesión para enviar una reseña");
+            const hasStars = document.querySelector(".starsFeedback").querySelector("input[type='radio']:checked");
             const numberOfStars = hasStars
                 ? parseInt(
                     document
@@ -322,9 +317,6 @@ const PaginaEmpresa = () => {
                                             {stars}
                                             <p>{companyData.slogan}</p>
                                         </div>
-                                        <div className="mt-4">
-                                            <h5>Fecha de Carga: {new Date(companyData.creationdate).toLocaleString().split(",")[0]}</h5>
-                                        </div>
                                     </div>
 
                                     <div className="grid gap-4 img-negocio">
@@ -332,8 +324,8 @@ const PaginaEmpresa = () => {
                                             <div className="image-container">
                                                 <img
                                                     className={`img-fluid cursor-pointer ${imagenSeleccionada === 0
-                                                        ? "imagen-seleccionada"
-                                                        : ""
+                                                            ? "imagen-seleccionada"
+                                                            : ""
                                                         }`}
                                                     src={imagenes[0]}
                                                     alt=""
@@ -350,8 +342,8 @@ const PaginaEmpresa = () => {
                                                 <div key={index}>
                                                     <img
                                                         className={`h-72 w-128 cursor-pointer ${imagenSeleccionada === index + 1
-                                                            ? "imagen-seleccionada"
-                                                            : ""
+                                                                ? "imagen-seleccionada"
+                                                                : ""
                                                             } img-fluid`}
                                                         src={imagenes[index + 1]}
                                                         alt=""
@@ -386,8 +378,8 @@ const PaginaEmpresa = () => {
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
                                     <div className="reseña-container">
                                         <h2>Opiniones Destacadas</h2>
-                                        {comments}
-                                        <div class="container">
+                                            {comments}                                      
+                                        <div className="container">
                                             <a href="#">ver más comentarios...</a>
                                         </div>
                                     </div>
@@ -401,8 +393,7 @@ const PaginaEmpresa = () => {
                         <div className="perfil-card-element2 card-empresa h-100">
                             <div className="column-2 flex-grow-1">
                                 <div className="ubicacion-container">{map}</div>
-
-                                <div className="mt-3">
+                                <div className="telefono-container mt-5">
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                                 </div>
                                 <a
@@ -412,7 +403,7 @@ const PaginaEmpresa = () => {
                                     <p>{`Teléfono: ${companyData.phone}`}</p>
                                 </a>
 
-                                <div className="redes-sociales-container d-flex justify-content-start">
+                                <div className="redes-sociales-container">
                                     {" "}
                                     {companyData.social.whatsapp && (
                                         <a
@@ -496,73 +487,20 @@ const PaginaEmpresa = () => {
                                         </a>
                                     )}
                                 </div>
-                                <div className="mt-3">
-                                    {" "}
-                                    <a
-                                        className="sitio-web-container"
-                                        href={
-                                            companyData.website.includes("http")
-                                                ? companyData.website
-                                                : `https://${companyData.website}`
-                                        }
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        <p>{`Sitio Web: ${companyData.website}`}</p>
-                                    </a>
-                                </div>
 
-                                <div>
-                                    <table className="opening-hours table table-hover table-condensed borderless">
-                                        <thead>
-                                            <tr>
-                                                <th colSpan="2" className="table-headline">
-                                                    <span style={{ fontSize: "18px" }}>
-                                                        Horarios de Apretura
-                                                    </span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>Lunes</th>
-                                                <td>08:00 - 16:00</td>
-                                                <td>08:00 - 16:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Martes</th>
-                                                <td>08:00 - 18:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Miércoles</th>
-                                                <td>09:30 - 12:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Jueves</th>
-                                                <td>08:00 - 18:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Viernes</th>
-                                                <td>10:00 - 16:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sábado</th>
-                                                <td>08:00 - 13:00</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Domingo</th>
-                                                <td>Cerrado</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div className="mt-3" onClick={report}>
+                                <a
+                                    className="sitio-web-container mt-3"
+                                    href={
+                                        companyData.website.includes("http")
+                                            ? companyData.website
+                                            : `https://${companyData.website}`
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <p>{`Sitio Web: ${companyData.website}`}</p>
+                                </a>
+                                <div onClick={report}>
                                     <button className="reportar">Reportar Negocio</button>
                                 </div>
 
