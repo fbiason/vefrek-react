@@ -9,11 +9,10 @@ import { SpinnerContext } from "../../context/spinnerContext";
 import { reportCompany } from "../../utils/report";
 import { UserContext } from "../../context/userContext";
 import { Rating } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import { Star } from "@mui/icons-material";
 
 const PaginaEmpresa = () => {
-
     const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
     const [map, setMap] = useState(null);
     const companyDataRef = useRef();
@@ -21,6 +20,7 @@ const PaginaEmpresa = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const navigate = useNavigate();
     const [stars, setStars] = useState();
+    const [comments, setComments] = useState();
 
     const sendReport = async (reason) => {
         if (userData.isLogged === false) {
@@ -125,7 +125,7 @@ const PaginaEmpresa = () => {
 
     const find = async () => {
         showSpinner(true);
-        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail -reviews.comment -reviews.date -reviews._id");     //Campos excluidos con "-"
+        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail");
         if (response.success) {
             const companyData = response.companyData;
             const imagesUrlsArr = companyData.images.images.map(
@@ -170,29 +170,59 @@ const PaginaEmpresa = () => {
                 `${companyData.location},${companyData.city},${companyData.state}`
             );
 
-            /***************** Seteo de reseñas **********************/
+            /***************** Seteo calificaciones recibidas **********************/
 
             const reviewsArr = companyData.reviews;
             if (reviewsArr && reviewsArr.length > 0) {
                 const reviewsAverage = reviewsArr.reduce((acc, review) => acc + review.numberOfStars, 0) / reviewsArr.length;
                 setStars(
                     <div className="starsCont flex">
-                        <p className="starsNumbers" title="Calificación promedio">{`${reviewsAverage.toFixed(1)}`}</p>
+                        <p
+                            className="starsNumbers"
+                            title="Calificación promedio"
+                        >{`${reviewsAverage.toFixed(1)}`}</p>
                         <div className="starsComponentCont flex">
                             <StyledRating
                                 name="star-rating"
                                 precision={0.1}
-                                defaultValue={reviewsAverage.toFixed(1)}
-                                icon={<Star/>}
-                                emptyIcon={<Star/>}
+                                defaultValue={parseFloat(reviewsAverage.toFixed(1))}
+                                icon={<Star />}
+                                emptyIcon={<Star />}
                                 readOnly
-                             />
+                            />
                         </div>
-                        <p className="starsNumbers" title="Número de reseñas">({`${reviewsArr.length}`})</p>
+                        <p className="starsNumbers" title="Número de reseñas">
+                            ({`${reviewsArr.length}`})
+                        </p>
                     </div>
+                );
+
+                /***************** Seteo de comentarios **********************/
+
+                const reviewsArrJSX = reviewsArr.map((review) => 
+                    <div className="row container mt-5" key={review._id}>
+                        <div className="col-6">
+                            {" "}
+                            <div className="commentsData flex">
+                                <h5>{review.name}</h5>
+                                <h5>({new Date(review.date).toLocaleString()})</h5>
+                            </div>
+                        </div>
+                        <div className="text-end col-6">
+                            {" "}
+                            <h5>{"⭐⭐⭐⭐⭐".substring(0, review.numberOfStars)}</h5>{" "}
+                        </div>
+                        <p>
+                            {review.comment}
+                        </p>
+                    </div>    
                 )
+                setComments(reviewsArrJSX);
+
             }
-            
+
+
+
         } else if (!response.success) {
             swalPopUp("Ops", response.message, "warning");
             showSpinner(false);
@@ -217,26 +247,32 @@ const PaginaEmpresa = () => {
     /********************************* Reseñnas **********************************/
 
     const StyledRating = styled(Rating)({
-        '& .MuiRating-iconFilled': {
-            color: '#FCD93A',
+        "& .MuiRating-iconFilled": {
+            color: "#FCD93A",
         },
-        '& path': {
-            stroke: '#000000', // Cambiar el color del contorno del ícono a negro
+        "& path": {
+            stroke: "#000000", // Cambiar el color del contorno del ícono a negro
             strokeWidth: 0.5,
         },
-        '& svg': {
-            width: '30px',    // Ajustar el ancho del icono SVG
-            height: '30px',   // Ajustar la altura del icono SVG
+        "& svg": {
+            width: "30px", // Ajustar el ancho del icono SVG
+            height: "30px", // Ajustar la altura del icono SVG
         },
     });
 
     const sendFeedback = async () => {
         try {
-            if (!userData.isLogged) throw new Error ("Debes iniciar sesión para enviar una reseña");
-
+            if (!userData.isLogged) throw new Error("Debes iniciar sesión para enviar una reseña");
             const hasStars = document.querySelector(".starsFeedback").querySelector("input[type='radio']:checked");
-            const numberOfStars = hasStars ? parseInt(document.querySelector(".starsFeedback").querySelector("input[type='radio']:checked").getAttribute("weight")) : undefined;
-           
+            const numberOfStars = hasStars
+                ? parseInt(
+                    document
+                        .querySelector(".starsFeedback")
+                        .querySelector("input[type='radio']:checked")
+                        .getAttribute("weight")
+                )
+                : undefined;
+
             const companyId = companyDataRef.current._id;
             const comment = document.querySelector(".commentFeedback").value;
             showSpinner(true);
@@ -244,7 +280,10 @@ const PaginaEmpresa = () => {
             if (response.success) {
                 swalPopUp("Acción completada", response.message, "success");
                 document.querySelector(".commentFeedback").value = "";
-                document.querySelector(".starsFeedback").querySelectorAll("input").forEach((input) => input.checked = false);
+                document
+                    .querySelector(".starsFeedback")
+                    .querySelectorAll("input")
+                    .forEach((input) => (input.checked = false));
             } else if (!response.success && !response.message.includes("Error")) {
                 swalPopUp("Ops!", response.message, "warning");
             } else if (!response.success && response.message.includes("Error")) {
@@ -255,7 +294,7 @@ const PaginaEmpresa = () => {
         }
         showSpinner(false);
         find();
-    }
+    };
 
     return (
         <section className="background">
@@ -340,45 +379,11 @@ const PaginaEmpresa = () => {
                             <div className="col-md-12">
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
                                     <div className="reseña-container">
-                                        <h2>Reseña, Calificación, Comentarios</h2>
-                                    </div>
-                                    <div className="max-w-lg shadow-md mt-4">
-                                        <form action="" className="w-full p-2">
-                                            <div className="mb-2">
-                                                <label
-                                                    htmlFor="comment"
-                                                    className="text-gray-600 w-full"
-                                                >
-                                                    Deja tu comentario sobre la empresa
-                                                </label>
-                                                <textarea
-                                                    className="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1 commentFeedback"
-                                                    name="comment"
-                                                    placeholder=""
-                                                ></textarea>
-                                            </div>
-
-                                            <div className="container d-flex justify-content-center align-items-center p-3 r-star">
-                                                <div className="feedback">
-                                                    <div className="rating starsFeedback">
-                                                        <input type="radio" name="rating" id="rating-5" weight="5"/>
-                                                        <label htmlFor="rating-5"></label>
-                                                        <input type="radio" name="rating" id="rating-4" weight="4"/>
-                                                        <label htmlFor="rating-4"></label>
-                                                        <input type="radio" name="rating" id="rating-3" weight="3"/>
-                                                        <label htmlFor="rating-3"></label>
-                                                        <input type="radio" name="rating" id="rating-2" weight="2"/>
-                                                        <label htmlFor="rating-2"></label>
-                                                        <input type="radio" name="rating" id="rating-1" weight="1"/>
-                                                        <label htmlFor="rating-1"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <button className="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded" onClick={sendFeedback} type="button">
-                                                Comentar
-                                            </button>
-                                        </form>
+                                        <h2>Opiniones Destacadas</h2>
+                                            {comments}                                      
+                                        <div className="container">
+                                            <a href="#">ver más comentarios...</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -499,6 +504,71 @@ const PaginaEmpresa = () => {
                                 </a>
                                 <div onClick={report}>
                                     <button className="reportar">Reportar Negocio</button>
+                                </div>
+
+                                <div className="max-w-lg shadow-md mt-4">
+                                    <form action="" className="w-full p-2">
+                                        <div className="mb-2">
+                                            <label htmlFor="comment" className="text-gray-600 w-full">
+                                                Deja tu comentario sobre la empresa
+                                            </label>
+                                            <textarea
+                                                className="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1 commentFeedback"
+                                                name="comment"
+                                                placeholder=""
+                                            ></textarea>
+                                        </div>
+
+                                        <div className="container d-flex justify-content-center align-items-center p-3 r-star">
+                                            <div className="feedback">
+                                                <div className="rating starsFeedback">
+                                                    <input
+                                                        type="radio"
+                                                        name="rating"
+                                                        id="rating-5"
+                                                        weight="5"
+                                                    />
+                                                    <label htmlFor="rating-5"></label>
+                                                    <input
+                                                        type="radio"
+                                                        name="rating"
+                                                        id="rating-4"
+                                                        weight="4"
+                                                    />
+                                                    <label htmlFor="rating-4"></label>
+                                                    <input
+                                                        type="radio"
+                                                        name="rating"
+                                                        id="rating-3"
+                                                        weight="3"
+                                                    />
+                                                    <label htmlFor="rating-3"></label>
+                                                    <input
+                                                        type="radio"
+                                                        name="rating"
+                                                        id="rating-2"
+                                                        weight="2"
+                                                    />
+                                                    <label htmlFor="rating-2"></label>
+                                                    <input
+                                                        type="radio"
+                                                        name="rating"
+                                                        id="rating-1"
+                                                        weight="1"
+                                                    />
+                                                    <label htmlFor="rating-1"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            className="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded"
+                                            onClick={sendFeedback}
+                                            type="button"
+                                        >
+                                            Comentar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

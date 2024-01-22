@@ -352,3 +352,22 @@
   color: #444444 !important;
   font-weight: 500;
 }
+
+.commentsData {
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.commentsData h5 {
+  margin-bottom: 0;
+}
+
+.commentsData h5:first-child {
+  font-weight: bold;
+}
+
+.commentsData h5:last-child {
+  font-family: "Open Sans", sans-serif;
+  margin-left: 16px;
+  font-size: 16px;
+}
