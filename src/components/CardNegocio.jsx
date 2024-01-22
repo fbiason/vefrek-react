@@ -7,7 +7,11 @@ const CardNegocio = (props) => {
     <div>
       <div className="container-card">
         <div className="card">
-          <figure>
+          <figure style={{ position: "relative" }}>
+            <div className="favorito">
+              <input name="favorito" id="favorito-1" type="checkbox" />
+              <label htmlFor="favorito-1" className="bi bi-heart-fill"></label>
+            </div>
             <img src={props.imgUrl} alt="Diseño Gráfico" />
           </figure>
           <div className="contenido-card">
@@ -15,18 +19,7 @@ const CardNegocio = (props) => {
             <h2>{props.name}</h2>
             <p>{`📍 Dirección: ${props.location}`}</p>
             <p>{`📞 Teléfono: ${props.phone}`}</p>
-            <div className="row">
-              <div>
-                <Link className="col-6" to={`/${props.vefrek_website}`}>
-                  {" "}
-                  Más Info{" "}
-                </Link>{" "}
-              </div>
-              <div className="col-6 favorito">
-                <input type="checkbox" id="favorito-1" name="favorito" />
-                <label htmlFor="favorito-1"></label>
-              </div>
-            </div>
+            <Link to={`/${props.vefrek_website}`}> Más Info </Link>
           </div>
         </div>
       </div>

@@ -60,8 +60,10 @@
   background: #14ba75;
   color: #fff;
 }
-
 /*==== INICIO FAVORITOS ======*/
+.favorito .bi-heart-fill {
+  font-size: 3rem;
+}
 
 .favorito {
   display: flex;
@@ -69,7 +71,11 @@
   justify-content: center;
   overflow: hidden;
   flex-direction: row-reverse;
-  position: relative;
+  justify-content: end;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
 }
 
 .favorito-0 {
@@ -82,25 +88,24 @@
 
 .favorito > label {
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   margin-top: auto;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e3e3e3'%3e%3cpath id='heart-path' d='M12 21.35l-1.45-1.32C5.4 14.25 2 11.45 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 2.95-3.4 5.75-8.55 11.54L12 21.35z'/%3e%3c/svg%3e");
-
+  color: #e3e3e3;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: 76%;
   transition: 0.3s;
 }
 
-.favorito > input:checked ~ label,
-.favorito > input:checked ~ label ~ label {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='red'%3e%3cuse href='%23heart-path'/%3e%3c/svg%3e");
+.favorito > label:hover {
+  color: #e61e8f;
 }
 
-.favorito > input:not(:checked) ~ label:hover,
-.favorito > input:not(:checked) ~ label:hover ~ label {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='red'%3e%3cuse href='%23heart-path'/%3e%3c/svg%3e");
+.favorito > input:checked ~ label,
+.favorito > input:checked ~ label:hover,
+.favorito > input:checked ~ label ~ label {
+  color: #e61e8f;
 }
 
 /*===FIN STAR ===*/
