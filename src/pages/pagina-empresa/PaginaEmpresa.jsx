@@ -302,6 +302,9 @@ const PaginaEmpresa = () => {
                       {stars}
                       <p>{companyData.slogan}</p>
                     </div>
+                    <div className="mt-4">
+                      <h5>Fecha de Carga: 21/01/2024</h5>
+                    </div>
                   </div>
 
                   <div className="grid gap-4 img-negocio">
@@ -411,7 +414,8 @@ const PaginaEmpresa = () => {
             <div className="perfil-card-element2 card-empresa h-100">
               <div className="column-2 flex-grow-1">
                 <div className="ubicacion-container">{map}</div>
-                <div className="telefono-container mt-5">
+
+                <div className="mt-3">
                   <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                 </div>
                 <a
@@ -421,7 +425,7 @@ const PaginaEmpresa = () => {
                   <p>{`Teléfono: ${companyData.phone}`}</p>
                 </a>
 
-                <div className="redes-sociales-container">
+                <div className="redes-sociales-container d-flex justify-content-start">
                   {" "}
                   {companyData.social.whatsapp && (
                     <a
@@ -505,20 +509,73 @@ const PaginaEmpresa = () => {
                     </a>
                   )}
                 </div>
+                <div className="mt-3">
+                  {" "}
+                  <a
+                    className="sitio-web-container"
+                    href={
+                      companyData.website.includes("http")
+                        ? companyData.website
+                        : `https://${companyData.website}`
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <p>{`Sitio Web: ${companyData.website}`}</p>
+                  </a>
+                </div>
 
-                <a
-                  className="sitio-web-container mt-3"
-                  href={
-                    companyData.website.includes("http")
-                      ? companyData.website
-                      : `https://${companyData.website}`
-                  }
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <p>{`Sitio Web: ${companyData.website}`}</p>
-                </a>
-                <div onClick={report}>
+                <div>
+                  <table className="opening-hours table table-hover table-condensed borderless">
+                    <thead>
+                      <tr>
+                        <th colSpan="2" className="table-headline">
+                          <span style={{ fontSize: "18px" }}>
+                            Horarios de Apretura
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>Lunes</th>
+                        <td>08:00 - 16:00</td>
+                        <td>08:00 - 16:00</td>
+                      </tr>
+                      <tr>
+                        <th>Martes</th>
+                        <td>08:00 - 18:00</td>
+                        <td>08:00 - 18:00</td>
+                      </tr>
+                      <tr>
+                        <th>Miércoles</th>
+                        <td>09:30 - 12:00</td>
+                        <td>08:00 - 18:00</td>
+                      </tr>
+                      <tr>
+                        <th>Jueves</th>
+                        <td>08:00 - 18:00</td>
+                        <td>08:00 - 18:00</td>
+                      </tr>
+                      <tr>
+                        <th>Viernes</th>
+                        <td>10:00 - 16:00</td>
+                        <td>08:00 - 18:00</td>
+                      </tr>
+                      <tr>
+                        <th>Sábado</th>
+                        <td>08:00 - 13:00</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>Domingo</th>
+                        <td>Cerrado</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="mt-3" onClick={report}>
                   <button className="reportar">Reportar Negocio</button>
                 </div>
 
