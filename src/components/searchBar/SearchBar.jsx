@@ -8,13 +8,14 @@ export default function SearchBar() {
     const [results, setResults] = useState(null);
     const companyFullCollection = useRef();
     const resultsRef = useRef();
+    const resultsContRef = useRef();
 
     const findData = () => {
-        const resultsCont = document.querySelector(".resultsCont");
+        const resultsCont = resultsContRef.current;
         const inputSearch = document.querySelector(".search_navbar");
         const inputSearchArr = inputSearch.value.split(" ");
 
-        if (inputSearch.value.length > 1) {
+        if (inputSearch.value.length > 2) {
             const resultsArr = companyFullCollection.current.filter((company) =>
                 inputSearchArr.every((word) =>
                     JSON.stringify(company).toLowerCase().includes(word.toLowerCase())
@@ -45,7 +46,7 @@ export default function SearchBar() {
 
     const setSearchResultsStyle = () => {
         setTimeout(() => {
-            const resultsCont = document.querySelector(".resultsCont");
+            const resultsCont = resultsContRef.current;
             const toLeft = resultsCont.getBoundingClientRect().left;
             if (
                 window.innerHeight > window.innerWidth &&                   //Portrait
@@ -72,10 +73,9 @@ export default function SearchBar() {
     }, [results]);
 
     const getcompanysFullCollection = async () => {
-        const response = await findCompanys(
-            JSON.stringify({ $or: [{ play: true }, { play: { $exists: false } }] }),
-            "name location city state postal_code phone phone2 website category subcategory description vefrek_website"
-        );
+        const matchJSON = JSON.stringify({});
+        const aggregateQueryJSON = JSON.stringify([{$project: {name: 1, location: 1, city: 1, state: 1, postal_code: 1, phone: 1, phone2: 1, website: 1, category: 1, subcategory: 1, description: 1, vefrek_website: 1}} ])
+        const response = await findCompanys(matchJSON, aggregateQueryJSON);
         if (response.success && response.companysData) {
             companyFullCollection.current = response.companysData;
         }
@@ -98,7 +98,9 @@ export default function SearchBar() {
                 placeholder="Buscar..."
                 className="form-control search_navbar"
             />
-            <div className="resultsCont flex column">{results}</div>
+            <div className="resultsCont flex column" ref={resultsContRef}>
+                {results}
+            </div>
         </div>
     )
 }

@@ -43,12 +43,12 @@ const Negocios = () => {
                 (query) => Object.keys(query)[0] === subcategory
             );
             const subcategoryParse = Object.values(queryToAppy)[0];
-            const queryJSON = JSON.stringify({ subcategory: subcategoryParse });
+            const matchJSON = JSON.stringify({ subcategory: subcategoryParse });
+            const aggregateQueryJSON = JSON.stringify([ {$sample: {size: 8}}, {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1,  vefrek_website: 1}} ])
 
             showSpinner(true);
             const response = await findCompanys(
-                queryJSON,
-                "subcategory name images location phone _id vefrek_website"
+                matchJSON, aggregateQueryJSON                                                           
             );
             if (response.success && response.companysData) {
                 const jsxArr = response.companysData.map((company) => (

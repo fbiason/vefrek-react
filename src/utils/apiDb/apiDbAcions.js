@@ -49,10 +49,10 @@ export const findCompany = async (field, value, fieldsSelected) => {
     }
 }
 
-export const findCompanys = async (query, fieldsSelected) => {
+export const findCompanys = async (matchJSON, aggregateQueryJSON) => {
 
     try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys?query=${query}&fieldsSelected=${fieldsSelected}`, {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys?match=${matchJSON}&aggregateQuery=${aggregateQueryJSON}`, {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
