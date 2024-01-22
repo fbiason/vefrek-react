@@ -199,7 +199,7 @@ const PaginaEmpresa = () => {
 
                 /***************** Seteo de comentarios **********************/
 
-                const reviewsArrJSX = reviewsArr.map((review) => 
+                const reviewsArrJSX = reviewsArr.map((review) =>
                     <div className="row container mt-5" key={review._id}>
                         <div className="col-6">
                             {" "}
@@ -215,7 +215,7 @@ const PaginaEmpresa = () => {
                         <p>
                             {review.comment}
                         </p>
-                    </div>    
+                    </div>
                 )
                 setComments(reviewsArrJSX);
 
@@ -331,8 +331,8 @@ const PaginaEmpresa = () => {
                                             <div className="image-container">
                                                 <img
                                                     className={`img-fluid cursor-pointer ${imagenSeleccionada === 0
-                                                            ? "imagen-seleccionada"
-                                                            : ""
+                                                        ? "imagen-seleccionada"
+                                                        : ""
                                                         }`}
                                                     src={imagenes[0]}
                                                     alt=""
@@ -349,8 +349,8 @@ const PaginaEmpresa = () => {
                                                 <div key={index}>
                                                     <img
                                                         className={`h-72 w-128 cursor-pointer ${imagenSeleccionada === index + 1
-                                                                ? "imagen-seleccionada"
-                                                                : ""
+                                                            ? "imagen-seleccionada"
+                                                            : ""
                                                             } img-fluid`}
                                                         src={imagenes[index + 1]}
                                                         alt=""
@@ -385,7 +385,7 @@ const PaginaEmpresa = () => {
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
                                     <div className="reseña-container">
                                         <h2>Opiniones Destacadas</h2>
-                                            {comments}                   
+                                        {comments}
                                         <div class="container">
                                             <a href="#">ver más comentarios...</a>
                                         </div>
