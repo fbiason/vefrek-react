@@ -18,7 +18,14 @@ export default function SearchBar() {
         if (inputSearch.value.length > 2) {
             const resultsArr = companyFullCollection.current.filter((company) =>
                 inputSearchArr.every((word) =>
-                    JSON.stringify(company).toLowerCase().includes(word.toLowerCase())
+                    JSON.stringify(company)
+                    .toLowerCase()
+                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')                               //Quita acentos
+                    .includes(
+                        word.
+                        toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')                           //Quita acentos
+                    )
                 )
             );
             resultsArr.length === 0

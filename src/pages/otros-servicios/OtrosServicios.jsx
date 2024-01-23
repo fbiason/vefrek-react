@@ -4,6 +4,7 @@ import "./otros-servicios.css";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { generateRegEx } from "../../utils/utils";
 
 const OtrosServicios = () => {
     const { showSpinner } = useContext(SpinnerContext);
@@ -11,14 +12,12 @@ const OtrosServicios = () => {
     const [data, setData] = useState([]);
 
     const downloadData = async (category, subcategory) => { 
-
-        const queryOBJ = { subcategory: { $regex: "^[EeÉé][Ss][Tt][AaÁá][Cc][IiÍí][OoÓó][NnÑñ][ ][Dd][EeÉé][ ][Ss][EeÉé][Rr][Vv][IiÍí][Cc][IiÍí][OoÓó]$"} };
-        
+  
+        const queryOBJ = subcategory ? { subcategory: { $regex: generateRegEx(subcategory) } } : { category: { $regex: generateRegEx(category) } };
         const matchJSON = JSON.stringify(queryOBJ);
-        const aggregateQueryJSON = JSON.stringify([ {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1, vefrek_website: 1}} ]);
+        const aggregateQueryJSON = JSON.stringify([{ $project: { subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1, vefrek_website: 1 } }]);
 
         showSpinner(true);
-
         const response = await findCompanys(
             matchJSON,
             aggregateQueryJSON
