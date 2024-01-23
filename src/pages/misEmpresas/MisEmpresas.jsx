@@ -51,7 +51,11 @@ const MisEmpresas = () => {
 
     const find = async () => { 
         showSpinner(true);
-        const response = await findCompanys(JSON.stringify({"registeremail": userData.email}), "name location play");
+        
+        const matchJSON = JSON.stringify({ registeremail: userData.email });
+        const aggregateQueryJSON = JSON.stringify([ {$project: {name: 1, location: 1, play: 1}} ]);
+        const response = await findCompanys(matchJSON, aggregateQueryJSON);
+
         if (response.success && response.companysData) {
             const companysDataFromDB = response.companysData;
             const companysDataJSX = companysDataFromDB.map((company) => 

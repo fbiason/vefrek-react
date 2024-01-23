@@ -15,7 +15,7 @@ const Negocios = () => {
         "Todos",
         "Agencias",
         "Rent a Car",
-        "Gomerias",
+        "Gomerías",
         "Mecánicos",
         "Repuestos",
         "Lubricentros",
@@ -29,7 +29,7 @@ const Negocios = () => {
             { Todos: { $exists: true } },
             { Agencias: "Agencia" },
             { "Rent a Car": "Rent a Car" },
-            { Gomerias: "Gomería" },
+            { Gomerías: "Gomería" },
             { Mecánicos: "Taller mecánico" },
             { Repuestos: "Repuestos" },
             { Lubricentros: "Lubricentro" },
@@ -44,12 +44,10 @@ const Negocios = () => {
             );
             const subcategoryParse = Object.values(queryToAppy)[0];
             const matchJSON = JSON.stringify({ subcategory: subcategoryParse });
-            const aggregateQueryJSON = JSON.stringify([ {$sample: {size: 8}}, {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1,  vefrek_website: 1}} ])
+            const aggregateQueryJSON = JSON.stringify([ {$sample: {size: 8}}, {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1,  vefrek_website: 1}} ]);
 
             showSpinner(true);
-            const response = await findCompanys(
-                matchJSON, aggregateQueryJSON                                                           
-            );
+            const response = await findCompanys(matchJSON, aggregateQueryJSON);
             if (response.success && response.companysData) {
                 const jsxArr = response.companysData.map((company) => (
                     <div className="col-md-3 card-portfolio" key={company._id}>
@@ -70,7 +68,6 @@ const Negocios = () => {
                 setData(jsxArr);
             } else if (response.success && !response.companysData) {
                 setData(<p>No hay resultados</p>);
-                console.log(response.message);
             } else {
                 swalPopUp("Ops!", response.message, "error");
             }
