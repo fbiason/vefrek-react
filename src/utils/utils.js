@@ -20,7 +20,7 @@ export const verifyIfHasChanges = (childObject, parentObject) => {
 export const generateRegEx = (str) => {         //Genera una expresion regular que hace coincidir una busqueda en mongoose por mas que la palabra tenga letras con mayuscula o acentos  
     const regexIndex = [                        // Ejemplo sin el la base de datos tenemos una campo {subcategory: "Estación de Servicio"} lo encontraremos con la query
         {a: "[aAáÁ]"},                          // {subcategory: "estación de servicio"} o {subcategory: "EStÁción de serVicío"}
-        {b: "[bBéÉ]"},
+        {b: "[bB]"},
         {c: "[cC]"},
         {d: "[dD]"},
         {e: "[eEéÉ]"},
