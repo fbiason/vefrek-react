@@ -10,10 +10,9 @@ const OtrosServicios = () => {
     const [selectedOption, setSelectedOption] = useState("");
     const [data, setData] = useState([]);
 
-    const downloadData = async (category, subcategory) => {
+    const downloadData = async (category, subcategory) => { 
 
-        let queryOBJ =  { category: {$regex: `^${category}$`, $options: "i"} };
-        if (subcategory) queryOBJ = { category: {$regex: `^${category}$`, $options: "i"},  subcategory: {$regex: `^${subcategory}$`, $options: "i"} };
+        const queryOBJ = { subcategory: { $regex: "^[EeÉé][Ss][Tt][AaÁá][Cc][IiÍí][OoÓó][NnÑñ][ ][Dd][EeÉé][ ][Ss][EeÉé][Rr][Vv][IiÍí][Cc][IiÍí][OoÓó]$"} };
         
         const matchJSON = JSON.stringify(queryOBJ);
         const aggregateQueryJSON = JSON.stringify([ {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1, vefrek_website: 1}} ]);
