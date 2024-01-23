@@ -364,6 +364,7 @@ const CargaEmpresa = () => {
                                         name="category"
                                         onChange={handleCategoryChange}
                                         className="form-select"
+                                        defaultValue=""
                                     >
                                         <option value="" disabled hidden>
                                             <span>Selecciona una categoría</span>
