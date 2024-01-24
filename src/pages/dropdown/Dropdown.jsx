@@ -47,6 +47,12 @@ const Dropdown = () => {
                             <i className="fas fa-sign-out-alt" /> Logout
                         </p>
                     </Link>
+                        <Link className="link-dropdown" to="/Dashboard">
+                            {" "}
+                            <p className=" text-start">
+                                <i className="fas fa-sign-out-alt" /> Dashboard
+                            </p>
+                        </Link>
                 </div>
             )}
         </div>

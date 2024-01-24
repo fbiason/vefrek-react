@@ -1,4 +1,18 @@
 /* MAIN MENU */
+.dashboardCont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+}
+
+.dashboardClose {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: fit-content;
+}
 
 .logo-dash {
   margin: 1rem;
