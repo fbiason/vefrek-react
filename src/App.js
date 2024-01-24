@@ -24,6 +24,7 @@ import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";
+import Favoritos from "./components/dashboard/Favortios";
 
 function App() {
   ReactGA.initialize("G-J1JT10S65V");
@@ -59,6 +60,7 @@ function App() {
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Contacto" element={<Contacto />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Favoritos" element={<Favoritos />} />
           <Route
             path="/MisEmpresas"
             element={

@@ -25,11 +25,11 @@ a:hover {
   text-decoration: none;
 }
 
-section {
+/*section {
   padding: 10rem 3rem 3rem 3rem;
   overflow: hidden;
   box-sizing: none;
-}
+}*/
 
 @media (max-width: 768px) {
   section {

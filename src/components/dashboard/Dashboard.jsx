@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./dashboard.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);
@@ -69,38 +69,16 @@ const Dashboard = () => {
     },
   ];
 
-  const personalBestsData = [
-    {
-      label: "Fastest 5K Run",
-      value: "22min",
-      image:
-        "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/242bbd8c-aaf8-4aee-a3e4-e0df62d1ab27",
-    },
-    {
-      label: "Longest Distance Cycling",
-      value: "4 miles",
-      image:
-        "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/a3b3cb3a-5127-498b-91cc-a1d39499164a",
-    },
-    {
-      label: "Longest Roller-Skating",
-      value: "2 hours",
-      image:
-        "https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e0ee8ffb-faa8-462a-b44d-0a18c1d9604c",
-    },
-  ];
-
   return (
     <main className="dashboardCont">
-      <button className="dashboardClose" onClick={() => navigate(-1)}>
-        Close
-      </button>
       <nav className="main-menu">
-        <img
-          className="logo-dash"
-          src="/images/logos/logo-vefrek.png"
-          alt="vefrek"
-        />
+        <Link to="/Dashboard">
+          <img
+            src="/images/logos/logo-vefrek.png"
+            alt="Logo Vefrek"
+            className="logo-dash"
+          />
+        </Link>
         <ul>
           {menuItems.map((item, index) => (
             <li
@@ -108,12 +86,11 @@ const Dashboard = () => {
               className={`nav-item ${activeNavItem === index ? "active" : ""}`}
               onClick={() => handleNavItemClick(index)}
             >
-              <b></b>
-              <b></b>
-              <a href="#">
+              <Link to={index === 5 ? "/Favoritos" : "#"}>
+                {" "}
                 <i className={`fa ${item.icon} nav-icon`}></i>
                 <span className="nav-text">{item.text}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -153,7 +130,7 @@ const Dashboard = () => {
                       <p>{item.empresa}</p>
                       <div className="participants"></div>
                     </div>
-                    <button className="btn">Más info</button>
+                    <button className="btn-descuentos">Más info</button>
                   </div>
                 ))}
               </div>
@@ -165,10 +142,12 @@ const Dashboard = () => {
           <div className="user-info">
             <div className="icon-container">
               <i className="fa fa-bell nav-icon"></i>
-              <i className="fa fa-message nav-icon"></i>
             </div>
-            <h4>Usuario1</h4>
+            <h5>Usuario1</h5>
             <img src="/images/biason.jpg" alt="user" />
+            <button className="dashboardClose" onClick={() => navigate(-1)}>
+              Cerrar
+            </button>
           </div>
           <div className="active-calories">
             <h1 style={{ alignSelf: "flex-start" }}>Actividad</h1>
@@ -194,32 +173,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="mobile-personal-bests">
-            <h1>Personal Bests</h1>
-            <div className="personal-bests-container">
-              <div className="best-item box-one">
-                <p>Fastest 5K Run: 22min</p>
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/05dfc444-9ed3-44cc-96af-a9cf195f5820"
-                  alt=""
-                />
-              </div>
-              <div className="best-item box-two">
-                <p>Longest Distance Cycling: 4 miles</p>
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/9ca170e9-1252-4fa6-8677-36493540c1f2"
-                  alt=""
-                />
-              </div>
-              <div className="best-item box-three">
-                <p>Longest Roller-Skating: 2 hours</p>
-                <img
-                  src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/262d1611-ed4c-4297-981c-480cf7f95714"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
+
           <div className="friends-activity">
             <h1>Recomendaciones</h1>
             <div className="card-container">
