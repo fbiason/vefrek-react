@@ -17,6 +17,7 @@ const Dashboard = () => {
     { icon: "fa-building", text: "Negocios" },
     { icon: "fa-envelope", text: "Mensajes" },
     { icon: "fa-sliders", text: "Configuracion" },
+    { icon: "fa-user-tie", text: "Administrador" },
   ];
 
   const activityData = [
