@@ -23,6 +23,7 @@ import Contacto from "./pages/contacto/Contacto";
 import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   ReactGA.initialize("G-J1JT10S65V");
@@ -57,6 +58,8 @@ function App() {
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Contacto" element={<Contacto />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+
           <Route
             path="/MisEmpresas"
             element={
