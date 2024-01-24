@@ -25,76 +25,76 @@ import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
 
 function App() {
-  ReactGA.initialize("G-J1JT10S65V");
-  const { updateUserData, setShow, userData, show } = useContext(UserContext);
-  const { spinner } = useContext(SpinnerContext);
+    ReactGA.initialize("G-J1JT10S65V");
+    const { updateUserData, setShow, userData, show } = useContext(UserContext);
+    const { spinner } = useContext(SpinnerContext);
 
-  useEffect(() => {
-    const verifiLog = async () => {
-      const response = await isLogged();
-      if (response.userData) {
-        updateUserData(response.userData);
-      } else {
-        updateUserData({ email: "", name: "", isLogged: false });
-      }
-      setShow(true);
-    };
-    verifiLog();
-    // eslint-disable-next-line
-  }, []);
+    useEffect(() => {
+        const verifiLog = async () => {
+            const response = await isLogged();
+            if (response.userData) {
+                updateUserData(response.userData);
+            } else {
+                updateUserData({ email: "", name: "", isLogged: false });
+            }
+            setShow(true);
+        };
+        verifiLog();
+        // eslint-disable-next-line
+    }, []);
 
-  return (
-    <BrowserRouter>
-      <NextUIProvider>
-        {spinner}
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginApp />} />
-          <Route path="/Publicacion" element={<Publicacion />} />
-          <Route path="/Reparacion" element={<Reparacion />} />
-          <Route path="/Venta" element={<Venta />} />
-          <Route path="/OtrosServicios" element={<OtrosServicios />} />
-          <Route path="/Dropdown" element={<Dropdown />} />
-          <Route path="/Contacto" element={<Contacto />} />
-          <Route
-            path="/MisEmpresas"
-            element={
-              ((!show || userData.isLogged) && <MisEmpresas />) ||
-              ((show || !userData.isLogged) && <Navigate to="/" />)
-            }
-          />
-          <Route
-            path="/EditarEmpresa/:id?"
-            element={
-              ((!show || userData.isLogged) && <EditarEmpresa />) ||
-              ((show || !userData.isLogged) && <Navigate to="/" />)
-            }
-          />
-          <Route
-            path="/CargaEmpresa"
-            element={
-              ((!show || userData.isLogged) && <CargaEmpresa />) ||
-              ((show || !userData.isLogged) && <Navigate to="/" />)
-            }
-          />
-          <Route
-            path="/perfil"
-            element={
-              ((!show || userData.isLogged) && <Perfil />) ||
-              ((show || !userData.isLogged) && <Navigate to="/" />)
-            }
-          />
-          {!userData.isLogged && (
-            <Route path="/loginuser/:token?" element={<LoginUser />} />
-          )}
-          <Route path="/:vefrek_website" element={<PaginaEmpresa />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
-      </NextUIProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <NextUIProvider>
+                {spinner}
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<LoginApp />} />
+                    <Route path="/Publicacion" element={<Publicacion />} />
+                    <Route path="/Reparacion" element={<Reparacion />} />
+                    <Route path="/Venta" element={<Venta />} />
+                    <Route path="/OtrosServicios" element={<OtrosServicios />} />
+                    <Route path="/Dropdown" element={<Dropdown />} />
+                    <Route path="/Contacto" element={<Contacto />} />
+                    <Route
+                        path="/MisEmpresas"
+                        element={
+                            ((!show || userData.isLogged) && <MisEmpresas />) ||
+                            ((show || !userData.isLogged) && <Navigate to="/" />)
+                        }
+                    />
+                    <Route
+                        path="/EditarEmpresa/:id?"
+                        element={
+                            ((!show || userData.isLogged) && <EditarEmpresa />) ||
+                            ((show || !userData.isLogged) && <Navigate to="/" />)
+                        }
+                    />
+                    <Route
+                        path="/CargaEmpresa"
+                        element={
+                            ((!show || userData.isLogged) && <CargaEmpresa />) ||
+                            ((show || !userData.isLogged) && <Navigate to="/" />)
+                        }
+                    />
+                    <Route
+                        path="/perfil"
+                        element={
+                            ((!show || userData.isLogged) && <Perfil />) ||
+                            ((show || !userData.isLogged) && <Navigate to="/" />)
+                        }
+                    />
+                    {!userData.isLogged && (
+                        <Route path="/loginuser/:token?" element={<LoginUser />} />
+                    )}
+                    <Route path="/:vefrek_website" element={<PaginaEmpresa />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+                <Footer />
+            </NextUIProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
