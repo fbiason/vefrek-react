@@ -38,6 +38,11 @@ const Favoritos = () => {
               className={`nav-item ${activeNavItem === index ? "active" : ""}`}
               onClick={() => handleNavItemClick(index)}
             >
+              <Link to={index === 1 ? "/Dashboard" : "#"}>
+                {" "}
+                <i className={`fa ${item.icon} nav-icon`}></i>
+                <span className="nav-text">{item.text}</span>
+              </Link>
               <Link to={index === 5 ? "/Favoritos" : "#"}>
                 {" "}
                 <i className={`fa ${item.icon} nav-icon`}></i>

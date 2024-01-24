@@ -19,7 +19,6 @@ import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./pages/dropdown/Dropdown";
 import MisEmpresas from "./pages/misEmpresas/MisEmpresas";
-import Contacto from "./pages/contacto/Contacto";
 import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
@@ -58,7 +57,6 @@ function App() {
           <Route path="/Venta" element={<Venta />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="/Dropdown" element={<Dropdown />} />
-          <Route path="/Contacto" element={<Contacto />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Favoritos" element={<Favoritos />} />
           <Route
