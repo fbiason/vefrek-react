@@ -19,9 +19,7 @@ const NavBar = () => {
     const [showSearchBar, setShowSearchBar] = useState(false);
 
     useEffect(() => {
-        thisLocation.pathname === "/"
-            ? setShowSearchBar(false)
-            : setShowSearchBar(true); //Oculta la barra de busqueda en home
+        thisLocation.pathname === "/" ? setShowSearchBar(false) : setShowSearchBar(true); //Oculta la barra de busqueda en home
     }, [thisLocation]);
 
     useEffect(() => {

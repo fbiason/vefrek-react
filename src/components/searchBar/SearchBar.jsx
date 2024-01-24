@@ -22,8 +22,8 @@ export default function SearchBar() {
                     .toLowerCase()
                     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')                               //Quita acentos
                     .includes(
-                        word.
-                        toLowerCase()
+                        word
+                        .toLowerCase()
                         .normalize('NFD').replace(/[\u0300-\u036f]/g, '')                           //Quita acentos
                     )
                 )
@@ -54,21 +54,23 @@ export default function SearchBar() {
     const setSearchResultsStyle = () => {
         setTimeout(() => {
             const resultsCont = resultsContRef.current;
-            const toLeft = resultsCont.getBoundingClientRect().left;
-            if (
-                window.innerHeight > window.innerWidth &&                   //Portrait
-                resultsRef.current &&
-                resultsRef.current.length > 0
-            ) {
-                if (toLeft) resultsCont.style.transform = `translateX(-${toLeft}px)`;
-                resultsCont.style.maxWidth = "100vw";
-            } else if (                                                     //landscape
-                window.innerHeight < window.innerWidth &&
-                resultsRef.current &&
-                resultsRef.current.length > 0
-            ) {
-                resultsCont.style.maxWidth = `calc(100vw - 17px - ${toLeft}px)`;
-                resultsCont.style.transform = `unset`;
+            if (resultsCont) {
+                const toLeft = resultsCont.getBoundingClientRect().left;
+                if (
+                    window.innerHeight > window.innerWidth &&                   //Portrait
+                    resultsRef.current &&
+                    resultsRef.current.length > 0
+                ) {
+                    if (toLeft) resultsCont.style.transform = `translateX(-${toLeft}px)`;
+                    resultsCont.style.maxWidth = "100vw";
+                } else if (                                                     //landscape
+                    window.innerHeight < window.innerWidth &&
+                    resultsRef.current &&
+                    resultsRef.current.length > 0
+                ) {
+                    resultsCont.style.maxWidth = `calc(100vw - 17px - ${toLeft}px)`;
+                    resultsCont.style.transform = `unset`;
+                }
             }
         }, 100);
     };
@@ -92,6 +94,8 @@ export default function SearchBar() {
         window.addEventListener("orientationchange", setSearchResultsStyle);
         setSearchResultsStyle();
         getcompanysFullCollection();
+
+        return () => window.removeEventListener("orientationchange", setSearchResultsStyle);
     }, []);
 
     return (
