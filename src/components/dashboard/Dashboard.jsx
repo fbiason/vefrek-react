@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./dashboard.css";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);
+  const navigate = useNavigate();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -90,6 +92,9 @@ const Dashboard = () => {
 
   return (
     <main className="dashboardCont">
+      <button className="dashboardClose" onClick={() => navigate(-1)}>
+        Close
+      </button>
       <nav className="main-menu">
         <img
           className="logo-dash"
