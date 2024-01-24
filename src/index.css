@@ -8,6 +8,7 @@ h6 {
 }
 
 body {
+  position: relative;
   font-family: "Open Sans", sans-serif;
   color: #444444;
   text-align: left;

@@ -89,7 +89,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <main>
+    <main className="dashboardCont">
       <nav className="main-menu">
         <img
           className="logo-dash"
