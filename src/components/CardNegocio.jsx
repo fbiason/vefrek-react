@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./cardnegocio.css";
-import { editCompanys } from "../utils/apiDb/apiDbAcions";
+import { handleFavorite } from "../utils/apiDb/apiDbAcions";
 import { UserContext } from "../context/userContext";
 import { useContext, useRef, useEffect } from "react";
 import { swalPopUpSuccessTemporal, swalPopUp } from "../utils/swal";
@@ -16,12 +16,8 @@ const CardNegocio = (props) => {
     const handleFavorites = async () => {
 
         if (heartRef.current.checked === false) {
-            const queryOBJ = { $and: [ {_id: props.id}, {favorites: {$nin: [userData.email]}} ] };
-            const queryJSON = JSON.stringify(queryOBJ);
-            const dataOBJ = {$push: {favorites: userData.email}}
-        
             showSpinner(true);
-            const response = await editCompanys(queryJSON, dataOBJ);
+            const response = await handleFavorite(props.id, userData.email, "add");
             if (response.success) {
                 swalPopUpSuccessTemporal("Favorito Agregado");
                 heartRef.current.checked = true;
@@ -30,12 +26,8 @@ const CardNegocio = (props) => {
             }
             showSpinner(false);
         } else {
-            const queryOBJ = { $and: [ {_id: props.id}, {favorites: {$in: [userData.email]}} ] };
-            const queryJSON = JSON.stringify(queryOBJ);
-            const dataOBJ = {$pull: {favorites: userData.email}}
-        
             showSpinner(true);
-            const response = await editCompanys(queryJSON, dataOBJ);
+            const response = await handleFavorite(props.id, userData.email, "sus");
             if (response.success) {
                 swalPopUpSuccessTemporal("Favorito Eliminado");
                 heartRef.current.checked = false;

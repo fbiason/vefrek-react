@@ -67,14 +67,12 @@ export const findCompanys = async (matchJSON, aggregateQueryJSON) => {
     }
 }
 
-export const editCompanys = async (query, data) => {
+export const handleFavorite = async (companyId, userEmail, option) => {
 
     try {
-        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/editcompanys?query=${query}`, {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/handlefavorite?companyId=${companyId}&userEmail=${userEmail}&option=${option}`, {
             method: 'put',
-            body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
             }
         });
