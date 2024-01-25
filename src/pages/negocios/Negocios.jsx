@@ -44,7 +44,7 @@ const Negocios = () => {
             );
             const subcategoryParse = Object.values(queryToAppy)[0];
             const matchJSON = JSON.stringify({ subcategory: subcategoryParse });
-            const aggregateQueryJSON = JSON.stringify([ {$sample: {size: 8}}, {$project: {subcategory: 1, name: 1, images: 1, location: 1, phone: 1, _id: 1,  vefrek_website: 1}} ]);
+            const aggregateQueryJSON = JSON.stringify([ {$sample: {size: 8}}, {$project: {subcategory: 1, name: 1, "images.images": 1, location: 1, phone: 1, _id: 1,  vefrek_website: 1, favorites: 1}} ]);
 
             showSpinner(true);
             const response = await findCompanys(matchJSON, aggregateQueryJSON);
@@ -57,11 +57,11 @@ const Negocios = () => {
                             imgUrl={
                                 company.images.images[0] ? company.images.images[0].url : ""
                             }
-                            logoUrl={company.images.logo.url}
                             location={company.location}
                             phone={company.phone}
                             id={company._id}
                             vefrek_website={company.vefrek_website}
+                            favorites={company.favorites}
                         />
                     </div>
                 ));

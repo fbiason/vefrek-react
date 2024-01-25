@@ -119,3 +119,10 @@ a:hover {
 /*@tailwind base;*/
 @tailwind components;
 @tailwind utilities;
+
+
+/* Sweetalert 2 clases */
+
+.swal2-container {
+  z-index: 1200;
+}

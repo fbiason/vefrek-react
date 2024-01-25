@@ -1,5 +1,15 @@
 import Swal from "sweetalert2";
 
+export const swalPopUpSuccessTemporal = (title) => {
+    Swal.fire({
+        position: "top",
+        icon: "success",
+        title: title,
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
 export const swalPopUpWithInputAndCb = async (text, noInputText, cb) => {
 
     const { value: message } = await Swal.fire({

@@ -30,6 +30,7 @@ export const findUser = async (field, value, fieldsSelected) => {
     }
 }
 
+
 /************************************** Empresa *************************************/
 
 export const findCompany = async (field, value, fieldsSelected) => {
@@ -58,6 +59,24 @@ export const findCompanys = async (matchJSON, aggregateQueryJSON) => {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
             },
+        });
+        const responseOBJ = await responseJSON.json();
+        return responseOBJ;
+    } catch (error) {
+        return { success: false, message: error.message }
+    }
+}
+
+export const editCompanys = async (query, data) => {
+
+    try {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/editcompanys?query=${query}`, {
+            method: 'put',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
         });
         const responseOBJ = await responseJSON.json();
         return responseOBJ;
