@@ -11,15 +11,15 @@ const Dashboard = () => {
   };
 
   const menuItems = [
-    { icon: "fa-house", text: "Inicio" },
-    { icon: "fa-user", text: "Perfil" },
-    { icon: "fa-chart-bar", text: "Informe" },
-    { icon: "fa-calendar", text: "Calendario" },
-    { icon: "fa-star", text: "Favoritos" },
-    { icon: "fa-building", text: "Negocios" },
-    { icon: "fa-envelope", text: "Mensajes" },
-    { icon: "fa-sliders", text: "Configuracion" },
-    { icon: "fa-user-tie", text: "Administrador" },
+    { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
+    { icon: "fa-user", text: "Perfil", to: "/PerfilDash" },
+    { icon: "fa-chart-bar", text: "Informe", to: "/Informe" },
+    { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
+    { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
+    { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
+    { icon: "fa-envelope", text: "Mensajes", to: "/Mensajes" },
+    { icon: "fa-sliders", text: "Configuracion", to: "/Configuracion" },
+    { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
 
   const activityData = [
@@ -79,21 +79,18 @@ const Dashboard = () => {
             className="logo-dash"
           />
         </Link>
-        <ul>
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className={`nav-item ${activeNavItem === index ? "active" : ""}`}
-              onClick={() => handleNavItemClick(index)}
-            >
-              <Link to={index === 5 ? "/Favoritos" : "#"}>
-                {" "}
-                <i className={`fa ${item.icon} nav-icon`}></i>
-                <span className="nav-text">{item.text}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {menuItems.map((item, index) => (
+          <li
+            key={index}
+            className={`nav-item ${activeNavItem === index ? "active" : ""}`}
+            onClick={() => handleNavItemClick(index)}
+          >
+            <Link to={item.to}>
+              <i className={`fa ${item.icon} nav-icon`}></i>
+              <span className="nav-text">{item.text}</span>
+            </Link>
+          </li>
+        ))}
       </nav>
 
       <section className="content">

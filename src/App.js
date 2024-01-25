@@ -23,7 +23,14 @@ import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";
-import Favoritos from "./components/dashboard/Favortios";
+import PerfilDash from "./components/dashboard/PerfilDash";
+import Informe from "./components/dashboard/Informe";
+import Calendario from "./components/dashboard/Calendario";
+import Favoritos from "./components/dashboard/Favoritos";
+import NegociosDash from "./components/dashboard/NegociosDash";
+import Mensajes from "./components/dashboard/Mensajes";
+import Configuracion from "./components/dashboard/Configuracion";
+import Admin from "./components/dashboard/Admin";
 
 function App() {
   ReactGA.initialize("G-J1JT10S65V");
@@ -58,7 +65,14 @@ function App() {
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/PerfilDash" element={<PerfilDash />} />
+          <Route path="/Informe" element={<Informe />} />
+          <Route path="/Calendario" element={<Calendario />} />
           <Route path="/Favoritos" element={<Favoritos />} />
+          <Route path="/NegociosDash" element={<NegociosDash />} />
+          <Route path="/Mensajes" element={<Mensajes />} />
+          <Route path="/Configuracion" element={<Configuracion />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route
             path="/MisEmpresas"
             element={
@@ -66,6 +80,7 @@ function App() {
               ((show || !userData.isLogged) && <Navigate to="/" />)
             }
           />
+
           <Route
             path="/EditarEmpresa/:id?"
             element={
