@@ -13,7 +13,6 @@ import { styled } from "@mui/material/styles";
 import { Star } from "@mui/icons-material";
 
 const PaginaEmpresa = () => {
-    const apiKey = "AIzaSyDSYOFTW7Hpil-9DFCvVOE6TPPbSQKuyPU";
     const [map, setMap] = useState(null);
     const companyDataRef = useRef();
     const { userData } = useContext(UserContext);
@@ -62,27 +61,36 @@ const PaginaEmpresa = () => {
 
     const getLocationFromAddress = async (address) => {
         try {
-            const response = await fetch(
-                `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-                    address
-                )}&key=${apiKey}`
+            const responseJSON = await fetch(
+                `${process.env.REACT_APP_API_URL}api/getmap?address=${address}`, {
+                    method: "GET",
+                }
             );
 
-            const data = await response.json();
-            const { lat, lng } = data.results[0].geometry.location;
-            const url = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${lat},${lng}&maptype=roadmap`;
-            setMap(
-                <iframe
-                    title="map"
-                    src={url}
-                    width="100%"
-                    height={400}
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-            );
+            const responseOBJ = await responseJSON.json();
+            console.log(responseOBJ)
+
+            if (responseOBJ.success) {
+                setMap(
+                    <iframe
+                        title="map"
+                        src={responseOBJ.url}
+                        width="100%"
+                        height={400}
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                );
+            } else {
+                setMap(
+                    <div className="googleMapFrame flex">
+                        <p>No se pudo obtener la ubicación</p>
+                    </div>
+                );
+            }
+
         } catch (error) {
             console.error("Error al obtener las coordenadas:", error);
         }
