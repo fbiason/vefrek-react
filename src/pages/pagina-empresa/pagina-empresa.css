@@ -381,3 +381,10 @@
   margin-left: 16px;
   font-size: 16px;
 }
+
+/*************************/
+
+.googleMapFrame {
+  width: 400px;
+  height: 400px;
+}
