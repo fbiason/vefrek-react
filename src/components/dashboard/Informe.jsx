@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./informe.css";
 
 const Informe = () => {
   const [activeNavItem, setActiveNavItem] = useState(2);
@@ -45,8 +46,27 @@ const Informe = () => {
 
       <section className="content">
         <div className="left-content">
-          <div className="activities">
-            <h1>INFORME</h1>
+          <div className="container card-informe">
+            <div className="panel post">
+              <a href="javascript:void();">
+                <span>8 </span>Posts
+              </a>
+            </div>
+            <div className="panel comment">
+              <a href="javascript:void();">
+                <span>39 </span>Comentarios
+              </a>
+            </div>
+            <div className="panel page">
+              <a href="javascript:void();">
+                <span>5 </span>Valoraciones recibidas
+              </a>
+            </div>
+            <div className="panel user">
+              <a href="javascript:void();">
+                <span>400 </span>Total de visitas
+              </a>
+            </div>
           </div>
         </div>
       </section>

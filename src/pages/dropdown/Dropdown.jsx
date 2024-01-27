@@ -50,7 +50,7 @@ const Dropdown = () => {
           <Link className="link-dropdown" to="/Dashboard">
             {" "}
             <p className=" text-start">
-              <i className="fas fa-sign-out-alt" /> Logout
+              <i className="fas fa-sign-out-alt" /> Dashboard
             </p>
           </Link>
         </div>
