@@ -68,8 +68,6 @@ const PaginaEmpresa = () => {
             );
 
             const responseOBJ = await responseJSON.json();
-            console.log(responseOBJ)
-
             if (responseOBJ.success) {
                 setMap(
                     <iframe
@@ -175,10 +173,24 @@ const PaginaEmpresa = () => {
                 },
                 creationdate: companyData.creationdate,
             });
-            getLocationFromAddress(
-                `${companyData.location},${companyData.city},${companyData.state}`
-            );
-
+                                                    
+            if (!companyData.geo.googleMapUrl) {                                                                //Si la emnpresa no tiene datos de geolocalizacion los buscamos
+                getLocationFromAddress(`${companyData.location},${companyData.city},${companyData.state}`);
+            } else {
+                setMap(
+                    <iframe
+                        title="map"
+                        src={companyData.geo.googleMapUrl}
+                        width="100%"
+                        height={400}
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                ); 
+            }; 
+                        
             /***************** Seteo calificaciones recibidas **********************/
 
             const reviewsArr = companyData.reviews;
@@ -396,7 +408,7 @@ const PaginaEmpresa = () => {
                                         <h2>Opiniones Destacadas</h2>
                                         {comments}
                                         <div class="container">
-                                            <a href="#">ver más comentarios...</a>
+                                            <a href="/">ver más comentarios...</a>
                                         </div>
                                     </div>
                                 </div>
