@@ -23,8 +23,6 @@ const PerfilDash = () => {
     { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
     { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-    { icon: "fa-envelope", text: "Mensajes", to: "/Mensajes" },
-    { icon: "fa-sliders", text: "Configuracion", to: "/Configuracion" },
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
 
