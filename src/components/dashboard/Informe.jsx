@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Chart } from "chart.js/auto";
 import "./informe.css";
 
 const Informe = () => {
@@ -9,6 +10,43 @@ const Informe = () => {
     setActiveNavItem(index);
   };
 
+  useEffect(() => {
+    const line = document.getElementById("line");
+    const lineConfig = new Chart(line, {
+      type: "line",
+      data: {
+        labels: [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre",
+        ],
+        datasets: [
+          {
+            label: "Cantidad de visitas",
+            data: [10, 15, 20, 10, 25, 5, 10, 30, 20, 10, 15, 5],
+            fill: false,
+            borderColor: "#14ba75",
+            backgroundColor: "##14ba75",
+            borderWidth: 2,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    });
+  }, []);
+
   const menuItems = [
     { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
     { icon: "fa-user", text: "Perfil", to: "/PerfilDash" },
@@ -16,8 +54,6 @@ const Informe = () => {
     { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
     { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-    { icon: "fa-envelope", text: "Mensajes", to: "/Mensajes" },
-    { icon: "fa-sliders", text: "Configuracion", to: "/Configuracion" },
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
   return (
@@ -44,32 +80,51 @@ const Informe = () => {
         ))}
       </nav>
 
-      <section className="content">
+      <div>
         <div className="left-content">
-          <div className="container card-informe">
-            <div className="panel post">
+          <div className="container card-informe row">
+            <div className="panel post col-md-3">
               <a href="javascript:void();">
-                <span>8 </span>Posts
+                <span>8 </span>Guardados
               </a>
             </div>
-            <div className="panel comment">
+            <div className="panel comment col-md-3">
               <a href="javascript:void();">
-                <span>39 </span>Comentarios
+                <span>39 </span>Reseñas recibidas
               </a>
             </div>
-            <div className="panel page">
+            <div className="panel page col-md-3">
               <a href="javascript:void();">
-                <span>5 </span>Valoraciones recibidas
+                <span>5 </span>Comentarios recibidos
               </a>
             </div>
-            <div className="panel user">
+            <div className="panel user col-md-3">
               <a href="javascript:void();">
-                <span>400 </span>Total de visitas
+                <span>400 </span>Empresas cargadas
               </a>
             </div>
           </div>
+
+          <div className="row">
+            <div className="col-md-6">
+              <div className="card custom-card">
+                <h3 className="chart-lbl">Visitas</h3>
+                <div className="line-chart-container">
+                  <canvas className="line-chart" id="line"></canvas>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="card custom-card">
+                <h3 className="chart-lbl">Localización</h3>
+                <div className="line-chart-container">
+                  <canvas className="line-chart" id="line2"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 };

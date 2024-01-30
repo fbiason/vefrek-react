@@ -28,8 +28,6 @@ const NegociosDash = () => {
     { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
     { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-    { icon: "fa-envelope", text: "Mensajes", to: "/Mensajes" },
-    { icon: "fa-sliders", text: "Configuracion", to: "/Configuracion" },
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
   const { showSpinner } = useContext(SpinnerContext);
@@ -181,9 +179,9 @@ const NegociosDash = () => {
         ))}
       </nav>
 
-      <section className="content">
+      <div className="background-dash">
         <div className="left-content">
-          <div className="background">
+          <div>
             <div className="editar-empresa-container">
               {companysData.length ? (
                 <div className="card-editar-empresa">{companysData}</div>
@@ -193,7 +191,7 @@ const NegociosDash = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 };

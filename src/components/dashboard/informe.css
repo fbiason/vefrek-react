@@ -95,3 +95,28 @@
     transition: all 0.5s;
   }
 }
+
+/*======LINE CHART =======*/
+
+.card-3 {
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px 2px #d7d7d7;
+  margin-top: 2rem;
+  width: auto;
+}
+.chart-lbl {
+  margin-left: 5%;
+  padding: 0.5rem;
+  font-size: 20px;
+  color: var(--grey-d3);
+  opacity: 0.8;
+}
+.divider {
+  background-color: var(--grey-d2);
+  height: 2px;
+  margin: auto;
+  width: 98%;
+}

@@ -28,8 +28,6 @@ import Informe from "./components/dashboard/Informe";
 import Calendario from "./components/dashboard/Calendario";
 import Favoritos from "./components/dashboard/Favoritos";
 import NegociosDash from "./components/dashboard/NegociosDash";
-import Mensajes from "./components/dashboard/Mensajes";
-import Configuracion from "./components/dashboard/Configuracion";
 import Admin from "./components/dashboard/Admin";
 
 function App() {
@@ -70,8 +68,6 @@ function App() {
           <Route path="/Calendario" element={<Calendario />} />
           <Route path="/Favoritos" element={<Favoritos />} />
           <Route path="/NegociosDash" element={<NegociosDash />} />
-          <Route path="/Mensajes" element={<Mensajes />} />
-          <Route path="/Configuracion" element={<Configuracion />} />
           <Route path="/Admin" element={<Admin />} />
           <Route
             path="/MisEmpresas"
