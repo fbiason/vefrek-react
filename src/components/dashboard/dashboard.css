@@ -937,3 +937,87 @@
     display: none;
   }
 }
+
+/* Estilos para la sección de próximos descuentos */
+.weekly-schedule {
+  width: 100%;
+}
+
+.day-and-activity {
+  max-width: 100%;
+}
+
+.btn-descuentos {
+  width: 100%;
+}
+/* Mensajes */
+
+/* == Comentarios ==*/
+/* Estilos para la sección de comentarios recibidos */
+.notifi-box {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notifi-box h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.notifi-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+.notifi-item:last-child {
+  border-bottom: none;
+}
+
+.text {
+  margin-left: 20px;
+}
+
+.text h4 {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #14ba75;
+}
+
+.text p {
+  font-size: 14px;
+  color: #555;
+}
+
+.notifi-box span {
+  background-color: #14ba75;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.p-3 {
+  text-align: center;
+  cursor: pointer;
+  color: grey;
+}
+
+.p-3:hover {
+  text-decoration: underline;
+}
+
+.notifi-item .text {
+  max-height: 150px;
+  overflow: hidden;
+  margin-bottom: 0;
+}

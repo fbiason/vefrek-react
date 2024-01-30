@@ -94,41 +94,102 @@ const Dashboard = () => {
 
       <section className="content">
         <div className="left-content">
-          <div className="activities">
-            <h1>Negocios más consultados</h1>
-            <div className="activity-container">
-              {activityData.map((activity, index) => (
-                <div key={index} className={`image-container img-${index + 1}`}>
-                  <img src={activity.image} alt={activity.name} />
-                  <div className="overlay">
-                    <h3>{activity.name}</h3>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="activities">
+                  <h1>Negocios más consultados</h1>
+                  <div className="activity-container">
+                    {activityData.map((activity, index) => (
+                      <div
+                        key={index}
+                        className={`image-container img-${index + 1}`}
+                      >
+                        <img src={activity.image} alt={activity.name} />
+                        <div className="overlay">
+                          <h3>{activity.name}</h3>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
 
-          <div className="left-bottom">
-            <div className="weekly-schedule">
-              <h1>Próximos descuentos</h1>
-              <div className="calendar">
-                {scheduleData.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`day-and-activity activity-${index + 1}`}
-                  >
-                    <div className="day">
-                      <h1>{item.day}</h1>
-                      <p>{item.dayName}</p>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="left-bottom d-flex">
+                  <div className="weekly-schedule">
+                    <h1>Próximos descuentos</h1>
+                    <div className="calendar">
+                      {scheduleData.map((item, index) => (
+                        <div
+                          key={index}
+                          className={`day-and-activity activity-${index + 1}`}
+                        >
+                          <div className="day">
+                            <h1>{item.day}</h1>
+                            <p>{item.dayName}</p>
+                          </div>
+                          <div className="activity">
+                            <h2>{item.activity}</h2>
+                            <p>{item.empresa}</p>
+                            <div className="participants"></div>
+                          </div>
+                          <button className="btn-descuentos">Más info</button>
+                        </div>
+                      ))}
                     </div>
-                    <div className="activity">
-                      <h2>{item.activity}</h2>
-                      <p>{item.empresa}</p>
-                      <div className="participants"></div>
-                    </div>
-                    <button className="btn-descuentos">Más info</button>
                   </div>
-                ))}
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <div className="notifi-box" id="box">
+                  <h2>
+                    Comentarios recibidos <span>3</span>
+                  </h2>
+                  <div className="notifi-item">
+                    <div className="text">
+                      <h4>Biason Franco</h4>
+                      <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Ratione, vel veritatis facilis, enim natus debitis
+                        asperiores molestiae alias illo nulla, quaerat optio
+                        repellendus! Dolorem temporibus voluptates animi vero
+                        soluta illum.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="notifi-item">
+                    <div className="text">
+                      <h4>Ariel Conrado</h4>
+                      <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Voluptates odio ipsam, iste odit quis velit eius
+                        voluptatem rerum error deleniti vero adipisci minima
+                        voluptatum unde ex, veniam a quo nisi?
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="notifi-item">
+                    <div className="text">
+                      <h4>Reyes Denis</h4>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Magni eligendi dicta harum excepturi voluptatem eveniet
+                        magnam, temporibus tenetur minima voluptate quo
+                        assumenda quia repellendus cumque modi. Placeat
+                        consequuntur dolores ea!
+                      </p>
+                    </div>
+                  </div>
+                  <h5 className="p-3">Ver más comentarios...</h5>
+                </div>
               </div>
             </div>
           </div>

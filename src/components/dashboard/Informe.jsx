@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Chart } from "chart.js/auto";
+import L from "leaflet";
 import "./informe.css";
 
 const Informe = () => {
@@ -118,7 +119,7 @@ const Informe = () => {
               <div className="card custom-card">
                 <h3 className="chart-lbl">Localización</h3>
                 <div className="line-chart-container">
-                  <canvas className="line-chart" id="line2"></canvas>
+                  <div className="map-container" id="map"></div>
                 </div>
               </div>
             </div>
