@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import "./schedules.css";
 
 const CargaEmpresa = () => {
     const { userData } = useContext(UserContext);
@@ -156,6 +157,255 @@ const CargaEmpresa = () => {
             : swalPopUp("Error", response.message, "error");
         showSpinner(false);
     };
+
+    /***************************** Horarios  ****************************/
+
+    const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    
+    const [hDef, setHDef] = useState(true);
+    const setTipoHorarios = (e) => {
+        formRef.current.schedules = {...formRef.current.schedules, "scheduleType": e.target.value};
+        if (e.target.value === "P") {
+            setHDef(false);
+            formRef.current.schedules.custom = null;
+            formRef.current.schedules.personalized = horarios;
+        } else {
+            setHDef(true);
+            formRef.current.schedules.personalized = null;
+            formRef.current.schedules.custom = horariosDef;
+        }
+    }
+           
+    const [horarios, setHorarios] = useState({
+        lunes: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        martes: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        miercoles: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        jueves: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        viernes: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        sabado: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+        domingo: {
+            open1: '',
+            close1: '',
+            open2: '',
+            close2: '',
+        },
+    });
+
+    const handleInputChange = (dia, turno) => (e) => {
+        const value = e.target.value;
+        dia = dia.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase();
+        setHorarios((prevHorarios) => ({
+            ...prevHorarios,
+            [dia]: {
+                ...prevHorarios[dia],
+                [turno]: value,
+            },
+        }));
+    };
+
+    useEffect(() => {
+        formRef.current.schedules = {...formRef.current.schedules, ...{personalized: horarios}};
+    }, [horarios])
+           
+    const generarHorarios = () => {
+        const horarios = [];
+        for (let hora = 0; hora < 24; hora++) {
+            for (let minuto = 0; minuto < 60; minuto += 15) {
+                const horaString = hora.toString().padStart(2, '0');
+                const minutoString = minuto.toString().padStart(2, '0');
+                horarios.push(`${horaString}:${minutoString}`);
+            }
+        }
+        return horarios;
+    };
+
+    const horarioP = (
+        <div className="flex">
+            <div className='flex column'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Apertura</th>
+                            <th>Cierre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {diasSemana.map((dia) => 
+                        {   dia = dia.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase();
+                            return (
+                                <>
+                                    <tr key={dia}>
+                                        <td className='horariosDias'>{dia}</td>
+                                        <td>
+                                            <select value={horarios[dia].open1} defaultValue="" onChange={handleInputChange(dia, 'open1')}>
+                                                <option value=""></option>
+                                                {generarHorarios().map((hora) => (
+                                                    <option key={hora} value={hora}>
+                                                        {hora}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select value={horarios[dia].close1} defaultValue="" onChange={handleInputChange(dia, 'close1')}>
+                                                <option value=""></option>
+                                                {generarHorarios().map((hora) => (
+                                                    <option key={hora} value={hora}>
+                                                        {hora}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr key={dia}>
+                                        <td className='horariosDias bottomCells'></td>
+                                        <td className="bottomCells">
+                                            <select value={horarios[dia].open2} defaultValue="" onChange={handleInputChange(dia, 'open2')}>
+                                                <option value=""></option>
+                                                {generarHorarios().map((hora) => (
+                                                    <option key={hora} value={hora}>
+                                                        {hora}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                        <td className="bottomCells">
+                                            <select value={horarios[dia].close2} defaultValue="" onChange={handleInputChange(dia, 'close2')}>
+                                                <option value=""></option>
+                                                {generarHorarios().map((hora) => (
+                                                    <option key={hora} value={hora}>
+                                                        {hora}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    )
+      
+    const [horariosDef, setHorariosDef] = useState({
+        open1: '',
+        close1: '',
+        open2: '',
+        close2: '',
+    })
+
+    const handleInputChangeDef = (turno) => (e) => {
+        const value = e.target.value;
+        setHorariosDef((prevHorarios) => ({
+            ...prevHorarios,
+            ...{[turno]: value}
+        }));
+    };
+
+    useEffect(() => {
+        formRef.current.schedules = {...formRef.current.schedules, ...{custom: horariosDef}};
+    }, [horariosDef])
+
+    const horarioDef = (
+        <div className="flex">
+            <div className='flex column'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Apertura</th>
+                            <th>Cierre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select value={horariosDef.open1} defaultValue="" onChange={handleInputChangeDef('open1')}>
+                                    <option value=""></option>
+                                    {generarHorarios().map((hora) => (
+                                        <option key={hora} value={hora}>
+                                            {hora}
+                                        </option>
+                                    ))}
+                                </select>
+                            </td>
+                            <td>
+                                <select value={horariosDef.close1} defaultValue="" onChange={handleInputChangeDef('close1')}>
+                                    <option value=""></option>
+                                    {generarHorarios().map((hora) => (
+                                        <option key={hora} value={hora}>
+                                            {hora}
+                                        </option>
+                                    ))}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select value={horariosDef.open2} defaultValue="" onChange={handleInputChangeDef('open2')}>
+                                    <option value=""></option>
+                                    {generarHorarios().map((hora) => (
+                                        <option key={hora} value={hora}>
+                                            {hora}
+                                        </option>
+                                    ))}
+                                </select>
+                            </td>
+                            <td>
+                                <select value={horariosDef.close2} defaultValue="" onChange={handleInputChangeDef('close2')}>
+                                    <option value=""></option>
+                                    {generarHorarios().map((hora) => (
+                                        <option key={hora} value={hora}>
+                                            {hora}
+                                        </option>
+                                    ))}
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    )
+
+    useEffect(() => {
+        formRef.current.schedules = {...formRef.current.schedules, "scheduleType": "LaV"};
+        formRef.current.schedules.personalized = null;
+    }, [])
+  
+    /**********************************************************************************/
 
     return (
         <section className="background">
@@ -422,6 +672,22 @@ const CargaEmpresa = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="linea-divisoria"></div>
+
+                    <div className="horarios-cont flex column">
+                        <label className="horariosTitle">
+                            <i className="obligatorio">* </i>Horarios:{" "}
+                        </label>
+                        <select defaultValue="LaV" className="horariosOption" onChange={setTipoHorarios}> 
+                            <option value="LaV">Lunes a Viernes</option>
+                            <option value="LaS">Lunes a Sábado</option>
+                            <option value="LaD">Todos los días</option>
+                            <option value="P">Personalizar</option>
+                        </select>
+                        {hDef && horarioDef}
+                        {!hDef && horarioP}
                     </div>
 
                     <div className="linea-divisoria"></div>

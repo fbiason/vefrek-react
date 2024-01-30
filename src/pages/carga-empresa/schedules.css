@@ -1,0 +1,82 @@
+.horarios-cont {
+    width: 100%;
+    padding: 50px 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.horarios-cont * {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;    
+    color: white;
+    text-align: center;
+}
+
+.horarios-cont th {
+    font-weight: initial;
+}
+
+.horarios-cont select, .horarios-cont option {
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+
+.horarios-cont td { 
+    padding: 2.5px;
+}
+
+.horarios-cont select {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.horariosMainInputs {
+    margin: 10px;
+}
+
+/******************************/
+
+.horariosDias {
+    text-align: left;
+    padding-right: 10px !important;
+}
+
+.horariosAddButton {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+    margin-top: 27px;
+    font-size: 16px;
+    margin-left: 2.5px;
+    cursor: pointer;
+    background-color: white;
+    width: fit-content;
+}
+
+.buttonSus {
+    margin-top: 13px;
+}
+
+.bottomCells {
+    padding-bottom: 15px !important;
+}
+
+.horariosTitle {
+    width: 100%;
+    text-align: left;
+}
+
+.horariosOption {
+    width: unset !important;
+    margin-bottom: 30px;
+}
+
+.horariosOption option {
+    text-align: left;
+}
