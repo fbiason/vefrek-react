@@ -39,12 +39,14 @@ const MisEmpresas = () => {
 
     const handleCompnayState = (id, newState) => {
         return async () => {
+            showSpinner(true);
             const response = await updateCompanyState(id, newState);
             if (response.success) {
                 swalPopUpWithCallback("Acción completada", response.message, "success", find);
             } else {
                 swalPopUp("Error", response.message, "error");
             }
+            showSpinner(false);
         }
     }
 
