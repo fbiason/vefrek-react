@@ -28,6 +28,7 @@ import Informe from "./components/dashboard/Informe";
 import Calendario from "./components/dashboard/Calendario";
 import Favoritos from "./components/dashboard/Favoritos";
 import NegociosDash from "./components/dashboard/NegociosDash";
+import Map from "./components/dashboard/Map";
 import Admin from "./components/dashboard/Admin";
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
           <Route path="/Calendario" element={<Calendario />} />
           <Route path="/Favoritos" element={<Favoritos />} />
           <Route path="/NegociosDash" element={<NegociosDash />} />
+          <Route path="/Map" element={<Map />} />
           <Route path="/Admin" element={<Admin />} />
           <Route
             path="/MisEmpresas"

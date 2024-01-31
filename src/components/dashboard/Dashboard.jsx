@@ -71,7 +71,7 @@ const Dashboard = () => {
   return (
     <main className="dashboardCont">
       <nav className="main-menu">
-        <Link to="/Dashboard">
+        <Link to="/Map">
           <img
             src="/images/logos/logo-vefrek.png"
             alt="Logo Vefrek"

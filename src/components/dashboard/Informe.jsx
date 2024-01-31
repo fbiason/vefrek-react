@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Chart } from "chart.js/auto";
-import L from "leaflet";
 import "./informe.css";
+import Map from "./Map";
 
 const Informe = () => {
   const [activeNavItem, setActiveNavItem] = useState(2);
@@ -115,11 +115,17 @@ const Informe = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="row">
             <div className="col-md-6">
               <div className="card custom-card">
                 <h3 className="chart-lbl">Localización</h3>
                 <div className="line-chart-container">
-                  <div className="map-container" id="map"></div>
+                  <div>
+                    {" "}
+                    <Map></Map>{" "}
+                  </div>
                 </div>
               </div>
             </div>
