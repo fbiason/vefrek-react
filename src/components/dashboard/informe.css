@@ -1,18 +1,26 @@
 /*--- Map ---*/
 
 .body-mapa {
-  background: whitesmoke;
+  background: transparent;
+  width: 100%;
+  height: 100vh;
+}
+
+.body-mapa svg {
+  width: 100%;
+  height: 100%;
 }
 
 .mapadiv {
-  width: 25%;
+  width: 100%;
+  height: 100%;
   margin: auto;
 }
 
 .mapadiv path {
-  fill: rgba(128, 128, 128, 0.096);
+  fill: rgb(158, 32, 32);
   stroke: black;
-  stroke-width: 0.5px;
+  stroke-width: 1px;
 }
 
 .mapadiv :hover {
