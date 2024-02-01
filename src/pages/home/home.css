@@ -1,9 +1,3 @@
-.home-section {
-  padding: 10rem 3rem 3rem 3rem;
-  overflow: hidden;
-  box-sizing: none;
-}
-
 /*=== HERO ===*/
 #hero {
   width: 100%;
@@ -11,22 +5,32 @@
   background-size: cover;
   position: relative;
 }
+
+.hero-section {
+  padding: 10rem 3rem 3rem 3rem;
+  overflow: hidden;
+  box-sizing: none;
+}
+
 .logo-hero img {
   width: 480px;
 }
+
 #hero:before {
   content: "";
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
 }
+
 #hero .container-fluid {
   position: relative;
   text-align: center;
 }
+
 #hero h1 {
   margin: 0;
   font-size: 56px;
@@ -35,19 +39,16 @@
   color: #fff;
   font-family: "Poppins", sans-serif;
 }
-#hero h1 span {
-  color: #ffc451;
-}
-#hero h2 {
+
+#hero h2,
+#hero h3 {
   color: rgba(255, 255, 255, 0.9);
   margin: 12px 0 0 0;
   font-size: 26px;
 }
 
 #hero h3 {
-  color: rgba(205, 205, 205, 0.9);
-  margin: 12px 0 0 0;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 #hero .icon-box {
@@ -57,12 +58,15 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
   height: 100%;
   text-align: center;
+  cursor: pointer;
 }
 
 #hero .icon-box:hover {
   border: 2px solid rgba(0, 0, 0, 0.44);
   height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 #hero .icon-box i {
   font-size: 32px;
   line-height: 1;
@@ -78,6 +82,7 @@
 .btn-categoria:hover h3 {
   color: #14ba75;
 }
+
 #hero .icon-box h3 {
   font-weight: 700;
   margin: 10px 0 0 0;
@@ -85,11 +90,9 @@
   line-height: 1;
   font-size: 20px;
   line-height: 26px;
-}
-
-#hero .icon-box h3 {
   color: white;
 }
+
 #hero .icon-box:hover h3 {
   color: #14ba75;
 }
@@ -99,14 +102,20 @@
     background-attachment: fixed;
   }
 }
+
 @media (max-width: 768px) {
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
   }
+
   #hero h2 {
     font-size: 22px;
     line-height: 24px;
+  }
+
+  #hero h3 {
+    font-size: 18px;
   }
 
   .cat-hero {
@@ -116,7 +125,14 @@
   .logo-hero img {
     width: 240px;
   }
+
+  .hero-section {
+    padding: 3rem 3rem 3rem 3rem;
+    overflow: hidden;
+    box-sizing: none;
+  }
 }
+
 /*=== FIN HERO ===*/
 
 /*=== PORTFOLIO ===*/
