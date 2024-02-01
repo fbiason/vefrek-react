@@ -19,11 +19,6 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-.ingresa {
-  font-weight: 800;
-  color: white;
-}
-
 .ingresa:hover {
   color: #14ba75;
 }
@@ -98,7 +93,6 @@ ul li {
 
 #hero-publicacion .container {
   position: relative;
-  padding-top: 74px;
   text-align: center;
 }
 
@@ -252,13 +246,7 @@ ul li {
 @media (max-width: 768px) {
   #header {
     background-color: black;
-    /* Fondo negro */
     position: relative;
-    /* Posición relativa */
-  }
-
-  #header .row {
-    padding: 10px;
   }
 
   #header .get-started-btn {

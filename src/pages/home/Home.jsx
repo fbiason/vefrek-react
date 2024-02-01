@@ -9,23 +9,28 @@ const Home = () => {
     <>
       <section
         id="hero"
-        className="align-items-center justify-content-center home-section"
+        className="align-items-center justify-content-center hero-section text-center"
       >
-        <div className="container-fluid container;" data-aos="fade-up">
+        <div className="container-fluid" data-aos="fade-up">
           <div
             className="row justify-content-center"
             data-aos="fade-up"
             data-aos-delay="160"
           >
-            <div className="col-xl-6 col-lg-8 logo-hero">
-              <img src="/images/logos/logo-vefrek-white.png" alt="Vefrek" />
-              <div>&nbsp;</div>
-              <h2>La guía más completa del rubro automotor</h2>
+            <div className="col-xl-8 col-lg-10 logo-hero">
+              <img
+                src="/images/logos/logo-vefrek-white.png"
+                alt="Vefrek"
+                className="img-fluid"
+              />
+              <div className="mt-3">
+                <h2>La guía más completa del rubro automotor</h2>
+              </div>
             </div>
           </div>
 
-          <div className="row justify-content-center">
-            <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center searchBarCont mt-5">
+          <div className="row justify-content-center mt-4">
+            <div className="col-md-6 d-flex justify-content-center searchBarCont">
               {<SearchBar />}
             </div>
           </div>
@@ -35,16 +40,16 @@ const Home = () => {
             data-aos="zoom-in"
             data-aos-delay="250"
           >
-            <div className="col-xl-2 col-md-4 cat-hero">
+            <div className="col-xl-3 col-md-6 cat-hero mb-4">
               <Link to="/Reparacion">
-                <div className="btn-categoria  icon-box">
+                <div className="btn-categoria icon-box">
                   <i className="ri-tools-line"></i>
-                  <h3>Reparación y Mantenimieto</h3>
+                  <h3>Reparación y Mantenimiento</h3>
                 </div>
               </Link>
             </div>
 
-            <div className="col-xl-2 col-md-4 cat-hero">
+            <div className="col-xl-3 col-md-6 cat-hero mb-4">
               <Link to="/Venta">
                 <div className="btn-categoria icon-box">
                   <i className="ri-car-line"></i>
@@ -53,7 +58,7 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="col-xl-2 col-md-4 cat-hero">
+            <div className="col-xl-3 col-md-6 cat-hero mb-4">
               <Link to="/OtrosServicios">
                 <div className="btn-categoria icon-box">
                   <i className="ri-gas-station-line"></i>
@@ -64,6 +69,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <Negocios />
       <section id="features" className="features home-section">
         <div data-aos="fade-up">
@@ -143,18 +149,18 @@ const Home = () => {
         <div className="container" data-aos="fade-up">
           <div className="row">
             <div
-              className="col-lg-6 order-1 order-lg-2"
-              data-aos="fade-left"
+              className="col-lg-6 order-lg-1"
+              data-aos="fade-right"
               data-aos-delay="100"
             >
               <img src="images/about.jpg" className="img-fluid" alt="" />
             </div>
             <div
-              className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content"
-              data-aos="fade-right"
+              className="col-lg-6 pt-4 pt-lg-0 order-lg-2"
+              data-aos="fade-left"
               data-aos-delay="100"
             >
-              <h3>¿Qué es VEFREK?</h3>
+              <h3 className="p-3">¿Qué es VEFREK?</h3>
               <p className="fst-italic">
                 Vefrek es una empresa que busca unificar toda la información
                 referida al rubro automotor en un solo lugar, todo de una forma
@@ -163,7 +169,7 @@ const Home = () => {
               <p className="fst-italic">
                 En nuestro sitio web podrás encontrar la siguiente información:
               </p>
-              <ul>
+              <ul className="list-unstyled">
                 <li>
                   <i className="ri-check-double-line"></i> Todo tipo de negocios
                   referidos a la industria automotriz.
@@ -194,6 +200,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <section id="contact" className="contact home-section">
         <div className="container" data-aos="fade-up">
           <div className="section-title">

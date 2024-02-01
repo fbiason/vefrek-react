@@ -17,6 +17,7 @@
 
 .mapadiv :hover {
   fill: #14ba75;
+  transition: 0.8s;
 }
 
 /*--- card informe ---*/

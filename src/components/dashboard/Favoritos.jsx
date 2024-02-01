@@ -104,7 +104,7 @@ const Favoritos = () => {
       <section className="content">
         <div className="left-content">
           <div className="activities">
-            <h1>FAVORITOS</h1>
+            <h1>Favoritos</h1>
             <div className="row container">{favoritesCompanys}</div>
           </div>
         </div>
