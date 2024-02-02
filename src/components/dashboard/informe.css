@@ -1,23 +1,40 @@
+/*--- Contenido info ---*/
+
+.contenido-info {
+  background: #f6f7fb;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
 /*--- Map ---*/
 
 .body-mapa {
-  background: whitesmoke;
+  background: transparent;
+  width: 100%;
+  height: 100vh;
+}
+
+.body-mapa svg {
+  width: 100%;
+  height: 100%;
 }
 
 .mapadiv {
-  width: 25%;
+  width: 100%;
+  height: 100%;
   margin: auto;
 }
 
 .mapadiv path {
-  fill: rgba(128, 128, 128, 0.096);
+  fill: rgba(160, 158, 158, 0.28);
   stroke: black;
-  stroke-width: 0.5px;
+  stroke-width: 1px;
 }
 
 .mapadiv :hover {
   fill: #14ba75;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 
 /*--- card informe ---*/

@@ -54,7 +54,7 @@ function App() {
     <BrowserRouter>
       <NextUIProvider>
         {spinner}
-        <NavBar />
+        {/* <NavBar /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginApp />} />
@@ -106,7 +106,7 @@ function App() {
           <Route path="/:vefrek_website" element={<PaginaEmpresa />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </NextUIProvider>
     </BrowserRouter>
   );

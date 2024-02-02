@@ -82,7 +82,7 @@ const Informe = () => {
       </nav>
 
       <div>
-        <div className="left-content">
+        <div className="contenido-info">
           <div className="container card-informe row">
             <div className="panel post col-md-3">
               <a href="javascript:void();">
@@ -117,14 +117,15 @@ const Informe = () => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row mt-5">
             <div className="col-md-6">
               <div className="card custom-card">
                 <h3 className="chart-lbl">Localización</h3>
-                <div className="line-chart-container">
-                  <div>
-                    {" "}
-                    <Map></Map>{" "}
+                <div className="card-body">
+                  <div className="body-mapa">
+                    <div className="mapadiv">
+                      <Map></Map>
+                    </div>
                   </div>
                 </div>
               </div>

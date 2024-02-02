@@ -95,11 +95,11 @@ const Dashboard = () => {
       <section className="content">
         <div className="left-content">
           <div className="container">
-            <div className="row">
+            <div className="row fila1">
               <div className="col-md-12">
-                <div className="activities">
+                <div className="mas-consultados">
                   <h1>Negocios más consultados</h1>
-                  <div className="activity-container">
+                  <div className="contenido-consultados">
                     {activityData.map((activity, index) => (
                       <div
                         key={index}
@@ -115,80 +115,87 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6">
-                <div className="left-bottom d-flex">
-                  <div className="weekly-schedule">
-                    <h1>Próximos descuentos</h1>
-                    <div className="calendar">
-                      {scheduleData.map((item, index) => (
-                        <div
-                          key={index}
-                          className={`day-and-activity activity-${index + 1}`}
-                        >
-                          <div className="day">
-                            <h1>{item.day}</h1>
-                            <p>{item.dayName}</p>
+            <div className="container">
+              {" "}
+              <div className="row mt-5 fila2">
+                <div className="col-md-6">
+                  <div className="left-bottom d-flex">
+                    <div className="descuentos">
+                      <h1>Próximos descuentos</h1>
+                      <div className="calendar">
+                        {scheduleData.map((item, index) => (
+                          <div
+                            key={index}
+                            className={`day-and-activity activity-${index + 1}`}
+                          >
+                            <div className="day">
+                              <h1>{item.day}</h1>
+                              <p>{item.dayName}</p>
+                            </div>
+                            <div className="activity">
+                              <h2>{item.activity}</h2>
+                              <p>{item.empresa}</p>
+                              <div className="participants"></div>
+                            </div>
+                            <button className="btn btn-descuentos">
+                              Más info
+                            </button>
                           </div>
-                          <div className="activity">
-                            <h2>{item.activity}</h2>
-                            <p>{item.empresa}</p>
-                            <div className="participants"></div>
-                          </div>
-                          <button className="btn-descuentos">Más info</button>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-md-6">
-                <div className="notifi-box" id="box">
-                  <h2>
-                    Comentarios recibidos <span>3</span>
-                  </h2>
-                  <div className="notifi-item">
-                    <div className="text">
-                      <h4>Biason Franco</h4>
-                      <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Ratione, vel veritatis facilis, enim natus debitis
-                        asperiores molestiae alias illo nulla, quaerat optio
-                        repellendus! Dolorem temporibus voluptates animi vero
-                        soluta illum.
-                      </p>
+                <div className="col-md-6">
+                  <div className="notifi-box" id="box">
+                    <h2>
+                      Comentarios recibidos <span>3</span>
+                    </h2>
+                    <div className="comentarios-container">
+                      {" "}
+                      <div className="notifi-item">
+                        <div className="text">
+                          <h5>Biason Automotores</h5>
+                          <h4>Biason Franco</h4>
+                          <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Ratione, vel veritatis facilis, enim natus
+                            debitis asperiores molestiae alias illo nulla,
+                            quaerat optio repellendus! Dolorem temporibus
+                            voluptates animi vero soluta illum.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="notifi-item">
+                        <div className="text">
+                          <h5>BiWeb</h5>
+                          <h4>Ariel Conrado</h4>
+                          <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Voluptates odio ipsam, iste odit quis velit
+                            eius voluptatem rerum error deleniti vero adipisci
+                            minima voluptatum unde ex, veniam a quo nisi?
+                          </p>
+                        </div>
+                      </div>
+                      <div className="notifi-item">
+                        <div className="text">
+                          <h5>YPF</h5>
+                          <h4>Reyes Denis</h4>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Magni eligendi dicta harum excepturi
+                            voluptatem eveniet magnam, temporibus tenetur minima
+                            voluptate quo assumenda quia repellendus cumque
+                            modi. Placeat consequuntur dolores ea!
+                          </p>
+                        </div>
+                      </div>
+                      <h5 className="p-3">Ver más comentarios...</h5>
                     </div>
                   </div>
-
-                  <div className="notifi-item">
-                    <div className="text">
-                      <h4>Ariel Conrado</h4>
-                      <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Voluptates odio ipsam, iste odit quis velit eius
-                        voluptatem rerum error deleniti vero adipisci minima
-                        voluptatum unde ex, veniam a quo nisi?
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="notifi-item">
-                    <div className="text">
-                      <h4>Reyes Denis</h4>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Magni eligendi dicta harum excepturi voluptatem eveniet
-                        magnam, temporibus tenetur minima voluptate quo
-                        assumenda quia repellendus cumque modi. Placeat
-                        consequuntur dolores ea!
-                      </p>
-                    </div>
-                  </div>
-                  <h5 className="p-3">Ver más comentarios...</h5>
                 </div>
               </div>
             </div>
@@ -203,7 +210,7 @@ const Dashboard = () => {
             <h5>Usuario1</h5>
             <img src="/images/biason.jpg" alt="user" />
             <button
-              className="dashboardClose"
+              className="btn btn-primary dashboardClose"
               onClick={() => {
                 const previousSaved =
                   localStorage.getItem("previousPathToDash");
@@ -215,32 +222,8 @@ const Dashboard = () => {
               Cerrar
             </button>
           </div>
-          <div className="active-calories">
-            <h1 style={{ alignSelf: "flex-start" }}>Actividad</h1>
 
-            <div className="active-calories-container">
-              <div className="box" style={{ "--i": "85%" }}>
-                <div className="circle">
-                  <h2>
-                    85<small>%</small>
-                  </h2>
-                </div>
-              </div>
-              <div className="calories-content">
-                <p>
-                  <span>Favoritos:</span> 10
-                </p>
-                <p>
-                  <span>Comentarios:</span> 0
-                </p>
-                <p>
-                  <span>Negocios Cargados:</span> 14
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="friends-activity">
+          <div className="recomendaciones mt-4">
             <h1>Recomendaciones</h1>
             <div className="card-container">
               <div className="card">
@@ -256,7 +239,7 @@ const Dashboard = () => {
                 <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
               </div>
 
-              <div className="card card-two">
+              <div className="card card-two mt-3">
                 <div className="card-user-info">
                   <img src="/images/biason.jpg" alt="" />
                   <h2>BiWeb</h2>
