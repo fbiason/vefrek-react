@@ -7,7 +7,6 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
 import Footer from "./pages/footer/Footer";
 import { Navigate } from "react-router-dom";
-import Perfil from "./pages/perfil/Perfil";
 import Publicacion from "./pages/publicacion/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
@@ -23,13 +22,13 @@ import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";
-import PerfilDash from "./components/dashboard/PerfilDash";
 import Informe from "./components/dashboard/Informe";
 import Calendario from "./components/dashboard/Calendario";
 import Favoritos from "./components/dashboard/Favoritos";
 import NegociosDash from "./components/dashboard/NegociosDash";
 import Map from "./components/dashboard/Map";
 import Admin from "./components/dashboard/Admin";
+import Perfil from "./components/dashboard/Perfil";
 
 function App() {
   ReactGA.initialize("G-J1JT10S65V");
@@ -64,7 +63,6 @@ function App() {
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/PerfilDash" element={<PerfilDash />} />
           <Route path="/Informe" element={<Informe />} />
           <Route path="/Calendario" element={<Calendario />} />
           <Route path="/Favoritos" element={<Favoritos />} />

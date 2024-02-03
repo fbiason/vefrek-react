@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import "./perfil-dash.css";
+import "./perfil.css";
 import { useState, useEffect, useContext, useRef } from "react";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
@@ -9,7 +9,7 @@ import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { verifyIfHasChanges } from "../../utils/utils";
 
-const PerfilDash = () => {
+const Perfil = () => {
   const [activeNavItem, setActiveNavItem] = useState(1);
 
   const handleNavItemClick = (index) => {
@@ -18,7 +18,7 @@ const PerfilDash = () => {
 
   const menuItems = [
     { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
-    { icon: "fa-user", text: "Perfil", to: "/PerfilDash" },
+    { icon: "fa-user", text: "Perfil", to: "/Perfil" },
     { icon: "fa-chart-bar", text: "Informe", to: "/Informe" },
     { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
@@ -577,4 +577,4 @@ const PerfilDash = () => {
   );
 };
 
-export default PerfilDash;
+export default Perfil;
