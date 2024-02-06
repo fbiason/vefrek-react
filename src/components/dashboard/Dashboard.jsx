@@ -38,10 +38,6 @@ const Dashboard = () => {
       name: "Chapista Carlos",
       image: "/images/valores-prueba.png",
     },
-    {
-      name: "Mecanica Rufus",
-      image: "/images/elfarohome.webp",
-    },
   ];
 
   const scheduleData = [
@@ -93,21 +89,24 @@ const Dashboard = () => {
       </nav>
 
       <section className="content">
-        <div className="left-content">
-          <div className="container">
+        <div className="left-content col-xl-9 col-lg-8">
+          <div className="container col-xl-12">
             <div className="row fila1">
               <div className="col-md-12">
                 <div className="mas-consultados">
                   <h1>Negocios más consultados</h1>
-                  <div className="contenido-consultados">
+                  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                     {activityData.map((activity, index) => (
-                      <div
-                        key={index}
-                        className={`image-container img-${index + 1}`}
-                      >
-                        <img src={activity.image} alt={activity.name} />
-                        <div className="overlay">
-                          <h3>{activity.name}</h3>
+                      <div key={index} className="col mb-4">
+                        <div className={`image-container img-${index + 1}`}>
+                          <img
+                            src={activity.image}
+                            alt={activity.name}
+                            className="img-fluid"
+                          />
+                          <div className="overlay">
+                            <h3 className="text-white">{activity.name}</h3>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -117,17 +116,16 @@ const Dashboard = () => {
             </div>
 
             <div className="container">
-              {" "}
-              <div className="row mt-5 fila2">
-                <div className="col-md-6">
+              <div className="row fila2">
+                <div className="col-xl-12 col-xxl-6 order-md-1 order-2">
                   <div className="left-bottom d-flex">
                     <div className="descuentos">
-                      <h1>Próximos descuentos</h1>
+                      <h1 className="mb-4">Próximos descuentos</h1>
                       <div className="calendar">
                         {scheduleData.map((item, index) => (
                           <div
                             key={index}
-                            className={`day-and-activity activity-${index + 1}`}
+                            className="day-and-activity activity-1 mb-3"
                           >
                             <div className="day">
                               <h1>{item.day}</h1>
@@ -138,7 +136,7 @@ const Dashboard = () => {
                               <p>{item.empresa}</p>
                               <div className="participants"></div>
                             </div>
-                            <button className="btn btn-descuentos">
+                            <button className="btn btn-outline-primary btn-descuentos">
                               Más info
                             </button>
                           </div>
@@ -148,14 +146,14 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-xl-12 col-xxl-6 order-md-2 order-1">
                   <div className="notifi-box" id="box">
                     <h2>
-                      Comentarios recibidos <span>3</span>
+                      Comentarios recibidos{" "}
+                      <span className="badge bg-secondary">3</span>
                     </h2>
                     <div className="comentarios-container">
-                      {" "}
-                      <div className="notifi-item">
+                      <div className="notifi-item mb-3">
                         <div className="text">
                           <h5>Biason Automotores</h5>
                           <h4>Biason Franco</h4>
@@ -168,7 +166,7 @@ const Dashboard = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="notifi-item">
+                      <div className="notifi-item mb-3">
                         <div className="text">
                           <h5>BiWeb</h5>
                           <h4>Ariel Conrado</h4>
@@ -180,7 +178,7 @@ const Dashboard = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="notifi-item">
+                      <div className="notifi-item mb-3">
                         <div className="text">
                           <h5>YPF</h5>
                           <h4>Reyes Denis</h4>
@@ -202,54 +200,74 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="right-content">
-          <div className="user-info">
-            <div className="icon-container">
-              <i className="fa fa-bell nav-icon"></i>
-            </div>
-            <h5>Usuario1</h5>
-            <img src="/images/biason.jpg" alt="user" />
-            <button
-              className="btn btn-primary dashboardClose"
-              onClick={() => {
-                const previousSaved =
-                  localStorage.getItem("previousPathToDash");
-                previousSaved
-                  ? navigate(localStorage.getItem("previousPathToDash"))
-                  : navigate("/");
-              }}
-            >
-              Cerrar
-            </button>
-          </div>
-
-          <div className="recomendaciones mt-4">
-            <h1>Recomendaciones</h1>
-            <div className="card-container">
-              <div className="card">
-                <div className="card-user-info">
-                  <img src="/images/portfolio/biasonautomotores.jpeg" alt="" />
-                  <h2>Biason Automotores</h2>
+        <div className="right-content col-xl-3 col-lg-4">
+          <div className="col-xl-12">
+            <div className="container">
+              <div className="row">
+                <div className="col-12 col-md-4 mx-auto">
+                  <div className="user-info d-flex align-items-center">
+                    <h5>Usuario1</h5>
+                  </div>
                 </div>
-                <img
-                  className="card-img"
-                  src="/images/portfolio/biasonautomotores.jpeg"
-                  alt=""
-                />
-                <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
+                <div className="col-12 col-md-4 mx-auto p-4">
+                  <div className="user-info align-items-center justify-content-center">
+                    <img
+                      src="/images/biason.jpg"
+                      alt="user"
+                      className="img-fluid"
+                    />
+                  </div>
+                </div>
+                <div className="col-12 col-md-4 mx-auto">
+                  <div className="user-info d-flex align-items-center justify-content-center">
+                    <button
+                      className="btn btn-primary dashboardClose"
+                      onClick={() => {
+                        const previousSaved =
+                          localStorage.getItem("previousPathToDash");
+                        previousSaved
+                          ? navigate(localStorage.getItem("previousPathToDash"))
+                          : navigate("/");
+                      }}
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div className="card card-two mt-3">
-                <div className="card-user-info">
-                  <img src="/images/biason.jpg" alt="" />
-                  <h2>BiWeb</h2>
+            <div className="recomendaciones mt-4">
+              <h1>Recomendaciones</h1>
+              <div className="card-container">
+                <div className="card">
+                  <div className="card-user-info">
+                    <img
+                      src="/images/portfolio/biasonautomotores.jpeg"
+                      alt=""
+                    />
+                    <h2>Biason Automotores</h2>
+                  </div>
+                  <img
+                    className="card-img"
+                    src="/images/portfolio/biasonautomotores.jpeg"
+                    alt=""
+                  />
+                  <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
                 </div>
-                <img
-                  className="card-img"
-                  src="/images/portfolio/biasonautomotores.jpeg"
-                  alt=""
-                />
-                <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
+
+                <div className="card card-two mt-3">
+                  <div className="card-user-info">
+                    <img src="/images/biason.jpg" alt="" />
+                    <h2>BiWeb</h2>
+                  </div>
+                  <img
+                    className="card-img"
+                    src="/images/portfolio/biasonautomotores.jpeg"
+                    alt=""
+                  />
+                  <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
+                </div>
               </div>
             </div>
           </div>

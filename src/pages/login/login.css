@@ -22,6 +22,7 @@
     );
 }
 
+
 .login-container h1 {
   text-align: center;
   color: #14ba75;
@@ -243,10 +244,14 @@ button {
 }
 
 .google-button:hover svg {
-  fill: white; /* Cambia el color del ícono al hacer hover */
+  fill: white; /
 }
 /*--- Responsive ---*/
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .footer-info .vefrek-logo {
+    width: 40%;
+  }
+
   .vefrek-logo {
     width: 70%;
   }
@@ -256,7 +261,7 @@ button {
   }
 }
 
-@media (max-width: 970px) {
+@media (max-width: 992px) {
   .vefrek-logo {
     width: 70%;
   }
@@ -266,7 +271,7 @@ button {
   }
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1200px) {
   .vefrek-logo {
     width: 90%;
   }

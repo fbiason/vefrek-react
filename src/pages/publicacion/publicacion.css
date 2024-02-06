@@ -21,10 +21,23 @@
     );
 }
 
-.background h1 {
+.background h1,
+.background h2,
+.background h3,
+.background p,
+.background li {
   text-align: center;
-  color: #14ba75;
 }
+
+.background h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
 .background p {
   color: whitesmoke;
 }
@@ -35,8 +48,48 @@
   color: whitesmoke;
 }
 
+#hero-publicacion h1 span {
+  color: white;
+}
+
+#hero-publicacion h2,
+#hero-publicacion h3 {
+  color: whitesmoke;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero-publicacion {
+    padding: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-publicacion {
+    padding: 5rem;
+  }
+
+  #hero-publicacion h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero-publicacion h2 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .logo-publicacion {
+    width: 100%;
+  }
+}
+
 .logo-publicacion {
   width: 100%;
+}
+
+.hero-publicacion {
+  padding: 10rem;
 }
 
 #hero-publicacion h1 {
@@ -117,5 +170,9 @@
   #hero-publicacion h2 {
     font-size: 22px;
     line-height: 24px;
+  }
+
+  .logo-publicacion {
+    width: 100%;
   }
 }

@@ -53,11 +53,12 @@ const Calendario = () => {
     setActiveNavItem(index);
   };
 
-  const handleDateClick = (dia) => {
-    if (dia === 16) {
-      setFlipped(!isFlipped);
-    }
-    // Puedes agregar más lógica aquí para otros días si es necesario
+  const handleDateClick = () => {
+    setFlipped(!isFlipped);
+  };
+
+  const handleCancelClick = () => {
+    setFlipped(false);
   };
 
   const menuItems = [
@@ -125,7 +126,6 @@ const Calendario = () => {
                         <span
                           key={index}
                           className={dia === 15 ? "active" : ""}
-                          onClick={() => handleDateClick(dia)}
                         >
                           {dia < 10 ? "0" + dia : dia}
                         </span>
@@ -156,7 +156,10 @@ const Calendario = () => {
                     <button className="btn btn-primary save">
                       Guardar <i className="ion-checkmark"></i>
                     </button>
-                    <button className="btn btn-danger dismiss">
+                    <button
+                      className="btn btn-danger dismiss"
+                      onClick={handleCancelClick}
+                    >
                       Cancelar <i className="ion-android-close"></i>
                     </button>
                   </div>

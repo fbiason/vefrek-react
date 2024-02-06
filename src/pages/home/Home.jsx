@@ -71,7 +71,7 @@ const Home = () => {
       </section>
 
       <Negocios />
-      <section id="features" className="features home-section">
+      <section id="features" className="features home-section container">
         <div data-aos="fade-up">
           <div className="row container container-fluid">
             <div
@@ -130,14 +130,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section id="ppc" className="ppc home-section">
+      <section id="ppc" className="ppc home-section mt-5">
         <div className="container-fluid" data-aos="zoom-in">
           <div className="text-center">
             <h3>POTENCIA AÚN MÁS A TU EMPRESA</h3>
             <p>
-              Te brindamos la posibilidad de difundir más a tu negocio e
-              incrementar el alcance de los vehículos que publiques para la
-              venta
+              Te brindamos la posibilidad de difundir a tu empresa e incrementar
+              el alcance totalmente GRATIS
             </p>
             <Link to="/publicacion">
               <div className="ppc-btn">PUBLICITÁ AHORA</div>
