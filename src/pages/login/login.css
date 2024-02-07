@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: fit-content;
+  padding: 10rem;
   background-color: hsl(218deg, 41%, 15%);
   background-image: radial-gradient(
       650px circle at 0% 0%,
@@ -21,7 +22,6 @@
       transparent 100%
     );
 }
-
 
 .login-container h1 {
   text-align: center;
@@ -244,12 +244,16 @@ button {
 }
 
 .google-button:hover svg {
-  fill: white; /
+  fill: white;
 }
 /*--- Responsive ---*/
 @media (max-width: 768px) {
   .footer-info .vefrek-logo {
     width: 40%;
+  }
+
+  .login-container {
+    padding: 1rem;
   }
 
   .vefrek-logo {

@@ -343,7 +343,7 @@ const NavBar = () => {
     <header id="header" className="fixed-top">
       <div className="row align-items-center">
         {/* Logo - Se oculta en dispositivos pequeños y más pequeños */}
-        <div className="col-lg-4 col-md-12 mb-3 mb-lg-0 text-center d-none d-lg-block">
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-none d-lg-block">
           <Link to="/Dashboard">
             <img
               src="/images/logos/logo-vefrek.png"
@@ -353,38 +353,35 @@ const NavBar = () => {
           </Link>
         </div>
 
-        {/* Barra de Búsqueda, Ingresa, Publica Ahora */}
-        <div className="col-lg-8 col-md-12">
-          <div className="row align-items-center">
-            {/* Barra de Búsqueda */}
-            {showSearchBar && (
-              <div className="col-md-4 mb-3 mb-md-0 d-flex justify-content-center">
-                <SearchBar />
-              </div>
-            )}
-
-            <div className="col-md-9 mb-3 mb-md-0 d-flex justify-content-md-end justify-content-center ingresa">
-              {" "}
-              <ul className="d-flex justify-content-center p-0">
-                <li>{userData.isLogged && show && <Dropdown />}</li>
-                {!userData.isLogged && show && (
-                  <Link to="/login" className="nav-link scrollto">
-                    Ingresa
-                  </Link>
-                )}
-              </ul>
+        {/* Barra de Búsqueda */}
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0">
+          {showSearchBar && (
+            <div className="search-container">
+              <SearchBar />
             </div>
+          )}
+        </div>
 
-            {/* Publica Ahora */}
-            <div className="col-md-3 mb-3 mb-md-0 d-flex justify-content-center">
-              <Link
-                to="/publicacion"
-                className="btn btn-primary get-started-btn scrollto"
-              >
-                ¡PUBLICA AHORA!
+        {/* Ingresa */}
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 d-flex justify-content-center">
+          <ul className="d-flex justify-content-center p-0">
+            <li>{userData.isLogged && show && <Dropdown />}</li>
+            {!userData.isLogged && show && (
+              <Link to="/login" className="nav-link scrollto">
+                Ingresa
               </Link>
-            </div>
-          </div>
+            )}
+          </ul>
+        </div>
+
+        {/* Publica Ahora */}
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 d-flex justify-content-center">
+          <Link
+            to="/publicacion"
+            className="btn btn-primary get-started-btn scrollto"
+          >
+            ¡PUBLICA AHORA!
+          </Link>
         </div>
       </div>
     </header>

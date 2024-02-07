@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
@@ -68,7 +69,6 @@ const Perfil = () => {
     }, [formData]);
 
     const handleSubmit = async (e) => {
-        /* Actualizacion de datos de usuario */
         e.preventDefault();
         const avatarFileInput = document.querySelector(".perfil_file_input");
 
@@ -534,4 +534,4 @@ const Perfil = () => {
     );
 };
 
-export default Perfil;
+export default Perfil; */

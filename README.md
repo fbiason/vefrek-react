@@ -25,15 +25,10 @@ Tareas Biason:
 - 4 cards por fila.
 - Km distancia (1k a 500km) º—--º
 
-4. NavBar: Buscador: alinear
+4. Responsive:
 
-5. Responsive:
-
+- Categirias (reparacion, ventas, otros)
 - Pagina Negocio
-- Ventas
-- Mecanica
-- Otros
-- Login
 - CargaEmpresa
 - Dashboard
   -- Inicio

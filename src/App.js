@@ -12,9 +12,9 @@ import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
 import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
 import { NextUIProvider } from "@nextui-org/react";
 import * as React from "react";
-import Reparacion from "./pages/reparacion/Reparacion";
-import Venta from "./pages/venta/Venta";
-import OtrosServicios from "./pages/otros-servicios/OtrosServicios";
+import Reparacion from "./pages/categorias/Reparacion";
+import Venta from "./pages/categorias/Venta";
+import OtrosServicios from "./pages/categorias/OtrosServicios";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./pages/dropdown/Dropdown";
 import MisEmpresas from "./pages/misEmpresas/MisEmpresas";
@@ -92,7 +92,7 @@ function App() {
             }
           />
           <Route
-            path="/perfil"
+            path="/Perfil"
             element={
               ((!show || userData.isLogged) && <Perfil />) ||
               ((show || !userData.isLogged) && <Navigate to="/" />)

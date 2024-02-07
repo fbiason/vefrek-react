@@ -189,6 +189,11 @@ ul li {
   color: #14ba75;
 }
 
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
 /*====== RESPONSIVE ======*/
 
 @media (min-width: 1024px) {
