@@ -218,7 +218,7 @@
   width: 150%;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #footer .footer-bottom {
     padding-top: 20px;
     padding-bottom: 20px;

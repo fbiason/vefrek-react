@@ -248,7 +248,7 @@ ul li {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   #header {
     background-color: black;
     position: relative;

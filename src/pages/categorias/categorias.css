@@ -26,3 +26,72 @@
       transparent 100%
     );
 }
+
+.categorias {
+  padding-top: 10rem;
+}
+
+#rangevalue {
+  color: white;
+  font-weight: bold;
+}
+
+.filter-row {
+  margin-top: 1.5rem;
+}
+
+.form-label {
+  font-weight: bold;
+  color: white;
+}
+
+.form-range {
+  width: 40%;
+  cursor: pointer;
+  height: 10px;
+  border: none;
+  outline: none;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: #14ba75;
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1024px) {
+  .categorias {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .categorias {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .categorias h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .categorias h1 {
+    font-size: 0.8rem;
+  }
+}
