@@ -1,15 +1,13 @@
 Vefrek 1.0.0
 
 1. NavBar:
-   -- Responsive
+   -- Centrar buscador
    -- Cambiar “Editar” por “Ver”, y que tenga un btn abajo para editar.
-   -- Alinear campo provincia en formulario. Incorporar teléfono a perfil de usuario
-2. Footer
-3. Home
-4. Publicá ahora
-5. PaginaEmpresa
-6. CargaEmpresa
-7. Dashboard
+2. Perfil usuario: Alinear campo provincia en formulario. Incorporar teléfono a perfil de usuario
+3. Publicá ahora
+4. PaginaEmpresa
+5. CargaEmpresa
+6. Dashboard
    -- Inicio: alinear "Usuario1", hacer responsive.
    -- Perfil: controlar.
    -- Información: ajustar.
@@ -18,4 +16,4 @@ Vefrek 1.0.0
    -- Negocios: Incorporar para editar negocios. Incorporar horarios de apertura. Ajustar negocios cargados.
    -- Admin: crear
 
-8. Vincular con TagManager
+7. Vincular con TagManager
