@@ -338,7 +338,9 @@ const NavBar = () => {
         {/* Barra de Búsqueda */}
         <div className="col-lg-3 col-md-12 mb-3 mb-lg-0">
           {showSearchBar && (
-            <div className="search-container">
+            <div className="search-container center-on-mobile">
+              {" "}
+              {/* Aquí se aplica la clase de centrado en móviles */}
               <SearchBar />
             </div>
           )}

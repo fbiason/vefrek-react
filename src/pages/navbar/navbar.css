@@ -192,6 +192,7 @@ ul li {
 .search-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /*====== RESPONSIVE ======*/
@@ -257,5 +258,13 @@ ul li {
   #header .get-started-btn {
     padding: 5px 10px;
     font-size: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Esta regla puede estar causando el problema de alineación */
   }
 }

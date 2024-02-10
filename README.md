@@ -1,7 +1,6 @@
 Vefrek 1.0.0
 
 1. NavBar:
-   -- Centrar buscador
    -- Cambiar “Editar” por “Ver”, y que tenga un btn abajo para editar.
 2. Perfil usuario: Alinear campo provincia en formulario. Incorporar teléfono a perfil de usuario
 3. Publicá ahora
