@@ -88,8 +88,8 @@ const Dashboard = () => {
         ))}
       </nav>
 
-      <section className="content">
-        <div className="left-content col-xl-9 col-lg-8">
+      <section className="content row">
+        <div className="left-content col-xl-9 col-lg-12 col-md-12">
           <div className="container col-xl-12">
             <div className="row fila1">
               <div className="col-md-12">
@@ -200,7 +200,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="right-content col-xl-3 col-lg-4">
+        <div className="col-xl-3 col-lg-12 col-md-12">
           <div className="col-xl-12">
             <div className="container">
               <div className="row">

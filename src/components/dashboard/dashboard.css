@@ -25,17 +25,14 @@
 /* MAIN MENU */
 .dashboardCont {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
+  margin: 2vw; /* Cambiado a valor relativo */
+  min-width: 90vw; /* Ancho mínimo flexible */
   z-index: 1100;
   display: grid;
-  grid-template-columns: 13% 87%;
-  padding: 3rem;
-  background: rgb(254, 254, 254);
-  box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
-    0 1px 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
-  border-radius: 15px;
+  grid-template-columns: 15% 85%;
+  border-radius: 20px;
+  padding: 3vw; /* Cambiado a valor relativo */
+  background: #14ba75;
 }
 
 .logo-dash {
@@ -145,11 +142,32 @@
   height: 20px;
 }
 
-/* CONTENT */
-
 .content {
   display: flex;
   grid-template-columns: 75% 25%;
+}
+
+@media (max-width: 992px) {
+  .main-menu {
+    display: none;
+  }
+
+  .dashboardCont {
+    grid-template-columns: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboardCont {
+    grid-template-columns: 100%;
+  }
 }
 
 /* LEFT CONTENT */
@@ -638,6 +656,21 @@
   .right-content {
     grid-template-rows: 4% 20% 76%;
     margin: 15px 15px 15px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Cambios para resoluciones mayores, ajusta según sea necesario */
+  .dashboardCont {
+    flex-direction: row; /* Cambiado a fila en dispositivos grandes */
+  }
+
+  .left-content {
+    order: 1; /* Cambia el orden en dispositivos grandes */
+  }
+
+  .right-content {
+    order: 2; /* Cambia el orden en dispositivos grandes */
   }
 }
 
