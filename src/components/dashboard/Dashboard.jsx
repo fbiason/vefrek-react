@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import "./dashboard.css";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import NavBarDash from "./NavBarDash";
 
 const Dashboard = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
   const navigate = useNavigate();
   const thisLocation = useLocation();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
+  };
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen); // Cambia el estado de isMenuOpen al valor opuesto
   };
 
   const menuItems = [
@@ -66,30 +72,10 @@ const Dashboard = () => {
 
   return (
     <main className="dashboardMain">
-      <nav className="menuDash">
-        <Link to="/Map">
-          <img
-            src="/images/logos/logo-vefrek.png"
-            alt="Logo Vefrek"
-            className="logo-dash"
-          />
-        </Link>
-        {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className={`nav-item ${activeNavItem === index ? "active" : ""}`}
-            onClick={() => handleNavItemClick(index)}
-          >
-            <Link to={item.to}>
-              <i className={`fa ${item.icon} nav-icon`}></i>
-              <span className="nav-text">{item.text}</span>
-            </Link>
-          </li>
-        ))}
-      </nav>
+      <NavBarDash></NavBarDash>
 
       <section className="content">
-        <div className="left-content col-xl-9 col-lg-12 col-md-12">
+        <div className="left-content">
           <div className="container col-xl-12">
             <div className="row fila1">
               <div className="col-md-12">
@@ -123,10 +109,7 @@ const Dashboard = () => {
                       <h1 className="mb-4">Próximos descuentos</h1>
                       <div className="calendar">
                         {scheduleData.map((item, index) => (
-                          <div
-                            key={index}
-                            className="day-and-activity activity-1 mb-3"
-                          >
+                          <div key={index} className="prox-desc mb-3">
                             <div className="day">
                               <h1>{item.day}</h1>
                               <p>{item.dayName}</p>
@@ -200,26 +183,22 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="right-content col-xl-3 col-lg-12 col-md-12">
-          <div className="col-xl-12">
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-md-4 mx-auto">
-                  <div className="user-info d-flex align-items-center">
+        <div className="right-content">
+          <div>
+            <div className="container-content">
+              <div className="row-content">
+                <div class="col-12-db col-md-4-db mx-auto-db">
+                  <div className="user-info">
                     <h5>Usuario1</h5>
                   </div>
                 </div>
-                <div className="col-12 col-md-4 mx-auto p-4">
-                  <div className="user-info align-items-center justify-content-center">
-                    <img
-                      src="/images/biason.jpg"
-                      alt="user"
-                      className="img-fluid"
-                    />
+                <div className="col-12-db col-md-4-db mx-auto-db">
+                  <div className="user-info">
+                    <img src="/images/biason.jpg" alt="user" />
                   </div>
                 </div>
-                <div className="col-12 col-md-4 mx-auto">
-                  <div className="user-info d-flex align-items-center justify-content-center">
+                <div className="col-12-db col-md-4-db mx-auto-db">
+                  <div className="user-info">
                     <button
                       className="btn btn-primary dashboardClose"
                       onClick={() => {

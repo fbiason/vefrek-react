@@ -22,6 +22,7 @@ import LoginUser from "./pages/loginUser/LoginUser";
 import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";
+import NavBarDash from "./components/dashboard/NavBarDash";
 import Informe from "./components/dashboard/Informe";
 import Calendario from "./components/dashboard/Calendario";
 import Favoritos from "./components/dashboard/Favoritos";
@@ -56,6 +57,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/" element={<NavBarDash />} />
           <Route path="/login" element={<LoginApp />} />
           <Route path="/Publicacion" element={<Publicacion />} />
           <Route path="/Reparacion" element={<Reparacion />} />

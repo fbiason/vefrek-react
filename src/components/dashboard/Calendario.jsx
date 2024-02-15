@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./calendario.css";
+import NavBarDash from "./NavBarDash";
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);
@@ -73,27 +74,7 @@ const Calendario = () => {
 
   return (
     <main className="dashboardMain">
-      <nav className="menuDash">
-        <Link to="/Dashboard">
-          <img
-            src="/images/logos/logo-vefrek.png"
-            alt="Logo Vefrek"
-            className="logo-dash"
-          />
-        </Link>
-        {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className={`nav-item ${activeNavItem === index ? "active" : ""}`}
-            onClick={() => handleNavItemClick(index)}
-          >
-            <Link to={item.to}>
-              <i className={`fa ${item.icon} nav-icon`}></i>
-              <span className="nav-text">{item.text}</span>
-            </Link>
-          </li>
-        ))}
-      </nav>
+      <NavBarDash></NavBarDash>
 
       <section className="row contenido-calendario g-4">
         <div className="col-md-6">

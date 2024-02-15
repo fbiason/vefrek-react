@@ -8,6 +8,7 @@ import { UserContext } from "../../context/userContext";
 import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { verifyIfHasChanges } from "../../utils/utils";
+import NavBarDash from "./NavBarDash";
 
 const Perfil = () => {
   const [activeNavItem, setActiveNavItem] = useState(1);
@@ -155,28 +156,9 @@ const Perfil = () => {
 
   return (
     <main className="dashboardMain">
-      <nav className="menuDash">
-        <Link to="/Dashboard">
-          <img
-            src="/images/logos/logo-vefrek.png"
-            alt="Logo Vefrek"
-            className="logo-dash"
-          />
-        </Link>
-        {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className={`nav-item ${activeNavItem === index ? "active" : ""}`}
-            onClick={() => handleNavItemClick(index)}
-          >
-            <Link to={item.to}>
-              <i className={`fa ${item.icon} nav-icon`}></i>
-              <span className="nav-text">{item.text}</span>
-            </Link>
-          </li>
-        ))}
-      </nav>
-      <div className="background-dash d-flex">
+      <NavBarDash></NavBarDash>
+
+      <div className="d-flex justify-content-center">
         <form
           className="form-dash-perfil rounded-md p-6 userUpdateForm m-5"
           onSubmit={handleSubmit}
