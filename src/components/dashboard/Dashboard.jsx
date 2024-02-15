@@ -65,8 +65,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="dashboardCont">
-      <nav className="main-menu">
+    <main className="dashboardMain">
+      <nav className="menuDash">
         <Link to="/Map">
           <img
             src="/images/logos/logo-vefrek.png"
@@ -88,7 +88,7 @@ const Dashboard = () => {
         ))}
       </nav>
 
-      <section className="content row">
+      <section className="content">
         <div className="left-content col-xl-9 col-lg-12 col-md-12">
           <div className="container col-xl-12">
             <div className="row fila1">
@@ -200,7 +200,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="col-xl-3 col-lg-12 col-md-12">
+        <div className="right-content col-xl-3 col-lg-12 col-md-12">
           <div className="col-xl-12">
             <div className="container">
               <div className="row">

@@ -1,47 +1,43 @@
-.background-dash {
-  min-height: fit-content;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 15px 15px 0;
-  background-color: hsl(218deg, 41%, 15%);
-  background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(218deg, 41%, 35%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(218deg, 41%, 45%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    );
-}
-
-/* MAIN MENU */
-.dashboardCont {
+/* Dashboard Main */
+.dashboardMain {
   position: absolute;
-  margin: 2vw; /* Cambiado a valor relativo */
-  min-width: 90vw; /* Ancho mínimo flexible */
+  margin: 2vw;
+  min-width: 90vw;
   z-index: 1100;
   display: grid;
   grid-template-columns: 15% 85%;
   border-radius: 20px;
-  padding: 3vw; /* Cambiado a valor relativo */
-  background: #14ba75;
+  padding: 3vw;
+  background: #e6d8d8;
 }
 
-.logo-dash {
-  max-width: 100%;
-  height: auto;
-  padding: 1rem;
+@media (max-width: 992px) {
+  .dashboardMain {
+    grid-template-columns: 100%;
+  }
 }
 
-.main-menu {
+@media (max-width: 720px) {
+  .dashboardMain {
+    grid-template-columns: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboardMain {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboardMain {
+    flex-direction: row;
+  }
+}
+
+/*=== Menú DashBoard ===*/
+
+.menuDash {
   overflow: hidden;
   background: rgb(45, 45, 46);
   padding-top: 10px;
@@ -49,7 +45,7 @@
   font-family: "Roboto", sans-serif;
 }
 
-.main-menu h1 {
+.menuDash h1 {
   display: block;
   font-size: 1.5rem;
   font-weight: 500;
@@ -57,6 +53,24 @@
   margin: 20px 0 30px;
   color: #fff;
   font-family: "Nunito", sans-serif;
+}
+
+@media (max-width: 1500px) {
+  .menuDash h1 {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .menuDash {
+    display: none;
+  }
+}
+
+.logo-dash {
+  max-width: 100%;
+  height: auto;
+  padding: 1rem;
 }
 
 .nav-item {
@@ -142,69 +156,24 @@
   height: 20px;
 }
 
-.content {
-  display: flex;
-  grid-template-columns: 75% 25%;
-}
-
-@media (max-width: 992px) {
-  .main-menu {
+@media (max-width: 1500px) {
+  .nav-text {
     display: none;
   }
-
-  .dashboardCont {
-    grid-template-columns: 100%;
-  }
 }
 
-@media (max-width: 992px) {
-  .content {
-    width: 100%;
-    height: 100%;
-  }
-}
+/*=== Fin Menú Dash ===*/
 
-@media (max-width: 720px) {
-  .dashboardCont {
-    grid-template-columns: 100%;
-  }
-}
-
-/* LEFT CONTENT */
-
-.left-content {
-  display: grid;
-  grid-template-rows: 50% 50%;
-  background: #f6f7fb;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-/* LEFT BOTTOM */
-
-.left-bottom {
-  gap: 40px;
-}
-
-/* fila 1 */
+/* Fila 1 */
 
 .fila1 {
   padding: 20px;
 }
 
-/* Mas consultados */
-
 .mas-consultados h1 {
   margin: 0 0 20px;
   font-size: 1.4rem;
   font-weight: 700;
-}
-
-.contenido-consultados {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 10px;
 }
 
 .image-container {
@@ -275,17 +244,14 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .contenido-consultados .image-container {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-/* fila2 */
+/* Fila 2 */
 
 .fila2 {
   padding: 20px;
+}
+
+.left-bottom {
+  gap: 40px;
 }
 
 .descuentos {
@@ -390,8 +356,6 @@
   }
 }
 
-/* == Comentarios ==*/
-
 .notifi-box {
   background-color: #f8f9fa;
   border-radius: 8px;
@@ -466,6 +430,88 @@
   margin-bottom: 0;
 }
 
+/* CONTENT */
+
+.content {
+  display: flex;
+  grid-template-columns: 75% 25%;
+}
+@media (max-width: 1500px) {
+  .content {
+    grid-template-columns: 70% 30%;
+  }
+}
+
+@media (max-width: 1310px) {
+  .content {
+    grid-template-columns: 65% 35%;
+  }
+}
+
+@media (max-width: 910px) {
+  .content {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .content {
+    grid-template-columns: 60% 40%;
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    grid-template-columns: 52% 48%;
+  }
+}
+
+@media (max-width: 700px) {
+  .content {
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 55%;
+    grid-template-areas:
+      "rightContent"
+      "leftContent";
+  }
+}
+
+/* LEFT CONTENT */
+
+.left-content {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  background: #f6f7fb;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+@media (max-width: 1150px) {
+  .left-content {
+    grid-template-rows: 50% 50%;
+    margin: 15px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 910px) {
+  .left-content {
+    grid-template-rows: 50% 50%;
+    padding: 30px 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-content {
+    order: 1;
+    background: #f6f7fb;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 15px;
+  }
+}
+
 /* RIGHT CONTENT */
 
 .right-content {
@@ -475,6 +521,30 @@
   margin: 15px 15px 15px 0;
   padding: 10px 20px 10px 10px;
   border-radius: 15px;
+}
+
+@media (max-width: 1310px) {
+  .right-content {
+    grid-template-rows: 4% 20% 76%;
+    margin: 15px 15px 15px 0;
+  }
+}
+
+@media (max-width: 1150px) {
+  .right-content {
+    grid-template-rows: 4% 19% 36% 41%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .right-content {
+    order: 2;
+    grid-area: rightContent;
+    grid-template-rows: 5% 40% 50%;
+    margin: 15px 15px 0 15px;
+    padding: 10px 0 0;
+    gap: 15px;
+  }
 }
 
 /* USER INFO */
@@ -573,23 +643,10 @@
   main {
     grid-template-columns: 6% 94%;
   }
-
-  .main-menu h1 {
-    display: none;
-  }
-
   .logo {
     display: block;
     width: 30px;
     margin: 20px auto;
-  }
-
-  .nav-text {
-    display: none;
-  }
-
-  .content {
-    grid-template-columns: 70% 30%;
   }
 }
 
@@ -598,11 +655,6 @@
     grid-template-columns: 8% 92%;
     margin: 30px;
   }
-
-  .content {
-    grid-template-columns: 65% 35%;
-  }
-
   .day-and-activity {
     margin-bottom: 10px;
   }
@@ -652,39 +704,9 @@
     max-width: 60px;
     align-self: center;
   }
-
-  .right-content {
-    grid-template-rows: 4% 20% 76%;
-    margin: 15px 15px 15px 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  /* Cambios para resoluciones mayores, ajusta según sea necesario */
-  .dashboardCont {
-    flex-direction: row; /* Cambiado a fila en dispositivos grandes */
-  }
-
-  .left-content {
-    order: 1; /* Cambia el orden en dispositivos grandes */
-  }
-
-  .right-content {
-    order: 2; /* Cambia el orden en dispositivos grandes */
-  }
 }
 
 @media (max-width: 1150px) {
-  .content {
-    grid-template-columns: 60% 40%;
-  }
-
-  .left-content {
-    grid-template-rows: 50% 50%;
-    margin: 15px;
-    padding: 20px;
-  }
-
   .btn-descuentos {
     padding: 8px 8px;
     font-size: 0.9rem;
@@ -729,10 +751,6 @@
     gap: 0;
   }
 
-  .right-content {
-    grid-template-rows: 4% 19% 36% 41%;
-  }
-
   .personal-bests {
     display: none;
   }
@@ -748,25 +766,10 @@
   }
 }
 
-@media (max-width: 1050px) {
-  .right-content {
-    grid-template-rows: 4% 19% 37% 40%;
-  }
-}
-
 @media (max-width: 910px) {
   main {
     grid-template-columns: 10% 90%;
     margin: 20px;
-  }
-
-  .content {
-    grid-template-columns: 55% 45%;
-  }
-
-  .left-content {
-    grid-template-rows: 50% 50%;
-    padding: 30px 20px 20px;
   }
 
   .contenido-consultados {
@@ -783,50 +786,14 @@
   }
 }
 
-@media (max-width: 800px) {
-  .content {
-    grid-template-columns: 52% 48%;
-  }
-}
-
 @media (max-width: 700px) {
   main {
     grid-template-columns: 15% 85%;
   }
 
-  .content {
-    grid-template-columns: 100%;
-    grid-template-rows: 45% 55%;
-    grid-template-areas:
-      "rightContent"
-      "leftContent";
-  }
-
-  .left-content {
-    background: #f6f7fb;
-    margin: 15px;
-    padding: 20px;
-    border-radius: 15px;
-  }
-
-  .right-content {
-    grid-area: rightContent;
-    grid-template-rows: 5% 40% 50%;
-    margin: 15px 15px 0 15px;
-    padding: 10px 0 0;
-    gap: 15px;
-  }
-
   .mas-consultados,
   .descuentos {
     margin-top: 10px;
-  }
-
-  .active-calories-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
   }
 
   .recomendaciones {
