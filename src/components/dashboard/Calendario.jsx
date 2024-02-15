@@ -72,8 +72,8 @@ const Calendario = () => {
   ];
 
   return (
-    <main className="dashboardCont">
-      <nav className="main-menu">
+    <main className="dashboardMain">
+      <nav className="menuDash">
         <Link to="/Dashboard">
           <img
             src="/images/logos/logo-vefrek.png"
