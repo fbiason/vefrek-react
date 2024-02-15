@@ -7,8 +7,7 @@
   display: grid;
   grid-template-columns: 15% 85%;
   border-radius: 20px;
-  padding: 3vw;
-  background: #e6d8d8;
+  background: #dbdbdb;
 }
 
 @media (max-width: 992px) {
@@ -434,8 +433,10 @@
 
 .content {
   display: flex;
-  grid-template-columns: 75% 25%;
+  width: fit-content;
 }
+
+/*
 @media (max-width: 1500px) {
   .content {
     grid-template-columns: 70% 30%;
@@ -474,7 +475,7 @@
       "rightContent"
       "leftContent";
   }
-}
+}*/
 
 /* LEFT CONTENT */
 
