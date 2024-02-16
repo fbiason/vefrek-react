@@ -1,3 +1,209 @@
+.background-carga-negocio {
+  min-height: fit-content;
+  align-items: center;
+  padding-top: 9rem;
+  justify-content: center;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.background-carga-negocio p,
+.background-carga-negocio li {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.background-carga-negocio h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  text-align: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.background-carga-negocio h3 {
+  color: rgb(117, 116, 116);
+  text-align: center;
+}
+
+.form-carga-negocio {
+  width: 40%;
+  margin: auto;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid whitesmoke;
+  min-height: fit-content;
+  align-items: center;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+@media (max-width: 768px) {
+  .form-carga-negocio {
+    width: 100%;
+    padding: 0 10px;
+  }
+  input,
+  label {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .form-carga-negocio {
+    width: 70%;
+  }
+}
+
+.form-carga-negocio h2,
+.form-carga-negocio label,
+.form-carga-negocio legend {
+  color: white;
+}
+
+.perfil-card {
+  width: 100%;
+  margin-top: 3rem;
+  max-width: 35rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.card-descripcion {
+  width: 100%;
+  max-width: 35rem;
+  margin: 2rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.descripcion {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.wide-input {
+  width: 90%;
+}
+
+.social-placeholder {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+}
+
+.img-form {
+  font-size: 13px;
+}
+
+.perfil-container h2 {
+  text-align: left;
+  color: #ffc451;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: inline-block;
+  width: 45%; /* Ancho de la columna de los títulos */
+  margin-bottom: 10px;
+}
+
+input {
+  display: inline-block;
+  width: 50%; /* Ancho de la columna de los campos de entrada */
+  margin-top: 5px;
+  border: 1px solid #b1b1b1;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #14ba75;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+button:hover {
+  background-color: #ffc451;
+  color: #000;
+}
+
+.select-custom-width {
+  width: 80%;
+  border-radius: 2rem;
+}
+
+.linea-divisoria {
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.cargar-img:hover {
+  color: #14ba75;
+}
+
+.company_logo_file {
+  display: none;
+}
+
 .perfil-container {
   display: flex;
   justify-content: center;

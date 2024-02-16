@@ -466,10 +466,10 @@ const CargaEmpresa = () => {
   /**********************************************************************************/
 
   return (
-    <section className="background">
+    <section className="background-carga-negocio">
       <div className="container">
         <form
-          className="form-prueba border border-gray-300 rounded-md p-4 p-lg-6"
+          className="form-carga-negocio rounded-md userUpdateForm p-5"
           onSubmit={handleSubmit}
         >
           <div className="border-b border-gray-900/10 pb-12">
@@ -811,6 +811,7 @@ const CargaEmpresa = () => {
                       <div className="form-col social-placeholder d-flex align-items-center">
                         <label>
                           <i className="fab fa-whatsapp me-2"></i>
+                          <span className="obligatorio">*</span>
                         </label>
                         <input
                           onChange={handleSocialChange}
@@ -818,7 +819,22 @@ const CargaEmpresa = () => {
                           name="whatsapp"
                           value={formData.social.whatsapp}
                           className="form-control"
-                          placeholder="*WhatsApp"
+                          placeholder="WhatsApp"
+                        />
+                      </div>
+
+                      <div className="form-col social-placeholder d-flex align-items-center">
+                        <label>
+                          <i className="fas fa-envelope me-2"></i>
+                          <span className="obligatorio">*</span>
+                        </label>
+                        <input
+                          onChange={handleSocialChange}
+                          type="text"
+                          name="email"
+                          value={formData.social.email}
+                          className="form-control"
+                          placeholder="Mail"
                         />
                       </div>
 
@@ -847,20 +863,6 @@ const CargaEmpresa = () => {
                           value={formData.social.instagram}
                           className="form-control"
                           placeholder="Instagram"
-                        />
-                      </div>
-
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-tiktok me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="tiktok"
-                          value={formData.social.tiktok}
-                          className="form-control"
-                          placeholder="TikTok"
                         />
                       </div>
                     </div>
@@ -906,18 +908,17 @@ const CargaEmpresa = () => {
                           placeholder="Youtube"
                         />
                       </div>
-
                       <div className="form-col social-placeholder d-flex align-items-center">
                         <label>
-                          <i className="fas fa-envelope me-2"></i>
+                          <i className="fab fa-tiktok me-2"></i>
                         </label>
                         <input
                           onChange={handleSocialChange}
                           type="text"
-                          name="email"
-                          value={formData.social.email}
+                          name="tiktok"
+                          value={formData.social.tiktok}
                           className="form-control"
-                          placeholder="*Mail"
+                          placeholder="TikTok"
                         />
                       </div>
                     </div>
@@ -999,125 +1000,13 @@ const CargaEmpresa = () => {
               </div>
             </div>
             <div className="mt-5">
-              <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                *Campos obligatorios
+              <span className="flex select-none items-center pl-3 text-gray-300 sm:text-sm">
+                <i className="mr-1 obligatorio">* </i>Campos obligatorios
               </span>
             </div>
           </div>
 
           <div className="linea-divisoria col-span-full mt-5"></div>
-
-          <div className="mt-5">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Notificaciones
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              Siempre te informaremos sobre cambios importantes, pero tú eliges
-              qué las notificaciones que desees recibir.
-            </p>
-
-            <div className="mt-3 space-y-10 ">
-              <fieldset>
-                <div className="mt-6 space-y-6">
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        onChange={handleCheckChange}
-                        checked={formData.email_notifications.comments}
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />{" "}
-                      <label
-                        htmlFor="comments"
-                        className="text-sm leading-6 pl-3 font-medium text-gray-900"
-                      >
-                        Comentarios
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="relative gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        onChange={handleCheckChange}
-                        checked={formData.email_notifications.news}
-                        id="comments"
-                        name="news"
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />{" "}
-                      <label
-                        htmlFor="comments"
-                        className="text-sm leading-6 pl-3 font-medium text-gray-900"
-                      >
-                        Novedades de Vefrek
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900">
-                  Notificaciones push
-                </legend>
-                <p className="mt-1 text-sm leading-6 text-gray-600">
-                  Estos se envían por SMS a su teléfono móvil.
-                </p>
-                <div className="mt-6 space-y-6">
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      onChange={handleCheckChange}
-                      checked={formData.sms_notifications.all}
-                      id="push-everything"
-                      name="all"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-everything"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Todo
-                    </label>
-                  </div>
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      onChange={handleCheckChange}
-                      checked={formData.sms_notifications.same_email}
-                      id="push-email"
-                      name="same_email"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Igual que el correo electrónico
-                    </label>
-                  </div>
-                  <div className="flex items-center gap-x-3">
-                    <input
-                      onChange={handleCheckChange}
-                      checked={formData.sms_notifications.none}
-                      id="push-nothing"
-                      name="none"
-                      type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                    <label
-                      htmlFor="push-nothing"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Sin notificaciones push
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-          </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-6">
             <button
@@ -1134,6 +1023,7 @@ const CargaEmpresa = () => {
             </button>
           </div>
         </form>
+        <div className="p-4"></div>
       </div>
     </section>
   );

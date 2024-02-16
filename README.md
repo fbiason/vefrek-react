@@ -11,6 +11,5 @@ Vefrek 1.0.0
 3. Perfil usuario: Alinear campo provincia en formulario. Incorporar teléfono a perfil de usuario
 4. Publicá ahora
 5. PaginaEmpresa
-6. CargaEmpresa
 
-7. Vincular con TagManager
+6. Vincular con TagManager
