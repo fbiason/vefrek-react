@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
 import "./perfil.css";
