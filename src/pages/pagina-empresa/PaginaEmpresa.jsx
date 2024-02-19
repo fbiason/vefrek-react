@@ -324,21 +324,36 @@ const PaginaEmpresa = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(async (position) => {
                 const { latitude, longitude } = position.coords;
-                const responseJSON = await fetch (
-                    `${process.env.REACT_APP_API_URL}api/getstate?lat=${latitude}&lng=${longitude}`
-                );
-                const respOBJ = await responseJSON.json();
-                if (respOBJ.success && respOBJ.state) {
-                    const state = respOBJ.state;
-                    console.log(state);
-                } else {
-                    console.log(`Error al obtener la provincia de origen de la visita: ${respOBJ.message}`)
+                try {
+                    const responseJSON = await fetch (`${process.env.REACT_APP_API_URL}api/getstate?lat=${latitude}&lng=${longitude}`);
+                    const respOBJ = await responseJSON.json();
+                    if (respOBJ.success && respOBJ.state) {
+                        const state = respOBJ.state;
+                        const response2JSON = await fetch(
+                            `${process.env.REACT_APP_API_URL}api/addvisit?vefrek_website=${vefrek_website}&state=${state}&timestamp=${Date.now()}`, 
+                            {
+                                method: "POST",
+                            }
+                        );
+                        const resp2OBJ = await response2JSON.json();
+                        if (resp2OBJ.success) {
+                            console.log(resp2OBJ.message);
+                        } else {
+                            throw new Error(`${resp2OBJ.message}`);
+                        }
+                    } else {
+                        console.log(`Error al obtener la provincia de origen de la visita: ${respOBJ.message}`);
+                    }
+                } catch (err) {
+                    err instanceof Error ? 
+                    console.log(`Error al agregar origen de la visita: ${err.message}`) :
+                    console.log(`Error al agregar origen de la visita: Error desconocido`);
                 }
             })
         }
 
-        console.log(new Date(Date.now()).toLocaleString())
-    }, [])
+        // console.log(new Date(Date.now()).toLocaleString())
+    }, [vefrek_website])
     
 
     return (
