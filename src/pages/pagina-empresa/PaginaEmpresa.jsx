@@ -263,7 +263,7 @@ const PaginaEmpresa = () => {
         setImagenes(nuevasImagenes);
     };
 
-    /********************************* Reseñnas **********************************/
+    /********************************* Reseñas **********************************/
 
     const StyledRating = styled(Rating)({
         "& .MuiRating-iconFilled": {
@@ -318,6 +318,28 @@ const PaginaEmpresa = () => {
         showSpinner(false);
         find();
     };
+
+    useEffect(() => {
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const { latitude, longitude } = position.coords;
+                const responseJSON = await fetch (
+                    `${process.env.REACT_APP_API_URL}api/getstate?lat=${latitude}&lng=${longitude}`
+                );
+                const respOBJ = await responseJSON.json();
+                if (respOBJ.success && respOBJ.state) {
+                    const state = respOBJ.state;
+                    console.log(state);
+                } else {
+                    console.log(`Error al obtener la provincia de origen de la visita: ${respOBJ.message}`)
+                }
+            })
+        }
+
+        console.log(new Date(Date.now()).toLocaleString())
+    }, [])
+    
 
     return (
         <section className="background">
