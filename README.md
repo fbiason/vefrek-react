@@ -1,7 +1,6 @@
 Vefrek 1.0.0
 
 1. Dashboard
-   -- Inicio: alinear "Usuario1", hacer responsive.
    -- Información: ajustar.
    -- Calendario: crear.
    -- Negocios: Incorporar para editar negocios. Incorporar horarios de apertura. Ajustar negocios cargados.

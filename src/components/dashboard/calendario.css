@@ -9,8 +9,6 @@
 
 .container-cal {
   align-items: center;
-  display: flex;
-  height: 100%;
   justify-content: center;
   width: 100%;
 }
@@ -19,28 +17,27 @@
   background: #2b4450;
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  height: 100%;
+  height: 80%;
   transition: 0.9s;
   transform-style: preserve-3d;
-  width: 100%;
+  width: 80%;
   position: relative;
 }
 
 /* Front - Calendar */
 .front {
   transform: rotateY(0deg);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .fecha {
   border-bottom: 1px solid rgba(73, 114, 133, 0.6);
-  display: flex;
   justify-content: space-between;
 }
 
 .fecha h1 {
   color: #dfebed;
-  font-size: 1.4em;
+  font-size: 1.6em;
   font-weight: 300;
 }
 
@@ -49,7 +46,7 @@
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-  padding: 30px 40px;
+  padding: 20px 40px;
 }
 
 .weeks {
@@ -65,6 +62,7 @@
   margin-bottom: 5px;
   text-align: center;
   padding: 10px;
+  font-size: 1.3em;
 }
 
 .weeks div {
@@ -118,7 +116,7 @@
   background: none;
   border: none;
   border-bottom: 1px solid rgba(73, 114, 133, 0.6);
-  color: #dfebed;
+  color: red;
   font-size: 1.4em;
   font-weight: 300;
   padding: 30px 40px;

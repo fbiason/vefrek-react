@@ -77,74 +77,73 @@ const Calendario = () => {
       <NavBarDash></NavBarDash>
 
       <section className="row contenido-calendario g-4">
-        <div className="col-md-6">
-          <div className="left-content">
-            <div>
-              <h1>Calendario</h1>
+        <div>
+          <div>
+            <h1>Calendario</h1>
+          </div>
+          <p className="text-center mt-3 mb-5">
+            Publica GRATIS las próximas fechas de promociones y descuentos que
+            ofrecerá tu empresa.
+          </p>
+        </div>
+        <div className="container-cal">
+          <div className={`calendario ${isFlipped ? "flip" : ""}`}>
+            <div className="front">
+              <div className="fecha" onClick={handleDateClick}>
+                <div className="fecha-actual p-4">
+                  <h1>{fechaActual}</h1>
+                </div>
+              </div>
+
+              <div className="mes">
+                <ul className="dias-semana">
+                  <li>Lun</li>
+                  <li>Mar</li>
+                  <li>Mie</li>
+                  <li>Jue</li>
+                  <li>Vier</li>
+                  <li>Sab</li>
+                  <li>Dom</li>
+                </ul>
+
+                <div className="weeks">
+                  {diasDelMes.map((dia, index) => (
+                    <span key={index} className={dia === 15 ? "active" : ""}>
+                      {dia < 10 ? "0" + dia : dia}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="container-cal">
-              <div className={`calendario ${isFlipped ? "flip" : ""}`}>
-                <div className="front">
-                  <div className="fecha p-4" onClick={handleDateClick}>
-                    <div className="fecha-actual p-4">
-                      <h1>{fechaActual}</h1>
-                    </div>
-                  </div>
 
-                  <div className="mes">
-                    <ul className="dias-semana">
-                      <li>Lun</li>
-                      <li>Mar</li>
-                      <li>Mie</li>
-                      <li>Jue</li>
-                      <li>Vier</li>
-                      <li>Sab</li>
-                      <li>Dom</li>
-                    </ul>
-
-                    <div className="weeks">
-                      {diasDelMes.map((dia, index) => (
-                        <span
-                          key={index}
-                          className={dia === 15 ? "active" : ""}
-                        >
-                          {dia < 10 ? "0" + dia : dia}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+            <div className="back">
+              <input
+                type="text"
+                placeholder="Indique la promoción que desea realizar"
+              />
+              <div className="info">
+                <div className="date">
+                  <p className="info-date">Subir Promoción:</p>
+                  <p className="info-time">Duración:</p>
                 </div>
-
-                <div className="back">
-                  <input
-                    type="text"
-                    placeholder="Indique la promoción que desea realizar"
-                  />
-                  <div className="info">
-                    <div className="date">
-                      <p className="info-date">Subir Promoción:</p>
-                      <p className="info-time">Duración:</p>
-                    </div>
-                    <div className="address">
-                      <p>Empresa:</p>
-                    </div>
-                    <div className="observations">
-                      <p>Descripción: </p>
-                    </div>
-                  </div>
-
-                  <div className="actions">
-                    <button className="btn btn-primary save">
-                      Guardar <i className="ion-checkmark"></i>
-                    </button>
-                    <button
-                      className="btn btn-danger dismiss"
-                      onClick={handleCancelClick}
-                    >
-                      Cancelar <i className="ion-android-close"></i>
-                    </button>
-                  </div>
+                <div className="address">
+                  <p>Empresa:</p>
                 </div>
+                <div className="observations">
+                  <p>Descripción: </p>
+                </div>
+              </div>
+
+              <div className="actions">
+                <button className="btn btn-primary save">
+                  Guardar <i className="ion-checkmark"></i>
+                </button>
+                <button
+                  className="btn btn-danger dismiss"
+                  onClick={handleCancelClick}
+                >
+                  Cancelar <i className="ion-android-close"></i>
+                </button>
               </div>
             </div>
           </div>
