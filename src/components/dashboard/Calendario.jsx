@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./calendario.css";
 import NavBarDash from "./NavBarDash";
 
@@ -8,6 +8,7 @@ const Calendario = () => {
   const [isFlipped, setFlipped] = useState(false);
   const [fechaActual, setFechaActual] = useState("");
   const [diasDelMes, setDiasDelMes] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const obtenerFechaActual = () => {
@@ -75,8 +76,19 @@ const Calendario = () => {
   return (
     <main className="dashboardMain">
       <NavBarDash></NavBarDash>
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <section className="row contenido-calendario g-4">
+      <section className="background-item row contenido-calendario g-4">
         <div>
           <div>
             <h1>Calendario</h1>

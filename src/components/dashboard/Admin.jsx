@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 
 const Admin = () => {
   const [activeNavItem, setActiveNavItem] = useState(8);
+  const navigate = useNavigate();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -19,14 +20,23 @@ const Admin = () => {
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
   return (
-    <main className="dashboardCont">
+    <main className="dashboardMain">
       <NavBarDash></NavBarDash>
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <section className="content">
-        <div className="left-content">
-          <div className="activities">
-            <h1>Admin</h1>
-          </div>
+      <section className="background-item">
+        <div>
+          <h1>Admin</h1>
         </div>
       </section>
     </main>

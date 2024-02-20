@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CardNegocio from "../CardNegocio";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
@@ -11,6 +11,7 @@ const Favoritos = () => {
   const { userData } = useContext(UserContext);
   const { showSpinner } = useContext(SpinnerContext);
   const [favoritesCompanys, setFavoritesCompanys] = useState([]);
+  const navigate = useNavigate();
 
   const getFavoritesCompanys = async () => {
     const matchJSON = JSON.stringify({ favorites: { $in: [userData.email] } });
@@ -66,8 +67,19 @@ const Favoritos = () => {
   return (
     <main className="dashboardMain">
       <NavBarDash />
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <section className="content">
+      <section className="background-item">
         <div className="container">
           <h1 className="mt-4 p-4">Favoritos</h1>
           <div className="row row-cols-1 row-cols-md-4 g-4">

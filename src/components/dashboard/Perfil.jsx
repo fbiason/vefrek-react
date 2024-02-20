@@ -7,10 +7,12 @@ import { UserContext } from "../../context/userContext";
 import { findUser, updateUser } from "../../utils/apiDb/apiDbAcions";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { verifyIfHasChanges } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 
 const Perfil = () => {
   const [activeNavItem, setActiveNavItem] = useState(1);
+  const navigate = useNavigate();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -154,10 +156,21 @@ const Perfil = () => {
   };
 
   return (
-    <main className="dashboardMain">
+    <main className="dashMain">
       <NavBarDash></NavBarDash>
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <div className="d-flex justify-content-center">
+      <div className="background-item d-flex justify-content-center">
         <form
           className="form-dash-perfil rounded-md p-6 userUpdateForm m-5"
           onSubmit={handleSubmit}

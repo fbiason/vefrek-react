@@ -10,6 +10,23 @@
   padding-bottom: 3rem;
 }
 
+.dashMain {
+  position: absolute;
+  margin: 2vw;
+  min-width: 90vw;
+  z-index: 1100;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  border-radius: 20px;
+  padding-bottom: 3rem;
+}
+
+.background-item {
+  background-color: whitesmoke;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
 @media screen and (max-width: 992px) {
   .dashboardMain {
     grid-template-columns: 100%; /* Cambiar a una columna en dispositivos medianos */

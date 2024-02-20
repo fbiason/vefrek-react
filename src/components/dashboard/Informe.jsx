@@ -4,9 +4,11 @@ import ApexCharts from "apexcharts";
 import "./informe.css";
 import Map from "./Map";
 import NavBarDash from "./NavBarDash";
+import { useNavigate } from "react-router-dom";
 
 const Informe = () => {
   const [activeNavItem, setActiveNavItem] = useState(2);
+  const navigate = useNavigate();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -72,8 +74,19 @@ const Informe = () => {
   return (
     <main className="dashboardMain">
       <NavBarDash></NavBarDash>
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <div>
+      <di className="background-item">
         <div className="contenido-info">
           <div className="container card-informe row">
             {/* Nueva fila y columnas */}
@@ -135,7 +148,7 @@ const Informe = () => {
         </div>
         </div> */}
         </div>
-      </div>
+      </di>
     </main>
   );
 };

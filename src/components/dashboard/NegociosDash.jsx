@@ -17,6 +17,7 @@ import NavBarDash from "./NavBarDash";
 
 const NegociosDash = () => {
   const [activeNavItem, setActiveNavItem] = useState(5);
+  const navigate = useNavigate();
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -34,7 +35,6 @@ const NegociosDash = () => {
   const { showSpinner } = useContext(SpinnerContext);
   const [companysData, setCompanysData] = useState([]);
   const { userData } = useContext(UserContext);
-  const navigate = useNavigate();
 
   const deleteComp = async (id) => {
     const response = await deleteCompanyById(id);
@@ -160,8 +160,19 @@ const NegociosDash = () => {
   return (
     <main className="dashboardMain">
       <NavBarDash></NavBarDash>
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
-      <div className="background-dash">
+      <div className="background-item">
         <div className="left-content">
           <div>
             <div className="editar-empresa-container">
