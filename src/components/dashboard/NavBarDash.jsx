@@ -15,13 +15,13 @@ const NavBarDash = () => {
   };
 
   const menuItems = [
-    { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
-    { icon: "fa-user", text: "Perfil", to: "/Perfil" },
-    { icon: "fa-chart-bar", text: "Informe", to: "/Informe" },
-    { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
-    { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
-    { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-    { icon: "fa-user-tie", text: "Admin", to: "/Admin" },
+    { icon: "fa-house", to: "/Dashboard", text: "Inicio" },
+    { icon: "fa-user", to: "/Perfil", text: "Perfil" },
+    { icon: "fa-chart-bar", to: "/Informe", text: "Informe" },
+    { icon: "fa-calendar", to: "/Calendario", text: "Calendario" },
+    { icon: "fa-star", to: "/Favoritos", text: "Favoritos" },
+    { icon: "fa-building", to: "/NegociosDash", text: "Negocios" },
+    { icon: "fa-user-tie", to: "/Admin", text: "Admin" },
   ];
 
   return (
@@ -37,7 +37,7 @@ const NavBarDash = () => {
       </label>
       <Link to="/Map">
         <img
-          src="/images/logos/logo-vefrek.png"
+          src="/images/logos/v.png"
           alt="Logo Vefrek"
           className="logo-dash"
         />
@@ -50,7 +50,7 @@ const NavBarDash = () => {
             onClick={() => handleNavItemClick(index)}
           >
             <Link to={item.to}>
-              <i className={`fa ${item.icon} nav-icon`}></i>
+              <i className={`fa ${item.icon} nav-icon`} title={item.text}></i>
               <span className="nav-text">{item.text}</span>
             </Link>
           </li>

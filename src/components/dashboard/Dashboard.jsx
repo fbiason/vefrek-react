@@ -71,7 +71,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="dashboardMain">
+    <main className="dashboardMain p-3">
       <NavBarDash></NavBarDash>
 
       <section className="content">
