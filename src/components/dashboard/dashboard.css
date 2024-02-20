@@ -344,12 +344,7 @@
 
 .p-3 {
   text-align: center;
-  cursor: pointer;
   color: grey;
-}
-
-.p-3:hover {
-  text-decoration: underline;
 }
 
 .notifi-item .text {
