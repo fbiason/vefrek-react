@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from "chart.js/auto";
+import ApexCharts from "apexcharts";
 import "./informe.css";
 import Map from "./Map";
 import NavBarDash from "./NavBarDash";
@@ -12,40 +13,50 @@ const Informe = () => {
   };
 
   useEffect(() => {
-    const line = document.getElementById("line");
-    const lineConfig = new Chart(line, {
-      type: "line",
-      data: {
-        labels: [
-          "enero",
-          "febrero",
-          "marzo",
-          "abril",
-          "mayo",
-          "junio",
-          "julio",
-          "agosto",
-          "septiembre",
-          "octubre",
-          "noviembre",
-          "diciembre",
-        ],
-        datasets: [
-          {
-            label: "Cantidad de visitas",
-            data: [10, 15, 20, 10, 25, 5, 10, 50, 20, 10, 15, 5],
-            fill: false,
-            borderColor: "#14ba75",
-            backgroundColor: "##14ba75",
-            borderWidth: 2,
-          },
+    var options = {
+      chart: {
+        height: 280,
+        type: "area",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      series: [
+        {
+          name: "Series 1",
+          data: [45, 52, 38, 45, 19, 23, 2],
+        },
+      ],
+      fill: {
+        type: "gradient",
+        gradient: {
+          shadeIntensity: 1,
+          opacityFrom: 0.7,
+          opacityTo: 0.9,
+          stops: [0, 90, 100],
+        },
+      },
+      xaxis: {
+        categories: [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
         ],
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-      },
-    });
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
   }, []);
 
   const menuItems = [
@@ -104,14 +115,11 @@ const Informe = () => {
             <div className="col-md-6">
               <div className="card custom-card">
                 <h3 className="chart-lbl">Visitas</h3>
-                <div className="line-chart-container">
-                  <canvas className="line-chart" id="line"></canvas>
-                </div>
+                <div id="chart"></div>
               </div>
             </div>
           </div>
 
-          {/* Comenta la parte del código que deseas */}
           {/* <div className="row mt-5">
         <div className="col-md-6">
             <div className="card custom-card">
@@ -125,7 +133,7 @@ const Informe = () => {
                 </div>
             </div>
         </div>
-    </div> */}
+        </div> */}
         </div>
       </div>
     </main>

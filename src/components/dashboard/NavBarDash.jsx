@@ -35,7 +35,7 @@ const NavBarDash = () => {
       <label htmlFor="menu-toggle" className="icon-burger">
         &#9776;
       </label>
-      <Link to="/Map">
+      <Link to="/Home">
         <img
           src="/images/logos/v.png"
           alt="Logo Vefrek"
