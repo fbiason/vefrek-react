@@ -325,12 +325,12 @@ const NavBar = () => {
     <header id="header" className="fixed-top">
       <div className="row align-items-center">
         {/* Logo - Se oculta en dispositivos pequeños y más pequeños */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-none d-lg-block">
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block">
           <Link to="/Dashboard">
             <img
               src="/images/logos/logo-vefrek.png"
               alt="Logo Vefrek"
-              className="img-fluid"
+              className="logo-nav"
             />
           </Link>
         </div>

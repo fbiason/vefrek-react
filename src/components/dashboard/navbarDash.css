@@ -23,6 +23,8 @@
 .logo-dash {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;
   padding: 1.5rem;
 }
 
@@ -38,32 +40,8 @@
     padding-top: 0;
   }
 
-  .menuDash li {
-    color: white;
-  }
-
-  .menuDash ul.active {
-    display: block;
-  }
-
-  .menuDash ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .menuDash ul li {
-    padding: 10px 20px;
-  }
-
-  .menuDash ul li a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .menuDash ul li.active {
-    background-color: white;
-    border-radius: 100px;
-    margin: 2rem;
+  .logo-dash {
+    display: none;
   }
 }
 

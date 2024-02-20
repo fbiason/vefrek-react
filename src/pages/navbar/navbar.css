@@ -195,6 +195,11 @@ ul li {
   justify-content: center;
 }
 
+.logo-nav {
+  max-width: 100%;
+  height: auto;
+}
+
 /*====== RESPONSIVE ======*/
 
 @media (min-width: 1024px) {
