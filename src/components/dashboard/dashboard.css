@@ -7,14 +7,14 @@
   display: grid;
   grid-template-columns: 5% 95%;
   border-radius: 20px;
-  background: #dbdbdb;
+  padding-bottom: 3rem;
 }
 
 @media screen and (max-width: 992px) {
   .dashboardMain {
     grid-template-columns: 100%; /* Cambiar a una columna en dispositivos medianos */
     margin: 0; /* Eliminar el margen para ajustar completamente a la pantalla */
-    min-width: auto; /* Eliminar la anchura mínima para adaptarse al contenido */
+    min-width: auto;
   }
 }
 
@@ -79,9 +79,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, transparent, transparent, #14ba75);
   border-radius: 10px;
-  transition: all 0.6s linear;
+  opacity: 0; /* Comienza con opacidad cero */
+  transition: opacity 0.3s ease; /* Agrega una transición de opacidad */
 }
 
 .overlay h3 {
@@ -89,11 +89,16 @@
   margin-right: 10px;
   color: #fff;
   font-size: 25px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  transform: translateY(20px); /* Inicialmente mueve el título hacia abajo */
+  transition: transform 0.3s ease, font-weight 0.3s ease; /* Agrega transiciones para transform y peso de la fuente */
 }
 
 .image-container:hover .overlay {
   cursor: pointer;
   background: linear-gradient(180deg, transparent, transparent, white);
+  opacity: 1; /* Cambia la opacidad a 1 al pasar el mouse */
 }
 
 .image-container:hover .overlay h3 {
@@ -102,6 +107,9 @@
   margin-right: 10px;
   font-weight: 600;
   color: #14ba75;
+  transform: translateY(
+    0
+  ); /* Mueve el título de nuevo a su posición original */
 }
 
 @media screen and (max-width: 1550px) {
@@ -123,10 +131,6 @@
 }
 
 /* Fila 2 */
-
-.fila2 {
-  padding: 20px;
-}
 
 @media screen and (max-width: 992px) {
   .fila2 {
@@ -154,10 +158,6 @@
   margin-top: 20px;
   font-size: 1.3rem;
   font-weight: 700;
-}
-
-.calendar {
-  margin-top: 10px;
 }
 
 .prox-desc {
@@ -299,7 +299,7 @@
 
 .notifi-item {
   border-bottom: 1px solid #ddd;
-  padding: 15px 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -363,22 +363,12 @@
 /* CONTENT */
 
 .content {
-  display: flex;
-  grid-template-columns: 85% 15%;
-}
-
-.row-content {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.container-content {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 15px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  height: 100%;
+  background: #dbdbdb;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -397,32 +387,22 @@
 /* LEFT CONTENT */
 
 .left-content {
-  display: grid;
-  grid-template-rows: 50% 50%;
+  grid-row: 1;
+  grid-column: 1;
   background: #f6f7fb;
   margin: 15px;
   padding: 20px;
   border-radius: 15px;
 }
-
 /* RIGHT CONTENT */
 
 .right-content {
-  display: grid;
-  grid-template-rows: 50% 50%;
+  grid-column: 2;
   background: #f6f7fb;
   margin: 15px;
-  padding: 20px;
+  padding-top: 2rem;
+  padding-right: 20px;
   border-radius: 15px;
-}
-
-.col-12-db {
-  width: 100%;
-}
-
-.mx-auto-db {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 @media (min-width: 768px) {
@@ -468,10 +448,12 @@
 }
 
 .dashboardClose {
+  position: absolute;
   top: 10px;
   right: 10px;
   border-radius: 3rem;
   width: fit-content;
+  border: 1px solid black;
 }
 
 /* Recomendaciones  */
@@ -661,14 +643,6 @@
 
   .img-four {
     grid-area: 1 / 2 / 2 / 3;
-  }
-
-  .img-five {
-    grid-area: 1 / 3 / 2 / 4;
-  }
-
-  .img-six {
-    grid-area: 2 / 2 / 3 / 4;
   }
 
   .left-bottom {

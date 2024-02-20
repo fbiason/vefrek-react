@@ -71,8 +71,20 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="dashboardMain p-3">
+    <main className="dashboardMain">
       <NavBarDash></NavBarDash>
+
+      <button
+        className="btn btn-primary dashboardClose"
+        onClick={() => {
+          const previousSaved = localStorage.getItem("previousPathToDash");
+          previousSaved
+            ? navigate(localStorage.getItem("previousPathToDash"))
+            : navigate("/");
+        }}
+      >
+        Salir
+      </button>
 
       <section className="content">
         <div className="left-content">
@@ -103,7 +115,7 @@ const Dashboard = () => {
 
             <div className="container">
               <div className="row fila2">
-                <div className="col-xl-12 col-xxl-6 order-md-1 order-2">
+                <div className="col-xl-12 order-md-1 order-2">
                   <div className="left-bottom d-flex">
                     <div className="descuentos">
                       <h1 className="mb-4">Próximos descuentos</h1>
@@ -128,8 +140,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="col-xl-12 col-xxl-6 order-md-2 order-1">
+                <div className="col-xl-12 order-md-2 order-1 mt-5">
                   <div className="notifi-box" id="box">
                     <h2>
                       Comentarios recibidos{" "}
@@ -186,33 +197,16 @@ const Dashboard = () => {
         <div className="right-content">
           <div>
             <div className="container-content">
-              <div className="row-content">
-                <div class="col-12-db col-md-4-db mx-auto-db">
-                  <div className="user-info">
-                    <h5>Usuario1</h5>
-                  </div>
+              <div className="user-info">
+                <h5>Usuario1</h5>
+              </div>
+              <div>
+                <div className="user-info mt-4">
+                  <img src="/images/biason.jpg" alt="user" />
                 </div>
-                <div className="col-12-db col-md-4-db mx-auto-db">
-                  <div className="user-info">
-                    <img src="/images/biason.jpg" alt="user" />
-                  </div>
-                </div>
-                <div className="col-12-db col-md-4-db mx-auto-db">
-                  <div className="user-info">
-                    <button
-                      className="btn btn-primary dashboardClose"
-                      onClick={() => {
-                        const previousSaved =
-                          localStorage.getItem("previousPathToDash");
-                        previousSaved
-                          ? navigate(localStorage.getItem("previousPathToDash"))
-                          : navigate("/");
-                      }}
-                    >
-                      Cerrar
-                    </button>
-                  </div>
-                </div>
+              </div>
+              <div>
+                <div className="user-info"></div>
               </div>
             </div>
 

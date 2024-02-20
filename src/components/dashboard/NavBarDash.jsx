@@ -42,7 +42,7 @@ const NavBarDash = () => {
           className="logo-dash"
         />
       </Link>
-      <ul className={isMenuOpen ? "active" : ""}>
+      <div>
         {menuItems.map((item, index) => (
           <li
             key={index}
@@ -55,7 +55,7 @@ const NavBarDash = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </div>
     </nav>
   );
 };
