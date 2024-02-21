@@ -321,38 +321,44 @@ const PaginaEmpresa = () => {
 
     useEffect(() => {
         
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                const { latitude, longitude } = position.coords;
+        (async () => {
+            //Campo "timestamp" -> Es la ultima vez que se entro al anuncio
+            const localStorageVisitsDataJSON = localStorage.getItem("companysVisits");
+            const localStorageVisitsDataOBJ = localStorageVisitsDataJSON ? JSON.parse(localStorageVisitsDataJSON) : null;
+            const companyArrIndex = localStorageVisitsDataOBJ ? localStorageVisitsDataOBJ.findIndex((companyData) => companyData.companyName === vefrek_website) : null;
+            const timeStampsDiff = typeof companyArrIndex === "number" && companyArrIndex !== -1 ? Date.now() - localStorageVisitsDataOBJ[companyArrIndex].timestamp : null;
+
+            if (!localStorageVisitsDataOBJ || !timeStampsDiff || timeStampsDiff > (60000 * 60)) { //Cuenta una visita si el tiempo entre entradas al anuncio es mayor a 1h      
                 try {
-                    const responseJSON = await fetch (`${process.env.REACT_APP_API_URL}api/getstate?lat=${latitude}&lng=${longitude}`);
-                    const respOBJ = await responseJSON.json();
-                    if (respOBJ.success && respOBJ.state) {
-                        const state = respOBJ.state;
-                        const response2JSON = await fetch(
-                            `${process.env.REACT_APP_API_URL}api/addvisit?vefrek_website=${vefrek_website}&state=${state}&timestamp=${Date.now()}`, 
-                            {
-                                method: "POST",
-                            }
-                        );
-                        const resp2OBJ = await response2JSON.json();
-                        if (resp2OBJ.success) {
-                            console.log(resp2OBJ.message);
-                        } else {
-                            throw new Error(`${resp2OBJ.message}`);
+                    const responseJSON = await fetch(
+                        `${process.env.REACT_APP_API_URL}api/addvisit?vefrek_website=${vefrek_website}&timestamp=${Date.now()}`,
+                        {
+                            method: "POST",
                         }
+                    )
+                    const respOBJ = await responseJSON.json();
+                    if (respOBJ.success) {
+                        console.log(respOBJ.message);
+                        if (!localStorageVisitsDataOBJ) {
+                            localStorage.setItem("companysVisits", JSON.stringify([{companyName: vefrek_website, timestamp: Date.now()}]));
+                            return;
+                        } else if (!timeStampsDiff) {
+                            localStorageVisitsDataOBJ.push({companyName: vefrek_website, timestamp: Date.now()});
+                        } else {
+                            localStorageVisitsDataOBJ[companyArrIndex].timestamp = Date.now();   
+                        }
+                        localStorage.setItem("companysVisits", JSON.stringify(localStorageVisitsDataOBJ));
                     } else {
-                        console.log(`Error al obtener la provincia de origen de la visita: ${respOBJ.message}`);
+                        throw new Error(`${respOBJ.message}`);
                     }
                 } catch (err) {
-                    err instanceof Error ? 
-                    console.log(`Error al agregar origen de la visita: ${err.message}`) :
-                    console.log(`Error al agregar origen de la visita: Error desconocido`);
+                    err instanceof Error ?
+                        console.log(`Error al agregar origen de la visita: ${err.message}`) :
+                        console.log(`Error al agregar origen de la visita: Error desconocido`);
                 }
-            })
-        }
-
-        // console.log(new Date(Date.now()).toLocaleString())
+            }
+        })();
+         
     }, [vefrek_website])
     
 
