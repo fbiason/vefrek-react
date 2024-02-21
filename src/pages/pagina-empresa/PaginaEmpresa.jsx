@@ -353,8 +353,8 @@ const PaginaEmpresa = () => {
                     }
                 } catch (err) {
                     err instanceof Error ?
-                        console.log(`Error al agregar origen de la visita: ${err.message}`) :
-                        console.log(`Error al agregar origen de la visita: Error desconocido`);
+                        console.log(`Error al agregar visita: ${err.message}`) :
+                        console.log(`Error al agregar visita: Error desconocido`);
                 }
             }
         })();
