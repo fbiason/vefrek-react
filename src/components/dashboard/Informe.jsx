@@ -11,85 +11,108 @@ const Informe = () => {
     const [activeNavItem, setActiveNavItem] = useState(2);
     const navigate = useNavigate();
     const { userData } = useContext(UserContext);
+    const [selectOptions, setSelectOptions] = useState(); 
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
     };
 
-    useEffect(() => {
-
-        let options = {
-            chart: {
-                height: 280,
-                type: "area",
+    let options = {
+        chart: {
+            height: 280,
+            type: "area",
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        series: [
+            {
+                name: "Series 1",
+                data: [45, 52, 38, 45, 19, 23, 2],
             },
-            dataLabels: {
-                enabled: false,
+        ],
+        fill: {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.9,
+                stops: [0, 90, 100],
             },
-            series: [
-                {
-                    name: "Series 1",
-                    data: [45, 52, 38, 45, 19, 23, 2],
-                },
+        },
+        xaxis: {
+            categories: [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre",
             ],
-            fill: {
-                type: "gradient",
-                gradient: {
-                    shadeIntensity: 1,
-                    opacityFrom: 0.7,
-                    opacityTo: 0.9,
-                    stops: [0, 90, 100],
-                },
-            },
-            xaxis: {
-                categories: [
-                    "Enero",
-                    "Febrero",
-                    "Marzo",
-                    "Abril",
-                    "Mayo",
-                    "Junio",
-                    "Julio",
-                    "Agosto",
-                    "Septiembre",
-                    "Octubre",
-                    "Noviembre",
-                    "Diciembre",
-                ],
-            },
-        };
+        },
+    };
+
+    const setCompanySelect = async () => {
+        const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
+        const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1 } }]);              //Selecciona solo el campo "visits"
+        const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
+
+        if (responseOBJ.success && responseOBJ.companysData) {
+
+            const companysDataArr = responseOBJ.companysData;
+            const selectOptionsJSX = companysDataArr.map((company, index) => <option value={company.name} key={index}>{company.name}</option>);
+            setSelectOptions(selectOptionsJSX);
+           
+        } else if (responseOBJ.success && !responseOBJ.companysData) {
+            swalPopUp("Ops!", responseOBJ.message, "info");
+        } else {
+            swalPopUp("Ops!", responseOBJ.message, "error");
+        }
+    }
+ 
+    const setChart = async (companyName) => {
         
-        /****************************************************************************/
+        const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
+        const aggregateQueryJSON = JSON.stringify([{ $project: { visits: 1, name: 1 } }]);              //Selecciona solo los campos "visits" y "name"
+        const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
+        const visitsMonthsArr = new Array(12);
+        const thisYear = new Date().getFullYear();
 
+        if (responseOBJ.success && responseOBJ.companysData) {
+
+            const companysDataArr = responseOBJ.companysData;
+            const visitsData = companyName ? companysDataArr.find((company) => company.name  === companyName).visits : companysDataArr[0].visits;
+            for (let i = 0; i < 12; i++) {
+                visitsMonthsArr[i] = visitsData.timestamps.filter((timestamp) => new Date(timestamp).getMonth() === i && new Date(timestamp).getFullYear() === thisYear).length;  //Obtiene visitas por mes para el año actual
+            }
+            options.series[0].data = visitsMonthsArr;
+            const chartCont = document.querySelector("#chart");
+            chartCont.innerHTML = "";
+            var chart = new ApexCharts(chartCont, options);
+            chart.render();
+
+        } else if (responseOBJ.success && !responseOBJ.companysData) {
+            swalPopUp("Ops!", responseOBJ.message, "info");
+        } else {
+            swalPopUp("Ops!", responseOBJ.message, "error");
+        }
+    }
+    
+    useEffect(() => {
+         
         if (userData.email) {
-            (async () => {
-               
-                const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
-                const aggregateQueryJSON = JSON.stringify([{ $project: {visits: 1}}]);              //Selecciona solo el campo "visits"
-                const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
-                const visitsMonthsArr = new Array(12);
-                const thisYear = new Date().getFullYear();
-                
-                if (responseOBJ.success && responseOBJ.companysData) {
-                    
-                    const visitsData = responseOBJ.companysData[0];
-
-                    for (let i = 0; i < 12; i++) {
-                        visitsMonthsArr[i] = visitsData.visits.timestamps.filter((timestamp) => new Date(timestamp).getMonth() === i && new Date(timestamp).getFullYear() === thisYear).length;  //Obtiene visitas por mes para el año actual
-                    }
-
-                    options.series[0].data = visitsMonthsArr;
-                    var chart = new ApexCharts(document.querySelector("#chart"), options);
-                    chart.render();
-
-                } else if (responseOBJ.success && !responseOBJ.companysData) {
-                    swalPopUp("Ops!", responseOBJ.message, "info");
-                } else {
-                    swalPopUp("Ops!", responseOBJ.message, "error");
-                }
+            (async () => { 
+                await setCompanySelect();
+                await setChart();
             })();
         }
-                
+    // eslint-disable-next-line            
     }, [userData.email]);
 
     const menuItems = [
@@ -101,7 +124,7 @@ const Informe = () => {
         { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
         { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
     ];
-
+ 
     return (
         <main className="dashboardMain">
             <NavBarDash></NavBarDash>
@@ -125,11 +148,12 @@ const Informe = () => {
                             <p>Seleccione su empresa:</p>
                         </div>
                         <div className="col-md-6">
-                            <select>
-                                <option value="todos">Todos</option>
+                            <select onChange={(e) => setChart(e.target.value)}>
+                                {selectOptions}
+                                {/* <option value="todos">Todos</option>
                                 <option value="biason">Biason Automotores</option>
                                 <option value="ypf">YPF</option>
-                                <option value="biweb">BiWeb</option>
+                                <option value="biweb">BiWeb</option> */}
                             </select>
                         </div>
                         {/* Fin de la nueva fila y columnas */}
