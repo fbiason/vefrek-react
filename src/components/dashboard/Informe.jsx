@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
+import { SpinnerContext } from "../../context/spinnerContext";
 
 const Informe = () => {
     const [activeNavItem, setActiveNavItem] = useState(2);
     const navigate = useNavigate();
     const { userData } = useContext(UserContext);
     const [selectOptions, setSelectOptions] = useState(); 
+    const {showSpinner} = useContext(SpinnerContext);
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
@@ -61,7 +63,9 @@ const Informe = () => {
     const setCompanySelect = async () => {
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
         const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1 } }]);              //Selecciona solo el campo "visits"
+        showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
+        showSpinner(false);
 
         if (responseOBJ.success && responseOBJ.companysData) {
 
@@ -80,7 +84,9 @@ const Informe = () => {
         
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
         const aggregateQueryJSON = JSON.stringify([{ $project: { visits: 1, name: 1 } }]);              //Selecciona solo los campos "visits" y "name"
+        showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
+        showSpinner(false);
         const visitsMonthsArr = new Array(12);
         const thisYear = new Date().getFullYear();
 
