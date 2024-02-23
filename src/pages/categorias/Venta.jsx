@@ -64,6 +64,7 @@ const Venta = () => {
 
     useEffect(() => {
         setCompanys(dbQuerys.todo);
+        // eslint-disable-next-line 
 	}, []);
 
 	const handleSelectChange = (e) => {
@@ -108,11 +109,18 @@ const Venta = () => {
                             onChange={handleSelectChange}
                             className="form-select"
                         >
-                            <option value="" disabled selected>
+                            <option value = "" disabled selected>
+								Seleccionar Subcategoría
+							</option>
+                            <option value="todo">
                                 Todo
                             </option>
-                            <option value="agencias">Agencias</option>
-                            <option value="rent">Rent a Car</option>
+                            <option value="agencias">
+                                Agencias
+                            </option>
+                            <option value="rent">
+                                Rent a Car
+                            </option>
                         </select>
                     </div>
                 </div>

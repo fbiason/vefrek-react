@@ -66,6 +66,7 @@ const Reparacion = () => {
 
 	useEffect(() => {
         setCompanys(dbQuerys.todo);
+		// eslint-disable-next-line 
 	}, []);
 
 	const handleSelectChange = (e) => {
@@ -122,8 +123,12 @@ const Reparacion = () => {
 							<option value = "taller">
 								Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
 							</option>
-							<option value = "repuestos" >Repuestos (Autopartes)</option>
-							<option value = "lubricentro" >Lubricentros</option>
+							<option value = "repuestos" >
+								Repuestos (Autopartes)
+							</option>
+							<option value = "lubricentro" >
+								Lubricentros
+							</option>
 						</select>
 					</div>
 				</div>
