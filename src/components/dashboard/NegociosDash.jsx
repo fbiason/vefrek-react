@@ -172,8 +172,10 @@ const NegociosDash = () => {
         Salir
       </button>
 
-      <div className="background-item">
-        <div className="left-content">
+      <div className="content">
+        <div className="container-fluid">
+          {" "}
+          {/* Reemplazar con "container" si se desea un ancho fijo */}
           <div>
             <div className="editar-empresa-container">
               {companysData.length ? (

@@ -107,7 +107,7 @@
   visibility: visible;
 }
 
-ul li {
+#header ul li {
   color: rgba(255, 0, 0, 0);
 }
 

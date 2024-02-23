@@ -170,7 +170,7 @@ const Perfil = () => {
         Salir
       </button>
 
-      <div className="background-item d-flex justify-content-center">
+      <div className="content d-flex justify-content-center">
         <form
           className="form-dash-perfil rounded-md p-6 userUpdateForm m-5"
           onSubmit={handleSubmit}

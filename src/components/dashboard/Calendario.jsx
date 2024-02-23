@@ -89,7 +89,7 @@ const Calendario = () => {
       </button>
 
       <section className="background-item row contenido-calendario g-4">
-        <div>
+        <div className="contenido-info">
           <div>
             <h1>Calendario</h1>
           </div>

@@ -391,8 +391,8 @@
 @media only screen and (max-width: 768px) {
   .content {
     display: block; /* Cambiar a diseño de bloques en dispositivos pequeños */
+    padding: 0;
   }
-
   .left-content,
   .right-content {
     grid-template-rows: auto; /* Revertir el diseño de filas en dispositivos pequeños */
@@ -401,6 +401,12 @@
   }
 }
 
+@media only screen and (max-width: 992px) {
+  .content {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 /* LEFT CONTENT */
 
 .left-content {
@@ -719,4 +725,34 @@
 
 .btn-descuentos {
   width: 100%;
+}
+
+/* --- Favoritos ---*/
+
+.favoritos {
+  display: grid;
+  height: 100%;
+  background: #dbdbdb;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.content-fav {
+  grid-column: 1;
+  background: #f6f7fb;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+@media only screen and (max-width: 992px) {
+  .favoritos {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .content-fav {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 15px;
+  }
 }
