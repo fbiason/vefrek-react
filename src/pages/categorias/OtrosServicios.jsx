@@ -12,7 +12,7 @@ const OtrosServicios = () => {
 	const [rangeValue, setRangeValue] = useState(1);
 	
 	const dbQuerys = {
-		todo: ["Aseguradora", "Estación de servicio", "Estética del automotor", "Servicios de Emergencia"],
+		todo: ["Aseguradora", "Estación de Servicio", "Estética del automotor", "Servicios de Emergencia"],
 		aseguradoras: ["Aseguradora"],
 		estaciones: ["Estación de Servicio"],
         estetica: ["Estética del automotor"],
