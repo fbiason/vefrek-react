@@ -33,9 +33,13 @@ const Dropdown = () => {
       onClick={toggleDropdown}
       onMouseLeave={toggleDropdown}
     >
-      <button className="dropdown-button">
-        <i className="fas fa-user-circle text-start" /> Perfil
-      </button>
+      <ul>
+        <li></li>
+        <button className="dropdown-button">
+          <i className="fas fa-user-circle text-start" /> Perfil
+        </button>
+      </ul>
+
       {isOpen && (
         <div className="dropdown-content">
           <Link className="link-dropdown" to="/Perfil">
@@ -49,16 +53,17 @@ const Dropdown = () => {
               <i className="fas fa-bullhorn" /> Mis anuncios
             </p>{" "}
           </Link>
+          <Link className="link-dropdown" to="/Dashboard" onClick={toDash}>
+            {" "}
+            <p className=" text-start">
+              <i className="fas fa-tachometer-alt" /> Dashboard{" "}
+              {/* Cambio de icono */}
+            </p>
+          </Link>
           <Link className="link-dropdown" to="/" onClick={exit}>
             {" "}
             <p className=" text-start">
               <i className="fas fa-sign-out-alt" /> Logout
-            </p>
-          </Link>
-          <Link className="link-dropdown" to="/Dashboard" onClick={toDash}>
-            {" "}
-            <p className=" text-start">
-              <i className="fas fa-sign-out-alt" /> Dashboard
             </p>
           </Link>
         </div>

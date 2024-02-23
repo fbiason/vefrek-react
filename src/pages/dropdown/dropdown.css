@@ -1,16 +1,29 @@
-/* Dropdown.css */
-
 .dropdown-container {
   position: relative;
   display: inline-block;
 }
 
 .dropdown-button {
-  background-color: #727272;
-  color: white;
+  background: linear-gradient(
+    to right,
+    #14ba75,
+    #241e4e
+  ); /* Gradiente de verde a azul */
+  color: #fff; /* Color del texto */
   padding: 10px;
   border: none;
   cursor: pointer;
+  border-radius: 5px; /* Añade bordes redondeados */
+  transition: background-color 0.5s ease; /* Agrega una transición suave */
+}
+
+.dropdown-button:hover {
+  color: white;
+  background: linear-gradient(
+    to right,
+    #241e4e,
+    #14ba75
+  ); /* Cambia el gradiente al pasar el mouse */
 }
 
 .dropdown-content {
@@ -20,6 +33,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border-radius: 1rem;
 }
 
 .dropdown-content p {
@@ -28,6 +42,7 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
+  border-bottom: 1px solid #ccc; /* Añade un borde inferior */
 }
 
 .dropdown-content p:hover {
@@ -36,4 +51,8 @@
 
 .link-dropdown {
   padding-left: 3px;
+}
+
+.dropdown-container ul li {
+  color: rgba(255, 0, 0, 0);
 }
