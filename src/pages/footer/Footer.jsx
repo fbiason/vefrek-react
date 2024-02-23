@@ -45,20 +45,23 @@ const Footer = () => {
                   Rio Gallegos, Santa Cruz
                   <br />
                   <br />
-                  <strong>Teléfono:</strong> +011 5320 0080
+                  <strong>Teléfono:</strong> 2966 15 23-1074
                   <br />
                   <strong>Email:</strong> administracion@vefrek.com
                   <br />
                 </p>
                 <div className="social-links mt-3">
-                  <a href="#" className="facebook">
+                  <a
+                    href="https://www.facebook.com/vefrek?mibextid=ZbWKwL"
+                    className="facebook"
+                  >
                     <i className="bx bxl-facebook"></i>
                   </a>
-                  <a href="#" className="instagram">
+                  <a
+                    href="https://www.instagram.com/vefrek.oficial/?next=https%3A%2F%2Fwww.instagram.com%2F&hl=es-es"
+                    className="instagram"
+                  >
                     <i className="bx bxl-instagram"></i>
-                  </a>
-                  <a href="#" className="linkedin">
-                    <i className="bx bxl-linkedin"></i>
                   </a>
                 </div>
               </div>

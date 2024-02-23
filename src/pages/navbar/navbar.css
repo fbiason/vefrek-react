@@ -19,8 +19,49 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
+/* Estilo para el botón "Publica Ahora" */
+.btn-publica {
+  background: linear-gradient(
+    to right,
+    #14ba75,
+    #241e4e
+  ); /* Gradiente de verde a azul */
+  color: #fff; /* Color del texto */
+  border: none; /* Elimina el borde */
+  padding: 10px 20px; /* Ajusta el relleno */
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: bold; /* Hace que la letra sea más gruesa */
+  border-radius: 5px; /* Añade bordes redondeados */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  transition: all 0.5s ease; /* Agrega una transición suave */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.btn-publica:hover {
+  background: linear-gradient(
+    to right,
+    #241e4e,
+    #14ba75
+  ); /* Cambia el gradiente al pasar el mouse */
+}
+
+/* Estilo para el botón "Ingresa" */
+.ingresa {
+  font-style: 400;
+  background-color: #ffffff; /* Color de fondo */
+  color: #241e4e; /* Color del texto */
+  border: 2px solid #14ba75; /* Borde sólido de color verde */
+  padding: 10px 20px; /* Ajusta el relleno */
+  font-size: 16px; /* Tamaño del texto */
+  font-weight: bold; /* Hace que la letra sea más gruesa */
+  border-radius: 5px; /* Añade bordes redondeados */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  transition: all 0.5s ease; /* Agrega una transición suave */
+}
+
 .ingresa:hover {
-  color: #14ba75;
+  background-color: #14ba75; /* Cambia el color de fondo al pasar el mouse */
+  color: #fff; /* Cambia el color del texto al pasar el mouse */
 }
 
 .navbar .dropdown ul {
@@ -67,7 +108,7 @@
 }
 
 ul li {
-  list-style-type: none;
+  color: rgba(255, 0, 0, 0);
 }
 
 .navbar .dropdown .dropdown ul {
@@ -177,16 +218,6 @@ ul li {
   background: #14ba75;
   color: #fff;
   border-color: #14ba75;
-}
-
-.scrollto {
-  cursor: pointer;
-  color: white;
-  font-weight: 600;
-}
-
-.scrollto:hover {
-  color: #14ba75;
 }
 
 .search-container {

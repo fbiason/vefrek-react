@@ -326,7 +326,7 @@ const NavBar = () => {
       <div className="row align-items-center">
         {/* Logo - Se oculta en dispositivos pequeños y más pequeños */}
         <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block">
-          <Link to="/Dashboard">
+          <Link to="/Home">
             <img
               src="/images/logos/logo-vefrek.png"
               alt="Logo Vefrek"
@@ -336,7 +336,7 @@ const NavBar = () => {
         </div>
 
         {/* Barra de Búsqueda */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0">
+        <div className="col-xl-3 d-flex justify-content-center">
           {showSearchBar && (
             <div className="search-container center-on-mobile">
               {" "}
@@ -346,26 +346,26 @@ const NavBar = () => {
           )}
         </div>
 
+        {/* Publica Ahora */}
+        <div className="col-xl-3 d-flex justify-content-end">
+          <ul>
+            <li> </li>
+            <Link to="/publicacion" className="btn-publica">
+              ¡PUBLICA AHORA!
+            </Link>
+          </ul>
+        </div>
+
         {/* Ingresa */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 d-flex justify-content-center">
-          <ul className="d-flex justify-content-center p-0">
+        <div className="col-xl-3 d-flex justify-content-center">
+          <ul>
             <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (
-              <Link to="/login" className="nav-link scrollto">
+              <Link to="/login" className="ingresa">
                 Ingresa
               </Link>
             )}
           </ul>
-        </div>
-
-        {/* Publica Ahora */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 d-flex justify-content-center">
-          <Link
-            to="/publicacion"
-            className="btn btn-primary get-started-btn scrollto"
-          >
-            ¡PUBLICA AHORA!
-          </Link>
         </div>
       </div>
     </header>
