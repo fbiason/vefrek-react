@@ -14,7 +14,7 @@ const OtrosServicios = () => {
 	const dbQuerys = {
 		todo: ["Aseguradora", "Estación de servicio", "Estética del automotor", "Servicios de Emergencia"],
 		aseguradoras: ["Aseguradora"],
-		estaciones: ["Estación de servicio"],
+		estaciones: ["Estación de Servicio"],
         estetica: ["Estética del automotor"],
         emergencia: ["Servicios de Emergencia"],
 	}
