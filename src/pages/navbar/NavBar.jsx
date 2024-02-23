@@ -324,7 +324,7 @@ const NavBar = () => {
   return (
     <header id="header" className="fixed-top">
       <div className="row align-items-center">
-        {/* Logo - Se oculta en dispositivos pequeños y más pequeños */}
+        {/* Logo */}
         <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block">
           <Link to="/Home">
             <img
@@ -336,10 +336,9 @@ const NavBar = () => {
         </div>
 
         {/* Barra de Búsqueda */}
-        <div className="col-xl-3 d-flex justify-content-center">
+        <div className="col-lg-3 col-12 mb-3 mb-xl-0 d-flex justify-content-center">
           {showSearchBar && (
             <div className="search-container center-on-mobile">
-              {" "}
               {/* Aquí se aplica la clase de centrado en móviles */}
               <SearchBar />
             </div>
@@ -347,17 +346,20 @@ const NavBar = () => {
         </div>
 
         {/* Publica Ahora */}
-        <div className="col-xl-3 d-flex justify-content-end">
+        <div className="col-lg-3 col-12 d-flex justify-content-center mb-3 mb-xl-0">
           <ul>
-            <li> </li>
-            <Link to="/publicacion" className="btn-publica">
+            <li></li>
+            <Link
+              to="/publicacion"
+              className="btn btn-primary get-started-btn btn-publica"
+            >
               ¡PUBLICA AHORA!
             </Link>
           </ul>
         </div>
 
         {/* Ingresa */}
-        <div className="col-xl-3 d-flex justify-content-center">
+        <div className="col-lg-3 col-12 d-flex justify-content-center mb-3 mb-xl-0">
           <ul>
             <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (
