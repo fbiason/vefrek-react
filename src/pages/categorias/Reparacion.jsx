@@ -4,11 +4,9 @@ import "./categorias.css";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
-import { generateRegEx } from "../../utils/utils";
 
 const Reparacion = () => {
 	const { showSpinner } = useContext(SpinnerContext);
-	const [selectedOption, setSelectedOption] = useState("");
 	const [data, setData] = useState([]);
 	const [rangeValue, setRangeValue] = useState(1);
 	
@@ -23,7 +21,7 @@ const Reparacion = () => {
 	const setCompanys = async (subcategorysArr) => {
 		const matchJSON = JSON.stringify({ subcategory: {$in: subcategorysArr} });
 		const aggregateQueryJSON = JSON.stringify([
-			{ $sample: { size: 8 } },
+			// { $sample: { size: 8 } },
 			{
 				$project: {
 					subcategory: 1,
