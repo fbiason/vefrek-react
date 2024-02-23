@@ -326,7 +326,7 @@ const NavBar = () => {
       <div className="row align-items-center">
         {/* Logo */}
         <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block">
-          <Link to="/Home">
+          <Link to="/">
             <img
               src="/images/logos/logo-vefrek.png"
               alt="Logo Vefrek"

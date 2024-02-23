@@ -109,30 +109,30 @@ const CargaEmpresa = () => {
     });
   };
 
-  const handleCheckChange = (e) => {
-    const { name, checked } = e.target;
-    if (typeof checked === "boolean") {
-      if (name === "news" || name === "comments") {
-        setFormData({
-          ...formData,
-          email_notifications: {
-            ...formData.email_notifications,
-            [name]: checked,
-          },
-        });
-      } else {
-        setFormData({
-          ...formData,
-          sms_notifications: {
-            all: false,
-            same_email: false,
-            none: false,
-            [name]: true,
-          },
-        });
-      }
-    }
-  };
+  // const handleCheckChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   if (typeof checked === "boolean") {
+  //     if (name === "news" || name === "comments") {
+  //       setFormData({
+  //         ...formData,
+  //         email_notifications: {
+  //           ...formData.email_notifications,
+  //           [name]: checked,
+  //         },
+  //       });
+  //     } else {
+  //       setFormData({
+  //         ...formData,
+  //         sms_notifications: {
+  //           all: false,
+  //           same_email: false,
+  //           none: false,
+  //           [name]: true,
+  //         },
+  //       });
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     formRef.current = formData;
