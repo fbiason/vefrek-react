@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const NavBarDash = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
 
   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen); // Cambia el estado de isMenuOpen al valor opuesto
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const menuItems = [
@@ -42,7 +42,7 @@ const NavBarDash = () => {
           className="logo-dash"
         />
       </Link>
-      <div>
+      <ul className={isMenuOpen ? "active" : ""}>
         {menuItems.map((item, index) => (
           <li
             key={index}
@@ -55,7 +55,7 @@ const NavBarDash = () => {
             </Link>
           </li>
         ))}
-      </div>
+      </ul>
     </nav>
   );
 };

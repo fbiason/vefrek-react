@@ -156,7 +156,7 @@ const Perfil = () => {
   };
 
   return (
-    <main className="dashMain">
+    <main className="dashboardMain">
       <NavBarDash></NavBarDash>
       <button
         className="btn btn-primary dashboardClose"
