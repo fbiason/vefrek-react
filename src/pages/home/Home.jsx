@@ -72,64 +72,36 @@ const Home = () => {
 
             <Negocios />
             <section id="features" className="features home-section container">
-                <div data-aos="fade-up">
-                    <div className="row container container-fluid">
-                        <div
-                            className="image col-lg-6"
-                            style={{ backgroundImage: "url('images/valores-prueba.png')" }}
-                            data-aos="fade-right"
-                        ></div>
-                        <div className="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-                            <div
-                                className="icon-box mt-5 mt-lg-0"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <i className="bx bx-user"></i>
-                                <h4>Responsabilidad</h4>
-                                <p>
-                                    Cumplimos con todas las obligaciones que nos comprometemos a
-                                    realizar tanto con nuestro empleados como con nuestros
-                                    clientes.
-                                </p>
-                            </div>
-                            <div
-                                className="icon-box mt-5"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <i className="bx bx-cube-alt"></i>
-                                <h4>Simplicidad</h4>
-                                <p>Ofrecemos un servicio claro y de fácil acceso.</p>
-                            </div>
-                            <div
-                                className="icon-box mt-5"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <i className="bx bx-compass"></i>
-                                <h4>Orientación al cliente</h4>
-                                <p>
-                                    Trabajamos para que las empresas puedan mejorar la difusión de
-                                    sus negocios y logren un mayor alcance.
-                                </p>
-                            </div>
-                            <div
-                                className="icon-box mt-5"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <i className="bx bx-star"></i>
-                                <h4>Excelencia</h4>
-                                <p>
-                                    Buscamos superarnos día a día y que los resultados se reflejen
-                                    en la calidad de atención a los clientes.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+    <div data-aos="fade-up">
+        <div className="row">
+            <div className="image col-lg-6" style={{ backgroundImage: "url('images/valores.jpg')" }} data-aos="fade-right"></div>
+            <div className="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                <div className="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                    <i className="bx bx-user"></i>
+                    <h4>Responsabilidad</h4>
+                    <p>Cumplimos con todas las obligaciones que nos comprometemos a realizar tanto con nuestros empleados como con nuestros clientes.</p>
                 </div>
-            </section>
+                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                    <i className="bx bx-cube-alt"></i>
+                    <h4>Simplicidad</h4>
+                    <p>Ofrecemos un servicio claro y de fácil acceso.</p>
+                </div>
+                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                    <i className="bx bx-compass"></i>
+                    <h4>Orientación al cliente</h4>
+                    <p>Trabajamos para que las empresas puedan mejorar la difusión de sus negocios y logren un mayor alcance.</p>
+                </div>
+                <div className="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+                    <i className="bx bx-star"></i>
+                    <h4>Excelencia</h4>
+                    <p>Buscamos superarnos día a día y que los resultados se reflejen en la calidad de atención a los clientes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
             <section id="ppc" className="ppc home-section mt-5">
                 <div className="container-fluid" data-aos="zoom-in">
                     <div className="text-center">
@@ -144,6 +116,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
             <section id="about" className="about home-section">
                 <div className="container" data-aos="fade-up">
                     <div className="row">
@@ -200,87 +173,79 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id="contact" className="contact home-section">
-                <div className="container" data-aos="fade-up">
-                    <div className="section-title">
-                        <h2>Comunícate con nosotros</h2>
-                        <p>CONTACTANOS</p>
-                    </div>
+            <section id="contact" className="contact">
+  <div className="container" data-aos="fade-up">
+    <div className="section-title">
+      <h2>Comunícate con nosotros</h2>
+      <p>CONTACTANOS</p>
+    </div>
 
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.5367865926187!2d-69.230385!3d-51.6133755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6fea979bfadd3%3A0x40864ca79df574a8!2sAlberdi%201118%20Depto%204%2C%20R%C3%ADo%20Gallegos%2C%20Santa%20Cruz!5e0!3m2!1ses-419!2sar!4v1654740207616!5m2!1ses-419!2sar"
-                                width="100%"
-                                height="450"
-                                style={{ border: 0 }}
-                                allowFullScreen=""
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="row mt-5">
-                                <div className="col-md-6">
-                                    <div className="form-group">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            className="form-control"
-                                            id="name"
-                                            placeholder="Nombre"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="form-group">
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            name="email"
-                                            id="email"
-                                            placeholder="Email"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="subject"
-                                    id="subject"
-                                    placeholder="Asunto"
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <textarea
-                                    className="form-control"
-                                    name="message"
-                                    rows="5"
-                                    placeholder="Mensaje"
-                                    required
-                                ></textarea>
-                            </div>
-                            <div className="my-3">
-                                <div className="loading">Espere...</div>
-                                <div className="error-message"></div>
-                                <div className="sent-message">
-                                    Tu mensaje ha sido enviado. ¡Muchas gracias!
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <button type="submit" className="btn btn-primary">
-                                    Enviar mensaje
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div className="row">
+      <div className="col-lg-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.5367865926187!2d-69.230385!3d-51.6133755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6fea979bfadd3%3A0x40864ca79df574a8!2sAlberdi%201118%20Depto%204%2C%20R%C3%ADo%20Gallegos%2C%20Santa%20Cruz!5e0!3m2!1ses-419!2sar!4v1654740207616!5m2!1ses-419!2sar" width="100%" height="150" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        
+        <div className="row mt-4">
+          <div className="col-md-12">
+            <div className="info-contacto">
+              <div className="address">
+                <i className="bi bi-geo-alt"></i>
+                <h4>Dirección:</h4>
+                <p>Alberdi 1144, Depto 4, Río Gallegos, Santa Cruz</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <div className="info-contacto">
+              <div className="email">
+                <i className="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>administracion@vefrek.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <div className="info-contacto">
+              <div className="phone">
+                <i className="bi bi-phone"></i>
+                <h4>Teléfono:</h4>
+                <p>2966 15 23-1074</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-6 mt-5 mt-lg-0">
+        <form action="forms/contact.php" method="post" role="form" className="php-email-form">
+          <div className="row">
+            <div className="col-md-6 form-group">
+              <input type="text" name="name" className="form-control" id="name" placeholder="Nombre" required />
+            </div>
+            <div className="col-md-6 form-group">
+              <input type="email" className="form-control" name="email" id="email" placeholder="Email" required />
+            </div>
+          </div>
+          <div className="form-group">
+            <input type="text" className="form-control" name="subject" id="subject" placeholder="Asunto" required />
+          </div>
+          <div className="form-group">
+            <textarea className="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+          </div>
+          <div className="my-3">
+            <div className="loading">Espere...</div>
+            <div className="error-message"></div>
+            <div className="sent-message">Tu mensaje ha sido enviado. ¡Muchas gracias!</div>
+          </div>
+          <div className="text-center"><button type="submit">Enviar mensaje</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
         </>
     );
 };

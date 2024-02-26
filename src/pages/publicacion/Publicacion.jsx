@@ -47,7 +47,7 @@ const Publicacion = () => {
           data-aos="zoom-in"
           data-aos-delay="250"
         >
-          <div className="col-xl-2 col-md-4">
+          <div className="col-xl-4 col-md-4">
             <Link
               to="/CargaEmpresa"
               onClick={toEmpresa}

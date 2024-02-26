@@ -512,7 +512,7 @@ const Footer = () => {
 
       <div className="container">
         <div className="copyright">
-          &copy; Copyright 2023{" "}
+          &copy; Copyright 2024{" "}
           <strong>
             <span>Vefrek</span>
           </strong>

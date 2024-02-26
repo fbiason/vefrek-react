@@ -286,11 +286,11 @@
   padding: 5px 0 50px 0;
 }
 
-.contact .info {
+.contact .info-contacto {
   background: #fff;
 }
 
-.contact .info i {
+.contact .info-contacto i {
   font-size: 20px;
   background: #14ba75;
   color: #151515;
@@ -304,7 +304,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.contact .info h4 {
+.contact .info-contacto h4 {
   padding: 0 0 0 60px;
   font-size: 22px;
   font-weight: 600;
@@ -312,15 +312,15 @@
   color: #151515;
 }
 
-.contact .info p {
+.contact .info-contacto p {
   padding: 0 0 0 60px;
   margin-bottom: 0;
   font-size: 14px;
   color: #484848;
 }
 
-.contact .info .email,
-.contact .info .phone {
+.contact .info-contacto .email,
+.contact .info-contacto .phone {
   margin-top: 20px;
 }
 

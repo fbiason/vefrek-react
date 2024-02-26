@@ -15,6 +15,7 @@ import * as React from "react";
 import Reparacion from "./pages/categorias/Reparacion";
 import Venta from "./pages/categorias/Venta";
 import OtrosServicios from "./pages/categorias/OtrosServicios";
+import Terminos from "./pages/tyc/Terminos";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./pages/dropdown/Dropdown";
 import MisEmpresas from "./pages/misEmpresas/MisEmpresas";
@@ -63,6 +64,7 @@ function App() {
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
+          <Route path="/Terminos" element={<Terminos />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Informe" element={<Informe />} />

@@ -149,6 +149,16 @@ button {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.txt-form a {
+  font-weight: 600;  
+  color: #241E4E;
+}
+
+.txt-form a:hover {
+  color: #14BA75;
+}
+
+
 .txt-form .label {
   flex: 1;
   margin-right: 10px;
@@ -161,19 +171,26 @@ button {
   width: 100%;
 }
 
-.acepto1:hover {
-  color: #14ba75;
+.acepto1 {
+  color: #241E4E;
   font-weight: bold;
 }
 
-.acepto2:hover {
+.acepto2, .acepto3  {
   color: gray;
   font-weight: bold;
 }
 
+.acepto1:hover {
+  color: #14ba75;
+}
+
+.acepto2:hover {
+  color: #241E4E;
+}
+
 .acepto3:hover {
   color: red;
-  font-weight: bold;
 }
 
 .txt-form .input {

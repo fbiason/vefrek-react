@@ -123,35 +123,7 @@
   width: 100%;
 }
 
-.info {
-  color: #dfebed;
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  font-size: 1.2em;
-  padding: 30px 40px;
-}
 
-.info div:not(.observations) {
-  margin-bottom: 40px;
-}
-
-.info span {
-  font-weight: 300;
-}
-
-.info .date {
-  display: flex;
-  justify-content: space-between;
-}
-
-.info .date p {
-  width: 50%;
-}
-
-.info .address p {
-  width: 100%;
-}
 
 .actions {
   bottom: 0;
