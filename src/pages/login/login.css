@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: fit-content;
-  padding: 10rem;
+  padding-top: 10rem;
   background-color: hsl(218deg, 41%, 15%);
   background-image: radial-gradient(
       650px circle at 0% 0%,
