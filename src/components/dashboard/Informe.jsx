@@ -11,16 +11,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faComment, faCommentAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 const Informe = () => {
-    const [activeNavItem, setActiveNavItem] = useState(2);
     const [show, setShow] = useState(true);
     const navigate = useNavigate();
     const { userData } = useContext(UserContext);
     const [selectOptions, setSelectOptions] = useState();
     const { showSpinner } = useContext(SpinnerContext);
-
-    const handleNavItemClick = (index) => {
-        setActiveNavItem(index);
-    };
 
     let options = {
         chart: {
@@ -141,17 +136,7 @@ const Informe = () => {
         }
         // eslint-disable-next-line
     }, [userData.email]);
-
-    const menuItems = [
-        { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
-        { icon: "fa-user", text: "Perfil", to: "/Perfil" },
-        { icon: "fa-chart-bar", text: "Informe", to: "/Informe" },
-        { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
-        { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
-        { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-        { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
-    ];
-
+   
     return (
         <main className="dashboardMain">
             <NavBarDash></NavBarDash>
@@ -181,8 +166,37 @@ const Informe = () => {
                                     </select>
                                 </div>
                             </>
+<<<<<<< HEAD
                         )}
 
+=======
+                        }
+                        {/* Fin de la nueva fila y columnas */}
+                        <div className="panel post col-md-3">
+                            <a href="/informe">
+                                <span>8 </span>Guardados
+                            </a>
+                        </div>
+                        <div className="panel comment col-md-3">
+                            <a href="/informe">
+                                <span>39 </span>Reseñas recibidas
+                            </a>
+                        </div>
+                        <div className="panel page col-md-3">
+                            <a href="/informe">
+                                <span>5 </span>Comentarios recibidos
+                            </a>
+                        </div>
+                        <div className="panel user col-md-3">
+                            <a href="/informe">
+                                <span>400 </span>Empresas cargadas
+                            </a>
+                        </div>
+                    </div>
+                    {
+                        show 
+                        &&
+>>>>>>> 35860541944c0dd2f42e44bc279d5915ce0a1316
                         <div className="row">
                             <div className="col-xl-6 panel post col-md-12">
                                 <a href="javascript:void();" className="text-decoration-none d-block position-relative">
