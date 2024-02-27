@@ -363,7 +363,7 @@ const PaginaEmpresa = () => {
     
 
     return (
-        <section className="background">
+        <section className="background-empresa">
             <div>
                 <div className="row">
                     {/* Columna 1 - Imágenes de la empresa */}

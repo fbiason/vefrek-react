@@ -1,51 +1,48 @@
-.container-card {
+.cardNegocio {
   width: 100%;
-  display: flex;
-  max-width: 1100px;
-  margin: auto;
-}
-.title-cards {
-  width: 100%;
-  max-width: 1080px;
-  margin: auto;
-  padding: 20px;
-  margin-top: 20px;
-  text-align: center;
-  color: #7a7a7a;
-}
-.card {
-  width: 100%;
+  height: 30em; /* Establecer una altura fija */
   margin: 20px;
   border-radius: 6px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ocultar el contenido que se desborde */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde suave */
+  background-color: #333; /* Color de fondo más oscuro */
   transition: all 400ms ease-out;
   cursor: default;
+  color: #fff; /* Color de texto más claro */
 }
-.card:hover {
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+
+.cardNegocio:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al hacer hover */
   transform: translateY(-3%);
 }
-.card img {
+
+.cardNegocio img {
   width: 100%;
   height: 210px;
 }
-.card .contenido-card {
+
+.cardNegocio .contenido-card {
   padding: 15px;
   text-align: center;
 }
-.card .contenido-card h3 {
+
+.cardNegocio .contenido-card h3 {
   margin-bottom: 15px;
   color: #7a7a7a;
 }
-.card .contenido-card p {
-  line-height: 1.8;
-  color: #6a6a6a;
-  font-size: 14px;
-  margin-bottom: 5px;
+
+.cardNegocio .contenido-card h4 {
+  font-size: 1.3em;
+  color: #fff; /* Color del título */
 }
-.card .contenido-card a {
+
+.cardNegocio .contenido-card p {
+  line-height: 1.8;
+  color: #ddd; /* Color del texto regular */
+}
+
+.cardNegocio .contenido-card a {
   display: inline-block;
   padding: 10px;
   margin-top: 10px;
@@ -56,11 +53,14 @@
   transition: all 400ms ease;
   margin-bottom: 5px;
 }
-.card .contenido-card a:hover {
+
+.cardNegocio .contenido-card a:hover {
   background: #14ba75;
   color: #fff;
 }
+
 /*==== INICIO FAVORITOS ======*/
+
 .favorito .bi-heart-fill {
   font-size: 3rem;
 }
@@ -114,7 +114,7 @@
   .container-card {
     flex-wrap: wrap;
   }
-  .card {
+  .cardNegocio {
     margin: 15px;
   }
 }

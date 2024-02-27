@@ -12,6 +12,16 @@ const CardNegocio = (props) => {
   const { showSpinner } = useContext(SpinnerContext);
   const heartRef = useRef();
 
+  const maxLength = 20; // Define la longitud máxima para nombre y dirección
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength - 3) + "..."; // Agrega "..." al final del texto truncado
+    }
+    return text;
+  };
+
+
   const handleFavorites = async () => {
     if (heartRef.current.checked === false) {
       showSpinner(true);
@@ -52,7 +62,7 @@ const CardNegocio = (props) => {
   return (
     <div key={props._id}>
       <div className="container-card">
-        <div className="card">
+        <div className="cardNegocio">
           <figure style={{ position: "relative" }}>
             <div className="favorito">
               <input
@@ -70,9 +80,9 @@ const CardNegocio = (props) => {
           </figure>
           <div className="contenido-card">
             <h5>{props.subcategory}</h5>
-            <h4>{props.name}</h4>
-            <p>{`📍 Dirección: ${props.location}`}</p>
-            <p>{`📞 Teléfono: ${props.phone}`}</p>
+            <h4>{truncateText(props.name, maxLength)}</h4> {/* Truncar el nombre */}
+            <p>{`📍: ${truncateText(props.location, maxLength)}`}</p> {/* Truncar la dirección */}
+            <p>{`📞: ${props.phone}`}</p>
             <Link to={`/${props.vefrek_website}`}> Más Info </Link>
           </div>
         </div>

@@ -35,7 +35,7 @@ const Favoritos = () => {
     const response = await findCompanys(matchJSON, aggregateQueryJSON);
     if (response.success && response.companysData) {
       const jsxArr = response.companysData.map((company) => (
-        <div className="col-md-3 col-sm-6 mb-4" key={company._id}>
+        <div className="col-md-4 col-sm-6 mb-4" key={company._id}>
           <CardNegocio
             subcategory={company.subcategory}
             name={company.name}

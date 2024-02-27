@@ -381,7 +381,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 75% 25%;
   height: 100%;
   background: #dbdbdb;
   border-top-right-radius: 2rem;
@@ -578,10 +578,6 @@
   .descuentos {
     margin-top: 10px; /* Aumentar el margen superior para separar los elementos */
   }
-
-  .recomendaciones {
-    display: none; /* Ocultar el elemento en dispositivos muy pequeños */
-  }
 }
 
 .btn-descuentos {
@@ -660,10 +656,6 @@
     grid-area: 2 / 1 / 3 / 2;
   }
 
-  .img-three {
-    display: none;
-  }
-
   .img-four {
     grid-area: 1 / 2 / 2 / 3;
   }
@@ -671,10 +663,6 @@
   .left-bottom {
     grid-template-columns: 100%;
     gap: 0;
-  }
-
-  .personal-bests {
-    display: none;
   }
 
   .mobile-personal-bests {
@@ -716,10 +704,6 @@
   .mas-consultados,
   .descuentos {
     margin-top: 10px;
-  }
-
-  .recomendaciones {
-    display: none;
   }
 }
 

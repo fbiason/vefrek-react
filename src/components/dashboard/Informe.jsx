@@ -7,6 +7,8 @@ import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark, faComment, faCommentAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 const Informe = () => {
     const [activeNavItem, setActiveNavItem] = useState(2);
@@ -63,7 +65,7 @@ const Informe = () => {
 
     const setCompanySelect = async () => {
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
-        const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1 } }]); //Selecciona solo el campo "visits"
+        const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1 } }]);
         showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
         showSpinner(false);
@@ -87,7 +89,7 @@ const Informe = () => {
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
         const aggregateQueryJSON = JSON.stringify([
             { $project: { visits: 1, name: 1 } },
-        ]); //Selecciona solo los campos "visits" y "name"
+        ]);
         showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
         showSpinner(false);
@@ -105,7 +107,7 @@ const Informe = () => {
                         (timestamp) =>
                             new Date(timestamp).getMonth() === i &&
                             new Date(timestamp).getFullYear() === thisYear
-                    ).length; //Obtiene visitas por mes para el año actual
+                    ).length;
                 }
                 options.series[0].data = visitsMonthsArr;
                 const chartCont = document.querySelector("#chart");
@@ -165,60 +167,69 @@ const Informe = () => {
                 Salir
             </button>
 
-            <di className="content">
+            <div className="info">
                 <div className="contenido-info">
                     <div className="container card-informe row">
-                        {/* Nueva fila y columnas */}
-                        { 
-                            show 
-                            && 
+                        {show && (
                             <>
                                 <div className="col-md-6">
                                     <p>Seleccione su empresa:</p>
                                 </div>
                                 <div className="col-md-6">
-                                    <select onChange={(e) => setChart(e.target.value)}>
+                                    <select className="form-select" onChange={(e) => setChart(e.target.value)}>
                                         {selectOptions}
                                     </select>
                                 </div>
                             </>
-                        }
-                        {/* Fin de la nueva fila y columnas */}
-                        <div className="panel post col-md-3">
-                            <a href="javascript:void();">
-                                <span>8 </span>Guardados
-                            </a>
-                        </div>
-                        <div className="panel comment col-md-3">
-                            <a href="javascript:void();">
-                                <span>39 </span>Reseñas recibidas
-                            </a>
-                        </div>
-                        <div className="panel page col-md-3">
-                            <a href="javascript:void();">
-                                <span>5 </span>Comentarios recibidos
-                            </a>
-                        </div>
-                        <div className="panel user col-md-3">
-                            <a href="javascript:void();">
-                                <span>400 </span>Empresas cargadas
-                            </a>
-                        </div>
-                    </div>
-                    {
-                        show 
-                        &&
+                        )}
+
                         <div className="row">
+                            <div className="col-xl-6 panel post col-md-12">
+                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                    <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faBookmark} size="2x" /></span>
+                                    <span className="ms-5">8 </span>
+                                    <br/>
+                                    Guardados
+                                </a>
+                            </div>
+                            <div className="col-xl-6 panel comment col-md-12">
+                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                    <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faComment} size="2x" /></span>
+                                    <span className="ms-5">39 </span>
+                                    <br/>
+                                    Reseñas recibidas
+                                </a>
+                            </div>
+                            <div className="col-xl-6 panel page col-md-12">
+                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                    <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faCommentAlt} size="2x" /></span>
+                                    <span className="ms-5">5 </span>
+                                    <br/>
+                                    Comentarios recibidos
+                                </a>
+                            </div>
+                            <div className="col-xl-6 panel user col-md-12">
+                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                    <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faBuilding} size="2x" /></span>
+                                    <span className="ms-5">400  </span>
+                                    <br/>
+                                    Empresas cargadas
+                                </a>
+                            </div>
+                        </div>
+
+                        {show && (
                             <div className="col-md-6">
                                 <div className="card custom-card">
                                     <h3 className="chart-lbl">Visitas</h3>
                                     <div id="chart"></div>
                                 </div>
                             </div>
-                        </div>
-                    }                                
+                        )}
+                    </div>
                 </div>
-            </di>
+            </div>
+
         </main>
     );
 };

@@ -382,7 +382,7 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-2 sm:col-start-1">
+                <div className="sm:col-span-6 sm:col-start-1">
                   <label
                     htmlFor="city"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -402,7 +402,7 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-2">
+                <div className="sm:col-span-6">
                   <label
                     htmlFor="region"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -449,107 +449,6 @@ const Perfil = () => {
               </div>
             </div>
 
-            {/*  <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Notificaciones
-              </h2>
-              <p className="mt-1 text-sm leading-6 text-gray-600">
-                Siempre te informaremos sobre cambios importantes, pero tú
-                eliges qué más quieres escuchar.
-              </p>
-
-              <div className="mt-10 space-y-10">
-                <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
-                    Vía mail
-                  </legend>
-                  <div className="mt-6 space-y-6">
-                    <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
-                        <input
-                          onChange={handleCheckChange}
-                          checked={formData.email_notifications}
-                          id="comments"
-                          name="email_notifications"
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                        />
-                      </div>
-                      <div className="text-sm leading-6">
-                        <label
-                          htmlFor="comments"
-                          className="font-medium text-gray-900"
-                        >
-                          Comentarios
-                        </label>
-                        <p className="text-gray-500">
-                          Reciba notificaciones cuando alguien publique un
-                          comentario en una publicación.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
-                    Notificaciones push
-                  </legend>
-                  <p className="mt-1 text-sm leading-6 text-gray-600">
-                    Estos se envían por SMS a su teléfono móvil.
-                  </p>
-                  <div className="mt-6 space-y-6">
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        onChange={handleCheckChange}
-                        checked={formData.sms_notifications.all}
-                        id="push-everything"
-                        name="all"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label
-                        htmlFor="push-everything"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Todo
-                      </label>
-                    </div>
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        onChange={handleCheckChange}
-                        checked={formData.sms_notifications.same_email}
-                        id="push-email"
-                        name="same_email"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label
-                        htmlFor="push-email"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Igual que el correo electrónico
-                      </label>
-                    </div>
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        onChange={handleCheckChange}
-                        checked={formData.sms_notifications.none}
-                        id="push-nothing"
-                        name="none"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                      <label
-                        htmlFor="push-nothing"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Sin notificaciones push
-                      </label>
-                    </div>
-                  </div>
-                      </fieldset>
-              </div>
-            </div>*/}
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
             <button
