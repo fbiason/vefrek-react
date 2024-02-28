@@ -47,7 +47,7 @@ const Dropdown = () => {
               <i className="fas fa-edit" /> Editar
             </p>
           </Link>
-          <Link className="link-dropdown" to="/MisEmpresas">
+          <Link className="link-dropdown" to="/NegociosDash">
             {" "}
             <p className=" text-start">
               <i className="fas fa-bullhorn" /> Mis anuncios

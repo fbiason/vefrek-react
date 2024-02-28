@@ -13,21 +13,17 @@ Componentes:
 - Controlar enlaces.
 - Incluir el de Tyc.
 
-4. TyC:
+3. TyC:
 
 - Btn close.
 - Responsive.
 
-5. PagNegocio:
+4. PagNegocio: Responsive
 
-- Visualización Desktop
-- Responsive
-- Colores letras
+- Horarios y Web se salen de la columna
+- Achicar logo empresas
 
-6. Btn Perfil: solo se debe abrir al hacer clic.
-7. Editar empresa: controlar.
-8. NavbarDash: resposive (achicar circulo) + página activa.
-9. Informe: iconos + responsive.
-10. Calendario: cambiar formato.
-11. Negocios.
-12. Admin.
+5. Editar empresa: ajustar cuadro.
+6. Informe: iconos + responsive.
+7. Calendario: cambiar formato.
+8. Admin.

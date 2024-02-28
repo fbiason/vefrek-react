@@ -1,3 +1,18 @@
+.contenido-negocios {
+  display: grid;
+  height: 100%;
+  background: #dbdbdb;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .contenido-negocios{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
 .editar-empresa-container {
   display: flex;
   justify-content: center;

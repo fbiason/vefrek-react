@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./navbarDash.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBarDash = () => {
     const [activeNavItem, setActiveNavItem] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const location  = useLocation()
+
+    console.log(location.pathname);
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
@@ -46,9 +50,10 @@ const NavBarDash = () => {
                 {menuItems.map((item, index) => (
                     <li
                         key={index}
-                        className={`nav-item ${activeNavItem === index ? "active" : ""}`}
+                        className={`nav-item ${location.pathname.endsWith(item.to) ? "active" : ""}`}
                         onClick={() => handleNavItemClick(index)}
                     >
+                         
                         <Link to={item.to}>
                             <i className={`fa ${item.icon} nav-icon`} title={item.text}></i>
                             <span className="nav-text">{item.text}</span>

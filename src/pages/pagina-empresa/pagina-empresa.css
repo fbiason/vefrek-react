@@ -388,7 +388,7 @@
 
 .starsNumbers {
   margin: 0;
-  color: #444444 !important;
+  color: #241E4E !important;
   font-weight: 500;
 }
 
@@ -416,4 +416,29 @@
 .googleMapFrame {
   width: 400px;
   height: 400px;
+}
+
+.reseña-container .container a,
+.fab {
+  color: #241E4E;
+}
+
+.data-neg p,
+.data-neg a,
+.telefono-container,
+.informacion-container p,
+.commentsData h5,
+.comentario-t p,
+.nombre-slogan-container p {
+  color: black;
+  text-align: left;
+}
+
+
+
+/*--- Colmnas negocio ---*/
+
+.negocio-2 {
+  display: flex;
+  overflow-x: hidden;
 }

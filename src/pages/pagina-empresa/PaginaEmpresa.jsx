@@ -71,15 +71,15 @@ const PaginaEmpresa = () => {
             if (responseOBJ.success) {
                 setMap(
                     <iframe
-                        title="map"
-                        src={responseOBJ.url}
-                        width="100%"
-                        height={400}
-                        style={{ border: 0 }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    title="map"
+                    src={responseOBJ.url}
+                    width="100%"
+                    height={400}
+                    style={{ borderRadius: '2rem', border: '1px solid #000' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
                 );
             } else {
                 setMap(
@@ -233,9 +233,11 @@ const PaginaEmpresa = () => {
                             {" "}
                             <h5>{"⭐⭐⭐⭐⭐".substring(0, review.numberOfStars)}</h5>{" "}
                         </div>
+                        <div className="comentario-t">
                         <p>
                             {review.comment}
                         </p>
+                        </div>
                     </div>
                 )
                 setComments(reviewsArrJSX);
@@ -363,11 +365,11 @@ const PaginaEmpresa = () => {
     
 
     return (
-        <section className="background-empresa">
-            <div>
+        <section className="background-empresa overflow-x-hidden">
+            <div className="p-3">
                 <div className="row">
                     {/* Columna 1 - Imágenes de la empresa */}
-                    <div className="col-md-8 col-sm-6">
+                    <div className=" col-md-8 col-sm-6">
                         {/* Fila 1 */}
                         <div className="row">
                             <div className="col-md-12">
@@ -385,8 +387,8 @@ const PaginaEmpresa = () => {
                                             {stars}
                                             <p>{companyData.slogan}</p>
                                         </div>
-                                        <div className="mt-4">
-                                            <h5>Fecha de Carga: {new Date(companyData.creationdate).toLocaleString().split(",")[0]}</h5>
+                                        <div className="mt-4 text-left">
+                                            <p>Fecha de Carga: {new Date(companyData.creationdate).toLocaleString().split(",")[0]}</p>
                                         </div>
                                     </div>
 
@@ -435,7 +437,7 @@ const PaginaEmpresa = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="perfil-card-element1 card-empresa">
-                                    <div className="informacion-container">
+                                    <div className="informacion-container text-left">
                                         <h2>Información</h2>
                                         <p>{companyData.description}</p>
                                     </div>
@@ -447,8 +449,9 @@ const PaginaEmpresa = () => {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
-                                    <div className="reseña-container">
+                                    <div className="reseña-container text-left">
                                         <h2>Opiniones Destacadas</h2>
+                                  
                                         {comments}
                                         <div class="container">
                                             <a href="/">ver más comentarios...</a>
@@ -458,23 +461,24 @@ const PaginaEmpresa = () => {
                             </div>
                         </div>
                     </div>
-
+          
                     {/* Columna 2 - Ubicación y Redes Sociales */}
-                    <div className="col-md-4 col-sm-12 d-flex flex-column">
+                    <div className="negocio-2 col-md-4 col-sm-12 flex-column">
                         <div className="perfil-card-element2 card-empresa h-100">
                             <div className="column-2 flex-grow-1">
                                 <div className="ubicacion-container">{map}</div>
 
-                                <div className="mt-3">
+                                <div className="mt-3 data-neg">
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                                 </div>
+                                <div className="data-neg">
                                 <a
                                     className="telefono-container"
                                     href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}
                                 >
                                     <p>{`Teléfono: ${companyData.phone}`}</p>
                                 </a>
-
+                                </div>
                                 <div className="redes-sociales-container d-flex justify-content-start">
                                     {" "}
                                     {companyData.social.whatsapp && (
@@ -559,7 +563,7 @@ const PaginaEmpresa = () => {
                                         </a>
                                     )}
                                 </div>
-                                <div className="mt-3">
+                                <div className="mt-3 data-neg">
                                     {" "}
                                     <a
                                         className="sitio-web-container"
