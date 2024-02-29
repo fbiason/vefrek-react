@@ -72,7 +72,12 @@ const Informe = () => {
                     {company.name}
                 </option>
             ));
-            setSelectOptions(selectOptionsJSX);
+            selectOptionsJSX.unshift(
+                <option value="Todas">
+                    Todas
+                </option>
+            )
+        setSelectOptions(selectOptionsJSX);
         } else if (responseOBJ.success && !responseOBJ.companysData) {
             swalPopUp("Ops!", responseOBJ.message, "info");
         } else {
@@ -93,9 +98,14 @@ const Informe = () => {
 
         if (responseOBJ.success && responseOBJ.companysData) {
             const companysDataArr = responseOBJ.companysData;
-            const visitsData = companyName
-                ? companysDataArr.find((company) => company.name === companyName).visits
-                : companysDataArr[0].visits;
+            let visitsData;
+            if (companyName && companyName !== "Todas") {                                               //Se seleccionó alguna empresa en particular
+                visitsData = companysDataArr.find((company) => company.name === companyName).visits
+            } else {                                                                                    //No se eligió ninguna empresa (Al cargar la página) o se eligió la opcion "Todas"
+                const timestamps = [];
+                companysDataArr.forEach((company) => timestamps.push(...company.visits.timestamps));
+                visitsData = {timestamps};
+            }           
             if (visitsData && visitsData.timestamps.length) {
                 for (let i = 0; i < 12; i++) {
                     visitsMonthsArr[i] = visitsData.timestamps.filter(
