@@ -9,6 +9,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faComment, faCommentAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 const Informe = () => {
     const [show, setShow] = useState(true);
@@ -180,36 +181,36 @@ const Informe = () => {
 
                         <div className="row">
                             <div className="col-xl-6 panel post col-md-12">
-                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                <Link href="/Informe" className="text-decoration-none d-block position-relative">
                                     <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faBookmark} size="2x" /></span>
                                     <span className="ms-5">8 </span>
                                     <br/>
                                     Guardados
-                                </a>
+                                </Link>
                             </div>
                             <div className="col-xl-6 panel comment col-md-12">
-                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                <Link href="/Informe" className="text-decoration-none d-block position-relative">
                                     <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faComment} size="2x" /></span>
                                     <span className="ms-5">39 </span>
                                     <br/>
                                     Reseñas recibidas
-                                </a>
+                                </Link>
                             </div>
                             <div className="col-xl-6 panel page col-md-12">
-                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                <Link href="/Informe" className="text-decoration-none d-block position-relative">
                                     <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faCommentAlt} size="2x" /></span>
                                     <span className="ms-5">5 </span>
                                     <br/>
                                     Comentarios recibidos
-                                </a>
+                                </Link>
                             </div>
                             <div className="col-xl-6 panel user col-md-12">
-                                <a href="javascript:void();" className="text-decoration-none d-block position-relative">
+                                <Link href="/Informe" className="text-decoration-none d-block position-relative">
                                     <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3"><FontAwesomeIcon icon={faBuilding} size="2x" /></span>
                                     <span className="ms-5">400  </span>
                                     <br/>
                                     Empresas cargadas
-                                </a>
+                                </Link>
                             </div>
                         </div>
 
