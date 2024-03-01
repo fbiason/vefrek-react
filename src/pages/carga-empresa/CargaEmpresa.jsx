@@ -159,7 +159,7 @@ const CargaEmpresa = () => {
         e.preventDefault();
         formRef.current.registeremail = userData.email;
 
-        if (formRef.current.schedules.scheduleType === "P") {
+        if (formRef.current.schedules.scheduleType === "P") {           //Si cargamos horarios personalizados ponemos el campo "custom" en null para no cargar informacion innecesaria
             formRef.current = {
                 ...formRef.current,
                 schedules: {
@@ -167,7 +167,7 @@ const CargaEmpresa = () => {
                     custom: null
                 }
             }
-        } else {
+        } else {                                                        //Si cargamos horarios "LaV" "LaS" o "LaD" ponemos el campo "personalized" en null para no cargar informacion innecesaria
             formRef.current = {
                 ...formRef.current,
                 schedules: {
