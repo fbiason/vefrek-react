@@ -123,10 +123,24 @@ const PaginaEmpresa = () => {
                 url: "",
             },
         },
-        schedule: {
-            opening: "",
-            closing: "",
-        },
+        schedules: {
+            scheduleType: "",
+            personalized: {
+                lunes: { open1: "", close1: "", open2: "", close2: "" },
+                martes: { open1: "", close1: "", open2: "", close2: "" },
+                miercoles: { open1: "", close1: "", open2: "", close2: "" },
+                jueves: { open1: "", close1: "", open2: "", close2: "" },
+                viernes: { open1: "", close1: "", open2: "", close2: "" },
+                sabado: { open1: "", close1: "", open2: "", close2: "" },
+                domingo: { open1: "", close1: "", open2: "", close2: "" },
+            },
+            custom: {
+                open1: "",
+                close1: "",
+                open2: "",
+                close2: "",
+            }
+        }
     });
 
     const find = async () => {
@@ -172,6 +186,7 @@ const PaginaEmpresa = () => {
                     closing: "",
                 },
                 creationdate: companyData.creationdate,
+                schedules: companyData.schedules,
             });
                                                     
             if (!companyData.geo.googleMapUrl) {                                                                //Si la emnpresa no tiene datos de geolocalizacion los buscamos
@@ -363,6 +378,24 @@ const PaginaEmpresa = () => {
          
     }, [vefrek_website])
     
+    const setScheduleType = () => {
+        if (companyData.schedules) {
+            switch (companyData.schedules.scheduleType) {
+                case "P":
+                    return "";
+                case "LaV":
+                    return "Lunes a Viernes";
+                case "LaS":
+                    return "Lunes a Sábado";
+                case "LaD":
+                    return "Lunes a Domingo";
+                default:
+                    return "";
+            }
+        } else {
+            return "";
+        }        
+    }
 
     return (
         <section className="background-empresa overflow-x-hidden">
@@ -585,47 +618,63 @@ const PaginaEmpresa = () => {
                                             <tr>
                                                 <th colSpan="2" className="table-headline">
                                                     <span style={{ fontSize: "18px" }}>
-                                                        Horarios de Apretura
+                                                        Horario:  {
+                                                           setScheduleType(companyData.schedules ? companyData.schedules.scheduleType : null)
+                                                        }
                                                     </span>
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>Lunes</th>
-                                                <td>08:00 - 16:00</td>
-                                                <td>08:00 - 16:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Martes</th>
-                                                <td>08:00 - 18:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Miércoles</th>
-                                                <td>09:30 - 12:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Jueves</th>
-                                                <td>08:00 - 18:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Viernes</th>
-                                                <td>10:00 - 16:00</td>
-                                                <td>08:00 - 18:00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Sábado</th>
-                                                <td>08:00 - 13:00</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Domingo</th>
-                                                <td>Cerrado</td>
-                                            </tr>
-                                        </tbody>
+                                        
+                                        {   
+                                            companyData.schedules && companyData.schedules.scheduleType === "P" &&              
+                                            <tbody>
+                                                {
+                                                    ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day) => {
+                                                        const dayNormalized = 
+                                                            day.normalize("NFD")                                           //Saca acentos y pasa a minuscula
+                                                            .replace(/[\u0300-\u036f]/g, "")
+                                                            .toLocaleLowerCase()
+                                                        return (
+                                                            <tr key={day}>
+                                                                <th>{day}</th>
+                                                                {
+                                                                    companyData.schedules.personalized[dayNormalized].open1 && companyData.schedules.personalized[dayNormalized].close1 ?   
+                                                                    <>
+                                                                        <td>{companyData.schedules.personalized[dayNormalized].open1} - {companyData.schedules.personalized[dayNormalized].close1}</td>
+                                                                        <td>{companyData.schedules.personalized[dayNormalized].open2} - {companyData.schedules.personalized[dayNormalized].close2}</td>
+                                                                    </> :
+                                                                    <>
+                                                                        <td>Cerrado</td>
+                                                                        <td></td>
+                                                                    </>
+                                                                }      
+
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }                                                              
+                                            </tbody>
+                                        }
+
+                                        {   
+                                            (
+                                                companyData.schedules && 
+                                                (
+                                                    companyData.schedules.scheduleType === "LaV" || 
+                                                    companyData.schedules.scheduleType === "LaS" ||   
+                                                    companyData.schedules.scheduleType === "LaD" 
+                                                )
+                                            )
+                                            &&          
+                                            <tbody>
+                                                <tr>
+                                                    <td>{companyData.schedules.custom.open1} - {companyData.schedules.custom.close1}</td>
+                                                    { companyData.schedules.custom.open2 && <td>{companyData.schedules.custom.open2} - {companyData.schedules.custom.close2}</td>}
+                                                </tr>
+                                            </tbody>
+                                        }
+
                                     </table>
                                 </div>
 

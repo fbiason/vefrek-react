@@ -277,7 +277,7 @@ const CargaEmpresa = () => {
                     <tbody>
                         {diasSemana.map((dia) => {
                             dia = dia
-                                .normalize("NFD")
+                                .normalize("NFD")                                           //Saca acentos y pasa a minuscula
                                 .replace(/[\u0300-\u036f]/g, "")
                                 .toLocaleLowerCase();
                             return (
