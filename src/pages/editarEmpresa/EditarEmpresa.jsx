@@ -32,7 +32,6 @@ export default function EditarEmpresa() {
         website: "",
         vefrek_website: "",
         category: "",
-        closing: "",
         social: {
             email: "",
             whatsapp: "",
@@ -44,7 +43,6 @@ export default function EditarEmpresa() {
             youtube: "",
         },
         description: "",
-        opening: "09:00",
         email_notifications: {
             comments: false,
             news: false,
@@ -231,7 +229,6 @@ export default function EditarEmpresa() {
             vefrek_website: companyData.vefrek_website,
             category: companyData.category,
             subcategory: companyData.subcategory,
-            closing: companyData.schedule.closing,
             social: {
                 email: companyData.social.email,
                 whatsapp: companyData.social.whatsapp,
@@ -243,7 +240,6 @@ export default function EditarEmpresa() {
                 youtube: companyData.social.youtube,
             },
             description: companyData.description,
-            opening: companyData.schedule.opening,
             email_notifications: {
                 comments: companyData.email_notifications.comments,
                 news: companyData.email_notifications.news,

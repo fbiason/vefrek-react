@@ -67,7 +67,7 @@ const CargaEmpresa = () => {
             }
         }
     });
-
+   
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -153,6 +153,7 @@ const CargaEmpresa = () => {
 
     useEffect(() => {
         formRef.current = formData;
+        console.log(formRef.current.schedules);
     }, [formData]);
 
     const handleSubmit = async (e) => {
@@ -175,7 +176,9 @@ const CargaEmpresa = () => {
         showSpinner(false);
     };
 
-    /***************************** Horarios  ****************************/
+    /*************************** Horarios  ****************************/
+
+    const [hDef, setHDef] = useState(true);
 
     const diasSemana = [
         "Lunes",
@@ -186,91 +189,7 @@ const CargaEmpresa = () => {
         "Sábado",
         "Domingo",
     ];
-
-    const [hDef, setHDef] = useState(true);
-    const setTipoHorarios = (e) => {
-        formRef.current.schedules = {
-            ...formRef.current.schedules,
-            scheduleType: e.target.value,
-        };
-        if (e.target.value === "P") {
-            setHDef(false);
-            formRef.current.schedules.custom = null; 
-            formRef.current.schedules.personalized = horarios;
-        } else {
-            setHDef(true);
-            formRef.current.schedules.personalized = null;
-            formRef.current.schedules.custom = horariosDef;
-        }
-    };
-
-    const [horarios, setHorarios] = useState({
-        lunes: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        martes: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        miercoles: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        jueves: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        viernes: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        sabado: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-        domingo: {
-            open1: "",
-            close1: "",
-            open2: "",
-            close2: "",
-        },
-    });
-
-    const handleInputChange = (dia, turno) => (e) => {                      //Seteo de horarios personalizados
-        const value = e.target.value;
-        dia = dia
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLocaleLowerCase();
-        setHorarios((prevHorarios) => ({
-            ...prevHorarios,
-            [dia]: {
-                ...prevHorarios[dia],
-                [turno]: value,
-            },
-        }));
-    };
-
-    useEffect(() => {
-        formRef.current.schedules = {
-            ...formRef.current.schedules,
-            ...{ personalized: horarios },
-        };
-    }, [horarios]);
-
+        
     const generarHorarios = () => {
         const horarios = [];
         for (let hora = 0; hora < 24; hora++) {
@@ -282,8 +201,51 @@ const CargaEmpresa = () => {
         }
         return horarios;
     };
+    
+    const setTipoHorarios = (e) => {                    //Tipo de horarios: LaV", "LaS", "LaD", "P"
+        const valueSelected = e.target.value;
+        setFormData((actualFormData) => ({
+            ...actualFormData,
+            schedules: {
+                ...actualFormData.schedules,
+               scheduleType: valueSelected,
+            }
+        }));
+        valueSelected === "P" ? setHDef(false) : setHDef(true);
+    };
 
-    const horarioP = (                      //Horarios personalizados (Se puede elegir un horario diferente por cada dia de la semana)
+    const handleInputChangeDef = (turno, e) => {                                //Cambio de horarios entre: "open1" "close1" "open2" "close2"
+        const hour = e.target.value;
+        setFormData((actualFormData) => ({
+            ...actualFormData, 
+            schedules: {
+                ...actualFormData.schedules,
+                custom: {
+                    ...actualFormData.schedules.custom,
+                    [turno]: hour
+                }
+            }
+        }))
+    };
+
+    const handleInputChange = (dia, turno, e) => {                                //Cambio de horarios entre: "open1" "close1" "open2" "close2"
+        const hour = e.target.value;
+        setFormData((actualFormData) => ({
+            ...actualFormData, 
+            schedules: {
+                ...actualFormData.schedules,
+                personalized: {
+                    ...actualFormData.schedules.personalized,
+                    [dia]: {
+                        ...actualFormData.schedules.personalized[dia],
+                        [turno]: hour,
+                    }
+                }
+            }
+        }));
+    };
+
+    const horarioPersJSX = (                      //Horarios personalizados (Se puede elegir un horario diferente por cada dia de la semana)
         <div className="flex">
             <div className="flex column">
                 <table>
@@ -306,9 +268,9 @@ const CargaEmpresa = () => {
                                         <td className="horariosDias">{dia}</td>
                                         <td>
                                             <select
-                                                value={horarios[dia].open1}
+                                                value={formData.schedules.personalized[dia].open1}
                                                 defaultValue=""
-                                                onChange={handleInputChange(dia, "open1")}
+                                                onChange={(e) => handleInputChange(dia, "open1", e)}
                                             >
                                                 <option value=""></option>
                                                 {generarHorarios().map((hora) => (
@@ -320,9 +282,9 @@ const CargaEmpresa = () => {
                                         </td>
                                         <td>
                                             <select
-                                                value={horarios[dia].close1}
+                                                value={formData.schedules.personalized[dia].close1}
                                                 defaultValue=""
-                                                onChange={handleInputChange(dia, "close1")}
+                                                onChange={(e) => handleInputChange(dia, "close1", e)}
                                             >
                                                 <option value=""></option>
                                                 {generarHorarios().map((hora) => (
@@ -337,9 +299,9 @@ const CargaEmpresa = () => {
                                         <td className="horariosDias bottomCells"></td>
                                         <td className="bottomCells">
                                             <select
-                                                value={horarios[dia].open2}
+                                                value={formData.schedules.personalized[dia].open2}
                                                 defaultValue=""
-                                                onChange={handleInputChange(dia, "open2")}
+                                                onChange={(e) => handleInputChange(dia, "open2", e)}
                                             >
                                                 <option value=""></option>
                                                 {generarHorarios().map((hora) => (
@@ -351,9 +313,9 @@ const CargaEmpresa = () => {
                                         </td>
                                         <td className="bottomCells">
                                             <select
-                                                value={horarios[dia].close2}
+                                                value={formData.schedules.personalized[dia].close2}
                                                 defaultValue=""
-                                                onChange={handleInputChange(dia, "close2")}
+                                                onChange={(e) => handleInputChange(dia, "close2", e)}
                                             >
                                                 <option value=""></option>
                                                 {generarHorarios().map((hora) => (
@@ -372,23 +334,8 @@ const CargaEmpresa = () => {
             </div>
         </div>
     );
-
-    const [horariosDef, setHorariosDef] = useState({
-        open1: "",
-        close1: "",
-        open2: "",
-        close2: "",
-    });
-
-    const handleInputChangeDef = (turno) => (e) => {                                //Cambio de horarios entre: "open1" "close1" "open2" "close2"
-        const value = e.target.value;
-        setHorariosDef((prevHorarios) => ({
-            ...prevHorarios,
-            ...{ [turno]: value },
-        }));
-    };
-
-    const horarioDef = (                                                            //Horarios Definidos para "Lunes a Viernes" "Lunes a Sabado" o "Todos lods dias"
+     
+    const horarioDefJSX = (                                                            //Horarios Definidos para "Lunes a Viernes" "Lunes a Sabado" o "Todos lods dias"
         <div className="flex">  
             <div className="flex column">
                 <table>
@@ -402,9 +349,9 @@ const CargaEmpresa = () => {
                         <tr>
                             <td>
                                 <select
-                                    value={horariosDef.open1}
+                                    value={formData.schedules.custom.open1}
                                     defaultValue=""
-                                    onChange={handleInputChangeDef("open1")}
+                                    onChange={(e) => handleInputChangeDef("open1", e)}
                                 >
                                     <option value=""></option>
                                     {generarHorarios().map((hora) => (
@@ -416,9 +363,9 @@ const CargaEmpresa = () => {
                             </td>
                             <td>
                                 <select
-                                    value={horariosDef.close1}
+                                    value={formData.schedules.custom.close1}
                                     defaultValue=""
-                                    onChange={handleInputChangeDef("close1")}
+                                    onChange={(e) => handleInputChangeDef("close1", e)}
                                 >
                                     <option value=""></option>
                                     {generarHorarios().map((hora) => (
@@ -432,9 +379,9 @@ const CargaEmpresa = () => {
                         <tr>
                             <td>
                                 <select
-                                    value={horariosDef.open2}
+                                    value={formData.schedules.custom.open2}
                                     defaultValue=""
-                                    onChange={handleInputChangeDef("open2")}
+                                    onChange={(e) => handleInputChangeDef("open2", e)}
                                 >
                                     <option value=""></option>
                                     {generarHorarios().map((hora) => (
@@ -446,9 +393,9 @@ const CargaEmpresa = () => {
                             </td>
                             <td>
                                 <select
-                                    value={horariosDef.close2}
+                                    value={formData.schedules.custom.close2}
                                     defaultValue=""
-                                    onChange={handleInputChangeDef("close2")}
+                                    onChange={(e) => handleInputChangeDef("close2", e)}
                                 >
                                     <option value=""></option>
                                     {generarHorarios().map((hora) => (
@@ -464,22 +411,7 @@ const CargaEmpresa = () => {
             </div>
         </div>
     );
-
-    useEffect(() => {
-        formRef.current.schedules = {
-            ...formRef.current.schedules,
-            ...{ custom: horariosDef },
-        };
-    }, [horariosDef]);
-
-    useEffect(() => {
-        formRef.current.schedules = {
-            ...formRef.current.schedules,
-            scheduleType: "LaV",
-        };
-        formRef.current.schedules.personalized = null;
-    }, []);
-
+  
     /**********************************************************************************/
 
     return (
@@ -765,8 +697,8 @@ const CargaEmpresa = () => {
                             <option value="LaD">Todos los días</option>
                             <option value="P">Personalizar</option>
                         </select>
-                        {hDef && horarioDef}
-                        {!hDef && horarioP}
+                        {hDef && horarioDefJSX}
+                        {!hDef && horarioPersJSX}
                     </div>
 
                     <div className="linea-divisoria"></div>

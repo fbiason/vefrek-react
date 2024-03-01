@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import "./terminos.css";
-import { Link } from "react-router-dom";
 
 const Terminos = () => {
   const myModalAvisoRef = useRef(null);
