@@ -153,12 +153,30 @@ const CargaEmpresa = () => {
 
     useEffect(() => {
         formRef.current = formData;
-        console.log(formRef.current.schedules);
     }, [formData]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         formRef.current.registeremail = userData.email;
+
+        if (formRef.current.schedules.scheduleType === "P") {
+            formRef.current = {
+                ...formRef.current,
+                schedules: {
+                    ...formRef.current.schedules,
+                    custom: null
+                }
+            }
+        } else {
+            formRef.current = {
+                ...formRef.current,
+                schedules: {
+                    ...formRef.current.schedules,
+                    personalized: null
+                }
+            }
+        }
+        
         const companyData = formRef.current;
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
