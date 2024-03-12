@@ -5,6 +5,8 @@ Verde: #14BA75;
 Azul: #241E4E
 Blanco: #FFFFFF
 
+// Actualización de Calendario
+
 Componentes:
 
 1. Ingresa: Pop up con el componente TyC.

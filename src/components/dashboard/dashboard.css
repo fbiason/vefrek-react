@@ -1,3 +1,8 @@
+.titulo-dash {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
 /* Dashboard Main */
 .dashboardMain {
   position: absolute;

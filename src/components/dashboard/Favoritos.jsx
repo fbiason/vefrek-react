@@ -81,7 +81,9 @@ const Favoritos = () => {
 
       <section className="favoritos">
         <div className="content-fav">
-          <h1 className="mt-4 p-4">Favoritos</h1>
+          <div>
+            <h1 className="titulo-dash">Favoritos</h1>
+          </div>
           <div className="row">
             {favoritesCompanys.length > 0 ? (
               favoritesCompanys

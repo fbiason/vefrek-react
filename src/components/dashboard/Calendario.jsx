@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./calendario.css";
 import NavBarDash from "./NavBarDash";
+import "./calendario.css";
+import "tailwindcss/tailwind.css";
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);
-  const [isFlipped, setFlipped] = useState(false);
   const [fechaActual, setFechaActual] = useState("");
   const [diasDelMes, setDiasDelMes] = useState([]);
+  const [mesesDelAnio, setMesesDelAnio] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null); // Agregar estado para la fecha seleccionada
+  const [comment, setComment] = useState(""); // Agregar estado para el comentario
+  const [selectedCompany, setSelectedCompany] = useState("empresa1"); // Agregar estado para la empresa seleccionada
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,20 +51,45 @@ const Calendario = () => {
       return dias;
     };
 
+    const generarMesesDelAnio = () => {
+      const opcionesMeses = { month: "long" };
+      const meses = [];
+      for (let i = 0; i < 12; i++) {
+        const fecha = new Date();
+        fecha.setMonth(i);
+        meses.push(fecha.toLocaleDateString("es-ES", opcionesMeses));
+      }
+      return meses;
+    };
+
     setFechaActual(obtenerFechaActual());
     setDiasDelMes(generarDiasDelMes());
+    setMesesDelAnio(generarMesesDelAnio());
   }, []);
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
 
-  const handleDateClick = () => {
-    setFlipped(!isFlipped);
+  const handleDateClick = (date) => {
+    setSelectedDate(date); // Al hacer clic en una fecha, establecerla como fecha seleccionada
+    // Mostrar el popup de comentarios
   };
 
   const handleCancelClick = () => {
-    setFlipped(false);
+    setSelectedDate(null); // Cancelar, deseleccionar la fecha
+    setComment(""); // Limpiar el comentario
+    setSelectedCompany("empresa1"); // Restablecer la empresa seleccionada
+  };
+
+  const handleSubmitComment = () => {
+    // Lógica para enviar el comentario
+    console.log("Comentario:", comment);
+    console.log("Empresa seleccionada:", selectedCompany);
+    // Restablecer valores después de enviar el comentario
+    setComment("");
+    setSelectedCompany("empresa1");
+    setSelectedDate(null);
   };
 
   const menuItems = [
@@ -75,7 +104,7 @@ const Calendario = () => {
 
   return (
     <main className="dashboardMain">
-      <NavBarDash></NavBarDash>
+      <NavBarDash />
       <button
         className="btn btn-primary dashboardClose"
         onClick={() => {
@@ -91,75 +120,81 @@ const Calendario = () => {
       <section className="background-item row contenido-calendario g-4">
         <div className="contenido-info">
           <div>
-            <h1>Calendario</h1>
+            <h1 className="titulo-dash">Calendario</h1>
           </div>
           <p className="text-center mt-3 mb-5">
             Publica GRATIS las próximas fechas de promociones y descuentos que
             ofrecerá tu empresa.
           </p>
         </div>
-        <div className="container-cal">
-          <div className={`calendario ${isFlipped ? "flip" : ""}`}>
-            <div className="front">
-              <div className="fecha" onClick={handleDateClick}>
-                <div className="fecha-actual p-4">
-                  <h1>{fechaActual}</h1>
-                </div>
-              </div>
-
-              <div className="mes">
-                <ul className="dias-semana">
-                  <li>Lun</li>
-                  <li>Mar</li>
-                  <li>Mie</li>
-                  <li>Jue</li>
-                  <li>Vier</li>
-                  <li>Sab</li>
-                  <li>Dom</li>
-                </ul>
-
-                <div className="weeks">
-                  {diasDelMes.map((dia, index) => (
-                    <span key={index} className={dia === 15 ? "active" : ""}>
-                      {dia < 10 ? "0" + dia : dia}
-                    </span>
-                  ))}
-                </div>
-              </div>
+        <div className={`container flex justify-around mb-4`}>
+          {mesesDelAnio.map((mes, index) => (
+            <div
+              key={index}
+              className={
+                mes === fechaActual.split(" ")[1] ? "mes-calendario" : ""
+              }
+            >
+              {mes}
             </div>
+          ))}
+        </div>
 
-            <div className="back">
-              <input
-                type="text"
-                placeholder="Indique la promoción que desea realizar"
+        <div className="calendario p-4 container grid grid-cols-7 gap-2">
+          {diasDelMes.map((dia, index) => (
+            <div
+              key={index}
+              className={`dia-calendario text-center cursor-pointer border p-4 rounded-lg ${
+                dia === new Date().getDate() ? "highlighted" : ""
+              }`}
+              onClick={() => handleDateClick(dia)}
+            >
+              {dia}
+            </div>
+          ))}
+        </div>
+
+        {/* Popup para dejar comentario */}
+        {selectedDate !== null && (
+          <div className="popup-container">
+            <div className="popup mt-3">
+              {" "}
+              <h2>
+                Ingrese la promoción para su empresa para el día {selectedDate}
+              </h2>
+              <textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Ingrese la promoción (máximo 25 caracteres)..."
+                rows={4}
+                cols={50}
+                className="mt-3"
+                maxLength={25} // Añadir la propiedad maxLength
               />
-              <div className="info">
-                <div className="date">
-                  <p className="info-date">Subir Promoción:</p>
-                  <p className="info-time">Duración:</p>
-                </div>
-                <div className="address">
-                  <p>Empresa:</p>
-                </div>
-                <div className="observations">
-                  <p>Descripción: </p>
-                </div>
+              <div>
+                <p>Seleccione su empresa</p>
+                <select
+                  value={selectedCompany}
+                  onChange={(e) => setSelectedCompany(e.target.value)}
+                >
+                  <option value="empresa1">Empresa 1</option>
+                  <option value="empresa2">Empresa 2</option>
+                </select>
               </div>
-
-              <div className="actions">
-                <button className="btn btn-primary save">
-                  Guardar <i className="ion-checkmark"></i>
+              <div className="btn-container mt-3">
+                <button className="btn" onClick={handleCancelClick}>
+                  Cancelar
                 </button>
                 <button
-                  className="btn btn-danger dismiss"
-                  onClick={handleCancelClick}
+                  className="btn btn-primary"
+                  onClick={handleSubmitComment}
                 >
-                  Cancelar <i className="ion-android-close"></i>
+                  Enviar
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
     </main>
   );

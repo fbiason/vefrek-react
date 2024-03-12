@@ -174,7 +174,9 @@ const NegociosDash = () => {
 
       <div className="contenido-negocios">
         <div className="container-fluid">
-          <h1 className="text-center mt-5 mb-5">Mis Anuncios</h1>
+          <div>
+            <h1 className="titulo-dash">Mis Negocios</h1>
+          </div>
           <div>
             <div className="editar-empresa-container">
               {companysData.length ? (
