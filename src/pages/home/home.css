@@ -12,8 +12,18 @@
   box-sizing: none;
 }
 
+.logo-hero {
+  text-align: center; /* Centra el contenido horizontalmente */
+}
+
 .logo-hero img {
+  display: block; /* Asegura que la imagen sea un bloque para centrarla correctamente */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
   width: 480px;
+}
+
+.logo-hero h2 {
+  /* Estilos adicionales para el texto si es necesario */
 }
 
 #hero:before {
