@@ -1,3 +1,23 @@
+.neg-reco {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-top: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.neg-reco h5 {
+  color: #333;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.neg-reco h1 {
+  color: #000;
+  font-size: 3rem;
+  margin-top: 10px;
+}
+
 .card-portfolio {
   margin-top: 1rem;
 }
@@ -66,5 +86,16 @@
     padding: 1rem 3rem 3rem 3rem;
     overflow: hidden;
     box-sizing: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .container.hero h5 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .container.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
   }
 }

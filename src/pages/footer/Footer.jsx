@@ -73,12 +73,17 @@ const Footer = () => {
                 <li>
                   {" "}
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#contact">Contacto</a>{" "}
+                  <a href="/Home.jsx#contact">Contacto</a>{" "}
                 </li>
+
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="#about">Nosotros</a>
+                  {" "}
+                  <Link to="/Home">
+                    <i className="bx bx-chevron-right"></i>{" "}
+                    <a href="/Home.jsx#about">Nosotros</a>
+                  </Link>
                 </li>
+
                 <li>
                   {" "}
                   <i className="bx bx-chevron-right"></i>{" "}
@@ -116,10 +121,10 @@ const Footer = () => {
                             <h5 className="modal-title2">
                               Identificación y Titularidad
                             </h5>
-                            <li>Titular: Reyes, Denis Javier</li>
+                            <li>Titular: Biason, Franco</li>
                             <li>Domicilio: Alberdi 1144, Depto 4</li>
                             <li>Email: administracion@vefrek.com</li>
-                            <li>Teléfono: +011 5320 0080</li>
+                            <li>Teléfono: 2966 23-1074</li>
                             <h5 className="modal-title2">Finalidad</h5>
                             <p>
                               La finalidad del Sitio Web es brindar información
@@ -499,10 +504,10 @@ const Footer = () => {
               <input
                 type="email"
                 name="email"
-                className="form-control"
+                className="form-control mt-3"
                 placeholder="Ingresa tu correo para suscribirte"
               />
-              <button type="submit" className="btn ml-2">
+              <button type="submit" className="btn-news ml-2">
                 Suscribirse
               </button>
             </div>

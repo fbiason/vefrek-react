@@ -256,44 +256,58 @@
 
 /*=== ABOUT ===*/
 .about {
-  margin: 0;
-  padding: 5rem;
-}
-.about .content h3 {
-  font-weight: 700;
-  font-size: 28px;
-  font-family: "Poppins", sans-serif;
-}
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-.about .content ul li {
-  padding: 0 0 8px 26px;
-  position: relative;
-}
-.about .content ul i {
-  position: absolute;
-  font-size: 20px;
-  left: 0;
-  top: -3px;
-  color: #14ba75;
+  background-color: #f8f9fa; /* Color de fondo */
+  padding: 80px 0; /* Espaciado interno superior e inferior */
 }
 
-.about .content p:last-child {
-  margin-bottom: 0;
+.about h3 {
+  font-size: 2.5rem; /* Tamaño de fuente para el título */
+  color: #333; /* Color del texto */
+}
+
+.about p {
+  font-size: 1.1rem; /* Tamaño de fuente para los párrafos */
+  line-height: 1.6; /* Altura de línea */
+  color: #555; /* Color del texto */
   text-align: justify;
 }
+
+.about ul {
+  list-style-type: none; /* Eliminar viñetas de la lista */
+  padding-left: 0; /* Eliminar el relleno izquierdo */
+}
+
+.about ul li {
+  margin-bottom: 15px; /* Espaciado entre elementos de la lista */
+}
+
+.about ul li i {
+  color: #14ba75; /* Color del ícono */
+  margin-right: 10px; /* Espaciado a la derecha del ícono */
+  font-size: x-large;
+}
+
+/* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   .about {
-    padding: 1rem;
+    padding: 60px 0; /* Ajuste de espaciado en dispositivos móviles */
+  }
+
+  .about h3 {
+    font-size: 2rem; /* Tamaño de fuente del título para dispositivos móviles */
+  }
+
+  .about p {
+    font-size: 1rem; /* Tamaño de fuente de los párrafos para dispositivos móviles */
   }
 }
+
 /*=== fin ABOUT ===*/
 
 /*=== CONTACTO ===*/
 .contact {
   padding: 5px 0 50px 0;
+  margin-top: 3rem;
 }
 
 .contact .info-contacto {
@@ -409,7 +423,8 @@
   color: #151515;
   transition: 0.4s;
   border-radius: 4px;
-  width: 100%;
+  width: 30%;
+  border-radius: 1rem;
   margin-top: 20px;
 }
 

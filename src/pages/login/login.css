@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   min-height: fit-content;
   padding-top: 10rem;
   background-color: hsl(218deg, 41%, 15%);
@@ -25,14 +26,23 @@
 
 .login-container h1 {
   text-align: center;
-  color: #14ba75;
-}
-.login-container h3 {
-  color: rgb(117, 116, 116);
 }
 
-.vefrek-logo {
-  width: 40%;
+.login-container h1 {
+  color: whitesmoke;
+}
+
+.login span {
+  color: hsl(218, 81%, 75%);
+}
+
+.login h1 {
+  color: "hsl(218, 81%, 95%)";
+}
+
+.vefrek-logo-login {
+  width: auto;
+  height: 50%;
 }
 
 .bg-glass {
@@ -150,14 +160,13 @@ button {
 }
 
 .txt-form a {
-  font-weight: 600;  
-  color: #241E4E;
+  font-weight: 600;
+  color: #241e4e;
 }
 
 .txt-form a:hover {
-  color: #14BA75;
+  color: #14ba75;
 }
-
 
 .txt-form .label {
   flex: 1;
@@ -172,11 +181,12 @@ button {
 }
 
 .acepto1 {
-  color: #241E4E;
+  color: #241e4e;
   font-weight: bold;
 }
 
-.acepto2, .acepto3  {
+.acepto2,
+.acepto3 {
   color: gray;
   font-weight: bold;
 }
@@ -186,7 +196,7 @@ button {
 }
 
 .acepto2:hover {
-  color: #241E4E;
+  color: #241e4e;
 }
 
 .acepto3:hover {

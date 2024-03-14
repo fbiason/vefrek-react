@@ -162,13 +162,11 @@ const Home = () => {
               data-aos-delay="100"
             >
               <h3 className="p-3">¿Qué es VEFREK?</h3>
-              <p className="fst-italic">
+              <p>
                 Vefrek es una empresa que busca unificar toda la información
                 referida al rubro automotor en un solo lugar, todo de una forma
-                fácil, confiable y gratuita.
-              </p>
-              <p className="fst-italic">
-                En nuestro sitio web podrás encontrar la siguiente información:
+                fácil, confiable y gratuita. En nuestro sitio web podrás
+                encontrar la siguiente información:
               </p>
               <ul className="list-unstyled">
                 <li>
