@@ -121,7 +121,7 @@ const Footer = () => {
                             <h5 className="modal-title2">
                               Identificación y Titularidad
                             </h5>
-                            <li>Titular: Biason, Franco</li>
+                            <li>Titular: Biason Franco</li>
                             <li>Domicilio: Alberdi 1144, Depto 4</li>
                             <li>Email: administracion@vefrek.com</li>
                             <li>Teléfono: 2966 23-1074</li>

@@ -67,9 +67,10 @@
 }
 
 .login-card {
-  margin: 10rem;
-  width: 50%;
+  width: 80%;
+  max-width: 500px;
   padding: 20px;
+  background-color: rgb(239, 234, 234);
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -77,6 +78,9 @@
 
 .login-card h2 {
   margin-bottom: 20px;
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 form {
@@ -86,6 +90,42 @@ form {
 
 label {
   margin-bottom: 8px;
+}
+
+.form-check:hover label a {
+  color: rgb(182, 172, 28);
+  font-weight: 600;
+}
+
+.form-check-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-check-input {
+  margin-left: 5px;
+}
+
+.btn-social {
+  width: 80%;
+  max-width: 250px;
+}
+
+.btn-login {
+  background-color: #14ba75;
+  color: black;
+  border: 1px solid black;
+  margin-top: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  width: 60%;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #ffc451;
+  color: black;
 }
 
 .terms {
@@ -180,14 +220,22 @@ button {
   width: 100%;
 }
 
+.login span {
+  color: rgb(133, 133, 133);
+}
+
 .acepto1 {
   color: #241e4e;
   font-weight: bold;
 }
 
-.acepto2,
+.acepto2 {
+  color: #14ba75;
+  font-weight: bold;
+}
+
 .acepto3 {
-  color: gray;
+  color: #dc5f5f;
   font-weight: bold;
 }
 
@@ -200,7 +248,7 @@ button {
 }
 
 .acepto3:hover {
-  color: red;
+  color: rgb(191, 13, 13);
 }
 
 .txt-form .input {
@@ -289,6 +337,12 @@ button {
 
   .bienvenido {
     width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .login-card {
+    padding: 0;
   }
 }
 
