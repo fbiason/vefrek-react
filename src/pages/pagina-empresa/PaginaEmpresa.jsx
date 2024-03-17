@@ -63,23 +63,23 @@ const PaginaEmpresa = () => {
         try {
             const responseJSON = await fetch(
                 `${process.env.REACT_APP_API_URL}api/getmap?address=${address}`, {
-                method: "GET",
-            }
+                    method: "GET",
+                }
             );
 
             const responseOBJ = await responseJSON.json();
             if (responseOBJ.success) {
                 setMap(
                     <iframe
-                        title="map"
-                        src={responseOBJ.url}
-                        width="100%"
-                        height={400}
-                        style={{ borderRadius: '2rem', border: '1px solid #000' }}
-                        allowFullScreen=""
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    />
+                    title="map"
+                    src={responseOBJ.url}
+                    width="100%"
+                    height={400}
+                    style={{ borderRadius: '2rem', border: '1px solid #000' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
                 );
             } else {
                 setMap(
@@ -188,7 +188,7 @@ const PaginaEmpresa = () => {
                 creationdate: companyData.creationdate,
                 schedules: companyData.schedules,
             });
-
+                                                    
             if (!companyData.geo.googleMapUrl) {                                                                //Si la emnpresa no tiene datos de geolocalizacion los buscamos
                 getLocationFromAddress(`${companyData.location},${companyData.city},${companyData.state}`);
             } else {
@@ -203,9 +203,9 @@ const PaginaEmpresa = () => {
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
-                );
-            };
-
+                ); 
+            }; 
+                        
             /***************** Seteo calificaciones recibidas **********************/
 
             const reviewsArr = companyData.reviews;
@@ -249,9 +249,9 @@ const PaginaEmpresa = () => {
                             <h5>{"⭐⭐⭐⭐⭐".substring(0, review.numberOfStars)}</h5>{" "}
                         </div>
                         <div className="comentario-t">
-                            <p>
-                                {review.comment}
-                            </p>
+                        <p>
+                            {review.comment}
+                        </p>
                         </div>
                     </div>
                 )
@@ -337,7 +337,7 @@ const PaginaEmpresa = () => {
     };
 
     useEffect(() => {
-
+        
         (async () => {
             //Campo "timestamp" -> Es la ultima vez que se entro al anuncio
             const localStorageVisitsDataJSON = localStorage.getItem("companysVisits");
@@ -357,12 +357,12 @@ const PaginaEmpresa = () => {
                     if (respOBJ.success) {
                         console.log(respOBJ.message);
                         if (!localStorageVisitsDataOBJ) {
-                            localStorage.setItem("companysVisits", JSON.stringify([{ companyName: vefrek_website, timestamp: Date.now() }]));
+                            localStorage.setItem("companysVisits", JSON.stringify([{companyName: vefrek_website, timestamp: Date.now()}]));
                             return;
                         } else if (!timeStampsDiff) {
-                            localStorageVisitsDataOBJ.push({ companyName: vefrek_website, timestamp: Date.now() });
+                            localStorageVisitsDataOBJ.push({companyName: vefrek_website, timestamp: Date.now()});
                         } else {
-                            localStorageVisitsDataOBJ[companyArrIndex].timestamp = Date.now();
+                            localStorageVisitsDataOBJ[companyArrIndex].timestamp = Date.now();   
                         }
                         localStorage.setItem("companysVisits", JSON.stringify(localStorageVisitsDataOBJ));
                     } else {
@@ -375,9 +375,9 @@ const PaginaEmpresa = () => {
                 }
             }
         })();
-
+         
     }, [vefrek_website])
-
+    
     const setScheduleType = () => {
         if (companyData.schedules) {
             switch (companyData.schedules.scheduleType) {
@@ -394,7 +394,7 @@ const PaginaEmpresa = () => {
             }
         } else {
             return "";
-        }
+        }        
     }
 
     return (
@@ -484,7 +484,7 @@ const PaginaEmpresa = () => {
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
                                     <div className="reseña-container text-left">
                                         <h2>Opiniones Destacadas</h2>
-
+                                  
                                         {comments}
                                         <div class="container">
                                             <a href="/">ver más comentarios...</a>
@@ -494,7 +494,7 @@ const PaginaEmpresa = () => {
                             </div>
                         </div>
                     </div>
-
+          
                     {/* Columna 2 - Ubicación y Redes Sociales */}
                     <div className="negocio-2 col-md-4 col-sm-12 flex-column">
                         <div className="perfil-card-element2 card-empresa h-100">
@@ -505,12 +505,12 @@ const PaginaEmpresa = () => {
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                                 </div>
                                 <div className="data-neg">
-                                    <a
-                                        className="telefono-container"
-                                        href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}
-                                    >
-                                        <p>{`Teléfono: ${companyData.phone}`}</p>
-                                    </a>
+                                <a
+                                    className="telefono-container"
+                                    href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}
+                                >
+                                    <p>{`Teléfono: ${companyData.phone}`}</p>
+                                </a>
                                 </div>
                                 <div className="redes-sociales-container d-flex justify-content-start">
                                     {" "}
@@ -619,58 +619,58 @@ const PaginaEmpresa = () => {
                                                 <th colSpan="2" className="table-headline">
                                                     <span style={{ fontSize: "18px" }}>
                                                         Horario:  {
-                                                            setScheduleType(companyData.schedules ? companyData.schedules.scheduleType : null)
+                                                           setScheduleType(companyData.schedules ? companyData.schedules.scheduleType : null)
                                                         }
                                                     </span>
                                                 </th>
                                             </tr>
                                         </thead>
-
-                                        {
-                                            companyData.schedules && companyData.schedules.scheduleType === "P" &&
+                                        
+                                        {   
+                                            companyData.schedules && companyData.schedules.scheduleType === "P" &&              
                                             <tbody>
                                                 {
                                                     ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day) => {
-                                                        const dayNormalized =
+                                                        const dayNormalized = 
                                                             day.normalize("NFD")                                           //Saca acentos y pasa a minuscula
-                                                                .replace(/[\u0300-\u036f]/g, "")
-                                                                .toLocaleLowerCase()
+                                                            .replace(/[\u0300-\u036f]/g, "")
+                                                            .toLocaleLowerCase()
                                                         return (
                                                             <tr key={day}>
                                                                 <th>{day}</th>
                                                                 {
-                                                                    companyData.schedules.personalized[dayNormalized].open1 && companyData.schedules.personalized[dayNormalized].close1 ?
-                                                                        <>
-                                                                            <td>{companyData.schedules.personalized[dayNormalized].open1} - {companyData.schedules.personalized[dayNormalized].close1}</td>
-                                                                            <td>{companyData.schedules.personalized[dayNormalized].open2} - {companyData.schedules.personalized[dayNormalized].close2}</td>
-                                                                        </> :
-                                                                        <>
-                                                                            <td>Cerrado</td>
-                                                                            <td></td>
-                                                                        </>
-                                                                }
+                                                                    companyData.schedules.personalized[dayNormalized].open1 && companyData.schedules.personalized[dayNormalized].close1 ?   
+                                                                    <>
+                                                                        <td>{companyData.schedules.personalized[dayNormalized].open1} - {companyData.schedules.personalized[dayNormalized].close1}</td>
+                                                                        <td>{companyData.schedules.personalized[dayNormalized].open2} - {companyData.schedules.personalized[dayNormalized].close2}</td>
+                                                                    </> :
+                                                                    <>
+                                                                        <td>Cerrado</td>
+                                                                        <td></td>
+                                                                    </>
+                                                                }      
 
                                                             </tr>
                                                         )
                                                     })
-                                                }
+                                                }                                                              
                                             </tbody>
                                         }
 
-                                        {
+                                        {   
                                             (
-                                                companyData.schedules &&
+                                                companyData.schedules && 
                                                 (
-                                                    companyData.schedules.scheduleType === "LaV" ||
-                                                    companyData.schedules.scheduleType === "LaS" ||
-                                                    companyData.schedules.scheduleType === "LaD"
+                                                    companyData.schedules.scheduleType === "LaV" || 
+                                                    companyData.schedules.scheduleType === "LaS" ||   
+                                                    companyData.schedules.scheduleType === "LaD" 
                                                 )
                                             )
-                                            &&
+                                            &&          
                                             <tbody>
                                                 <tr>
                                                     <td>{companyData.schedules.custom.open1} - {companyData.schedules.custom.close1}</td>
-                                                    {companyData.schedules.custom.open2 && <td>{companyData.schedules.custom.open2} - {companyData.schedules.custom.close2}</td>}
+                                                    { companyData.schedules.custom.open2 && <td>{companyData.schedules.custom.open2} - {companyData.schedules.custom.close2}</td>}
                                                 </tr>
                                             </tbody>
                                         }
