@@ -32,17 +32,18 @@
 }
 
 #footer .footer-top .social-links a {
-  font-size: 18px;
+  font-size: 24px;
   display: inline-block;
   background: #292929;
+  padding-top: 0.5rem;
   color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 4px;
+  margin-right: 0.5rem;
+  border-radius: 2rem;
   text-align: center;
-  width: 36px;
-  height: 36px;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
   transition: 0.3s;
 }
 
@@ -200,14 +201,21 @@
   color: rgb(15, 14, 14);
 }
 
-.btn {
-  width: 100%;
+.footer-newsletter .btn-news {
+  width: 50%;
   background: #14ba75;
-  border: black;
   padding: 12px;
   color: white;
   margin: 16px 0;
   font-size: 16px;
+  border-radius: 1rem;
+  border: 2px solid rgb(243, 243, 243);
+  transition: 0.5s;
+}
+
+.footer-newsletter .btn-news:hover {
+  background: #241e4e;
+  color: white;
 }
 
 .modal {
@@ -215,7 +223,20 @@
 }
 
 .modal-content {
-  width: 150%;
+  width: auto;
+  height: auto;
+}
+
+.modal-footer {
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-footer button {
+  color: whitesmoke;
+  background-color: black;
+  border-radius: 1rem;
+  width: 50%;
 }
 
 @media (min-width: 768px) {
@@ -235,6 +256,17 @@
 
 .modal-title {
   color: black;
+  font-size: xx-large;
+}
+
+.modal-title2 {
+  font-size: x-large;
+  margin-top: 1rem;
+  text-align: start;
+}
+
+.modal-body p {
+  color: gray;
 }
 
 .modal-title2,
@@ -261,6 +293,7 @@ li {
 
   .modal-dialog {
     align-items: center;
+    display: flex;
   }
 
   .modal-content {

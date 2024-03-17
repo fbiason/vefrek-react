@@ -62,7 +62,8 @@ const PaginaEmpresa = () => {
     const getLocationFromAddress = async (address) => {
         try {
             const responseJSON = await fetch(
-                `${process.env.REACT_APP_API_URL}api/getmap?address=${address}`, {
+                `${process.env.REACT_APP_API_URL}api/getmap?address=${address}`,
+                {
                     method: "GET",
                 }
             );
@@ -71,15 +72,15 @@ const PaginaEmpresa = () => {
             if (responseOBJ.success) {
                 setMap(
                     <iframe
-                    title="map"
-                    src={responseOBJ.url}
-                    width="100%"
-                    height={400}
-                    style={{ borderRadius: '2rem', border: '1px solid #000' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                />
+                        title="map"
+                        src={responseOBJ.url}
+                        width="100%"
+                        height={400}
+                        style={{ borderRadius: "2rem", border: "1px solid #000" }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    />
                 );
             } else {
                 setMap(
@@ -88,7 +89,6 @@ const PaginaEmpresa = () => {
                     </div>
                 );
             }
-
         } catch (error) {
             console.error("Error al obtener las coordenadas:", error);
         }
@@ -123,29 +123,19 @@ const PaginaEmpresa = () => {
                 url: "",
             },
         },
-        schedules: {
-            scheduleType: "",
-            personalized: {
-                lunes: { open1: "", close1: "", open2: "", close2: "" },
-                martes: { open1: "", close1: "", open2: "", close2: "" },
-                miercoles: { open1: "", close1: "", open2: "", close2: "" },
-                jueves: { open1: "", close1: "", open2: "", close2: "" },
-                viernes: { open1: "", close1: "", open2: "", close2: "" },
-                sabado: { open1: "", close1: "", open2: "", close2: "" },
-                domingo: { open1: "", close1: "", open2: "", close2: "" },
-            },
-            custom: {
-                open1: "",
-                close1: "",
-                open2: "",
-                close2: "",
-            }
-        }
+        schedule: {
+            opening: "",
+            closing: "",
+        },
     });
 
     const find = async () => {
         showSpinner(true);
-        const response = await findCompany("vefrek_website", vefrek_website, "-reviews.userEmail");
+        const response = await findCompany(
+            "vefrek_website",
+            vefrek_website,
+            "-reviews.userEmail"
+        );
         if (response.success) {
             const companyData = response.companyData;
             const imagesUrlsArr = companyData.images.images.map(
@@ -186,11 +176,13 @@ const PaginaEmpresa = () => {
                     closing: "",
                 },
                 creationdate: companyData.creationdate,
-                schedules: companyData.schedules,
             });
-                                                    
-            if (!companyData.geo.googleMapUrl) {                                                                //Si la emnpresa no tiene datos de geolocalizacion los buscamos
-                getLocationFromAddress(`${companyData.location},${companyData.city},${companyData.state}`);
+
+            if (!companyData.geo.googleMapUrl) {
+                //Si la emnpresa no tiene datos de geolocalizacion los buscamos
+                getLocationFromAddress(
+                    `${companyData.location},${companyData.city},${companyData.state}`
+                );
             } else {
                 setMap(
                     <iframe
@@ -203,14 +195,16 @@ const PaginaEmpresa = () => {
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
-                ); 
-            }; 
-                        
+                );
+            }
+
             /***************** Seteo calificaciones recibidas **********************/
 
             const reviewsArr = companyData.reviews;
             if (reviewsArr && reviewsArr.length > 0) {
-                const reviewsAverage = reviewsArr.reduce((acc, review) => acc + review.numberOfStars, 0) / reviewsArr.length;
+                const reviewsAverage =
+                    reviewsArr.reduce((acc, review) => acc + review.numberOfStars, 0) /
+                    reviewsArr.length;
                 setStars(
                     <div className="starsCont flex">
                         <p
@@ -235,7 +229,7 @@ const PaginaEmpresa = () => {
 
                 /***************** Seteo de comentarios **********************/
 
-                const reviewsArrJSX = reviewsArr.map((review) =>
+                const reviewsArrJSX = reviewsArr.map((review) => (
                     <div className="row container mt-5" key={review._id}>
                         <div className="col-6">
                             {" "}
@@ -249,16 +243,12 @@ const PaginaEmpresa = () => {
                             <h5>{"⭐⭐⭐⭐⭐".substring(0, review.numberOfStars)}</h5>{" "}
                         </div>
                         <div className="comentario-t">
-                        <p>
-                            {review.comment}
-                        </p>
+                            <p>{review.comment}</p>
                         </div>
                     </div>
-                )
+                ));
                 setComments(reviewsArrJSX);
-
             }
-
         } else if (!response.success) {
             swalPopUp("Ops", response.message, "warning");
             showSpinner(false);
@@ -337,65 +327,70 @@ const PaginaEmpresa = () => {
     };
 
     useEffect(() => {
-        
         (async () => {
             //Campo "timestamp" -> Es la ultima vez que se entro al anuncio
             const localStorageVisitsDataJSON = localStorage.getItem("companysVisits");
-            const localStorageVisitsDataOBJ = localStorageVisitsDataJSON ? JSON.parse(localStorageVisitsDataJSON) : null;
-            const companyArrIndex = localStorageVisitsDataOBJ ? localStorageVisitsDataOBJ.findIndex((companyData) => companyData.companyName === vefrek_website) : null;
-            const timeStampsDiff = typeof companyArrIndex === "number" && companyArrIndex !== -1 ? Date.now() - localStorageVisitsDataOBJ[companyArrIndex].timestamp : null;
+            const localStorageVisitsDataOBJ = localStorageVisitsDataJSON
+                ? JSON.parse(localStorageVisitsDataJSON)
+                : null;
+            const companyArrIndex = localStorageVisitsDataOBJ
+                ? localStorageVisitsDataOBJ.findIndex(
+                    (companyData) => companyData.companyName === vefrek_website
+                )
+                : null;
+            const timeStampsDiff =
+                typeof companyArrIndex === "number" && companyArrIndex !== -1
+                    ? Date.now() - localStorageVisitsDataOBJ[companyArrIndex].timestamp
+                    : null;
 
-            if (!localStorageVisitsDataOBJ || !timeStampsDiff || timeStampsDiff > (60000 * 60)) { //Cuenta una visita si el tiempo entre entradas al anuncio es mayor a 1h      
+            if (
+                !localStorageVisitsDataOBJ ||
+                !timeStampsDiff ||
+                timeStampsDiff > 60000 * 60
+            ) {
+                //Cuenta una visita si el tiempo entre entradas al anuncio es mayor a 1h
                 try {
                     const responseJSON = await fetch(
-                        `${process.env.REACT_APP_API_URL}api/addvisit?vefrek_website=${vefrek_website}&timestamp=${Date.now()}`,
+                        `${process.env.REACT_APP_API_URL
+                        }api/addvisit?vefrek_website=${vefrek_website}&timestamp=${Date.now()}`,
                         {
                             method: "POST",
                         }
-                    )
+                    );
                     const respOBJ = await responseJSON.json();
                     if (respOBJ.success) {
                         console.log(respOBJ.message);
                         if (!localStorageVisitsDataOBJ) {
-                            localStorage.setItem("companysVisits", JSON.stringify([{companyName: vefrek_website, timestamp: Date.now()}]));
+                            localStorage.setItem(
+                                "companysVisits",
+                                JSON.stringify([
+                                    { companyName: vefrek_website, timestamp: Date.now() },
+                                ])
+                            );
                             return;
                         } else if (!timeStampsDiff) {
-                            localStorageVisitsDataOBJ.push({companyName: vefrek_website, timestamp: Date.now()});
+                            localStorageVisitsDataOBJ.push({
+                                companyName: vefrek_website,
+                                timestamp: Date.now(),
+                            });
                         } else {
-                            localStorageVisitsDataOBJ[companyArrIndex].timestamp = Date.now();   
+                            localStorageVisitsDataOBJ[companyArrIndex].timestamp = Date.now();
                         }
-                        localStorage.setItem("companysVisits", JSON.stringify(localStorageVisitsDataOBJ));
+                        localStorage.setItem(
+                            "companysVisits",
+                            JSON.stringify(localStorageVisitsDataOBJ)
+                        );
                     } else {
                         throw new Error(`${respOBJ.message}`);
                     }
                 } catch (err) {
-                    err instanceof Error ?
-                        console.log(`Error al agregar visita: ${err.message}`) :
-                        console.log(`Error al agregar visita: Error desconocido`);
+                    err instanceof Error
+                        ? console.log(`Error al agregar visita: ${err.message}`)
+                        : console.log(`Error al agregar visita: Error desconocido`);
                 }
             }
         })();
-         
-    }, [vefrek_website])
-    
-    const setScheduleType = () => {
-        if (companyData.schedules) {
-            switch (companyData.schedules.scheduleType) {
-                case "P":
-                    return "";
-                case "LaV":
-                    return "Lunes a Viernes";
-                case "LaS":
-                    return "Lunes a Sábado";
-                case "LaD":
-                    return "Lunes a Domingo";
-                default:
-                    return "";
-            }
-        } else {
-            return "";
-        }        
-    }
+    }, [vefrek_website]);
 
     return (
         <section className="background-empresa overflow-x-hidden">
@@ -420,8 +415,15 @@ const PaginaEmpresa = () => {
                                             {stars}
                                             <p>{companyData.slogan}</p>
                                         </div>
-                                        <div className="mt-4 text-left">
-                                            <p>Fecha de Carga: {new Date(companyData.creationdate).toLocaleString().split(",")[0]}</p>
+                                        <div className="mt-4 text-left p-3">
+                                            <p>
+                                                Fecha de Carga:{" "}
+                                                {
+                                                    new Date(companyData.creationdate)
+                                                        .toLocaleString()
+                                                        .split(",")[0]
+                                                }
+                                            </p>
                                         </div>
                                     </div>
 
@@ -430,8 +432,8 @@ const PaginaEmpresa = () => {
                                             <div className="image-container">
                                                 <img
                                                     className={`img-fluid cursor-pointer ${imagenSeleccionada === 0
-                                                        ? "imagen-seleccionada"
-                                                        : ""
+                                                            ? "imagen-seleccionada"
+                                                            : ""
                                                         }`}
                                                     src={imagenes[0]}
                                                     alt=""
@@ -448,8 +450,8 @@ const PaginaEmpresa = () => {
                                                 <div key={index}>
                                                     <img
                                                         className={`h-72 w-128 cursor-pointer ${imagenSeleccionada === index + 1
-                                                            ? "imagen-seleccionada"
-                                                            : ""
+                                                                ? "imagen-seleccionada"
+                                                                : ""
                                                             } img-fluid`}
                                                         src={imagenes[index + 1]}
                                                         alt=""
@@ -484,7 +486,7 @@ const PaginaEmpresa = () => {
                                 <div className="perfil-card-element1 mt-3 card-empresa ">
                                     <div className="reseña-container text-left">
                                         <h2>Opiniones Destacadas</h2>
-                                  
+
                                         {comments}
                                         <div class="container">
                                             <a href="/">ver más comentarios...</a>
@@ -494,7 +496,7 @@ const PaginaEmpresa = () => {
                             </div>
                         </div>
                     </div>
-          
+
                     {/* Columna 2 - Ubicación y Redes Sociales */}
                     <div className="negocio-2 col-md-4 col-sm-12 flex-column">
                         <div className="perfil-card-element2 card-empresa h-100">
@@ -505,12 +507,12 @@ const PaginaEmpresa = () => {
                                     <p>{`Direccion: ${companyData.location},  ${companyData.city}, ${companyData.state},`}</p>
                                 </div>
                                 <div className="data-neg">
-                                <a
-                                    className="telefono-container"
-                                    href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}
-                                >
-                                    <p>{`Teléfono: ${companyData.phone}`}</p>
-                                </a>
+                                    <a
+                                        className="telefono-container"
+                                        href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}
+                                    >
+                                        <p>{`Teléfono: ${companyData.phone}`}</p>
+                                    </a>
                                 </div>
                                 <div className="redes-sociales-container d-flex justify-content-start">
                                     {" "}
@@ -618,63 +620,47 @@ const PaginaEmpresa = () => {
                                             <tr>
                                                 <th colSpan="2" className="table-headline">
                                                     <span style={{ fontSize: "18px" }}>
-                                                        Horario:  {
-                                                           setScheduleType(companyData.schedules ? companyData.schedules.scheduleType : null)
-                                                        }
+                                                        Horarios de Apretura
                                                     </span>
                                                 </th>
                                             </tr>
                                         </thead>
-                                        
-                                        {   
-                                            companyData.schedules && companyData.schedules.scheduleType === "P" &&              
-                                            <tbody>
-                                                {
-                                                    ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"].map((day) => {
-                                                        const dayNormalized = 
-                                                            day.normalize("NFD")                                           //Saca acentos y pasa a minuscula
-                                                            .replace(/[\u0300-\u036f]/g, "")
-                                                            .toLocaleLowerCase()
-                                                        return (
-                                                            <tr key={day}>
-                                                                <th>{day}</th>
-                                                                {
-                                                                    companyData.schedules.personalized[dayNormalized].open1 && companyData.schedules.personalized[dayNormalized].close1 ?   
-                                                                    <>
-                                                                        <td>{companyData.schedules.personalized[dayNormalized].open1} - {companyData.schedules.personalized[dayNormalized].close1}</td>
-                                                                        <td>{companyData.schedules.personalized[dayNormalized].open2} - {companyData.schedules.personalized[dayNormalized].close2}</td>
-                                                                    </> :
-                                                                    <>
-                                                                        <td>Cerrado</td>
-                                                                        <td></td>
-                                                                    </>
-                                                                }      
-
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }                                                              
-                                            </tbody>
-                                        }
-
-                                        {   
-                                            (
-                                                companyData.schedules && 
-                                                (
-                                                    companyData.schedules.scheduleType === "LaV" || 
-                                                    companyData.schedules.scheduleType === "LaS" ||   
-                                                    companyData.schedules.scheduleType === "LaD" 
-                                                )
-                                            )
-                                            &&          
-                                            <tbody>
-                                                <tr>
-                                                    <td>{companyData.schedules.custom.open1} - {companyData.schedules.custom.close1}</td>
-                                                    { companyData.schedules.custom.open2 && <td>{companyData.schedules.custom.open2} - {companyData.schedules.custom.close2}</td>}
-                                                </tr>
-                                            </tbody>
-                                        }
-
+                                        <tbody>
+                                            <tr>
+                                                <th>Lunes</th>
+                                                <td>08:00 - 16:00</td>
+                                                <td>08:00 - 16:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Martes</th>
+                                                <td>08:00 - 18:00</td>
+                                                <td>08:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Miércoles</th>
+                                                <td>09:30 - 12:00</td>
+                                                <td>08:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jueves</th>
+                                                <td>08:00 - 18:00</td>
+                                                <td>08:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Viernes</th>
+                                                <td>10:00 - 16:00</td>
+                                                <td>08:00 - 18:00</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sábado</th>
+                                                <td>08:00 - 13:00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Domingo</th>
+                                                <td>Cerrado</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
 

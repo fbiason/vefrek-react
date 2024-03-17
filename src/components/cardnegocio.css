@@ -1,30 +1,42 @@
+.container-card {
+  margin-bottom: 20px;
+  padding: 1rem;
+}
+
 .cardNegocio {
   width: 100%;
-  height: 30em; /* Establecer una altura fija */
-  margin: 20px;
-  border-radius: 6px;
-  overflow: hidden; /* Ocultar el contenido que se desborde */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde suave */
-  background-color: #333; /* Color de fondo más oscuro */
-  transition: all 400ms ease-out;
+  height: 30em;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #333333b6;
   cursor: default;
   color: #fff; /* Color de texto más claro */
+
+  border-radius: 10px; /* Borde redondeado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: transform 0.3s ease-in-out; /* Transición al pasar el mouse */
 }
 
 .cardNegocio:hover {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al hacer hover */
-  transform: translateY(-3%);
+  transform: translateY(-5px);
+}
+
+.cardNegocio figure {
+  position: relative;
+  overflow: hidden;
 }
 
 .cardNegocio img {
   width: 100%;
   height: 210px;
+  display: block;
 }
 
 .cardNegocio .contenido-card {
-  padding: 15px;
   text-align: center;
+  padding: 20px;
 }
 
 .cardNegocio .contenido-card h3 {
@@ -33,13 +45,24 @@
 }
 
 .cardNegocio .contenido-card h4 {
-  font-size: 1.3em;
-  color: #fff; /* Color del título */
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+.contenido-card h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #e3e3e3;
+  font-weight: 800;
 }
 
 .cardNegocio .contenido-card p {
   line-height: 1.8;
-  color: #ddd; /* Color del texto regular */
+  margin: 0;
+  margin-bottom: 5px;
+  color: #f5f5f5; /* Color del texto */
 }
 
 .cardNegocio .contenido-card a {
@@ -48,7 +71,8 @@
   margin-top: 10px;
   text-decoration: none;
   color: #14ba75;
-  border: 1px solid #14ba75;
+  background-color: #241e4e;
+  border: 1.5px solid #14ba75;
   border-radius: 4px;
   transition: all 400ms ease;
   margin-bottom: 5px;
@@ -57,6 +81,7 @@
 .cardNegocio .contenido-card a:hover {
   background: #14ba75;
   color: #fff;
+  text-decoration: underline;
 }
 
 /*==== INICIO FAVORITOS ======*/
@@ -66,16 +91,15 @@
 }
 
 .favorito {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  overflow: hidden;
-  flex-direction: row-reverse;
-  justify-content: end;
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 2;
+}
+
+.favoriteHeart {
+  color: red; /* Color del corazón de favorito */
+  font-size: 24px; /* Tamaño del corazón de favorito */
+  cursor: pointer;
 }
 
 .favorito-0 {
@@ -110,11 +134,22 @@
 
 /*===FIN STAR ===*/
 
-@media only screen and (min-width: 320px) and (max-width: 768px) {
-  .container-card {
-    flex-wrap: wrap;
-  }
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 768px) {
   .cardNegocio {
-    margin: 15px;
+    height: auto;
+  }
+}
+
+/* Estilos adicionales para dispositivos móviles */
+@media only screen and (max-width: 576px) {
+  .container-card {
+    padding: 0.5rem;
+  }
+  .cardNegocio .contenido-card {
+    padding: 10px;
+  }
+  .contenido-card h5 {
+    font-size: 1rem;
   }
 }

@@ -21,7 +21,6 @@ const CardNegocio = (props) => {
     return text;
   };
 
-
   const handleFavorites = async () => {
     if (heartRef.current.checked === false) {
       showSpinner(true);
@@ -80,8 +79,10 @@ const CardNegocio = (props) => {
           </figure>
           <div className="contenido-card">
             <h5>{props.subcategory}</h5>
-            <h4>{truncateText(props.name, maxLength)}</h4> {/* Truncar el nombre */}
-            <p>{`📍: ${truncateText(props.location, maxLength)}`}</p> {/* Truncar la dirección */}
+            <h4>{truncateText(props.name, maxLength)}</h4>{" "}
+            {/* Truncar el nombre */}
+            <p>{`📍: ${truncateText(props.location, maxLength)}`}</p>{" "}
+            {/* Truncar la dirección */}
             <p>{`📞: ${props.phone}`}</p>
             <Link to={`/${props.vefrek_website}`}> Más Info </Link>
           </div>

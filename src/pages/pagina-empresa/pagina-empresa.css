@@ -22,9 +22,20 @@
     );
 }
 
+.nombre-slogan-container h2 {
+  font-size: xx-large;
+}
+
+.informacion-container h2,
+.reseña-container h2 {
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 552px) {
   .background-empresa {
-    padding-top: 5rem;}
+    padding-top: 5rem;
+  }
 }
 
 /*--- Nombre y Slogan Empresa ---*/
@@ -91,6 +102,10 @@
 
 .slick-list {
   box-sizing: none;
+}
+
+.logo-container img {
+  border-radius: 5rem;
 }
 
 .perfil-card-element1 img {
@@ -357,10 +372,6 @@
     font-size: 14px;
   }
 
-  .reportar {
-    width: 100%;
-  }
-
   .perfil-card-element2 {
     width: 100%;
   }
@@ -388,7 +399,7 @@
 
 .starsNumbers {
   margin: 0;
-  color: #241E4E !important;
+  color: #241e4e !important;
   font-weight: 500;
 }
 
@@ -420,7 +431,7 @@
 
 .reseña-container .container a,
 .fab {
-  color: #241E4E;
+  color: #241e4e;
 }
 
 .data-neg p,
@@ -432,9 +443,8 @@
 .nombre-slogan-container p {
   color: black;
   text-align: left;
+  margin: 1rem;
 }
-
-
 
 /*--- Colmnas negocio ---*/
 

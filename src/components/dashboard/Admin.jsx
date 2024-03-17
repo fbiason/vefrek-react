@@ -36,7 +36,7 @@ const Admin = () => {
 
       <section className="background-item">
         <div>
-          <h1>Admin</h1>
+          <h1 className="titulo-dash">Admin</h1>
         </div>
       </section>
     </main>
