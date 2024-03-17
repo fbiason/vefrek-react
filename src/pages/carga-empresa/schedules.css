@@ -2,10 +2,8 @@
   width: 100%;
   padding: 20px 0;
   overflow-x: auto;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -72,7 +70,7 @@
 
 .horariosTitle {
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .horariosOption {

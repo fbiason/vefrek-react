@@ -325,7 +325,7 @@ const NavBar = () => {
     <header id="header" className="fixed-top">
       <div className="row align-items-center">
         {/* Logo */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block">
+        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block logo-container">
           <Link to="/">
             <img
               src="/images/logos/logo-vefrek.png"

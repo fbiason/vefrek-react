@@ -1,15 +1,26 @@
+.neg-reco {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-top: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.neg-reco h5 {
+  color: #333;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.neg-reco h1 {
+  color: #000;
+  font-size: 3rem;
+  margin-top: 10px;
+}
+
 .card-portfolio {
   margin-top: 1rem;
 }
-
-/*.filter-button {
-  padding: 0.75rem 1.5rem;
-  margin-right: 0.5rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
-    border 0.3s ease-in-out;
-}*/
 
 .filter-hero {
   display: flex;
@@ -59,5 +70,32 @@
   .filter-hero {
     display: block;
     justify-content: initial;
+  }
+}
+
+@media (max-width: 1018px) {
+  .hero {
+    padding: 1rem 3rem 3rem 3rem;
+    overflow: hidden;
+    box-sizing: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem 3rem 3rem 3rem;
+    overflow: hidden;
+    box-sizing: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .container.hero h5 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .container.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 16px;
   }
 }

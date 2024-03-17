@@ -1,30 +1,270 @@
-.editarEmpresa_logo {
-    width: 70px;
-    height: 70px;
+.bg-EditarEpresa {
+  min-height: fit-content;
+  align-items: center;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
 }
 
-.editarEmpresa_imagenes_cont {
-    width: 100%;
-    margin: 10px 0;
-    justify-content: flex-start;
+.form-EditarEpresa {
+  margin-top: 8rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  border-radius: 1rem;
+  border: 1px solid grey;
+  min-height: fit-content;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.form-EditarEpresa h2 {
+  font-size: xx-large;
+}
+
+.form-EditarEpresa p {
+  color: whitesmoke;
+}
+
+.form-EditarEpresa h2,
+.form-EditarEpresa label {
+  color: white;
+}
+
+.cat-EditarEmpresa {
+  margin-top: 2rem;
+}
+
+.cat-EditarEmpresa .block {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.cat-EditarEmpresa select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.75rem; /* Borde más redondeado */
+  padding: 0.75rem 2.5rem 0.75rem 1rem; /* Ajuste de espaciado */
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #4a5568;
+  width: 100%;
+  max-width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cat-EditarEmpresa select:hover,
+.cat-EditarEmpresa select:focus {
+  background-color: #e2e8f0;
+  border-color: #a0aec0;
+  border-bottom-left-radius: 0; /* Dejamos el borde inferior izquierdo cuadrado */
+  border-bottom-right-radius: 0; /* Dejamos el borde inferior derecho cuadrado */
+}
+
+.cat-EditarEmpresa select::after {
+  content: "\25BE"; /* Unicode para el icono de flecha hacia abajo */
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #4a5568;
+}
+
+.cat-EditarEmpresa select option {
+  border-radius: 0.5rem;
+}
+/* Inicio Seccion 2 */
+.sec2-EditarEmpresa {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.sec2-EditarEmpresa .block {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.sec2-EditarEmpresa input[type="text"],
+.sec2-EditarEmpresa textarea {
+  background-color: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #4a5568;
+  width: 100%;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sec2-EditarEmpresa input[type="text"]:focus,
+.sec2-EditarEmpresa textarea:focus {
+  background-color: #e2e8f0;
+  border-color: #a0aec0;
+}
+
+.sec2-EditarEmpresa textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.rs-EditarEmpresa {
+  width: 100%;
+  margin-top: 3rem;
+  max-width: 80%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.social-EditarEmpresa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.social-EditarEmpresa label {
+  width: 40px;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.sec2-EditarEmpresa .col-md-6 {
+  flex: 0 0 calc(50% - 0.5rem); /* Tamaño de las columnas */
+}
+
+/* Inicio Seccion 3 */
+
+.sec3-EditarEmpresa {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.sec3-EditarEmpresa label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.editarEmpresa_logo {
+  max-width: 100px;
+  border-radius: 3rem;
+  max-height: 100px;
+}
+
+.company_logo_input {
+  display: none;
+}
+
+.cargar-img {
+  cursor: pointer;
 }
 
 .editarEmpresa_imagen_cont {
-    position: relative;
-    margin: 5px 10px;
+  position: relative;
+  margin-right: 1rem; /* Espacio entre las imágenes */
 }
 
 .editarEmpresa_imagen {
-    height: 100px;
-    width: 150px;
-    object-fit: contain;
+  max-width: 150px; /* Tamaño máximo de las imágenes */
+  max-height: 150px;
 }
 
 .editarEmpresa_delete_icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+/* Estilos para el botón de carga de imágenes */
+.cargar-img input[type="file"] {
+  display: none;
+}
+
+.cargar-img:before {
+  content: "Cargar imágenes";
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #4a5568;
+  color: #4a5568;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cargar-img:hover:before {
+  background-color: #4a5568;
+  color: white;
+}
+
+/*============= Mobile ================*/
+
+@media (max-width: 1400px) {
+  .form-EditarEpresa {
+    width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .form-EditarEpresa {
+    margin-top: 4rem;
+    width: 80%;
+  }
 }

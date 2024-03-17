@@ -226,9 +226,13 @@
   justify-content: center;
 }
 
+.logo-container {
+  text-align: center;
+}
+
 .logo-nav {
+  display: inline-block;
   max-width: 100%;
-  height: auto;
 }
 
 /*====== RESPONSIVE ======*/
