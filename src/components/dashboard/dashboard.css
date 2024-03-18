@@ -37,24 +37,7 @@
     grid-template-columns: 100%; /* Cambiar a una columna en dispositivos medianos */
     margin: 0; /* Eliminar el margen para ajustar completamente a la pantalla */
     min-width: auto;
-  }
-}
-
-@media (max-width: 720px) {
-  .dashboardMain {
-    grid-template-columns: 100%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .dashboardMain {
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .dashboardMain {
-    flex-direction: row;
+    position: relative;
   }
 }
 

@@ -70,18 +70,18 @@
   padding: 10px;
   margin-top: 10px;
   text-decoration: none;
-  color: #14ba75;
-  background-color: #241e4e;
-  border: 1.5px solid #14ba75;
+  color: white;
+  background: #14ba75;
+  border: 1.5px solid white;
   border-radius: 4px;
   transition: all 400ms ease;
   margin-bottom: 5px;
 }
 
 .cardNegocio .contenido-card a:hover {
-  background: #14ba75;
   color: #fff;
   text-decoration: underline;
+  background-color: #241e4e;
 }
 
 /*==== INICIO FAVORITOS ======*/

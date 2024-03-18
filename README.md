@@ -8,4 +8,6 @@ Blanco: #FFFFFF
 //Actualizaciones 18 Marzo:
 
 - CargaEmpresa: ajuste a versión mobile.
-  -EditarEmpresa: ajuste a versión mobile.
+- EditarEmpresa: ajuste a versión mobile.
+- Categorias: tamaño cards.
+- Dashboard - Perfil: mobile.

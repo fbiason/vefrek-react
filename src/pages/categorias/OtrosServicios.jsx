@@ -45,7 +45,7 @@ const OtrosServicios = () => {
     const response = await findCompanys(matchJSON, aggregateQueryJSON);
     if (response.success && response.companysData) {
       const jsxArr = response.companysData.map((company) => (
-        <div className="col-md-4 col-xl-4 card-portfolio" key={company._id}>
+        <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
           <CardNegocio
             subcategory={company.subcategory}
             name={company.name}
