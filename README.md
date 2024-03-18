@@ -11,3 +11,7 @@ Blanco: #FFFFFF
 - EditarEmpresa: ajuste a versión mobile.
 - Categorias: tamaño cards.
 - Dashboard - Perfil: mobile.
+- Dashboard - Informe: mobile.
+- Dashboard - Favoritos: mobile.
+
+/================================/

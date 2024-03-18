@@ -720,6 +720,7 @@
   .favoritos {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    justify-content: center;
   }
 
   .content-fav {

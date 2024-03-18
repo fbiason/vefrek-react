@@ -178,10 +178,10 @@ const Informe = () => {
           <div className="container card-informe row">
             {show && (
               <>
-                <div className="col-md-6">
+                <div className="col-md-12">
                   <p>Seleccione su empresa:</p>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-12 mt-3">
                   <select
                     className="form-select"
                     onChange={(e) => setChart(e.target.value)}
@@ -193,62 +193,41 @@ const Informe = () => {
             )}
 
             <div className="row">
-              <div className="col-xl-6 panel post col-md-12">
-                <Link
-                  href="/Informe"
-                  className="text-decoration-none d-block position-relative"
-                >
-                  <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3">
-                    <FontAwesomeIcon icon={faBookmark} size="2x" />
-                  </span>
-                  <span className="ms-5">8 </span>
-                  <br />
-                  Guardados
-                </Link>
+              <div className="informe-datos">
+                <div className="icono-y-numero">
+                  <FontAwesomeIcon icon={faBookmark} className="icono" />
+                  <h1>2</h1>
+                </div>
+                <p>Guardados</p>
               </div>
-              <div className="col-xl-6 panel comment col-md-12">
-                <Link
-                  href="/Informe"
-                  className="text-decoration-none d-block position-relative"
-                >
-                  <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3">
-                    <FontAwesomeIcon icon={faComment} size="2x" />
-                  </span>
-                  <span className="ms-5">39 </span>
-                  <br />
-                  Reseñas recibidas
-                </Link>
+
+              <div className="informe-datos">
+                <div className="icono-y-numero">
+                  <FontAwesomeIcon icon={faComment} className="icono" />
+                  <h1>4.3</h1>
+                </div>
+                <p>Promedio de valoraciones</p>
               </div>
-              <div className="col-xl-6 panel page col-md-12">
-                <Link
-                  href="/Informe"
-                  className="text-decoration-none d-block position-relative"
-                >
-                  <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3">
-                    <FontAwesomeIcon icon={faCommentAlt} size="2x" />
-                  </span>
-                  <span className="ms-5">5 </span>
-                  <br />
-                  Comentarios recibidos
-                </Link>
+
+              <div className="informe-datos">
+                <div className="icono-y-numero">
+                  <FontAwesomeIcon icon={faCommentAlt} className="icono" />
+                  <h1>5</h1>
+                </div>
+                <p>Comentarios recibidos</p>
               </div>
-              <div className="col-xl-6 panel user col-md-12">
-                <Link
-                  href="/Informe"
-                  className="text-decoration-none d-block position-relative"
-                >
-                  <span className="position-absolute top-0 start-0 translate-middle mt-3 ms-3">
-                    <FontAwesomeIcon icon={faBuilding} size="2x" />
-                  </span>
-                  <span className="ms-5">400 </span>
-                  <br />
-                  Empresas cargadas
-                </Link>
+
+              <div className="informe-datos">
+                <div className="icono-y-numero">
+                  <FontAwesomeIcon icon={faBuilding} className="icono" />
+                  <h1>10</h1>
+                </div>
+                <p>Empresas Cargadas</p>
               </div>
             </div>
 
             {show && (
-              <div className="col-md-6">
+              <div className="col-md-6 mt-5 visitas">
                 <div className="card custom-card">
                   <h3 className="chart-lbl">Visitas</h3>
                   <div id="chart"></div>

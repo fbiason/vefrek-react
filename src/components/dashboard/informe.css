@@ -8,91 +8,63 @@
   border-bottom-right-radius: 2rem;
 }
 
-/*--- Contenido info ---*/
-
 .contenido-info {
   margin: 15px;
   padding: 20px;
   border-radius: 15px;
 }
-/*--- card informe ---*/
 
-.card-informe {
-  padding: 20px;
-  font: 16px/22px "Open Sans", sans-serif;
-  display: flex; /* Añadido */
-  flex-wrap: wrap; /* Añadido */
+.form-select {
+  width: 30%;
 }
 
-.panel {
+/*==============================*/
+
+.informe-datos {
+  background-color: #279824;
   position: relative;
-  width: calc(25% - 20px); /* Añadido */
+  width: calc(25% - 20px); /* Ajustar según sea necesario */
   height: 160px;
   margin: 10px;
-  font-size: 20px;
   font-weight: 600;
   color: #fff;
-  overflow: hidden;
   border-radius: 8px;
-  background-color: #b8aa0e; /* Añadido */
-  display: flex; /* Añadido */
-  align-items: center; /* Añadido */
-  justify-content: center; /* Añadido */
-}
-
-.panel a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.panel span {
-  font-size: 96px;
-  font-weight: 600;
-  line-height: 96px;
-}
-
-.panel.post {
-  background-color: #b8aa0e;
-}
-
-.panel.comment {
-  background-color: #0377c0;
-}
-
-.panel.page {
-  background-color: #279824;
-}
-
-.panel.user {
-  background-color: #fc1c3e;
-}
-
-.panel:after {
-  position: absolute;
-  font-family: FontAwesome;
-  color: rgba(0, 0, 0, 1);
-  z-index: 1;
-  transition: all 0.5s;
-  line-height: normal;
-}
-
-.panel:hover:after {
-  transition: all 0.5s;
-}
-
-
-/*======LINE CHART =======*/
-
-.card-3 {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 2px 2px 5px 2px #d7d7d7;
-  margin-top: 2rem;
-  width: auto;
+  overflow: hidden; /* Nuevo */
+  z-index: 1; /* Capa más alta */
 }
 
+.icono {
+  position: absolute;
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Centrar completamente */
+  color: rgba(52, 51, 51, 0.5); /* Hacer más transparente */
+  font-size: 15rem;
+  z-index: -1; /* Capa más baja */
+}
+
+.icono-y-numero {
+  position: relative;
+  z-index: 0; /* Capa intermedia */
+}
+
+.informe-datos h1 {
+  font-size: 4rem; /* Tamaño del número */
+  margin: 0;
+}
+
+.informe-datos p {
+  font-size: 1.5rem;
+  position: relative;
+  margin: 0;
+  color: white;
+}
+
+/*======LINE CHART =======*/
 .chart-lbl {
   margin-left: 5%;
   padding: 0.5rem;
@@ -106,4 +78,36 @@
   height: 2px;
   margin: auto;
   width: 98%;
+}
+
+/*===================*/
+@media (max-width: 768px) {
+  .informe-datos {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .informe-datos {
+    width: 100%;
+  }
+
+  .form-select {
+    width: 100%;
+  }
+
+  .contenido-info {
+    margin: 15px;
+    padding: 0;
+    border-radius: 15px;
+  }
+
+  .info {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .visitas {
+    padding: 0;
+  }
 }
