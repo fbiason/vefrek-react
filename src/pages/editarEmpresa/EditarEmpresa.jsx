@@ -167,27 +167,26 @@ export default function EditarEmpresa() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const companyData = formRef.current;
+        const companyData = formRef.current;        
         const completeData = new FormData();
+          
         completeData.append("companyTextData", JSON.stringify(companyData));
         const logoInput = document.querySelector(".company_logo_input");
         const logoFile = logoInput.files[0];
         completeData.append("logo", logoFile);
         const imagesInput = document.querySelector(".company_images_input");
         const imagesFiles = imagesInput.files;
-
-        if (
-            !verifyIfHasChanges(initialData.current, formRef.current) &&
-            logoInput.files.length === 0 &&
-            imagesInput.files.length === 0
-        ) {
+        
+        if ( !verifyIfHasChanges(initialData.current, formRef.current) && logoInput.files.length === 0 && imagesInput.files.length === 0 ) {
             swalPopUp("Ops!", "No hay cambios para guardar", "warning");
             return;
         }
+            
 
         for (const file of imagesFiles) {
             completeData.append("images", file);
         }
+
         showSpinner(true);
         const response = await updateCompany(id, completeData);
         if (response.success) {
@@ -215,7 +214,7 @@ export default function EditarEmpresa() {
         }
         const response = await findCompany("_id", id, "");
         const companyData = response.companyData;
-
+                     
         if (!response.success && !response.message.includes("pausado")) {
             showSpinner(false);
             swalPopUp("Ops!", response.message, "error");
@@ -273,6 +272,8 @@ export default function EditarEmpresa() {
             },
             schedules: companyData.schedules,
         };
+
+        auxFormData.schedules.scheduleType === "P" ? setHDef(false) : setHDef(true);            /*Setea la visualización de tipo de horarios al entrar en la pagina */
 
         setFormData(structuredClone(auxFormData));
         initialData.current = structuredClone(auxFormData);
@@ -407,7 +408,7 @@ export default function EditarEmpresa() {
                                         <td className="horariosDias">{dia}</td>
                                         <td>
                                             <select
-                                                value={formData.schedules.personalized[dia].open1}
+                                                value={formData.schedules && formData.schedules.personalized ? formData.schedules.personalized[dia].open1 : ""}
                                                 defaultValue=""
                                                 onChange={(e) => handleInputChange(dia, "open1", e)}
                                             >
@@ -421,7 +422,7 @@ export default function EditarEmpresa() {
                                         </td>
                                         <td>
                                             <select
-                                                value={formData.schedules.personalized[dia].close1}
+                                                value={formData.schedules && formData.schedules.personalized ? formData.schedules.personalized[dia].close1 : ""}
                                                 defaultValue=""
                                                 onChange={(e) => handleInputChange(dia, "close1", e)}
                                             >
@@ -438,7 +439,7 @@ export default function EditarEmpresa() {
                                         <td className="horariosDias bottomCells"></td>
                                         <td className="bottomCells">
                                             <select
-                                                value={formData.schedules.personalized[dia].open2}
+                                                value={formData.schedules && formData.schedules.personalized ? formData.schedules.personalized[dia].open2 : ""}
                                                 defaultValue=""
                                                 onChange={(e) => handleInputChange(dia, "open2", e)}
                                             >
@@ -452,7 +453,7 @@ export default function EditarEmpresa() {
                                         </td>
                                         <td className="bottomCells">
                                             <select
-                                                value={formData.schedules.personalized[dia].close2}
+                                                value={formData.schedules && formData.schedules.personalized ? formData.schedules.personalized[dia].close2 : ""}
                                                 defaultValue=""
                                                 onChange={(e) => handleInputChange(dia, "close2", e)}
                                             >
@@ -815,9 +816,9 @@ export default function EditarEmpresa() {
                         <i className="obligatorio">* </i>Horarios:{" "}
                     </label>
                     <select
-                        defaultValue="LaV"
                         className="horariosOption"
                         onChange={setTipoHorarios}
+                        value = {formData.schedules.scheduleType}
                     >
                         <option value="LaV">Lunes a Viernes</option>
                         <option value="LaS">Lunes a Sábado</option>

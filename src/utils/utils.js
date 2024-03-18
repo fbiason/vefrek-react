@@ -1,19 +1,19 @@
-export const verifyIfHasChanges = (childObject, parentObject) => {
+export const verifyIfHasChanges = (form1, form2) => {
     let hasChanged = false;
-    const verify = (childObject, parentObject) => {
+    const verify = (form1, form2) => {
         if (hasChanged) return;
-        for (const key in childObject) {
-            if (typeof childObject[key] === "object") {
-                verify(childObject[key], parentObject[key]);
+        for (const key in form1) {
+            if (typeof form1[key] === "object") {
+                verify(form1[key], form2[key]);
             } else {
-                if (childObject[key] !== parentObject[key]) {
+                if (form1[key] !== form2[key]) {
                     hasChanged = true;
                     return;
                 }
             }
         }
     }
-    verify(childObject, parentObject);
+    verify(form1, form2);
     return hasChanged;
 }
 
