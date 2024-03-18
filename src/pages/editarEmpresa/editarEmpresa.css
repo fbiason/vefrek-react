@@ -244,6 +244,7 @@
   padding: 8px 16px;
   border: 2px solid #4a5568;
   color: #4a5568;
+  background-color: #14ba75;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
@@ -252,6 +253,26 @@
 .cargar-img:hover:before {
   background-color: #4a5568;
   color: white;
+}
+
+/* Estilos para el contenedor de la cuadrícula */
+.columna-rs-editar {
+  display: grid;
+  grid-template-columns: repeat(
+    1,
+    minmax(0, 1fr)
+  ); /* Una columna en dispositivos pequeños */
+  gap: 0.5rem; /* Espacio entre las filas */
+}
+
+/* Estilos específicos para dispositivos medianos (sm) */
+@media (min-width: 640px) {
+  .columna-rs-editar {
+    grid-template-columns: repeat(
+      6,
+      minmax(0, 1fr)
+    ); /* Seis columnas en dispositivos medianos */
+  }
 }
 
 /*============= Mobile ================*/
@@ -266,5 +287,12 @@
   .form-EditarEpresa {
     margin-top: 4rem;
     width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .rs-EditarEmpresa {
+    padding: 0.5rem;
+    max-width: 100%;
   }
 }
