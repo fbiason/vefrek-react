@@ -16,25 +16,10 @@ import { Link, useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 
 const NegociosDash = () => {
-  const [activeNavItem, setActiveNavItem] = useState(5);
-  const navigate = useNavigate();
-
-  const handleNavItemClick = (index) => {
-    setActiveNavItem(index);
-  };
-
-  const menuItems = [
-    { icon: "fa-house", text: "Inicio", to: "/Dashboard" },
-    { icon: "fa-user", text: "Perfil", to: "/Perfil" },
-    { icon: "fa-chart-bar", text: "Informe", to: "/Informe" },
-    { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
-    { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
-    { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
-    { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
-  ];
-  const { showSpinner } = useContext(SpinnerContext);
   const [companysData, setCompanysData] = useState([]);
   const { userData } = useContext(UserContext);
+  const { showSpinner } = useContext(SpinnerContext);
+  const navigate = useNavigate();
 
   const deleteComp = async (id) => {
     const response = await deleteCompanyById(id);
@@ -91,48 +76,45 @@ const NegociosDash = () => {
     if (response.success && response.companysData) {
       const companysDataFromDB = response.companysData;
       const companysDataJSX = companysDataFromDB.map((company) => (
-        <div className="row-editar-empresa flex" key={company._id}>
-          <div className="col-editar-empresa">
+        <div className="row row-editar-empresa" key={company._id}>
+          <div className="col-12 col-md-6 mb-2 mt-3">
             <span>{company.name}</span>
           </div>
-          <div className="col-editar-empresa">
+          <div className="col-12 col-md-6 mb-2 mt-3">
             <span>{company.location}</span>
           </div>
-          <Link
-            to={`/EditarEmpresa/${company._id}`}
-            className="col-editar-empresa"
-          >
-            <span role="img" aria-label="Editar">
-              ✏️ Editar
-            </span>
-          </Link>
-          {(company.play && (
-            <div
-              className="col-editar-empresa"
-              onClick={handleCompnayState(company._id, false)}
+          <div className="col-12 col-md-4 mb-2 mt-3">
+            <Link
+              to={`/EditarEmpresa/${company._id}`}
+              className="btn btn-primary btn-editar"
             >
-              <span role="img" aria-label="Pausar">
+              ✏️ Editar
+            </Link>
+          </div>
+          <div className="col-12 col-md-4 mb-2 mt-3">
+            {(company.play && (
+              <button
+                className="btn btn-warning btn-pausar"
+                onClick={handleCompnayState(company._id, false)}
+              >
                 ⏸️ Pausar
-              </span>
-            </div>
-          )) ||
-            (!company.play && (
-              <div
-                className="col-editar-empresa"
+              </button>
+            )) || (
+              <button
+                className="btn btn-success btn-eliminar"
                 onClick={handleCompnayState(company._id, true)}
               >
-                <span role="img" aria-label="Pausar">
-                  ▶️ Reactivar
-                </span>
-              </div>
-            ))}
-          <div
-            className="col-editar-empresa"
-            onClick={() => deleteCompanyConfirm(company._id)}
-          >
-            <span role="img" aria-label="Eliminar">
+                ▶️ Reactivar
+              </button>
+            )}
+          </div>
+          <div className="col-12 col-md-4 mb-2 mt-3">
+            <button
+              className="btn btn-danger btn-mobile"
+              onClick={() => deleteCompanyConfirm(company._id)}
+            >
               🗑️ Eliminar
-            </span>
+            </button>
           </div>
         </div>
       ));
@@ -156,7 +138,6 @@ const NegociosDash = () => {
     if (userData.isLogged) find();
     // eslint-disable-next-line
   }, [userData]);
-
   return (
     <main className="dashboardMain">
       <NavBarDash></NavBarDash>
@@ -164,27 +145,25 @@ const NegociosDash = () => {
         className="btn btn-primary dashboardClose"
         onClick={() => {
           const previousSaved = localStorage.getItem("previousPathToDash");
-          previousSaved
-            ? navigate(localStorage.getItem("previousPathToDash"))
-            : navigate("/");
+          previousSaved ? navigate(previousSaved) : navigate("/");
         }}
       >
         Salir
       </button>
 
       <div className="contenido-negocios">
-        <div className="container-fluid">
+        <div className="container">
           <div>
             <h1 className="titulo-dash">Mis Negocios</h1>
           </div>
-          <div>
-            <div className="editar-empresa-container">
-              {companysData.length ? (
-                <div className="card-editar-empresa">{companysData}</div>
-              ) : (
-                <></>
-              )}
-            </div>
+          <div className="editar-empresa-container">
+            {companysData.length ? (
+              <div className="card-editar-empresa row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                {companysData}
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

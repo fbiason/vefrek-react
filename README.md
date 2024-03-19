@@ -13,5 +13,6 @@ Blanco: #FFFFFF
 - Dashboard - Perfil: mobile.
 - Dashboard - Informe: mobile.
 - Dashboard - Favoritos: mobile.
+- Dashboard - MisNegocios: mobile.
 
 /================================/

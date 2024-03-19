@@ -1,23 +1,61 @@
 .contenido-negocios {
   display: grid;
   height: 100%;
+  padding-top: 2rem;
   background: #dbdbdb;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
 
+.btn-editar,
+.btn-eliminar,
+.btn-pausar {
+  width: 100%;
+  border-color: black;
+  margin-top: 0.5rem;
+}
+
+.btn-eliminar {
+  background-color: red;
+}
+
+.btn-editar {
+  background-color: yellowgreen;
+}
+
+.btn-pausar {
+  background-color: #241e4e;
+  color: white;
+}
+
 @media only screen and (max-width: 768px) {
-  .contenido-negocios{
+  .contenido-negocios {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-}
 
-.editar-empresa-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  .card-editar-empresa {
+    padding: 10px; /* Añadir un poco de espacio interno */
+    margin: 10px 0; /* Ajustar el margen */
+    width: 100%; /* Hacer que ocupe todo el ancho */
+  }
+
+  .editar-empresa-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Cambiar a altura automática */
+    padding: 0; /* Eliminar el relleno */
+    margin: 0; /* Eliminar el margen */
+  }
+
+  .editar-empresa-container .row-editar-empresa {
+    display: block;
+  }
+
+  .editar-empresa-container .row-editar-empresa:not(:last-child) {
+    margin-bottom: 10px;
+  }
 }
 
 .card-editar-empresa {
@@ -26,7 +64,9 @@
   padding: 20px;
   margin: 20px;
   height: fit-content;
-  width: 80%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   background-color: gray;
   color: white;
 }
@@ -37,9 +77,10 @@
 
 .row-editar-empresa {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  width: 100%;
+  padding: 0;
   border-bottom: 1px solid lightgray;
 }
 
