@@ -9,9 +9,10 @@ const Calendario = () => {
   const [fechaActual, setFechaActual] = useState("");
   const [diasDelMes, setDiasDelMes] = useState([]);
   const [mesesDelAnio, setMesesDelAnio] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null); // Agregar estado para la fecha seleccionada
-  const [comment, setComment] = useState(""); // Agregar estado para el comentario
-  const [selectedCompany, setSelectedCompany] = useState("empresa1"); // Agregar estado para la empresa seleccionada
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [comment, setComment] = useState("");
+  const [selectedCompany, setSelectedCompany] = useState("empresa1");
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth()); // Estado para almacenar el mes seleccionado
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,18 +27,10 @@ const Calendario = () => {
       return fecha.toLocaleDateString("es-ES", opcionesFecha);
     };
 
-    const generarDiasDelMes = () => {
+    const generarDiasDelMes = (month) => {
       const fecha = new Date();
-      const primerDiaDelMes = new Date(
-        fecha.getFullYear(),
-        fecha.getMonth(),
-        1
-      );
-      const ultimoDiaDelMes = new Date(
-        fecha.getFullYear(),
-        fecha.getMonth() + 1,
-        0
-      );
+      const primerDiaDelMes = new Date(fecha.getFullYear(), month, 1);
+      const ultimoDiaDelMes = new Date(fecha.getFullYear(), month + 1, 0);
 
       const dias = [];
       for (
@@ -63,30 +56,34 @@ const Calendario = () => {
     };
 
     setFechaActual(obtenerFechaActual());
-    setDiasDelMes(generarDiasDelMes());
+    setDiasDelMes(generarDiasDelMes(selectedMonth)); // Generar días del mes seleccionado
     setMesesDelAnio(generarMesesDelAnio());
-  }, []);
+  }, [selectedMonth]);
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
 
   const handleDateClick = (date) => {
-    setSelectedDate(date); // Al hacer clic en una fecha, establecerla como fecha seleccionada
-    // Mostrar el popup de comentarios
+    setSelectedDate(date);
+  };
+
+  const handleMonthChange = (e) => {
+    const selectedMonthIndex = mesesDelAnio.findIndex(
+      (month) => month === e.target.value
+    );
+    setSelectedMonth(selectedMonthIndex);
   };
 
   const handleCancelClick = () => {
-    setSelectedDate(null); // Cancelar, deseleccionar la fecha
-    setComment(""); // Limpiar el comentario
-    setSelectedCompany("empresa1"); // Restablecer la empresa seleccionada
+    setSelectedDate(null);
+    setComment("");
+    setSelectedCompany("empresa1");
   };
 
   const handleSubmitComment = () => {
-    // Lógica para enviar el comentario
     console.log("Comentario:", comment);
     console.log("Empresa seleccionada:", selectedCompany);
-    // Restablecer valores después de enviar el comentario
     setComment("");
     setSelectedCompany("empresa1");
     setSelectedDate(null);
@@ -118,26 +115,29 @@ const Calendario = () => {
       </button>
 
       <section className="background-item row contenido-calendario g-4">
-        <div className="contenido-info">
+        <div className="contenido-info-cal">
           <div>
             <h1 className="titulo-dash">Calendario</h1>
           </div>
-          <p className="text-center mt-3 mb-5">
+          <p className="text-center mb-5">
             Publica GRATIS las próximas fechas de promociones y descuentos que
             ofrecerá tu empresa.
           </p>
         </div>
-        <div className={`container flex justify-around mb-4`}>
-          {mesesDelAnio.map((mes, index) => (
-            <div
-              key={index}
-              className={
-                mes === fechaActual.split(" ")[1] ? "mes-calendario" : ""
-              }
-            >
-              {mes}
-            </div>
-          ))}
+
+        <div className={`container flex justify-around seleccion-mes mb-4`}>
+          {/* Control de selección de meses */}
+          <select
+            value={mesesDelAnio[selectedMonth]}
+            onChange={handleMonthChange}
+            className="texto-mes"
+          >
+            {mesesDelAnio.map((mes, index) => (
+              <option key={index} value={mes}>
+                {mes}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="calendario p-4 container grid grid-cols-7 gap-2">
@@ -154,11 +154,9 @@ const Calendario = () => {
           ))}
         </div>
 
-        {/* Popup para dejar comentario */}
         {selectedDate !== null && (
           <div className="popup-container">
             <div className="popup mt-3">
-              {" "}
               <h2>
                 Ingrese la promoción para su empresa para el día {selectedDate}
               </h2>
@@ -169,7 +167,7 @@ const Calendario = () => {
                 rows={4}
                 cols={50}
                 className="mt-3"
-                maxLength={25} // Añadir la propiedad maxLength
+                maxLength={25}
               />
               <div>
                 <p>Seleccione su empresa</p>
@@ -182,14 +180,17 @@ const Calendario = () => {
                 </select>
               </div>
               <div className="btn-container mt-3">
-                <button className="btn" onClick={handleCancelClick}>
-                  Cancelar
-                </button>
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-cargar mt-3"
                   onClick={handleSubmitComment}
                 >
-                  Enviar
+                  Cargar
+                </button>
+                <button
+                  className="btn btn-cancelar  mt-3"
+                  onClick={handleCancelClick}
+                >
+                  Cancelar
                 </button>
               </div>
             </div>
