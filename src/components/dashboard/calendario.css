@@ -1,4 +1,42 @@
-/* Añade estilos al botón de los meses */
+.background-calendario {
+  background-color: whitesmoke;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.contenido-info-cal {
+  margin: 15px;
+  border-radius: 15px;
+}
+
+.contenido-info-cal h1 {
+  display: flex;
+  padding: 2rem;
+  font-size: xx-large;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.calendario {
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.dia-calendario {
+  padding: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dia-calendario:hover {
+  color: white;
+  background-color: #241e4e;
+}
+
 select {
   appearance: none;
   border: 1px solid #ced4da;
@@ -9,12 +47,6 @@ select {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 20%;
   text-align: center;
-}
-
-.contenido-info-cal {
-  margin: 15px;
-  padding: 20px;
-  border-radius: 15px;
 }
 
 .texto-mes {
@@ -61,11 +93,6 @@ select:after {
   color: black;
   font-weight: bold;
   border: 2px solid #14ba75;
-}
-
-.dia-calendario:hover {
-  color: white;
-  background-color: #241e4e;
 }
 
 .mes-calendario {
@@ -155,4 +182,111 @@ select:after {
   padding: 12px 20px;
   border: 1px solid #ced4da;
   border-radius: 8px;
+}
+
+/* Estilos para los campos de inicio y fin de promoción */
+.popup-container input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.popup-container input[type="date"]:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilos para los campos de entrada de hora y sus etiquetas */
+.popup-container input[type="time"] {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.popup-container input[type="time"]:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.popup-container p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .background-calendario {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .contenido-info-cal h1 {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .seleccion-mes select {
+    width: 100%;
+  }
+
+  .calendario {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+  }
+
+  .dia-calendario {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+  /* PopUp Fecha */
+  .popup-container {
+    width: 90%; /* Ancho del contenedor al 90% del ancho de la pantalla */
+    padding: 1rem; /* Ajuste del padding */
+    overflow-y: auto; /* Agrega desplazamiento vertical cuando sea necesario */
+    max-height: 80vh; /* Altura máxima del contenedor para evitar el desbordamiento */
+  }
+
+  .popup {
+    padding: 1rem; /* Ajuste del padding */
+  }
+
+  .popup h2 {
+    font-size: 1.5rem; /* Tamaño de fuente más grande */
+    margin-bottom: 1rem; /* Ajuste del margen inferior */
+  }
+
+  .popup textarea {
+    width: 100%; /* Ancho del textarea al 100% */
+    max-width: 100%; /* Ancho máximo del textarea */
+    margin-bottom: 1rem; /* Ajuste del margen inferior */
+  }
+
+  .popup select,
+  .popup input[type="date"],
+  .popup input[type="time"] {
+    width: 100%; /* Ancho al 100% */
+    max-width: 100%; /* Ancho máximo */
+    margin-bottom: 1rem; /* Ajuste del margen inferior */
+  }
+
+  .btn-container {
+    display: flex; /* Cambia a un diseño de flexbox */
+    flex-direction: column; /* Dirección de columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+  }
+
+  .btn-container button {
+    width: 100%; /* Ancho al 100% */
+    max-width: 100%; /* Ancho máximo */
+    margin-bottom: 0.5rem; /* Ajuste del margen inferior */
+  }
 }

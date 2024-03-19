@@ -12,8 +12,22 @@ const Calendario = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [comment, setComment] = useState("");
   const [selectedCompany, setSelectedCompany] = useState("empresa1");
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth()); // Estado para almacenar el mes seleccionado
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const navigate = useNavigate();
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+
+  const handleDateChange = (e) => {
+    const selected = e.target.value;
+    const currentDate = new Date().toISOString().split("T")[0];
+    if (selected < currentDate) {
+      alert("¡Fecha no disponible! Seleccione una fecha futura.");
+      return; // Evita actualizar el estado si la fecha no es válida
+    }
+    setSelectedDate(selected);
+  };
 
   useEffect(() => {
     const obtenerFechaActual = () => {
@@ -114,10 +128,10 @@ const Calendario = () => {
         Salir
       </button>
 
-      <section className="background-item row contenido-calendario g-4">
+      <section className="background-calendario">
         <div className="contenido-info-cal">
           <div>
-            <h1 className="titulo-dash">Calendario</h1>
+            <h1>Calendario</h1>
           </div>
           <p className="text-center mb-5">
             Publica GRATIS las próximas fechas de promociones y descuentos que
@@ -140,11 +154,11 @@ const Calendario = () => {
           </select>
         </div>
 
-        <div className="calendario p-4 container grid grid-cols-7 gap-2">
+        <div className="calendario">
           {diasDelMes.map((dia, index) => (
             <div
               key={index}
-              className={`dia-calendario text-center cursor-pointer border p-4 rounded-lg ${
+              className={`dia-calendario text-center cursor-pointer border rounded-lg ${
                 dia === new Date().getDate() ? "highlighted" : ""
               }`}
               onClick={() => handleDateClick(dia)}
@@ -179,6 +193,61 @@ const Calendario = () => {
                   <option value="empresa2">Empresa 2</option>
                 </select>
               </div>
+              <div className="mt-3">
+                <p>Inicio de Promo:</p>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => {
+                    const selected = e.target.value;
+                    const currentDate = new Date().toISOString().split("T")[0];
+                    if (selected < currentDate) {
+                      alert(
+                        "¡Fecha no disponible! Seleccione una fecha futura."
+                      );
+                      return;
+                    }
+                    setStartDate(selected);
+                  }}
+                />
+                <p>Horario de Inicio:</p>
+                <input
+                  type="time"
+                  value={startTime}
+                  onChange={(e) => setStartTime(e.target.value)}
+                />
+              </div>
+              <div className="mt-3">
+                <p>Fin de Promo:</p>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => {
+                    const selected = e.target.value;
+                    const currentDate = new Date().toISOString().split("T")[0];
+                    if (selected < currentDate) {
+                      alert(
+                        "¡Fecha no disponible! Seleccione una fecha futura."
+                      );
+                      return;
+                    }
+                    if (selected < startDate) {
+                      alert(
+                        "¡Fecha no válida! La fecha de finalización no puede ser anterior a la fecha de inicio."
+                      );
+                      return;
+                    }
+                    setEndDate(selected);
+                  }}
+                />
+                <p>Hora de finalización:</p>
+                <input
+                  type="time"
+                  value={endTime}
+                  onChange={(e) => setEndTime(e.target.value)}
+                />
+              </div>
+
               <div className="btn-container mt-3">
                 <button
                   className="btn btn-cargar mt-3"
