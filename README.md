@@ -5,8 +5,15 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 19 Marzo:
+//Actualizaciones 20 Marzo:
 
-- Fin calendario
+- PaginaEmpresa: se ajusto para la versión mobile
+
+Detalles a solucoinar:
+
+- EditarEmpresa: horarios personalizados
+- Incorporar Google Tag manager
+- Incorporar Google Tag AsSense
+- Incorporar Google Tag Analitycs
 
 /================================/

@@ -603,7 +603,7 @@ export default function EditarEmpresa() {
   /**********************************************************************************/
 
   return (
-    <section className="background-carga-negocio">
+    <section className="bg-EditarEpresa">
       <div className="cont-form">
         <form
           className="form-carga-negocio rounded-md userUpdateForm"

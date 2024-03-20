@@ -1,7 +1,8 @@
 .bg-EditarEpresa {
   min-height: fit-content;
   align-items: center;
-  padding: 50px 0;
+  padding-top: 9rem;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: center;
   background-color: hsl(218deg, 41%, 15%);
@@ -21,6 +22,27 @@
       hsl(218deg, 41%, 19%) 80%,
       transparent 100%
     );
+}
+
+.bg-EditarEpresa p,
+.bg-EditarEpresa li {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.bg-EditarEpresa h1 {
+  margin: 0.5rem;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  text-align: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.bg-EditarEpresah3 {
+  color: rgb(117, 116, 116);
+  text-align: center;
 }
 
 .form-EditarEpresa {

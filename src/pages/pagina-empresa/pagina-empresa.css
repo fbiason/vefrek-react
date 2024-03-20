@@ -1,5 +1,7 @@
 .background-empresa {
   padding-top: 10rem;
+  padding-right: 3rem;
+  padding-bottom: 3rem;
   min-height: fit-content;
   align-items: center;
   justify-content: center;
@@ -21,32 +23,48 @@
       transparent 100%
     );
 }
-
-.nombre-slogan-container h2 {
-  font-size: xx-large;
-}
-
 .informacion-container h2,
 .reseña-container h2 {
   font-size: xx-large;
   margin-bottom: 1rem;
 }
 
+.mapa-google {
+  width: 100%;
+  border-radius: 2rem;
+  border: 1px solid #000;
+  height: 400px;
+}
+
 @media (max-width: 552px) {
   .background-empresa {
-    padding-top: 5rem;
+    padding-top: 3rem;
   }
 }
 
 /*--- Nombre y Slogan Empresa ---*/
+
 .logo-nombre-container {
   display: flex;
   align-items: center;
 }
 
 .nombre-slogan-container {
-  flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   text-align: start;
+  padding: 0 1rem;
+}
+
+.nombre-slogan-container h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.nombre-slogan-container p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 /*--- Logo Empresa ---*/
 
@@ -57,6 +75,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.fecha-carga {
+  align-items: start;
+  padding-bottom: 1rem;
 }
 
 /*---  ---*/
@@ -142,16 +165,6 @@
   border: 2px solid #14ba75;
 }
 
-.redes-sociales-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.redes-sociales-container a {
-  margin: 10px 5px 10px;
-}
-
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -195,7 +208,7 @@
 
 .opening-hours {
   max-width: 500px;
-  margin: 25px auto;
+  margin: 5px auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -318,6 +331,7 @@
   align-items: center;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
+
 /*===FIN STAR ===*/
 
 @media (max-width: 768px) {
@@ -327,8 +341,9 @@
     border-radius: 2rem;
   }
 
-  .sitio-web-container p {
-    font-size: 14px;
+  .sitio-web-container a {
+    font-size: 12px;
+    margin: 5px 0;
   }
 
   .image-container {
@@ -337,7 +352,7 @@
   }
 
   .card-empresa {
-    padding: 1.5rem;
+    padding: 1rem;
     margin: 0.5rem;
     border-radius: 2rem;
   }
@@ -368,7 +383,7 @@
 }
 
 @media (min-width: 1400px) {
-  .sitio-web-container p {
+  .sitio-web-container a {
     font-size: 14px;
   }
 
@@ -386,10 +401,19 @@
   }
 }
 
+.r-star {
+  display: flex;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .starsCont {
   display: inline-flex;
   align-items: flex-end;
-  margin-bottom: 0.5rem;
+  justify-content: start;
+  margin-bottom: 0.8rem;
 }
 
 .starsComponentCont {
@@ -404,12 +428,12 @@
 }
 
 .commentsData {
-  justify-content: flex-start;
   align-items: baseline;
+  display: flex;
 }
 
-.commentsData h5 {
-  margin-bottom: 0;
+.comentario-t {
+  margin-top: 1rem;
 }
 
 .commentsData h5:first-child {
@@ -442,8 +466,12 @@
 .comentario-t p,
 .nombre-slogan-container p {
   color: black;
-  text-align: left;
-  margin: 1rem;
+  text-align: justify;
+  margin: 0.1rem;
+}
+
+.espacio-business {
+  display: none;
 }
 
 /*--- Colmnas negocio ---*/
@@ -451,4 +479,79 @@
 .negocio-2 {
   display: flex;
   overflow-x: hidden;
+}
+
+.business-pag {
+  padding: 4rem;
+}
+
+/*===RESPONSIVE===*/
+@media (max-width: 768px) {
+  .business-responsive {
+    margin: 0;
+    padding: 0;
+  }
+
+  .business-cont {
+    padding: 0;
+  }
+
+  .nombre-slogan-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nombre-slogan-container h2 {
+    margin-bottom: 0.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .nombre-slogan-container p {
+    margin-bottom: 0.5rem;
+  }
+
+  .starsCont {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .starsComponentCont {
+    margin-top: 0.5rem;
+  }
+
+  .commentsData {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nro-star {
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .img-negocio {
+    display: none;
+  }
+
+  .data-neg p,
+  .data-neg a {
+    margin-top: 1px;
+  }
+
+  .espacio-business {
+    display: inline;
+  }
+
+  .r-star {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+
+  .feedback {
+    max-width: 100%;
+  }
 }
