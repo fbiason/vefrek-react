@@ -1,0 +1,111 @@
+/* Estilos para la sección de datos de usuario */
+.datos-user {
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #aab3c5;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.datos-user h2 {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+/* Estilos para el botón Descargar CSV */
+.datos-user .btn-descarga {
+  color: rgb(32, 31, 31);
+  background-color: #14ba75;
+  width: 30%;
+  justify-content: center;
+}
+
+/* Estilos para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-top: 2rem;
+}
+
+/* Estilos para las celdas de la tabla */
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  color: black;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para la fila de botones de paginación */
+.button-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilos para los botones de página */
+.button-page button {
+  background-color: #cccccc;
+  color: #4c4b4b;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 5px;
+  outline: none;
+}
+
+/* Estilos para el número de página */
+.button-page span {
+  margin: 0 5px; /* Margen entre los botones */
+}
+
+/* Estilos para el botón activo */
+.button-page button.active {
+  background-color: #14ba75; /* Color de fondo del botón activo */
+  color: white; /* Color del texto del botón activo */
+}
+
+/* Estilos para las flechas */
+.button-page button.arrow {
+  color: #666666; /* Color del texto para las flechas */
+}
+
+.button-page button.arrow:hover {
+  color: #1d1d1d;
+}
+
+/* Estilos para las flechas cuando están deshabilitadas */
+.button-page button.arrow[disabled] {
+  color: #cccccc; /* Color gris para las flechas deshabilitadas */
+}
+
+/* Estilos para las diferentes clases de estado */
+.datos-user .table .status-activo,
+.datos-user .table .status-inactivo,
+.datos-user .table .status-banneado,
+.datos-user .table .status-suspendido {
+  text-align: center;
+}
+
+.datos-user .table .status-activo {
+  background-color: #33ad33; /* Verde */
+}
+
+.datos-user .table .status-inactivo {
+  background-color: #ffff99; /* Amarillo */
+}
+
+.datos-user .table .status-banneado {
+  background-color: #ff6666; /* Rojo */
+}
+
+.datos-user .table .status-suspendido {
+  background-color: #66b3ff; /* Azul */
+}

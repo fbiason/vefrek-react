@@ -5,9 +5,9 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 20 Marzo:
+//Actualizaciones 21 Marzo:
 
-- PaginaEmpresa: se ajusto para la versión mobile
+- Admin: Datos Usuario
 
 Detalles a solucoinar:
 
