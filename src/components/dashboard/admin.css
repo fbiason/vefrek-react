@@ -1,3 +1,15 @@
+/* Dashboard Main */
+.dashboardMainAdmin {
+  position: absolute;
+  margin: 2vw;
+  min-width: 90vw;
+  z-index: 1100;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  border-radius: 20px;
+  padding-bottom: 3rem;
+}
+
 /* Estilos para la sección de datos de usuario */
 .datos-user {
   margin: 0 auto;
@@ -5,6 +17,7 @@
   background-color: #aab3c5;
   padding: 1rem;
   border-radius: 1rem;
+  overflow-x: auto;
 }
 
 .datos-user .btn-descarga {
@@ -25,6 +38,7 @@
   border-collapse: collapse;
   margin-bottom: 20px;
   margin-top: 2rem;
+  white-space: nowrap;
 }
 
 /* Estilos para las celdas de la tabla */
@@ -62,18 +76,18 @@
 
 /* Estilos para el número de página */
 .button-page span {
-  margin: 0 5px; /* Margen entre los botones */
+  margin: 0 5px;
 }
 
 /* Estilos para el botón activo */
 .button-page button.active {
-  background-color: #14ba75; /* Color de fondo del botón activo */
-  color: white; /* Color del texto del botón activo */
+  background-color: #14ba75;
+  color: white;
 }
 
 /* Estilos para las flechas */
 .button-page button.arrow {
-  color: #666666; /* Color del texto para las flechas */
+  color: #666666;
 }
 
 .button-page button.arrow:hover {
@@ -94,19 +108,19 @@
 }
 
 .datos-user .table .status-activo {
-  background-color: #33ad33; /* Verde */
+  background-color: #33ad33;
 }
 
 .datos-user .table .status-inactivo {
-  background-color: #ffff99; /* Amarillo */
+  background-color: #ffff99;
 }
 
 .datos-user .table .status-banneado {
-  background-color: #ff6666; /* Rojo */
+  background-color: #ff6666;
 }
 
 .datos-user .table .status-suspendido {
-  background-color: #66b3ff; /* Azul */
+  background-color: #66b3ff;
 }
 
 /* Datos Empresa */
@@ -118,6 +132,7 @@
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 3rem;
+  overflow-x: auto;
 }
 
 .datos-business h2 {
@@ -134,52 +149,80 @@
 
 /* Desplegable Business*/
 
-/* Estilos para los botones en los detalles de la empresa */
 .business-details button {
-  margin-right: 5px; /* Espaciado entre los botones */
-  margin-bottom: 5px; /* Espaciado entre las filas de botones */
-  width: auto; /* Ancho automático para adaptarse al contenido */
-  padding: 5px 10px; /* Espaciado interno de los botones */
-  font-size: 14px; /* Tamaño de fuente */
+  margin-top: 1rem;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: auto;
+  padding: 5px 10px;
+  font-size: 14px;
 }
 
 /* Estilos para los botones de color */
 .business-details button.btn-primary {
-  background-color: #007bff; /* Color de fondo para el botón primario (azul) */
-  border-color: #007bff; /* Color del borde */
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .business-details button.btn-primary:hover {
-  background-color: #0056b3; /* Color de fondo al pasar el cursor sobre el botón primario */
-  border-color: #0056b3; /* Color del borde al pasar el cursor sobre el botón primario */
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 .business-details button.btn-warning {
-  background-color: #ffc107; /* Color de fondo para el botón de advertencia (amarillo) */
-  border-color: #ffc107; /* Color del borde */
+  background-color: #ffc107;
+  border-color: #ffc107;
 }
 
 .business-details button.btn-warning:hover {
-  background-color: #e0a800; /* Color de fondo al pasar el cursor sobre el botón de advertencia */
-  border-color: #e0a800; /* Color del borde al pasar el cursor sobre el botón de advertencia */
+  background-color: #e0a800;
+  border-color: #e0a800;
 }
 
 .business-details button.btn-success {
-  background-color: #28a745; /* Color de fondo para el botón de éxito (verde) */
-  border-color: #28a745; /* Color del borde */
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .business-details button.btn-success:hover {
-  background-color: #218838; /* Color de fondo al pasar el cursor sobre el botón de éxito */
-  border-color: #218838; /* Color del borde al pasar el cursor sobre el botón de éxito */
+  background-color: #218838;
+  border-color: #218838;
 }
 
 .business-details button.btn-danger {
-  background-color: #dc3545; /* Color de fondo para el botón de peligro (rojo) */
-  border-color: #dc3545; /* Color del borde */
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 .business-details button.btn-danger:hover {
-  background-color: #c82333; /* Color de fondo al pasar el cursor sobre el botón de peligro */
-  border-color: #c82333; /* Color del borde al pasar el cursor sobre el botón de peligro */
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboardMainAdmin {
+    grid-template-columns: 100%;
+    margin: 0;
+    min-width: auto;
+    position: relative;
+  }
+
+  .datos-user {
+    max-width: 100%;
+  }
+
+  .datos-business {
+    max-width: 100%;
+  }
+
+  .button-page button {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Estilos para los detalles de la empresa */
+  .business-details button {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
 }

@@ -86,20 +86,22 @@
 
 /*==== INICIO FAVORITOS ======*/
 
-.favorito .bi-heart-fill {
-  font-size: 3rem;
-}
-
 .favorito {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-.favoriteHeart {
-  color: red; /* Color del corazón de favorito */
-  font-size: 24px; /* Tamaño del corazón de favorito */
+.favoriteStar {
   cursor: pointer;
+}
+
+.StarIcon {
+  font-size: 3rem;
+  background: #241e4e9a;
+  border: 1px solid black;
+  padding: 9px;
+  border-radius: 50%;
 }
 
 .favorito-0 {
@@ -123,13 +125,13 @@
 }
 
 .favorito > label:hover {
-  color: #e61e8f;
+  color: yellow;
 }
 
 .favorito > input:checked ~ label,
 .favorito > input:checked ~ label:hover,
 .favorito > input:checked ~ label ~ label {
-  color: #e61e8f;
+  color: yellow;
 }
 
 /*===FIN STAR ===*/

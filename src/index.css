@@ -95,6 +95,7 @@ a:hover {
   height: 40px;
   border-radius: 50px;
   transition: all 0.4s;
+  z-index: 9999;
 }
 
 .back-to-top i {

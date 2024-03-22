@@ -35,9 +35,16 @@
 @media screen and (max-width: 992px) {
   .dashboardMain {
     grid-template-columns: 100%; /* Cambiar a una columna en dispositivos medianos */
-    margin: 0; /* Eliminar el margen para ajustar completamente a la pantalla */
+    margin: 0;
     min-width: auto;
     position: relative;
+  }
+
+  .background-item {
+    background-color: whitesmoke;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 1rem;
   }
 }
 

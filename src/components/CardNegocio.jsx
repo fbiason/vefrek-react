@@ -6,6 +6,7 @@ import { UserContext } from "../context/userContext";
 import { useContext, useRef, useEffect } from "react";
 import { swalPopUpSuccessTemporal, swalPopUp } from "../utils/swal";
 import { SpinnerContext } from "../context/spinnerContext";
+import { BsHeartFill, BsStarFill } from "react-icons/bs";
 
 const CardNegocio = (props) => {
   const { userData } = useContext(UserContext);
@@ -70,10 +71,9 @@ const CardNegocio = (props) => {
                 ref={heartRef}
                 defaultChecked={false}
               />
-              <label
-                className="bi bi-heart-fill favoriteHeart"
-                onClick={handleFavorites}
-              ></label>
+              <label className="favoriteStar" onClick={handleFavorites}>
+                <BsStarFill className="StarIcon" />
+              </label>
             </div>
             <img src={props.imgUrl} alt="Diseño Gráfico" />
           </figure>

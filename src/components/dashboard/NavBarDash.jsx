@@ -23,7 +23,7 @@ const NavBarDash = () => {
     { icon: "fa-user", to: "/Perfil", text: "Perfil" },
     { icon: "fa-chart-bar", to: "/Informe", text: "Informe" },
     { icon: "fa-calendar", to: "/Calendario", text: "Calendario" },
-    { icon: "fa-heart", to: "/Favoritos", text: "Favoritos" },
+    { icon: "fa-star", to: "/Favoritos", text: "Favoritos" },
     { icon: "fa-building", to: "/NegociosDash", text: "Negocios" },
     { icon: "fa-user-tie", to: "/Admin", text: "Admin" },
   ];

@@ -205,7 +205,7 @@ const Admin = () => {
   };
 
   return (
-    <main className="dashboardMain">
+    <main className="dashboardMainAdmin">
       <NavBarDash></NavBarDash>
       <button
         className="btn btn-primary dashboardClose"

@@ -8,10 +8,11 @@ Blanco: #FFFFFF
 //Actualizaciones 21 Marzo:
 
 - Admin: Datos Usuario + Datos empresa
+- Admin: responsive
+- Cambie corazón por estrella
 
 Detalles a solucoinar:
 
-- EditarEmpresa: horarios personalizados
 - Incorporar Google Tag manager
 - Incorporar Google Tag AsSense
 - Incorporar Google Tag Analitycs
