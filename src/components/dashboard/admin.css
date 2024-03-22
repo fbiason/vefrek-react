@@ -1,23 +1,22 @@
 /* Estilos para la sección de datos de usuario */
 .datos-user {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 60%;
   background-color: #aab3c5;
   padding: 1rem;
   border-radius: 1rem;
 }
 
-.datos-user h2 {
-  font-size: xx-large;
-  font-weight: 500;
-}
-
-/* Estilos para el botón Descargar CSV */
 .datos-user .btn-descarga {
   color: rgb(32, 31, 31);
   background-color: #14ba75;
   width: 30%;
   justify-content: center;
+}
+
+.datos-user h2 {
+  font-size: xx-large;
+  font-weight: 500;
 }
 
 /* Estilos para la tabla */
@@ -108,4 +107,79 @@
 
 .datos-user .table .status-suspendido {
   background-color: #66b3ff; /* Azul */
+}
+
+/* Datos Empresa */
+
+.datos-business {
+  margin: 0 auto;
+  max-width: 60%;
+  background-color: #aab3c5;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+.datos-business h2 {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+.datos-business .btn-descarga {
+  color: rgb(32, 31, 31);
+  background-color: #14ba75;
+  width: 30%;
+  justify-content: center;
+}
+
+/* Desplegable Business*/
+
+/* Estilos para los botones en los detalles de la empresa */
+.business-details button {
+  margin-right: 5px; /* Espaciado entre los botones */
+  margin-bottom: 5px; /* Espaciado entre las filas de botones */
+  width: auto; /* Ancho automático para adaptarse al contenido */
+  padding: 5px 10px; /* Espaciado interno de los botones */
+  font-size: 14px; /* Tamaño de fuente */
+}
+
+/* Estilos para los botones de color */
+.business-details button.btn-primary {
+  background-color: #007bff; /* Color de fondo para el botón primario (azul) */
+  border-color: #007bff; /* Color del borde */
+}
+
+.business-details button.btn-primary:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el cursor sobre el botón primario */
+  border-color: #0056b3; /* Color del borde al pasar el cursor sobre el botón primario */
+}
+
+.business-details button.btn-warning {
+  background-color: #ffc107; /* Color de fondo para el botón de advertencia (amarillo) */
+  border-color: #ffc107; /* Color del borde */
+}
+
+.business-details button.btn-warning:hover {
+  background-color: #e0a800; /* Color de fondo al pasar el cursor sobre el botón de advertencia */
+  border-color: #e0a800; /* Color del borde al pasar el cursor sobre el botón de advertencia */
+}
+
+.business-details button.btn-success {
+  background-color: #28a745; /* Color de fondo para el botón de éxito (verde) */
+  border-color: #28a745; /* Color del borde */
+}
+
+.business-details button.btn-success:hover {
+  background-color: #218838; /* Color de fondo al pasar el cursor sobre el botón de éxito */
+  border-color: #218838; /* Color del borde al pasar el cursor sobre el botón de éxito */
+}
+
+.business-details button.btn-danger {
+  background-color: #dc3545; /* Color de fondo para el botón de peligro (rojo) */
+  border-color: #dc3545; /* Color del borde */
+}
+
+.business-details button.btn-danger:hover {
+  background-color: #c82333; /* Color de fondo al pasar el cursor sobre el botón de peligro */
+  border-color: #c82333; /* Color del borde al pasar el cursor sobre el botón de peligro */
 }

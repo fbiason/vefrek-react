@@ -38,7 +38,7 @@ const Admin = () => {
     }
   }
 
-  // Datos de ejemplo de usuarios
+  // Datos  de usuarios
   const users = [
     {
       id: 1,
@@ -136,10 +136,49 @@ const Admin = () => {
       },
     },
   ];
+
+  // Datos de empresas
+  const business = [
+    {
+      idBusiness: 1,
+      nameBusiness: "Biason Automotores",
+      usuarioBusiness: "Admin",
+      verificada: "Si",
+      details: {
+        fullName: "Franco Biason",
+        email: "franco.biason@gmail.com",
+        city: "Rio Gallegos",
+        province: "Santa Cruz",
+        postalCode: "9400",
+        lastConnection: "21/03/2024 18:33hs",
+        loadedCompanies: 23,
+        fechaCarga: "21/03/2024",
+        // Agregar botones y sus funciones
+        editar: () => {
+          // Función para editar
+        },
+        pausar: () => {
+          // Función para pausar
+        },
+        transferir: () => {
+          // Función para transferir
+        },
+        eliminar: () => {
+          // Función para eliminar
+        },
+      },
+    },
+  ];
+
   // Cantidad de usuarios por página
   const usersPerPage = 5;
 
   const totalPages = Math.ceil(users.length / usersPerPage);
+
+  // Cantidad de empresas por página
+  const businessPerPage = 5;
+
+  const totalPagesBusiness = Math.ceil(business.length / businessPerPage);
 
   // Calcular índice del primer y último usuario en la página actual
   const indexOfLastUser = currentPage * usersPerPage;
@@ -190,6 +229,47 @@ const Admin = () => {
           <table className="table table-bordered">
             <thead>
               <tr>
+                <th>
+                  <div className="form-group mb-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="ID Usuario"
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="form-group mb-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Nombre Usuario"
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="form-group mb-0">
+                    <select className="form-control">
+                      <option value="">Rol</option>
+                      <option value="Admin">Admin</option>
+                      <option value="Staff">Staff</option>
+                      <option value="Miembro">Miembro</option>
+                    </select>
+                  </div>
+                </th>
+                <th>
+                  <div className="form-group mb-0">
+                    <select className="form-control">
+                      <option value="">Status</option>
+                      <option value="Activo">Activo</option>
+                      <option value="Inactivo">Inactivo</option>
+                      <option value="Banneado">Banneado</option>
+                      <option value="Suspendido">Suspendido</option>
+                    </select>
+                  </div>
+                </th>
+              </tr>
+              <tr>
                 <th>ID</th>
                 <th>Nombre Usuario</th>
                 <th>Rol</th>
@@ -197,6 +277,7 @@ const Admin = () => {
                 <th>Acción</th>
               </tr>
             </thead>
+
             <tbody>
               {currentUsers.map((user) => (
                 <React.Fragment key={user.id}>
@@ -257,13 +338,147 @@ const Admin = () => {
             <button
               className="btn btn-secondary arrow"
               onClick={goToNextPage}
-              disabled={currentPage === totalPages}
+              disabled={currentPage === totalPagesBusiness}
             >
               {">"}
             </button>
           </div>
         </div>
-        <div className="datos-business"></div>
+        <div className="datos-business mt-3">
+          <h2>Datos Empresas</h2>
+          <button className="btn-descarga mt-3">Descargar CSV</button>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>
+                  <div className="form-group mb-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="ID Empresa"
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="form-group mb-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Nombre Empresa"
+                    />
+                  </div>
+                </th>
+                <th>
+                  <div className="form-group mb-0">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Usuario que la cargo"
+                    />
+                  </div>
+                </th>
+
+                <th>
+                  <div className="form-group mb-0">
+                    <select className="form-control">
+                      <option value="">Verificada</option>
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th>ID Empresa</th>
+                <th>Nombre Empresa</th>
+                <th>Usuario que la cargo</th>
+                <th>Verificada</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {business.map((empresa) => (
+                <React.Fragment key={empresa.id}>
+                  <tr>
+                    <td>{empresa.idBusiness}</td>
+                    <td>{empresa.nameBusiness}</td>
+                    <td>{empresa.usuarioBusiness}</td>
+                    <td>{empresa.verificada}</td>
+                    <td>
+                      <button
+                        className="btn btn-info"
+                        onClick={() => expandUserDetails(empresa.id)}
+                      >
+                        Ver más
+                      </button>
+                    </td>
+                  </tr>
+                  {expandedUser === empresa.id && (
+                    <tr>
+                      <td colSpan="5">
+                        <div className="business-details">
+                          <p>{`Fecha de Carga: ${empresa.details.fechaCarga}`}</p>
+                          <button
+                            className="btn btn-primary"
+                            onClick={empresa.details.editar}
+                          >
+                            Editar
+                          </button>
+                          <button
+                            className="btn btn-warning"
+                            onClick={empresa.details.pausar}
+                          >
+                            Pausar
+                          </button>
+                          <button
+                            className="btn btn-success"
+                            onClick={empresa.details.transferir}
+                          >
+                            Transferir
+                          </button>
+                          <button
+                            className="btn btn-danger"
+                            onClick={empresa.details.eliminar}
+                          >
+                            Eliminar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+          <div className="button-page">
+            <button
+              className="btn btn-secondary arrow"
+              onClick={goToPrevPage}
+              disabled={currentPage === 1}
+            >
+              {"<"}
+            </button>
+            {Array.from({ length: totalPagesBusiness }, (_, index) => (
+              <button
+                key={index}
+                className={`btn btn-secondary ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+                onClick={() => goToPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              className="btn btn-secondary arrow"
+              onClick={goToNextPage}
+              disabled={currentPage === totalPagesBusiness}
+            >
+              {">"}
+            </button>
+          </div>
+        </div>
       </section>
     </main>
   );

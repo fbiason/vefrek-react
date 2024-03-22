@@ -7,7 +7,7 @@ Blanco: #FFFFFF
 
 //Actualizaciones 21 Marzo:
 
-- Admin: Datos Usuario
+- Admin: Datos Usuario + Datos empresa
 
 Detalles a solucoinar:
 
