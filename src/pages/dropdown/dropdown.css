@@ -4,26 +4,18 @@
 }
 
 .dropdown-button {
-  background: linear-gradient(
-    to right,
-    #14ba75,
-    #241e4e
-  ); /* Gradiente de verde a azul */
-  color: #fff; /* Color del texto */
+  background: linear-gradient(to right, #14ba75, #241e4e);
+  color: #fff;
   padding: 10px;
   border: none;
   cursor: pointer;
-  border-radius: 5px; /* Añade bordes redondeados */
-  transition: background-color 0.5s ease; /* Agrega una transición suave */
+  border-radius: 5px;
+  transition: background-color 0.5s ease;
 }
 
 .dropdown-button:hover {
   color: white;
-  background: linear-gradient(
-    to right,
-    #241e4e,
-    #14ba75
-  ); /* Cambia el gradiente al pasar el mouse */
+  background: linear-gradient(to right, #241e4e, #14ba75);
 }
 
 .dropdown-content {
@@ -42,7 +34,6 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
-  border-bottom: 1px solid #ccc; /* Añade un borde inferior */
 }
 
 .dropdown-content p:hover {
@@ -55,4 +46,11 @@
 
 .dropdown-container ul li {
   color: rgba(255, 0, 0, 0);
+}
+
+/*=== Mobile ===*/
+@media (max-width: 768px) {
+  .dropdown-content {
+    position: relative;
+  }
 }

@@ -287,16 +287,6 @@
   gap: 0.5rem; /* Espacio entre las filas */
 }
 
-/* Estilos específicos para dispositivos medianos (sm) */
-@media (min-width: 640px) {
-  .columna-rs-editar {
-    grid-template-columns: repeat(
-      6,
-      minmax(0, 1fr)
-    ); /* Seis columnas en dispositivos medianos */
-  }
-}
-
 /*============= Mobile ================*/
 
 @media (max-width: 1400px) {
@@ -310,11 +300,21 @@
     margin-top: 4rem;
     width: 80%;
   }
-}
 
-@media (max-width: 992px) {
   .rs-EditarEmpresa {
     padding: 0.5rem;
     max-width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .columna-rs-editar {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-EditarEpresa {
+    padding-top: 3rem;
   }
 }

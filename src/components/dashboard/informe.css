@@ -23,7 +23,7 @@
 .informe-datos {
   background-color: #279824;
   position: relative;
-  width: calc(25% - 20px); /* Ajustar según sea necesario */
+  width: calc(25% - 20px);
   height: 160px;
   margin: 10px;
   font-weight: 600;
@@ -33,27 +33,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Nuevo */
-  z-index: 1; /* Capa más alta */
+  overflow: hidden;
+  z-index: 1;
 }
 
 .icono {
   position: absolute;
-  top: 50%; /* Centrar verticalmente */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translate(-50%, -50%); /* Centrar completamente */
-  color: rgba(52, 51, 51, 0.5); /* Hacer más transparente */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(52, 51, 51, 0.5);
   font-size: 15rem;
-  z-index: -1; /* Capa más baja */
+  z-index: -1;
 }
 
 .icono-y-numero {
   position: relative;
-  z-index: 0; /* Capa intermedia */
+  z-index: 0;
 }
 
 .informe-datos h1 {
-  font-size: 4rem; /* Tamaño del número */
+  font-size: 4rem;
   margin: 0;
 }
 

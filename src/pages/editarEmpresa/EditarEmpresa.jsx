@@ -903,6 +903,7 @@ export default function EditarEmpresa() {
                     <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
                       vefrek.com/
                     </span>
+
                     <input
                       value={formData.vefrek_website}
                       onChange={handleChange}
@@ -926,7 +927,7 @@ export default function EditarEmpresa() {
                 </label>
                 <div className="mt-2">
                   <textarea
-                    value={formData.description}
+                    value={" " + formData.description}
                     onChange={handleChange}
                     id="about"
                     name="description"

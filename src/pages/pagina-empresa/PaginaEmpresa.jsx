@@ -690,11 +690,11 @@ const PaginaEmpresa = () => {
                   </a>
                 </div>
 
-                <div>
+                <div className="table-headline">
                   <table className="opening-hours table table-hover table-condensed borderless">
                     <thead>
                       <tr>
-                        <th colSpan="2" className="table-headline">
+                        <th colSpan="2">
                           <span style={{ fontSize: "18px" }}>
                             Horario:{" "}
                             {setScheduleType(

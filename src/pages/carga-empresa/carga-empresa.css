@@ -357,3 +357,9 @@ button:hover {
 .company_logo_file {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .background-carga-negocio {
+    padding-top: 3rem;
+  }
+}

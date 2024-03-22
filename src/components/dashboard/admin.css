@@ -44,7 +44,6 @@
 /* Estilos para las celdas de la tabla */
 .table th,
 .table td {
-  border: 1px solid #ddd;
   color: black;
   padding: 8px;
   text-align: left;

@@ -70,7 +70,7 @@ const Perfil = () => {
       initialData.current = structuredClone(auxUserData);
 
       const avatarFileInput = document.querySelector(".perfil_file_input");
-      avatarFileInput.value = ""; //Vaciamos input de imagen de avatar
+      avatarFileInput.value = "";
     } else {
       swalPopUp("Error", response.message, "error");
     }
@@ -220,7 +220,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <textarea
                       onChange={handleChange}
-                      value={formData.about}
+                      value={" " + formData.about}
                       id="about"
                       name="about"
                       rows={3}
@@ -289,7 +289,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.name}
+                      value={" " + formData.name}
                       type="text"
                       name="name"
                       id="first-name"
@@ -309,7 +309,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.lastname}
+                      value={" " + formData.lastname}
                       type="text"
                       name="lastname"
                       id="last-name"
@@ -329,7 +329,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.email2}
+                      value={" " + formData.email2}
                       id="email"
                       name="email2"
                       type="email"
@@ -349,7 +349,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <select
                       onChange={handleChange}
-                      value={formData.country}
+                      value={" " + formData.country}
                       id="country"
                       name="country"
                       autoComplete="country-name"
@@ -372,7 +372,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.location}
+                      value={" " + formData.location}
                       type="text"
                       name="location"
                       id="street-address"
@@ -392,7 +392,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.city}
+                      value={" " + formData.city}
                       type="text"
                       name="city"
                       id="city"
@@ -412,7 +412,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.state}
+                      value={" " + formData.state}
                       type="text"
                       name="state"
                       id="region"
@@ -432,7 +432,7 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={formData.postal_code}
+                      value={" " + formData.postal_code}
                       type="text"
                       name="postal_code"
                       id="postal-code"
