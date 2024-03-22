@@ -13,6 +13,8 @@ import {
   faComment,
   faCommentAlt,
   faBuilding,
+  faEyeDropper,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -136,7 +138,7 @@ const Informe = () => {
       }
       setShow(true);
     } else if (responseOBJ.success && !responseOBJ.companysData) {
-      swalPopUp("Ops!", `No tienes empresas cargadas`, "info");
+      swalPopUp("Ops!", `Aún no tienes visitas`, "info");
       console.log(responseOBJ.message);
       setShow(false);
     } else {
@@ -171,7 +173,7 @@ const Informe = () => {
       </button>
 
       <div className="info">
-        <div className="contenido-info">
+        <div>
           <div>
             <h1 className="titulo-dash">Informe</h1>
           </div>
@@ -192,7 +194,7 @@ const Informe = () => {
               </>
             )}
 
-            <div className="row">
+            <div className="row mt-4">
               <div className="informe-datos">
                 <div className="icono-y-numero">
                   <FontAwesomeIcon icon={faBookmark} className="icono" />
@@ -219,17 +221,17 @@ const Informe = () => {
 
               <div className="informe-datos">
                 <div className="icono-y-numero">
-                  <FontAwesomeIcon icon={faBuilding} className="icono" />
+                  <FontAwesomeIcon icon={faEye} className="icono" />
                   <h1>10</h1>
                 </div>
-                <p>Empresas Cargadas</p>
+                <p>Visitas</p>
               </div>
             </div>
 
             {show && (
               <div className="col-md-6 mt-5 visitas">
                 <div className="card custom-card">
-                  <h3 className="chart-lbl">Visitas</h3>
+                  <h3 className="chart-lbl">Visitas mensaules</h3>
                   <div id="chart"></div>
                 </div>
               </div>

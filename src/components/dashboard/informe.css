@@ -8,14 +8,12 @@
   border-bottom-right-radius: 2rem;
 }
 
-.contenido-info {
-  margin: 15px;
-  padding: 20px;
-  border-radius: 15px;
-}
-
 .form-select {
   width: 30%;
+}
+
+.card-informe {
+  padding: 4rem;
 }
 
 /*==============================*/
@@ -94,12 +92,6 @@
 
   .form-select {
     width: 100%;
-  }
-
-  .contenido-info {
-    margin: 15px;
-    padding: 0;
-    border-radius: 15px;
   }
 
   .info {

@@ -142,7 +142,7 @@ const Admin = () => {
     {
       idBusiness: 1,
       nameBusiness: "Biason Automotores",
-      usuarioBusiness: "Admin",
+      usuarioBusiness: "fbiason",
       verificada: "Si",
       details: {
         fullName: "Franco Biason",
@@ -373,7 +373,7 @@ const Admin = () => {
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="Usuario que la cargo"
+                      placeholder="Propietario"
                     />
                   </div>
                 </th>
@@ -391,7 +391,7 @@ const Admin = () => {
               <tr>
                 <th>ID Empresa</th>
                 <th>Nombre Empresa</th>
-                <th>Usuario que la cargo</th>
+                <th>Propietario</th>
                 <th>Verificada</th>
                 <th>Acción</th>
               </tr>

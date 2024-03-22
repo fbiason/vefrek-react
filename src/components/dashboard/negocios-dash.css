@@ -1,7 +1,6 @@
 .contenido-negocios {
   display: grid;
   height: 100%;
-  padding-top: 2rem;
   background: #dbdbdb;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
@@ -28,6 +27,12 @@
   color: white;
 }
 
+.editar-empresa-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 768px) {
   .contenido-negocios {
     border-top-right-radius: 0;
@@ -35,18 +40,18 @@
   }
 
   .card-editar-empresa {
-    padding: 10px; /* Añadir un poco de espacio interno */
-    margin: 10px 0; /* Ajustar el margen */
-    width: 100%; /* Hacer que ocupe todo el ancho */
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
   }
 
   .editar-empresa-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto; /* Cambiar a altura automática */
-    padding: 0; /* Eliminar el relleno */
-    margin: 0; /* Eliminar el margen */
+    height: auto;
+    padding: 0;
+    margin: 0;
   }
 
   .editar-empresa-container .row-editar-empresa {

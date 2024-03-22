@@ -80,17 +80,15 @@ const Favoritos = () => {
       </button>
 
       <section className="favoritos">
-        <div className="content-fav">
-          <div>
-            <h1 className="titulo-dash">Favoritos</h1>
-          </div>
-          <div className="row">
-            {favoritesCompanys.length > 0 ? (
-              favoritesCompanys
-            ) : (
-              <p className="col">No hay resultados</p>
-            )}
-          </div>
+        <div>
+          <h1 className="titulo-dash">Favoritos</h1>
+        </div>
+        <div className="row content-fav">
+          {favoritesCompanys.length > 0 ? (
+            favoritesCompanys
+          ) : (
+            <p className="col">No hay resultados</p>
+          )}
         </div>
       </section>
     </main>

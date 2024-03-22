@@ -172,12 +172,12 @@ const Perfil = () => {
 
       <div className="content d-flex justify-content-center">
         <form
-          className="form-dash-perfil rounded-md p-6 userUpdateForm m-5"
+          className="form-dash-perfil rounded-mduserUpdateForm m-5"
           onSubmit={handleSubmit}
         >
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7">Perfil</h2>
+              <h2 className="titulo-dash">Perfil</h2>
               <p className="mt-1 text-sm leading-6 text-gray-200">
                 Esta información se mostrará públicamente, así que tenga cuidado
                 con lo que comparte.

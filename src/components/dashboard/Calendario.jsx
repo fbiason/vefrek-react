@@ -129,15 +129,13 @@ const Calendario = () => {
       </button>
 
       <section className="background-calendario">
-        <div className="contenido-info-cal">
-          <div>
-            <h1>Calendario</h1>
-          </div>
-          <p className="text-center mb-5">
-            Publica GRATIS las próximas fechas de promociones y descuentos que
-            ofrecerá tu empresa.
-          </p>
+        <div>
+          <h1 className="titulo-dash">Calendario</h1>
         </div>
+        <p className="text-center mb-5">
+          Publica GRATIS las próximas fechas de promociones y descuentos que
+          ofrecerá tu empresa.
+        </p>
 
         <div className={`container flex justify-around seleccion-mes mb-4`}>
           {/* Control de selección de meses */}

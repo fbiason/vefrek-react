@@ -4,19 +4,6 @@
   border-bottom-right-radius: 2rem;
 }
 
-.contenido-info-cal {
-  margin: 15px;
-  border-radius: 15px;
-}
-
-.contenido-info-cal h1 {
-  display: flex;
-  padding: 2rem;
-  font-size: xx-large;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
 .calendario {
   padding: 3rem;
   display: grid;
@@ -225,12 +212,6 @@ select:after {
   .background-calendario {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-
-  .contenido-info-cal h1 {
-    justify-content: center;
-    align-items: center;
-    padding: 0;
   }
 
   .seleccion-mes select {
