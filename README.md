@@ -5,9 +5,11 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 22 Marzo:
+//Actualizaciones 23 Marzo:
 
-Detalles estéticos versión mobile.
+- Nosotros
+- Política de privacidad
+- Aviso Legal
 
 Detalles a solucoinar:
 

@@ -119,197 +119,72 @@ const Footer = () => {
                           </div>
                           <div className="modal-body">
                             <h5 className="modal-title2">
-                              Identificación y Titularidad
+                              1. Titularidad del Sitio:
                             </h5>
                             <li>Titular: Biason Franco</li>
-                            <li>Domicilio: Alberdi 1144, Depto 4</li>
+                            <li>Domicilio: Cacique Yatel 1895</li>
                             <li>Email: administracion@vefrek.com</li>
                             <li>Teléfono: 2966 23-1074</li>
-                            <h5 className="modal-title2">Finalidad</h5>
-                            <p>
-                              La finalidad del Sitio Web es brindar información
-                              sobre negocios relacionados al rubro automotor.
-                            </p>
-                            <h5 className="modal-title2">Condiciones de Uso</h5>
-                            <p>
-                              La utilización del Sitio Web le otorga la
-                              condición de Usuario, e implica la aceptación
-                              completa de todas las cláusulas y condiciones de
-                              uso incluidas en ésta página: «Aviso Legal». Si no
-                              estuviera conforme con todas y cada una de estas
-                              cláusulas y condiciones absténgase de utilizar el
-                              Sitio Web. El acceso al Sitio Web no supone, en
-                              modo alguno, el inicio de una relación comercial
-                              con el Titular. A través del Sitio Web, el Titular
-                              le facilita el acceso y la utilización de diversos
-                              contenidos que el Titular y/o sus colaboradores
-                              han publicado por medio de Internet. A tal efecto,
-                              está obligado y comprometido a NO utilizar
-                              cualquiera de los contenidos del Sitio Web con
-                              fines o efectos ilícitos, prohibidos en este Aviso
-                              Legal o por la legislación vigente, lesivos de los
-                              derechos e intereses de terceros, o que de
-                              cualquier forma puedan dañar, inutilizar,
-                              sobrecargar, deteriorar o impedir la normal
-                              utilización de los contenidos, los equipos
-                              informáticos o los documentos, archivos y toda
-                              clase de contenidos almacenados en cualquier
-                              equipo informático propios o contratados por el
-                              Titular, de otros usuarios o de cualquier usuario
-                              de Internet.
-                            </p>
                             <h5 className="modal-title2">
-                              Medidas de seguridad
+                              2. Propiedad Intelectual:
                             </h5>
                             <p>
-                              Los datos personales que facilite al Titular son
-                              almacenados en bases de datos, cuya titularidad
-                              corresponde en exclusiva al Titular, que asume
-                              todas las medidas de índole técnica, organizativa
-                              y de seguridad que garantizan la confidencialidad,
-                              integridad y calidad de la información contenida
-                              en las mismas de acuerdo con lo establecido en la
-                              normativa vigente en protección de datos. No
-                              obstante, debe ser consciente de que las medidas
-                              de seguridad de los sistemas informáticos en
-                              Internet no son enteramente fiables y que, por
-                              tanto el Titular no puede garantizar la
-                              inexistencia de virus u otros elementos que puedan
-                              producir alteraciones en los sistemas informáticos
-                              (software y hardware) del Usuario o en sus
-                              documentos electrónicos y ficheros contenidos en
-                              los mismos aunque el Titular pone todos los medios
-                              necesarios y toma las medidas de seguridad
-                              oportunas para evitar la presencia de estos
-                              elementos dañinos.
-                            </p>
-                            <h5 className="modal-title2">Contenidos</h5>
-                            <p>
-                              El Titular ha obtenido la información, el
-                              contenido multimedia y los materiales incluidos en
-                              el Sitio Web de fuentes que considera fiables,
-                              pero, si bien ha tomado todas las medidas
-                              razonables para asegurar que la información
-                              contenida es correcta, el Titular no garantiza que
-                              sea exacta, completa o actualizada. El Titular
-                              declina expresamente cualquier responsabilidad por
-                              error u omisión en la información contenida en las
-                              páginas del Sitio Web. Queda prohibido transmitir
-                              o enviar a través del Sitio Web cualquier
-                              contenido ilegal o ilícito, virus informáticos, o
-                              mensajes que, en general, afecten o violen
-                              derechos del Titular o de terceros. Los contenidos
-                              del Sitio Web tienen únicamente una finalidad
-                              informativa y bajo ninguna circunstancia deben
-                              usarse ni considerarse como oferta de venta,
-                              solicitud de una oferta de compra ni recomendación
-                              para realizar cualquier otra operación, salvo que
-                              así se indique expresamente. El Titular se reserva
-                              el derecho a modificar, suspender, cancelar o
-                              restringir el contenido del Sitio Web, los
-                              vínculos o la información obtenida a través del
-                              Sitio Web, sin necesidad de previo aviso. El
-                              Titular no es responsable de los daños y
-                              perjuicios que pudieran derivarse de la
-                              utilización de la información del Sitio Web o de
-                              la contenida en las redes sociales del Titular.
+                              Todo el contenido presente en este sitio web,
+                              incluyendo pero no limitado a textos, imágenes,
+                              logotipos, gráficos, videos y diseños, está
+                              protegido por derechos de autor y otras leyes de
+                              propiedad intelectual. Está prohibido el uso no
+                              autorizado de cualquier parte del contenido sin el
+                              consentimiento previo por escrito de Vefrek.
                             </p>
                             <h5 className="modal-title2">
-                              Política de cookies
+                              3. Limitación de Responsabilidad:
                             </h5>
                             <p>
-                              El Titular obtiene y conserva la siguiente
-                              información acerca de los visitantes del Sitio
-                              Web:{" "}
-                            </p>{" "}
-                            <li>
-                              El nombre de dominio del proveedor (PSI) y/o
-                              dirección IP que les da acceso a la red.
-                            </li>
-                            <li> La fecha y hora de acceso al sitio Web.</li>{" "}
-                            <li>
-                              {" "}
-                              La dirección de Internet origen del enlace que
-                              dirige al sitio Web.
-                            </li>
-                            <li>
-                              El número de visitantes diarios de cada sección.
-                            </li>
-                            <li>
-                              {" "}
-                              La información obtenida es totalmente anónima, y
-                              en ningún caso puede ser asociada a un Usuario
-                              concreto e identificado.
-                            </li>
-                            <h5 className="modal-title2">
-                              Enlaces a otros sitios web
-                            </h5>
-                            <p>
-                              El Titular puede proporcionarle acceso a sitios
-                              Web de terceros mediante enlaces con la finalidad
-                              exclusiva de informar sobre la existencia de otras
-                              fuentes de información en Internet en las que
-                              podrá ampliar los datos ofrecidos en el Sitio Web.
-                              Estos enlaces a otros sitios Web no suponen en
-                              ningún caso una sugerencia o recomendación para
-                              que usted visite las páginas web de destino, que
-                              están fuera del control del Titular, por lo que el
-                              Titular no es responsable del contenido de los
-                              sitios web vinculados ni del resultado que obtenga
-                              al seguir los enlaces. Asimismo, el Titular no
-                              responde de los links o enlaces ubicados en los
-                              sitios web vinculados a los que le proporciona
-                              acceso. El establecimiento del enlace no implica
-                              en ningún caso la existencia de relaciones entre
-                              el Titular y el propietario del sitio en el que se
-                              establezca el enlace, ni la aceptación o
-                              aprobación por parte del Titular de sus contenidos
-                              o servicios. Si accede a un sitio web externo
-                              desde un enlace que encuentre en el Sitio Web
-                              usted deberá leer la propia política de privacidad
-                              del otro sitio web que puede ser diferente de la
-                              de este sitio Web.
+                              Nos esforzamos por proporcionar información
+                              precisa y actualizada en nuestro sitio web. Sin
+                              embargo, no garantizamos la precisión, integridad
+                              o actualidad de la información proporcionada. No
+                              seremos responsables de ningún daño directo,
+                              indirecto, incidental, especial o consecuente que
+                              surja del uso o la imposibilidad de utilizar
+                              nuestro sitio web.
                             </p>
                             <h5 className="modal-title2">
-                              Propiedad intelectual e industrial
+                              4. Enlaces a Terceros:
                             </h5>
                             <p>
-                              Todos los derechos están reservados. Todo acceso a
-                              este Sitio Web está sujeto a las siguientes
-                              condiciones: la reproducción, almacenaje
-                              permanente y la difusión de los contenidos o
-                              cualquier otro uso que tenga finalidad pública o
-                              comercial queda expresamente prohibida sin el
-                              consentimiento previo expreso y por escrito del
-                              Titular.
+                              Nuestro sitio web puede contener enlaces a sitios
+                              web de terceros. Estos enlaces son proporcionados
+                              únicamente para tu conveniencia. No tenemos
+                              control sobre el contenido de estos sitios web de
+                              terceros y no asumimos ninguna responsabilidad por
+                              su contenido o prácticas de privacidad.
                             </p>
                             <h5 className="modal-title2">
-                              Limitación de responsabilidad
+                              5. Jurisdicción y Ley Aplicable:
                             </h5>
                             <p>
-                              El Titular declina cualquier responsabilidad en
-                              caso de que existan interrupciones o un mal
-                              funcionamiento de los Servicios o contenidos
-                              ofrecidos en Internet, cualquiera que sea su
-                              causa. Asimismo, el Titular no se hace responsable
-                              por caídas de la red, pérdidas de negocio a
-                              consecuencia de dichas caídas, suspensiones
-                              temporales de fluido eléctrico o cualquier otro
-                              tipo de daño indirecto que se deba por causas
-                              ajenas a el Titular. Antes de tomar decisiones y/o
-                              acciones con base a la información incluida en el
-                              Sitio Web, el Titular le recomienda comprobar y
-                              contrastar la información recibida con otras
-                              fuentes.
+                              Este Aviso Legal se regirá e interpretará de
+                              acuerdo con las leyes de la República Argentina.
+                              Cualquier disputa que surja en relación con este
+                              Aviso Legal estará sujeta a la jurisdicción
+                              exclusiva de los tribunales de la ciudad de Rio
+                              Gallegos, provincia Santa Cruz.
                             </p>
-                            <h5 className="modal-title2">Contacto</h5>
+                            <h5 className="modal-title2">6. Modificaciones:</h5>
                             <p>
-                              En caso de que usted tenga cualquier duda acerca
-                              de este Aviso Legal o quiera realizar cualquier
-                              comentario sobre el Sitio Web, puede enviar un
-                              mensaje de correo electrónico a la dirección:
-                              administracion@vefrek.com o comunicarte
-                              telefónicamente al siguiente número: 2966449951.
+                              Nos reservamos el derecho de modificar este Aviso
+                              Legal en cualquier momento. Cualquier cambio
+                              entrará en vigencia inmediatamente después de su
+                              publicación en este sitio web. Al acceder y
+                              utilizar nuestro sitio web, aceptas los términos y
+                              condiciones establecidos en este Aviso Legal. Si
+                              no estás de acuerdo con estos términos, por favor,
+                              abstente de usar nuestro sitio web. Si tienes
+                              alguna pregunta sobre este Aviso Legal,
+                              contáctanos a nuestro correo oficial
+                              administracion@vefrek.com.
                             </p>
                           </div>
                           <div className="modal-footer">
@@ -361,89 +236,136 @@ const Footer = () => {
                             ></button>
                           </div>
                           <div className="modal-body">
-                            <h5 className="modal-title2">Quienes somos</h5>
                             <p>
-                              La direccion de nuestra web es: www.vefrek.com
+                              Gracias por visitar Vefrek. Tu privacidad es
+                              importante para nosotros. Esta Política de
+                              Privacidad explica cómo recopilamos, usamos,
+                              divulgamos y protegemos la información personal
+                              que obtenemos a través de nuestro sitio web
+                              https://vefrek.com. Al usar el Sitio, aceptas los
+                              términos de esta Política de Privacidad.
                             </p>
-                            <h5 className="modal-title2">Comentarios</h5>
+                            <h5 className="modal-title2">
+                              1. Información que recopilamos:
+                            </h5>
                             <p>
-                              Cuando los visitantes dejan comentarios en la web,
-                              recopilamos los datos que se muestran en el
-                              formulario de comentarios, así como la dirección
-                              IP del visitante y la cadena de agentes de usuario
-                              del navegador para ayudar a la detección de spam.
+                              a. Información que nos proporcionas: Podemos
+                              recopilar información personal que nos
+                              proporcionas voluntariamente al interactuar con el
+                              Sitio, como tu nombre, dirección de correo
+                              electrónico, número de teléfono y cualquier otra
+                              información que decidas proporcionar al utilizar
+                              nuestros servicios, como al dejar reseñas o
+                              calificaciones de las empresas listadas en nuestro
+                              sitio.
                             </p>
-                            <h5 className="modal-title2">Cookies</h5>
                             <p>
-                              Si dejas un comentario en nuestro sitio puedes
-                              elegir guardar tu nombre, dirección de correo
-                              electrónico y web en cookies. Esto es para que no
-                              tengas que volver a rellenar tus datos cuando
-                              dejes otro comentario. Estas cookies tendrán una
-                              duración de un año. Cuando te conectes a este
-                              sitio, instalaremos una cookie temporal para
-                              determinar si tu navegador acepta cookies. Esta
-                              cookie no contiene datos personales y se elimina
-                              al cerrar el navegador. Cuando accedas, tambien
-                              instalaremos varias cookies para guardar tu
-                              información de acceso y tus opciones de
-                              visualización de pantalla. Las cookies de acceso
-                              duran dos días, y las cookies de opciones de
-                              pantalla duran un año. Si seleccionas
-                              «Recuérdarme», tu acceso perdurará durante dos
-                              semanas. Los únicos datos que se podrán guardar
-                              serán al momento de completar el formulario en
-                              «Contacto».
+                              b. Información recopilada automáticamente: Cuando
+                              visitas nuestro Sitio, podemos recopilar cierta
+                              información automáticamente, como tu dirección IP,
+                              tipo de navegador, proveedor de servicios de
+                              Internet, páginas de referencia/salida, sistema
+                              operativo, marca de tiempo y/o datos de
+                              navegación. También podemos recopilar información
+                              sobre cómo interactúas con nuestro Sitio, como las
+                              páginas que visitas y las acciones que realizas.
                             </p>
 
                             <h5 className="modal-title2">
-                              Contenido incrustado de otros sitios web
+                              2. Uso de la información:
                             </h5>
                             <p>
-                              Los articulos de este sitio pueden incluir
-                              contenido incrustado (por ejemplo, vídeos,
-                              imágenes, artículos, etc.). El contenido
-                              incrustado de otras webs se comporta exactamente
-                              de la misma manera que si el visitante hubiera
-                              visitado la otra web. Estas web pueden recopilar
-                              datos sobre ti, utilizar cookies, incrustar un
-                              seguimiento adicional de terceros, y supervisar tu
-                              interacción con ese contenido incrustado, incluido
-                              el seguimiento de tu interacción con el contenido
-                              incrustado si tienes una cuenta y estás conectado
-                              a esa web.
+                              a. Utilizamos la información que recopilamos para
+                              proporcionar y mantener nuestro Sitio, mejorar y
+                              personalizar tu experiencia, comunicarnos contigo,
+                              responder a tus consultas y proporcionarte
+                              información relevante sobre las empresas y
+                              servicios relacionados con el sector automotor que
+                              ofrecemos en nuestro Sitio.
+                            </p>
+                            <p>
+                              b. Podemos utilizar información no identificable
+                              para fines analíticos, estadísticos o de
+                              investigación, con el fin de mejorar nuestros
+                              servicios y la experiencia de usuario en nuestro
+                              Sitio.
                             </p>
                             <h5 className="modal-title2">
-                              Cuanto tiempo conservamos tus datos
+                              3. Divulgación de la información:
                             </h5>
                             <p>
-                              Si dejas un comentario, el comentario y sus
-                              metadatos se conservan indefinidamente. Esto es
-                              para que podamos reconocer y aprobar comentarios
-                              sucesivos automáticamente, en lugar de mantenerlos
-                              en una cola de moderación.
+                              a. No vendemos, intercambiamos ni transferimos tu
+                              información personal a terceros sin tu
+                              consentimiento, excepto según lo permita esta
+                              Política de Privacidad.
+                            </p>
+                            <p>
+                              b. Podemos divulgar tu información personal a
+                              terceros que nos ayuden a operar nuestro Sitio o a
+                              llevar a cabo nuestro negocio, como proveedores de
+                              servicios de alojamiento web, procesadores de
+                              pagos y servicios de análisis, siempre y cuando
+                              esos terceros acepten mantener la confidencialidad
+                              de tu información.
+                            </p>
+                            <p>
+                              c. También podemos divulgar tu información cuando
+                              consideremos que la divulgación es apropiada para
+                              cumplir con la ley, hacer cumplir las políticas de
+                              nuestro Sitio o proteger nuestros derechos,
+                              propiedad o seguridad, o los de otros.
                             </p>
                             <h5 className="modal-title2">
-                              Que derechos tienes sobre tus datos
+                              4. Cookies y tecnologías similares:
                             </h5>
                             <p>
-                              Si tienes una cuenta o has dejado comentarios en
-                              esta web, puedes solicitar recibir un archivo de
-                              exportación de los datos personales que tenemos
-                              sobre ti, incluyendo cualquier dato que nos hayas
-                              proporcionado. También puedes solicitar que
-                              eliminemos cualquier dato personal que tengamos
-                              sobre ti. Esto no incluye ningún dato que estemos
-                              obligados a conservar con fines administrativos,
-                              legales o de seguridad.
+                              Utilizamos cookies y tecnologías similares para
+                              recopilar cierta información automáticamente y
+                              mejorar la funcionalidad de nuestro Sitio. Puedes
+                              configurar tu navegador para que te notifique
+                              cuando se utilicen cookies y para rechazarlas si
+                              lo deseas. Sin embargo, ten en cuenta que algunas
+                              partes de nuestro Sitio pueden no funcionar
+                              correctamente si desactivas las cookies.
                             </p>
                             <h5 className="modal-title2">
-                              Donde enviamos tus datos
+                              5. Enlaces a otros sitios web:
                             </h5>
                             <p>
-                              Los comentarios de los visitantes puede que los
-                              revise un servicio de detección automática de
-                              spam.
+                              Nuestro Sitio puede contener enlaces a sitios web
+                              de terceros. No somos responsables de las
+                              prácticas de privacidad o el contenido de dichos
+                              sitios web. Te recomendamos que leas las políticas
+                              de privacidad de cualquier sitio web al que
+                              accedas desde nuestro Sitio.
+                            </p>
+
+                            <h5 className="modal-title2">6. Seguridad:</h5>
+                            <p>
+                              Implementamos medidas de seguridad para proteger
+                              tu información personal. Sin embargo, debes tener
+                              en cuenta que ninguna medida de seguridad es
+                              completamente infalible y que no podemos
+                              garantizar la seguridad de tu información.
+                            </p>
+
+                            <h5 className="modal-title2">
+                              7. Cambios en esta Política de Privacidad:
+                            </h5>
+                            <p>
+                              Nos reservamos el derecho de actualizar esta
+                              Política de Privacidad en cualquier momento. Te
+                              notificaremos cualquier cambio publicando la nueva
+                              Política de Privacidad en esta página. Te
+                              recomendamos que revises periódicamente esta
+                              página para estar al tanto de cualquier cambio.
+                            </p>
+
+                            <h5 className="modal-title2">8. Contacto:</h5>
+                            <p>
+                              Si tienes alguna pregunta sobre esta Política de
+                              Privacidad, contáctanos a nuestro correo
+                              electrónico administracion@vefrek.com.
                             </p>
                           </div>
                           <div className="modal-footer">
