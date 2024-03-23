@@ -161,39 +161,35 @@ const Home = () => {
               data-aos="fade-left"
               data-aos-delay="100"
             >
-              <h3 className="p-3">¿Qué es VEFREK?</h3>
-              <p>
-                Vefrek es una empresa que busca unificar toda la información
-                referida al rubro automotor en un solo lugar, todo de una forma
-                fácil, confiable y gratuita. En nuestro sitio web podrás
-                encontrar la siguiente información:
+              <h3 className="mt-3">¿Qué es VEFREK?</h3>
+              <p className="mt-3">
+                Somos una plataforma especializada en proporcionarte información
+                detallada, relevante y actualizada sobre una amplia gama de
+                empresas relacionadas con el sector automotor.{" "}
               </p>
-              <ul className="list-unstyled">
-                <li>
-                  <i className="ri-check-double-line"></i> Todo tipo de negocios
-                  referidos a la industria automotriz.
-                </li>
-                <li>
-                  <i className="ri-check-double-line"></i> Una sección de
-                  clasificados, donde los usuarios podrán publicar los rodados
-                  que deseen vender.
-                </li>
-                <li>
-                  <i className="ri-check-double-line"></i> Precios de los
-                  vehículos actualizados.
-                </li>
-              </ul>
+              <br></br>
               <p>
+                Desde agencias de automóviles hasta talleres mecánicos,
+                gomerías, rent a car, casas de repuestos, lubricentros,
+                aseguradoras, estaciones de servicio y servicios de estética
+                automotriz, nuestro objetivo es ofrecerte un catálogo completo
+                que cubra todas tus necesidades en un solo lugar.{" "}
+              </p>{" "}
+              <br></br>
+              <p>
+                {" "}
                 Trabajamos día a día para mejorar la experiencia de nuestros
-                usuarios en el sitio web, como así también buscamos potenciar el
-                posicionamiento de las empresas dando una mayor difusión de las
-                mismas, asesorándolas para que estas puedan generar un
-                incremento en sus visitas, siempre demostrando nuestro
-                profesionalismo y transparencia. Asimismo, nos encargamos de
-                mantener los datos de las empresas, los vehículos para las
-                ventas y la lista de precios constantemente actualizados, ya sea
-                de forma anual (para las empresas), semestral (para la sección
-                clasificados) y mensual (en la lista de precios).
+                usuarios y potenciar el posicionamiento de las empresas dando
+                una mayor difusión de las mismas, asesorándolas para que estas
+                puedan generar un incremento en sus visitas, siempre demostrando
+                nuestro profesionalismo y transparencia.{" "}
+              </p>{" "}
+              <br></br>
+              <p>
+                {" "}
+                Te invitamos a explorar nuestro sitio y descubrir la amplia
+                variedad de empresas que tenemos para ofrecerte. Somos Vefrek,
+                la guía más completa del rubro automotor
               </p>
             </div>
           </div>
