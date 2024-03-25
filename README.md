@@ -5,11 +5,9 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 23 Marzo:
+//Actualizaciones 25 Marzo:
 
-- Nosotros
-- Política de privacidad
-- Aviso Legal
+- Filtro Provincias
 
 Detalles a solucoinar:
 

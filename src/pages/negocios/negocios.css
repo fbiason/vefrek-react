@@ -46,10 +46,6 @@
     box-sizing: none;
   }
 
-  .filter-row {
-    display: flex;
-  }
-
   .filter-hero {
     display: block;
     justify-content: initial;
@@ -90,7 +86,7 @@
 }
 @media only screen and (max-width: 576px) {
   .container.hero h5 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Tamaño de fuente ajustado para dispositivos móviles */
     margin-bottom: 8px;
   }
 
