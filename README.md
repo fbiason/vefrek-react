@@ -8,6 +8,7 @@ Blanco: #FFFFFF
 //Actualizaciones 25 Marzo:
 
 - Filtro Provincias
+- Ajuste formulario
 
 Detalles a solucoinar:
 

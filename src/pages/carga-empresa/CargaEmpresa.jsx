@@ -455,9 +455,11 @@ const CargaEmpresa = () => {
               cargarlo <b>GRATIS</b> en nuestro sitio web.
             </p>
           </div>
+
           <div className="border-b border-gray-900/10 pb-12">
-            <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
+            {/* Fila 1 */}
+            <div className="row">
+              <div className="col-sm-4">
                 <label
                   htmlFor="first-name"
                   className="block text-sm w-full font-medium leading-6 text-gray-900"
@@ -477,7 +479,7 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="col-sm-4">
                 <label
                   htmlFor="last-name"
                   className="block text-sm font-medium leading-6 text-gray-900 w-full "
@@ -497,7 +499,7 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="col-span-full">
+              <div className="col-sm-4">
                 <label
                   htmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -516,8 +518,11 @@ const CargaEmpresa = () => {
                   />
                 </div>
               </div>
+            </div>
 
-              <div className="sm:col-span-2 sm:col-start-1">
+            {/* Fila 2 */}
+            <div className="row mt-4">
+              <div className="col-sm-12 col-md-4">
                 <label
                   htmlFor="city"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -537,7 +542,7 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="col-sm-12 col-md-4">
                 <label
                   htmlFor="region"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -557,7 +562,7 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="col-sm-12 col-md-4">
                 <label
                   htmlFor="postal-code"
                   className="block text-sm w-full font-medium leading-6 text-gray-900"
@@ -576,8 +581,11 @@ const CargaEmpresa = () => {
                   />
                 </div>
               </div>
+            </div>
 
-              <div className="sm:col-span-5">
+            {/* Fila 3 */}
+            <div className="row mt-4">
+              <div className="col-sm-4">
                 <label
                   htmlFor="first-name"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -597,30 +605,32 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-5">
+              <div className="col-sm-4">
                 <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
+                  htmlFor="first-name"
+                  className="block text-sm font-medium leading-6 text-gray-900 w-full"
                 >
-                  Teléfono Alternativo (opcional)
+                  <span className="w-full d-flex">
+                    Teléfono Alternativo (opcional)
+                  </span>
                 </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
                     value={formData.phone2}
                     type="text"
-                    name="phone2"
-                    id="last-name"
-                    autoComplete="family-name"
+                    name="phone"
+                    id="first-name"
+                    autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
-              <div className="sm:col-span-5">
+              <div className="col-sm-4">
                 <label
                   htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
+                  className="block text-sm font-medium leading-6 text-gray-900 w-full"
                 >
                   Sitio Web (opcional):
                 </label>
@@ -637,7 +647,7 @@ const CargaEmpresa = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="col-sm-4 mt-4">
                 <div className="block text-sm font-medium leading-6 text-gray-900">
                   <label>
                     <i className="obligatorio">* </i>Categoría:{" "}
@@ -645,7 +655,7 @@ const CargaEmpresa = () => {
                   <select
                     name="category"
                     onChange={handleCategoryChange}
-                    className="form-select"
+                    className="seleccion-categoria"
                     defaultValue=""
                   >
                     <option value="" disabled hidden>
