@@ -5,11 +5,9 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 25 Marzo:
+//Actualizaciones 26 Marzo:
 
-- Filtro Provincias
-- Ajuste formulario
-- Detalles de visualización
+- Retoque Cards
 
 Detalles a solucoinar:
 

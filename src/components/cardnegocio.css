@@ -62,7 +62,7 @@
   line-height: 1.8;
   margin: 0;
   margin-bottom: 5px;
-  color: #f5f5f5; /* Color del texto */
+  color: #f5f5f5;
 }
 
 .cardNegocio .contenido-card a {
@@ -137,6 +137,18 @@
 /*===FIN STAR ===*/
 
 /* Estilos para dispositivos móviles */
+@media (max-width: 1420px) {
+  .container-card {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .cardNegocio .contenido-card {
+    padding: 10px 0px 0px 0px;
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .cardNegocio {
     height: auto;
