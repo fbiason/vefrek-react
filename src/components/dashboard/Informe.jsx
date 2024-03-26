@@ -9,7 +9,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBookmark,
+  faStar,
   faComment,
   faCommentAlt,
   faBuilding,
@@ -197,7 +197,7 @@ const Informe = () => {
             <div className="row mt-4">
               <div className="informe-datos">
                 <div className="icono-y-numero">
-                  <FontAwesomeIcon icon={faBookmark} className="icono" />
+                  <FontAwesomeIcon icon={faStar} className="icono" />
                   <h1>2</h1>
                 </div>
                 <p>Guardados</p>

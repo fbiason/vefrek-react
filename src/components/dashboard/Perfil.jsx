@@ -172,7 +172,7 @@ const Perfil = () => {
 
       <div className="content d-flex justify-content-center">
         <form
-          className="form-dash-perfil rounded-mduserUpdateForm m-5"
+          className="form-dash-perfil rounded-mduserUpdateForm m-5 p-3"
           onSubmit={handleSubmit}
         >
           <div className="space-y-12">

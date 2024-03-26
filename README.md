@@ -9,6 +9,7 @@ Blanco: #FFFFFF
 
 - Filtro Provincias
 - Ajuste formulario
+- Detalles de visualización
 
 Detalles a solucoinar:
 

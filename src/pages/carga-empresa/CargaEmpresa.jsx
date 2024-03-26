@@ -126,31 +126,6 @@ const CargaEmpresa = () => {
     });
   };
 
-  // const handleCheckChange = (e) => {
-  //   const { name, checked } = e.target;
-  //   if (typeof checked === "boolean") {
-  //     if (name === "news" || name === "comments") {
-  //       setFormData({
-  //         ...formData,
-  //         email_notifications: {
-  //           ...formData.email_notifications,
-  //           [name]: checked,
-  //         },
-  //       });
-  //     } else {
-  //       setFormData({
-  //         ...formData,
-  //         sms_notifications: {
-  //           all: false,
-  //           same_email: false,
-  //           none: false,
-  //           [name]: true,
-  //         },
-  //       });
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
     formRef.current = formData;
   }, [formData]);
@@ -459,7 +434,7 @@ const CargaEmpresa = () => {
           <div className="border-b border-gray-900/10 pb-12">
             {/* Fila 1 */}
             <div className="row">
-              <div className="col-sm-4">
+              <div className="col-sm-3">
                 <label
                   htmlFor="first-name"
                   className="block text-sm w-full font-medium leading-6 text-gray-900"
@@ -474,12 +449,12 @@ const CargaEmpresa = () => {
                     name="name"
                     id="first-name"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
 
-              <div className="col-sm-4">
+              <div className="col-sm-3">
                 <label
                   htmlFor="last-name"
                   className="block text-sm font-medium leading-6 text-gray-900 w-full "
@@ -494,12 +469,31 @@ const CargaEmpresa = () => {
                     name="slogan"
                     id="last-name"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
 
-              <div className="col-sm-4">
+              <div className="col-sm-3">
+                <label
+                  htmlFor="street-address"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  <i className="obligatorio">* </i>CUIT
+                </label>
+                <div className="mt-2">
+                  <input
+                    onChange={handleChange}
+                    value={formData.cuit}
+                    type="text"
+                    name="location"
+                    id="cuit"
+                    className="txt-form"
+                  />
+                </div>
+              </div>
+
+              <div className="col-sm-3">
                 <label
                   htmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -514,7 +508,7 @@ const CargaEmpresa = () => {
                     name="location"
                     id="street-address"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -537,7 +531,7 @@ const CargaEmpresa = () => {
                     name="city"
                     id="city"
                     autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -557,7 +551,7 @@ const CargaEmpresa = () => {
                     name="state"
                     id="region"
                     autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -577,7 +571,7 @@ const CargaEmpresa = () => {
                     name="postal_code"
                     id="postal-code"
                     autoComplete="postal-code"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -600,7 +594,7 @@ const CargaEmpresa = () => {
                     name="phone"
                     id="first-name"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -622,7 +616,7 @@ const CargaEmpresa = () => {
                     name="phone"
                     id="first-name"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -642,7 +636,7 @@ const CargaEmpresa = () => {
                     name="website"
                     id="last-name"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                   />
                 </div>
               </div>
@@ -770,9 +764,9 @@ const CargaEmpresa = () => {
               <div className="col-span-full">
                 <label
                   htmlFor="about"
-                  className="block text-sm font-medium leading-6 mt-5"
+                  className="block text-sm font-medium leading-6"
                 >
-                  <i className="obligatorio">* </i>Descripción
+                  Descripción
                 </label>
                 <div className="mt-2">
                   <textarea
@@ -781,14 +775,14 @@ const CargaEmpresa = () => {
                     id="about"
                     name="description"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="txt-form"
                     defaultValue={""}
                     placeholder=" Describa brevemente su empresa."
                   />
                 </div>
               </div>
 
-              <div className="rs-EditarEmpresa col-span-full mt-5">
+              <div className="rs-EditarEmpresa col-span-full ">
                 <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-6">
