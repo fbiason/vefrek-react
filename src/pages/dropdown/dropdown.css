@@ -52,5 +52,13 @@
 @media (max-width: 768px) {
   .dropdown-content {
     position: relative;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .dropdown-content {
+    position: relative;
+    z-index: 1;
   }
 }

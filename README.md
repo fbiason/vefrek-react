@@ -5,9 +5,9 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 26 Marzo:
+//Actualizaciones 28 Marzo:
 
-- Retoque Cards
+- Perfil
 
 Detalles a solucoinar:
 
