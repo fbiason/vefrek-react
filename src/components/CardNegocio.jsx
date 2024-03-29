@@ -6,7 +6,7 @@ import { UserContext } from "../context/userContext";
 import { useContext, useRef, useEffect } from "react";
 import { swalPopUpSuccessTemporal, swalPopUp } from "../utils/swal";
 import { SpinnerContext } from "../context/spinnerContext";
-import { BsHeartFill, BsStarFill } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 
 const CardNegocio = (props) => {
   const { userData } = useContext(UserContext);
