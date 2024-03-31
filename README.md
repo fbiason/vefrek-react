@@ -11,5 +11,6 @@ Blanco: #FFFFFF
 - Footer: Enlace Contacto - Nosotros
 - PaginaEmpresa: horarios
 - Google Analitycs
+- Google AdSense
 
 /================================/
