@@ -12,8 +12,4 @@ Blanco: #FFFFFF
 - PaginaEmpresa: horarios
 - Google Analitycs
 
-Detalles a solucoinar:
-
-- Incorporar Google Tag AsSense
-
 /================================/
