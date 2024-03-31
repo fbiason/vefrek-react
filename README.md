@@ -5,9 +5,11 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 28 Marzo:
+//Actualizaciones 31 Marzo:
 
-- Perfil
+- Admin (Dash)
+- Footer: Enlace Contacto - Nosotros
+- PaginaEmpresa: horarios
 
 Detalles a solucoinar:
 

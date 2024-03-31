@@ -205,8 +205,8 @@ const Admin = () => {
   };
 
   return (
-    <main className="dashboardMainAdmin">
-      <NavBarDash></NavBarDash>
+    <main className="dashboardMain">
+      <NavBarDash />
       <button
         className="btn btn-primary dashboardClose"
         onClick={() => {

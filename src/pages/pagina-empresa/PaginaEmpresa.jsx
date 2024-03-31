@@ -691,7 +691,7 @@ const PaginaEmpresa = () => {
                 </div>
 
                 <div className="table-headline">
-                  <table className="opening-hours table table-hover table-condensed borderless">
+                  <table className="opening-hours table-open table-hover table-condensed borderless ">
                     <thead>
                       <tr>
                         <th colSpan="2">

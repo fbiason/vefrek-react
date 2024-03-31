@@ -96,3 +96,10 @@
   color: white;
   cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+  .contenido-negocios {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

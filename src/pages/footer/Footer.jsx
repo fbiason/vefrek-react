@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
+import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {
   const myModalAvisoRef = useRef(null);
@@ -41,7 +42,8 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="mt-3">
-                  Alberdi 1144, Depto 4 <br />
+                  Cacique Yatel 1895
+                  <br />
                   Rio Gallegos, Santa Cruz
                   <br />
                   <br />
@@ -73,15 +75,17 @@ const Footer = () => {
                 <li>
                   {" "}
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <a href="/Home.jsx#contact">Contacto</a>{" "}
+                  <HashLink smooth to="/home/Home#about">
+                    Nosotros
+                  </HashLink>
                 </li>
 
                 <li>
                   {" "}
-                  <Link to="/Home">
-                    <i className="bx bx-chevron-right"></i>{" "}
-                    <a href="/Home.jsx#about">Nosotros</a>
-                  </Link>
+                  <i className="bx bx-chevron-right"></i>{" "}
+                  <HashLink smooth to="/home/Home#contact">
+                    Contacto
+                  </HashLink>
                 </li>
 
                 <li>

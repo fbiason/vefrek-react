@@ -271,3 +271,10 @@ select:after {
     margin-bottom: 0.5rem; /* Ajuste del margen inferior */
   }
 }
+
+@media screen and (max-width: 992px) {
+  .background-calendario {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

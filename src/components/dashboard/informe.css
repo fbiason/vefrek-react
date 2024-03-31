@@ -103,3 +103,10 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .info {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
