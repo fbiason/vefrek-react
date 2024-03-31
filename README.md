@@ -10,11 +10,10 @@ Blanco: #FFFFFF
 - Admin (Dash)
 - Footer: Enlace Contacto - Nosotros
 - PaginaEmpresa: horarios
+- Google Analitycs
 
 Detalles a solucoinar:
 
-- Incorporar Google Tag manager
 - Incorporar Google Tag AsSense
-- Incorporar Google Tag Analitycs
 
 /================================/
