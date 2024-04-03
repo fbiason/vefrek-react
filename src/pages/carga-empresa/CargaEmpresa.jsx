@@ -189,9 +189,6 @@ const CargaEmpresa = () => {
         }
        
         const companyData = formRef.current;
-
-        console.log(companyData)
-
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
         const lofoFile = document.querySelector(".company_logo_file").files[0];
