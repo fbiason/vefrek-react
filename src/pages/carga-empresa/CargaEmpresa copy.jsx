@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
-import localidadesData from "./localidades.json";
 import "./schedules.css";
 
 const CargaEmpresa = () => {
@@ -68,34 +67,6 @@ const CargaEmpresa = () => {
             },
         },
     });
-    // Inico API
-    const [provincias, setProvincias] = useState([]);
-    const [ciudades, setCiudades] = useState([]);
-    const [selectedProvincia, setSelectedProvincia] = useState("");
-
-    // Obtener la lista de provincias a partir de localidadesData
-    const provinciasList = [
-        ...new Set(
-            localidadesData.localidades.map((localidad) => localidad.provincia.nombre)
-        ),
-    ];
-
-    const handleProvinciaChange = (e) => {
-        const selectedProvincia = e.target.value;
-        setSelectedProvincia(selectedProvincia);
-        // Obtener la lista de ciudades para la provincia seleccionada
-        const ciudadesList = localidadesData.localidades
-            .filter((localidad) => localidad.provincia.nombre === selectedProvincia)
-            .map((localidad) => localidad.nombre);
-        setCiudades(ciudadesList);
-
-        setFormData({
-            ...formData,
-            state: e.target.value,
-        });
-    };
-
-    // Fin Api
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -145,8 +116,8 @@ const CargaEmpresa = () => {
     const selectImages = (e) => {
         const inputFiles = e.target.querySelector(".company_images_files");
         if (inputFiles) inputFiles.click();
-    };
-
+    }
+        
     const handleCategoryChange = (e) => {
         const { value } = e.target;
         const categoryValue = value.split(",")[0].trim();
@@ -159,7 +130,7 @@ const CargaEmpresa = () => {
             },
         });
     };
-
+        
     useEffect(() => {
         formRef.current = formData;
     }, [formData]);
@@ -167,7 +138,7 @@ const CargaEmpresa = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         formRef.current.registeremail = userData.email;
-           
+
         if (formRef.current.schedules.scheduleType === "P") {
             //Si cargamos horarios personalizados ponemos el campo "custom" en null para no cargar informacion innecesaria
             formRef.current = {
@@ -187,11 +158,8 @@ const CargaEmpresa = () => {
                 },
             };
         }
-       
+
         const companyData = formRef.current;
-
-        console.log(companyData)
-
         const completeData = new FormData();
         completeData.append("companyTextData", JSON.stringify(companyData));
         const lofoFile = document.querySelector(".company_logo_file").files[0];
@@ -516,14 +484,14 @@ const CargaEmpresa = () => {
                                     htmlFor="street-address"
                                     className="block text-sm font-medium leading-6 text-gray-900"
                                 >
-                                    CUIT
+                                    <i className="obligatorio">* </i>CUIT
                                 </label>
                                 <div className="mt-2">
                                     <input
                                         onChange={handleChange}
                                         value={formData.cuit}
                                         type="text"
-                                        name="cuit"
+                                        name="location"
                                         id="cuit"
                                         className="txt-form"
                                     />
@@ -553,51 +521,47 @@ const CargaEmpresa = () => {
 
                         {/* Fila 2 */}
                         <div className="row mt-4">
-                            <div className="col-md-4 mt-2">
-                                <label
-                                    htmlFor="region"
-                                    className="block text-sm font-medium leading-6"
-                                >
-                                    <i className="obligatorio">* </i>Provincia
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        id="selectProvincias"
-                                        onChange={handleProvinciaChange}
-                                        value={selectedProvincia}
-                                        className="w-full txt-form"
-                                        name="state"
-                                    >
-                                        <option value="">Selecciona una provincia</option>
-                                        {provinciasList.map((provincia, index) => (
-                                            <option key={index} value={provincia}>
-                                                {provincia}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="col-md-4 mt-2">
+                            <div className="col-sm-12 col-md-4">
                                 <label
                                     htmlFor="city"
-                                    className="block text-sm font-medium leading-6"
+                                    className="block text-sm font-medium leading-6 text-gray-900"
                                 >
                                     <i className="obligatorio">* </i>Ciudad
                                 </label>
                                 <div className="mt-2">
-                                    <select id="selectCiudades" className="w-full txt-form" name="city" onChange={handleChange}>
-                                        <option value="">Selecciona una ciudad</option>
-                                        {ciudades.map((ciudad, index) => (
-                                            <option key={index} value={ciudad}>
-                                                {ciudad}
-                                            </option>
-                                        ))}
-                                    </select>
+                                    <input
+                                        onChange={handleChange}
+                                        value={formData.city}
+                                        type="text"
+                                        name="city"
+                                        id="city"
+                                        autoComplete="address-level2"
+                                        className="txt-form"
+                                    />
                                 </div>
                             </div>
 
-                            <div className="col-md-4 mt-2">
+                            <div className="col-sm-12 col-md-4">
+                                <label
+                                    htmlFor="region"
+                                    className="block text-sm font-medium leading-6 text-gray-900"
+                                >
+                                    <i className="obligatorio">* </i>Provincia
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        onChange={handleChange}
+                                        value={formData.state}
+                                        type="text"
+                                        name="state"
+                                        id="region"
+                                        autoComplete="address-level1"
+                                        className="txt-form"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="col-sm-12 col-md-4">
                                 <label
                                     htmlFor="postal-code"
                                     className="block text-sm w-full font-medium leading-6 text-gray-900"
@@ -612,7 +576,7 @@ const CargaEmpresa = () => {
                                         name="postal_code"
                                         id="postal-code"
                                         autoComplete="postal-code"
-                                        className="w-full txt-form"
+                                        className="txt-form"
                                     />
                                 </div>
                             </div>
@@ -654,7 +618,7 @@ const CargaEmpresa = () => {
                                         onChange={handleChange}
                                         value={formData.phone2}
                                         type="text"
-                                        name="phone2"
+                                        name="phone"
                                         id="first-name"
                                         autoComplete="given-name"
                                         className="txt-form"
@@ -993,10 +957,7 @@ const CargaEmpresa = () => {
                                     className="mx-auto h-12 w-12 text-gray-300"
                                     aria-hidden="true"
                                 />
-                                <div
-                                    className="mt-4 text-sm text-gray-600 carga-img-neg"
-                                    onClick={selectImages}
-                                >
+                                <div className="mt-4 text-sm text-gray-600 carga-img-neg" onClick={selectImages}>
                                     <label
                                         htmlFor="file-upload"
                                         className="relative cursor-pointer font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 flex"
