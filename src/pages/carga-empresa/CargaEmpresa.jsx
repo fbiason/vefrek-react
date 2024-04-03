@@ -508,14 +508,14 @@ const CargaEmpresa = () => {
                   htmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  <i className="obligatorio">* </i>CUIT
+                  CUIT
                 </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
                     value={formData.cuit}
                     type="text"
-                    name="location"
+                    name="cuit"
                     id="cuit"
                     className="txt-form"
                   />
@@ -645,7 +645,7 @@ const CargaEmpresa = () => {
                     onChange={handleChange}
                     value={formData.phone2}
                     type="text"
-                    name="phone"
+                    name="phone2"
                     id="first-name"
                     autoComplete="given-name"
                     className="txt-form"
