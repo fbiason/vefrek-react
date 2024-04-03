@@ -24,23 +24,24 @@
 .txt-form {
   display: block;
   width: 100%;
-  border-radius: 0.375rem; /* Equivalente a rounded-md */
+  border-radius: 0.375rem;
   border: 0;
-  padding: 0.375rem 1rem; /* Equivalente a py-1.5 */
-  color: #111827; /* Equivalente a text-gray-900 */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalente a shadow-sm */
+  padding: 0.375rem 1rem;
+  color: #111827;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   outline: 0;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Equivalente a focus:ring-2 focus:ring-inset focus:ring-indigo-600 */
-  line-height: 1.25rem; /* Equivalente a sm:text-sm sm:leading-6 */
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  line-height: 1.25rem;
+  text-align: start;
 }
 
 .txt-form::placeholder {
-  color: #9ca3af; /* Equivalente a placeholder:text-gray-400 */
+  color: #9ca3af;
 }
 
 .txt-form:focus {
-  border-color: #2563eb; /* Equivalente a focus:ring-1 ring-inset ring-indigo-600 */
-  box-shadow: 0 0 0 0.125rem rgba(37, 99, 235, 0.25); /* Equivalente a focus:ring-2 focus:ring-inset focus:ring-indigo-600 */
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.125rem rgba(37, 99, 235, 0.25);
 }
 
 .background-carga-negocio {
@@ -249,7 +250,6 @@ button:hover {
   height: 1px;
   background-color: #ccc;
 }
-
 
 /* Estilos para el botón de carga de imágenes */
 

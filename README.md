@@ -5,12 +5,8 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 31 Marzo:
+//Actualizaciones 3 Abril:
 
-- Admin (Dash)
-- Footer: Enlace Contacto - Nosotros
-- PaginaEmpresa: horarios
-- Google Analitycs
-- Google AdSense
+- CargaEmpresa: localidades.json
 
 /================================/

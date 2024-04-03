@@ -1,3 +1,6 @@
+/* Estilos generales */
+
+/* Estilos para el título */
 .titulo-dash {
   font-size: 3rem;
   text-align: center;
@@ -6,8 +9,9 @@
   padding-bottom: 2rem;
 }
 
-/* Dashboard Main */
-.dashboardMain {
+/* Estilos para el contenido del dashboard */
+.dashboardMain,
+.dashMain {
   position: absolute;
   margin: 2vw;
   min-width: 90vw;
@@ -18,17 +22,7 @@
   padding-bottom: 3rem;
 }
 
-.dashMain {
-  position: relative;
-  margin: 2vw;
-  min-width: 90vw;
-  z-index: 1100;
-  display: grid;
-  grid-template-columns: 5% 95%;
-  border-radius: 20px;
-  padding-bottom: 3rem;
-}
-
+/* Estilos para elementos de fondo */
 .background-item {
   background-color: whitesmoke;
   border-top-right-radius: 2rem;
@@ -61,6 +55,7 @@
   object-fit: cover;
 }
 
+/* Estilos para la superposición de imágenes */
 .overlay {
   position: absolute;
   display: flex;
@@ -246,6 +241,7 @@
 
 .text {
   margin-left: 20px;
+  padding: 0.5rem;
 }
 
 .text h4 {
@@ -348,12 +344,6 @@
   align-items: center;
 }
 
-@media screen and (max-width: 576px) {
-  .user-info h5 {
-    margin-bottom: 10px;
-  }
-}
-
 .user-info h4 {
   text-align: center;
 }
@@ -386,12 +376,6 @@
 .recomendaciones {
   display: flex;
   flex-direction: column;
-}
-
-@media screen and (max-width: 576px) {
-  .recomendaciones {
-    margin-top: 10px;
-  }
 }
 
 .recomendaciones h1 {
@@ -474,63 +458,52 @@
 
 /* === Mobile === */
 
-@media (max-width: 1500px) {
-  main {
-    grid-template-columns: 6% 94%;
-  }
-  .overlay h3 {
-    font-size: 16px;
-  }
-  .logo {
-    display: block;
-    width: 30px;
-    margin: 20px auto;
-  }
-}
-
-@media screen and (max-width: 1300px) {
-  .overlay h3 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .overlay h3 {
-    font-size: 12px;
-
-    .personal-bests-container {
-      grid-template-rows: repeat(3, 70px);
-      gap: 10px;
-    }
-
-    .contenido-consultados {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 150px);
-    }
-
-    .left-bottom {
-      grid-template-columns: 100%;
-      gap: 0;
-    }
-
-    .mobile-personal-bests {
-      display: block;
-      margin: 0 10px;
-    }
-
-    .mobile-personal-bests h1 {
-      margin-top: 20px;
-      font-size: 1.2rem;
-    }
-  }
-}
-
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .dashboardMain {
     grid-template-columns: 100%;
     margin: 0;
     min-width: auto;
     position: relative;
+  }
+  .content-fav {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 15px;
+  }
+  main {
+    grid-template-columns: 100%;
+    margin: 20px;
+  }
+  .content {
+    display: block;
+    grid-template-columns: 100%;
+  }
+
+  .contenido-consultados {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 150px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .dashboardMain {
+    grid-template-columns: 100%;
+    margin: 0;
+    min-width: auto;
+    position: relative;
+  }
+  .content-fav {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 15px;
+  }
+  main {
+    grid-template-columns: 100%;
+    margin: 20px;
+  }
+  .content {
+    display: block;
+    grid-template-columns: 100%;
   }
   .fila1 {
     padding: 10px;
@@ -542,52 +515,21 @@
     justify-content: center;
   }
 
-  .content-fav {
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 15px;
-  }
   .background-item {
     background-color: whitesmoke;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     padding: 1rem;
   }
-
-  main {
-    grid-template-columns: 10% 90%;
-    margin: 20px;
-  }
-
   .contenido-consultados {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 150px);
   }
-}
 
-@media screen and (max-width: 700px) {
-  .prox-desc {
-    max-width: 100%;
+  .user-info h5 {
+    margin-bottom: 10px;
   }
 
-  .favoritos {
-    width: 100%;
-    padding: 0;
-  }
-}
-
-@media (max-width: 700px) {
-  main {
-    grid-template-columns: 15% 85%;
-  }
-
-  .mas-consultados,
-  .descuentos {
-    margin-top: 10px;
-  }
-}
-
-@media screen and (max-width: 576px) {
   .btn-descuentos {
     width: 100%;
   }
@@ -604,6 +546,33 @@
   .comentarios-container {
     max-height: none;
   }
+
+  .recomendaciones {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .prox-desc {
+    max-width: 100%;
+  }
+
+  .favoritos {
+    width: 100%;
+    padding: 0;
+  }
+
+  main {
+    grid-template-columns: 15% 85%;
+  }
+
+  .mas-consultados,
+  .descuentos {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 572px) {
   .prox-desc {
     grid-template-columns: auto;
   }
