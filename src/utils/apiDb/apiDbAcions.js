@@ -30,6 +30,23 @@ export const findUser = async (field, value, fieldsSelected) => {
     }
 }
 
+export const editUserByQuery = async (queryOBJ, dataOBJ) => {
+    try {
+        const queryJSON = JSON.stringify(queryOBJ);
+        const dataJSON = JSON.stringify(dataOBJ);
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/edituser?query=${queryJSON}&data=${dataJSON}`, {
+            method: 'get',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        const responseOBJ = await responseJSON.json();
+        return responseOBJ.success ? { success: true, message: responseOBJ.message } : { success: false, message: responseOBJ.message };
+    } catch (error) {
+        return { success: false, message: error.message }
+    }
+}
+
 
 /************************************** Empresa *************************************/
 
@@ -54,6 +71,24 @@ export const findCompanys = async (matchJSON, aggregateQueryJSON) => {
 
     try {
         const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys?match=${matchJSON}&aggregateQuery=${aggregateQueryJSON}`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const responseOBJ = await responseJSON.json();
+        return responseOBJ;
+    } catch (error) {
+        return { success: false, message: error.message }
+    }
+}
+
+
+export const findCompanys2 = async (queryJSON, fieldsSlected) => {
+
+    try {
+        const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/findcompanys2?query=${queryJSON}&fieldsSelected=${fieldsSlected}`, {
             method: 'get',
             headers: {
                 'Content-Type': 'application/json',
