@@ -22,7 +22,7 @@
 
 .datos-user .btn-descarga {
   color: rgb(32, 31, 31);
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   width: 30%;
   justify-content: center;
 }
@@ -84,7 +84,7 @@
 
 /* Estilos para el botón activo */
 .button-page button.active {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: white;
 }
 
@@ -145,7 +145,7 @@
 
 .datos-business .btn-descarga {
   color: rgb(32, 31, 31);
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   width: 30%;
   justify-content: center;
 }

@@ -113,7 +113,7 @@ label {
 }
 
 .btn-login {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: black;
   border: 1px solid black;
   margin-top: 1rem;
@@ -205,7 +205,7 @@ button {
 }
 
 .txt-form a:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 .txt-form .label {
@@ -230,7 +230,7 @@ button {
 }
 
 .acepto2 {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
   font-weight: bold;
 }
 
@@ -240,7 +240,7 @@ button {
 }
 
 .acepto1:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 .acepto2:hover {
@@ -257,7 +257,7 @@ button {
 }
 
 .btn-inicio {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: black;
   border: 1px solid black;
   margin-top: 1rem;
@@ -323,24 +323,18 @@ button {
 }
 /*--- Responsive ---*/
 @media (max-width: 768px) {
-  .footer-info .vefrek-logo {
-    width: 40%;
+  .vefrek-logo {
+    width: 80%;
   }
 
   .login-container {
     padding: 1rem;
   }
 
-  .vefrek-logo {
-    width: 70%;
-  }
-
   .bienvenido {
     width: 100%;
   }
-}
 
-@media (max-width: 767px) {
   .login-card {
     padding: 0;
   }

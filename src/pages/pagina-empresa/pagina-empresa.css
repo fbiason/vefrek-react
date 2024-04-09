@@ -142,7 +142,7 @@
 .imagen-seleccionada {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
-  border: 2px solid #14ba75;
+  border: 2px solid rgb(0, 197, 142);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -162,7 +162,7 @@
 }
 
 .imagen-seleccionada {
-  border: 2px solid #14ba75;
+  border: 2px solid rgb(0, 197, 142);
 }
 
 .img-fluid {
@@ -201,7 +201,7 @@
 .imagen-seleccionada {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
-  border: 2px solid #14ba75;
+  border: 2px solid rgb(0, 197, 142);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 /*================*/
@@ -255,7 +255,7 @@
 }
 
 .imagen-seleccionada {
-  border: 2px solid #14ba75;
+  border: 2px solid rgb(0, 197, 142);
 }
 
 .reportar {
@@ -294,7 +294,7 @@
 }
 
 .redes-sociales-container i:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 .google-map {

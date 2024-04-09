@@ -32,9 +32,9 @@
 }
 
 .filter-button-active {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: #ffffff;
-  border-color: #14ba75;
+  border-color: rgb(0, 197, 142);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }

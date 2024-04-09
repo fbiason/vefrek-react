@@ -82,7 +82,7 @@
 }
 
 .form-range::-webkit-slider-thumb {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   width: 20px;
   height: 20px;
   border: none;

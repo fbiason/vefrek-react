@@ -23,7 +23,7 @@
 .btn-publica {
   background: linear-gradient(
     to right,
-    #14ba75,
+    rgb(0, 197, 142),
     #241e4e
   ); /* Gradiente de verde a azul */
   color: #fff; /* Color del texto */
@@ -38,30 +38,26 @@
 }
 
 .btn-publica:hover {
-  background: linear-gradient(
-    to right,
-    #241e4e,
-    #14ba75
-  ); /* Cambia el gradiente al pasar el mouse */
+  background: linear-gradient(to right, #241e4e, rgb(0, 197, 142));
 }
 
 /* Estilo para el botón "Ingresa" */
 .ingresa {
   font-style: 400;
-  background-color: #ffffff; /* Color de fondo */
-  color: #241e4e; /* Color del texto */
-  border: 2px solid #14ba75; /* Borde sólido de color verde */
-  padding: 10px 20px; /* Ajusta el relleno */
-  font-size: 16px; /* Tamaño del texto */
-  font-weight: bold; /* Hace que la letra sea más gruesa */
-  border-radius: 5px; /* Añade bordes redondeados */
-  text-transform: uppercase; /* Convierte el texto a mayúsculas */
-  transition: all 0.5s ease; /* Agrega una transición suave */
+  background-color: #ffffff;
+  color: #241e4e;
+  border: 2px solid rgb(0, 197, 142);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
 }
 
 .ingresa:hover {
-  background-color: #14ba75; /* Cambia el color de fondo al pasar el mouse */
-  color: #fff; /* Cambia el color del texto al pasar el mouse */
+  background-color: rgb(0, 197, 142);
+  color: #fff;
 }
 
 .navbar .dropdown ul {
@@ -98,7 +94,7 @@
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover > a {
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
 }
 
 .navbar .dropdown:hover > ul {
@@ -151,7 +147,7 @@
 }
 
 #hero-publicacion h2 {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
   font-family: "roboto", sans-serif;
   font-weight: 550;
   margin: 12px 0 0 0;
@@ -177,7 +173,7 @@
 #hero-publicacion .icon-box i {
   font-size: 32px;
   line-height: 1;
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #hero-publicacion .icon-box h3 {
@@ -195,11 +191,11 @@
 }
 
 #hero-publicacion .icon-box h3 a:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #hero-publicacion .icon-box:hover {
-  border-color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #header .get-started-btn {
@@ -210,14 +206,14 @@
   white-space: nowrap;
   transition: 0.3s;
   font-size: 16px;
-  border: 3px solid #14ba75;
+  border: 3px solid rgb(0, 197, 142);
   background-color: transparent;
 }
 
 #header .get-started-btn:hover {
-  background: #14ba75;
+  background: rgb(0, 197, 142);
   color: #fff;
-  border-color: #14ba75;
+  border-color: rgb(0, 197, 142);
 }
 
 .search-container {

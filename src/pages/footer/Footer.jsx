@@ -31,16 +31,16 @@ const Footer = () => {
       <div className="footer-top">
         <div className="container">
           <div className="row">
+            <Link to="/">
+              {" "}
+              <img
+                src="/images/logos/logo-vefrek-white.png"
+                alt="Vefrek"
+                className="vefrek-logo-footer"
+              />
+            </Link>
             <div className="col-lg-3 col-md-6">
               <div className="footer-info">
-                <Link to="/">
-                  {" "}
-                  <img
-                    src="/images/logos/logo-vefrek-white.png"
-                    alt="Vefrek"
-                    className="vefrek-logo"
-                  />
-                </Link>
                 <p className="mt-3">
                   Cacique Yatel 1895
                   <br />

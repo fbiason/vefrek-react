@@ -21,7 +21,7 @@
   text-transform: uppercase;
 }
 #footer .footer-top .footer-info h3 span {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 #footer .footer-top .footer-info p {
   font-size: 14px;
@@ -73,7 +73,7 @@
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #14ba75;
+  color: rgb(0, 197, 142);
   font-size: 18px;
   line-height: 1;
 }
@@ -96,7 +96,7 @@
 }
 
 #footer .footer-top .footer-links ul a:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #footer .footer-top .footer-newsletter form {
@@ -122,14 +122,14 @@
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #14ba75;
+  background: rgb(0, 197, 142);
   color: #151515;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
 }
 
 #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
-  background: #14ba75;
+  background: rgb(0, 197, 142);
 }
 
 #footer .copyright {
@@ -203,7 +203,7 @@
 
 .footer-newsletter .btn-news {
   width: 50%;
-  background: #14ba75;
+  background: rgb(0, 197, 142);
   padding: 12px;
   color: white;
   margin: 16px 0;
@@ -237,6 +237,22 @@
   background-color: black;
   border-radius: 1rem;
   width: 50%;
+}
+
+.vefrek-logo-footer {
+  width: 10%;
+}
+
+@media (max-width: 992px) {
+  .vefrek-logo-footer {
+    width: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vefrek-logo-footer {
+    width: 40%;
+  }
 }
 
 @media (min-width: 768px) {

@@ -134,21 +134,19 @@
 @media screen and (max-width: 992px) {
   .nav-item.active a {
     border-radius: 3rem;
-    width: auto; 
+    width: auto;
     justify-content: center;
-    align-items: center; 
-    display: flex; 
-    margin: 0 auto; 
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
   }
 }
-
 
 .nav-icon {
   height: 30px;
   font-size: 30px;
   text-align: center;
 }
-
 
 @media screen and (max-width: 576px) {
   .nav-icon {
@@ -168,7 +166,7 @@
 }
 
 .icon-burger {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
   width: 60px;
   height: 60px;
   display: none;

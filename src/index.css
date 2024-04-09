@@ -90,7 +90,7 @@ a:hover {
   margin: 1rem;
   bottom: 15px;
   z-index: 996;
-  background: #14ba75;
+  color: rgb(0, 197, 142);
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -109,7 +109,7 @@ a:hover {
 }
 
 .back-to-top:hover i {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 .back-to-top.active {

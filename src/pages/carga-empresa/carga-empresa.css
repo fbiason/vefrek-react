@@ -32,6 +32,7 @@
   outline: 0;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   line-height: 1.25rem;
+  align-items: start;
   text-align: start;
 }
 
@@ -47,7 +48,7 @@
 .background-carga-negocio {
   min-height: fit-content;
   align-items: center;
-  padding-top: 9rem;
+  padding-top: 10rem;
   justify-content: center;
   background-color: hsl(218deg, 41%, 15%);
   background-image: radial-gradient(
@@ -120,27 +121,6 @@
       hsl(218deg, 41%, 19%) 80%,
       transparent 100%
     );
-}
-
-@media (max-width: 768px) {
-  .form-carga-negocio {
-    width: 100%;
-    padding: 1em;
-  }
-  input,
-  label {
-    width: 100%;
-  }
-
-  .background-carga-negocio h1 {
-    font-size: 40px;
-  }
-}
-
-@media (min-width: 769px) {
-  .form-carga-negocio {
-    width: 70%;
-  }
 }
 
 .form-carga-negocio h2,
@@ -224,7 +204,7 @@ input {
 
 button {
   padding: 10px;
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: #fff;
   border-radius: 3px;
   cursor: pointer;
@@ -263,7 +243,7 @@ button:hover {
   padding: 8px 16px;
   border: 2px solid #4a5568;
   color: #4a5568;
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
@@ -379,7 +359,7 @@ input {
 
 button {
   padding: 10px;
-  background-color: #14ba75;
+  background-color: rgb(0, 197, 142);
   color: #fff;
   border-radius: 3px;
   cursor: pointer;
@@ -410,8 +390,45 @@ button:hover {
   display: none;
 }
 
+@media (max-width: 992px) {
+  .background-carga-negocio {
+    padding-top: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .background-carga-negocio {
     padding-top: 3rem;
+  }
+
+  .form-carga-negocio {
+    width: 100%;
+    padding: 1em;
+  }
+  input,
+  label {
+    width: 100%;
+  }
+
+  .background-carga-negocio h1 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-carga-negocio {
+    width: 70%;
+  }
+}
+
+@media (max-width: 992px) {
+  .f-media {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .rs-EditarEmpresa .social-placeholder label {
+    width: 25%;
   }
 }

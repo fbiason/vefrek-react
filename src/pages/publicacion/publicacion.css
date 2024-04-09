@@ -83,7 +83,7 @@
 }
 
 #hero-publicacion h2 {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
   font-family: "roboto", sans-serif;
   font-weight: 550;
   margin: 12px 0 0 0;
@@ -109,7 +109,7 @@
 #hero-publicacion .icon-box i {
   font-size: 32px;
   line-height: 1;
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #hero-publicacion .icon-box h3 {
@@ -127,11 +127,11 @@
 }
 
 #hero-publicacion .icon-box h3 a:hover {
-  color: #14ba75;
+  color: rgb(0, 197, 142);
 }
 
 #hero-publicacion .icon-box:hover {
-  border-color: #14ba75;
+  border-color: rgb(0, 197, 142);
 }
 /*--- Responsive ---*/
 @media (min-width: 1024px) {

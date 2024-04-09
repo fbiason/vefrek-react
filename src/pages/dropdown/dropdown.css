@@ -4,7 +4,7 @@
 }
 
 .dropdown-button {
-  background: linear-gradient(to right, #14ba75, #241e4e);
+  background: linear-gradient(to right, rgb(0, 197, 142), #241e4e);
   color: #fff;
   padding: 10px;
   border: none;
@@ -15,7 +15,7 @@
 
 .dropdown-button:hover {
   color: white;
-  background: linear-gradient(to right, #241e4e, #14ba75);
+  background: linear-gradient(to right, #241e4e, rgb(0, 197, 142));
 }
 
 .dropdown-content {
