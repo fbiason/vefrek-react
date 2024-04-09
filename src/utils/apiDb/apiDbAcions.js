@@ -30,6 +30,7 @@ export const findUser = async (field, value, fieldsSelected) => {
     }
 }
 
+/********************* PARA PODER USAR ESTE ENDPOINT SI O SI HAY QUE ENVIAR EN LA QUERY DE BUSQUEDA EL EMAIL DEL USUARIO A EDITAR *****************************/
 export const editUserByQuery = async (queryOBJ, dataOBJ) => {
     try {
         const queryJSON = JSON.stringify(queryOBJ);

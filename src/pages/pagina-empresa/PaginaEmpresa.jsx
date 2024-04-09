@@ -283,23 +283,25 @@ const PaginaEmpresa = () => {
       
                 /***************** Lectura y escritura de datos de sitios vistados en la informacion de usuario en la base de datos **********************/
 
-                const userDataResponse = await findUser("email", userData.email, "visited");
+                const userDataResponse = await findUser("email", userData.email, "visited email");
                 const userDataFromDB = userDataResponse.userData;
                 if (userDataResponse.success) {
                     const userVisitedCompanysDataArr = userDataFromDB.visited;
                     const companyToFind = userVisitedCompanysDataArr.find((company) => company.companyid === companyData._id);
                     if (companyToFind) {
-                        await editUserByQuery(
-                            {_id: userDataFromDB._id, "visited.companyid": companyData._id},                                      // ("visited.companyid": companyData._id) busca objetos dentro del array "visited" con el campo "companyid" = "companyData._id"
+                        const response = await editUserByQuery(
+                            {email: userDataFromDB.email, "visited.companyid": companyData._id},                                  // ("visited.companyid": companyData._id) busca objetos dentro del array "visited" con el campo "companyid" = "companyData._id"
                             {$set: { "visited.$.visitscount": companyToFind.visitscount + 1, "visited.$.lastvisit": Date.now() }} //El "$" despues de "visited" indica que solo se tiene que actualizar el objeto que coincida
-                        );                                                                                                        // con la query de busqueda y no todos  
+                        );
+                        if (!response.success) console.error(response.message);                                                                                                        // con la query de busqueda y no todos  
                     } else {
                         const companyVisitedNewData = {
                             companyid: companyData._id,
                             visitscount: 1,
                             lastvisit: Date.now(),
                         };
-                        await editUserByQuery({_id: userDataFromDB._id}, { $push: {visited: companyVisitedNewData }});
+                        const response = await editUserByQuery({email: userDataFromDB.email}, { $push: {visited: companyVisitedNewData }});
+                        if (!response.success) console.error(response.message);
                     }
                 } else {
                     console.error(userDataResponse.message);
