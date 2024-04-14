@@ -26,10 +26,8 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 9 Abril:
-
-- CargaNegocio: se ajusto el formulario para versión responsive
-- Footer: se ajusto el logo
-- Actualización de paleta de colores primarios
+//Actualizaciones 14 Abril:
+-Se rediseño y limpio CSS de EditarNegocio y CargarNegocio.
+Falta limpieza de seccion "logo" y "carga img"
 
 /================================/

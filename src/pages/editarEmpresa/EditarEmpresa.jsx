@@ -1,4 +1,3 @@
-import "./editarEmpresa.css";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,6 +11,8 @@ import { SpinnerContext } from "../../context/spinnerContext";
 import { useParams, useNavigate } from "react-router-dom";
 import { verifyIfHasChanges } from "../../utils/utils";
 import { UserContext } from "../../context/userContext";
+import localidadesData from "../carga-empresa/localidades.json";
+import "../carga-empresa/CargaEdicionEmpresa.css";
 
 export default function EditarEmpresa() {
   const { id } = useParams();
@@ -78,6 +79,35 @@ export default function EditarEmpresa() {
     },
   });
 
+  // Inico API
+  const [provincias, setProvincias] = useState([]);
+  const [ciudades, setCiudades] = useState([]);
+  const [selectedProvincia, setSelectedProvincia] = useState("");
+
+  // Obtener la lista de provincias a partir de localidadesData
+  const provinciasList = [
+    ...new Set(
+      localidadesData.localidades.map((localidad) => localidad.provincia.nombre)
+    ),
+  ];
+
+  const handleProvinciaChange = (e) => {
+    const selectedProvincia = e.target.value;
+    setSelectedProvincia(selectedProvincia);
+    // Obtener la lista de ciudades para la provincia seleccionada
+    const ciudadesList = localidadesData.localidades
+      .filter((localidad) => localidad.provincia.nombre === selectedProvincia)
+      .map((localidad) => localidad.nombre);
+    setCiudades(ciudadesList);
+
+    setFormData({
+      ...formData,
+      state: e.target.value,
+    });
+  };
+
+  // Fin Api
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -135,31 +165,6 @@ export default function EditarEmpresa() {
       },
     });
   };
-
-  // const handleCheckChange = (e) => {
-  //     const { name, checked } = e.target;
-  //     if (typeof checked === "boolean") {
-  //         if (name === "news" || name === "comments") {
-  //             setFormData({
-  //                 ...formData,
-  //                 email_notifications: {
-  //                     ...formData.email_notifications,
-  //                     [name]: checked,
-  //                 },
-  //             });
-  //         } else {
-  //             setFormData({
-  //                 ...formData,
-  //                 sms_notifications: {
-  //                     all: false,
-  //                     same_email: false,
-  //                     none: false,
-  //                     [name]: true,
-  //                 },
-  //             });
-  //         }
-  //     }
-  // };
 
   useEffect(() => {
     formRef.current = formData;
@@ -363,7 +368,6 @@ export default function EditarEmpresa() {
   };
 
   const handleInputChange = (dia, turno, e) => {
-    //Cambio de horarios entre: "open1" "close1" "open2" "close2"
     const hour = e.target.value;
     setFormData((actualFormData) => ({
       ...actualFormData,
@@ -381,7 +385,6 @@ export default function EditarEmpresa() {
   };
 
   const handleInputChangeDef = (turno, e) => {
-    //Cambio de horarios entre: "open1" "close1" "open2" "close2"
     const hour = e.target.value;
     setFormData((actualFormData) => ({
       ...actualFormData,
@@ -603,67 +606,64 @@ export default function EditarEmpresa() {
   /**********************************************************************************/
 
   return (
-    <section className="bg-EditarEpresa">
-      <div className="cont-form">
-        <form
-          className="form-carga-negocio rounded-md userUpdateForm"
-          onSubmit={handleSubmit}
-        >
-          <div className="border-b border-gray-900/10 pb-12">
-            <h1 className="font-semibold leading-7 text-gray-900 mt-3">
-              Edición de negocio
-            </h1>
-            <p className="mt-5 text-sm">
+    <section className="bgCargaEdicion">
+      <div>
+        <form className="formEditar" onSubmit={handleSubmit}>
+          <div>
+            <h1>Edición de negocio</h1>
+            <p className="mt-5">
               Si es propietario de un negocio referido al rubro automotor puede
               cargarlo <b>GRATIS</b> en nuestro sitio web.
             </p>
 
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm w-full font-medium leading-6 text-gray-900"
-                >
+            <div className="datosForm">
+              {/* Nombre Empresa*/}
+              <div className="campos camposS3">
+                <label htmlFor="first-name">
                   <i className="obligatorio">* </i>Nombre de Empresa
                 </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.name}
+                    value={formData.name}
                     type="text"
                     name="name"
                     id="first-name"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="slogan"
-                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
-                >
-                  Slogan (opcional)
-                </label>
+              {/* Sologan Empresa*/}
+              <div className="campos camposS3">
+                <label htmlFor="slogan">Slogan (opcional)</label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.slogan}
+                    value={formData.slogan}
                     type="text"
                     name="slogan"
                     id="slogan"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-
-              <div className="col-span-full">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+              {/* CUIT*/}
+              <div className="campos camposS2">
+                <label htmlFor="postal-code">CUIT</label>
+                <div className="mt-2">
+                  <input
+                    onChange={handleChange}
+                    value={" " + formData.postal_code}
+                    type="text"
+                    name="postal_code"
+                    id="postal-code"
+                    autoComplete="postal-code"
+                  />
+                </div>
+              </div>
+              {/* Dirección*/}
+              <div className="campos camposS4">
+                <label htmlFor="street-address">
                   <i className="obligatorio">* </i>Dirección
                 </label>
                 <div className="mt-2">
@@ -674,110 +674,99 @@ export default function EditarEmpresa() {
                     name="location"
                     id="street-address"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
-              </div>
+              </div>{" "}
+              {/* PROVINCIAS*/}
+              <div className="campos camposS2">
+                <label htmlFor="region">
+                  <i className="obligatorio">* </i>Provincia
+                </label>
 
-              <div className="sm:col-span-2 sm:col-start-1">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+                <div className="mt-2">
+                  <select
+                    id="selectProvincias"
+                    onChange={handleProvinciaChange}
+                    value={selectedProvincia}
+                    name="state"
+                  >
+                    <option value="">Selecciona una provincia</option>
+                    {provinciasList.map((provincia, index) => (
+                      <option key={index} value={provincia}>
+                        {provincia}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              {/* CIUDAD*/}
+              <div className="campos camposS2">
+                <label htmlFor="city">
                   <i className="obligatorio">* </i>Ciudad
                 </label>
                 <div className="mt-2">
-                  <input
-                    onChange={handleChange}
-                    value={" " + formData.city}
-                    type="text"
+                  <select
+                    id="selectCiudades"
                     name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="region"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  <i className="obligatorio">* </i>Provincia
-                </label>
-                <div className="mt-2">
-                  <input
                     onChange={handleChange}
-                    value={" " + formData.state}
-                    type="text"
-                    name="state"
-                    id="region"
-                    autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  >
+                    <option value="">Selecciona una ciudad</option>
+                    {ciudades.map((ciudad, index) => (
+                      <option key={index} value={ciudad}>
+                        {ciudad}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="postal-code"
-                  className="block text-sm w-full font-medium leading-6 text-gray-900"
-                >
+              {/* CP*/}
+              <div className="campos camposS2">
+                <label htmlFor="postal-code">
                   <i className="obligatorio">* </i>Código Postal
                 </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.postal_code}
+                    value={formData.postal_code}
                     type="text"
                     name="postal_code"
                     id="postal-code"
                     autoComplete="postal-code"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-
-              <div className="sm:col-span-5">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+              {/* tel*/}
+              <div className="campos camposS3">
+                <label htmlFor="phone">
                   <i className="obligatorio">* </i>Teléfono
                 </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.phone}
+                    value={formData.phone}
                     type="text"
                     name="phone"
                     id="phone"
                     autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-
-              <div className="sm:col-span-5">
-                <label
-                  htmlFor="phone2"
-                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
-                >
-                  Teléfono Alternativo (opcional)
-                </label>
+              {/* tel2*/}
+              <div className="campos camposS3">
+                <label htmlFor="phone2">Teléfono Alternativo (opcional)</label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.phone2}
+                    value={formData.phone2}
                     type="text"
                     name="phone2"
                     id="phone2"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              <div className="sm:col-span-5">
+              {/* web*/}
+              <div className="sm:col-span-3">
                 <label
                   htmlFor="website"
                   className="block text-sm font-medium leading-6 text-gray-900 w-full "
@@ -787,7 +776,7 @@ export default function EditarEmpresa() {
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={" " + formData.website}
+                    value={formData.website}
                     type="text"
                     name="website"
                     id="website"
@@ -796,16 +785,16 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
-              <div className="cat-EditarEmpresa sm:col-span-3">
-                <div className="block text-sm font-medium leading-6 text-gray-900">
+              {/* categoria*/}
+              <div className="campos camposS3">
+                <div>
                   <label>
                     <i className="obligatorio">* </i>Categoría:{" "}
                   </label>
                   <select
                     name="category"
                     onChange={handleCategoryChange}
-                    className="form_select"
+                    defaultValue=""
                   >
                     <option value="" disabled hidden>
                       <span>Selecciona una categoría</span>
@@ -865,8 +854,8 @@ export default function EditarEmpresa() {
             </div>
           </div>
 
-          <div className="linea-divisoria"></div>
-
+          <div className="linea-divisoria mt-5"></div>
+          {/*horarios*/}
           <div className="horarios-cont flex column">
             <label className="horariosTitle">
               <i className="obligatorio">* </i>Horarios:{" "}
@@ -887,189 +876,180 @@ export default function EditarEmpresa() {
 
           <div className="linea-divisoria"></div>
 
-          <div className="border-b border-gray-900/10 pb-12">
-            <div className="columna-rs-editar">
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900  w-full "
-                >
-                  <i className="obligatorio">* </i>Ingrese la URL de su sitio
-                  web comercial:
-                </label>
+          <div className="campos2">
+            {/*url*/}
+            <div className="campos2S6">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium leading-6 text-gray-900  w-full "
+              >
+                <i className="obligatorio">* </i>Ingrese la URL de su sitio web
+                comercial:
+              </label>
 
-                <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                    <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                      vefrek.com/
-                    </span>
+              <div>
+                <div className="url-vfk">
+                  <span>vefrek.com/</span>
 
-                    <input
-                      value={formData.vefrek_website}
-                      onChange={handleChange}
-                      type="text"
-                      name="vefrek_website"
-                      id="username"
-                      autoComplete="username"
-                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                      placeholder="nombre-negocio"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-full">
-                <label
-                  htmlFor="about"
-                  className="block text-sm font-medium leading-6 mt-5"
-                >
-                  <i className="obligatorio">* </i>Descripción
-                </label>
-                <div className="mt-2">
-                  <textarea
-                    value={" " + formData.description}
+                  <input
+                    value={formData.vefrek_website}
                     onChange={handleChange}
-                    id="about"
-                    name="description"
-                    rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue={""}
-                    placeholder=" Describa brevemente su empresa."
+                    type="text"
+                    name="vefrek_website"
+                    id="username"
+                    autoComplete="username"
+                    placeholder="nombre-negocio"
                   />
                 </div>
               </div>
-
-              <div className="rs-EditarEmpresa col-span-full mt-5">
-                <form onSubmit={handleSubmit}>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-whatsapp me-2"></i>
-                          <span className="obligatorio">*</span>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="whatsapp"
-                          value={formData.social.whatsapp}
-                          className="form-control"
-                          placeholder="WhatsApp"
-                        />
-                      </div>
-
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fas fa-envelope me-2"></i>
-                          <span className="obligatorio">*</span>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="email"
-                          value={formData.social.email}
-                          className="form-control"
-                          placeholder="Mail"
-                        />
-                      </div>
-
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-facebook me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="facebook"
-                          value={formData.social.facebook}
-                          className="form-control"
-                          placeholder="Facebook"
-                        />
-                      </div>
-
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-instagram me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="instagram"
-                          value={formData.social.instagram}
-                          className="form-control"
-                          placeholder="Instagram"
-                        />
-                      </div>
+            </div>
+            {/*descripcion*/}
+            <div className="campos2S6">
+              <label htmlFor="about">
+                <i className="obligatorio">* </i>Descripción
+              </label>
+              <div className="mt-2">
+                <textarea
+                  value={" " + formData.description}
+                  onChange={handleChange}
+                  id="about"
+                  name="description"
+                  rows={3}
+                  className="txt-form"
+                  defaultValue={""}
+                  placeholder=" Describa brevemente su empresa."
+                />
+              </div>
+            </div>
+            {/*rrss*/}
+            <div className="camposRedes camposSfull">
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-whatsapp me-2"></i>
+                        <span className="obligatorio">*</span>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="whatsapp"
+                        value={formData.social.whatsapp}
+                        className="form-control"
+                        placeholder="WhatsApp"
+                      />
                     </div>
-                    <div className="col-md-6">
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-linkedin me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="linkedin"
-                          value={formData.social.linkedin}
-                          className="form-control"
-                          placeholder="LinkedIn"
-                        />
-                      </div>
 
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-x me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="social.text"
-                          name="x"
-                          value={formData.social.x}
-                          className="form-control"
-                          placeholder="X"
-                        />
-                      </div>
+                    <div className="social">
+                      <label>
+                        <i className="fas fa-envelope me-2"></i>
+                        <span className="obligatorio">*</span>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="email"
+                        value={formData.social.email}
+                        className="form-control"
+                        placeholder="Mail"
+                      />
+                    </div>
 
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-youtube me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="youtube"
-                          value={formData.social.youtube}
-                          className="form-control"
-                          placeholder="Youtube"
-                        />
-                      </div>
-                      <div className="form-col social-placeholder d-flex align-items-center">
-                        <label>
-                          <i className="fab fa-tiktok me-2"></i>
-                        </label>
-                        <input
-                          onChange={handleSocialChange}
-                          type="text"
-                          name="tiktok"
-                          value={formData.social.tiktok}
-                          className="form-control"
-                          placeholder="TikTok"
-                        />
-                      </div>
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-facebook me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="facebook"
+                        value={formData.social.facebook}
+                        className="form-control"
+                        placeholder="Facebook"
+                      />
+                    </div>
+
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-instagram me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="instagram"
+                        value={formData.social.instagram}
+                        className="form-control"
+                        placeholder="Instagram"
+                      />
                     </div>
                   </div>
-                </form>
-              </div>
+                  <div className="col-md-6">
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-linkedin me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="linkedin"
+                        value={formData.social.linkedin}
+                        className="form-control"
+                        placeholder="LinkedIn"
+                      />
+                    </div>
+
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-x me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="social.text"
+                        name="x"
+                        value={formData.social.x}
+                        className="form-control"
+                        placeholder="X"
+                      />
+                    </div>
+
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-youtube me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="youtube"
+                        value={formData.social.youtube}
+                        className="form-control"
+                        placeholder="Youtube"
+                      />
+                    </div>
+
+                    <div className="social">
+                      <label>
+                        <i className="fab fa-tiktok me-2"></i>
+                      </label>
+                      <input
+                        onChange={handleSocialChange}
+                        type="text"
+                        name="tiktok"
+                        value={formData.social.tiktok}
+                        className="form-control"
+                        placeholder="TikTok"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
 
-          <div className="linea-divisoria col-span-full mt-5"></div>
-
+          <div className="linea-divisoria mt-5"></div>
+          {/*logo*/}
           <div className="sec3-EditarEmpresa">
-            <label
-              htmlFor="photo"
-              className="block text-sm font-medium leading-6 text-gray-900 mt-3 w-full "
-            >
+            <label htmlFor="photo">
               <i className="obligatorio">* </i>Logo de su empresa
             </label>
             <div className="mt-2 flex items-center gap-x-3">
