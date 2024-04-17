@@ -879,21 +879,14 @@ const CargaEmpresa = () => {
 
           <div className="linea-divisoria mt-5"></div>
           {/*logo*/}
-          <div className="sec3-EditarEmpresa">
-            <div className="col-span-full">
+          <div className="section3CargaEdicion">
+            <div>
               <label htmlFor="photo">
                 <i className="obligatorio">* </i>Logo de su empresa
               </label>
-              <div className="mt-2 flex items-center gap-x-3">
-                <UserCircleIcon
-                  className="h-12 w-12 text-gray-300"
-                  aria-hidden="true"
-                />
-                <button
-                  onClick={loadFile}
-                  type="button"
-                  className="button-small rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
+              <div className="seclogo">
+                <UserCircleIcon className="iconUser" aria-hidden="true" />
+                <button onClick={loadFile} type="button">
                   Cargar
                 </button>
                 <input
@@ -907,28 +900,16 @@ const CargaEmpresa = () => {
                 {formData.logo_image_name}
               </div>
             </div>
-            <label
-              htmlFor="cover-photo"
-              className="block text-sm font-medium leading-6 text-gray-900 mt-5 col-span-full  w-full "
-            >
+            <label htmlFor="cover-photo" className="mt-5">
               <i className="obligatorio">* </i>Cargar imágenes de su negocio
               (máximo 6):
             </label>
 
-            <div className="mt-2 flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 mx-auto">
-              <div className="text-center">
-                <PhotoIcon
-                  className="mx-auto h-12 w-12 text-gray-300"
-                  aria-hidden="true"
-                />
-                <div
-                  className="mt-4 text-sm text-gray-600 carga-img-neg"
-                  onClick={selectImages}
-                >
-                  <label
-                    htmlFor="file-upload"
-                    className="relative cursor-pointer font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 flex"
-                  >
+            <div className="imgsEmpresa">
+              <div>
+                <PhotoIcon className="iconUser" aria-hidden="true" />
+                <div className="cargaImg" onClick={selectImages}>
+                  <label htmlFor="file-upload">
                     <input
                       onChange={handleFilesChange}
                       id="file-upload"
@@ -957,17 +938,11 @@ const CargaEmpresa = () => {
 
           <div className="linea-divisoria col-span-full mt-5"></div>
 
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            <button
-              type="button"
-              className="text-white rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
+          <div className="btnCargaEdicion">
+            <button type="button" className="btnCancel">
               Cancelar
             </button>
-            <button
-              type="submit"
-              className="rounded-md bg-green-500 px-3 py-2 text-white text-sm font-semibold shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
+            <button type="submit" className="btnGuardar">
               Guardar
             </button>
           </div>

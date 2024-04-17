@@ -26,8 +26,7 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 14 Abril:
+//Actualizaciones 17 Abril:
 -Se rediseño y limpio CSS de EditarNegocio y CargarNegocio.
-Falta limpieza de seccion "logo" y "carga img"
 
 /================================/

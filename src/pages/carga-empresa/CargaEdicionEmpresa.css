@@ -486,33 +486,6 @@ button:hover {
   border-radius: 2rem;
 }
 
-/* Estilos para el botón de carga de imágenes */
-
-.carga-img-neg input[type="file"] {
-  display: none;
-}
-
-.carga-img-neg:before {
-  content: "Cargar imágenes";
-  display: inline-block;
-  padding: 8px 16px;
-  border: 2px solid #4a5568;
-  color: #4a5568;
-  background-color: rgb(0, 197, 142);
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.carga-img-neg:hover:before {
-  background-color: #4a5568;
-  color: white;
-}
-
-.company_images_names {
-  margin-left: 20px;
-}
-
 /* ==================================== */
 
 .company_logo_file {
@@ -798,64 +771,58 @@ button:hover {
 
 /* Inicio Seccion 3 */
 
-.sec3-EditarEmpresa {
+.section3CargaEdicion {
   margin-top: 1.5rem;
   width: 100%;
 }
 
-.sec3-EditarEmpresa label {
+.section3CargaEdicion .seclogo {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.section3CargaEdicion .seclogo > * + * {
+  margin-left: 0.75rem;
+}
+
+.iconUser {
+  height: 3rem;
+  width: 3rem;
+  color: #d2d6dc;
+}
+
+.seclogo button {
+  max-width: 25%;
+  padding: 0.375rem 0.625rem;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-top: 1rem;
+  color: #111827;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #d1d5db;
 }
 
-.editarEmpresa_logo {
-  max-width: 100px;
-  border-radius: 3rem;
-  max-height: 100px;
+.seclogo button:hover {
+  background-color: #f9fafb;
 }
 
-.company_logo_input {
-  display: none;
-}
-
-.cargar-img {
-  cursor: pointer;
-}
-
-.editarEmpresa_imagen_cont {
-  position: relative;
-  margin-right: 1rem; /* Espacio entre las imágenes */
-}
-
-.editarEmpresa_imagen {
-  max-width: 150px; /* Tamaño máximo de las imágenes */
-  max-height: 150px;
-}
-
-.editarEmpresa_delete_icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.flex {
+.imgsEmpresa {
+  margin-top: 0.5rem;
   display: flex;
-}
-
-.wrap {
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(139, 139, 139, 0.967);
+  padding: 1.5rem 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Estilos para el botón de carga de imágenes */
-.cargar-img input[type="file"] {
-  display: none;
-}
 
-.cargar-img:before {
+.cargaImg:before {
   content: "Cargar imágenes";
   display: inline-block;
   padding: 8px 16px;
@@ -865,43 +832,62 @@ button:hover {
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
-.cargar-img:hover:before {
+.cargaImg:hover:before {
   background-color: #4a5568;
   color: white;
 }
 
-/* Estilos para el contenedor de la cuadrícula */
-.columna-rs-editar {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 0.5rem; /* Espacio entre las filas */
+/*---- FIN Sec 3 */
+.btnCargaEdicion {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
 }
 
-/*============= Mobile ================*/
-
-@media (max-width: 1400px) {
-  .form-EditarEpresa {
-    width: 80%;
-  }
+.btnCargaEdicion .btnCancel {
+  color: #ffffff;
+  background-color: #4b5563;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-@media (max-width: 992px) {
-  .form-EditarEpresa {
-    margin-top: 4rem;
-    width: 80%;
-  }
+.btnCargaEdicion .btnCancel:hover {
+  background-color: #cecece;
+  color: rgb(0, 0, 0);
 }
 
-@media (min-width: 640px) {
-  .columna-rs-editar {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
+.btnCargaEdicion .btnCancel:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  outline-color: #4f46e5;
 }
 
-@media (max-width: 768px) {
-  .bg-EditarEpresa {
-    padding-top: 3rem;
-  }
+.btnCargaEdicion .btnGuardar {
+  background-color: rgb(34, 197, 94);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
+
+.btnCargaEdicion .btnGuardar:hover {
+  background-color: #38a169;
+}
+
+.btnCargaEdicion .btnGuardar:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  outline-color: #4f46e5;
+}
+
+/*---- FIN Guardar*/
