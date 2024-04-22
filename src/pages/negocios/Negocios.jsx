@@ -106,10 +106,9 @@ const Negocios = ({limitedTo300Km = false}) => {
                         const { latitude, longitude } = position.coords;
                         const userGeolocation = {lat: latitude, lng: longitude};
                         const companysGeolocationArr = companysDataArr.map((company) => ({vefrek_website: company.vefrek_website, geo: {lat: company.geo.lat, lng: company.geo.lng}}));
-                        const companysIn300KmArr = companysGeolocationArr.filter((company) => calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= 300);
+                        const companysIn300KmArr = companysGeolocationArr.filter((company) => company.geo.lat && company.geo.lng && calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= 300);
                         const companysIn300KmNamesArr = companysIn300KmArr.map((company) => company.vefrek_website);
-                        console.log()           
-
+                
                         const queryToAppy = dbQuerys.find(
                             (query) => Object.keys(query)[0] === subcategory
                         );
@@ -179,7 +178,7 @@ const Negocios = ({limitedTo300Km = false}) => {
         const filtersButtons = document.querySelectorAll(".filter-button");
         filtersButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                setCompanys(button.innerHTML);
+                limitedTo300Km ? setCompanysLimitedTo300Km(button.innerHTML) : setCompanys(button.innerHTML);
             });
         });
         // eslint-disable-next-line
