@@ -59,6 +59,24 @@ export const swalPopUpWithCallback = (title, text, icon, cb) => {
     });                                                                                                     // el usuario no siga figurando como logueado  
 }
 
+export const swalPopUpWithCallbacks = (title, text, icon, cbConfirmed, cbCancel) => {
+    Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        confirmButtonColor: '#71706f',
+        showDenyButton: true,
+        color: '#71706f',       
+        scrollbarPadding: false,     
+        allowOutsideClick: false,
+        customClass: {      
+            confirmButton: 'sweetConfirmBoton',        
+        },
+    }).then((result) => {
+        result.isConfirmed ? cbConfirmed() : cbCancel();
+    });                                                                                                     // el usuario no siga figurando como logueado  
+}
+
 export const swalPopUpWhitOptionsAndCallback = (
     mainIcon,
     text,
