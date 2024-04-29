@@ -346,7 +346,7 @@ const NavBar = () => {
         </div>
 
         {/* Publica Ahora */}
-        <div className="col-lg-3 col-12 d-flex justify-content-center mb-3 mb-xl-0">
+        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
           <ul>
             <li></li>
             <Link
@@ -358,8 +358,27 @@ const NavBar = () => {
           </ul>
         </div>
 
+        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
+          {/* Reparación */}
+          <Link to="/reparacion" className="btn btn-primary get-started-btn">
+            Reparación
+          </Link>
+
+          {/* Venta */}
+          <Link to="/venta" className="btn btn-primary get-started-btn">
+            Venta
+          </Link>
+
+          {/* Otros Servicios */}
+          <Link
+            to="/OtrosServicios"
+            className="btn btn-primary get-started-btn"
+          >
+            Otros Serv.
+          </Link>
+        </div>
         {/* Ingresa */}
-        <div className="col-lg-3 col-12 d-flex justify-content-center mb-3 mb-xl-0">
+        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
           <ul>
             <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (

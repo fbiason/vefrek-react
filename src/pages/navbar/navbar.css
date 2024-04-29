@@ -19,22 +19,16 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* Estilo para el botón "Publica Ahora" */
 .btn-publica {
-  background: linear-gradient(
-    to right,
-    rgb(0, 197, 142),
-    #241e4e
-  ); /* Gradiente de verde a azul */
-  color: #fff; /* Color del texto */
-  border: none; /* Elimina el borde */
-  padding: 10px 20px; /* Ajusta el relleno */
-  font-size: 16px; /* Tamaño del texto */
-  font-weight: bold; /* Hace que la letra sea más gruesa */
-  border-radius: 5px; /* Añade bordes redondeados */
-  text-transform: uppercase; /* Convierte el texto a mayúsculas */
-  transition: all 0.5s ease; /* Agrega una transición suave */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background: linear-gradient(to right, rgb(0, 197, 142), #241e4e);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-publica:hover {
