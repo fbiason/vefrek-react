@@ -253,7 +253,7 @@
 }
 
 .horarios-cont * {
-  font-family: "Arial";
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: white;
@@ -352,6 +352,12 @@
 /* EDITAR NUEVO*/
 .formEditar {
   background-color: rgb(56, 47, 15);
+}
+
+.editarEmpresa_logo {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 10rem;
 }
 
 /* Carga VIEJO */
@@ -684,8 +690,8 @@ button:hover {
   -moz-appearance: none;
   background-color: #edf2f7;
   border: 1px solid #cbd5e0;
-  border-radius: 0.75rem; /* Borde más redondeado */
-  padding: 0.75rem 2.5rem 0.75rem 1rem; /* Ajuste de espaciado */
+  border-radius: 0.75rem;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 400;
   color: #4a5568;
@@ -699,12 +705,12 @@ button:hover {
 .cat-EditarEmpresa select:focus {
   background-color: #e2e8f0;
   border-color: #a0aec0;
-  border-bottom-left-radius: 0; /* Dejamos el borde inferior izquierdo cuadrado */
-  border-bottom-right-radius: 0; /* Dejamos el borde inferior derecho cuadrado */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .cat-EditarEmpresa select::after {
-  content: "\25BE"; /* Unicode para el icono de flecha hacia abajo */
+  content: "\25BE";
   position: absolute;
   top: 50%;
   right: 1rem;
@@ -774,12 +780,23 @@ button:hover {
 .section3CargaEdicion {
   margin-top: 1.5rem;
   width: 100%;
+  text-align: center;
+}
+
+.seclogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .section3CargaEdicion .seclogo {
   margin-top: 0.5rem;
-  display: flex;
   align-items: center;
+}
+
+.company_logo_input {
+  display: none;
 }
 
 .section3CargaEdicion .seclogo > * + * {
@@ -818,6 +835,36 @@ button:hover {
   padding: 1.5rem 2.5rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.cuadroEdicion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.editarEmpresa_imagen_cont {
+  position: relative;
+  max-width: 150px;
+  max-height: 150px;
+  padding: 1rem;
+}
+
+.editarEmpresa_imagen {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.editarEmpresa_delete_icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /* Estilos para el botón de carga de imágenes */

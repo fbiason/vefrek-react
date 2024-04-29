@@ -1063,7 +1063,7 @@ export default function EditarEmpresa() {
                 <UserCircleIcon className="iconUser" aria-hidden="true" />
               )}
 
-              <button onClick={loadFile} type="button">
+              <button onClick={loadFile} type="button" className="mt-3">
                 Cambiar
               </button>
               <input
@@ -1083,7 +1083,7 @@ export default function EditarEmpresa() {
             </label>
 
             <div className="imgsEmpresa">
-              <div>
+              <div className="cuadroEdicion">
                 <PhotoIcon className="iconUser" aria-hidden="true" />
                 <div className="cargaImg">
                   <label htmlFor="file-upload">
