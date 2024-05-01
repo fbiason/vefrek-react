@@ -144,9 +144,14 @@ const Reparacion = () => {
         showSpinner(false);
     };
     
-    const setCompanys = async (subcategorysArr) => {
-        const matchJSON = JSON.stringify({ subcategory: { $in: subcategorysArr } });
+    const setCompanys = async (subcategorysArr, selectedProvince, actualPage) => {
+      
+        const matchJSON = selectedProvince === "todo" ? JSON.stringify({ subcategory: { $in: subcategorysArr } }) : JSON.stringify({ subcategory: { $in: subcategorysArr }, state: selectedProvince });
+
+        showSpinner(true);
+
         const aggregateQueryJSON = JSON.stringify([
+            // { $sample: { size: 8 } },
             {
                 $project: {
                     subcategory: 1,
@@ -163,7 +168,10 @@ const Reparacion = () => {
 
         showSpinner(true);
         const response = await findCompanys(matchJSON, aggregateQueryJSON);
+        
         if (response.success && response.companysData) {
+            setTotalNumberOfPages(Math.ceil(response.companysData.length / companysForPage));
+
             const jsxArr = response.companysData.map((company) => (
                 <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
                     <CardNegocio
@@ -180,13 +188,15 @@ const Reparacion = () => {
                     />
                 </div>
             ));
-            setData(jsxArr);
+            setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
+
         } else if (response.success && !response.companysData) {
-            setData(<p>No hay resultados</p>);
+            setData(<p>No se encontraron empresas a menos de 300Km de su ubicación</p>);
         } else {
             swalPopUp("Ops!", response.message, "error");
         }
         showSpinner(false);
+
     };
 
     const handleSelectChangeSubCategory = (e) => {
@@ -226,25 +236,29 @@ const Reparacion = () => {
                     </div>
                 </div>
 
-                <div className="row filter-row-km">
-                    <label htmlFor="customRange1" className="form-label">
-                        Km de distancia
-                    </label>
-                    <input
-                        type="range"
-                        className="form-range"
-                        id="customRange1"
-                        min="1"
-                        max="300"
-                        step="1"
-                        value={rangeValue}
-                        onChange={handleRangeChange}
-                        onMouseUp={handleChangeFilterKmValue}
-                    />
-                    <output id="rangevalue" className="p-3">
-                        {rangeValue}
-                    </output>
-                </div>
+                {   
+                    JSON.parse(localStorage.getItem("negociosUpTo300Km")) 
+                    &&
+                    <div className="row filter-row-km">
+                        <label htmlFor="customRange1" className="form-label">
+                            Km de distancia
+                        </label>
+                        <input
+                            type="range"
+                            className="form-range"
+                            id="customRange1"
+                            min="1"
+                            max="300"
+                            step="1"
+                            value={rangeValue}
+                            onChange={handleRangeChange}
+                            onMouseUp={handleChangeFilterKmValue}
+                        />
+                        <output id="rangevalue" className="p-3">
+                            {rangeValue}
+                        </output>
+                    </div>
+                }   
                
                 <div className="row filter-row-cat mt-3">
                     <div>
