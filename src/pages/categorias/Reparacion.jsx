@@ -14,15 +14,18 @@ const Reparacion = () => {
     const [rangeValue, setRangeValue] = useState(300);
     const [selectedProvince, setSelectedProvince] = useState("");
     const [selectedSubCategory, setSelectedSubCategory] = useState([]);
+    const [actualPage, setActualPage] = useState(1);
+    const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
+    const companysForPage = 8;
 
     useEffect(() => {
 
         const setNegociosUpTo300Km = (opc) => {
             if (opc) {
-                setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince)
+                setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince, actualPage)
                 localStorage.setItem("negociosUpTo300Km", true)
             } else {
-                setCompanys(selectedSubCategory, selectedProvince)
+                setCompanys(selectedSubCategory, selectedProvince, actualPage)
                 localStorage.setItem("negociosUpTo300Km", false)
             }
         }
@@ -43,7 +46,7 @@ const Reparacion = () => {
             setNegociosUpTo300Km(false);
         }
         
-    }, [filterKmValue, selectedProvince, selectedSubCategory])
+    }, [filterKmValue, selectedProvince, selectedSubCategory, actualPage])
 
     const dbQuerys = {
         todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
@@ -53,13 +56,16 @@ const Reparacion = () => {
         lubricentro: ["Lubricentro"],
     };
 
-    const setCompanysUpTo300Km = async (subcategorysArr, range = 300, selectedProvince) => {
+    const setCompanysUpTo300Km = async (subcategorysArr, range = 300, selectedProvince, actualPage) => {
       
         const queryJSON = selectedProvince === "todo" ? JSON.stringify({ subcategory: { $in: subcategorysArr }}) : JSON.stringify({ subcategory: { $in: subcategorysArr }, state: selectedProvince});
 
         showSpinner(true);
         const response = await findCompanys2(queryJSON, "geo vefrek_website");
         if (response.success && response.companysData) {
+
+            setTotalNumberOfPages(Math.ceil(response.companysData.length / companysForPage));
+    
             const companysDataArr = response.companysData;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(async (position) => {
@@ -101,6 +107,7 @@ const Reparacion = () => {
                     const response = await findCompanys(matchJSON, aggregateQueryJSON);
               
                     if (response.success && response.companysData) {
+
                         const jsxArr = response.companysData.map((company) => (
                             <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
                                 <CardNegocio
@@ -117,7 +124,8 @@ const Reparacion = () => {
                                 />
                             </div>
                         ));
-                        setData(jsxArr);
+                        setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
+
                     } else if (response.success && !response.companysData) {
                         setData(<p>No se encontraron empresas a menos de 300Km de su ubicación</p>);
                     } else {
@@ -197,6 +205,18 @@ const Reparacion = () => {
         setSelectedProvince(e.target.value);
     }
 
+    const handleChangePage = (opc) => {
+        if (opc) {
+            if (actualPage + 1 <= totalNumberOfPages) {
+                setActualPage(current => current + 1)
+            }
+        } else {
+            if (actualPage - 1 > 0) {
+                setActualPage(current => current - 1)
+            }
+        }
+    }
+
     return (
         <div className="background categorias">
             <div className="container text-center text-lg-start p-4">
@@ -225,7 +245,7 @@ const Reparacion = () => {
                         {rangeValue}
                     </output>
                 </div>
-
+               
                 <div className="row filter-row-cat mt-3">
                     <div>
                         <select onChange={handleSelectChangeSubCategory} className="filtro-categorias">
@@ -245,7 +265,7 @@ const Reparacion = () => {
                     </div>
                 </div>
 
-                <div className="row filter-row-cat mt-3">
+                <div className="row filter-row-cat mt-3 filtro-provincias">
                     <div>
                         <select
                             onChange={handleSelectChangeState}
@@ -283,10 +303,32 @@ const Reparacion = () => {
                         </select>
                     </div>
                 </div>
+            
+                {
+                    totalNumberOfPages ?
+                    <div className="flex">
+                        <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
+                        <p>{actualPage} de {totalNumberOfPages}</p>
+                        <button onClick={() => handleChangePage(true)} className="paginationButton">+</button>
+                    </div>
+                    :
+                    <></>
+                }
 
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5 container-card">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5 container-card container-cards-categorias">
                     {data}
                 </div>
+
+                {
+                    totalNumberOfPages ?
+                    <div className="flex">
+                        <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
+                        <p>{actualPage} de {totalNumberOfPages}</p>
+                        <button onClick={() => handleChangePage(true)} className="paginationButton">+</button>
+                    </div>
+                    :
+                    <></>
+                }
             </div>
         </div>
     );

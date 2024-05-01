@@ -127,3 +127,21 @@
     font-size: 0.8rem;
   }
 }
+
+
+/***************************/
+
+.paginationButton {
+  width: 40px;
+  background-color: #3DD697;
+  margin: 0 10px;
+}
+
+.filtro-provincias {
+  margin-bottom: 50px;
+}
+
+.container-cards-categorias {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
