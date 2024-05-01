@@ -16,6 +16,7 @@ const Reparacion = () => {
     const [selectedSubCategory, setSelectedSubCategory] = useState([]);
     const [actualPage, setActualPage] = useState(1);
     const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
+    const [showDistanceFilter, setShowDistanceFilter] = useState(false);
     const companysForPage = 8;
 
     useEffect(() => {
@@ -37,11 +38,15 @@ const Reparacion = () => {
                 "Quieres compartir tu ubicación?", 
                 "Filtraremos los anuncios por cercanía", 
                 "info", 
-                () => setNegociosUpTo300Km(true), 
+                () => {
+                    setNegociosUpTo300Km(true);
+                    setShowDistanceFilter(true);
+                },
                 () => setNegociosUpTo300Km(false), 
             )
         } else if (optionCompanysUpTo300Km === true) {
             setNegociosUpTo300Km(true);
+            setShowDistanceFilter(true);
         } else if (optionCompanysUpTo300Km === false) {
             setNegociosUpTo300Km(false);
         }
@@ -111,7 +116,7 @@ const Reparacion = () => {
 
                     showSpinner(true);
                     const response = await findCompanys(matchJSON, aggregateQueryJSON);
-              
+  
                     if (response.success && response.companysData) {
 
                         setTotalNumberOfPages(Math.ceil(response.companysData.length / companysForPage));
@@ -133,8 +138,8 @@ const Reparacion = () => {
                             </div>
                         ));
                         setData(jsxArr.slice((actualPage - 1) * companysForPage, ((actualPage - 1) * companysForPage) + companysForPage));
-
-                    } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
+                    
+                    } else if (response.success && !response.companysData && showDistanceFilter) {
                         setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
                     } else {
                         swalPopUp("Ops!", response.message, "error");
@@ -200,8 +205,8 @@ const Reparacion = () => {
             ));
             setData(jsxArr.slice((actualPage - 1) * companysForPage, ((actualPage - 1) * companysForPage) + companysForPage));
           
-        } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
-            setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
+        } else if (response.success && !response.companysData) {
+            setData(<p className="infoLocationFilter flex">{`No se encontraron empresas con los filtros seleccionados`}</p>);
         } else {
             swalPopUp("Ops!", response.message, "error");
         }
@@ -247,7 +252,7 @@ const Reparacion = () => {
                 </div>
 
                 {   
-                    JSON.parse(localStorage.getItem("negociosUpTo300Km")) 
+                    showDistanceFilter 
                     &&
                     <div className="row filter-row-km">
                         <label htmlFor="customRange1" className="form-label">
