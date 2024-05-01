@@ -48,6 +48,11 @@ const Reparacion = () => {
         
     }, [filterKmValue, selectedProvince, selectedSubCategory, actualPage])
 
+    useEffect(() => {
+        setActualPage(1);
+    }, [filterKmValue, selectedProvince, selectedSubCategory])
+    
+
     const dbQuerys = {
         todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
         gomeria: ["Gomería"],
