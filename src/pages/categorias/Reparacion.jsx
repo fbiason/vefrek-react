@@ -10,14 +10,15 @@ import { calculateDistanceInKm } from "../../utils/geo/calculateDistanceInKm";
 const Reparacion = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const [data, setData] = useState([]);
-    const [rangeValue, setRangeValue] = useState(1);
+    const [filterKmValue, setFilterKmValue] = useState(300);
+    const [rangeValue, setRangeValue] = useState(300);
     const [selectedProvince, setSelectedProvince] = useState("");
 
     useEffect(() => {
 
         const setNegociosUpTo300Km = (opc) => {
             if (opc) {
-                setCompanysUpTo300Km(dbQuerys.todo)
+                setCompanysUpTo300Km(dbQuerys.todo, filterKmValue)
                 localStorage.setItem("negociosUpTo300Km", true)
             } else {
                 setCompanys(dbQuerys.todo)
@@ -41,7 +42,7 @@ const Reparacion = () => {
             setNegociosUpTo300Km(false);
         }
         
-    }, [])
+    }, [filterKmValue])
 
     const dbQuerys = {
         todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
@@ -51,7 +52,7 @@ const Reparacion = () => {
         lubricentro: ["Lubricentro"],
     };
 
-    const setCompanysUpTo300Km = async (subcategorysArr) => {
+    const setCompanysUpTo300Km = async (subcategorysArr, range = 300) => {
       
         const queryJSON = JSON.stringify({ subcategory: { $in: subcategorysArr } });
 
@@ -64,7 +65,7 @@ const Reparacion = () => {
                     const { latitude, longitude } = position.coords;
                     const userGeolocation = {lat: latitude, lng: longitude};
                     const companysGeolocationArr = companysDataArr.map((company) => ({vefrek_website: company.vefrek_website, geo: {lat: company.geo.lat, lng: company.geo.lng}}));
-                    const companysIn300KmArr = companysGeolocationArr.filter((company) => company.geo.lat && company.geo.lng && calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= 300);
+                    const companysIn300KmArr = companysGeolocationArr.filter((company) => company.geo.lat && company.geo.lng && calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= range);
                     const companysIn300KmNamesArr = companysIn300KmArr.map((company) => company.vefrek_website);
                                         
                     const matchJSON = JSON.stringify({
@@ -172,10 +173,6 @@ const Reparacion = () => {
         showSpinner(false);
     };
 
-    useEffect(() => {
-        setCompanys(dbQuerys.todo);
-    }, []);
-
     const handleSelectChange = (e) => {
         const selectedProvince = e.target.value;
         setSelectedProvince(selectedProvince); // Actualiza el estado de la provincia seleccionada
@@ -184,19 +181,23 @@ const Reparacion = () => {
         // Filtra los datos según la provincia seleccionada
         if (selectedProvince === "todo") {
             // Si se selecciona "Todas las Provincias", muestra todos los datos
-            filterUpTo300Km ? setCompanysUpTo300Km(dbQuerys.todo) : setCompanys(dbQuerys.todo);
+            filterUpTo300Km ? setCompanysUpTo300Km(dbQuerys.todo, filterKmValue) : setCompanys(dbQuerys.todo);
         } else {
             // Filtra los datos según la provincia seleccionada
             const subcategorysArr = dbQuerys.todo.filter((subcategory) =>
                 dbQuerys[selectedProvince].includes(subcategory)
             );
-            filterUpTo300Km ? setCompanysUpTo300Km(subcategorysArr) : setCompanys(subcategorysArr);
+            filterUpTo300Km ? setCompanysUpTo300Km(subcategorysArr, filterKmValue) : setCompanys(subcategorysArr);
         }
     };
 
     const handleRangeChange = (e) => {
         setRangeValue(e.target.value);
     };
+
+    const handleChangeFilterKmValue = (e) => {
+        setFilterKmValue(e.target.value);
+    }
 
     return (
         <div className="background categorias">
@@ -220,6 +221,7 @@ const Reparacion = () => {
                         step="1"
                         value={rangeValue}
                         onChange={handleRangeChange}
+                        onMouseUp={handleChangeFilterKmValue}
                     />
                     <output id="rangevalue" className="p-3">
                         {rangeValue}
