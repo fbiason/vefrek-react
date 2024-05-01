@@ -45,7 +45,8 @@ const Reparacion = () => {
         } else if (optionCompanysUpTo300Km === false) {
             setNegociosUpTo300Km(false);
         }
-        
+
+        // eslint-disable-next-line
     }, [filterKmValue, selectedProvince, selectedSubCategory, actualPage])
 
     useEffect(() => {
@@ -62,6 +63,8 @@ const Reparacion = () => {
     };
 
     const setCompanysUpTo300Km = async (subcategorysArr, range = 300, selectedProvince, actualPage) => {
+
+        if (!subcategorysArr.length || !selectedProvince) return;
       
         const queryJSON = selectedProvince === "todo" ? JSON.stringify({ subcategory: { $in: subcategorysArr }}) : JSON.stringify({ subcategory: { $in: subcategorysArr }, state: selectedProvince});
 
@@ -131,8 +134,8 @@ const Reparacion = () => {
                         ));
                         setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
 
-                    } else if (response.success && !response.companysData) {
-                        setData(<p>No se encontraron empresas a menos de 300Km de su ubicación</p>);
+                    } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
+                        setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
                     } else {
                         swalPopUp("Ops!", response.message, "error");
                     }
@@ -150,6 +153,8 @@ const Reparacion = () => {
     };
     
     const setCompanys = async (subcategorysArr, selectedProvince, actualPage) => {
+ 
+        if (!subcategorysArr.length || !selectedProvince) return;
       
         const matchJSON = selectedProvince === "todo" ? JSON.stringify({ subcategory: { $in: subcategorysArr } }) : JSON.stringify({ subcategory: { $in: subcategorysArr }, state: selectedProvince });
 
@@ -195,8 +200,8 @@ const Reparacion = () => {
             ));
             setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
 
-        } else if (response.success && !response.companysData) {
-            setData(<p>No se encontraron empresas a menos de 300Km de su ubicación</p>);
+        } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
+            setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
         } else {
             swalPopUp("Ops!", response.message, "error");
         }
@@ -324,7 +329,7 @@ const Reparacion = () => {
                 </div>
             
                 {
-                    totalNumberOfPages ?
+                    data.length ?
                     <div className="flex">
                         <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
                         <p>{actualPage} de {totalNumberOfPages}</p>
@@ -339,7 +344,7 @@ const Reparacion = () => {
                 </div>
 
                 {
-                    totalNumberOfPages ?
+                    data.length ?
                     <div className="flex">
                         <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
                         <p>{actualPage} de {totalNumberOfPages}</p>
