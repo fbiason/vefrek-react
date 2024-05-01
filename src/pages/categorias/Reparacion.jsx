@@ -1,15 +1,47 @@
 import React, { useState, useEffect, useContext } from "react";
 import CardNegocio from "../../components/CardNegocio";
 import "./categorias.css";
-import { findCompanys } from "../../utils/apiDb/apiDbAcions";
+import { findCompanys, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
+import { swalPopUpWithCallbacks } from "../../utils/swal";
+import { calculateDistanceInKm } from "../../utils/geo/calculateDistanceInKm";
 
 const Reparacion = () => {
     const { showSpinner } = useContext(SpinnerContext);
     const [data, setData] = useState([]);
     const [rangeValue, setRangeValue] = useState(1);
     const [selectedProvince, setSelectedProvince] = useState("");
+
+    useEffect(() => {
+
+        const setNegociosUpTo300Km = (opc) => {
+            if (opc) {
+                setCompanysUpTo300Km(dbQuerys.todo)
+                localStorage.setItem("negociosUpTo300Km", true)
+            } else {
+                setCompanys(dbQuerys.todo)
+                localStorage.setItem("negociosUpTo300Km", false)
+            }
+        }
+
+        const optionCompanysUpTo300Km = JSON.parse(localStorage.getItem("negociosUpTo300Km"));
+
+        if (optionCompanysUpTo300Km === null) {
+            swalPopUpWithCallbacks(
+                "Quieres compartir tu ubicación?", 
+                "Filtraremos los anuncios por cercanía", 
+                "info", 
+                () => setNegociosUpTo300Km(true), 
+                () => setNegociosUpTo300Km(false), 
+            )
+        } else if (optionCompanysUpTo300Km === true) {
+            setNegociosUpTo300Km(true);
+        } else if (optionCompanysUpTo300Km === false) {
+            setNegociosUpTo300Km(false);
+        }
+        
+    }, [])
 
     const dbQuerys = {
         todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
@@ -19,6 +51,82 @@ const Reparacion = () => {
         lubricentro: ["Lubricentro"],
     };
 
+    const setCompanysUpTo300Km = async (subcategorysArr) => {
+      
+        const queryJSON = JSON.stringify({ subcategory: { $in: subcategorysArr } });
+
+        showSpinner(true);
+        const response = await findCompanys2(queryJSON, "geo vefrek_website");
+        if (response.success && response.companysData) {
+            const companysDataArr = response.companysData;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const userGeolocation = {lat: latitude, lng: longitude};
+                    const companysGeolocationArr = companysDataArr.map((company) => ({vefrek_website: company.vefrek_website, geo: {lat: company.geo.lat, lng: company.geo.lng}}));
+                    const companysIn300KmArr = companysGeolocationArr.filter((company) => company.geo.lat && company.geo.lng && calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= 300);
+                    const companysIn300KmNamesArr = companysIn300KmArr.map((company) => company.vefrek_website);
+                                        
+                    const matchJSON = JSON.stringify({
+                        subcategory: { $in: subcategorysArr },
+                        vefrek_website: { $in: companysIn300KmNamesArr }
+                    });
+                    
+                    const aggregateQueryJSON = JSON.stringify([
+                        // { $sample: { size: 8 } },
+                        {
+                            $project: {
+                                subcategory: 1,
+                                name: 1,
+                                "images.images": 1,
+                                location: 1,
+                                phone: 1,
+                                _id: 1,
+                                vefrek_website: 1,
+                                favorites: 1,
+                            },
+                        },
+                    ]);
+
+                    showSpinner(true);
+                    const response = await findCompanys(matchJSON, aggregateQueryJSON);
+              
+                    if (response.success && response.companysData) {
+                        const jsxArr = response.companysData.map((company) => (
+                            <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
+                                <CardNegocio
+                                    subcategory={company.subcategory}
+                                    name={company.name}
+                                    imgUrl={
+                                        company.images.images[0] ? company.images.images[0].url : ""
+                                    }
+                                    location={company.location}
+                                    phone={company.phone}
+                                    id={company._id}
+                                    vefrek_website={company.vefrek_website}
+                                    favorites={company.favorites}
+                                />
+                            </div>
+                        ));
+                        setData(jsxArr);
+                    } else if (response.success && !response.companysData) {
+                        setData(<p>No se encontraron empresas a menos de 300Km de su ubicación</p>);
+                    } else {
+                        swalPopUp("Ops!", response.message, "error");
+                    }
+                    showSpinner(false);
+                    
+                })
+            }
+                
+        } else if (response.success && !response.companysData) {
+            setData(<p>No hay resultados</p>);
+        } else {
+            swalPopUp("Ops!", response.message, "error");
+        }
+        showSpinner(false);
+    };
+    
     const setCompanys = async (subcategorysArr) => {
         const matchJSON = JSON.stringify({ subcategory: { $in: subcategorysArr } });
         const aggregateQueryJSON = JSON.stringify([
@@ -71,17 +179,18 @@ const Reparacion = () => {
     const handleSelectChange = (e) => {
         const selectedProvince = e.target.value;
         setSelectedProvince(selectedProvince); // Actualiza el estado de la provincia seleccionada
+        const filterUpTo300Km = localStorage.getItem("negociosUpTo300Km");
 
         // Filtra los datos según la provincia seleccionada
         if (selectedProvince === "todo") {
             // Si se selecciona "Todas las Provincias", muestra todos los datos
-            setCompanys(dbQuerys.todo);
+            filterUpTo300Km ? setCompanysUpTo300Km(dbQuerys.todo) : setCompanys(dbQuerys.todo);
         } else {
             // Filtra los datos según la provincia seleccionada
             const subcategorysArr = dbQuerys.todo.filter((subcategory) =>
                 dbQuerys[selectedProvince].includes(subcategory)
             );
-            setCompanys(subcategorysArr);
+            filterUpTo300Km ? setCompanysUpTo300Km(subcategorysArr) : setCompanys(subcategorysArr);
         }
     };
 
