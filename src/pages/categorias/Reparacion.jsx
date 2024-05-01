@@ -13,15 +13,16 @@ const Reparacion = () => {
     const [filterKmValue, setFilterKmValue] = useState(300);
     const [rangeValue, setRangeValue] = useState(300);
     const [selectedProvince, setSelectedProvince] = useState("");
+    const [selectedSubCategory, setSelectedSubCategory] = useState([]);
 
     useEffect(() => {
 
         const setNegociosUpTo300Km = (opc) => {
             if (opc) {
-                setCompanysUpTo300Km(dbQuerys.todo, filterKmValue)
+                setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince)
                 localStorage.setItem("negociosUpTo300Km", true)
             } else {
-                setCompanys(dbQuerys.todo)
+                setCompanys(selectedSubCategory, selectedProvince)
                 localStorage.setItem("negociosUpTo300Km", false)
             }
         }
@@ -42,7 +43,7 @@ const Reparacion = () => {
             setNegociosUpTo300Km(false);
         }
         
-    }, [filterKmValue])
+    }, [filterKmValue, selectedProvince, selectedSubCategory])
 
     const dbQuerys = {
         todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
@@ -52,9 +53,9 @@ const Reparacion = () => {
         lubricentro: ["Lubricentro"],
     };
 
-    const setCompanysUpTo300Km = async (subcategorysArr, range = 300) => {
+    const setCompanysUpTo300Km = async (subcategorysArr, range = 300, selectedProvince) => {
       
-        const queryJSON = JSON.stringify({ subcategory: { $in: subcategorysArr } });
+        const queryJSON = selectedProvince === "todo" ? JSON.stringify({ subcategory: { $in: subcategorysArr }}) : JSON.stringify({ subcategory: { $in: subcategorysArr }, state: selectedProvince});
 
         showSpinner(true);
         const response = await findCompanys2(queryJSON, "geo vefrek_website");
@@ -68,10 +69,17 @@ const Reparacion = () => {
                     const companysIn300KmArr = companysGeolocationArr.filter((company) => company.geo.lat && company.geo.lng && calculateDistanceInKm(userGeolocation.lat, userGeolocation.lng, company.geo.lat, company.geo.lng) <= range);
                     const companysIn300KmNamesArr = companysIn300KmArr.map((company) => company.vefrek_website);
                                         
-                    const matchJSON = JSON.stringify({
+                    const matchJSON = selectedProvince === "todo" ?
+                    JSON.stringify({
                         subcategory: { $in: subcategorysArr },
                         vefrek_website: { $in: companysIn300KmNamesArr }
-                    });
+                    })
+                    :
+                    JSON.stringify({
+                        state: selectedProvince,
+                        subcategory: { $in: subcategorysArr },
+                        vefrek_website: { $in: companysIn300KmNamesArr }
+                    })                    
                     
                     const aggregateQueryJSON = JSON.stringify([
                         // { $sample: { size: 8 } },
@@ -173,22 +181,8 @@ const Reparacion = () => {
         showSpinner(false);
     };
 
-    const handleSelectChange = (e) => {
-        const selectedProvince = e.target.value;
-        setSelectedProvince(selectedProvince); // Actualiza el estado de la provincia seleccionada
-        const filterUpTo300Km = localStorage.getItem("negociosUpTo300Km");
-
-        // Filtra los datos según la provincia seleccionada
-        if (selectedProvince === "todo") {
-            // Si se selecciona "Todas las Provincias", muestra todos los datos
-            filterUpTo300Km ? setCompanysUpTo300Km(dbQuerys.todo, filterKmValue) : setCompanys(dbQuerys.todo);
-        } else {
-            // Filtra los datos según la provincia seleccionada
-            const subcategorysArr = dbQuerys.todo.filter((subcategory) =>
-                dbQuerys[selectedProvince].includes(subcategory)
-            );
-            filterUpTo300Km ? setCompanysUpTo300Km(subcategorysArr, filterKmValue) : setCompanys(subcategorysArr);
-        }
+    const handleSelectChangeSubCategory = (e) => {
+        setSelectedSubCategory(dbQuerys[e.target.value]);
     };
 
     const handleRangeChange = (e) => {
@@ -197,6 +191,10 @@ const Reparacion = () => {
 
     const handleChangeFilterKmValue = (e) => {
         setFilterKmValue(e.target.value);
+    }
+
+    const handleSelectChangeState = (e) => {
+        setSelectedProvince(e.target.value);
     }
 
     return (
@@ -230,7 +228,7 @@ const Reparacion = () => {
 
                 <div className="row filter-row-cat mt-3">
                     <div>
-                        <select onChange={handleSelectChange} className="filtro-categorias">
+                        <select onChange={handleSelectChangeSubCategory} className="filtro-categorias">
                             <option value="" disabled selected>
                                 Seleccionar Subcategoría
                             </option>
@@ -250,7 +248,7 @@ const Reparacion = () => {
                 <div className="row filter-row-cat mt-3">
                     <div>
                         <select
-                            onChange={handleSelectChange}
+                            onChange={handleSelectChangeState}
                             value={selectedProvince}
                             className="filtro-categorias"
                         >
@@ -259,7 +257,7 @@ const Reparacion = () => {
                             </option>
                             <option value="todo">Todas las Provincias</option>
                             <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="CABA">CABA</option>
+                            <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
                             <option value="Catamarca">Catamarca</option>
                             <option value="Chaco">Chaco</option>
                             <option value="Chubut">Chubut</option>
