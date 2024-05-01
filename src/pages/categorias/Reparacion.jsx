@@ -71,9 +71,7 @@ const Reparacion = () => {
         showSpinner(true);
         const response = await findCompanys2(queryJSON, "geo vefrek_website");
         if (response.success && response.companysData) {
-
-            setTotalNumberOfPages(Math.ceil(response.companysData.length / companysForPage));
-    
+           
             const companysDataArr = response.companysData;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(async (position) => {
@@ -116,6 +114,8 @@ const Reparacion = () => {
               
                     if (response.success && response.companysData) {
 
+                        setTotalNumberOfPages(Math.ceil(response.companysData.length / companysForPage));
+
                         const jsxArr = response.companysData.map((company) => (
                             <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
                                 <CardNegocio
@@ -132,7 +132,7 @@ const Reparacion = () => {
                                 />
                             </div>
                         ));
-                        setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
+                        setData(jsxArr.slice((actualPage - 1) * companysForPage, ((actualPage - 1) * companysForPage) + companysForPage));
 
                     } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
                         setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
@@ -198,8 +198,8 @@ const Reparacion = () => {
                     />
                 </div>
             ));
-            setData(jsxArr.slice(actualPage - 1, actualPage - 1 + companysForPage));
-
+            setData(jsxArr.slice((actualPage - 1) * companysForPage, ((actualPage - 1) * companysForPage) + companysForPage));
+          
         } else if (response.success && !response.companysData && JSON.parse(localStorage.getItem("negociosUpTo300Km"))) {
             setData(<p className="infoLocationFilter flex">{`No se encontraron empresas a menos de ${rangeValue}Km de su ubicación`}</p>);
         } else {
@@ -329,7 +329,7 @@ const Reparacion = () => {
                 </div>
             
                 {
-                    data.length ?
+                    data.length && totalNumberOfPages > 1?
                     <div className="flex">
                         <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
                         <p>{actualPage} de {totalNumberOfPages}</p>
@@ -344,7 +344,7 @@ const Reparacion = () => {
                 </div>
 
                 {
-                    data.length ?
+                    data.length && totalNumberOfPages > 1?
                     <div className="flex">
                         <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
                         <p>{actualPage} de {totalNumberOfPages}</p>
