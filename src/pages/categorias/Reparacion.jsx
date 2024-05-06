@@ -18,16 +18,15 @@ const Reparacion = () => {
     const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
     const [showDistanceFilter, setShowDistanceFilter] = useState(false);
     const companysForPage = 8;
+    const [filterType, setFilterType ]= useState("distance");
 
     useEffect(() => {
-
+     
         const setNegociosUpTo300Km = (opc) => {
             if (opc) {
-                setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince, actualPage)
-                localStorage.setItem("negociosUpTo300Km", true)
+                setCompanysUpTo300Km(selectedSubCategory, filterKmValue, "todo", actualPage)
             } else {
                 setCompanys(selectedSubCategory, selectedProvince, actualPage)
-                localStorage.setItem("negociosUpTo300Km", false)
             }
         }
 
@@ -41,16 +40,19 @@ const Reparacion = () => {
                 () => {
                     setNegociosUpTo300Km(true);
                     setShowDistanceFilter(true);
+                    localStorage.setItem("negociosUpTo300Km", true)
                 },
-                () => setNegociosUpTo300Km(false), 
+                () => {
+                    setNegociosUpTo300Km(false)
+                    localStorage.setItem("negociosUpTo300Km", false)
+                } 
             )
         } else if (optionCompanysUpTo300Km === true) {
-            setNegociosUpTo300Km(true);
+            filterType === "distance" ? setNegociosUpTo300Km(true) : setNegociosUpTo300Km(false);
             setShowDistanceFilter(true);
         } else if (optionCompanysUpTo300Km === false) {
             setNegociosUpTo300Km(false);
         }
-
         // eslint-disable-next-line
     }, [filterKmValue, selectedProvince, selectedSubCategory, actualPage])
 
@@ -242,6 +244,27 @@ const Reparacion = () => {
         }
     }
 
+    const handleFilterTypeChange = (e) => {
+        const inputs = document.querySelectorAll(".filterTypeInput");
+        inputs.forEach((input) => input.checked = false);
+        e.target.checked = true;
+        setFilterType(e.target.name);
+    }
+    
+    useEffect(() => {
+        if (filterType === "distance") {
+            setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince, actualPage)
+        } else {
+            setCompanys(selectedSubCategory, selectedProvince, actualPage)
+        }
+    }, [filterType])
+    
+
+    useEffect(() => {   
+        const filterTypeInputDistance = document.querySelector(".filterTypeInput[name='distance']");
+        if (filterTypeInputDistance) filterTypeInputDistance.checked = true;
+    }, [showDistanceFilter])
+    
     return (
         <div className="background categorias">
             <div className="container text-center text-lg-start p-4">
@@ -255,23 +278,38 @@ const Reparacion = () => {
                     showDistanceFilter 
                     &&
                     <div className="row filter-row-km">
-                        <label htmlFor="customRange1" className="form-label">
-                            Km de distancia
-                        </label>
-                        <input
-                            type="range"
-                            className="form-range"
-                            id="customRange1"
-                            min="1"
-                            max="300"
-                            step="1"
-                            value={rangeValue}
-                            onChange={handleRangeChange}
-                            onMouseUp={handleChangeFilterKmValue}
-                        />
-                        <output id="rangevalue" className="p-3">
-                            {rangeValue}
-                        </output>
+                        <div className="filterTypeCont flex">
+                            <input type="checkbox" name="distance" className="filterTypeInput" onClick={handleFilterTypeChange}/>
+                            <label htmlFor="filterByDistance" className="filterTypeLabel">
+                                Filtrar por distancia
+                            </label>
+                            <input type="checkbox" name="state" className="filterTypeInput" onClick={handleFilterTypeChange}/>
+                            <label htmlFor="filterByState" className="filterTypeLabel">
+                                Filtrar por provincia
+                            </label>
+                        </div>
+                        {
+                            filterType === "distance" &&
+                            <>
+                                <label htmlFor="customRange1" className="form-label">
+                                    Km de distancia
+                                </label>
+                                <input
+                                    type="range"
+                                    className="form-range"
+                                    id="customRange1"
+                                    min="1"
+                                    max="300"
+                                    step="1"
+                                    value={rangeValue}
+                                    onChange={handleRangeChange}
+                                    onMouseUp={handleChangeFilterKmValue}
+                                />
+                                <output id="rangevalue" className="p-3">
+                                    {rangeValue}
+                                </output>
+                            </>
+                        }
                     </div>
                 }   
                
@@ -294,48 +332,51 @@ const Reparacion = () => {
                     </div>
                 </div>
 
-                <div className="row filter-row-cat mt-3 filtro-provincias">
-                    <div>
-                        <select
-                            onChange={handleSelectChangeState}
-                            value={selectedProvince}
-                            className="filtro-categorias"
-                        >
-                            <option value="" disabled>
-                                Seleccionar Provincia
-                            </option>
-                            <option value="todo">Todas las Provincias</option>
-                            <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
-                            <option value="Catamarca">Catamarca</option>
-                            <option value="Chaco">Chaco</option>
-                            <option value="Chubut">Chubut</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Corrientes">Corrientes</option>
-                            <option value="Entre Ríos">Entre Ríos</option>
-                            <option value="Formosa">Formosa</option>
-                            <option value="Jujuy">Jujuy</option>
-                            <option value="La Pampa">La Pampa</option>
-                            <option value="La Rioja">La Rioja</option>
-                            <option value="Mendoza">Mendoza</option>
-                            <option value="Misiones">Misiones</option>
-                            <option value="Neuquén">Neuquén</option>
-                            <option value="Río Negro">Río Negro</option>
-                            <option value="Salta">Salta</option>
-                            <option value="San Juan">San Juan</option>
-                            <option value="San Luis">San Luis</option>
-                            <option value="Santa Cruz">Santa Cruz</option>
-                            <option value="Santa Fe">Santa Fe</option>
-                            <option value="Santiago del Estero">Santiago del Estero</option>
-                            <option value="Tierra del Fuego">Tierra del Fuego</option>
-                            <option value="Tucumán">Tucumán</option>
-                        </select>
+                {
+                    filterType === "state" &&
+                    <div className="row filter-row-cat mt-3 filtro-provincias">
+                        <div>
+                            <select
+                                onChange={handleSelectChangeState}
+                                value={selectedProvince}
+                                className="filtro-categorias"
+                            >
+                                <option value="" disabled>
+                                    Seleccionar Provincia
+                                </option>
+                                <option value="todo">Todas las Provincias</option>
+                                <option value="Buenos Aires">Buenos Aires</option>
+                                <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Corrientes">Corrientes</option>
+                                <option value="Entre Ríos">Entre Ríos</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value="Jujuy">Jujuy</option>
+                                <option value="La Pampa">La Pampa</option>
+                                <option value="La Rioja">La Rioja</option>
+                                <option value="Mendoza">Mendoza</option>
+                                <option value="Misiones">Misiones</option>
+                                <option value="Neuquén">Neuquén</option>
+                                <option value="Río Negro">Río Negro</option>
+                                <option value="Salta">Salta</option>
+                                <option value="San Juan">San Juan</option>
+                                <option value="San Luis">San Luis</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Santa Fe">Santa Fe</option>
+                                <option value="Santiago del Estero">Santiago del Estero</option>
+                                <option value="Tierra del Fuego">Tierra del Fuego</option>
+                                <option value="Tucumán">Tucumán</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                }
             
                 {
                     data.length && totalNumberOfPages > 1?
-                    <div className="flex">
+                    <div className="paginationButtonsCont flex">
                         <button onClick={() => handleChangePage(false)} className="paginationButton">-</button>
                         <p>{actualPage} de {totalNumberOfPages}</p>
                         <button onClick={() => handleChangePage(true)} className="paginationButton">+</button>

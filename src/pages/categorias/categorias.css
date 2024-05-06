@@ -131,6 +131,10 @@
 
 /***************************/
 
+.paginationButtonsCont {
+  margin-top: 50px;
+}
+
 .paginationButton {
   width: 40px;
   background-color: #3DD697;
@@ -138,7 +142,7 @@
 }
 
 .filtro-provincias {
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 
 .container-cards-categorias {
@@ -148,4 +152,24 @@
 
 .infoLocationFilter {
   width: 100%;
+}
+
+.filterTypeCont {
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.filterTypeCont input:first-child{
+  margin-left: 0;
+}
+
+.filterTypeLabel, .filterTypeInput {
+  width: fit-content;
+  color: white;
+}
+
+.filterTypeInput {
+  margin-right: 10px;
+  margin-left: 40px;
 }
