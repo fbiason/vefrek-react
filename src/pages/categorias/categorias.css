@@ -127,3 +127,49 @@
     font-size: 0.8rem;
   }
 }
+
+
+/***************************/
+
+.paginationButtonsCont {
+  margin-top: 50px;
+}
+
+.paginationButton {
+  width: 40px;
+  background-color: #3DD697;
+  margin: 0 10px;
+}
+
+.filtro-provincias {
+  margin-bottom: 0;
+}
+
+.container-cards-categorias {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.infoLocationFilter {
+  width: 100%;
+}
+
+.filterTypeCont {
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.filterTypeCont input:first-child{
+  margin-left: 0;
+}
+
+.filterTypeLabel, .filterTypeInput {
+  width: fit-content;
+  color: white;
+}
+
+.filterTypeInput {
+  margin-right: 10px;
+  margin-left: 40px;
+}
