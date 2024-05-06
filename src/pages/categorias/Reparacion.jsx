@@ -254,9 +254,10 @@ const Reparacion = () => {
     useEffect(() => {
         if (filterType === "distance") {
             setCompanysUpTo300Km(selectedSubCategory, filterKmValue, selectedProvince, actualPage)
-        } else {
+        } else if (filterType === "state") {
             setCompanys(selectedSubCategory, selectedProvince, actualPage)
         }
+        // eslint-disable-next-line
     }, [filterType])
     
 
