@@ -128,7 +128,6 @@
   }
 }
 
-
 /***************************/
 
 .paginationButtonsCont {
@@ -137,7 +136,7 @@
 
 .paginationButton {
   width: 40px;
-  background-color: #3DD697;
+  background-color: #3dd697;
   margin: 0 10px;
 }
 
@@ -154,22 +153,63 @@
   width: 100%;
 }
 
+/* CHECKBOX */
 .filterTypeCont {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: baseline;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
-.filterTypeCont input:first-child{
-  margin-left: 0;
-}
-
-.filterTypeLabel, .filterTypeInput {
+.filterTypeLabel,
+.filterTypeInput {
   width: fit-content;
   color: white;
+  align-items: center;
+}
+
+.filterTypeLabel {
+  margin-left: 0.5rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+  text-align: center;
+  justify-content: center;
 }
 
 .filterTypeInput {
-  margin-right: 10px;
-  margin-left: 40px;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(0, 197, 142);
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filterTypeInput::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.filterTypeInput:checked::before {
+  opacity: 1;
+}
+
+.filterTypeInput:hover {
+  background-color: rgba(0, 197, 142, 0.1);
+  border-color: rgba(0, 197, 142, 0.5);
 }
