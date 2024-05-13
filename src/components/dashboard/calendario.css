@@ -117,7 +117,7 @@ select:after {
 }
 
 .popup-container {
-  position: fixed;
+  position: absolute;
   text-align: center;
   top: 50%;
   left: 50%;
@@ -127,22 +127,31 @@ select:after {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   z-index: 999;
-  width: 300px;
+  max-width: 80%;
+  max-width: 400px;
+  overflow-y: auto;
+  margin-top: 4rem;
 }
 
 .popup-container h2 {
   margin-bottom: 10px;
   color: #333333;
+  font-size: 1.5rem;
 }
 
 .popup-container textarea {
   width: calc(100% - 40px);
-  height: 100px;
+  height: 80px;
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #cccccc;
   border-radius: 5px;
   resize: none;
+}
+
+.popup-container input[type="date"],
+.popup-container input[type="time"] {
+  width: calc(100% - 20px);
 }
 
 .popup-container button {
@@ -230,19 +239,18 @@ select:after {
   }
   /* PopUp Fecha */
   .popup-container {
-    width: 90%; /* Ancho del contenedor al 90% del ancho de la pantalla */
-    padding: 1rem; /* Ajuste del padding */
-    overflow-y: auto; /* Agrega desplazamiento vertical cuando sea necesario */
-    max-height: 80vh; /* Altura máxima del contenedor para evitar el desbordamiento */
+    width: 100%;
+    padding: 1rem;
+    overflow-y: auto;
   }
 
   .popup {
-    padding: 1rem; /* Ajuste del padding */
+    padding: 1rem;
   }
 
   .popup h2 {
-    font-size: 1.5rem; /* Tamaño de fuente más grande */
-    margin-bottom: 1rem; /* Ajuste del margen inferior */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .popup textarea {

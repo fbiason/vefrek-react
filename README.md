@@ -32,6 +32,7 @@ Blanco: #FFFFFF
 - Perfil: se actualizo la estética de Perfil en el Dashboard
 - Checkbox: se le dio estilo
 - PagNegocios: bordes
+- Calendario: se soluciono la visualización del popup
 
 /================================/
 
