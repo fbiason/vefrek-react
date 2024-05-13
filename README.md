@@ -26,13 +26,9 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 28 Abril:
+//Actualizaciones 13 Mayo:
 
-- Color de Scroll up
-- font-family: "Poppins", sans-serif;
-- EditarEmpresa: se ajusto los iconos y los tamaños de las imágenes
-- Se incorporo categorias en Navbar
-- Textos para Negocios Recomendados.
+- Header: reponsive
 
 /================================/
 

@@ -336,7 +336,7 @@ const NavBar = () => {
         </div>
 
         {/* Barra de Búsqueda */}
-        <div className="col-lg-3 col-12 mb-3 mb-xl-0 d-flex justify-content-center">
+        <div className="btnNavs col-12 mb-3 mb-xl-0">
           {showSearchBar && (
             <div className="search-container center-on-mobile">
               {/* Aquí se aplica la clase de centrado en móviles */}
@@ -346,39 +346,35 @@ const NavBar = () => {
         </div>
 
         {/* Publica Ahora */}
-        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
-          <ul>
-            <li></li>
-            <Link
-              to="/publicacion"
-              className="btn btn-primary get-started-btn btn-publica"
-            >
-              ¡PUBLICA AHORA!
-            </Link>
-          </ul>
+        <div className="btnNavs col-12 mb-3 mb-xl-0">
+          <Link to="/publicacion" className="btn btn-publica">
+            ¡PUBLICA AHORA!
+          </Link>
         </div>
 
-        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
-          {/* Reparación */}
-          <Link to="/reparacion" className="btn btn-primary get-started-btn">
+        {/* Reparación*/}
+        <div className="btnNavs col-12 mb-3 mb-xl-0">
+          <Link to="/reparacion" className="btn btn-primary btnCategorias">
             Reparación
           </Link>
+        </div>
 
-          {/* Venta */}
-          <Link to="/venta" className="btn btn-primary get-started-btn">
+        {/* Venta */}
+        <div className="btnNavs col-12 mb-3 mb-xl-0">
+          <Link to="/venta" className="btn btn-primary btnCategorias">
             Venta
           </Link>
+        </div>
 
-          {/* Otros Servicios */}
-          <Link
-            to="/OtrosServicios"
-            className="btn btn-primary get-started-btn"
-          >
+        {/* Otros Servicios */}
+        <div className="btnNavs col-12 mb-3 mb-xl-0">
+          <Link to="/OtrosServicios" className="btn btn-primary btnCategorias">
             Otros Serv.
           </Link>
         </div>
+
         {/* Ingresa */}
-        <div className="col-lg-2 col-12 d-flex justify-content-center mb-3 mb-xl-0">
+        <div className="btnNavs col-lg-2 col-12 mb-3 mb-xl-0">
           <ul>
             <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (

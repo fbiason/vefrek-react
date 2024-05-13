@@ -24,7 +24,6 @@
   color: #fff;
   border: none;
   font-size: 16px;
-  font-weight: bold;
   border-radius: 5px;
   text-transform: uppercase;
   transition: all 0.5s ease;
@@ -32,7 +31,7 @@
 }
 
 .btn-publica:hover {
-  background: linear-gradient(to right, #241e4e, rgb(0, 197, 142));
+  background: linear-gradient(to right, #ffffff, rgb(0, 197, 142));
 }
 
 /* Estilo para el botón "Ingresa" */
@@ -192,19 +191,25 @@
   color: rgb(0, 197, 142);
 }
 
-#header .get-started-btn {
+#header .btnNavs {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+}
+
+#header .btnCategorias {
   color: #fff;
   border-radius: 12px;
-  margin: 1rem;
+  justify-content: center;
+  align-items: center;
   width: auto;
-  white-space: nowrap;
   transition: 0.3s;
   font-size: 16px;
   border: 3px solid rgb(0, 197, 142);
   background-color: transparent;
 }
 
-#header .get-started-btn:hover {
+#header .btnCategorias:hover {
   background: rgb(0, 197, 142);
   color: #fff;
   border-color: rgb(0, 197, 142);
@@ -227,12 +232,6 @@
 
 /*====== RESPONSIVE ======*/
 
-@media (min-width: 1024px) {
-  #hero-publicacion {
-    background-attachment: fixed;
-  }
-}
-
 @media (max-width: 768px) {
   #hero-publicacion {
     height: auto;
@@ -247,27 +246,15 @@
     font-size: 22px;
     line-height: 24px;
   }
-}
 
-@media (max-width: 992px) {
-  #header .logo img {
-    max-height: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .get-started-btn {
+  .btnCategorias {
     padding: 8px 15px;
   }
-}
 
-@media (max-width: 768px) {
   #header input[type="text"] {
     width: 80%;
   }
-}
 
-@media (max-width: 768px) {
   #hero-publicacion h1 {
     font-size: 24px;
     line-height: 30px;
@@ -279,22 +266,79 @@
   }
 }
 
+@media (min-width: 992px) {
+  .btnNavs {
+    flex: 0 0 auto;
+    width: 10%;
+  }
+}
+
 @media (max-width: 992px) {
   #header {
     background-color: black;
     position: relative;
   }
 
-  #header .get-started-btn {
-    padding: 5px 10px;
-    font-size: 12px;
+  #header .logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-}
 
-@media (max-width: 992px) {
+  #header .logo img {
+    max-height: 30px;
+  }
+
+  #header .btnNavs {
+    flex: 0 0 100%;
+  }
+
+  #header .btnCategorias {
+    padding: 5px 5px;
+    font-size: 26px;
+  }
+
   .search-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Esta regla puede estar causando el problema de alineación */
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-publicacion {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 1300px) {
+  #header {
+    background-color: black;
+    position: relative;
+  }
+
+  #header .logo img {
+    max-height: 30px;
+  }
+
+  #header .btnCategorias {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btnNavs {
+    flex: 0 0 8%;
+  }
+
+  .btnNavs .ingresa {
+    padding: 5px 10px;
+    font-size: 14px;
   }
 }
