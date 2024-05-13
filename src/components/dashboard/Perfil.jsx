@@ -176,68 +176,17 @@ const Perfil = () => {
           onSubmit={handleSubmit}
         >
           <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
+            <div className="border-b border-gray-900/10">
               <h2 className="titulo-dash">Perfil</h2>
               <p className="mt-1 text-sm leading-6 text-gray-200">
                 Esta información se mostrará públicamente, así que tenga cuidado
                 con lo que comparte.
               </p>
 
-              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div className="sm:col-span-4">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium leading-6 text-gray-900  w-full"
-                  >
-                    <i className="obligatorio">* </i>Nombre de usuario
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                      <span className="flex select-none items-center pl-3 text-gray-200 sm:text-sm">
-                        vefrek.com/
-                      </span>
-                      <input
-                        onChange={handleChange}
-                        value={formData.username}
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="username"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="nombreusuario"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-span-full">
-                  <label
-                    htmlFor="about"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Sobre mi
-                  </label>
-                  <div className="mt-2">
-                    <textarea
-                      onChange={handleChange}
-                      value={" " + formData.about}
-                      id="about"
-                      name="about"
-                      rows={3}
-                      placeholder=" (hasta 300 caracteres)"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div className="col-span-full">
-                  <label
-                    htmlFor="photo"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Avatar
-                  </label>
-                  <div className="mt-2 d-flex align-items-start gap-3">
+              <div className="clasePerfil-1">
+                <div className="clasePerfil-2">
+                  <label htmlFor="photo">Avatar</label>
+                  <div className="perfilAvatar">
                     {(formData.avatar.url && (
                       <img
                         className="perfil_avatar"
@@ -247,7 +196,7 @@ const Perfil = () => {
                     )) ||
                       (!formData.avatar.url && (
                         <UserCircleIcon
-                          className="h-12 w-12 text-gray-300 ms-2"
+                          className="userIcon"
                           aria-hidden="true"
                         />
                       ))}
@@ -256,7 +205,7 @@ const Perfil = () => {
                       type="button"
                       name="otrasImagenes"
                       accept="image/*"
-                      className="button-small rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      className="cambiarAvatar"
                     >
                       Cambiar
                     </button>
@@ -274,11 +223,11 @@ const Perfil = () => {
               </div>
             </div>
 
-            <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
+            <div>
+              <h2 className="text-base font-semibold text-gray-900">
                 Información personal
               </h2>
-              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+              <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <label
                     htmlFor="first-name"
@@ -319,7 +268,7 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-4">
+                <div className="sm:col-span-3">
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -362,27 +311,27 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="col-span-full">
+                <div className="sm:col-span-3">
                   <label
-                    htmlFor="street-address"
+                    htmlFor="region"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    <i className="obligatorio">* </i>Dirección
+                    <i className="obligatorio">* </i>Provincia
                   </label>
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.location}
+                      value={" " + formData.state}
                       type="text"
-                      name="location"
-                      id="street-address"
-                      autoComplete="street-address"
+                      name="state"
+                      id="region"
+                      autoComplete="address-level1"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-6 sm:col-start-1">
+                <div className="sm:col-span-3">
                   <label
                     htmlFor="city"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -402,21 +351,21 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-6">
+                <div className="sm:col-span-4">
                   <label
-                    htmlFor="region"
+                    htmlFor="street-address"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    <i className="obligatorio">* </i>Provincia
+                    <i className="obligatorio">* </i>Dirección
                   </label>
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.state}
+                      value={" " + formData.location}
                       type="text"
-                      name="state"
-                      id="region"
-                      autoComplete="address-level1"
+                      name="location"
+                      id="street-address"
+                      autoComplete="street-address"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>

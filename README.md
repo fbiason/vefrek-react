@@ -29,6 +29,7 @@ Blanco: #FFFFFF
 //Actualizaciones 13 Mayo:
 
 - Header: reponsive
+- Perfil: se actualizo la estética de Perfil en el Dashboard
 
 /================================/
 
