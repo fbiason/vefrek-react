@@ -5,6 +5,7 @@ import NavBarDash from "./NavBarDash";
 import { findUser, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
+import { editUserByQuery } from "../../utils/apiDb/apiDbAcions";
 
 const Dashboard = () => {
     const [activeNavItem, setActiveNavItem] = useState(0);
@@ -31,6 +32,30 @@ const Dashboard = () => {
         { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
         { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
     ];
+
+    const deleteCompanysOfVisitedDataIfNotExists = async (companysInDBVisitedArr) => {                              //companysInDBVisitedArr: negocios en lista de visitados
+        try {
+            const companysVisitedIdsArr = companysInDBVisitedArr.map((companysVisited) => companysVisited.companyid);
+            const queryJSON = JSON.stringify({ _id: { $in: companysVisitedIdsArr } });      
+            const fieldsSelected = "_id";
+            const mostVisitedCompanysResponse = await findCompanys2(queryJSON, fieldsSelected);
+            const companysIdsThatExistArr = mostVisitedCompanysResponse.companysData.map((company) => company._id);      //Negocios que estan publicados (que existen) 
+            const indexsOfCompanysToDeleteArr = [];
+            companysVisitedIdsArr.forEach((companyVisited, index) => {
+                if (!companysIdsThatExistArr.includes(companyVisited)) indexsOfCompanysToDeleteArr.push(index);
+            })
+            indexsOfCompanysToDeleteArr.forEach(async (companyIndexToDelete) => {
+                const companyIdToDelete = companysVisitedIdsArr[companyIndexToDelete];
+                const response = await editUserByQuery(
+                    {email: userData.email},
+                    { $pull: { visited: { companyid: companyIdToDelete } } }             
+                );
+                console.log(response);
+            })    
+        }  catch {
+            console.log("Error al eliminar negocios visitados que no existen");
+        }
+    }
     
     useEffect(() => {
         
@@ -40,6 +65,8 @@ const Dashboard = () => {
             const lastCompanysVisitedDataResponse = await findUser("email", userData.email, "visited");
 
             if (lastCompanysVisitedDataResponse.success && lastCompanysVisitedDataResponse.userData.visited.length) {
+
+                await deleteCompanysOfVisitedDataIfNotExists(lastCompanysVisitedDataResponse.userData.visited);             //Elimina negocios que ya no existen en los datos de usuario
 
                 const lastCompanysVisitedDataArr = lastCompanysVisitedDataResponse.userData.visited;
                 const lastCompanysVisitedDataArrSortedByVisitesCount = lastCompanysVisitedDataArr.sort((a, b) => b.visitscount - a.visitscount);        //Ordenamos por mas visitados a menos visitados
@@ -51,10 +78,10 @@ const Dashboard = () => {
                     maxVisitedCountElementsArr = lastCompanysVisitedDataArrSortedByVisitesCount.slice(0, 4);
                 }
                 
-                const queryJSON = JSON.stringify({ _id: { $in: maxVisitedCountElementsArr.map((vistedData) => vistedData.companyid) } });      
+                const queryJSON = JSON.stringify({ _id: { $in: maxVisitedCountElementsArr.map((visitedData) => visitedData.companyid) } });      
                 const fieldsSelected = "name images.images vefrek_website";
                 const mostVisitedCompanysResponse = await findCompanys2(queryJSON, fieldsSelected);
-                
+
                 if (mostVisitedCompanysResponse.success) {
                     const mostVisitedCompanysArrFromDB = mostVisitedCompanysResponse.companysData;
                     let mostVisitedCompanysArrOrdered = [];
@@ -62,7 +89,7 @@ const Dashboard = () => {
                     maxVisitedCountElementsArr.forEach((vistedData) => {                                        //Usamos el forEach para que el orden de los elementos obtenidos de la BDD coincida 
                         mostVisitedCompanysArrOrdered.push(mostVisitedCompanysArrFromDB.find((company) => company._id === vistedData.companyid))    //con el de "maxVisitedCountElementsArr" que generamos antes
                     })
-                    
+   
                     const activitDataJSX = mostVisitedCompanysArrOrdered.map((company, index) => 
                         <Link key = { index } className = "col mb-4" to={`/${company.vefrek_website}`}>
                             <div className={`image-container img-${index + 1}`}>
