@@ -72,7 +72,7 @@ export const recommendedTexts = {
         "Deja que tu auto luzca como nuevo con nuestros servicios de estética automotriz. 💫🚗",
     ],
 
-    "Emergencias": [
+    "Servicios de Emergencia": [
         "¿Problemas en la carretera? ¡Llama a nuestro servicio de grúas y llegaremos en un abrir y cerrar de ojos! 🚨🚗",
         "¿Llaves dentro del auto? ¡No te preocupes! Nuestros cerrajeros están listos para ayudarte en cualquier momento. 🔑🚗",
         "Desde pinchazos hasta accidentes, estamos aca para sacarte de apuros en cualquier situación. 🆘🚗",
