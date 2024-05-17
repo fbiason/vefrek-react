@@ -14,6 +14,7 @@ const Dashboard = () => {
     const thisLocation = useLocation();
     const [activityData, setActivityData] = useState([]);
     const { userData } = useContext(UserContext);
+    const [userInfo, setUserInfo] = useState({name: "", avatarImageSrc: ""});
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
@@ -117,6 +118,19 @@ const Dashboard = () => {
 
         loadLastCompanysVisitedData();
 
+        /******************************************************************************/
+
+        (async() => {                                                                                                   //Cargamos info de usuario: Nombre e imagen de perfil
+            const response = await findUser("email", userData.email, "name avatar.url");
+            if (!response.success) {
+                setUserInfo({name: "Nombre no disponible", avatarImageSrc: "/images/user.png"})
+                return;
+            };
+            const userInfo = response.userData;
+            setUserInfo({name: userInfo.name, avatarImageSrc: userInfo.avatar.url})
+        })();
+
+        // eslint-disable-next-line 
     }, [userData.email])
                    
     const scheduleData = [
@@ -256,11 +270,11 @@ const Dashboard = () => {
                     <div>
                         <div className="container-content">
                             <div className="user-info">
-                                <h5>Usuario1</h5>
+                                <h5>{userInfo.name}</h5>
                             </div>
                             <div>
                                 <div className="user-info mt-4">
-                                    <img src="/images/biason.jpg" alt="user" />
+                                    <img src={userInfo.avatarImageSrc} alt="user" />
                                 </div>
                             </div>
                             <div>
