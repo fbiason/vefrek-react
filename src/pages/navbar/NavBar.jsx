@@ -22,6 +22,7 @@ const NavBar = () => {
     thisLocation.pathname === "/"
       ? setShowSearchBar(false)
       : setShowSearchBar(true); //Oculta la barra de busqueda en home
+      window.scrollTo({top: 0});
   }, [thisLocation]);
 
   useEffect(() => {

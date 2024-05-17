@@ -5,7 +5,9 @@ import NavBarDash from "./NavBarDash";
 import { findUser, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
-import { editUserByQuery } from "../../utils/apiDb/apiDbAcions";
+import { editUserByQuery, findCompanys } from "../../utils/apiDb/apiDbAcions";
+import { recommendedTexts } from "../../data/recommendedTexts";
+
 
 const Dashboard = () => {
     const [activeNavItem, setActiveNavItem] = useState(0);
@@ -15,6 +17,7 @@ const Dashboard = () => {
     const [activityData, setActivityData] = useState([]);
     const { userData } = useContext(UserContext);
     const [userInfo, setUserInfo] = useState({name: "", avatarImageSrc: ""});
+    const [recommendedCompanys, setRecommendedCompanys] = useState([]);
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
@@ -128,6 +131,45 @@ const Dashboard = () => {
             };
             const userInfo = response.userData;
             setUserInfo({name: userInfo.name, avatarImageSrc: userInfo.avatar.url})
+        })();
+
+        /******************************************************************************/
+
+        (async() => {                                                                                //Carga negocios recomendados   
+            const matchJSON = JSON.stringify({});                                                    //Busca todos los negocios
+            
+            const aggregateQueryJSON = JSON.stringify([
+                { $sample: { size: 3 } },                                                            //Elige solo 3 al azar
+                {
+                    $project: {                                                                      //Campos que queremos       
+                        name: 1,
+                        "images": 1,
+                        "avatar.url": 1,
+                        "subcategory": 1,
+                        "vefrek_website": 1,
+                    },
+                },
+            ]);                                                                                     
+            const response = await findCompanys(matchJSON, aggregateQueryJSON);
+            const recommendedCompanysArr = response.companysData;
+            const recommendedCompanysJSXArr = recommendedCompanysArr.map((company) => 
+                <Link className="card" to={`/${company.vefrek_website}`}>
+                    <div className="card-user-info">
+                        <img
+                            src={company.images.logo.url}
+                            alt="Avatar"
+                        />
+                        <h2>{company.name}</h2>
+                    </div>
+                    <img
+                        className="card-img"
+                        src={company.images.images[0].url}
+                        alt="Negocio"
+                    />
+                    <p>{recommendedTexts[company.subcategory][Math.floor(Math.random() * recommendedTexts[company.subcategory].length)]}</p>
+                </Link>
+            )
+            setRecommendedCompanys(recommendedCompanysJSXArr);
         })();
 
         // eslint-disable-next-line 
@@ -285,34 +327,7 @@ const Dashboard = () => {
                         <div className="recomendaciones mt-4">
                             <h1>Recomendaciones</h1>
                             <div className="card-container">
-                                <div className="card">
-                                    <div className="card-user-info">
-                                        <img
-                                            src="/images/portfolio/biasonautomotores.jpeg"
-                                            alt=""
-                                        />
-                                        <h2>Biason Automotores</h2>
-                                    </div>
-                                    <img
-                                        className="card-img"
-                                        src="/images/portfolio/biasonautomotores.jpeg"
-                                        alt=""
-                                    />
-                                    <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
-                                </div>
-
-                                <div className="card card-two mt-3">
-                                    <div className="card-user-info">
-                                        <img src="/images/biason.jpg" alt="" />
-                                        <h2>BiWeb</h2>
-                                    </div>
-                                    <img
-                                        className="card-img"
-                                        src="/images/portfolio/biasonautomotores.jpeg"
-                                        alt=""
-                                    />
-                                    <p>¿Qué esperas para cambiar tu vehículo? 🏃‍♀️🎉</p>
-                                </div>
+                                {recommendedCompanys}
                             </div>
                         </div>
                     </div>
