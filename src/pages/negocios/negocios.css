@@ -39,6 +39,74 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.filterTypeContHome {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 1rem;
+}
+
+.filterTypeLabelHome {
+  margin-left: 0.5rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+}
+
+.filterTypeLabel {
+  margin-left: 0.5rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+  text-align: center;
+  justify-content: center;
+}
+
+.filterTypeLabelHome,
+.filterTypeInputHome {
+  width: fit-content;
+  color: rgb(0, 0, 0);
+  align-items: center;
+  justify-content: center;
+}
+
+.filterTypeInputHome {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(0, 197, 142);
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filterTypeInputHome::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.filterTypeInputHome:checked::before {
+  opacity: 1;
+}
+
+.filterTypeInputHome:hover {
+  background-color: rgba(0, 197, 142, 0.1);
+  border-color: rgba(0, 197, 142, 0.5);
+}
+
 @media (max-width: 1018px) {
   .hero {
     padding: 1rem 3rem 3rem 3rem;
@@ -86,7 +154,7 @@
 }
 @media only screen and (max-width: 576px) {
   .container.hero h5 {
-    font-size: 1.2rem; /* Tamaño de fuente ajustado para dispositivos móviles */
+    font-size: 1.2rem;
     margin-bottom: 8px;
   }
 

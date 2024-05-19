@@ -9,6 +9,7 @@ import { SpinnerContext } from "../../context/spinnerContext";
 import { verifyIfHasChanges } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
+import localidadesData from "../../pages/carga-empresa/localidades.json";
 
 const Perfil = () => {
   const [activeNavItem, setActiveNavItem] = useState(1);
@@ -56,6 +57,35 @@ const Perfil = () => {
     },
     avatar_image_name: "",
   };
+
+  // Inico API
+  const [provincias, setProvincias] = useState([]);
+  const [ciudades, setCiudades] = useState([]);
+  const [selectedProvincia, setSelectedProvincia] = useState("");
+
+  // Obtener la lista de provincias a partir de localidadesData
+  const provinciasList = [
+    ...new Set(
+      localidadesData.localidades.map((localidad) => localidad.provincia.nombre)
+    ),
+  ];
+
+  const handleProvinciaChange = (e) => {
+    const selectedProvincia = e.target.value;
+    setSelectedProvincia(selectedProvincia);
+    // Obtener la lista de ciudades para la provincia seleccionada
+    const ciudadesList = localidadesData.localidades
+      .filter((localidad) => localidad.provincia.nombre === selectedProvincia)
+      .map((localidad) => localidad.nombre);
+    setCiudades(ciudadesList);
+
+    setFormData({
+      ...formData,
+      state: e.target.value,
+    });
+  };
+
+  // Fin Api
 
   const [formData, setFormData] = useState(formDataInitial);
 
@@ -238,12 +268,12 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.name}
+                      value={formData.name}
                       type="text"
                       name="name"
                       id="first-name"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     />
                   </div>
                 </div>
@@ -258,12 +288,12 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.lastname}
+                      value={formData.lastname}
                       type="text"
                       name="lastname"
                       id="last-name"
                       autoComplete="family-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     />
                   </div>
                 </div>
@@ -278,12 +308,12 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.email2}
+                      value={formData.email2}
                       id="email"
                       name="email2"
                       type="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     />
                   </div>
                 </div>
@@ -302,7 +332,7 @@ const Perfil = () => {
                       id="country"
                       name="country"
                       autoComplete="country-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     >
                       <option>Argentina</option>
                       <option>Uruguay</option>
@@ -311,43 +341,47 @@ const Perfil = () => {
                   </div>
                 </div>
 
-                <div className="sm:col-span-3">
-                  <label
-                    htmlFor="region"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
+                {/* PROVINCIAS*/}
+                <div className="campos camposS2 sm:col-span-3">
+                  <label htmlFor="region">
                     <i className="obligatorio">* </i>Provincia
                   </label>
+
                   <div className="mt-2">
-                    <input
-                      onChange={handleChange}
-                      value={" " + formData.state}
-                      type="text"
+                    <select
+                      id="selectProvincias"
+                      onChange={handleProvinciaChange}
+                      value={selectedProvincia}
                       name="state"
-                      id="region"
-                      autoComplete="address-level1"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
+                    >
+                      <option value="">Selecciona una provincia</option>
+                      {provinciasList.map((provincia, index) => (
+                        <option key={index} value={provincia}>
+                          {provincia}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
-                <div className="sm:col-span-3">
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
+                {/* CIUDAD*/}
+                <div className="campos camposS2 sm:col-span-3">
+                  <label htmlFor="city">
                     <i className="obligatorio">* </i>Ciudad
                   </label>
                   <div className="mt-2">
-                    <input
-                      onChange={handleChange}
-                      value={" " + formData.city}
-                      type="text"
+                    <select
+                      id="selectCiudades"
                       name="city"
-                      id="city"
-                      autoComplete="address-level2"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
+                      onChange={handleChange}
+                    >
+                      <option value="">Selecciona una ciudad</option>
+                      {ciudades.map((ciudad, index) => (
+                        <option key={index} value={ciudad}>
+                          {ciudad}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
@@ -361,12 +395,12 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.location}
+                      value={formData.location}
                       type="text"
                       name="location"
                       id="street-address"
                       autoComplete="street-address"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     />
                   </div>
                 </div>
@@ -381,12 +415,12 @@ const Perfil = () => {
                   <div className="mt-2">
                     <input
                       onChange={handleChange}
-                      value={" " + formData.postal_code}
+                      value={formData.postal_code}
                       type="text"
                       name="postal_code"
                       id="postal-code"
                       autoComplete="postal-code"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-control form-control-sm camposPerfil"
                     />
                   </div>
                 </div>
@@ -399,18 +433,10 @@ const Perfil = () => {
             </div>
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
-            <button
-              type="button"
-              className="text-white rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="rounded-md bg-green-500 px-3 py-2 text-white text-sm font-semibold shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
+            <button type="submit" className="btn btnPerfilGuardar">
               Guardar
             </button>
+            <button className="btn btnPerfilCancelar">Cancelar</button>
           </div>
         </form>
       </div>
