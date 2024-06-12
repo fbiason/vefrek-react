@@ -8,8 +8,6 @@ const NavBarDash = () => {
 
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
