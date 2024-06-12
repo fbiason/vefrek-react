@@ -298,8 +298,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/*<div className="container">
-            <div className="row fila2">
+            <div className="container">
+              <div className="row fila2">
                 <div className="col-xl-12 order-md-1 order-2">
                   <div className="left-bottom">
                     <div className="descuentos">
@@ -373,7 +373,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-          </div>*/}
+            </div>
           </div>
         </div>
 
