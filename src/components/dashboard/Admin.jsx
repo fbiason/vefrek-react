@@ -21,6 +21,7 @@ const Admin = () => {
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
     { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
+    { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
 
   function getStatusColorClass(status) {
