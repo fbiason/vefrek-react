@@ -200,7 +200,7 @@ const Dashboard = () => {
                         < div className="notifi-item mb-3" >
                             <div className="text">
                                 <h5>{review.companyName}</h5>
-                                <h4>{review.name}</h4>
+                                <h4>{review.name} {"⭐⭐⭐⭐⭐".substring(0, review.numberOfStars)}</h4>
                                 <p>
                                     {review.comment}
                                 </p>
@@ -212,7 +212,7 @@ const Dashboard = () => {
             } else if (responseOBJ.success && !responseOBJ.companysData) {
                 // swalPopUp("Ops!", responseOBJ.message, "info");
             } else {
-                // swalPopUp("Ops!", responseOBJ.message, "error");
+                // swalPopUp("Ops!", responseOBJ.message, "error"); 
             }
         })();
 
