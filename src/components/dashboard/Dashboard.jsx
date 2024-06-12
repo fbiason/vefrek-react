@@ -175,7 +175,7 @@ const Dashboard = () => {
         })();
 
         (async () => {
-            const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
+            const mathQueryJSON = JSON.stringify({ registeremail: userData.email });                        //Setea comentarios
             const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1, reviews: 1} }]);
 
             const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
@@ -183,7 +183,7 @@ const Dashboard = () => {
             if (responseOBJ.success && responseOBJ.companysData) {
                 const companysDataArr = responseOBJ.companysData;
 
-                companysDataArr.forEach((company) => {                  //Agregamos el nombre de la empresa calificada en reviews
+                companysDataArr.forEach((company) => {                                                     //Agregamos el nombre de la empresa calificada en reviews
                     company.reviews.forEach((review) => {
                         review.companyName = company.name;
                     })
@@ -209,11 +209,7 @@ const Dashboard = () => {
                     )
                 )
                                 
-            } else if (responseOBJ.success && !responseOBJ.companysData) {
-                // swalPopUp("Ops!", responseOBJ.message, "info");
-            } else {
-                // swalPopUp("Ops!", responseOBJ.message, "error"); 
-            }
+            } 
         })();
 
         // eslint-disable-next-line 
