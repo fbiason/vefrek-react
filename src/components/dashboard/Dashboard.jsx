@@ -194,7 +194,7 @@ const Dashboard = () => {
                 companysDataArr.forEach((company) => {
                     totalReviewsArr = totalReviewsArr.concat(company.reviews);
                 });
-                           
+                            
                 setListOfReviews(
                     totalReviewsArr.map((review) => 
                         < div className="notifi-item mb-3" >
