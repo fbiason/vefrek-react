@@ -18,6 +18,8 @@ const Dashboard = () => {
     const { userData } = useContext(UserContext);
     const [userInfo, setUserInfo] = useState({name: "", avatarImageSrc: ""});
     const [recommendedCompanys, setRecommendedCompanys] = useState([]);
+    const [listOfReviews, setListOfReviews] = useState([]);
+    const [viewAllReviews, setViewAllReviews] = useState(false);
 
     const handleNavItemClick = (index) => {
         setActiveNavItem(index);
@@ -172,6 +174,48 @@ const Dashboard = () => {
             setRecommendedCompanys(recommendedCompanysJSXArr);
         })();
 
+        (async () => {
+            const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
+            const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1, reviews: 1} }]);
+
+            const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
+            
+            if (responseOBJ.success && responseOBJ.companysData) {
+                const companysDataArr = responseOBJ.companysData;
+
+                companysDataArr.forEach((company) => {                  //Agregamos el nombre de la empresa calificada en reviews
+                    company.reviews.forEach((review) => {
+                        review.companyName = company.name;
+                    })
+                })
+                  
+                let totalReviewsArr = [];
+                
+                companysDataArr.forEach((company) => {
+                    totalReviewsArr = totalReviewsArr.concat(company.reviews);
+                });
+                           
+                setListOfReviews(
+                    totalReviewsArr.map((review) => 
+                        < div className="notifi-item mb-3" >
+                            <div className="text">
+                                <h5>{review.companyName}</h5>
+                                <h4>{review.name}</h4>
+                                <p>
+                                    {review.comment}
+                                </p>
+                            </div>
+                        </div >
+                    )
+                )
+                                
+            } else if (responseOBJ.success && !responseOBJ.companysData) {
+                // swalPopUp("Ops!", responseOBJ.message, "info");
+            } else {
+                // swalPopUp("Ops!", responseOBJ.message, "error");
+            }
+        })();
+
         // eslint-disable-next-line 
     }, [userData.email])
                    
@@ -257,51 +301,16 @@ const Dashboard = () => {
                                 <div className="col-xl-12 order-md-2 order-1 mt-5">
                                     <div className="notifi-box" id="box">
                                         <h2>
-                                            Comentarios recibidos{" "}
-                                            <span className="badge bg-secondary">3</span>
+                                            Comentarios recibidos
+                                            <span className="badge bg-secondary">{listOfReviews.length}</span>
                                         </h2>
                                         <div className="comentarios-container">
-                                            <div className="notifi-item mb-3">
-                                                <div className="text">
-                                                    <h5>Biason Automotores</h5>
-                                                    <h4>Biason Franco</h4>
-                                                    <p>
-                                                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                        elit. Ratione, vel veritatis facilis, enim natus
-                                                        debitis asperiores molestiae alias illo nulla,
-                                                        quaerat optio repellendus! Dolorem temporibus
-                                                        voluptates animi vero soluta illum.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="notifi-item mb-3">
-                                                <div className="text">
-                                                    <h5>BiWeb</h5>
-                                                    <h4>Ariel Conrado</h4>
-                                                    <p>
-                                                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                        elit. Voluptates odio ipsam, iste odit quis velit
-                                                        eius voluptatem rerum error deleniti vero adipisci
-                                                        minima voluptatum unde ex, veniam a quo nisi?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="notifi-item mb-3">
-                                                <div className="text">
-                                                    <h5>YPF</h5>
-                                                    <h4>Reyes Denis</h4>
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Magni eligendi dicta harum excepturi
-                                                        voluptatem eveniet magnam, temporibus tenetur minima
-                                                        voluptate quo assumenda quia repellendus cumque
-                                                        modi. Placeat consequuntur dolores ea!
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <h5 className="p-3">Ver más comentarios...</h5>
+                                            {!viewAllReviews && listOfReviews.slice(0, 3)}
+                                            {viewAllReviews && listOfReviews}
                                         </div>
                                     </div>
+                                    {listOfReviews.length > 3 && !viewAllReviews && <h5 className="p-3" style={{cursor: "pointer"}} onClick={() => setViewAllReviews(true)}>Ver más comentarios...</h5>}
+                                    {listOfReviews.length > 3 && viewAllReviews && <h5 className="p-3" style={{cursor: "pointer"}} onClick={() => setViewAllReviews(false)}>Ver menos...</h5>}            
                                 </div>
                             </div>
                         </div>
