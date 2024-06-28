@@ -50,8 +50,7 @@
     "start": "env-cmd -f ./env/dev.env react-scripts start",
     "build": "env-cmd -f ./env/prod.env react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build-sitemap": "node sitemap-builder.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
