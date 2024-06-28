@@ -33,12 +33,14 @@
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
     "react-icons": "^5.0.1",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^6.20.0",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "react-time-picker": "^6.6.0",
+    "sitemap": "^8.0.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.10.1",
     "swiper": "^11.0.5",
@@ -48,7 +50,8 @@
     "start": "env-cmd -f ./env/dev.env react-scripts start",
     "build": "env-cmd -f ./env/prod.env react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-sitemap": "node sitemap-builder.js"
   },
   "eslintConfig": {
     "extends": [
