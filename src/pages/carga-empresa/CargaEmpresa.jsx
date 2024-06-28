@@ -688,6 +688,12 @@ const CargaEmpresa = () => {
                 </div>
               </div>
             </div>
+
+            <div className="btnCargaEdicion">
+              <button type="submit" className="btnGuardar">
+                Guardar
+              </button>
+            </div>
           </div>
 
           <div className="linea-divisoria mt-5"></div>
