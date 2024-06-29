@@ -26,10 +26,8 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 12 Junio:
+//Actualizaciones 29 Junio:
 
-- DashAdmin: display-none
-- CargaNegocio: Btn Guardar
-- Se incorporo SiteMap
-- PopUp: btn Guardar
-  /================================/
+- Actualizaciones en el home
+
+/================================/

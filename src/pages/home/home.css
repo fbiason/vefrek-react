@@ -13,12 +13,12 @@
 }
 
 .logo-hero {
-  text-align: center; /* Centra el contenido horizontalmente */
+  text-align: center;
 }
 
 .logo-hero img {
-  display: block; /* Asegura que la imagen sea un bloque para centrarla correctamente */
-  margin: 0 auto; /* Centra la imagen horizontalmente */
+  display: block;
+  margin: 0 auto;
   width: 480px;
 }
 
@@ -151,66 +151,85 @@
 
 /*=== FIN HERO ===*/
 
-/*=== PORTFOLIO ===*/
-/*=== fin PORTFOLIO ===*/
-
 /*=== VALORES ===*/
-.features {
-  padding-top: 20px;
+.values {
+  margin-top: 2rem;
 }
-.features .icon-box {
-  padding-left: 15px;
+
+.container-values {
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 0 15px;
 }
-.features .icon-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 5px 0 10px 60px;
+
+.row-values {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
-.features .icon-box i {
-  font-size: 48px;
-  float: left;
-  color: rgb(0, 197, 142);
+
+.col-lg-6-values {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
 }
-.features .icon-box p {
-  font-size: 15px;
-  color: #848484;
-  margin-left: 60px;
-}
-.features .image {
+
+.image-values {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 400px;
 }
+
+.icon-box-values {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.icon-box-values .icon {
+  flex: 0 0 auto;
+  margin-right: 15px;
+}
+
+.icon-box-values .icon i {
+  font-size: 56px;
+  color: rgb(0, 197, 142);
+}
+
+.icon-box-values h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.icon-box-values p {
+  font-size: 15px;
+  color: #848484;
+}
+
 @media (max-width: 768px) {
-  .features {
+  .values {
     padding-top: 0;
   }
 
-  .features .icon-box,
-  .container-fluid {
+  .container-values {
     padding: 0;
   }
 
-  .features .icon-box h4 {
-    margin: 0px 0 10px 30px;
+  .row-values {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .features .icon-box i {
-    font-size: 30px;
-    float: left;
-    color: rgb(0, 197, 142);
+  .col-lg-6-values {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 
-  .features .icon-box p {
-    font-size: 15px;
-    color: #848484;
-    margin-left: 0px;
-    text-align: justify;
-  }
-
-  .features .image {
-    min-height: 400px;
+  .image-values {
+    min-height: 200px;
   }
 }
 /*=== FIN VALORES ===*/
@@ -256,29 +275,74 @@
 
 /*=== ABOUT ===*/
 .about {
-  background-color: #f8f9fa; /* Color de fondo */
-  padding: 80px 0; /* Espaciado interno superior e inferior */
+  margin: 2rem;
+  background-color: #f8f9fa;
+  padding: 80px 0;
+  border-radius: 2rem;
+}
+
+.container-about {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row-about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.col-lg-6-about {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
+}
+
+.order-lg-1-about {
+  order: 1;
+}
+
+.order-lg-2-about {
+  order: 2;
+}
+
+.pt-4-about {
+  padding-top: 1.5rem;
+}
+
+.pt-lg-0-about {
+  padding-top: 0;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 .about h3 {
-  font-size: 2.5rem; /* Tamaño de fuente para el título */
-  color: #333; /* Color del texto */
+  font-size: 2.5rem;
+  color: #333;
 }
 
 .about p {
-  font-size: 1.1rem; /* Tamaño de fuente para los párrafos */
-  line-height: 1.6; /* Altura de línea */
-  color: #555; /* Color del texto */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
   text-align: justify;
 }
 
+.about p + p {
+  margin-top: 20px;
+}
+
 .about ul {
-  list-style-type: none; /* Eliminar viñetas de la lista */
-  padding-left: 0; /* Eliminar el relleno izquierdo */
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .about ul li {
-  margin-bottom: 15px; /* Espaciado entre elementos de la lista */
+  margin-bottom: 15px;
 }
 
 .about ul li i {
@@ -287,18 +351,32 @@
   font-size: x-large;
 }
 
-/* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
   .about {
-    padding: 60px 0; /* Ajuste de espaciado en dispositivos móviles */
+    padding: 60px 0;
+  }
+
+  .container-about {
+    padding: 0 10px;
+  }
+
+  .row-about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .col-lg-6-about {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 
   .about h3 {
-    font-size: 2rem; /* Tamaño de fuente del título para dispositivos móviles */
+    font-size: 2rem;
   }
 
   .about p {
-    font-size: 1rem; /* Tamaño de fuente de los párrafos para dispositivos móviles */
+    font-size: 1rem;
   }
 }
 
