@@ -28,6 +28,6 @@ Blanco: #FFFFFF
 
 //Actualizaciones 29 Junio:
 
-- Actualizaciones en el home
+- Actualizaciones categorias: se incluyo una descripción
 
 /================================/

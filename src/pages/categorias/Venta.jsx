@@ -331,9 +331,12 @@ const Venta = () => {
         <div className="row gx-lg-5 align-items-center mb-5">
           <div className="col-xxl-12 p-5">
             <h1>Venta y alquiler de vehículos</h1>
-            <p className="mt-5">
-              Conoce todas las agencias de compra y venta de vehículos, así como
-              los mejores lugares para alquilar un auto para tus viajes.
+            <p className="mt-5 container">
+              Ofrecemos acceso a concesionarias con una amplia variedad de
+              automóviles nuevos y usados que se ajustan a diferentes
+              necesidades y presupuestos. También te ofrecemos información sobre
+              empresas de servicios de renta de autos para viajes de negocios,
+              escapadas de fin de semana y ocasiones especiales.
             </p>
           </div>
         </div>

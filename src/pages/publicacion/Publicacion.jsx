@@ -37,7 +37,10 @@ const Publicacion = () => {
               className="logo-publicacion"
             />
             <div className="mt-3">
-              <h2>REALIZA UNA PUBLICACION</h2>
+              <h3 className="mt-5 container">
+                ¿Sos propietario de una empresa en el rubro automotor? ¡Publicá
+                de forma GRATUITA tu negocio en nuestro sitio web!
+              </h3>
             </div>
           </div>
         </div>
