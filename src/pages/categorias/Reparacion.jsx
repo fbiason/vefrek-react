@@ -333,6 +333,11 @@ const Reparacion = () => {
         <div className="row gx-lg-5 align-items-center mb-5">
           <div className="col-xxl-12 p-5">
             <h1>Reparación y Mantenimiento</h1>
+            <p className="mt-5">
+              Encontra todo para la reparación y mantenimiento de tu vehículo:
+              gomerías (arreglo y venta de cubiertas), talleres mecánicos,
+              chapistas, electricistas, casas de repuestos y lubricentros.
+            </p>
           </div>
         </div>
 
