@@ -8,6 +8,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import localidadesData from "./localidades.json";
 import "./CargaEdicionEmpresa.css";
+import PopUpEmpresa from "./PopUpEmpresa";
 
 const CargaEmpresa = () => {
   const { userData } = useContext(UserContext);
@@ -67,6 +68,16 @@ const CargaEmpresa = () => {
       },
     },
   });
+
+  // PopUp
+  const [showPopup, setShowPopup] = useState(false);
+  const handleGuardar = () => {
+    setShowPopup(true);
+  };
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   // Inico API
   const [provincias, setProvincias] = useState([]);
   const [ciudades, setCiudades] = useState([]);
@@ -688,12 +699,17 @@ const CargaEmpresa = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="btnCargaEdicion">
-              <button type="submit" className="btnGuardar">
-                Guardar
-              </button>
+          <div className="guardar1">
+            <div
+              type="submit"
+              onClick={handleGuardar}
+              className="guardar-boton"
+            >
+              Guardar
             </div>
+            {showPopup && <PopUpEmpresa onClose={handleClosePopup} />}
           </div>
 
           <div className="linea-divisoria mt-5"></div>
