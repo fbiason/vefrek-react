@@ -26,8 +26,10 @@ Verde: #14BA75
 Azul: #241E4E
 Blanco: #FFFFFF
 
-//Actualizaciones 29 Junio:
+//Actualizaciones 15 Julio:
 
-- Actualizaciones categorias: se incluyo una descripción
+PaginaNegocio:
 
-/================================/
+- Se cambio a formato carrusel
+- Se incporor btn para editar comentarios
+  /================================/

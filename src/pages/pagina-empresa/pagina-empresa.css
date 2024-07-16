@@ -47,6 +47,32 @@
   }
 }
 
+/* --- Lapiz comentarios ---*/
+.opiniones-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-icon {
+  background: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: auto;
+  height: auto;
+}
+
+.btn-icon .MuiSvgIcon-root {
+  font-size: 1.5rem;
+  color: #000;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 /*--- Nombre y Slogan Empresa ---*/
 
 .logo-nombre-container {
@@ -159,28 +185,24 @@
   padding: 20px;
 }
 
-.img-negocio img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
-
 .imagen-seleccionada {
   border: 2px solid rgb(0, 197, 142);
 }
 
 .img-fluid {
+  border-radius: 2rem;
   max-width: 100%;
   height: auto;
 }
 
 .first-image-carousel {
+  border-radius: 2rem;
   display: block;
   margin: 0 auto;
 }
 
 .image-container img {
+  border-radius: 2rem;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -189,6 +211,21 @@
 .informacion-container,
 .reseña-container {
   margin-top: 20px;
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 3rem !important;
+  z-index: 2;
+  color: #000;
+  top: 50%;
+  position: absolute;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 3rem !important;
+  color: #fff8f8;
 }
 
 .slick-list {
@@ -253,6 +290,7 @@
 }
 
 .img-negocio img {
+  border-radius: 2rem;
   width: 100%;
   height: 100%;
   object-fit: cover;
