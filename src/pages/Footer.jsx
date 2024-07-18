@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/style.css";
 import { HashLink } from "react-router-hash-link";
 
 const Footer = () => {

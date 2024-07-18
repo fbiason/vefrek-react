@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
-import { swalPopUp } from "../../utils/swal";
+import { UserContext } from "../context/userContext";
+import { swalPopUp } from "../utils/swal";
 import { useNavigate } from "react-router-dom";
 
 const Publicacion = () => {

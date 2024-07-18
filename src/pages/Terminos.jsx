@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "../../styles/style.css";
 
 const Terminos = () => {
   const myModalAvisoRef = useRef(null);

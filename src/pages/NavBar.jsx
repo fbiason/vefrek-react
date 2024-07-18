@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/style.css";
 import { useEffect } from "react";
 import Swiper from "swiper";
 import Isotope from "isotope-layout";
 import AOS from "aos";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
-import { UserContext } from "../../context/userContext";
-import Dropdown from "../dropdown/Dropdown";
-import SearchBar from "../../components/searchBar/SearchBar";
+import { UserContext } from "../context/userContext";
+import Dropdown from "./Dropdown";
+import SearchBar from "../components/searchBar/SearchBar";
 
 const NavBar = () => {
   const navigate = useNavigate();

@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/style.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner } from "../../components/spinner/Spinner";

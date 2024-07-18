@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { swalPopUp } from "../../utils/swal";
-import { UserContext } from "../../context/userContext";
+import { swalPopUp } from "../utils/swal";
+import { UserContext } from "../context/userContext";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);

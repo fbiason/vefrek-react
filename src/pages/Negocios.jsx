@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { findCompanys, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp } from "../../utils/swal";
-import { SpinnerContext } from "../../context/spinnerContext";
-import CardNegocio from "../../components/CardNegocio";
-import { calculateDistanceInKm } from "../../utils/geo/calculateDistanceInKm";
+import { findCompanys, findCompanys2 } from "../utils/apiDb/apiDbAcions";
+import { swalPopUp } from "../utils/swal";
+import { SpinnerContext } from "../context/spinnerContext";
+import CardNegocio from "../components/CardNegocio";
+import { calculateDistanceInKm } from "../utils/geo/calculateDistanceInKm";
 
 const Negocios = ({ limitedTo300Km = false }) => {
   const [filter, setFilter] = useState("all");

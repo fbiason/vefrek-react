@@ -4,4 +4,8 @@ Vefrek 1.0.0
 Se anidaron los CSS para una mejor estructura del HTML
 
 /================================/
-sass --watch src/styles/sass:src/styles
+
+# Pasos antes de iniciar:
+
+npm run build-css
+npm start

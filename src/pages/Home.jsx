@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/style.css";
-import SearchBar from "../../components/searchBar/SearchBar";
-import Negocios from "../negocios/Negocios";
+import "../styles/style.css";
+import SearchBar from "../components/searchBar/SearchBar";
+import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
-import { swalPopUpWithCallbacks } from "../../utils/swal";
+import { swalPopUpWithCallbacks } from "../utils/swal";
 
 const Home = () => {
   const [negocios, setNegocios] = useState(<></>);

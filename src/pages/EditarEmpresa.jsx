@@ -5,13 +5,13 @@ import {
   updateCompany,
   findCompany,
   deleteImageOfFirebase,
-} from "../../utils/apiDb/apiDbAcions";
-import { swalPopUp } from "../../utils/swal";
-import { SpinnerContext } from "../../context/spinnerContext";
+} from "../utils/apiDb/apiDbAcions";
+import { swalPopUp } from "../utils/swal";
+import { SpinnerContext } from "../context/spinnerContext";
 import { useParams, useNavigate } from "react-router-dom";
-import { verifyIfHasChanges } from "../../utils/utils";
-import { UserContext } from "../../context/userContext";
-import localidadesData from "../carga-empresa/localidades.json";
+import { verifyIfHasChanges } from "../utils/utils";
+import { UserContext } from "../context/userContext";
+import localidadesData from "./carga-empresa/localidades.json";
 
 export default function EditarEmpresa() {
   const { id } = useParams();

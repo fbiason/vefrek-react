@@ -31,18 +31,18 @@ button {
 }
 
 .bold {
-  font-weight: 700; /* Poppins Bold */
+  font-weight: 700;
 }
 
 .black {
-  font-weight: 900; /* Poppins Black */
+  font-weight: 900;
 }
 
 .italic {
-  font-style: italic; /* Arial Italic */
+  font-style: italic;
 }
 
-.background-section {
+.background {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,4 +66,31 @@ button {
       hsl(218deg, 41%, 19%) 80%,
       transparent 100%
     );
+}
+
+.background h1,
+.background h2,
+.background h3,
+.background p,
+.background li {
+  text-align: center;
+}
+
+.background h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.background p {
+  color: whitesmoke;
+}
+.background h3 {
+  color: rgb(117, 116, 116);
+}
+.background li {
+  color: whitesmoke;
 }

@@ -8,15 +8,15 @@ import {
   findUser,
   editUserByQuery,
   handleFavorite,
-} from "../../utils/apiDb/apiDbAcions";
+} from "../utils/apiDb/apiDbAcions";
 import {
   swalPopUp,
   swalPopUpWithInputAndCb,
   swalPopUpSuccessTemporal,
-} from "../../utils/swal";
-import { SpinnerContext } from "../../context/spinnerContext";
-import { reportCompany } from "../../utils/report";
-import { UserContext } from "../../context/userContext";
+} from "../utils/swal";
+import { SpinnerContext } from "../context/spinnerContext";
+import { reportCompany } from "../utils/report";
+import { UserContext } from "../context/userContext";
 import { Rating } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Star, Edit } from "@mui/icons-material";
