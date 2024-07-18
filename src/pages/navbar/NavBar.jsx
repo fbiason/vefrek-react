@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./navbar.css";
+import "../../styles/style.css";
 import { useEffect } from "react";
 import Swiper from "swiper";
 import Isotope from "isotope-layout";
 import AOS from "aos";
-// import GLightbox from "glightbox";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
@@ -22,7 +21,7 @@ const NavBar = () => {
     thisLocation.pathname === "/"
       ? setShowSearchBar(false)
       : setShowSearchBar(true); //Oculta la barra de busqueda en home
-      window.scrollTo({top: 0});
+    window.scrollTo({ top: 0 });
   }, [thisLocation]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./home.css";
+import "../../styles/style.css";
 import SearchBar from "../../components/searchBar/SearchBar";
 import Negocios from "../negocios/Negocios";
 import { useEffect, useState } from "react";

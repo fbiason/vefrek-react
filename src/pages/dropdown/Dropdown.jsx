@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import "./dropdown.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./popupempresa.css";
 import "tailwindcss/tailwind.css";
 
 const PopUpEmpresa = ({ onClose }) => {

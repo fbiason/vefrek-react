@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
-import "./calendario.css";
 import "tailwindcss/tailwind.css";
 
 const Calendario = () => {

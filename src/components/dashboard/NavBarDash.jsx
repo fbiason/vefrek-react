@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./navbarDash.css";
 import { Link, useLocation } from "react-router-dom";
 
 const NavBarDash = () => {

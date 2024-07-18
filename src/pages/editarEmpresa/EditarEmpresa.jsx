@@ -12,7 +12,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { verifyIfHasChanges } from "../../utils/utils";
 import { UserContext } from "../../context/userContext";
 import localidadesData from "../carga-empresa/localidades.json";
-import "../carga-empresa/CargaEdicionEmpresa.css";
 
 export default function EditarEmpresa() {
   const { id } = useParams();

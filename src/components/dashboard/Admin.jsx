@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
-import "./admin.css";
 
 const Admin = () => {
   const [activeNavItem, setActiveNavItem] = useState(8);

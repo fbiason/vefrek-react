@@ -7,7 +7,6 @@ import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import localidadesData from "./localidades.json";
-import "./CargaEdicionEmpresa.css";
 import PopUpEmpresa from "./PopUpEmpresa";
 
 const CargaEmpresa = () => {

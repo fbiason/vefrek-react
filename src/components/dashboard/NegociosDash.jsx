@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import "./negocios-dash.css";
 import { SpinnerContext } from "../../context/spinnerContext";
 import {
   findCompanys,

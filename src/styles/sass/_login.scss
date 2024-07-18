@@ -1,34 +1,5 @@
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.background-section h1 {
   text-align: center;
-  min-height: fit-content;
-  padding-top: 10rem;
-  background-color: hsl(218deg, 41%, 15%);
-  background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(218deg, 41%, 35%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(218deg, 41%, 45%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    );
-}
-
-.login-container h1 {
-  text-align: center;
-}
-
-.login-container h1 {
   color: whitesmoke;
 }
 
@@ -358,4 +329,14 @@ button {
   .bienvenido {
     width: 80%;
   }
+}
+
+.loginUserCont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 5000;
 }

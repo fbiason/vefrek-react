@@ -1,0 +1,69 @@
+/* Paleta de colores */
+$color-verde: #14ba75;
+$color-azul: #241e4e;
+$color-blanco: #ffffff;
+
+/* Tipografía */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 700;
+}
+
+p,
+a,
+li,
+span,
+input,
+button {
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 700; /* Poppins Bold */
+}
+
+.black {
+  font-weight: 900; /* Poppins Black */
+}
+
+.italic {
+  font-style: italic; /* Arial Italic */
+}
+
+.background-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: fit-content;
+  padding-top: 10rem;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}

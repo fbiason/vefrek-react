@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./publicacion.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { swalPopUp } from "../../utils/swal";

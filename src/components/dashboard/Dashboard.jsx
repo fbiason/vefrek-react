@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./dashboard.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 import { findUser, findCompanys2 } from "../../utils/apiDb/apiDbAcions";

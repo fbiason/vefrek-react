@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import "./login.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../../styles/style.css";
 
 const Login = () => {
   const myModalAvisoRef = useRef(null);
@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <section className="login-container">
+    <section className="background-section">
       <div className="container text-center text-lg-start my-5 mx-auto">
         <div className="row gx-lg-5 align-items-center mb-5">
           <div className="login col-lg-6 mb-5 mb-lg-0">

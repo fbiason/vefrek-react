@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./cardnegocio.css";
 import { handleFavorite } from "../utils/apiDb/apiDbAcions";
 import { UserContext } from "../context/userContext";
 import { useContext, useRef, useEffect } from "react";

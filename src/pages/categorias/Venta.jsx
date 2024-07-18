@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import CardNegocio from "../../components/CardNegocio";
-import "./categorias.css";
 import { findCompanys, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
