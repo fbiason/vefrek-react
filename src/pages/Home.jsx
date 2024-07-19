@@ -41,40 +41,23 @@ const Home = () => {
 
   return (
     <>
-      <section
-        id="hero"
-        className="align-items-center justify-content-center hero-section text-center"
-      >
-        <div className="container-fluid" data-aos="fade-up">
-          <div
-            className="row justify-content-center"
-            data-aos="fade-up"
-            data-aos-delay="160"
-          >
-            <div className="col-xl-8 col-lg-10 logo-hero ">
-              <img
-                src="/images/logos/logo-vefrek-white.png"
-                alt="Vefrek"
-                className="img-fluid"
-              />
-              <div className="mt-3">
-                <h2>La guía más completa del rubro automotor</h2>
-              </div>
+      <section id="hero" className="hero-section">
+        <div className="container">
+          <div className="logo-hero">
+            <img
+              src="/images/logos/logo-vefrek-white.png"
+              alt="Vefrek"
+              className="logo-image"
+            />
+            <div className="hero-title">
+              <h2>La guía más completa del rubro automotor</h2>
             </div>
           </div>
-
-          <div className="row justify-content-center mt-4">
-            <div className="col-md-6 d-flex justify-content-center searchBarCont">
-              {<SearchBar />}
-            </div>
+          <div className="search-bar-container">
+            <SearchBar />
           </div>
-
-          <div
-            className="row justify-content-center mt-5"
-            data-aos="zoom-in"
-            data-aos-delay="250"
-          >
-            <div className="col-xl-3 col-md-6 cat-hero mb-4">
+          <div className="categories-container">
+            <div className="category-item">
               <Link to="/Reparacion">
                 <div className="btn-categoria icon-box">
                   <i className="ri-tools-line"></i>
@@ -82,8 +65,7 @@ const Home = () => {
                 </div>
               </Link>
             </div>
-
-            <div className="col-xl-3 col-md-6 cat-hero mb-4">
+            <div className="category-item">
               <Link to="/Venta">
                 <div className="btn-categoria icon-box">
                   <i className="ri-car-line"></i>
@@ -91,8 +73,7 @@ const Home = () => {
                 </div>
               </Link>
             </div>
-
-            <div className="col-xl-3 col-md-6 cat-hero mb-4">
+            <div className="category-item">
               <Link to="/OtrosServicios">
                 <div className="btn-categoria icon-box">
                   <i className="ri-gas-station-line"></i>
@@ -155,8 +136,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="ppc" className="ppc mt-5">
-        <div className="container-fluid" data-aos="zoom-in">
+      <section id="ppc" className="ppc-section">
+        <div className="container-ppc" data-aos="zoom-in">
           <div className="text-center">
             <h3>POTENCIA AÚN MÁS A TU EMPRESA</h3>
             <p>
@@ -170,8 +151,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="values" className="values container-values">
-        <div data-aos="fade-up">
+      <section id="values" className="values-section">
+        <div className="container-values" data-aos="fade-up">
           <div className="row-values">
             <div className="col-lg-6-values">
               <div
@@ -238,7 +219,7 @@ const Home = () => {
               </div>
             </div>
             <div
-              className="col-lg-6-about order-lg-1-about"
+              className="col-lg-6-about"
               data-aos="fade-right"
               data-aos-delay="100"
             >
