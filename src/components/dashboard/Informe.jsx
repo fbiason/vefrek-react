@@ -30,6 +30,7 @@ const Informe = () => {
         visitsCount: 0,
     });
     const companysDataArrRef = useRef([]);
+    const companyNameSelected = useRef("Todas");
 
     let options = {
         chart: {
@@ -72,19 +73,23 @@ const Informe = () => {
         },
     };
 
-    const findMyFavoritesCount = async () => {
-        const matchJSON = JSON.stringify({ favorites: { $in: [userData.email] } });
-        const aggregateQueryJSON = JSON.stringify([
-            {
-                $project: {
-                    _id: 1,
+    const findFavoritesCount = async (companysDataArr) => {
+        if (companyNameSelected.current !== "Todas") {
+            const matchQueryJSON = JSON.stringify({ name: companyNameSelected.current });
+            const aggregateQueryJSON = JSON.stringify([
+                {
+                    $project: {
+                        favorites: 1,
+                    },
                 },
-            },
-        ]);
+            ]);
 
-        const response = await findCompanys(matchJSON, aggregateQueryJSON);
-        if (response.success && response.companysData) {
-            return response.companysData.length;
+            const response = await findCompanys(matchQueryJSON, aggregateQueryJSON);
+            if (response.success && response.companysData) {
+                return response.companysData[0].favorites ? response.companysData[0].favorites.length : 0;
+            }
+        } else {
+            return companysDataArr.reduce((acc, company) => acc + (company.favorites ? company.favorites.length : 0), 0);
         }
     };
 
@@ -121,7 +126,7 @@ const Informe = () => {
             (acc, company) => acc + company.visitsCount,
             0
         );
-        const myFavoritesCount = await findMyFavoritesCount();
+        const myFavoritesCount = await findFavoritesCount(companysDataArr);
 
         setReporInfo({
             averageReviewsScore: totalAverageReviewsScore,
@@ -134,7 +139,7 @@ const Informe = () => {
     const setCompanySelect = async () => {
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
         const aggregateQueryJSON = JSON.stringify([
-            { $project: { name: 1, reviews: 1, visits: 1 } },
+            { $project: { name: 1, reviews: 1, visits: 1, favorites: 1 } },
         ]);
         showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
@@ -161,6 +166,8 @@ const Informe = () => {
     };
 
     const setReport = async (companyName) => {
+        companyNameSelected.current = companyName;
+
         if (companyName !== "Todas" && companyName) {
             const companySelected = companysDataArrRef.current.find(
                 (company) => company.name === companyName
@@ -237,7 +244,7 @@ const Informe = () => {
         }
         // eslint-disable-next-line
     }, [userData.email]);
-
+        
     return (
         <main className="dashboardMain">
             <NavBarDash></NavBarDash>
