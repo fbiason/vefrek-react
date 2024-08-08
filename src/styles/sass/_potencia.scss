@@ -1,0 +1,49 @@
+.ppc-section {
+  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/public/images/ppc.jpg") fixed center center;
+  background-size: cover;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.container-ppc {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.ppc-section h3 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.ppc-section p {
+  color: #fff;
+}
+
+.ppc-btn {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.ppc-btn:hover {
+  background: rgb(0, 197, 142);
+  border-color: rgb(0, 197, 142);
+  color: #151515;
+}
+
+@media (max-width: 768px) {
+  .ppc-section {
+    padding: 60px 10px;
+  }
+}

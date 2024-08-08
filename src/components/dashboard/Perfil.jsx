@@ -1,6 +1,5 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import "./perfil.css";
 import { useState, useEffect, useContext, useRef } from "react";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";

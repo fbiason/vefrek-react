@@ -1,23 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
-import { SpinnerContext } from "../../context/spinnerContext";
+import { SpinnerContext } from "../context/spinnerContext";
 import {
   findCompanys,
   deleteCompanyById,
   updateCompanyState,
-} from "../../utils/apiDb/apiDbAcions";
+} from "../utils/apiDb/apiDbAcions";
 import {
   swalPopUp,
   swalPopUpWithCallback,
   swalPopUpWhitOptionsAndCallback,
-} from "../../utils/swal";
-import { UserContext } from "../../context/userContext";
+} from "../utils/swal";
+import { UserContext } from "../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
-import NavBarDash from "./NavBarDash";
 
-const NegociosDash = () => {
+const MisEmpresas = () => {
+  const { showSpinner } = useContext(SpinnerContext);
   const [companysData, setCompanysData] = useState([]);
   const { userData } = useContext(UserContext);
-  const { showSpinner } = useContext(SpinnerContext);
   const navigate = useNavigate();
 
   const deleteComp = async (id) => {
@@ -75,45 +74,48 @@ const NegociosDash = () => {
     if (response.success && response.companysData) {
       const companysDataFromDB = response.companysData;
       const companysDataJSX = companysDataFromDB.map((company) => (
-        <div className="row row-editar-empresa" key={company._id}>
-          <div className="col-12 col-md-6 mb-2 mt-3">
+        <div className="row-editar-empresa flex" key={company._id}>
+          <div className="col-editar-empresa">
             <span>{company.name}</span>
           </div>
-          <div className="col-12 col-md-6 mb-2 mt-3">
+          <div className="col-editar-empresa">
             <span>{company.location}</span>
           </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
-            <Link
-              to={`/EditarEmpresa/${company._id}`}
-              className="btn btn-primary btn-editar"
-            >
+          <Link
+            to={`/EditarEmpresa/${company._id}`}
+            className="col-editar-empresa"
+          >
+            <span role="img" aria-label="Editar">
               ✏️ Editar
-            </Link>
-          </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
-            {(company.play && (
-              <button
-                className="btn btn-warning btn-pausar"
-                onClick={handleCompnayState(company._id, false)}
-              >
+            </span>
+          </Link>
+          {(company.play && (
+            <div
+              className="col-editar-empresa"
+              onClick={handleCompnayState(company._id, false)}
+            >
+              <span role="img" aria-label="Pausar">
                 ⏸️ Pausar
-              </button>
-            )) || (
-              <button
-                className="btn btn-success btn-eliminar"
+              </span>
+            </div>
+          )) ||
+            (!company.play && (
+              <div
+                className="col-editar-empresa"
                 onClick={handleCompnayState(company._id, true)}
               >
-                ▶️ Reactivar
-              </button>
-            )}
-          </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
-            <button
-              className="btn btn-danger btn-mobile"
-              onClick={() => deleteCompanyConfirm(company._id)}
-            >
+                <span role="img" aria-label="Pausar">
+                  ▶️ Reactivar
+                </span>
+              </div>
+            ))}
+          <div
+            className="col-editar-empresa"
+            onClick={() => deleteCompanyConfirm(company._id)}
+          >
+            <span role="img" aria-label="Eliminar">
               🗑️ Eliminar
-            </button>
+            </span>
           </div>
         </div>
       ));
@@ -137,37 +139,18 @@ const NegociosDash = () => {
     if (userData.isLogged) find();
     // eslint-disable-next-line
   }, [userData]);
-  return (
-    <main className="dashboardMain">
-      <NavBarDash></NavBarDash>
-      <button
-        className="btn btn-primary dashboardClose"
-        onClick={() => {
-          const previousSaved = localStorage.getItem("previousPathToDash");
-          previousSaved ? navigate(previousSaved) : navigate("/");
-        }}
-      >
-        Salir
-      </button>
 
-      <div className="contenido-negocios">
-        <div className="container">
-          <div>
-            <h1 className="titulo-dash">Mis Negocios</h1>
-          </div>
-          <div className="editar-empresa-container">
-            {companysData.length ? (
-              <div className="card-editar-empresa row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                {companysData}
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
+  return (
+    <section className="background">
+      <div className="editar-empresa-container">
+        {companysData.length ? (
+          <div className="card-editar-empresa">{companysData}</div>
+        ) : (
+          <></>
+        )}
       </div>
-    </main>
+    </section>
   );
 };
 
-export default NegociosDash;
+export default MisEmpresas;

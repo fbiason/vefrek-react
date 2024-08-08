@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import CardNegocio from "../../components/CardNegocio";
-import "./categorias.css";
 import { findCompanys, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
@@ -333,6 +332,12 @@ const Reparacion = () => {
         <div className="row gx-lg-5 align-items-center mb-5">
           <div className="col-xxl-12 p-5">
             <h1>Reparación y Mantenimiento</h1>
+            <p className="mt-5 container">
+              Acá vas a encontrar todo negocio que te ayude a mantener tu
+              vehiculo en óptimas condiciones, como gomerías, talleres mecánicos
+              especializados, chapistas, electricistas, casas de repuestos y
+              lubricentros.
+            </p>
           </div>
         </div>
 

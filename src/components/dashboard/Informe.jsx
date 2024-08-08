@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import ApexCharts from "apexcharts";
-import "./informe.css";
 import NavBarDash from "./NavBarDash";
 import { useNavigate } from "react-router-dom";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
@@ -72,7 +71,7 @@ const Informe = () => {
             ],
         },
     };
-    
+
     const findMyFavoritesCount = async () => {
         const matchJSON = JSON.stringify({ favorites: { $in: [userData.email] } });
         const aggregateQueryJSON = JSON.stringify([
@@ -86,22 +85,42 @@ const Informe = () => {
         const response = await findCompanys(matchJSON, aggregateQueryJSON);
         if (response.success && response.companysData) {
             return response.companysData.length;
-        } 
+        }
     };
 
-    const setInitialInfo = async (companysDataArr) => {                                     //Setea datos iniciales de todas las empresas cargadas
+    const setInitialInfo = async (companysDataArr) => {
+        //Setea datos iniciales de todas las empresas cargadas
         const reportInfoByCompanyArr = companysDataArr.map((company) => {
             return {
                 companyName: company.name,
-                averageReviewsScore: company.reviews && company.reviews.length ? company.reviews.reduce((acc, review) => acc + review.numberOfStars, 0) / company.reviews.length : 0,
-                reviewsCount: company.reviews && company.reviews.length ? company.reviews.length : 0,
+                averageReviewsScore:
+                    company.reviews && company.reviews.length
+                        ? company.reviews.reduce(
+                            (acc, review) => acc + review.numberOfStars,
+                            0
+                        ) / company.reviews.length
+                        : 0,
+                reviewsCount:
+                    company.reviews && company.reviews.length
+                        ? company.reviews.length
+                        : 0,
                 visitsCount: company && company.visits ? company.visits.count : 0,
             };
-        })
+        });
 
-        const totalAverageReviewsScore = reportInfoByCompanyArr.reduce((acc, company) => acc + company.averageReviewsScore, 0) / reportInfoByCompanyArr.length; 
-        const totalReviewsCount = reportInfoByCompanyArr.reduce((acc, company) => acc + company.reviewsCount, 0);
-        const totalVisitsCount = reportInfoByCompanyArr.reduce((acc, company) => acc + company.visitsCount, 0);
+        const totalAverageReviewsScore =
+            reportInfoByCompanyArr.reduce(
+                (acc, company) => acc + company.averageReviewsScore,
+                0
+            ) / reportInfoByCompanyArr.length;
+        const totalReviewsCount = reportInfoByCompanyArr.reduce(
+            (acc, company) => acc + company.reviewsCount,
+            0
+        );
+        const totalVisitsCount = reportInfoByCompanyArr.reduce(
+            (acc, company) => acc + company.visitsCount,
+            0
+        );
         const myFavoritesCount = await findMyFavoritesCount();
 
         setReporInfo({
@@ -109,16 +128,18 @@ const Informe = () => {
             reviewsCount: totalReviewsCount,
             visitsCount: totalVisitsCount,
             myFavoritesCount,
-        })
-    }
-    
+        });
+    };
+
     const setCompanySelect = async () => {
         const mathQueryJSON = JSON.stringify({ registeremail: userData.email });
-        const aggregateQueryJSON = JSON.stringify([{ $project: { name: 1, reviews: 1, visits: 1} }]);
+        const aggregateQueryJSON = JSON.stringify([
+            { $project: { name: 1, reviews: 1, visits: 1 } },
+        ]);
         showSpinner(true);
         const responseOBJ = await findCompanys(mathQueryJSON, aggregateQueryJSON);
         showSpinner(false);
-        
+
         if (responseOBJ.success && responseOBJ.companysData) {
             const companysDataArr = responseOBJ.companysData;
 
@@ -140,9 +161,10 @@ const Informe = () => {
     };
 
     const setReport = async (companyName) => {
-
-        if (companyName !== "Todas" && companyName ) {
-            const companySelected =  companysDataArrRef.current.find((company) => company.name === companyName);
+        if (companyName !== "Todas" && companyName) {
+            const companySelected = companysDataArrRef.current.find(
+                (company) => company.name === companyName
+            );
             setInitialInfo([companySelected]);
         } else if (companyName === "Todas") {
             setInitialInfo(companysDataArrRef.current);
@@ -265,7 +287,11 @@ const Informe = () => {
                             <div className="informe-datos">
                                 <div className="icono-y-numero">
                                     <FontAwesomeIcon icon={faComment} className="icono" />
-                                    <h1>{reportInfo.averageReviewsScore || <span style={{fontSize: "18px"}}>Sin valoraciones</span>}</h1>
+                                    <h1>
+                                        {reportInfo.averageReviewsScore || (
+                                            <span style={{ fontSize: "18px" }}>Sin valoraciones</span>
+                                        )}
+                                    </h1>
                                 </div>
                                 <p>Promedio de valoraciones</p>
                             </div>
@@ -273,7 +299,11 @@ const Informe = () => {
                             <div className="informe-datos">
                                 <div className="icono-y-numero">
                                     <FontAwesomeIcon icon={faCommentAlt} className="icono" />
-                                    <h1>{reportInfo.reviewsCount || <span style={{fontSize: "18px"}}>Sin comentarios</span>}</h1>
+                                    <h1>
+                                        {reportInfo.reviewsCount || (
+                                            <span style={{ fontSize: "18px" }}>Sin comentarios</span>
+                                        )}
+                                    </h1>
                                 </div>
                                 <p>Comentarios recibidos</p>
                             </div>

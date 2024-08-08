@@ -1,0 +1,970 @@
+/* General CargaEditar */
+.bgCargaEdicion {
+  min-height: fit-content;
+  align-items: center;
+  padding-top: 9rem;
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.guardar1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 30%;
+  margin-top: 3rem;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #14ba75;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.guardar1:hover {
+  background-color: #241e4e;
+  transform: translateY(-2px);
+}
+
+.guardar1:focus {
+  outline: none;
+}
+
+.bgCargaEdicion p,
+.bgCargaEdicion li {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.bgCargaEdicion h1 {
+  margin: 0.5rem;
+  margin-top: 2rem;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  text-align: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.bgCargaEdicion h3 {
+  color: rgb(117, 116, 116);
+  text-align: center;
+}
+
+.bgCargaEdicion form {
+  padding: 2rem;
+  margin: auto;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: 1px solid whitesmoke;
+  min-height: fit-content;
+  align-items: center;
+  color: white;
+}
+
+.bgCargaEdicion form h2,
+.bgCargaEdicion form label,
+.bgCargaEdicion form legend {
+  color: white;
+}
+
+.datosForm {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+}
+
+.campos label {
+  display: block;
+  font-size: 0.875rem;
+  width: 100%;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #111827;
+}
+
+.campos input {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 0;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+  text-indent: 1em;
+}
+
+.campos select {
+  display: block;
+  width: 100%;
+  padding-left: 0.5rem;
+  text-align: start;
+  border-radius: 0.375rem;
+  border: 0;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.linea-divisoria {
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.campos2 {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+}
+
+.campos2 label {
+  width: 100%;
+}
+
+.url-vfk {
+  display: flex;
+  margin-top: 1rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  justify-content: center;
+}
+
+.url-vfk input {
+  display: block;
+  flex: 1;
+  border: 0.5px solid rgba(173, 255, 232, 0.5);
+  box-shadow: 0 0 10px rgba(62, 51, 132, 0.5), 0 0 20px rgba(62, 51, 132, 0.3),
+    0 0 40px rgba(0, 197, 142, 0.2);
+  background-color: transparent;
+  padding-bottom: 0.375rem;
+  padding-left: 0.5rem;
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.camposRedes {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.camposRedes form {
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+}
+
+.camposRedes form .social {
+  padding: 0.3rem;
+  display: flex;
+  width: 100%;
+}
+
+.camposRedes form .social label {
+  flex-basis: 25%;
+}
+
+.camposRedes form .social input {
+  flex-basis: 75%;
+}
+
+@media (max-width: 768px) {
+  .bgCargaEdicion form {
+    width: 100%;
+    padding: 1em;
+  }
+}
+
+@media (min-width: 640px) {
+  .datosForm {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 576px) {
+  .camposSfull {
+    grid-column: 1 / -1;
+  }
+
+  .camposS4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .camposS3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .camposS2 {
+    grid-column: span 2 / span 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .horarios-cont th,
+  .horarios-cont td,
+  .horarios-cont select,
+  .horarios-cont option {
+    font-size: 12px;
+    display: flex;
+  }
+}
+
+@media (min-width: 640px) {
+  .campos2 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 576px) {
+  .campos2S6 {
+    grid-column: span 6 / span 6;
+  }
+}
+
+/* Horarios */
+.horarios-cont {
+  width: 100%;
+  padding: 20px 0;
+  overflow-x: auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.horarios-cont * {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+.horarios-cont th {
+  font-weight: initial;
+}
+
+.horarios-cont select,
+.horarios-cont option {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+}
+
+.horarios-cont td {
+  padding: 2.5px;
+}
+
+.horarios-cont select {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  max-width: 200px;
+}
+
+.horariosMainInputs {
+  margin: 10px;
+}
+
+.horariosDias {
+  text-align: center;
+  padding-right: 10px !important;
+}
+
+.horariosAddButton {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  color: black;
+  margin-top: 27px;
+  font-size: 16px;
+  margin-left: 2.5px;
+  cursor: pointer;
+  background-color: white;
+  width: fit-content;
+}
+
+.buttonSus {
+  margin-top: 13px;
+}
+
+.bottomCells {
+  padding-bottom: 15px !important;
+}
+
+.horariosTitle {
+  width: 100%;
+  text-align: center;
+}
+
+.horariosOption {
+  width: unset !important;
+  margin-bottom: 30px;
+}
+
+.horariosOption option {
+  text-align: left;
+}
+
+.txt-form {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 0;
+  padding: 0.375rem 1rem;
+  color: #111827;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  outline: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  line-height: 1.25rem;
+  align-items: start;
+  text-align: start;
+}
+
+.txt-form::placeholder {
+  color: #9ca3af;
+}
+
+/* CARGA NUEVO*/
+.formCarga {
+  background-color: rgb(15, 56, 44);
+}
+
+/* EDITAR NUEVO*/
+.formEditar {
+  background-color: rgb(56, 47, 15);
+}
+
+.editarEmpresa_logo {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 10rem;
+}
+
+/* Carga VIEJO */
+
+.background-carga-negocio {
+  min-height: fit-content;
+  align-items: center;
+  padding-top: 10rem;
+  justify-content: center;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.background-carga-negocio p,
+.background-carga-negocio li {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.background-carga-negocio h1 {
+  margin: 0.5rem;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  text-align: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.background-carga-negocio h3 {
+  color: rgb(117, 116, 116);
+  text-align: center;
+}
+
+.perfil-card {
+  width: 100%;
+  margin-top: 3rem;
+  max-width: 35rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.card-descripcion {
+  width: 100%;
+  max-width: 35rem;
+  margin: 2rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.descripcion {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.wide-input {
+  width: 90%;
+}
+
+.img-form {
+  font-size: 13px;
+}
+
+.perfil-container h2 {
+  text-align: left;
+  color: #ffc451;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: inline-block;
+  width: 45%; /* Ancho de la columna de los títulos */
+  margin-bottom: 10px;
+}
+
+input {
+  display: inline-block;
+  width: 50%; /* Ancho de la columna de los campos de entrada */
+  margin-top: 5px;
+  border: 1px solid #b1b1b1;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: rgb(0, 197, 142);
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+button:hover {
+  background-color: #ffc451;
+  color: #000;
+}
+
+.select-custom-width {
+  width: 80%;
+  border-radius: 2rem;
+}
+
+/* ==================================== */
+
+.company_logo_file {
+  display: none;
+}
+
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: fit-content;
+  background-color: hsl(218deg, 41%, 15%);
+}
+
+.container.card-carga {
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.full-width-label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.perfil-card {
+  width: 100%;
+  margin-top: 3rem;
+  max-width: 35rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.card-descripcion {
+  width: 100%;
+  max-width: 35rem;
+  margin: 2rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #aaa9a9;
+  color: #000;
+  margin: auto;
+}
+
+.descripcion {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.wide-input {
+  width: 90%;
+}
+
+.img-form {
+  font-size: 13px;
+}
+
+.perfil-container h2 {
+  text-align: left;
+  color: #ffc451;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: inline-block;
+  width: 45%; /* Ancho de la columna de los títulos */
+  margin-bottom: 10px;
+}
+
+input {
+  display: inline-block;
+  width: 50%; /* Ancho de la columna de los campos de entrada */
+  margin-top: 5px;
+  border: 1px solid #b1b1b1;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: rgb(0, 197, 142);
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+button:hover {
+  background-color: #ffc451;
+  color: #000;
+}
+
+.select-custom-width {
+  width: 80%;
+  border-radius: 2rem;
+}
+
+.company_logo_file {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .background-carga-negocio {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-carga-negocio {
+    padding-top: 3rem;
+  }
+
+  input,
+  label {
+    width: 100%;
+  }
+
+  .background-carga-negocio h1 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .f-media {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* Edition VIEJO */
+.form-EditarEpresa {
+  margin-top: 8rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  border-radius: 1rem;
+  border: 1px solid grey;
+  min-height: fit-content;
+  background-color: hsl(218deg, 41%, 15%);
+  background-image: radial-gradient(
+      650px circle at 0% 0%,
+      hsl(218deg, 41%, 35%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1250px circle at 100% 100%,
+      hsl(218deg, 41%, 45%) 15%,
+      hsl(218deg, 41%, 30%) 35%,
+      hsl(218deg, 41%, 20%) 75%,
+      hsl(218deg, 41%, 19%) 80%,
+      transparent 100%
+    );
+}
+
+.form-EditarEpresa h2 {
+  font-size: xx-large;
+}
+
+.form-EditarEpresa p {
+  color: whitesmoke;
+}
+
+.form-EditarEpresa h2,
+.form-EditarEpresa label {
+  color: white;
+}
+
+.cat-EditarEmpresa .block {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.cat-EditarEmpresa select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #4a5568;
+  width: 100%;
+  max-width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cat-EditarEmpresa select:hover,
+.cat-EditarEmpresa select:focus {
+  background-color: #e2e8f0;
+  border-color: #a0aec0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.cat-EditarEmpresa select::after {
+  content: "\25BE";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #4a5568;
+}
+
+.cat-EditarEmpresa select option {
+  border-radius: 0.5rem;
+}
+/* Inicio Seccion 2 */
+.sec2-EditarEmpresa {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.sec2-EditarEmpresa .block {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.sec2-EditarEmpresa input[type="text"],
+.sec2-EditarEmpresa textarea {
+  background-color: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #4a5568;
+  width: 100%;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sec2-EditarEmpresa input[type="text"]:focus,
+.sec2-EditarEmpresa textarea:focus {
+  background-color: #e2e8f0;
+  border-color: #a0aec0;
+}
+
+.sec2-EditarEmpresa textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.social-EditarEmpresa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+.social-EditarEmpresa label {
+  width: 40px;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.sec2-EditarEmpresa .col-md-6 {
+  flex: 0 0 calc(50% - 0.5rem); /* Tamaño de las columnas */
+}
+
+/* Inicio Seccion 3 */
+
+.section3CargaEdicion {
+  margin-top: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.seclogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section3CargaEdicion .seclogo {
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.company_logo_input {
+  display: none;
+}
+
+.section3CargaEdicion .seclogo > * + * {
+  margin-left: 0.75rem;
+}
+
+.iconUser {
+  height: 3rem;
+  width: 3rem;
+  color: #d2d6dc;
+}
+
+.seclogo button {
+  max-width: 25%;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #d1d5db;
+}
+
+.seclogo button:hover {
+  background-color: #f9fafb;
+}
+
+.imgsEmpresa {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(139, 139, 139, 0.967);
+  padding: 1.5rem 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cuadroEdicion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.editarEmpresa_imagen_cont {
+  position: relative;
+  max-width: 150px;
+  max-height: 150px;
+  padding: 1rem;
+}
+
+.editarEmpresa_imagen {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.editarEmpresa_delete_icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Estilos para el botón de carga de imágenes */
+
+.cargaImg:before {
+  content: "Cargar imágenes";
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #4a5568;
+  color: #4a5568;
+  background-color: rgb(0, 197, 142);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.cargaImg:hover:before {
+  background-color: #4a5568;
+  color: white;
+}
+
+/*---- FIN Sec 3 */
+.btnCargaEdicion {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.btnCargaEdicion .btnCancel {
+  color: #ffffff;
+  background-color: #4b5563;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btnCargaEdicion .btnCancel:hover {
+  background-color: #cecece;
+  color: rgb(0, 0, 0);
+}
+
+.btnCargaEdicion .btnCancel:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  outline-color: #4f46e5;
+}
+
+.btnCargaEdicion .btnGuardar {
+  background-color: rgb(34, 197, 94);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btnCargaEdicion .btnGuardar:hover {
+  background-color: #38a169;
+}
+
+.btnCargaEdicion .btnGuardar:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  outline-color: #4f46e5;
+}
+
+/*---- FIN Guardar*/

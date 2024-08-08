@@ -1,17 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import "react-datepicker/dist/react-datepicker.css";
-import { addCompany } from "../../utils/apiDb/apiDbAcions";
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
-import { swalPopUp } from "../../utils/swal";
-import { SpinnerContext } from "../../context/spinnerContext";
-import localidadesData from "./localidades.json";
-import PopUpEmpresa from "./PopUpEmpresa";
+import {
+  updateCompany,
+  findCompany,
+  deleteImageOfFirebase,
+} from "../utils/apiDb/apiDbAcions";
+import { swalPopUp } from "../utils/swal";
+import { SpinnerContext } from "../context/spinnerContext";
+import { useParams, useNavigate } from "react-router-dom";
+import { verifyIfHasChanges } from "../utils/utils";
+import { UserContext } from "../context/userContext";
+import localidadesData from "./carga-empresa/localidades.json";
 
-const CargaEmpresa = () => {
-  const { userData } = useContext(UserContext);
+export default function EditarEmpresa() {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const formRef = useRef();
+  const initialData = useRef();
+  const { userData } = useContext(UserContext);
   const { showSpinner } = useContext(SpinnerContext);
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +32,6 @@ const CargaEmpresa = () => {
     website: "",
     vefrek_website: "",
     category: "",
-    closing: "",
     social: {
       email: "",
       whatsapp: "",
@@ -45,6 +51,10 @@ const CargaEmpresa = () => {
       all: false,
       same_email: false,
       none: true,
+    },
+    images: {
+      logo: { url: "", delete: "" },
+      images: [],
     },
     logo_image_name: "",
     images_names: "",
@@ -67,15 +77,6 @@ const CargaEmpresa = () => {
       },
     },
   });
-
-  // PopUp
-  const [showPopup, setShowPopup] = useState(false);
-  const handleGuardar = () => {
-    setShowPopup(true);
-  };
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
 
   // Inico API
   const [provincias, setProvincias] = useState([]);
@@ -151,11 +152,6 @@ const CargaEmpresa = () => {
     e.target.nextSibling.click();
   };
 
-  const selectImages = (e) => {
-    const inputFiles = e.target.querySelector(".company_images_files");
-    if (inputFiles) inputFiles.click();
-  };
-
   const handleCategoryChange = (e) => {
     const { value } = e.target;
     const categoryValue = value.split(",")[0].trim();
@@ -175,46 +171,163 @@ const CargaEmpresa = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    formRef.current.registeremail = userData.email;
-
-    if (formRef.current.schedules.scheduleType === "P") {
-      //Si cargamos horarios personalizados ponemos el campo "custom" en null para no cargar informacion innecesaria
-      formRef.current = {
-        ...formRef.current,
-        schedules: {
-          ...formRef.current.schedules,
-          custom: null,
-        },
-      };
-    } else {
-      //Si cargamos horarios "LaV" "LaS" o "LaD" ponemos el campo "personalized" en null para no cargar informacion innecesaria
-      formRef.current = {
-        ...formRef.current,
-        schedules: {
-          ...formRef.current.schedules,
-          personalized: null,
-        },
-      };
-    }
-
     const companyData = formRef.current;
     const completeData = new FormData();
+
     completeData.append("companyTextData", JSON.stringify(companyData));
-    const lofoFile = document.querySelector(".company_logo_file").files[0];
-    completeData.append("logo", lofoFile);
-    const files = document.querySelector(".company_images_files").files;
-    for (const file of files) {
+    const logoInput = document.querySelector(".company_logo_input");
+    const logoFile = logoInput.files[0];
+    completeData.append("logo", logoFile);
+    const imagesInput = document.querySelector(".company_images_input");
+    const imagesFiles = imagesInput.files;
+
+    if (
+      !verifyIfHasChanges(initialData.current, formRef.current) &&
+      logoInput.files.length === 0 &&
+      imagesInput.files.length === 0
+    ) {
+      swalPopUp("Ops!", "No hay cambios para guardar", "warning");
+      return;
+    }
+
+    for (const file of imagesFiles) {
       completeData.append("images", file);
     }
+
     showSpinner(true);
-    const response = await addCompany(completeData);
-    response.success
-      ? swalPopUp("Tarea completada", response.message, "success")
-      : swalPopUp("Error", response.message, "error");
+    const response = await updateCompany(id, completeData);
+    if (response.success) {
+      find();
+      logoInput.value = ""; //Vaciamos inputs de imagenes
+      imagesInput.value = "";
+      swalPopUp("Tarea completada", response.message, "success");
+    } else {
+      swalPopUp("Error", response.message, "error");
+    }
     showSpinner(false);
   };
 
-  /*************************** Horarios  ****************************/
+  const find = async () => {
+    showSpinner(true);
+    if (!id) {
+      showSpinner(false);
+      swalPopUp(
+        "Ops!",
+        "No se ingresó el ID de la empresa a editar",
+        "warning"
+      );
+      navigate("/");
+      return;
+    }
+    const response = await findCompany("_id", id, "");
+    const companyData = response.companyData;
+
+    if (!response.success && !response.message.includes("pausado")) {
+      showSpinner(false);
+      swalPopUp("Ops!", response.message, "error");
+      navigate("/");
+      return;
+    } else if (!response.success && response.message.includes("pausado")) {
+      showSpinner(false);
+      swalPopUp(
+        "Ops!",
+        "No Autorizado: No tienes los permisos necesarios para editar esta empresa",
+        "warning"
+      );
+      navigate("/");
+      return;
+    }
+    showSpinner(false);
+
+    const auxFormData = {
+      registeremail: companyData.registeremail,
+      name: companyData.name,
+      slogan: companyData.slogan,
+      location: companyData.location,
+      city: companyData.city,
+      state: companyData.state,
+      postal_code: companyData.postal_code,
+      phone: companyData.phone,
+      phone2: companyData.phone2,
+      website: companyData.website,
+      vefrek_website: companyData.vefrek_website,
+      category: companyData.category,
+      subcategory: companyData.subcategory,
+      social: {
+        email: companyData.social.email,
+        whatsapp: companyData.social.whatsapp,
+        facebook: companyData.social.facebook,
+        instagram: companyData.social.instagram,
+        x: companyData.social.x,
+        linkedin: companyData.social.linkedin,
+        tiktok: companyData.social.tiktok,
+        youtube: companyData.social.youtube,
+      },
+      description: companyData.description,
+      email_notifications: {
+        comments: companyData.email_notifications.comments,
+        news: companyData.email_notifications.news,
+      },
+      sms_notifications: {
+        all: companyData.sms_notifications.all,
+        same_email: companyData.sms_notifications.same_email,
+        none: companyData.sms_notifications.none,
+      },
+      images: {
+        logo: companyData.images.logo,
+        images: companyData.images.images,
+      },
+      schedules: companyData.schedules,
+    };
+
+    auxFormData.schedules.scheduleType === "P"
+      ? setHDef(false)
+      : setHDef(
+          true
+        ); /*Setea la visualización de tipo de horarios al entrar en la pagina */
+
+    setFormData(structuredClone(auxFormData));
+    initialData.current = structuredClone(auxFormData);
+
+    const optionsSelect = document.querySelector(".form_select");
+    if (optionsSelect) {
+      const options = optionsSelect.options;
+      for (let i = 0; i < options.length; i++) {
+        if (
+          options[i].value.split(",")[1] &&
+          options[i].value.split(",")[1].trim() === companyData.subcategory
+        ) {
+          options[i].selected = true;
+          break;
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (userData.isLogged) find();
+    // eslint-disable-next-line
+  }, [id, userData]);
+
+  const deleteImg = async (deletePath) => {
+    try {
+      const response = await deleteImageOfFirebase(deletePath);
+      if (response.success) {
+        swalPopUp("Tarea completada", response.message);
+        find();
+      } else {
+        swalPopUp("Ops!", response.message, "warning");
+      }
+    } catch (err) {
+      swalPopUp(
+        "Ops!",
+        `Error al eliminar imagen del servidor: ${err.message}`,
+        "error"
+      );
+    }
+  };
+
+  /**************************************** Horarios ******************/
 
   const [hDef, setHDef] = useState(true);
 
@@ -227,18 +340,6 @@ const CargaEmpresa = () => {
     "Sábado",
     "Domingo",
   ];
-
-  const generarHorarios = () => {
-    const horarios = [];
-    for (let hora = 0; hora < 24; hora++) {
-      for (let minuto = 0; minuto < 60; minuto += 15) {
-        const horaString = hora.toString().padStart(2, "0");
-        const minutoString = minuto.toString().padStart(2, "0");
-        horarios.push(`${horaString}:${minutoString}`);
-      }
-    }
-    return horarios;
-  };
 
   const setTipoHorarios = (e) => {
     //Tipo de horarios: LaV", "LaS", "LaD", "P"
@@ -253,23 +354,19 @@ const CargaEmpresa = () => {
     valueSelected === "P" ? setHDef(false) : setHDef(true);
   };
 
-  const handleInputChangeDef = (turno, e) => {
-    //Cambio de horarios entre: "open1" "close1" "open2" "close2"
-    const hour = e.target.value;
-    setFormData((actualFormData) => ({
-      ...actualFormData,
-      schedules: {
-        ...actualFormData.schedules,
-        custom: {
-          ...actualFormData.schedules.custom,
-          [turno]: hour,
-        },
-      },
-    }));
+  const generarHorarios = () => {
+    const horarios = [];
+    for (let hora = 0; hora < 24; hora++) {
+      for (let minuto = 0; minuto < 60; minuto += 15) {
+        const horaString = hora.toString().padStart(2, "0");
+        const minutoString = minuto.toString().padStart(2, "0");
+        horarios.push(`${horaString}:${minutoString}`);
+      }
+    }
+    return horarios;
   };
 
   const handleInputChange = (dia, turno, e) => {
-    //Cambio de horarios entre: "open1" "close1" "open2" "close2"
     const hour = e.target.value;
     setFormData((actualFormData) => ({
       ...actualFormData,
@@ -281,6 +378,20 @@ const CargaEmpresa = () => {
             ...actualFormData.schedules.personalized[dia],
             [turno]: hour,
           },
+        },
+      },
+    }));
+  };
+
+  const handleInputChangeDef = (turno, e) => {
+    const hour = e.target.value;
+    setFormData((actualFormData) => ({
+      ...actualFormData,
+      schedules: {
+        ...actualFormData.schedules,
+        custom: {
+          ...actualFormData.schedules.custom,
+          [turno]: hour,
         },
       },
     }));
@@ -310,7 +421,12 @@ const CargaEmpresa = () => {
                       <td className="horariosDias">{dia}</td>
                       <td>
                         <select
-                          value={formData.schedules.personalized[dia].open1}
+                          value={
+                            formData.schedules &&
+                            formData.schedules.personalized
+                              ? formData.schedules.personalized[dia].open1
+                              : ""
+                          }
                           defaultValue=""
                           onChange={(e) => handleInputChange(dia, "open1", e)}
                         >
@@ -324,7 +440,12 @@ const CargaEmpresa = () => {
                       </td>
                       <td>
                         <select
-                          value={formData.schedules.personalized[dia].close1}
+                          value={
+                            formData.schedules &&
+                            formData.schedules.personalized
+                              ? formData.schedules.personalized[dia].close1
+                              : ""
+                          }
                           defaultValue=""
                           onChange={(e) => handleInputChange(dia, "close1", e)}
                         >
@@ -341,7 +462,12 @@ const CargaEmpresa = () => {
                       <td className="horariosDias bottomCells"></td>
                       <td className="bottomCells">
                         <select
-                          value={formData.schedules.personalized[dia].open2}
+                          value={
+                            formData.schedules &&
+                            formData.schedules.personalized
+                              ? formData.schedules.personalized[dia].open2
+                              : ""
+                          }
                           defaultValue=""
                           onChange={(e) => handleInputChange(dia, "open2", e)}
                         >
@@ -355,7 +481,12 @@ const CargaEmpresa = () => {
                       </td>
                       <td className="bottomCells">
                         <select
-                          value={formData.schedules.personalized[dia].close2}
+                          value={
+                            formData.schedules &&
+                            formData.schedules.personalized
+                              ? formData.schedules.personalized[dia].close2
+                              : ""
+                          }
                           defaultValue=""
                           onChange={(e) => handleInputChange(dia, "close2", e)}
                         >
@@ -392,7 +523,11 @@ const CargaEmpresa = () => {
               <tr>
                 <td>
                   <select
-                    value={formData.schedules.custom.open1}
+                    value={
+                      formData.schedules.custom
+                        ? formData.schedules.custom.open1
+                        : ""
+                    }
                     defaultValue=""
                     onChange={(e) => handleInputChangeDef("open1", e)}
                   >
@@ -406,7 +541,11 @@ const CargaEmpresa = () => {
                 </td>
                 <td>
                   <select
-                    value={formData.schedules.custom.close1}
+                    value={
+                      formData.schedules.custom
+                        ? formData.schedules.custom.close1
+                        : ""
+                    }
                     defaultValue=""
                     onChange={(e) => handleInputChangeDef("close1", e)}
                   >
@@ -422,7 +561,11 @@ const CargaEmpresa = () => {
               <tr>
                 <td>
                   <select
-                    value={formData.schedules.custom.open2}
+                    value={
+                      formData.schedules.custom
+                        ? formData.schedules.custom.open2
+                        : ""
+                    }
                     defaultValue=""
                     onChange={(e) => handleInputChangeDef("open2", e)}
                   >
@@ -436,7 +579,11 @@ const CargaEmpresa = () => {
                 </td>
                 <td>
                   <select
-                    value={formData.schedules.custom.close2}
+                    value={
+                      formData.schedules.custom
+                        ? formData.schedules.custom.close2
+                        : ""
+                    }
                     defaultValue=""
                     onChange={(e) => handleInputChangeDef("close2", e)}
                   >
@@ -460,9 +607,9 @@ const CargaEmpresa = () => {
   return (
     <section className="bgCargaEdicion">
       <div>
-        <form className="formCarga" onSubmit={handleSubmit}>
+        <form className="formEditar" onSubmit={handleSubmit}>
           <div>
-            <h1>Carga de negocio</h1>
+            <h1>Edición de negocio</h1>
             <p className="mt-5">
               Si es propietario de un negocio referido al rubro automotor puede
               cargarlo <b>GRATIS</b> en nuestro sitio web.
@@ -505,7 +652,7 @@ const CargaEmpresa = () => {
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={formData.postal_code}
+                    value={" " + formData.postal_code}
                     type="text"
                     name="postal_code"
                     id="postal-code"
@@ -521,7 +668,7 @@ const CargaEmpresa = () => {
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
-                    value={formData.location}
+                    value={" " + formData.location}
                     type="text"
                     name="location"
                     id="street-address"
@@ -618,8 +765,13 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* web*/}
-              <div className="campos camposS3">
-                <label htmlFor="website">Sitio Web (opcional):</label>
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="website"
+                  className="block text-sm font-medium leading-6 text-gray-900 w-full "
+                >
+                  Sitio Web (opcional):
+                </label>
                 <div className="mt-2">
                   <input
                     onChange={handleChange}
@@ -628,6 +780,7 @@ const CargaEmpresa = () => {
                     name="website"
                     id="website"
                     autoComplete="family-name"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -700,17 +853,6 @@ const CargaEmpresa = () => {
             </div>
           </div>
 
-          <div className="guardar1">
-            <div
-              type="submit"
-              onClick={handleGuardar}
-              className="guardar-boton"
-            >
-              Guardar
-            </div>
-            {showPopup && <PopUpEmpresa onClose={handleClosePopup} />}
-          </div>
-
           <div className="linea-divisoria mt-5"></div>
           {/*horarios*/}
           <div className="horarios-cont flex column">
@@ -718,9 +860,9 @@ const CargaEmpresa = () => {
               <i className="obligatorio">* </i>Horarios:{" "}
             </label>
             <select
-              defaultValue="LaV"
               className="horariosOption"
               onChange={setTipoHorarios}
+              value={formData.schedules.scheduleType}
             >
               <option value="LaV">Lunes a Viernes</option>
               <option value="LaS">Lunes a Sábado</option>
@@ -736,13 +878,18 @@ const CargaEmpresa = () => {
           <div className="campos2">
             {/*url*/}
             <div className="campos2S6">
-              <label htmlFor="username">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium leading-6 text-gray-900  w-full "
+              >
                 <i className="obligatorio">* </i>Ingrese la URL de su sitio web
                 comercial:
               </label>
+
               <div>
                 <div className="url-vfk">
                   <span>vefrek.com/</span>
+
                   <input
                     value={formData.vefrek_website}
                     onChange={handleChange}
@@ -762,7 +909,7 @@ const CargaEmpresa = () => {
               </label>
               <div className="mt-2">
                 <textarea
-                  value={formData.description}
+                  value={" " + formData.description}
                   onChange={handleChange}
                   id="about"
                   name="description"
@@ -901,42 +1048,50 @@ const CargaEmpresa = () => {
           <div className="linea-divisoria mt-5"></div>
           {/*logo*/}
           <div className="section3CargaEdicion">
-            <div>
-              <label htmlFor="photo">
-                <i className="obligatorio">* </i>Logo de su empresa
-              </label>
-              <div className="seclogo">
-                <UserCircleIcon className="iconUser" aria-hidden="true" />
-                <button onClick={loadFile} type="button">
-                  Cargar
-                </button>
-                <input
-                  onChange={handleFileChange}
-                  className="company_logo_file"
-                  type="file"
-                  name="logo_image_name"
-                  accept="image/*"
-                  single="true"
+            <label htmlFor="photo">
+              <i className="obligatorio">* </i>Logo de su empresa
+            </label>
+            <div className="seclogo">
+              {formData.images.logo.url ? (
+                <img
+                  src={formData.images.logo.url}
+                  alt="Logo"
+                  className="editarEmpresa_logo"
                 />
-                {formData.logo_image_name}
-              </div>
+              ) : (
+                <UserCircleIcon className="iconUser" aria-hidden="true" />
+              )}
+
+              <button onClick={loadFile} type="button" className="mt-3">
+                Cambiar
+              </button>
+              <input
+                onChange={handleFileChange}
+                className="company_logo_input"
+                type="file"
+                name="logo_image_name"
+                accept="image/*"
+                single="true"
+              />
+              {formData.logo_image_name}
             </div>
+
             <label htmlFor="cover-photo" className="mt-5">
               <i className="obligatorio">* </i>Cargar imágenes de su negocio
               (máximo 6):
             </label>
 
             <div className="imgsEmpresa">
-              <div>
+              <div className="cuadroEdicion">
                 <PhotoIcon className="iconUser" aria-hidden="true" />
-                <div className="cargaImg" onClick={selectImages}>
+                <div className="cargaImg">
                   <label htmlFor="file-upload">
                     <input
                       onChange={handleFilesChange}
                       id="file-upload"
                       name="file-upload"
                       type="file"
-                      className="sr-only company_images_files"
+                      className="sr-only company_images_input"
                       multiple={true}
                       max={6}
                     />
@@ -950,9 +1105,33 @@ const CargaEmpresa = () => {
                 </div>
               </div>
             </div>
+
+            <div className="editarEmpresa_imagenes_cont flex wrap mt-4">
+              {formData.images.images.length > 0 ? (
+                formData.images.images.map((data, i) => (
+                  <div className="editarEmpresa_imagen_cont" key={i}>
+                    <img
+                      src={data.url}
+                      alt="Imágenes empresa"
+                      className="editarEmpresa_imagen  mt-3"
+                    />
+                    <img
+                      src="/images/icons/delete.png"
+                      alt="Delete"
+                      title="Eliminar imagen"
+                      className="editarEmpresa_delete_icon  mt-3"
+                      onClick={() => deleteImg(data.delete)}
+                    />
+                  </div>
+                ))
+              ) : (
+                <></>
+              )}
+            </div>
+
             <div className="mt-5">
-              <span className="flex select-none items-center pl-3 text-gray-300 sm:text-sm">
-                <i className="mr-1 obligatorio">* </i>Campos obligatorios
+              <span className="flex select-none items-center pl-3 sm:text-sm">
+                <i className="obligatorio">* </i> &nbsp; Campos obligatorios
               </span>
             </div>
           </div>
@@ -960,18 +1139,12 @@ const CargaEmpresa = () => {
           <div className="linea-divisoria col-span-full mt-5"></div>
 
           <div className="btnCargaEdicion">
-            <button type="button" className="btnCancel">
-              Cancelar
-            </button>
             <button type="submit" className="btnGuardar">
               Guardar
             </button>
           </div>
         </form>
-        <div className="p-4"></div>
       </div>
     </section>
   );
-};
-
-export default CargaEmpresa;
+}

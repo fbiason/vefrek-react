@@ -1,26 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
-import NavBar from "./pages/navbar/NavBar";
+import Home from "./pages/Home";
+import NavBar from "./pages/NavBar";
 import LoginApp from "./pages/login/Login";
 import { isLogged } from "./utils/auth/isLogged";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
-import Footer from "./pages/footer/Footer";
+import Footer from "./pages/Footer";
 import { Navigate } from "react-router-dom";
-import Publicacion from "./pages/publicacion/Publicacion";
+import Publicacion from "./pages/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
-import PaginaEmpresa from "./pages/pagina-empresa/PaginaEmpresa";
+import PaginaEmpresa from "./pages/PaginaEmpresa";
 import { NextUIProvider } from "@nextui-org/react";
 import * as React from "react";
 import Reparacion from "./pages/categorias/Reparacion";
 import Venta from "./pages/categorias/Venta";
 import OtrosServicios from "./pages/categorias/OtrosServicios";
-import Terminos from "./pages/tyc/Terminos";
+import Terminos from "./pages/Terminos";
 import { SpinnerContext } from "./context/spinnerContext";
-import Dropdown from "./pages/dropdown/Dropdown";
-import MisEmpresas from "./pages/misEmpresas/MisEmpresas";
-import LoginUser from "./pages/loginUser/LoginUser";
-import EditarEmpresa from "./pages/editarEmpresa/EditarEmpresa";
+import Dropdown from "./pages/Dropdown";
+import MisEmpresas from "./pages/MisEmpresas";
+import LoginUser from "./pages/login/LoginUser";
+import EditarEmpresa from "./pages/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";
 import NavBarDash from "./components/dashboard/NavBarDash";
@@ -28,90 +28,88 @@ import Informe from "./components/dashboard/Informe";
 import Calendario from "./components/dashboard/Calendario";
 import Favoritos from "./components/dashboard/Favoritos";
 import NegociosDash from "./components/dashboard/NegociosDash";
-import Map from "./components/dashboard/Map";
 import Admin from "./components/dashboard/Admin";
 import Perfil from "./components/dashboard/Perfil";
 
 function App() {
-    ReactGA.initialize("G-J1JT10S65V");
-    const { updateUserData, setShow, userData, show } = useContext(UserContext);
-    const { spinner } = useContext(SpinnerContext);
+  ReactGA.initialize("G-J1JT10S65V");
+  const { updateUserData, setShow, userData, show } = useContext(UserContext);
+  const { spinner } = useContext(SpinnerContext);
 
-    useEffect(() => {
-        const verifiLog = async () => {
-            const response = await isLogged();
-            if (response.userData) {
-                updateUserData(response.userData);
-            } else {
-                updateUserData({ email: "", name: "", isLogged: false });
+  useEffect(() => {
+    const verifiLog = async () => {
+      const response = await isLogged();
+      if (response.userData) {
+        updateUserData(response.userData);
+      } else {
+        updateUserData({ email: "", name: "", isLogged: false });
+      }
+      setShow(true);
+    };
+    verifiLog();
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <NextUIProvider>
+        {spinner}
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/" element={<NavBarDash />} />
+          <Route path="/login" element={<LoginApp />} />
+          <Route path="/Publicacion" element={<Publicacion />} />
+          <Route path="/Reparacion" element={<Reparacion />} />
+          <Route path="/Venta" element={<Venta />} />
+          <Route path="/OtrosServicios" element={<OtrosServicios />} />
+          <Route path="/Terminos" element={<Terminos />} />
+          <Route path="/Dropdown" element={<Dropdown />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Informe" element={<Informe />} />
+          <Route path="/Calendario" element={<Calendario />} />
+          <Route path="/Favoritos" element={<Favoritos />} />
+          <Route path="/NegociosDash" element={<NegociosDash />} />
+          <Route path="/Admin" element={<Admin />} />
+          <Route
+            path="/MisEmpresas"
+            element={
+              ((!show || userData.isLogged) && <MisEmpresas />) ||
+              ((show || !userData.isLogged) && <Navigate to="/" />)
             }
-            setShow(true);
-        };
-        verifiLog();
-        // eslint-disable-next-line
-    }, []);
+          />
 
-    return (
-        <BrowserRouter>
-            <NextUIProvider>
-                {spinner}
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/" element={<NavBarDash />} />
-                    <Route path="/login" element={<LoginApp />} />
-                    <Route path="/Publicacion" element={<Publicacion />} />
-                    <Route path="/Reparacion" element={<Reparacion />} />
-                    <Route path="/Venta" element={<Venta />} />
-                    <Route path="/OtrosServicios" element={<OtrosServicios />} />
-                    <Route path="/Terminos" element={<Terminos />} />
-                    <Route path="/Dropdown" element={<Dropdown />} />
-                    <Route path="/Dashboard" element={<Dashboard />} />
-                    <Route path="/Informe" element={<Informe />} />
-                    <Route path="/Calendario" element={<Calendario />} />
-                    <Route path="/Favoritos" element={<Favoritos />} />
-                    <Route path="/NegociosDash" element={<NegociosDash />} />
-                    <Route path="/Map" element={<Map />} />
-                    <Route path="/Admin" element={<Admin />} />
-                    <Route
-                        path="/MisEmpresas"
-                        element={
-                            ((!show || userData.isLogged) && <MisEmpresas />) ||
-                            ((show || !userData.isLogged) && <Navigate to="/" />)
-                        }
-                    />
-
-                    <Route
-                        path="/EditarEmpresa/:id?"
-                        element={
-                            ((!show || userData.isLogged) && <EditarEmpresa />) ||
-                            ((show || !userData.isLogged) && <Navigate to="/" />)
-                        }
-                    />
-                    <Route
-                        path="/CargaEmpresa"
-                        element={
-                            ((!show || userData.isLogged) && <CargaEmpresa />) ||
-                            ((show || !userData.isLogged) && <Navigate to="/" />)
-                        }
-                    />
-                    <Route
-                        path="/Perfil"
-                        element={
-                            ((!show || userData.isLogged) && <Perfil />) ||
-                            ((show || !userData.isLogged) && <Navigate to="/" />)
-                        }
-                    />
-                    {!userData.isLogged && (
-                        <Route path="/loginuser/:token?" element={<LoginUser />} />
-                    )}
-                    <Route path="/:vefrek_website" element={<PaginaEmpresa />} />
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-                <Footer />
-            </NextUIProvider>
-        </BrowserRouter>
-    );
+          <Route
+            path="/EditarEmpresa/:id?"
+            element={
+              ((!show || userData.isLogged) && <EditarEmpresa />) ||
+              ((show || !userData.isLogged) && <Navigate to="/" />)
+            }
+          />
+          <Route
+            path="/CargaEmpresa"
+            element={
+              ((!show || userData.isLogged) && <CargaEmpresa />) ||
+              ((show || !userData.isLogged) && <Navigate to="/" />)
+            }
+          />
+          <Route
+            path="/Perfil"
+            element={
+              ((!show || userData.isLogged) && <Perfil />) ||
+              ((show || !userData.isLogged) && <Navigate to="/" />)
+            }
+          />
+          {!userData.isLogged && (
+            <Route path="/loginuser/:token?" element={<LoginUser />} />
+          )}
+          <Route path="/:vefrek_website" element={<PaginaEmpresa />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        <Footer />
+      </NextUIProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;

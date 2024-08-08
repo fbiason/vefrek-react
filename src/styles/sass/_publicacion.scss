@@ -1,0 +1,128 @@
+#hero-publicacion h1 span {
+  color: white;
+}
+
+#hero-publicacion h2,
+#hero-publicacion h3 {
+  color: whitesmoke;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero-publicacion {
+    padding: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-publicacion {
+    padding: 5rem;
+  }
+
+  #hero-publicacion h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero-publicacion h2 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .logo-publicacion {
+    width: 100%;
+  }
+}
+
+.logo-publicacion {
+  width: 100%;
+}
+
+.hero-publicacion {
+  padding: 10rem;
+}
+
+#hero-publicacion h1 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero-publicacion h1 span {
+  color: white;
+}
+
+#hero-publicacion h2 {
+  color: rgb(0, 197, 142);
+  font-family: "Poppins", sans-serif;
+  font-weight: 550;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+#hero-publicacion h3 {
+  color: whitesmoke;
+  margin: 12px 0 0 0;
+  font-size: 26px;
+}
+
+#hero-publicacion .icon-box {
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 30px 20px;
+  transition: ease-in-out 0.3s;
+  border: 2px solid grey;
+  height: 100%;
+  text-align: center;
+}
+
+#hero-publicacion .icon-box i {
+  font-size: 32px;
+  line-height: 1;
+  color: rgb(0, 197, 142);
+}
+
+#hero-publicacion .icon-box h3 {
+  font-weight: 700;
+  margin: 10px 0 0 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#hero-publicacion .icon-box h3 a {
+  color: whitesmoke;
+  transition: ease-in-out 0.3s;
+}
+
+#hero-publicacion .icon-box h3 a:hover {
+  color: rgb(0, 197, 142);
+}
+
+#hero-publicacion .icon-box:hover {
+  border-color: rgb(0, 197, 142);
+}
+/*--- Responsive ---*/
+@media (min-width: 1024px) {
+  #hero-publicacion {
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 768px) {
+  #hero-publicacion h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero-publicacion h2 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .logo-publicacion {
+    width: 100%;
+  }
+}

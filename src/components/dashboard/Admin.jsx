@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
-import "./admin.css";
 
 const Admin = () => {
   const [activeNavItem, setActiveNavItem] = useState(8);
@@ -20,6 +19,7 @@ const Admin = () => {
     { icon: "fa-calendar", text: "Calendario", to: "/Calendario" },
     { icon: "fa-star", text: "Favoritos", to: "/Favoritos" },
     { icon: "fa-building", text: "Negocios", to: "/NegociosDash" },
+    { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
     { icon: "fa-user-tie", text: "Administrador", to: "/Admin" },
   ];
 

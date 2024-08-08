@@ -1,0 +1,192 @@
+.filter-row-km {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.filter-row-cat {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.filtro-categorias {
+  width: 30%;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  -moz-padding-start: calc(0.75rem - 3px);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  justify-content: center;
+  align-items: start;
+  text-align: start;
+  color: #212529;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.categorias {
+  padding-top: 10rem;
+}
+
+#rangevalue {
+  color: white;
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: bold;
+  color: white;
+}
+
+.form-range {
+  width: 40%;
+  cursor: pointer;
+  height: 10px;
+  border: none;
+  outline: none;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: rgb(0, 197, 142);
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1024px) {
+  .categorias {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .categorias {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .categorias h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .filtro-categorias {
+    width: 80%;
+  }
+}
+
+@media (max-width: 390px) {
+  .categorias h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .categorias h1 {
+    font-size: 0.8rem;
+  }
+}
+
+/***************************/
+
+.paginationButtonsCont {
+  margin-top: 50px;
+}
+
+.paginationButton {
+  width: 40px;
+  background-color: #3dd697;
+  margin: 0 10px;
+}
+
+.filtro-provincias {
+  margin-bottom: 0;
+}
+
+.container-cards-categorias {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.infoLocationFilter {
+  width: 100%;
+}
+
+/* CHECKBOX */
+.filterTypeCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.filterTypeLabel,
+.filterTypeInput {
+  width: fit-content;
+  color: white;
+  align-items: center;
+}
+
+.filterTypeLabel {
+  margin-left: 0.5rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+  text-align: center;
+  justify-content: center;
+}
+
+.filterTypeInput {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(0, 197, 142);
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filterTypeInput::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.filterTypeInput:checked::before {
+  opacity: 1;
+}
+
+.filterTypeInput:hover {
+  background-color: rgba(0, 197, 142, 0.1);
+  border-color: rgba(0, 197, 142, 0.5);
+}
