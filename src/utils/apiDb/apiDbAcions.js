@@ -85,7 +85,6 @@ export const findCompanys = async (matchJSON, aggregateQueryJSON) => {
     }
 }
 
-
 export const findCompanys2 = async (queryJSON, fieldsSlected) => {
 
     try {

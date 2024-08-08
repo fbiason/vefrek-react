@@ -13,7 +13,7 @@ const LoginUser = () => {
             localStorage.setItem('token', token);
         }
         window.location = "/";
-    }, []);
+    }, [token]);
 
     return (
         <div className='loginUserCont'>
