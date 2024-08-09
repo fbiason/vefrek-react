@@ -2,8 +2,7 @@
     $jsonData = file_get_contents('php://input');
     $data = json_decode($jsonData, true);
 
-    // $to = 'administracion@vefrek.com';
-    $to = 'ariel.corrado27@gmail.com';
+    $to = 'administracion@vefrek.com';
     
     $name = utf8_decode($data['name']);
     $email = utf8_decode($data['email']);
