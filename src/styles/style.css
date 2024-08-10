@@ -1647,7 +1647,7 @@ button {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type=button] {
   background: rgb(0, 197, 142);
   border: 0;
   padding: 8px 16px;
