@@ -321,7 +321,6 @@ const OtrosServicios = () => {
     } else if (filterType === "state") {
       setCompanys(selectedSubCategory, selectedProvince, actualPage);
     }
-    // eslint-disable-next-line
   }, [filterType]);
 
   useEffect(() => {
@@ -332,12 +331,12 @@ const OtrosServicios = () => {
   }, [showDistanceFilter]);
 
   return (
-    <div className="background categorias">
-      <div className="container text-center text-lg-start p-4">
-        <div className="row gx-lg-5 align-items-center mb-5">
-          <div className="col-xxl-12 p-5">
-            <h1>Otros Servicios</h1>
-            <p className="mt-5 container">
+    <div className="background">
+      <div className="custom-container">
+        <div className="custom-row ">
+          <div className="custom-col">
+            <h1 className="custom-title">Otros Servicios</h1>
+            <p className="custom-container-mt">
               En ésta seccion podes encontrar información sobre aseguradoras,
               estaciones de servicios y negocios dedicados a la estetica de tu
               vehiculo. También proporcionamos un acceso rapido a servicios de
@@ -347,8 +346,8 @@ const OtrosServicios = () => {
         </div>
 
         {showDistanceFilter && (
-          <div className="row filter-row-km">
-            <div className="filterTypeCont flex">
+          <div className="filter-row-km">
+            <div className="filterType">
               <input
                 type="checkbox"
                 name="distance"
@@ -384,7 +383,7 @@ const OtrosServicios = () => {
                   onChange={handleRangeChange}
                   onMouseUp={handleChangeFilterKmValue}
                 />
-                <output id="rangevalue" className="p-3">
+                <output id="rangevalue" className="range">
                   {rangeValue}
                 </output>
               </>
@@ -392,11 +391,11 @@ const OtrosServicios = () => {
           </div>
         )}
 
-        <div className="row filter-row-cat mt-3">
+        <div class="filter-row-cat">
           <div>
             <select
               onChange={handleSelectChangeSubCategory}
-              className="filtro-categorias"
+              className="custom-select"
             >
               <option value="" disabled selected>
                 Seleccionar Subcategoría
@@ -415,7 +414,7 @@ const OtrosServicios = () => {
         </div>
 
         {filterType === "state" && (
-          <div className="row filter-row-cat mt-3 filtro-provincias">
+          <div className="filtro-provincias">
             <div>
               <select
                 onChange={handleSelectChangeState}
@@ -456,10 +455,10 @@ const OtrosServicios = () => {
         )}
 
         {data.length && totalNumberOfPages > 1 ? (
-          <div className="paginationButtonsCont flex">
+          <div className="pagination-controls">
             <button
               onClick={() => handleChangePage(false)}
-              className="paginationButton"
+              className="pagination-control-button"
             >
               -
             </button>
@@ -468,7 +467,7 @@ const OtrosServicios = () => {
             </p>
             <button
               onClick={() => handleChangePage(true)}
-              className="paginationButton"
+              className="pagination-control-button"
             >
               +
             </button>
@@ -477,31 +476,7 @@ const OtrosServicios = () => {
           <></>
         )}
 
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-5 container-card container-cards-categorias">
-          {data}
-        </div>
-
-        {data.length && totalNumberOfPages > 1 ? (
-          <div className="flex">
-            <button
-              onClick={() => handleChangePage(false)}
-              className="paginationButton"
-            >
-              -
-            </button>
-            <p>
-              {actualPage} de {totalNumberOfPages}
-            </p>
-            <button
-              onClick={() => handleChangePage(true)}
-              className="paginationButton"
-            >
-              +
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="grid-categories">{data}</div>
       </div>
     </div>
   );

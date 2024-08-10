@@ -449,10 +449,10 @@ const Reparacion = () => {
         )}
 
         {data.length && totalNumberOfPages > 1 ? (
-          <div class="pagination-controls">
+          <div className="pagination-controls">
             <button
               onClick={() => handleChangePage(false)}
-              class="pagination-control-button"
+              className="pagination-control-button"
             >
               -
             </button>
@@ -461,7 +461,7 @@ const Reparacion = () => {
             </p>
             <button
               onClick={() => handleChangePage(true)}
-              class="pagination-control-button"
+              className="pagination-control-button"
             >
               +
             </button>
