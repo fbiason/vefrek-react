@@ -46,7 +46,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm run start-react & npm run watch-css",
+    "start": "concurrently \"npm run start-react\" \"npm run watch-css\"",
     "start-react": "env-cmd -f ./env/dev.env react-scripts start",
     "build": "env-cmd -f ./env/prod.env react-scripts build",
     "test": "react-scripts test",
