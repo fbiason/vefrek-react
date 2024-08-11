@@ -1,128 +1,114 @@
-#hero-publicacion h1 span {
-  color: white;
+.publicacion {
+  padding: 10rem;
+  background-attachment: fixed;
 }
 
-#hero-publicacion h2,
-#hero-publicacion h3 {
-  color: whitesmoke;
-  margin: 12px 0 0 0;
-  font-size: 26px;
+.container-publicacion {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .hero-publicacion {
-    padding: 5rem;
-  }
+.publicacion-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -15px;
 }
 
-@media (max-width: 768px) {
-  #hero-publicacion {
-    padding: 5rem;
-  }
-
-  #hero-publicacion h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-  #hero-publicacion h2 {
-    font-size: 22px;
-    line-height: 24px;
-  }
-
-  .logo-publicacion {
-    width: 100%;
-  }
+.publicacion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .logo-publicacion {
+  width: 50%;
+}
+
+.publicacion-text {
+  margin-top: 2rem;
+}
+
+.publicacion-text h3 {
+  font-size: 2rem;
+  color: #f0f0f0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.publication-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.publication-link {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
-
-.hero-publicacion {
-  padding: 10rem;
-}
-
-#hero-publicacion h1 {
-  margin: 0;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  color: white;
-  font-family: "Poppins", sans-serif;
-}
-
-#hero-publicacion h1 span {
-  color: white;
-}
-
-#hero-publicacion h2 {
-  color: rgb(0, 197, 142);
-  font-family: "Poppins", sans-serif;
-  font-weight: 550;
-  margin: 12px 0 0 0;
-  font-size: 26px;
-}
-
-#hero-publicacion h3 {
-  color: whitesmoke;
-  margin: 12px 0 0 0;
-  font-size: 26px;
-}
-
-#hero-publicacion .icon-box {
+.publication-icon-box {
   border-radius: 1rem;
   cursor: pointer;
   padding: 30px 20px;
   transition: ease-in-out 0.3s;
-  border: 2px solid grey;
-  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
   text-align: center;
+  background-color: #33333383;
+  color: white;
 }
 
-#hero-publicacion .icon-box i {
+.publication-icon-box i {
   font-size: 32px;
   line-height: 1;
   color: rgb(0, 197, 142);
+  margin-bottom: 10px;
+  transition: transform 0.5s ease-in-out;
 }
 
-#hero-publicacion .icon-box h3 {
-  font-weight: 700;
-  margin: 10px 0 0 0;
-  padding: 0;
-  line-height: 1;
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#hero-publicacion .icon-box h3 a {
-  color: whitesmoke;
-  transition: ease-in-out 0.3s;
-}
-
-#hero-publicacion .icon-box h3 a:hover {
-  color: rgb(0, 197, 142);
-}
-
-#hero-publicacion .icon-box:hover {
+.publication-icon-box:hover {
   border-color: rgb(0, 197, 142);
+  background-color: rgb(36, 30, 78);
+  color: white;
 }
-/*--- Responsive ---*/
-@media (min-width: 1024px) {
-  #hero-publicacion {
-    background-attachment: fixed;
-  }
+
+.publication-icon-box:hover i {
+  transform: translateY(-5px);
 }
-@media (max-width: 768px) {
-  #hero-publicacion h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-  #hero-publicacion h2 {
-    font-size: 22px;
-    line-height: 24px;
+
+@media (max-width: 767px) {
+  .publicacion {
+    padding: 3rem;
   }
 
   .logo-publicacion {
+    width: 80%;
+  }
+
+  .publicacion-text h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .publication-btn {
+    margin-top: 2rem;
+  }
+
+  .publication-icon-box {
+    padding: 20px 15px;
+  }
+
+  .publication-icon-box i {
+    font-size: 28px;
+  }
+
+  .publication-link {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
