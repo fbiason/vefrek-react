@@ -907,6 +907,9 @@ button {
   }
 }
 @media (max-width: 768px) {
+  #hero {
+    padding-top: 6rem;
+  }
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
@@ -975,7 +978,7 @@ button {
   border-radius: 8px;
   color: #ffffff;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
 }
 .hero-section .category-item .btn-categoria:hover {
   background: rgba(36, 30, 78, 0.6509803922);
