@@ -493,341 +493,214 @@ button {
     z-index: 1;
   }
 }
-.background-section h1 {
+.container-login {
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 8rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 992px) {
+  .container-login {
+    text-align: left;
+    padding-top: 0rem;
+    margin-top: 0rem;
+  }
+}
+
+.row-login {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.row-login > * {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+@media (min-width: 992px) {
+  .row-login {
+    gap: 0rem;
+  }
+}
+@media (max-width: 768px) {
+  .row-login {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.col-logo {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+@media (min-width: 992px) {
+  .col-logo {
+    flex: 0 0 48%;
+    max-width: 48%;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .col-logo {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+.col-logo h1 {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
   color: whitesmoke;
 }
-
-.login span {
-  color: hsl(218, 81%, 75%);
+.col-logo h1 img {
+  width: 100%;
+  max-width: 300px;
+  display: inline-block;
+  vertical-align: middle;
 }
-
-.login h1 {
-  color: "hsl(218, 81%, 95%)";
+.col-logo h1 span {
+  color: #f0c674;
 }
-
-.vefrek-logo-login {
-  width: auto;
-  height: 50%;
-}
-
-.bg-glass {
-  background-color: hsla(0, 0%, 100%, 0.9) !important;
-  backdrop-filter: saturate(200%) blur(25px);
-}
-
-.benefits {
-  width: 50%;
-  float: left;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  font-size: 2.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.05em;
+@media (max-width: 768px) {
+  .col-logo h1 {
+    font-size: 2.5rem;
+  }
 }
 
 .login-card {
-  width: 80%;
+  width: 100%;
   max-width: 500px;
   padding: 20px;
   background-color: rgb(239, 234, 234);
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
 }
-
 .login-card h2 {
-  margin-bottom: 20px;
-  font-size: xx-large;
-  font-style: italic;
-  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+}
+@media (min-width: 992px) {
+  .login-card {
+    margin-top: 0;
+  }
+}
+@media (max-width: 768px) {
+  .login-card {
+    width: 80%;
+  }
 }
 
-form {
+.form-login {
+  margin: 0.5rem 0;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem auto 1rem auto;
+  background-color: #218838;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.login-btn:hover {
+  background-color: #f0c674;
+  color: black;
+}
+@media (max-width: 768px) {
+  .login-btn {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.social-login {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
 }
-
-label {
-  margin-bottom: 8px;
-}
-
-.form-check:hover label a {
-  color: rgb(182, 172, 28);
-  font-weight: 600;
-}
-
-.form-check-label {
+.social-login .btn-social-facebook,
+.social-login .btn-social-google {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.form-check-input {
-  margin-left: 5px;
-}
-
-.btn-social {
-  width: 80%;
-  max-width: 250px;
-}
-
-.btn-login {
-  background-color: rgb(0, 197, 142);
-  color: black;
-  border: 1px solid black;
-  margin-top: 1rem;
-  border-radius: 4px;
-  font-weight: bold;
-  width: 60%;
-  transition: color 0.3s, background-color 0.3s;
-}
-
-.btn-login:hover {
-  background-color: #ffc451;
-  color: black;
-}
-
-.terms {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  border: 1px solid transparent;
   cursor: pointer;
-  width: 100%;
+  transition: background-color 0.3s ease-in-out;
 }
-
-.register-link {
-  color: #2196f3;
-  cursor: pointer;
-}
-
-.divider {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #ccc;
-}
-
-.social-buttons {
-  display: flex;
-  flex-direction: column;
-}
-
-.facebook-button {
-  background-color: transparent;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.google-button {
-  background-color: transparent;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.link-red {
-  color: black;
-}
-
-.bienvenido {
-  width: 45%;
-  box-sizing: border-box;
-  border-radius: 8px;
-}
-
-.bienvenido h2 {
-  margin-bottom: 20px;
-}
-
-.bienvenido .card {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.txt-form a {
-  font-weight: 600;
-  color: #241e4e;
-}
-
-.txt-form a:hover {
-  color: rgb(0, 197, 142);
-}
-
-.txt-form .label {
-  flex: 1;
+.social-login .btn-social-facebook svg,
+.social-login .btn-social-google svg {
   margin-right: 10px;
-  width: 100%;
-  white-space: nowrap;
-  transition: color 0.3s;
+}
+.social-login .btn-social-facebook.btn-social-facebook,
+.social-login .btn-social-google.btn-social-facebook {
+  background-color: #3b5998;
+}
+.social-login .btn-social-facebook.btn-social-facebook:hover,
+.social-login .btn-social-google.btn-social-facebook:hover {
+  background-color: #334f88;
+}
+.social-login .btn-social-facebook.btn-social-google,
+.social-login .btn-social-google.btn-social-google {
+  background-color: #db4437;
+}
+.social-login .btn-social-facebook.btn-social-google:hover,
+.social-login .btn-social-google.btn-social-google:hover {
+  background-color: #c13527;
 }
 
-.txt-form {
-  width: 100%;
-}
-
-.login span {
-  color: rgb(133, 133, 133);
-}
-
-.acepto1 {
-  color: #241e4e;
-  font-weight: bold;
-}
-
-.acepto2 {
-  color: rgb(0, 197, 142);
-  font-weight: bold;
-}
-
-.acepto3 {
-  color: #dc5f5f;
-  font-weight: bold;
-}
-
-.acepto1:hover {
-  color: rgb(0, 197, 142);
-}
-
-.acepto2:hover {
-  color: #241e4e;
-}
-
-.acepto3:hover {
-  color: rgb(191, 13, 13);
-}
-
-.txt-form .input {
-  margin-left: 5px;
-  display: flex;
-}
-
-.btn-inicio {
-  background-color: rgb(0, 197, 142);
-  color: black;
-  border: 1px solid black;
+.login-links {
+  font-size: 1rem;
+  color: #525354;
   margin-top: 1rem;
-  border-radius: 4px;
-  font-weight: bold;
-  width: 60%;
-  transition: color 0.3s;
+  text-align: center;
 }
-
-.btn-inicio:hover {
-  background-color: #ffc451;
-  color: black;
+.login-links a,
+.login-links h4,
+.login-links h5 {
+  margin-top: 1rem;
+  font-weight: 500;
 }
-
-.facebook-button {
-  background-color: transparent;
-  color: #1877f2;
-  border: 1px solid #1877f2;
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+.login-links h4 a:hover {
+  color: #218838;
+  font-weight: 600;
 }
-
-.facebook-button svg {
-  fill: #1877f2;
-  transition: fill 0.3s;
-}
-
-.facebook-button:hover {
-  background-color: #1877f2;
-  color: white;
-}
-
-.facebook-button:hover svg {
-  fill: white;
-}
-
-.google-button {
-  background-color: transparent;
-  color: rgb(234, 68, 68);
-  border: 1px solid rgb(234, 68, 68);
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.google-button svg {
-  fill: rgb(234, 68, 68);
-  transition: fill 0.3s;
-}
-
-.google-button:hover {
-  background-color: rgb(234, 68, 68);
-  color: white;
-}
-
-.google-button:hover svg {
-  fill: white;
-}
-
-/*--- Responsive ---*/
-@media (max-width: 768px) {
-  .vefrek-logo {
-    width: 80%;
-  }
-  .login-container {
-    padding: 1rem;
-  }
-  .bienvenido {
-    width: 100%;
-  }
-  .login-card {
-    padding: 0;
-  }
-}
-@media (max-width: 992px) {
-  .vefrek-logo {
-    width: 70%;
-  }
-  .bienvenido {
-    width: 100%;
-  }
-}
-@media (max-width: 1200px) {
-  .vefrek-logo {
-    width: 90%;
-  }
-  .bienvenido {
-    width: 80%;
-  }
-}
-.loginUserCont {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-  z-index: 5000;
+.login-links h5 a:hover {
+  color: #dc3545;
+  font-weight: 600;
 }
 
 /*Page home*/
