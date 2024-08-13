@@ -40,7 +40,7 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
     const setCompanys = async (subcategory) => {
       const queryToAppy = dbQuerys.find(
-        (query) => Object.keys(query)[0] === subcategory
+        (query) => Object.keys(query)[0].toLowerCase() === subcategory
       );
       const subcategoryParse = Object.values(queryToAppy)[0];
       const matchJSON = JSON.stringify({ subcategory: subcategoryParse });
@@ -154,10 +154,7 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
             if (response.success && response.companysData) {
               const jsxArr = response.companysData.map((company) => (
-                <div
-                  className="col-md-4 col-xl-3 card-portfolio"
-                  key={company._id}
-                >
+                <div className="card-portfolio" key={company._id}>
                   <CardNegocio
                     subcategory={company.subcategory}
                     name={company.name}
@@ -197,7 +194,9 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
     limitedTo300Km ? setCompanysLimitedTo300Km("Todos") : setCompanys("Todos");
 
-    const filtersButtons = document.querySelectorAll(".filter-button");
+    const filtersButtons = document.querySelectorAll(
+      ".filter-btn-recomendados"
+    );
     filtersButtons.forEach((button) => {
       button.addEventListener("click", () => {
         limitedTo300Km
@@ -213,30 +212,30 @@ const Negocios = ({ limitedTo300Km = false }) => {
   };
 
   return (
-    <div className="container hero neg-reco" data-aos="fade-up">
+    <div className="negocios-recomendados" data-aos="fade-up">
       <div>
         <h5>Encontra lo que tu vehículo necesita</h5>
-
-        <div className="filterTypeContHome flex">
+        <div className="filterTypeContRecomendados">
           <input
             type="checkbox"
             name="distance"
-            className="filterTypeInputHome"
+            className="filterTypeInputRecomendados"
           />
-          <p className="p-2">Solo empresas con ofertas</p>
-          <label className="filterTypeLabelHome"></label>
+          <p>Solo empresas con ofertas</p>
+          <label className="filterTypeLabelRecomendados"></label>
         </div>
-
         <h1>Negocios recomendados</h1>
       </div>
 
-      <div className="row filter-row">
-        <div className="col filter-hero justify-center mb-4">
+      <div className="row-recomendados">
+        <div className="filter-recomendados">
           {categories.map((category) => (
             <button
               key={category}
-              className={`filter-button mt-2 mr-2 filter-button-default ${
-                filter === category.toLowerCase() ? "filter-button-active" : ""
+              className={`filter-btn-recomendados ${
+                filter === category.toLowerCase()
+                  ? "filter-btn-recomendados-active"
+                  : ""
               }`}
               onClick={() => applyFilter(category.toLowerCase())}
             >
@@ -245,29 +244,19 @@ const Negocios = ({ limitedTo300Km = false }) => {
           ))}
         </div>
 
-        <div className="row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="filter-img-negocios">
           {images.map((image, index) => (
             <div
               key={index}
-              className={`filter ${
-                filter === "all" ? "" : `filter-${filter}`
-              } hover:opacity-80 transition duration-300 ease-in-out col-12 col-md-6 col-lg-3`}
+              className={`filter ${filter === "all" ? "" : `filter-${filter}`}`}
             >
-              <img
-                src={image}
-                alt={`Im ${index + 1}`}
-                className="w-full h-full object-cover rounded"
-              />
+              <img src={image} alt={`Im ${index + 1}`} />
             </div>
           ))}
         </div>
       </div>
 
-      <div
-        className="row cards-row justify-content-center text-center"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      >
+      <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
         {data}
       </div>
     </div>

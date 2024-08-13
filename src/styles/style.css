@@ -508,8 +508,8 @@ button {
 @media (max-width: 992px) {
   .container-login {
     text-align: left;
-    padding-top: 0rem;
-    margin-top: 0rem;
+    padding: 0rem;
+    margin: 0rem;
   }
 }
 
@@ -599,7 +599,8 @@ button {
 }
 @media (max-width: 768px) {
   .login-card {
-    width: 80%;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -866,78 +867,56 @@ button {
   font-size: 1.2em;
 }
 
-.neg-reco {
-  background-color: #f8f9fa;
-  padding: 20px;
+.negocios-recomendados {
   margin-top: 3rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1600px;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding-top: 2rem;
+  background-color: #f8f9fa;
 }
-
-.neg-reco h5 {
+.negocios-recomendados h5 {
   color: #333;
   font-size: 1.5rem;
   padding: 0.5rem;
+  text-align: start;
 }
-
-.neg-reco h1 {
+.negocios-recomendados h1 {
   color: #000;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-top: 10px;
+  text-align: start;
+  padding-bottom: 2rem;
 }
 
-.card-portfolio {
+.filter-recomendados {
+  flex: 1 0 0%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterTypeContRecomendados {
+  display: flex;
   margin-top: 1rem;
-}
-
-.filter-hero {
-  display: flex;
-}
-
-.filter-button-default {
-  background-color: #e2e8f0;
-  color: #4a5568;
-}
-
-.filter-button-active {
-  background-color: rgb(0, 197, 142);
-  color: #ffffff;
-  border-color: rgb(0, 197, 142);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.filterTypeContHome {
-  display: flex;
   align-items: center;
   justify-content: start;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.filterTypeContRecomendados p {
+  padding-left: 0.5rem;
 }
 
-.filterTypeLabelHome {
-  margin-left: 0.5rem;
-  padding-right: 5rem;
-  font-size: 1rem;
-  color: rgb(0, 197, 142);
-}
-
-.filterTypeLabel {
-  margin-left: 0.5rem;
-  padding-right: 5rem;
-  font-size: 1rem;
-  color: rgb(0, 197, 142);
-  text-align: center;
-  justify-content: center;
-}
-
-.filterTypeLabelHome,
-.filterTypeInputHome {
-  width: fit-content;
-  color: rgb(0, 0, 0);
-  align-items: center;
-  justify-content: center;
-}
-
-.filterTypeInputHome {
+.filterTypeInputRecomendados {
   position: relative;
   width: 2rem;
   height: 2rem;
@@ -951,7 +930,28 @@ button {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.filterTypeInputHome::before {
+.filterTypeLabelRecomendados {
+  margin-left: 0.5rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+}
+
+.filterTypeInputRecomendados {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(0, 197, 142);
+  border-radius: 50%; /* Hace que el checkbox sea un círculo */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.filterTypeInputRecomendados::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -959,68 +959,125 @@ button {
   transform: translate(-50%, -50%);
   width: 1rem;
   height: 1rem;
-  background-color: rgb(0, 0, 0);
+  background-color: transparent;
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.filterTypeInputHome:checked::before {
+.filterTypeInputRecomendados:checked::before {
+  background-color: rgb(0, 0, 0);
   opacity: 1;
 }
 
-.filterTypeInputHome:hover {
-  background-color: rgba(0, 197, 142, 0.1);
-  border-color: rgba(0, 197, 142, 0.5);
+.row-recomendados {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.row-recomendados > * {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-@media (max-width: 1018px) {
-  .hero {
-    padding: 1rem 3rem 3rem 3rem;
-    overflow: hidden;
-    box-sizing: none;
-  }
-  .filter-hero {
-    display: block;
-    justify-content: initial;
+.filter-btn-recomendados {
+  background-color: #e2e8f0;
+  color: #4a5568;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn-recomendados:hover {
+  background-color: #cbd5e0;
+}
+
+.filter-btn-recomendados-active {
+  background-color: rgb(0, 197, 142);
+  color: black;
+  border-color: rgb(0, 197, 142);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filter-btn-recomendados-active:hover {
+  background-color: rgb(220, 220, 6);
+  color: black;
+}
+
+.row-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-cards > * {
+  flex: 0 1 calc(25% - 30px);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .row-cards > * {
+    flex: 0 1 calc(33.333% - 20px);
   }
 }
 @media (max-width: 768px) {
-  .hero {
-    padding: 1rem 3rem 3rem 3rem;
-    overflow: hidden;
-    box-sizing: none;
-  }
-  .filter-row {
-    display: flex;
-  }
-  .filter-hero {
-    display: block;
-    justify-content: initial;
+  .row-cards > * {
+    flex: 0 1 calc(50% - 15px);
   }
 }
-@media (max-width: 1018px) {
-  .hero {
-    padding: 1rem 3rem 3rem 3rem;
-    overflow: hidden;
-    box-sizing: none;
+@media (max-width: 576px) {
+  .row-cards > * {
+    flex: 0 1 calc(100% - 10px);
   }
 }
-@media (max-width: 768px) {
-  .hero {
-    padding: 1rem 3rem 3rem 3rem;
-    overflow: hidden;
-    box-sizing: none;
+.filter-img-negocios {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .filter-img-negocios {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media only screen and (max-width: 576px) {
-  .container.hero h5 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
+@media (min-width: 768px) {
+  .filter-img-negocios {
+    grid-template-columns: repeat(3, 1fr);
   }
-  .container.hero h1 {
-    font-size: 2rem;
-    margin-bottom: 16px;
+}
+@media (min-width: 1024px) {
+  .filter-img-negocios {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card-portfolio {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-portfolio {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+@media (min-width: 1200px) {
+  .card-portfolio {
+    flex: 0 0 25%;
+    max-width: 25%;
   }
 }
 .container-card {
