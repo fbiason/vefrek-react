@@ -60,28 +60,29 @@ const CardNegocio = (props) => {
 
   return (
     <div key={props._id}>
-      <div className="container-card">
-        <div className="cardNegocio">
+      <div className="businessCard-container">
+        <div className="businessCard">
           <figure style={{ position: "relative" }}>
-            <div className="favorito">
+            <div className="businessCard-favorite">
               <input
                 name="favorito"
                 type="checkbox"
                 ref={heartRef}
                 defaultChecked={false}
               />
-              <label className="favoriteStar" onClick={handleFavorites}>
-                <BsStarFill className="StarIcon" />
+              <label
+                className="businessCard-favoriteLabel"
+                onClick={handleFavorites}
+              >
+                <BsStarFill className="businessCard-starIcon" />
               </label>
             </div>
             <img src={props.imgUrl} alt="Diseño Gráfico" />
           </figure>
-          <div className="contenido-card">
+          <div className="businessCard-content">
             <h5>{props.subcategory}</h5>
-            <h4>{truncateText(props.name, maxLength)}</h4>{" "}
-            {/* Truncar el nombre */}
-            <p>{`📍: ${truncateText(props.location, maxLength)}`}</p>{" "}
-            {/* Truncar la dirección */}
+            <h4>{truncateText(props.name, maxLength)}</h4>
+            <p>{`📍: ${truncateText(props.location, maxLength)}`}</p>
             <p>{`📞: ${props.phone}`}</p>
             <Link to={`/${props.vefrek_website}`}> Más Info </Link>
           </div>
