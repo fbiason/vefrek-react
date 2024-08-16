@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar/NavBar";
-import LoginApp from "./pages/login/Login";
+import LoginApp from "./components/NavBar/Login";
 import { isLogged } from "./utils/auth/isLogged";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
@@ -19,7 +19,7 @@ import Terminos from "./pages/Terminos";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./components/NavBar/Dropdown";
 import MisEmpresas from "./pages/MisEmpresas";
-import LoginUser from "./pages/login/LoginUser";
+import LoginUser from "./components/NavBar/LoginUser";
 import EditarEmpresa from "./pages/EditarEmpresa";
 import ReactGA from "react-ga";
 import Dashboard from "./components/dashboard/Dashboard";

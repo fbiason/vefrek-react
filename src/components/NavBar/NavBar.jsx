@@ -17,9 +17,8 @@ const NavBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
-    thisLocation.pathname === "/"
-      ? setShowSearchBar(false)
-      : setShowSearchBar(true); //Oculta la barra de busqueda en home
+    // Si la ruta actual no es la home, muestra el SearchBar
+    setShowSearchBar(thisLocation.pathname !== "/");
     window.scrollTo({ top: 0 });
   }, [thisLocation]);
 
@@ -298,12 +297,9 @@ const NavBar = () => {
 
         {/* Barra de Búsqueda */}
         <div className="btnNavs">
-          {showSearchBar && (
-            <div className="search-container center-on-mobile">
-              {/* Aquí se aplica la clase de centrado en móviles */}
-              <SearchBar />
-            </div>
-          )}
+          <div className="search-container center-on-mobile">
+            {showSearchBar && <SearchBar />}
+          </div>
         </div>
 
         {/* Publica Ahora */}
