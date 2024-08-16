@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
-import SearchBar from "../components/searchBar/SearchBar";
+import SearchBar from "../components/NavBar/SearchBar";
 import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
 import { swalPopUp, swalPopUpWithCallbacks } from "../utils/swal";

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import NavBar from "./pages/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import LoginApp from "./pages/login/Login";
 import { isLogged } from "./utils/auth/isLogged";
 import { useContext, useEffect } from "react";
@@ -17,7 +17,7 @@ import Venta from "./pages/categorias/Venta";
 import OtrosServicios from "./pages/categorias/OtrosServicios";
 import Terminos from "./pages/Terminos";
 import { SpinnerContext } from "./context/spinnerContext";
-import Dropdown from "./pages/Dropdown";
+import Dropdown from "./components/NavBar/Dropdown";
 import MisEmpresas from "./pages/MisEmpresas";
 import LoginUser from "./pages/login/LoginUser";
 import EditarEmpresa from "./pages/EditarEmpresa";
