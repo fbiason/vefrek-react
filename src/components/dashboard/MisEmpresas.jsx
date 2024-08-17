@@ -1,16 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
-import { SpinnerContext } from "../context/spinnerContext";
+import { SpinnerContext } from "../../context/spinnerContext";
 import {
   findCompanys,
   deleteCompanyById,
   updateCompanyState,
-} from "../utils/apiDb/apiDbAcions";
+} from "../../utils/apiDb/apiDbAcions";
 import {
   swalPopUp,
   swalPopUpWithCallback,
   swalPopUpWhitOptionsAndCallback,
-} from "../utils/swal";
-import { UserContext } from "../context/userContext";
+} from "../../utils/swal";
+import { UserContext } from "../../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const MisEmpresas = () => {

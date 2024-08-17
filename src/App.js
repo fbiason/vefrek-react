@@ -5,7 +5,7 @@ import LoginApp from "./components/NavBar/Login";
 import { isLogged } from "./utils/auth/isLogged";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./context/userContext";
-import Footer from "./pages/Footer";
+import Footer from "./components/Footer/Footer";
 import { Navigate } from "react-router-dom";
 import Publicacion from "./pages/Publicacion";
 import CargaEmpresa from "./pages/carga-empresa/CargaEmpresa";
@@ -15,10 +15,11 @@ import * as React from "react";
 import Reparacion from "./pages/categorias/Reparacion";
 import Venta from "./pages/categorias/Venta";
 import OtrosServicios from "./pages/categorias/OtrosServicios";
-import Terminos from "./pages/Terminos";
+import AvisoLegal from "./components/Footer/AvisoLegal";
+import PoliticaPrivacidad from "./components/Footer/PoliticaPrivacidad";
 import { SpinnerContext } from "./context/spinnerContext";
 import Dropdown from "./components/NavBar/Dropdown";
-import MisEmpresas from "./pages/MisEmpresas";
+import MisEmpresas from "./components/dashboard/MisEmpresas";
 import LoginUser from "./components/NavBar/LoginUser";
 import EditarEmpresa from "./pages/EditarEmpresa";
 import ReactGA from "react-ga";
@@ -63,7 +64,8 @@ function App() {
           <Route path="/Reparacion" element={<Reparacion />} />
           <Route path="/Venta" element={<Venta />} />
           <Route path="/OtrosServicios" element={<OtrosServicios />} />
-          <Route path="/Terminos" element={<Terminos />} />
+          <Route path="/PoliticaPrivacidad" element={<PoliticaPrivacidad />} />
+          <Route path="/AvisoLegal" element={<AvisoLegal />} />
           <Route path="/Dropdown" element={<Dropdown />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Informe" element={<Informe />} />
