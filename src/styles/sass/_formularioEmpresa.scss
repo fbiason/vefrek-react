@@ -1,0 +1,158 @@
+/* General */
+.bg-formEmpresa {
+  background-color: #1a2a3a;
+  padding: 2rem;
+  padding-top: 8rem;
+  color: #fff;
+}
+
+.form-empresa {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #2e3b4e;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.form-descripcion {
+  font-size: 1rem;
+  text-align: center;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.datos-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.campo-formEmpresa {
+  grid-column: span 1;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #e2e8f0;
+}
+
+.campo-formEmpresa label {
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.campo-formEmpresa input,
+.campo-formEmpresa select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #717171;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 16px;
+}
+
+.input-container select {
+  width: 100%;
+  text-align: start;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: none;
+  color: #111827;
+  background-color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+input::placeholder,
+select::placeholder {
+  color: #6b7280;
+}
+
+.linea-divisoria {
+  height: 1px;
+  background-color: #ffffff;
+  margin: 2rem 0;
+}
+
+.campos-obligatorios {
+  margin-top: 1rem;
+}
+
+.btn-carga-edicion {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-guardar {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a2a3a;
+  background-color: #ffd700 !important;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-guardar:hover {
+  background-color: #218838 !important;
+  color: whitesmoke;
+}
+
+@media (max-width: 600px) {
+  .bg-formEmpresa {
+    padding: 1rem;
+    padding-top: 6rem;
+  }
+
+  .form-empresa {
+    padding: 1rem;
+  }
+
+  .form-titulo {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-descripcion {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .datos-form {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .campo-formEmpresa {
+    margin-bottom: 12px;
+    padding: 6px;
+  }
+
+  .campo-formEmpresa input,
+  .campo-formEmpresa select {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .btn-guardar {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,51 @@
+/* Redes Sociales */
+.campos-redes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.campo-red {
+  display: flex;
+  align-items: center;
+}
+
+.campo-red label {
+  margin-right: 0.5rem;
+  width: 40px;
+  text-align: center;
+}
+
+.campo-red input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.campo-red input:not(:placeholder-shown) {
+  color: #000000;
+}
+
+.campo-red input::placeholder {
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .campos-redes {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-red {
+    margin-bottom: 1rem;
+  }
+
+  .campo-red label {
+    width: 50px;
+    font-size: 1.3rem;
+  }
+
+  .campo-red input {
+    width: 100%;
+  }
+}
