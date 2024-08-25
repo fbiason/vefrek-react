@@ -1668,105 +1668,82 @@ button {
     justify-content: center;
   }
 }
-/* Carga Empresa */
-.background-carga-negocio {
-  min-height: fit-content;
-  align-items: center;
-  padding-top: 10rem;
-  justify-content: center;
-  background-color: hsl(218, 41%, 15%);
-  background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+.url-section {
+  margin-bottom: 2rem;
 }
-
-.background-carga-negocio p,
-.background-carga-negocio li {
-  color: whitesmoke;
-  text-align: center;
+.url-section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
 }
-
-.background-carga-negocio h1 {
-  margin: 0.5rem;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  text-align: center;
-  color: white;
-  font-family: "Poppins", sans-serif;
-}
-
-.background-carga-negocio h3 {
-  color: rgb(117, 116, 116);
-  text-align: center;
-}
-
-.contenido-negocios {
-  display: grid;
-  height: 100%;
-  background: #dbdbdb;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-.perfil-container {
+.url-section .url-vfk {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: fit-content;
-  background-color: hsl(218, 41%, 15%);
+  background-color: #2e3b4e;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.url-section .url-vfk span {
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.url-section .url-vfk input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.url-section .url-vfk input::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+.url-section .url-vfk input:focus {
+  background-color: #e2e8f0;
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
 }
 
-.perfil-card {
+.description-section {
+  margin-bottom: 2rem;
+}
+.description-section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.description-section .txt-form {
   width: 100%;
-  margin-top: 3rem;
-  max-width: 35rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ccc;
+  background-color: #2e3b4e;
+  color: #ffffff;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.description-section .txt-form::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+.description-section .txt-form:focus {
+  background-color: #3b4a61;
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
 }
 
-.card-descripcion {
-  width: 100%;
-  max-width: 35rem;
-  margin: 2rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
-}
-
-.wide-input {
-  width: 90%;
-}
-
-.img-form {
-  font-size: 13px;
-}
-
-.perfil-container h2 {
-  text-align: left;
-  color: #ffc451;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .background-carga-negocio {
-    padding-top: 3rem;
-  }
-  input,
-  label {
-    width: 100%;
-  }
-  .background-carga-negocio h1 {
-    font-size: 40px;
-  }
-}
 /* PopUp */
 .popCarga1 {
   position: absolute;
@@ -2269,8 +2246,8 @@ button {
 .campo-formEmpresa input,
 .campo-formEmpresa select {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
   border: 1px solid #717171;
   background-color: #ffffff;
   color: #111827;
@@ -2312,7 +2289,6 @@ select::placeholder {
 
 .btn-guardar {
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
   font-weight: 600;
   color: #1a2a3a;
   background-color: #ffd700 !important;
@@ -2518,6 +2494,58 @@ select::placeholder {
     padding-bottom: 2rem;
   }
 }
+/* CargaEmpresa.scss */
+.horarios-carga-empresa {
+  display: flex;
+  justify-content: center;
+}
+.horarios-carga-empresa table {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  border-spacing: 0 1rem;
+}
+.horarios-carga-empresa table th, .horarios-carga-empresa table td {
+  text-align: center;
+}
+.horarios-carga-empresa table th {
+  color: #fff;
+  font-weight: bold;
+}
+.horarios-carga-empresa table .diaOpenClose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.horarios-carga-empresa table .input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.horarios-carga-empresa table select {
+  width: 80%;
+  padding: 8px;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  text-align: center;
+}
+.horarios-carga-empresa table .clear-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0.3rem;
+  color: #b1ae08;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.horarios-carga-empresa table .clear-btn:hover {
+  color: #e0f900;
+}
+
 /* Redes Sociales */
 .campos-redes {
   display: grid;
@@ -2528,6 +2556,7 @@ select::placeholder {
 .campo-red {
   display: flex;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .campo-red label {
@@ -2566,105 +2595,136 @@ select::placeholder {
     width: 100%;
   }
 }
-/* Carga Empresa */
-.background-carga-negocio {
-  min-height: fit-content;
-  align-items: center;
-  padding-top: 10rem;
-  justify-content: center;
-  background-color: hsl(218, 41%, 15%);
-  background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+/* Visualización para CargaEmpresa*/
+.campos-redes {
+  display: block;
 }
-
-.background-carga-negocio p,
-.background-carga-negocio li {
-  color: whitesmoke;
-  text-align: center;
-}
-
-.background-carga-negocio h1 {
-  margin: 0.5rem;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 64px;
-  text-align: center;
-  color: white;
-  font-family: "Poppins", sans-serif;
-}
-
-.background-carga-negocio h3 {
-  color: rgb(117, 116, 116);
-  text-align: center;
-}
-
-.contenido-negocios {
+.campos-redes .custom-form-carga {
+  margin: 0 auto;
+  padding: 0;
   display: grid;
-  height: 100%;
-  background: #dbdbdb;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
-
-.perfil-container {
+.campos-redes .custom-form-carga .campo-red {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: fit-content;
-  background-color: hsl(218, 41%, 15%);
 }
-
-.perfil-card {
+.campos-redes .custom-form-carga .campo-red label {
+  width: 40px;
+  margin-right: 0.5rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+.campos-redes .custom-form-carga .campo-red input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #2e3b4e;
+  color: #ffffff;
+  font-size: 1rem;
   width: 100%;
-  margin-top: 3rem;
-  max-width: 35rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
 }
-
-.card-descripcion {
-  width: 100%;
-  max-width: 35rem;
-  margin: 2rem;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #aaa9a9;
-  color: #000;
-  margin: auto;
+.campos-redes .custom-form-carga button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  border: none;
 }
-
-.wide-input {
-  width: 90%;
-}
-
-.img-form {
-  font-size: 13px;
-}
-
-.perfil-container h2 {
-  text-align: left;
-  color: #ffc451;
-  margin-bottom: 20px;
-}
-
 @media (max-width: 768px) {
-  .background-carga-negocio {
-    padding-top: 3rem;
+  .campos-redes .custom-form-carga {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  input,
-  label {
-    width: 100%;
+  .campos-redes .custom-form-carga .campo-red {
+    margin-bottom: 1rem;
   }
-  .background-carga-negocio h1 {
-    font-size: 40px;
+  .campos-redes .custom-form-carga .campo-red label {
+    width: 50px;
+    font-size: 1.5rem;
   }
 }
+
+.url-section {
+  margin-bottom: 2rem;
+}
+.url-section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.url-section .url-vfk {
+  display: flex;
+  align-items: center;
+  background-color: #2e3b4e;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.url-section .url-vfk span {
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.url-section .url-vfk input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  color: #111827;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.url-section .url-vfk input::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+.url-section .url-vfk input:focus {
+  background-color: #e2e8f0;
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.description-section {
+  margin-bottom: 2rem;
+}
+.description-section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.description-section .txt-form {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ccc;
+  background-color: #2e3b4e;
+  color: #ffffff;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.description-section .txt-form::placeholder {
+  color: #6b7280;
+  font-style: italic;
+}
+.description-section .txt-form:focus {
+  background-color: #3b4a61;
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
 /* Imagenes empresa */
 .logo-section,
 .images-section {

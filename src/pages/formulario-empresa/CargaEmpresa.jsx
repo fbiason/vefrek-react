@@ -92,7 +92,6 @@ const CargaEmpresa = () => {
   const handleProvinciaChange = (e) => {
     const selectedProvincia = e.target.value;
     setSelectedProvincia(selectedProvincia);
-    // Obtener la lista de ciudades para la provincia seleccionada
     const ciudadesList = localidadesData.localidades
       .filter((localidad) => localidad.provincia.nombre === selectedProvincia)
       .map((localidad) => localidad.nombre);
@@ -136,10 +135,8 @@ const CargaEmpresa = () => {
   const handleFilesChange = (e) => {
     const { files } = e.target;
     if (files[0]) {
-      const filesArr = Array.from(files); //Files es del tipo "Filelist" y no soporta el metodo "map"
-      const filesArrNames = filesArr.map((file) => (
-        <p className="company_images_names">{file.name}</p>
-      ));
+      const filesArr = Array.from(files);
+      const filesArrNames = filesArr.map((file) => <p>{file.name}</p>);
       setFormData({
         ...formData,
         ...{ images_names: filesArrNames },
@@ -152,7 +149,7 @@ const CargaEmpresa = () => {
   };
 
   const selectImages = (e) => {
-    const inputFiles = e.target.querySelector(".company_images_files");
+    const inputFiles = e.target.querySelector();
     if (inputFiles) inputFiles.click();
   };
 
@@ -199,10 +196,10 @@ const CargaEmpresa = () => {
 
     const companyData = formRef.current;
     const completeData = new FormData();
-    completeData.append("companyTextData", JSON.stringify(companyData));
-    const lofoFile = document.querySelector(".company_logo_file").files[0];
+    completeData.append(JSON.stringify(companyData));
+    const lofoFile = document.querySelector().files[0];
     completeData.append("logo", lofoFile);
-    const files = document.querySelector(".company_images_files").files;
+    const files = document.querySelector().files;
     for (const file of files) {
       completeData.append("images", file);
     }
@@ -288,8 +285,8 @@ const CargaEmpresa = () => {
 
   const horarioPersJSX = //Horarios personalizados (Se puede elegir un horario diferente por cada dia de la semana)
     (
-      <div className="flex">
-        <div className="flex column">
+      <div>
+        <div>
           <table>
             <thead>
               <tr>
@@ -307,65 +304,121 @@ const CargaEmpresa = () => {
                 return (
                   <>
                     <tr key={dia}>
-                      <td className="horariosDias">{dia}</td>
-                      <td>
-                        <select
-                          value={formData.schedules.personalized[dia].open1}
-                          defaultValue=""
-                          onChange={(e) => handleInputChange(dia, "open1", e)}
-                        >
-                          <option value=""></option>
-                          {generarHorarios().map((hora) => (
-                            <option key={hora} value={hora}>
-                              {hora}
-                            </option>
-                          ))}
-                        </select>
+                      <td>{dia}</td>
+                      <td className="diaOpenClose">
+                        <div className="input-group">
+                          <select
+                            value={formData.schedules.personalized[dia].open1}
+                            defaultValue=""
+                            onChange={(e) => handleInputChange(dia, "open1", e)}
+                          >
+                            <option value=""></option>
+                            {generarHorarios().map((hora) => (
+                              <option key={hora} value={hora}>
+                                {hora}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="clear-btn"
+                            onClick={() =>
+                              handleInputChange(dia, "open1", {
+                                target: { value: "" },
+                              })
+                            }
+                          >
+                            Limpiar
+                          </button>
+                        </div>
                       </td>
-                      <td>
-                        <select
-                          value={formData.schedules.personalized[dia].close1}
-                          defaultValue=""
-                          onChange={(e) => handleInputChange(dia, "close1", e)}
-                        >
-                          <option value=""></option>
-                          {generarHorarios().map((hora) => (
-                            <option key={hora} value={hora}>
-                              {hora}
-                            </option>
-                          ))}
-                        </select>
+                      <td className="diaOpenClose">
+                        <div className="input-group">
+                          <select
+                            value={formData.schedules.personalized[dia].close1}
+                            defaultValue=""
+                            onChange={(e) =>
+                              handleInputChange(dia, "close1", e)
+                            }
+                          >
+                            <option value=""></option>
+                            {generarHorarios().map((hora) => (
+                              <option key={hora} value={hora}>
+                                {hora}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="clear-btn"
+                            onClick={() =>
+                              handleInputChange(dia, "close1", {
+                                target: { value: "" },
+                              })
+                            }
+                          >
+                            Limpiar
+                          </button>
+                        </div>
                       </td>
                     </tr>
                     <tr key={dia}>
-                      <td className="horariosDias bottomCells"></td>
-                      <td className="bottomCells">
-                        <select
-                          value={formData.schedules.personalized[dia].open2}
-                          defaultValue=""
-                          onChange={(e) => handleInputChange(dia, "open2", e)}
-                        >
-                          <option value=""></option>
-                          {generarHorarios().map((hora) => (
-                            <option key={hora} value={hora}>
-                              {hora}
-                            </option>
-                          ))}
-                        </select>
+                      <td></td>
+                      <td className="diaOpenClose">
+                        <div className="input-group">
+                          <select
+                            value={formData.schedules.personalized[dia].open2}
+                            defaultValue=""
+                            onChange={(e) => handleInputChange(dia, "open2", e)}
+                          >
+                            <option value=""></option>
+                            {generarHorarios().map((hora) => (
+                              <option key={hora} value={hora}>
+                                {hora}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="clear-btn"
+                            onClick={() =>
+                              handleInputChange(dia, "open2", {
+                                target: { value: "" },
+                              })
+                            }
+                          >
+                            Limpiar
+                          </button>
+                        </div>
                       </td>
-                      <td className="bottomCells">
-                        <select
-                          value={formData.schedules.personalized[dia].close2}
-                          defaultValue=""
-                          onChange={(e) => handleInputChange(dia, "close2", e)}
-                        >
-                          <option value=""></option>
-                          {generarHorarios().map((hora) => (
-                            <option key={hora} value={hora}>
-                              {hora}
-                            </option>
-                          ))}
-                        </select>
+                      <td className="diaOpenClose">
+                        <div className="input-group">
+                          <select
+                            value={formData.schedules.personalized[dia].close2}
+                            defaultValue=""
+                            onChange={(e) =>
+                              handleInputChange(dia, "close2", e)
+                            }
+                          >
+                            <option value=""></option>
+                            {generarHorarios().map((hora) => (
+                              <option key={hora} value={hora}>
+                                {hora}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="clear-btn"
+                            onClick={() =>
+                              handleInputChange(dia, "close2", {
+                                target: { value: "" },
+                              })
+                            }
+                          >
+                            Limpiar
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   </>
@@ -379,8 +432,8 @@ const CargaEmpresa = () => {
 
   const horarioDefJSX = //Horarios Definidos para "Lunes a Viernes" "Lunes a Sabado" o "Todos lods dias"
     (
-      <div className="flex">
-        <div className="flex column">
+      <div>
+        <div className="horarios-carga-empresa">
           <table>
             <thead>
               <tr>
@@ -458,23 +511,23 @@ const CargaEmpresa = () => {
   /**********************************************************************************/
 
   return (
-    <section className="bgCargaEdicion">
+    <section className="bg-formEmpresa">
       <div>
-        <form className="formCarga" onSubmit={handleSubmit}>
+        <form className="form-empresa" onSubmit={handleSubmit}>
           <div>
-            <h1>Carga de negocio</h1>
-            <p className="mt-5">
+            <h1 className="form-titulo">Carga de negocio</h1>
+            <p className="form-descripcion">
               Si es propietario de un negocio referido al rubro automotor puede
               cargarlo <b>GRATIS</b> en nuestro sitio web.
             </p>
 
-            <div className="datosForm">
+            <div className="datos-form">
               {/* Nombre Empresa*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <label htmlFor="first-name">
                   <i className="obligatorio">* </i>Nombre de Empresa
                 </label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.name}
@@ -486,9 +539,9 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* Sologan Empresa*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <label htmlFor="slogan">Slogan (opcional)</label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.slogan}
@@ -500,9 +553,9 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* CUIT*/}
-              <div className="campos camposS2">
+              <div className="campo-formEmpresa">
                 <label htmlFor="postal-code">CUIT</label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.postal_code}
@@ -514,11 +567,11 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* Dirección*/}
-              <div className="campos camposS4">
+              <div className="campo-formEmpresa">
                 <label htmlFor="street-address">
                   <i className="obligatorio">* </i>Dirección
                 </label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.location}
@@ -530,12 +583,12 @@ const CargaEmpresa = () => {
                 </div>
               </div>{" "}
               {/* PROVINCIAS*/}
-              <div className="campos camposS2">
+              <div className="campo-formEmpresa">
                 <label htmlFor="region">
                   <i className="obligatorio">* </i>Provincia
                 </label>
 
-                <div className="mt-2">
+                <div className="input-container">
                   <select
                     id="selectProvincias"
                     onChange={handleProvinciaChange}
@@ -552,11 +605,11 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* CIUDAD*/}
-              <div className="campos camposS2">
+              <div className="campo-formEmpresa">
                 <label htmlFor="city">
                   <i className="obligatorio">* </i>Ciudad
                 </label>
-                <div className="mt-2">
+                <div className="input-container">
                   <select
                     id="selectCiudades"
                     name="city"
@@ -572,11 +625,11 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* CP*/}
-              <div className="campos camposS2">
+              <div className="campo-formEmpresa">
                 <label htmlFor="postal-code">
                   <i className="obligatorio">* </i>Código Postal
                 </label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.postal_code}
@@ -588,11 +641,11 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* tel*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <label htmlFor="phone">
                   <i className="obligatorio">* </i>Teléfono
                 </label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.phone}
@@ -604,9 +657,9 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* tel2*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <label htmlFor="phone2">Teléfono Alternativo (opcional)</label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.phone2}
@@ -618,9 +671,9 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* web*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <label htmlFor="website">Sitio Web (opcional):</label>
-                <div className="mt-2">
+                <div className="input-container">
                   <input
                     onChange={handleChange}
                     value={formData.website}
@@ -632,94 +685,92 @@ const CargaEmpresa = () => {
                 </div>
               </div>
               {/* categoria*/}
-              <div className="campos camposS3">
+              <div className="campo-formEmpresa">
                 <div>
                   <label>
                     <i className="obligatorio">* </i>Categoría:{" "}
                   </label>
-                  <select
-                    name="category"
-                    onChange={handleCategoryChange}
-                    defaultValue=""
-                  >
-                    <option value="" disabled hidden>
-                      <span>Selecciona una categoría</span>
-                    </option>
-                    <option disabled style={{ color: "darkgray" }}>
-                      - Reparación y Mantenimiento
-                    </option>
-                    <option value="Reparación y mantenimiento, Gomería">
-                      -- Gomerías (arreglo y venta de cubiertas, alineación y
-                      balanceo)
-                    </option>
-                    <option value="Reparación y mantenimiento, Taller mecánico">
-                      -- Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
-                    </option>
-                    <option value="Reparación y mantenimiento, Repuestos">
-                      -- Repuestos (Autopartes)
-                    </option>
-                    <option value="Reparación y mantenimiento, Lubricentro">
-                      -- Lubricentros
-                    </option>
-                    <option
-                      disabled
-                      style={{ color: "darkgray" }}
-                      value="venta_alquiler"
+                  <div className="input-container">
+                    <select
+                      name="category"
+                      onChange={handleCategoryChange}
+                      defaultValue=""
                     >
-                      - Venta y Alquiler de vehículos
-                    </option>
-                    <option value="Venta y alquiler de vehículos, Agencia">
-                      -- Agencia (Concesionaria oficiales y Agencias
-                      particulares)
-                    </option>
-                    <option value="Venta y alquiler de vehículos, Rent a Car">
-                      -- Rent a Car (Alquiler de autos)
-                    </option>
-                    <option
-                      disabled
-                      style={{ color: "darkgray" }}
-                      value="otros_servicios"
-                    >
-                      - Otros Servicios
-                    </option>
-                    <option value="Otros servicios, Aseguradora">
-                      -- Aseguradoras
-                    </option>
-                    <option value="Otros servicios, Estación de Servicio">
-                      -- Estaciones de Servicios
-                    </option>
-                    <option value="Otros servicios, Estética del automotor">
-                      -- Estética del Automotor (Lavaderos, Polarizados)
-                    </option>
-                    <option value="Otros servicios, Servicios de Emergencia">
-                      -- Servicios de emergencia (Grúas, Cerrajeros)
-                    </option>
-                  </select>
+                      <option value="" disabled hidden>
+                        <span>Selecciona una categoría</span>
+                      </option>
+                      <option disabled style={{ color: "darkgray" }}>
+                        - Reparación y Mantenimiento
+                      </option>
+                      <option value="Reparación y mantenimiento, Gomería">
+                        -- Gomerías (arreglo y venta de cubiertas, alineación y
+                        balanceo)
+                      </option>
+                      <option value="Reparación y mantenimiento, Taller mecánico">
+                        -- Talleres Mecánicos (Mecánico, Chapistas,
+                        Electricistas)
+                      </option>
+                      <option value="Reparación y mantenimiento, Repuestos">
+                        -- Repuestos (Autopartes)
+                      </option>
+                      <option value="Reparación y mantenimiento, Lubricentro">
+                        -- Lubricentros
+                      </option>
+                      <option
+                        disabled
+                        style={{ color: "darkgray" }}
+                        value="venta_alquiler"
+                      >
+                        - Venta y Alquiler de vehículos
+                      </option>
+                      <option value="Venta y alquiler de vehículos, Agencia">
+                        -- Agencia (Concesionaria oficiales y Agencias
+                        particulares)
+                      </option>
+                      <option value="Venta y alquiler de vehículos, Rent a Car">
+                        -- Rent a Car (Alquiler de autos)
+                      </option>
+                      <option
+                        disabled
+                        style={{ color: "darkgray" }}
+                        value="otros_servicios"
+                      >
+                        - Otros Servicios
+                      </option>
+                      <option value="Otros servicios, Aseguradora">
+                        -- Aseguradoras
+                      </option>
+                      <option value="Otros servicios, Estación de Servicio">
+                        -- Estaciones de Servicios
+                      </option>
+                      <option value="Otros servicios, Estética del automotor">
+                        -- Estética del Automotor (Lavaderos, Polarizados)
+                      </option>
+                      <option value="Otros servicios, Servicios de Emergencia">
+                        -- Servicios de emergencia (Grúas, Cerrajeros)
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="guardar1">
-            <div
-              type="submit"
-              onClick={handleGuardar}
-              className="guardar-boton"
-            >
-              Guardar
+          <div className="btn-carga-edicion">
+            <div type="submit" onClick={handleGuardar} className="btn-guardar">
+              Guardar seccion
             </div>
             {showPopup && <PopUpEmpresa onClose={handleClosePopup} />}
           </div>
 
-          <div className="linea-divisoria mt-5"></div>
+          <div className="linea-divisoria"></div>
           {/*horarios*/}
-          <div className="horarios-cont flex column">
-            <label className="horariosTitle">
+          <div className="horarios-cont">
+            <label className="form-label-business">
               <i className="obligatorio">* </i>Horarios:{" "}
             </label>
             <select
+              className="form-select-business btn-personalizar"
               defaultValue="LaV"
-              className="horariosOption"
               onChange={setTipoHorarios}
             >
               <option value="LaV">Lunes a Viernes</option>
@@ -730,37 +781,41 @@ const CargaEmpresa = () => {
             {hDef && horarioDefJSX}
             {!hDef && horarioPersJSX}
           </div>
+          <div className="btn-carga-edicion">
+            <button type="submit" className="btn-guardar">
+              Guardar seccion
+            </button>
+          </div>
 
           <div className="linea-divisoria"></div>
 
-          <div className="campos2">
-            {/*url*/}
-            <div className="campos2S6">
+          <div>
+            {/* URL */}
+            <div className="url-section">
               <label htmlFor="username">
                 <i className="obligatorio">* </i>Ingrese la URL de su sitio web
                 comercial:
               </label>
-              <div>
-                <div className="url-vfk">
-                  <span>vefrek.com/</span>
-                  <input
-                    value={formData.vefrek_website}
-                    onChange={handleChange}
-                    type="text"
-                    name="vefrek_website"
-                    id="username"
-                    autoComplete="username"
-                    placeholder="nombre-negocio"
-                  />
-                </div>
+              <div className="url-vfk">
+                <span>vefrek.com/</span>
+                <input
+                  value={formData.vefrek_website}
+                  onChange={handleChange}
+                  type="text"
+                  name="vefrek_website"
+                  id="username"
+                  autoComplete="username"
+                  placeholder="nombre-negocio"
+                />
               </div>
             </div>
-            {/*descripcion*/}
-            <div className="campos2S6">
+
+            {/* Descripción */}
+            <div className="description-section">
               <label htmlFor="about">
                 <i className="obligatorio">* </i>Descripción
               </label>
-              <div className="mt-2">
+              <div>
                 <textarea
                   value={formData.description}
                   onChange={handleChange}
@@ -773,202 +828,201 @@ const CargaEmpresa = () => {
                 />
               </div>
             </div>
+
             {/*rrss*/}
-            <div className="camposRedes camposSfull">
-              <form onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-whatsapp me-2"></i>
-                        <span className="obligatorio">*</span>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="whatsapp"
-                        value={formData.social.whatsapp}
-                        className="form-control"
-                        placeholder="WhatsApp"
-                      />
-                    </div>
+            <div className="campos-redes">
+              <form onSubmit={handleSubmit} className="custom-form-carga">
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-whatsapp me-2"></i>
+                    <span className="obligatorio">*</span>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="whatsapp"
+                    value={formData.social.whatsapp}
+                    placeholder="WhatsApp"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fas fa-envelope me-2"></i>
-                        <span className="obligatorio">*</span>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="email"
-                        value={formData.social.email}
-                        className="form-control"
-                        placeholder="Mail"
-                      />
-                    </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fas fa-envelope me-2"></i>
+                    <span className="obligatorio">*</span>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="email"
+                    value={formData.social.email}
+                    placeholder="Mail"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-facebook me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="facebook"
-                        value={formData.social.facebook}
-                        className="form-control"
-                        placeholder="Facebook"
-                      />
-                    </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-facebook me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="facebook"
+                    value={formData.social.facebook}
+                    placeholder="Facebook"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-instagram me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="instagram"
-                        value={formData.social.instagram}
-                        className="form-control"
-                        placeholder="Instagram"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-linkedin me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="linkedin"
-                        value={formData.social.linkedin}
-                        className="form-control"
-                        placeholder="LinkedIn"
-                      />
-                    </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-instagram me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="instagram"
+                    value={formData.social.instagram}
+                    placeholder="Instagram"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-x me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="social.text"
-                        name="x"
-                        value={formData.social.x}
-                        className="form-control"
-                        placeholder="X"
-                      />
-                    </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-linkedin me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="linkedin"
+                    value={formData.social.linkedin}
+                    placeholder="LinkedIn"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-youtube me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="youtube"
-                        value={formData.social.youtube}
-                        className="form-control"
-                        placeholder="Youtube"
-                      />
-                    </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-x me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="x"
+                    value={formData.social.x}
+                    placeholder="X"
+                  />
+                </div>
 
-                    <div className="social">
-                      <label>
-                        <i className="fab fa-tiktok me-2"></i>
-                      </label>
-                      <input
-                        onChange={handleSocialChange}
-                        type="text"
-                        name="tiktok"
-                        value={formData.social.tiktok}
-                        className="form-control"
-                        placeholder="TikTok"
-                      />
-                    </div>
-                  </div>
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-youtube me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="youtube"
+                    value={formData.social.youtube}
+                    placeholder="Youtube"
+                  />
+                </div>
+
+                <div className="campo-red">
+                  <label>
+                    <i className="fab fa-tiktok me-2"></i>
+                  </label>
+                  <input
+                    onChange={handleSocialChange}
+                    type="text"
+                    name="tiktok"
+                    value={formData.social.tiktok}
+                    placeholder="TikTok"
+                  />
                 </div>
               </form>
             </div>
           </div>
+          <div className="btn-carga-edicion">
+            <button type="submit" className="btn-guardar">
+              Guardar seccion
+            </button>
+          </div>
 
-          <div className="linea-divisoria mt-5"></div>
+          <div className="linea-divisoria"></div>
           {/*logo*/}
-          <div className="section3CargaEdicion">
-            <div>
-              <label htmlFor="photo">
-                <i className="obligatorio">* </i>Logo de su empresa
-              </label>
-              <div className="seclogo">
-                <UserCircleIcon className="iconUser" aria-hidden="true" />
-                <button onClick={loadFile} type="button">
-                  Cargar
-                </button>
-                <input
-                  onChange={handleFileChange}
-                  className="company_logo_file"
-                  type="file"
-                  name="logo_image_name"
-                  accept="image/*"
-                  single="true"
-                />
-                {formData.logo_image_name}
-              </div>
-            </div>
-            <label htmlFor="cover-photo" className="mt-5">
-              <i className="obligatorio">* </i>Cargar imágenes de su negocio
-              (máximo 6):
+          <div className="carga-logo-section">
+            <label htmlFor="photo">
+              <i className="obligatorio">* </i>Logo de su empresa
             </label>
+            <div className="carga-seclogo">
+              <UserCircleIcon className="carga-icon-user" aria-hidden="true" />
+              <button
+                onClick={loadFile}
+                type="button"
+                className="carga-btn-custom"
+              >
+                Cargar
+              </button>
+              <input
+                onChange={handleFileChange}
+                className="carga-company-logo-input"
+                type="file"
+                name="logo_image_name"
+                accept="image/*"
+                single="true"
+              />
+              {formData.logo_image_name}
+            </div>
 
-            <div className="imgsEmpresa">
-              <div>
-                <PhotoIcon className="iconUser" aria-hidden="true" />
-                <div className="cargaImg" onClick={selectImages}>
-                  <label htmlFor="file-upload">
-                    <input
-                      onChange={handleFilesChange}
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      className="sr-only company_images_files"
-                      multiple={true}
-                      max={6}
-                    />
-                  </label>
-                </div>
-                <p className="text-xs leading-5 text-gray-600">
-                  PNG, JPG, GIF up to 10MB
-                </p>
-                <div name="images_names" className="flex wrap">
-                  {formData.images_names}
+            <div className="carga-images-section">
+              <label htmlFor="cover-photo">
+                <i className="obligatorio">* </i>Cargar imágenes de su negocio
+                (máximo 6):
+              </label>
+
+              <div className="carga-imgs-empresa">
+                <div className="carga-cuadro-edicion">
+                  <PhotoIcon className="carga-iconUser" aria-hidden="true" />
+                  <div
+                    className="carga-file-upload-wrapper"
+                    onClick={selectImages}
+                  >
+                    <label
+                      htmlFor="file-upload"
+                      className="carga-file-upload-label"
+                    >
+                      <input
+                        onChange={handleFilesChange}
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        multiple={true}
+                        max={6}
+                      />
+                    </label>
+                  </div>
+                  <p>PNG, JPG, GIF up to 10MB</p>
+                  <div name="images_names">{formData.images_names}</div>
                 </div>
               </div>
             </div>
-            <div className="mt-5">
-              <span className="flex select-none items-center pl-3 text-gray-300 sm:text-sm">
-                <i className="mr-1 obligatorio">* </i>Campos obligatorios
+            <div>
+              <span>
+                <i className="obligatorio">* </i>Campos obligatorios
               </span>
             </div>
           </div>
 
-          <div className="linea-divisoria col-span-full mt-5"></div>
+          <div className="linea-divisoria"></div>
 
-          <div className="btnCargaEdicion">
+          <div className="btn-carga-edicion">
             <button type="button" className="btnCancel">
               Cancelar
             </button>
-            <button type="submit" className="btnGuardar">
+            <button type="submit" className="btn-guardar">
               Guardar
             </button>
           </div>
         </form>
-        <div className="p-4"></div>
+        <div></div>
       </div>
     </section>
   );

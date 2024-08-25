@@ -77,11 +77,11 @@ export default function EditarEmpresa() {
       },
     },
   });
-
+  // Inico API
   const [provincias, setProvincias] = useState([]);
   const [ciudades, setCiudades] = useState([]);
   const [selectedProvincia, setSelectedProvincia] = useState("");
-
+  // Obtener la lista de provincias a partir de localidadesData
   const provinciasList = [
     ...new Set(
       localidadesData.localidades.map((localidad) => localidad.provincia.nombre)
@@ -101,7 +101,7 @@ export default function EditarEmpresa() {
       state: e.target.value,
     });
   };
-
+  // Fin Api
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -133,9 +133,7 @@ export default function EditarEmpresa() {
     const { files } = e.target;
     if (files[0]) {
       const filesArr = Array.from(files);
-      const filesArrNames = filesArr.map((file) => (
-        <p className="company_images_names">{file.name}</p>
-      ));
+      const filesArrNames = filesArr.map((file) => <p>{file.name}</p>);
       setFormData({
         ...formData,
         ...{ images_names: filesArrNames },
@@ -169,8 +167,8 @@ export default function EditarEmpresa() {
     const companyData = formRef.current;
     const completeData = new FormData();
 
-    completeData.append("companyTextData", JSON.stringify(companyData));
-    const logoInput = document.querySelector(".company_logo_input");
+    completeData.append(JSON.stringify(companyData));
+    const logoInput = document.querySelector();
     const logoFile = logoInput.files[0];
     completeData.append("logo", logoFile);
     const imagesInput = document.querySelector(".company_images_input");
@@ -649,7 +647,7 @@ export default function EditarEmpresa() {
               Si es propietario de un negocio referido al rubro automotor puede
               cargarlo <b>GRATIS</b> en nuestro sitio web.
             </p>
-
+            {/* Nombre Empresa*/}
             <div className="datos-form">
               <div className="campo-formEmpresa">
                 <label htmlFor="first-name">
@@ -667,7 +665,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* Sologan Empresa*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="slogan">Slogan (opcional)</label>
                 <div className="input-container">
@@ -682,7 +680,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* CUIT*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="postal-code">CUIT</label>
                 <div className="input-container">
@@ -697,7 +695,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* Dirección*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="street-address">
                   <i className="obligatorio">*</i> Dirección
@@ -714,7 +712,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* PROVINCIAS*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="region">
                   <i className="obligatorio">*</i> Provincia
@@ -735,7 +733,7 @@ export default function EditarEmpresa() {
                   </select>
                 </div>
               </div>
-
+              {/* CIUDAD*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="city">
                   <i className="obligatorio">*</i> Ciudad
@@ -755,7 +753,7 @@ export default function EditarEmpresa() {
                   </select>
                 </div>
               </div>
-
+              {/* CP*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="postal-code">
                   <i className="obligatorio">*</i> Código Postal
@@ -772,7 +770,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* tel*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="phone">
                   <i className="obligatorio">*</i> Teléfono
@@ -789,7 +787,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* tel2*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="phone2">Teléfono Alternativo (opcional)</label>
                 <div className="input-container">
@@ -804,7 +802,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* web*/}
               <div className="campo-formEmpresa">
                 <label htmlFor="website">Sitio Web (opcional)</label>
                 <div className="input-container">
@@ -819,7 +817,7 @@ export default function EditarEmpresa() {
                   />
                 </div>
               </div>
-
+              {/* categoria*/}
               <div className="campo-formEmpresa">
                 <label>
                   <i className="obligatorio">*</i> Categoría:
@@ -884,6 +882,7 @@ export default function EditarEmpresa() {
           </div>
 
           <div className="linea-divisoria"></div>
+
           <div className="horarios-cont">
             <label className="form-label-business">
               <i className="obligatorio">*</i> Horarios:
@@ -909,6 +908,7 @@ export default function EditarEmpresa() {
           </div>
           <div className="linea-divisoria"></div>
 
+          {/*rrss*/}
           <div className="campos-redes">
             <div className="campo-red">
               <label>
