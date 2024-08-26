@@ -14,29 +14,26 @@ const Publicacion = () => {
     if (userData.isLogged) {
       navigate("/CargaEmpresa");
     } else {
-      swalPopUp("Ups!", "Tienes que loguerte para puclicar", "info");
+      swalPopUp("Ups!", "Tienes que loguearte para publicar", "info");
     }
   };
 
   return (
-    <section
-      id="hero-publicacion"
-      className="hero-publicacion d-flex background"
-    >
-      <div className="container" data-aos="fade-up">
+    <section className="publicacion background">
+      <div className="container-publicacion" data-aos="fade-up">
         <div
-          className="row justify-content-center"
+          className="publicacion-row"
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <div className="col-xl-6 col-sm-12 col-lg-8 text-center">
+          <div className="publicacion-content">
             <img
               src="/images/logos/logo-vefrek-white.png"
               alt="Vefrek"
               className="logo-publicacion"
             />
-            <div className="mt-3">
-              <h3 className="mt-5 container">
+            <div className="publicacion-text">
+              <h3 className="container-publicacion">
                 ¿Sos propietario de una empresa en el rubro automotor? ¡Publicá
                 de forma GRATUITA tu negocio en nuestro sitio web!
               </h3>
@@ -44,18 +41,10 @@ const Publicacion = () => {
           </div>
         </div>
 
-        <div
-          className="row gy-4 mt-4 justify-content-center"
-          data-aos="zoom-in"
-          data-aos-delay="250"
-        >
-          <div className="col-xl-4 col-md-4">
-            <Link
-              to="/CargaEmpresa"
-              onClick={toEmpresa}
-              className="text-decoration-none"
-            >
-              <div className="icon-box text-center">
+        <div className="publication-btn">
+          <div className="publication-link">
+            <Link to="/CargaEmpresa" onClick={toEmpresa}>
+              <div className="publication-icon-box">
                 <i className="ri-building-line"></i>
                 <h3>Publica tu empresa</h3>
               </div>

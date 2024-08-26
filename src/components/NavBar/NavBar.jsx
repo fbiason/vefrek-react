@@ -6,9 +6,9 @@ import Isotope from "isotope-layout";
 import AOS from "aos";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../../context/userContext";
 import Dropdown from "./Dropdown";
-import SearchBar from "../components/searchBar/SearchBar";
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -17,9 +17,8 @@ const NavBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   useEffect(() => {
-    thisLocation.pathname === "/"
-      ? setShowSearchBar(false)
-      : setShowSearchBar(true); //Oculta la barra de busqueda en home
+    // Si la ruta actual no es la home, muestra el SearchBar
+    setShowSearchBar(thisLocation.pathname !== "/");
     window.scrollTo({ top: 0 });
   }, [thisLocation]);
 
@@ -33,9 +32,6 @@ const NavBar = () => {
     /***************************************************************************************************/
 
     (function () {
-      /**
-       * Easy selector helper function
-       */
       const select = (el, all = false) => {
         el = el.trim();
         if (all) {
@@ -45,9 +41,6 @@ const NavBar = () => {
         }
       };
 
-      /**
-       * Easy event listener function
-       */
       const on = (type, el, listener, all = false) => {
         let selectEl = select(el, all);
         if (selectEl) {
@@ -59,16 +52,9 @@ const NavBar = () => {
         }
       };
 
-      /**
-       * Easy on scroll event listener
-       */
       const onscroll = (el, listener) => {
         el.addEventListener("scroll", listener);
       };
-
-      /**
-       * Navbar links active state on scroll
-       */
       let navbarlinks = select("#navbar .scrollto", true);
       const navbarlinksActive = () => {
         let position = window.scrollY + 200;
@@ -182,9 +168,6 @@ const NavBar = () => {
         true
       );
 
-      /**
-       * Scroll with ofset on page load with hash links in the url
-       */
       window.addEventListener("load", () => {
         if (window.location.hash) {
           if (select(window.location.hash)) {
@@ -192,10 +175,6 @@ const NavBar = () => {
           }
         }
       });
-
-      /**
-       * Preloader
-       */
       let preloader = select("#preloader");
       if (preloader) {
         window.addEventListener("load", () => {
@@ -203,9 +182,6 @@ const NavBar = () => {
         });
       }
 
-      /**
-       * Clients Slider
-       */
       new Swiper(".clients-slider", {
         speed: 400,
         loop: true,
@@ -239,9 +215,6 @@ const NavBar = () => {
         },
       });
 
-      /**
-       * Porfolio isotope and filter
-       */
       window.addEventListener("load", () => {
         let portfolioContainer = select(".portfolio-container");
         if (portfolioContainer) {
@@ -273,16 +246,6 @@ const NavBar = () => {
         }
       });
 
-      /**
-       * Initiate portfolio lightbox
-       */
-      // const portfolioLightbox = GLightbox({
-      //     selector: ".portfolio-lightbox",
-      // });
-
-      /**
-       * Portfolio details slider
-       */
       new Swiper(".portfolio-details-slider", {
         speed: 400,
         loop: false,
@@ -316,15 +279,13 @@ const NavBar = () => {
     window.addEventListener("beforeunload", () =>
       localStorage.setItem("previousPathToDash", "")
     );
-
-    // eslint-disable-next-line
   }, []);
 
   return (
-    <header id="header" className="fixed-top">
-      <div className="row align-items-center">
+    <header id="header">
+      <div className="row-header">
         {/* Logo */}
-        <div className="col-lg-3 col-md-12 mb-3 mb-lg-0 text-center d-lg-block logo-container">
+        <div className="logo-container">
           <Link to="/">
             <img
               src="/images/logos/logo-vefrek.png"
@@ -335,45 +296,42 @@ const NavBar = () => {
         </div>
 
         {/* Barra de Búsqueda */}
-        <div className="btnNavs col-12 mb-3 mb-xl-0">
-          {showSearchBar && (
-            <div className="search-container center-on-mobile">
-              {/* Aquí se aplica la clase de centrado en móviles */}
-              <SearchBar />
-            </div>
-          )}
+        <div className="btnNavs">
+          <div className="search-container center-on-mobile">
+            {showSearchBar && <SearchBar />}
+          </div>
         </div>
 
         {/* Publica Ahora */}
-        <div className="btnNavs col-12 mb-3 mb-xl-0">
-          <Link to="/publicacion" className="btn btn-publica">
+        <div className="btnNavs">
+          <Link to="/publicacion" className="btn-publica">
             ¡PUBLICA AHORA!
           </Link>
         </div>
 
         {/* Reparación*/}
-        <div className="btnNavs col-12 mb-3 mb-xl-0">
-          <Link to="/reparacion" className="btn btn-primary btnCategorias">
+        <div className="btnNavs">
+          <Link to="/reparacion" className="btnCategorias">
             Reparación
           </Link>
         </div>
 
         {/* Venta */}
-        <div className="btnNavs col-12 mb-3 mb-xl-0">
-          <Link to="/venta" className="btn btn-primary btnCategorias">
+        <div className="btnNavs">
+          <Link to="/venta" className="btnCategorias">
             Venta
           </Link>
         </div>
 
         {/* Otros Servicios */}
-        <div className="btnNavs col-12 mb-3 mb-xl-0">
-          <Link to="/OtrosServicios" className="btn btn-primary btnCategorias">
+        <div className="btnNavs">
+          <Link to="/OtrosServicios" className="btnCategorias">
             Otros Serv.
           </Link>
         </div>
 
         {/* Ingresa */}
-        <div className="btnNavs col-lg-2 col-12 mb-3 mb-xl-0">
+        <div className="btnNavs">
           <ul>
             <li>{userData.isLogged && show && <Dropdown />}</li>
             {!userData.isLogged && show && (

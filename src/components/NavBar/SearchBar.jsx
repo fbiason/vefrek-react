@@ -10,7 +10,7 @@ export default function SearchBar() {
 
   const findData = () => {
     const resultsCont = resultsContRef.current;
-    const inputSearch = document.querySelector(".search_navbar");
+    const inputSearch = document.querySelector(".searchBar-searchInput");
     const inputSearchArr = inputSearch.value.split(" ");
 
     if (inputSearch.value.length > 2) {
@@ -19,12 +19,12 @@ export default function SearchBar() {
           JSON.stringify(company)
             .toLowerCase()
             .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "") //Quita acentos
+            .replace(/[\u0300-\u036f]/g, "")
             .includes(
               word
                 .toLowerCase()
                 .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "") //Quita acentos
+                .replace(/[\u0300-\u036f]/g, "")
             )
         )
       );
@@ -39,7 +39,7 @@ export default function SearchBar() {
             inputSearch.value = "";
             e.target.parentNode.style.opacity = 0;
           }}
-          className="searchResult"
+          className="searchBar-searchResult"
         >
           {`${result.subcategory} - ${result.name} - ${result.location} - ${result.city} - ${result.state}`}
         </Link>
@@ -57,14 +57,13 @@ export default function SearchBar() {
       if (resultsCont) {
         const toLeft = resultsCont.getBoundingClientRect().left;
         if (
-          window.innerHeight > window.innerWidth && //Portrait
+          window.innerHeight > window.innerWidth &&
           resultsRef.current &&
           resultsRef.current.length > 0
         ) {
           if (toLeft) resultsCont.style.transform = `translateX(-${toLeft}px)`;
           resultsCont.style.maxWidth = "100vw";
         } else if (
-          //landscape
           window.innerHeight < window.innerWidth &&
           resultsRef.current &&
           resultsRef.current.length > 0
@@ -79,7 +78,6 @@ export default function SearchBar() {
   useEffect(() => {
     resultsRef.current = results;
     setSearchResultsStyle();
-    // eslint-disable-next-line
   }, [results]);
 
   const getcompanysFullCollection = async () => {
@@ -118,7 +116,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="searchBarCont">
+    <div className="searchBar-container">
       <input
         onChange={findData}
         type="text"
@@ -126,9 +124,9 @@ export default function SearchBar() {
         id="buscar"
         size="35"
         placeholder="Buscar..."
-        className="form-control search_navbar"
+        className="searchBar-searchInput"
       />
-      <div className="resultsCont flex column" ref={resultsContRef}>
+      <div className="searchBar-resultsContainer" ref={resultsContRef}>
         {results}
       </div>
     </div>

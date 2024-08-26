@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
-import SearchBar from "../components/searchBar/SearchBar";
+import SearchBar from "../components/NavBar/SearchBar";
 import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
 import { swalPopUp, swalPopUpWithCallbacks } from "../utils/swal";
@@ -42,35 +42,33 @@ const Home = () => {
 
     /***************************** Formulario de contacto ************************************/
 
-    const {showSpinner} = useContext(SpinnerContext);
-    const formRef = useRef (null);
-            
+    const { showSpinner } = useContext(SpinnerContext);
+    const formRef = useRef(null);
+
     const validateForm = async () => {
-                            
         const formData = new FormData(formRef.current);
         const data = Object.fromEntries(formData);
         const formValues = Object.values(data);
-        
-        if (formValues.every((input) => input.trim() !== "")) {
-            sendForm();    
-        } else {
-            swalPopUp("Ops!", "Falta Ingresar Algún Dato", "warning");       
-        }
-    };  
 
-    const sendForm = async () => {
-    
+        if (formValues.every((input) => input.trim() !== "")) {
+            sendContactForm();
+        } else {
+            swalPopUp("Ops!", "Falta Ingresar Algún Dato", "warning");
+        }
+    };
+
+    const sendContactForm = async () => {
         const formData = new FormData(formRef.current);
         const data = Object.fromEntries(formData);
 
         try {
             showSpinner(true);
-            const respJSON = await fetch ("/sendmail.php", {
+            const respJSON = await fetch("/sendmail.php", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
-                    "Content-Type": "application/json"
-                }
+                    "Content-Type": "application/json",
+                },
             });
 
             const respOBJ = await respJSON.json();
@@ -79,15 +77,24 @@ const Home = () => {
                 swalPopUp("Ops!", `${respOBJ.msg}, Intente otra vez`, "error");
             } else {
                 const inputs = document.querySelectorAll(".inputForm");
-                inputs.forEach((input) => input.value = "");
-                swalPopUp("Enviado!", "Mensaje enviado con éxito, gracias por contactarnos!", "success");
+                inputs.forEach((input) => (input.value = ""));
+                swalPopUp(
+                    "Enviado!",
+                    "Mensaje enviado con éxito, gracias por contactarnos!",
+                    "success"
+                );
                 const contactInputs = document.querySelectorAll(".contactInput");
-                contactInputs.forEach((input) => input.value = "");
-            } 
-            
+                contactInputs.forEach((input) => (input.value = ""));
+            }
         } catch (err) {
-            showSpinner(false); 
-            swalPopUp("Ops!", err instanceof Error ? `Error al enviar el mensaje: ${err.message}` : "Error al enviar el mensaje: problema desconocido", "error");
+            showSpinner(false);
+            swalPopUp(
+                "Ops!",
+                err instanceof Error
+                    ? `Error al enviar el mensaje: ${err.message}`
+                    : "Error al enviar el mensaje: problema desconocido",
+                "error"
+            );
         }
     };
 
@@ -295,108 +302,75 @@ const Home = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-lg-6">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.5367865926187!2d-69.230385!3d-51.6133755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6fea979bfadd3%3A0x40864ca79df574a8!2sAlberdi%201118%20Depto%204%2C%20R%C3%ADo%20Gallegos%2C%20Santa%20Cruz!5e0!3m2!1ses-419!2sar!4v1654740207616!5m2!1ses-419!2sar"
-                                width="100%"
-                                height="150"
-                                style={{ border: 0 }}
-                                allowFullScreen=""
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                title="Map"
-                            ></iframe>
-
-                            <div className="row mt-4">
-                                <div className="col-md-12">
-                                    <div className="info-contacto">
-                                        <div className="address">
-                                            <i className="bi bi-geo-alt"></i>
+                        <div className="contact-section">
+                            <div className="contact-info">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.5367865926187!2d-69.230385!3d-51.6133755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6fea979bfadd3%3A0x40864ca79df574a8!2sAlberdi%201118%20Depto%204%2C%20R%C3%ADo%20Gallegos%2C%20Santa%20Cruz!5e0!3m2!1ses-419!2sar!4v1654740207616!5m2!1ses-419!2sar"
+                                    width="100%"
+                                    height="150"
+                                    style={{ border: 0 }}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Map"
+                                ></iframe>
+                                <div className="contact-details">
+                                    <div className="contact-item">
+                                        <i className="fas fa-map-marker-alt contact-icon"></i>
+                                        <div>
                                             <h4>Dirección:</h4>
                                             <p>Alberdi 1144, Depto 4, Río Gallegos, Santa Cruz</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="col-md-12">
-                                    <div className="info-contacto">
-                                        <div className="email">
-                                            <i className="bi bi-envelope"></i>
+                                    <div className="contact-item">
+                                        <i className="fas fa-envelope contact-icon"></i>
+                                        <div>
                                             <h4>Email:</h4>
                                             <p>administracion@vefrek.com</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="col-md-12">
-                                    <div className="info-contacto">
-                                        <div className="phone">
-                                            <i className="bi bi-phone"></i>
+                                    <div className="contact-item">
+                                        <i className="fas fa-phone contact-icon"></i>
+                                        <div>
                                             <h4>Teléfono:</h4>
                                             <p>2966 15 23-1074</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="col-lg-6 mt-5 mt-lg-0">
-                            <form
-                                className="php-email-form"
-                                ref={formRef}
-                            >
-                                <div className="row">
-                                    <div className="col-md-6 form-group">
+                            <div className="contact-form">
+                                <form ref={formRef}>
+                                    <div className="form-row">
                                         <input
                                             type="text"
                                             name="name"
-                                            className="form-control"
-                                            id="name"
                                             placeholder="Nombre"
                                             required
                                         />
-                                    </div>
-                                    <div className="col-md-6 form-group">
                                         <input
                                             type="email"
-                                            className="form-control"
                                             name="email"
-                                            id="email"
                                             placeholder="Email"
                                             required
                                         />
                                     </div>
-                                </div>
-                                <div className="form-group">
                                     <input
                                         type="text"
-                                        className="form-control"
                                         name="subject"
-                                        id="subject"
                                         placeholder="Asunto"
                                         required
                                     />
-                                </div>
-                                <div className="form-group"> 
                                     <textarea
-                                        className="form-control"
                                         name="message"
                                         rows="5"
                                         placeholder="Mensaje"
                                         required
                                     ></textarea>
-                                </div>
-                                <div className="my-3">
-                                    <div className="loading">Espere...</div>
-                                    <div className="error-message"></div>
-                                    <div className="sent-message">
-                                        Tu mensaje ha sido enviado. ¡Muchas gracias!
-                                    </div>
-                                </div>
-                                <div className="text-center">
-                                    <button type="button" onClick={validateForm}>Enviar mensaje</button>
-                                </div>
-                            </form>
+                                    <button type="button" onClick={validateForm}>
+                                        Enviar mensaje
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -84,6 +84,8 @@
   }
 
   @media (max-width: 768px) {
+    padding-top: 6rem;
+
     h1 {
       font-size: 28px;
       line-height: 36px;
@@ -164,7 +166,7 @@
       border-radius: 8px;
       color: #ffffff;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: 0.3s ease;
 
       &:hover {
         background: #241e4ea6;
