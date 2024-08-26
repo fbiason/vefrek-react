@@ -7,7 +7,7 @@ import { swalPopUp } from "../../utils/swal";
 
 const Footer = () => {
     const myModalAvisoRef = useRef(null);
-    const myModalPoliticaRef = useRef(null);
+    // const myModalPoliticaRef = useRef(null);
     const myInputRef = useRef(null);
 
     useEffect(() => {
