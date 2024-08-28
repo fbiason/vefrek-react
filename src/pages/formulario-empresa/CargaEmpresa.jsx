@@ -9,65 +9,67 @@ import { SpinnerContext } from "../../context/spinnerContext";
 import localidadesData from "./localidades.json";
 // import PopUpEmpresa from "./PopUpEmpresa";
 
+const formDataInitialValues = {
+    name: "",
+    slogan: "",
+    location: "",
+    city: "",
+    state: "",
+    postal_code: "",
+    phone: "",
+    phone2: "",
+    website: "",
+    vefrek_website: "",
+    category: "",
+    subcategory: "",
+    closing: "",
+    social: {
+        email: "",
+        whatsapp: "",
+        facebook: "",
+        instagram: "",
+        x: "",
+        linkedin: "",
+        tiktok: "",
+        youtube: "",
+    },
+    description: "",
+    email_notifications: {
+        comments: false,
+        news: false,
+    },
+    sms_notifications: {
+        all: false,
+        same_email: false,
+        none: true,
+    },
+    logo_image_name: "",
+    images_names: "",
+    schedules: {
+        scheduleType: "LaV",
+        personalized: {
+            lunes: { open1: "", close1: "", open2: "", close2: "" },
+            martes: { open1: "", close1: "", open2: "", close2: "" },
+            miercoles: { open1: "", close1: "", open2: "", close2: "" },
+            jueves: { open1: "", close1: "", open2: "", close2: "" },
+            viernes: { open1: "", close1: "", open2: "", close2: "" },
+            sabado: { open1: "", close1: "", open2: "", close2: "" },
+            domingo: { open1: "", close1: "", open2: "", close2: "" },
+        },
+        custom: {
+            open1: "",
+            close1: "",
+            open2: "",
+            close2: "",
+        },
+    }
+}
+
 const CargaEmpresa = () => {
     const { userData } = useContext(UserContext);
     const formRef = useRef();
     const { showSpinner } = useContext(SpinnerContext);
-    const [formData, setFormData] = useState({
-        name: "",
-        slogan: "",
-        location: "",
-        city: "",
-        state: "",
-        postal_code: "",
-        phone: "",
-        phone2: "",
-        website: "",
-        vefrek_website: "",
-        category: "",
-        subcategory: "",
-        closing: "",
-        social: {
-            email: "",
-            whatsapp: "",
-            facebook: "",
-            instagram: "",
-            x: "",
-            linkedin: "",
-            tiktok: "",
-            youtube: "",
-        },
-        description: "",
-        email_notifications: {
-            comments: false,
-            news: false,
-        },
-        sms_notifications: {
-            all: false,
-            same_email: false,
-            none: true,
-        },
-        logo_image_name: "",
-        images_names: "",
-        schedules: {
-            scheduleType: "LaV",
-            personalized: {
-                lunes: { open1: "", close1: "", open2: "", close2: "" },
-                martes: { open1: "", close1: "", open2: "", close2: "" },
-                miercoles: { open1: "", close1: "", open2: "", close2: "" },
-                jueves: { open1: "", close1: "", open2: "", close2: "" },
-                viernes: { open1: "", close1: "", open2: "", close2: "" },
-                sabado: { open1: "", close1: "", open2: "", close2: "" },
-                domingo: { open1: "", close1: "", open2: "", close2: "" },
-            },
-            custom: {
-                open1: "",
-                close1: "",
-                open2: "",
-                close2: "",
-            },
-        },
-    });
+    const [formData, setFormData] = useState(formDataInitialValues);
 
     // PopUp
     // const [showPopup, setShowPopup] = useState(false);
@@ -90,13 +92,16 @@ const CargaEmpresa = () => {
         ),
     ];
 
-    const handleProvinciaChange = (e) => {
-        const selectedProvincia = e.target.value;
-        setSelectedProvincia(selectedProvincia);
+    const setCitiesList = (stateSelect) => {
         const ciudadesList = localidadesData.localidades
-            .filter((localidad) => localidad.provincia.nombre === selectedProvincia)
+            .filter((localidad) => localidad.provincia.nombre === stateSelect)
             .map((localidad) => localidad.nombre);
         setCiudades(ciudadesList);
+    }
+ 
+    const handleProvinciaChange = (e) => {
+        const stateSelect = e.target.value;
+        setCitiesList(stateSelect);
 
         setFormData({
             ...formData,
@@ -190,6 +195,7 @@ const CargaEmpresa = () => {
         setCategoryANDsubcategoryStringJoin(`${formData.category}, ${formData.subcategory}`);
         formData.schedules.scheduleType === "P" ? setHDef(false) : setHDef(true);
         setSelectedProvincia(formData.state);
+        setCitiesList(formData.state);
     }, [formData]);
 
     const handleSubmit = async (e) => {
@@ -227,9 +233,13 @@ const CargaEmpresa = () => {
         }
         showSpinner(true);
         const response = await addCompany(completeData);
-        response.success
-            ? swalPopUp("Tarea completada", response.message, "success")
-            : swalPopUp("Error", response.message, "error");
+        if (response.success) {
+            swalPopUp("Tarea completada", response.message, "success");
+            setFormData(formDataInitialValues);
+            localStorage.setItem("cargaNegocioFormData", "");
+        } else {
+            swalPopUp("Error", response.message, "error");
+        }
         showSpinner(false);
     };
 
@@ -636,6 +646,7 @@ const CargaEmpresa = () => {
                                         id="selectCiudades"
                                         name="city"
                                         onChange={handleChange}
+                                        value={formData.city}
                                     >
                                         <option value="">Selecciona una ciudad</option>
                                         {ciudades.map((ciudad, index) => (
