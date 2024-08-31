@@ -1022,7 +1022,7 @@ export default function EditarEmpresa() {
             </button>
           </div>
           <div className="linea-divisoria"></div>
-
+          {/*logo*/}
           <div className="logo-section">
             <label htmlFor="photo">
               <i className="obligatorio">*</i> Logo de su empresa

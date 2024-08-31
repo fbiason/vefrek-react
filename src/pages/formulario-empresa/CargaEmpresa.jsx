@@ -979,16 +979,14 @@ const CargaEmpresa = () => {
               </label>
 
               <div className="carga-imgs-empresa">
-                <div className="carga-cuadro-edicion">
+                <div className="carga-cuadro-edicion" onClick={selectImages}>
                   <PhotoIcon className="carga-iconUser" aria-hidden="true" />
-                  <div
-                    className="carga-file-upload-wrapper"
-                    onClick={selectImages}
-                  >
+                  <div className="carga-file-upload-wrapper">
                     <label
                       htmlFor="file-upload"
                       className="carga-file-upload-label"
                     >
+                      Elegir archivos
                       <input
                         onChange={handleFilesChange}
                         id="file-upload"
@@ -1014,10 +1012,10 @@ const CargaEmpresa = () => {
           <div className="linea-divisoria"></div>
 
           <div className="btn-carga-edicion">
-            <button type="button" className="btnCancel">
+            <button type="button" className="btn-cancelar-carga">
               Cancelar
             </button>
-            <button type="submit" className="btn-guardar">
+            <button type="submit" className="btn-guardar-carga">
               Guardar
             </button>
           </div>
