@@ -1,4 +1,17 @@
+# Deshabilitar MultiViews
 Options -MultiViews
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.html [QSA,L]
+
+# Habilitar el motor de reescritura
+RewriteEngine On
+
+# Redirigir de HTTP a HTTPS (si es necesario)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirigir de non-www a www
+RewriteCond %{HTTP_HOST} ^vefrek\.com [NC]
+RewriteRule ^(.*)$ https://www.vefrek.com/$1 [L,R=301]
+
+# Si el archivo no existe, redirigir a index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
