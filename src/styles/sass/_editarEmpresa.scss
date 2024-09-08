@@ -4,6 +4,16 @@
   margin-bottom: 2rem;
 }
 
+.seclogo, .cuadro-edicion {
+  justify-content: center;
+  display: flex;
+}
+
+.change-img-logo {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .carga-seclogo {
   display: flex;
   flex-direction: column;
@@ -11,9 +21,21 @@
   margin-top: 1rem;
 }
 
+.editar-empresa-logo, .icon-user {
+  margin: 1rem;
+    height: 150px;
+    width: 150px;
+    border-radius: 5rem;
+}
+
 .carga-seclogo img {
   max-width: 100px;
   max-height: 100px;
+}
+
+.secLogo {
+  display: flex;
+  justify-content: center;
 }
 
 .carga-seclogo button {

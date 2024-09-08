@@ -910,112 +910,115 @@ export default function EditarEmpresa() {
 
           {/*rrss*/}
           <div className="campos-redes">
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-whatsapp me-2"></i>
-                <span className="obligatorio">*</span>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="whatsapp"
-                value={formData.social.whatsapp}
-                placeholder="WhatsApp"
-              />
-            </div>
+            <form onSubmit={handleSubmit} className="custom-form-carga">
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-whatsapp me-2"></i>
+                  <span className="obligatorio">*</span>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="whatsapp"
+                  value={formData.social.whatsapp}
+                  placeholder="WhatsApp"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fas fa-envelope me-2"></i>
-                <span className="obligatorio">*</span>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="email"
-                value={formData.social.email}
-                placeholder="Mail"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fas fa-envelope me-2"></i>
+                  <span className="obligatorio">*</span>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="email"
+                  value={formData.social.email}
+                  placeholder="Mail"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-facebook me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="facebook"
-                value={formData.social.facebook}
-                placeholder="Facebook"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-facebook me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="facebook"
+                  value={formData.social.facebook}
+                  placeholder="Facebook"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-instagram me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="instagram"
-                value={formData.social.instagram}
-                placeholder="Instagram"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-instagram me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="instagram"
+                  value={formData.social.instagram}
+                  placeholder="Instagram"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-linkedin me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="linkedin"
-                value={formData.social.linkedin}
-                placeholder="LinkedIn"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-linkedin me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="linkedin"
+                  value={formData.social.linkedin}
+                  placeholder="LinkedIn"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-x me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="x"
-                value={formData.social.x}
-                placeholder="X"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-x me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="x"
+                  value={formData.social.x}
+                  placeholder="X"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-youtube me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="youtube"
-                value={formData.social.youtube}
-                placeholder="Youtube"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-youtube me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="youtube"
+                  value={formData.social.youtube}
+                  placeholder="Youtube"
+                />
+              </div>
 
-            <div className="campo-red">
-              <label>
-                <i className="fab fa-tiktok me-2"></i>
-              </label>
-              <input
-                onChange={handleSocialChange}
-                type="text"
-                name="tiktok"
-                value={formData.social.tiktok}
-                placeholder="TikTok"
-              />
-            </div>
+              <div className="campo-red">
+                <label>
+                  <i className="fab fa-tiktok me-2"></i>
+                </label>
+                <input
+                  onChange={handleSocialChange}
+                  type="text"
+                  name="tiktok"
+                  value={formData.social.tiktok}
+                  placeholder="TikTok"
+                />
+              </div>
+            </form>
           </div>
+
           <div className="btn-carga-edicion">
             <button type="submit" className="btn-guardar">
               Guardar seccion
@@ -1037,7 +1040,8 @@ export default function EditarEmpresa() {
               ) : (
                 <UserCircleIcon className="icon-user" aria-hidden="true" />
               )}
-
+            </div>
+            <div className="change-img-logo">
               <button onClick={loadFile} type="button" className="btn-custom">
                 Cambiar
               </button>
@@ -1061,26 +1065,26 @@ export default function EditarEmpresa() {
             <div className="imgs-empresa">
               <div className="cuadro-edicion">
                 <PhotoIcon className="icon-user" aria-hidden="true" />
-                <div className="file-upload-wrapper">
-                  <label htmlFor="file-upload" className="file-upload-label">
-                    Elegir archivos
-                    <input
-                      onChange={handleFilesChange}
-                      id="file-upload"
-                      name="file-upload"
-                      type="file"
-                      multiple={true}
-                      max={6}
-                    />
-                  </label>
-                  <span className="file-upload-info">
-                    Ningún archivo seleccionado
-                  </span>
-                </div>
-
-                <p>PNG, JPG, GIF up to 10MB</p>
-                <div name="images_names">{formData.images_names}</div>
+                <div className="file-upload-wrapper"></div>
               </div>
+              <div>
+                <label htmlFor="file-upload" className="file-upload-label">
+                  Elegir archivos
+                  <input
+                    onChange={handleFilesChange}
+                    id="file-upload"
+                    name="file-upload"
+                    type="file"
+                    multiple={true}
+                    max={6}
+                  />
+                </label>
+                <span className="file-upload-info">
+                </span>
+              </div>
+
+              <p>PNG, JPG, GIF up to 10MB</p>
+              <div name="images_names">{formData.images_names}</div>
             </div>
           </div>
 

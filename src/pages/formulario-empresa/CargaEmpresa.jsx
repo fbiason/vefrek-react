@@ -243,32 +243,6 @@ const CargaEmpresa = () => {
         showSpinner(false);
     };
 
-<<<<<<< HEAD
-              <div className="carga-imgs-empresa">
-                <div className="carga-cuadro-edicion" onClick={selectImages}>
-                  <PhotoIcon className="carga-iconUser" aria-hidden="true" />
-                  <div className="carga-file-upload-wrapper">
-                    <label
-                      htmlFor="file-upload"
-                      className="carga-file-upload-label"
-                    >
-                      Elegir archivos
-                      <input
-                        onChange={handleFilesChange}
-                        id="file-upload"
-                        name="file-upload"
-                        type="file"
-                        multiple={true}
-                        max={6}
-                      />
-                    </label>
-                  </div>
-                  <p>PNG, JPG, GIF up to 10MB</p>
-                  <div name="images_names">{formData.images_names}</div>
-                </div>
-              </div>
-            </div>
-=======
     /*************************** Horarios  ****************************/
 
     const [hDef, setHDef] = useState(true);
@@ -343,7 +317,6 @@ const CargaEmpresa = () => {
 
     const horarioPersJSX = //Horarios personalizados (Se puede elegir un horario diferente por cada dia de la semana)
         (
->>>>>>> 8b9cd381da96b116d11aa38f6a0c8353ed91216e
             <div>
                 <div>
                     <table>
@@ -567,528 +540,536 @@ const CargaEmpresa = () => {
             </div>
         );
 
-<<<<<<< HEAD
-          <div className="btn-carga-edicion">
-            <button type="button" className="btn-cancelar-carga">
-              Cancelar
-            </button>
-            <button type="submit" className="btn-guardar-carga">
-              Guardar
-            </button>
-          </div>
-        </form>
-        <div></div>
-      </div>
-    </section>
-  );
-=======
     /**********************************************************************************/
 
     return (
-        <section className="bg-formEmpresa">
+      <section className="bg-formEmpresa">
+        <div>
+          <form className="form-empresa" onSubmit={handleSubmit}>
             <div>
-                <form className="form-empresa" onSubmit={handleSubmit}>
-                    <div>
-                        <h1 className="form-titulo">Carga de negocio</h1>
-                        <p className="form-descripcion">
-                            Si es propietario de un negocio referido al rubro automotor puede
-                            cargarlo <b>GRATIS</b> en nuestro sitio web.
-                        </p>
+              <h1 className="form-titulo">Carga de negocio</h1>
+              <p className="form-descripcion">
+                Si es propietario de un negocio referido al rubro automotor
+                puede cargarlo <b>GRATIS</b> en nuestro sitio web.
+              </p>
 
-                        <div className="datos-form">
-                            {/* Nombre Empresa*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="first-name">
-                                    <i className="obligatorio">* </i>Nombre de Empresa
-                                </label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.name}
-                                        type="text"
-                                        name="name"
-                                        id="first-name"
-                                        autoComplete="given-name"
-                                    />
-                                </div>
-                            </div>
-                            {/* Sologan Empresa*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="slogan">Slogan (opcional)</label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.slogan}
-                                        type="text"
-                                        name="slogan"
-                                        id="slogan"
-                                        autoComplete="family-name"
-                                    />
-                                </div>
-                            </div>
-                            {/* CUIT*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="postal-code">CUIT</label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.postal_code}
-                                        type="text"
-                                        name="postal_code"
-                                        id="postal-code"
-                                        autoComplete="postal-code"
-                                    />
-                                </div>
-                            </div>
-                            {/* Dirección*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="street-address">
-                                    <i className="obligatorio">* </i>Dirección
-                                </label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.location}
-                                        type="text"
-                                        name="location"
-                                        id="street-address"
-                                        autoComplete="street-address"
-                                    />
-                                </div>
-                            </div>{" "}
-                            {/* PROVINCIAS*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="region">
-                                    <i className="obligatorio">* </i>Provincia
-                                </label>
+              <div className="datos-form">
+                {/* Nombre Empresa*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="first-name">
+                    <i className="obligatorio">* </i>Nombre de Empresa
+                  </label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.name}
+                      type="text"
+                      name="name"
+                      id="first-name"
+                      autoComplete="given-name"
+                    />
+                  </div>
+                </div>
+                {/* Sologan Empresa*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="slogan">Slogan (opcional)</label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.slogan}
+                      type="text"
+                      name="slogan"
+                      id="slogan"
+                      autoComplete="family-name"
+                    />
+                  </div>
+                </div>
+                {/* CUIT*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="postal-code">CUIT</label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.postal_code}
+                      type="text"
+                      name="postal_code"
+                      id="postal-code"
+                      autoComplete="postal-code"
+                    />
+                  </div>
+                </div>
+                {/* Dirección*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="street-address">
+                    <i className="obligatorio">* </i>Dirección
+                  </label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.location}
+                      type="text"
+                      name="location"
+                      id="street-address"
+                      autoComplete="street-address"
+                    />
+                  </div>
+                </div>{" "}
+                {/* PROVINCIAS*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="region">
+                    <i className="obligatorio">* </i>Provincia
+                  </label>
 
-                                <div className="input-container">
-                                    <select
-                                        id="selectProvincias"
-                                        onChange={handleProvinciaChange}
-                                        value={selectedProvincia}
-                                        name="state"
-                                    >
-                                        <option value="">Selecciona una provincia</option>
-                                        {provinciasList.map((provincia, index) => (
-                                            <option key={index} value={provincia}>
-                                                {provincia}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-                            {/* CIUDAD*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="city">
-                                    <i className="obligatorio">* </i>Ciudad
-                                </label>
-                                <div className="input-container">
-                                    <select
-                                        id="selectCiudades"
-                                        name="city"
-                                        onChange={handleChange}
-                                        value={formData.city}
-                                    >
-                                        <option value="">Selecciona una ciudad</option>
-                                        {ciudades.map((ciudad, index) => (
-                                            <option key={index} value={ciudad}>
-                                                {ciudad}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-                            {/* CP*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="postal-code">
-                                    <i className="obligatorio">* </i>Código Postal
-                                </label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.postal_code}
-                                        type="text"
-                                        name="postal_code"
-                                        id="postal-code"
-                                        autoComplete="postal-code"
-                                    />
-                                </div>
-                            </div>
-                            {/* tel*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="phone">
-                                    <i className="obligatorio">* </i>Teléfono
-                                </label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.phone}
-                                        type="text"
-                                        name="phone"
-                                        id="phone"
-                                        autoComplete="given-name"
-                                    />
-                                </div>
-                            </div>
-                            {/* tel2*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="phone2">Teléfono Alternativo (opcional)</label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.phone2}
-                                        type="text"
-                                        name="phone2"
-                                        id="phone2"
-                                        autoComplete="family-name"
-                                    />
-                                </div>
-                            </div>
-                            {/* web*/}
-                            <div className="campo-formEmpresa">
-                                <label htmlFor="website">Sitio Web (opcional):</label>
-                                <div className="input-container">
-                                    <input
-                                        onChange={handleChange}
-                                        value={formData.website}
-                                        type="text"
-                                        name="website"
-                                        id="website"
-                                        autoComplete="family-name"
-                                    />
-                                </div>
-                            </div>
-                            {/* categoria*/}
-                            <div className="campo-formEmpresa">
-                                <div>
-                                    <label>
-                                        <i className="obligatorio">* </i>Categoría:{" "}
-                                    </label>
-                                    <div className="input-container">
-                                        <select
-                                            name="category"
-                                            onChange={handleCategoryANDsubcategorySelect}     
-                                            value={categoryANDsubcategoryStringJoin}
-                                            defaultValue={"default"}
-                                        >
-                                            <option value="default">
-                                                <span>Selecciona una categoría</span>
-                                            </option>
-                                            <option disabled style={{ color: "darkgray" }}>
-                                                - Reparación y Mantenimiento
-                                            </option>
-                                            <option value="Reparación y mantenimiento, Gomería">
-                                                -- Gomerías (arreglo y venta de cubiertas, alineación y
-                                                balanceo)
-                                            </option>
-                                            <option value="Reparación y mantenimiento, Taller mecánico">
-                                                -- Talleres Mecánicos (Mecánico, Chapistas,
-                                                Electricistas)
-                                            </option>
-                                            <option value="Reparación y mantenimiento, Repuestos">
-                                                -- Repuestos (Autopartes)
-                                            </option>
-                                            <option value="Reparación y mantenimiento, Lubricentro">
-                                                -- Lubricentros
-                                            </option>
-                                            <option
-                                                disabled
-                                                style={{ color: "darkgray" }}
-                                                value="venta_alquiler"
-                                            >
-                                                - Venta y Alquiler de vehículos
-                                            </option>
-                                            <option value="Venta y alquiler de vehículos, Agencia">
-                                                -- Agencia (Concesionaria oficiales y Agencias
-                                                particulares)
-                                            </option>
-                                            <option value="Venta y alquiler de vehículos, Rent a Car">
-                                                -- Rent a Car (Alquiler de autos)
-                                            </option>
-                                            <option
-                                                disabled
-                                                style={{ color: "darkgray" }}
-                                                value="otros_servicios"
-                                            >
-                                                - Otros Servicios
-                                            </option>
-                                            <option value="Otros servicios, Aseguradora">
-                                                -- Aseguradoras
-                                            </option>
-                                            <option value="Otros servicios, Estación de Servicio">
-                                                -- Estaciones de Servicios
-                                            </option>
-                                            <option value="Otros servicios, Estética del automotor">
-                                                -- Estética del Automotor (Lavaderos, Polarizados)
-                                            </option>
-                                            <option value="Otros servicios, Servicios de Emergencia">
-                                                -- Servicios de emergencia (Grúas, Cerrajeros)
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-             
-                    <div className="linea-divisoria"></div>
-                    {/*horarios*/}
-                    <div className="horarios-cont">
-                        <label className="form-label-business">
-                            <i className="obligatorio">* </i>Horarios:{" "}
-                        </label>
-                        <select
-                            className="form-select-business btn-personalizar"
-                            value={formData.schedules.scheduleType}
-                            onChange={setTipoHorarios}
+                  <div className="input-container">
+                    <select
+                      id="selectProvincias"
+                      onChange={handleProvinciaChange}
+                      value={selectedProvincia}
+                      name="state"
+                    >
+                      <option value="">Selecciona una provincia</option>
+                      {provinciasList.map((provincia, index) => (
+                        <option key={index} value={provincia}>
+                          {provincia}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* CIUDAD*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="city">
+                    <i className="obligatorio">* </i>Ciudad
+                  </label>
+                  <div className="input-container">
+                    <select
+                      id="selectCiudades"
+                      name="city"
+                      onChange={handleChange}
+                      value={formData.city}
+                    >
+                      <option value="">Selecciona una ciudad</option>
+                      {ciudades.map((ciudad, index) => (
+                        <option key={index} value={ciudad}>
+                          {ciudad}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                {/* CP*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="postal-code">
+                    <i className="obligatorio">* </i>Código Postal
+                  </label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.postal_code}
+                      type="text"
+                      name="postal_code"
+                      id="postal-code"
+                      autoComplete="postal-code"
+                    />
+                  </div>
+                </div>
+                {/* tel*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="phone">
+                    <i className="obligatorio">* </i>Teléfono
+                  </label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.phone}
+                      type="text"
+                      name="phone"
+                      id="phone"
+                      autoComplete="given-name"
+                    />
+                  </div>
+                </div>
+                {/* tel2*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="phone2">
+                    Teléfono Alternativo (opcional)
+                  </label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.phone2}
+                      type="text"
+                      name="phone2"
+                      id="phone2"
+                      autoComplete="family-name"
+                    />
+                  </div>
+                </div>
+                {/* web*/}
+                <div className="campo-formEmpresa">
+                  <label htmlFor="website">Sitio Web (opcional):</label>
+                  <div className="input-container">
+                    <input
+                      onChange={handleChange}
+                      value={formData.website}
+                      type="text"
+                      name="website"
+                      id="website"
+                      autoComplete="family-name"
+                    />
+                  </div>
+                </div>
+                {/* categoria*/}
+                <div className="campo-formEmpresa">
+                  <div>
+                    <label>
+                      <i className="obligatorio">* </i>Categoría:{" "}
+                    </label>
+                    <div className="input-container">
+                      <select
+                        name="category"
+                        onChange={handleCategoryANDsubcategorySelect}
+                        value={categoryANDsubcategoryStringJoin}
+                        defaultValue={"default"}
+                      >
+                        <option value="default">
+                          <span>Selecciona una categoría</span>
+                        </option>
+                        <option disabled style={{ color: "darkgray" }}>
+                          - Reparación y Mantenimiento
+                        </option>
+                        <option value="Reparación y mantenimiento, Gomería">
+                          -- Gomerías (arreglo y venta de cubiertas, alineación
+                          y balanceo)
+                        </option>
+                        <option value="Reparación y mantenimiento, Taller mecánico">
+                          -- Talleres Mecánicos (Mecánico, Chapistas,
+                          Electricistas)
+                        </option>
+                        <option value="Reparación y mantenimiento, Repuestos">
+                          -- Repuestos (Autopartes)
+                        </option>
+                        <option value="Reparación y mantenimiento, Lubricentro">
+                          -- Lubricentros
+                        </option>
+                        <option
+                          disabled
+                          style={{ color: "darkgray" }}
+                          value="venta_alquiler"
                         >
-                            <option value="LaV">Lunes a Viernes</option>
-                            <option value="LaS">Lunes a Sábado</option>
-                            <option value="LaD">Todos los días</option>
-                            <option value="P">Personalizar</option>
-                        </select>
-                        {hDef && horarioDefJSX}
-                        {!hDef && horarioPersJSX}
+                          - Venta y Alquiler de vehículos
+                        </option>
+                        <option value="Venta y alquiler de vehículos, Agencia">
+                          -- Agencia (Concesionaria oficiales y Agencias
+                          particulares)
+                        </option>
+                        <option value="Venta y alquiler de vehículos, Rent a Car">
+                          -- Rent a Car (Alquiler de autos)
+                        </option>
+                        <option
+                          disabled
+                          style={{ color: "darkgray" }}
+                          value="otros_servicios"
+                        >
+                          - Otros Servicios
+                        </option>
+                        <option value="Otros servicios, Aseguradora">
+                          -- Aseguradoras
+                        </option>
+                        <option value="Otros servicios, Estación de Servicio">
+                          -- Estaciones de Servicios
+                        </option>
+                        <option value="Otros servicios, Estética del automotor">
+                          -- Estética del Automotor (Lavaderos, Polarizados)
+                        </option>
+                        <option value="Otros servicios, Servicios de Emergencia">
+                          -- Servicios de emergencia (Grúas, Cerrajeros)
+                        </option>
+                      </select>
                     </div>
-                   
-                    <div className="linea-divisoria"></div>
-
-                    <div>
-                        {/* URL */}
-                        <div className="url-section">
-                            <label htmlFor="username">
-                                <i className="obligatorio">* </i>Ingrese la URL de su sitio web
-                                comercial:
-                            </label>
-                            <div className="url-vfk">
-                                <span>vefrek.com/</span>
-                                <input
-                                    value={formData.vefrek_website}
-                                    onChange={handleChange}
-                                    type="text"
-                                    name="vefrek_website"
-                                    id="username"
-                                    autoComplete="username"
-                                    placeholder="nombre-negocio"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Descripción */}
-                        <div className="description-section">
-                            <label htmlFor="about">
-                                <i className="obligatorio">* </i>Descripción
-                            </label>
-                            <div>
-                                <textarea
-                                    value={formData.description}
-                                    onChange={handleChange}
-                                    id="about"
-                                    name="description"
-                                    rows={3}
-                                    className="txt-form"
-                                    defaultValue={""}
-                                    placeholder=" Describa brevemente su empresa."
-                                />
-                            </div>
-                        </div>
-
-                        {/*rrss*/}
-                        <div className="campos-redes">
-                            <form onSubmit={handleSubmit} className="custom-form-carga">
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-whatsapp me-2"></i>
-                                        <span className="obligatorio">*</span>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="whatsapp"
-                                        value={formData.social.whatsapp}
-                                        placeholder="WhatsApp"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fas fa-envelope me-2"></i>
-                                        <span className="obligatorio">*</span>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="email"
-                                        value={formData.social.email}
-                                        placeholder="Mail"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-facebook me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="facebook"
-                                        value={formData.social.facebook}
-                                        placeholder="Facebook"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-instagram me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="instagram"
-                                        value={formData.social.instagram}
-                                        placeholder="Instagram"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-linkedin me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="linkedin"
-                                        value={formData.social.linkedin}
-                                        placeholder="LinkedIn"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-x me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="x"
-                                        value={formData.social.x}
-                                        placeholder="X"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-youtube me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="youtube"
-                                        value={formData.social.youtube}
-                                        placeholder="Youtube"
-                                    />
-                                </div>
-
-                                <div className="campo-red">
-                                    <label>
-                                        <i className="fab fa-tiktok me-2"></i>
-                                    </label>
-                                    <input
-                                        onChange={handleSocialChange}
-                                        type="text"
-                                        name="tiktok"
-                                        value={formData.social.tiktok}
-                                        placeholder="TikTok"
-                                    />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                   
-                    <div className="linea-divisoria"></div>
-                    {/*logo*/}
-                    <div className="carga-logo-section">
-                        <label htmlFor="photo">
-                            <i className="obligatorio">* </i>Logo de su empresa
-                        </label>
-                        <div className="carga-seclogo">
-                            <UserCircleIcon className="carga-icon-user" aria-hidden="true" />
-                            <button
-                                onClick={loadFile}
-                                type="button"
-                                className="carga-btn-custom"
-                            >
-                                Cargar
-                            </button>
-                            <input
-                                onChange={handleFileChange}
-                                className="carga-company-logo-input"
-                                type="file"
-                                name="logo_image_name"
-                                accept="image/*"
-                                single="true"
-                            />
-                            {formData.logo_image_name}
-                        </div>
-
-                        <div className="carga-images-section">
-                            <label htmlFor="cover-photo">
-                                <i className="obligatorio">* </i>Cargar imágenes de su negocio
-                                (máximo 6):
-                            </label>
-
-                            <div className="carga-imgs-empresa">
-                                <div className="carga-cuadro-edicion">
-                                    <PhotoIcon className="carga-iconUser" aria-hidden="true" />
-                                    <div
-                                        className="carga-file-upload-wrapper"
-                                        onClick={selectImages}
-                                    >
-                                        <label
-                                            htmlFor="file-upload"
-                                            className="carga-file-upload-label"
-                                        >
-                                            <input
-                                                onChange={handleFilesChange}
-                                                id="file-upload"
-                                                name="file-upload"
-                                                type="file"
-                                                className="carga-company-images-input"
-                                                multiple={true}
-                                                max={6}
-                                            />
-                                        </label>
-                                    </div>
-                                    <p>PNG, JPG, GIF up to 10MB</p>
-                                    <div name="images_names">{formData.images_names}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <span>
-                                <i className="obligatorio">* </i>Campos obligatorios
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="linea-divisoria"></div>
-
-                    <div className="btn-carga-edicion">
-                        <button type="button" className="btnCancel">
-                            Cancelar
-                        </button>
-                        <button type="submit" className="btn-guardar" >                 {/* onClick={handleGuardar} */}
-                            Guardar
-                                                                                        {/* {showPopup && <PopUpEmpresa onClose={handleClosePopup} />} */}
-                        </button>
-                    </div>
-                </form>
-                <div></div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+            <div className="btn-carga-edicion">
+              <button type="submit" className="btn-guardar">
+                Guardar seccion
+              </button>
+            </div>
+
+            <div className="linea-divisoria"></div>
+            {/*horarios*/}
+            <div className="horarios-cont">
+              <label className="form-label-business">
+                <i className="obligatorio">* </i>Horarios:{" "}
+              </label>
+              <select
+                className="form-select-business btn-personalizar"
+                value={formData.schedules.scheduleType}
+                onChange={setTipoHorarios}
+              >
+                <option value="LaV">Lunes a Viernes</option>
+                <option value="LaS">Lunes a Sábado</option>
+                <option value="LaD">Todos los días</option>
+                <option value="P">Personalizar</option>
+              </select>
+              {hDef && horarioDefJSX}
+              {!hDef && horarioPersJSX}
+            </div>
+
+            <div className="btn-carga-edicion">
+              <button type="submit" className="btn-guardar">
+                Guardar seccion
+              </button>
+            </div>
+
+            <div className="linea-divisoria"></div>
+
+            <div>
+              {/* URL */}
+              <div className="url-section">
+                <label htmlFor="username">
+                  <i className="obligatorio">* </i>Ingrese la URL de su sitio
+                  web comercial:
+                </label>
+                <div className="url-vfk">
+                  <span>vefrek.com/</span>
+                  <input
+                    value={formData.vefrek_website}
+                    onChange={handleChange}
+                    type="text"
+                    name="vefrek_website"
+                    id="username"
+                    autoComplete="username"
+                    placeholder="nombre-negocio"
+                  />
+                </div>
+              </div>
+
+              {/* Descripción */}
+              <div className="description-section">
+                <label htmlFor="about">
+                  <i className="obligatorio">* </i>Descripción
+                </label>
+                <div>
+                  <textarea
+                    value={formData.description}
+                    onChange={handleChange}
+                    id="about"
+                    name="description"
+                    rows={3}
+                    className="txt-form"
+                    defaultValue={""}
+                    placeholder=" Describa brevemente su empresa."
+                  />
+                </div>
+              </div>
+
+              {/*rrss*/}
+              <div className="campos-redes">
+                <form onSubmit={handleSubmit} className="custom-form-carga">
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-whatsapp me-2"></i>
+                      <span className="obligatorio">*</span>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="whatsapp"
+                      value={formData.social.whatsapp}
+                      placeholder="WhatsApp"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fas fa-envelope me-2"></i>
+                      <span className="obligatorio">*</span>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="email"
+                      value={formData.social.email}
+                      placeholder="Mail"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-facebook me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="facebook"
+                      value={formData.social.facebook}
+                      placeholder="Facebook"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-instagram me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="instagram"
+                      value={formData.social.instagram}
+                      placeholder="Instagram"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-linkedin me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="linkedin"
+                      value={formData.social.linkedin}
+                      placeholder="LinkedIn"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-x me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="x"
+                      value={formData.social.x}
+                      placeholder="X"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-youtube me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="youtube"
+                      value={formData.social.youtube}
+                      placeholder="Youtube"
+                    />
+                  </div>
+
+                  <div className="campo-red">
+                    <label>
+                      <i className="fab fa-tiktok me-2"></i>
+                    </label>
+                    <input
+                      onChange={handleSocialChange}
+                      type="text"
+                      name="tiktok"
+                      value={formData.social.tiktok}
+                      placeholder="TikTok"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div className="btn-carga-edicion">
+              <button type="submit" className="btn-guardar">
+                Guardar seccion
+              </button>
+            </div>
+
+            <div className="linea-divisoria"></div>
+            {/*logo*/}
+            <div className="carga-logo-section">
+              <label htmlFor="photo">
+                <i className="obligatorio">* </i>Logo de su empresa
+              </label>
+              <div className="carga-seclogo">
+                <UserCircleIcon
+                  className="carga-icon-user"
+                  aria-hidden="true"
+                />
+                <button
+                  onClick={loadFile}
+                  type="button"
+                  className="carga-btn-custom"
+                >
+                  Cargar
+                </button>
+                <input
+                  onChange={handleFileChange}
+                  className="carga-company-logo-input"
+                  type="file"
+                  name="logo_image_name"
+                  accept="image/*"
+                  single="true"
+                />
+                {formData.logo_image_name}
+              </div>
+
+              <div className="carga-images-section">
+                <label htmlFor="cover-photo">
+                  <i className="obligatorio">* </i>Cargar imágenes de su negocio
+                  (máximo 6):
+                </label>
+
+                <div className="carga-imgs-empresa">
+                  <div className="carga-cuadro-edicion">
+                    <PhotoIcon className="carga-iconUser" aria-hidden="true" />
+                    <div
+                      className="carga-file-upload-wrapper"
+                      onClick={selectImages}
+                    >
+                      <label
+                        htmlFor="file-upload"
+                        className="carga-file-upload-label"
+                      >
+                        <input
+                          onChange={handleFilesChange}
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          className="carga-company-images-input"
+                          multiple={true}
+                          max={6}
+                        />
+                      </label>
+                    </div>
+                    <p>PNG, JPG, GIF up to 10MB</p>
+                    <div name="images_names">{formData.images_names}</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span>
+                  <i className="obligatorio">* </i>Campos obligatorios
+                </span>
+              </div>
+            </div>
+
+            <div className="linea-divisoria"></div>
+
+            <div className="btn-carga-edicion">
+              <button type="button" className="btnCancel">
+                Cancelar
+              </button>
+              <button type="submit" className="btn-guardar">
+                {" "}
+                {/* onClick={handleGuardar} */}
+                Guardar
+                {/* {showPopup && <PopUpEmpresa onClose={handleClosePopup} />} */}
+              </button>
+            </div>
+          </form>
+          <div></div>
+        </div>
+      </section>
     );
->>>>>>> 8b9cd381da96b116d11aa38f6a0c8353ed91216e
 };
 
 export default CargaEmpresa;

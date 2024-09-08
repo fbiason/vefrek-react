@@ -2402,13 +2402,14 @@ select::placeholder {
 .btn-carga-edicion {
   justify-content: center;
   align-items: center;
+  display: flex;
   margin-top: 2rem;
 }
 
 .btn-guardar {
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  color: #1a2a3a;
+  color: #1a2a3a !important;
   background-color: #ffd700 !important;
   border: none;
   border-radius: 0.375rem;
@@ -2418,7 +2419,24 @@ select::placeholder {
 
 .btn-guardar:hover {
   background-color: #218838 !important;
-  color: whitesmoke;
+  color: whitesmoke !important;
+}
+
+.btnCancel {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  color: #1a2a3a !important;
+  margin-right: 1rem;
+  background-color: #fb6e6e !important;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnCancel:hover {
+  background-color: red !important;
+  color: whitesmoke !important;
 }
 
 @media (max-width: 600px) {
@@ -2967,6 +2985,16 @@ select::placeholder {
   margin-bottom: 2rem;
 }
 
+.seclogo, .cuadro-edicion {
+  justify-content: center;
+  display: flex;
+}
+
+.change-img-logo {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .carga-seclogo {
   display: flex;
   flex-direction: column;
@@ -2974,9 +3002,21 @@ select::placeholder {
   margin-top: 1rem;
 }
 
+.editar-empresa-logo, .icon-user {
+  margin: 1rem;
+  height: 150px;
+  width: 150px;
+  border-radius: 5rem;
+}
+
 .carga-seclogo img {
   max-width: 100px;
   max-height: 100px;
+}
+
+.secLogo {
+  display: flex;
+  justify-content: center;
 }
 
 .carga-seclogo button {
