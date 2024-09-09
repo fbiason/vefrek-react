@@ -3271,16 +3271,40 @@ select::placeholder {
   margin-bottom: 1rem;
 }
 
+.business-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: space-between;
+}
+
+.business-column {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%;
+}
+@media (max-width: 576px) {
+  .business-column {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.business-cont {
+  padding-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .business-cont {
+    padding: 0;
+  }
+}
 .mapa-google {
   width: 100%;
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid #000;
   height: 400px;
-}
-
-.business-cont {
-  padding-left: 2rem;
 }
 
 @media (max-width: 552px) {
@@ -3318,6 +3342,9 @@ select::placeholder {
 .logo-nombre-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .nombre-slogan-container {
@@ -3783,9 +3810,6 @@ select::placeholder {
   }
   .business-responsive {
     margin: 0;
-    padding: 0;
-  }
-  .business-cont {
     padding: 0;
   }
   .nombre-slogan-container {

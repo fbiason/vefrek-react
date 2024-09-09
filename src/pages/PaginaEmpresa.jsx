@@ -547,16 +547,17 @@ const PaginaEmpresa = () => {
   };
 
   return (
-    <section className="background-empresa overflow-x-hidden">
+    <section className="background-empresa">
       <div>
-        <div className="row business-cont">
+        <div className="business-row">
           {/* Columna 1 - Imágenes de la empresa */}
-          <div className=" col-md-8 col-sm-6">
+          <div className="business-column">
             {/* Fila 1 */}
-            <div className="row">
-              <div className="col-md-12 business-cont">
+            <div>
+              {/* VOY POR ACÁ */}
+              <div className="business-cont">
                 <div className="perfil-card-element1 card-empresa">
-                  <div className="row logo-nombre-container">
+                  <div className="logo-nombre-container">
                     <div className="logo-container col-lg-2 text-center">
                       <img
                         src={companyData.images.logo.url}

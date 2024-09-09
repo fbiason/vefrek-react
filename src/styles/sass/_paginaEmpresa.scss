@@ -29,6 +29,36 @@
   margin-bottom: 1rem;
 }
 
+//* CóDIGO NUEVO
+.business-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: space-between;
+}
+
+.business-column {
+  flex: 0 0 66.66667%;  
+  max-width: 66.66667%; 
+  
+  @media (max-width: 576px) {
+    flex: 0 0 50%;  
+    max-width: 50%;
+  }
+}
+
+.business-cont {
+  padding-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .business-cont {
+    padding: 0;
+  }
+}
+
+//* CóDIGO VIEJO
 .mapa-google {
   width: 100%;
   border-radius: 50%;
@@ -37,9 +67,8 @@
   height: 400px;
 }
 
-.business-cont {
-  padding-left: 2rem;
-}
+
+
 
 @media (max-width: 552px) {
   .background-empresa {
@@ -78,6 +107,9 @@
 .logo-nombre-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .nombre-slogan-container {
@@ -564,9 +596,6 @@
     padding: 0;
   }
 
-  .business-cont {
-    padding: 0;
-  }
 
   .nombre-slogan-container {
     flex-direction: column;
