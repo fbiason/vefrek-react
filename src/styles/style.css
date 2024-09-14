@@ -1801,6 +1801,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .carga-cuadro-edicion p {
@@ -1818,9 +1819,15 @@ button {
 }
 
 .carga-file-upload-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .carga-file-upload-wrapper input[type=file] {
@@ -2867,6 +2874,26 @@ select::placeholder {
 .carga-logo-section,
 .images-section {
   margin-bottom: 2rem;
+}
+
+.carga-logo-preview {
+  height: 150px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+}
+
+.carga-images-preview-cont{
+  width: 100%;
+  gap: 20px;
+}
+
+.carga-images-preview {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+  background-color: white;
 }
 
 .carga-seclogo {
