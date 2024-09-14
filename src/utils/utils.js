@@ -59,3 +59,29 @@ export const generateRegEx = (str) => {         //Genera una expresion regular q
     })
     return `^${regex.join("")}$`;
 }
+
+export const fileToBase64 = (file) => {                              //Convierte una variable tipo File (de un input tipo file por ejemplo) a un string base64
+                                                                     // que puede ponerse directamente en el atributo "src" de una etiqueta "img"    
+    const arrayBufferToBase64 = (buffer) => {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary);
+    }
+
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const arrayBuffer = reader.result;
+            const base64String = arrayBufferToBase64(arrayBuffer);
+            resolve(`data:${file.type};base64,${base64String}`);
+        }
+        reader.onerror = (error) => reject(error);
+        reader.readAsArrayBuffer(file);
+
+    });
+};
