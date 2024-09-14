@@ -17,7 +17,7 @@ const Reparacion = () => {
     const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
     const [showDistanceFilter, setShowDistanceFilter] = useState(false);
     const companysForPage = 8;
-    const [filterType, setFilterType] = useState("distance");
+    const [filterType, setFilterType] = useState("state");  
 
     useEffect(() => {
         const setNegociosUpTo300Km = (opc) => {
@@ -327,152 +327,156 @@ const Reparacion = () => {
     }, [showDistanceFilter]);
 
     return (
-        <div className="background">
-            <div className="custom-container">
-                <div className="custom-row ">
-                    <div className="custom-col">
-                        <h1 className="custom-title">Reparación y Mantenimiento</h1>
-                        <p className="custom-container-mt">
-                            Acá vas a encontrar todo negocio que te ayude a mantener tu
-                            vehiculo en óptimas condiciones, como gomerías, talleres mecánicos
-                            especializados, chapistas, electricistas, casas de repuestos y
-                            lubricentros.
-                        </p>
-                    </div>
-                </div>
-
-                {showDistanceFilter && (
-                    <div className="filter-row-km">
-                        <div className="filterType">
-                            <input
-                                type="checkbox"
-                                name="distance"
-                                className="filterTypeInput"
-                                onClick={handleFilterTypeChange}
-                            />
-                            <label htmlFor="filterByDistance" className="filterTypeLabel">
-                                Filtrar por distancia
-                            </label>
-                            <input
-                                type="checkbox"
-                                name="state"
-                                className="filterTypeInput"
-                                onClick={handleFilterTypeChange}
-                            />
-                            <label htmlFor="filterByState" className="filterTypeLabel">
-                                Filtrar por provincia
-                            </label>
-                        </div>
-                        {filterType === "distance" && (
-                            <>
-                                <label htmlFor="customRange1" className="form-label">
-                                    Km de distancia
-                                </label>
-                                <input
-                                    type="range"
-                                    className="form-range"
-                                    id="customRange1"
-                                    min="1"
-                                    max="300"
-                                    step="1"
-                                    value={rangeValue}
-                                    onChange={handleRangeChange}
-                                    onMouseUp={handleChangeFilterKmValue}
-                                />
-                                <output id="rangevalue" className="range">
-                                    {rangeValue}
-                                </output>
-                            </>
-                        )}
-                    </div>
-                )}
-
-                <div class="filter-row-cat">
-                    <div>
-                        <select
-                            onChange={handleSelectChangeSubCategory}
-                            className="custom-select"
-                        >
-                            <option value="" disabled selected>
-                                Seleccionar Subcategoría
-                            </option>
-                            <option value="todo">Todo</option>
-                            <option value="gomeria">
-                                Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
-                            </option>
-                            <option value="taller">
-                                Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
-                            </option>
-                            <option value="repuestos">Repuestos (Autopartes)</option>
-                            <option value="lubricentro">Lubricentros</option>
-                        </select>
-                    </div>
-                </div>
-                {filterType === "state" && (
-                    <div className="filtro-provincias">
-                        <div>
-                            <select
-                                onChange={handleSelectChangeState}
-                                value={selectedProvince}
-                            >
-                                <option value="" disabled>
-                                    Seleccionar Provincia
-                                </option>
-                                <option value="todo">Todas las Provincias</option>
-                                <option value="Buenos Aires">Buenos Aires</option>
-                                <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
-                                <option value="Catamarca">Catamarca</option>
-                                <option value="Chaco">Chaco</option>
-                                <option value="Chubut">Chubut</option>
-                                <option value="Córdoba">Córdoba</option>
-                                <option value="Corrientes">Corrientes</option>
-                                <option value="Entre Ríos">Entre Ríos</option>
-                                <option value="Formosa">Formosa</option>
-                                <option value="Jujuy">Jujuy</option>
-                                <option value="La Pampa">La Pampa</option>
-                                <option value="La Rioja">La Rioja</option>
-                                <option value="Mendoza">Mendoza</option>
-                                <option value="Misiones">Misiones</option>
-                                <option value="Neuquén">Neuquén</option>
-                                <option value="Río Negro">Río Negro</option>
-                                <option value="Salta">Salta</option>
-                                <option value="San Juan">San Juan</option>
-                                <option value="San Luis">San Luis</option>
-                                <option value="Santa Cruz">Santa Cruz</option>
-                                <option value="Santa Fe">Santa Fe</option>
-                                <option value="Santiago del Estero">Santiago del Estero</option>
-                                <option value="Tierra del Fuego">Tierra del Fuego</option>
-                                <option value="Tucumán">Tucumán</option>
-                            </select>
-                        </div>
-                    </div>
-                )}
-
-                {data.length && totalNumberOfPages > 1 ? (
-                    <div className="pagination-controls">
-                        <button
-                            onClick={() => handleChangePage(false)}
-                            className="pagination-control-button"
-                        >
-                            -
-                        </button>
-                        <p>
-                            {actualPage} de {totalNumberOfPages}
-                        </p>
-                        <button
-                            onClick={() => handleChangePage(true)}
-                            className="pagination-control-button"
-                        >
-                            +
-                        </button>
-                    </div>
-                ) : (
-                    <></>
-                )}
-
-                <div className="grid-categories">{data}</div>
+      <div className="background">
+        <div className="custom-container">
+          <div className="custom-row ">
+            <div className="custom-col">
+              <h1 className="custom-title">Reparación y Mantenimiento</h1>
+              <p className="custom-container-mt">
+                Acá vas a encontrar todo negocio que te ayude a mantener tu
+                vehiculo en óptimas condiciones, como gomerías, talleres
+                mecánicos especializados, chapistas, electricistas, casas de
+                repuestos y lubricentros.
+              </p>
             </div>
+          </div>
+
+          <div className="filter-row-km">
+            <div className="filterType">
+              <input
+                type="checkbox"
+                name="state"
+                className="filterTypeInput"
+                onClick={handleFilterTypeChange}
+                checked={filterType === "state"} // Estará marcado por defecto
+              />
+              <label htmlFor="filterByState" className="filterTypeLabel">
+                Filtrar por provincia
+              </label>
+
+              <input
+                type="checkbox"
+                name="distance"
+                className="filterTypeInput"
+                onClick={handleFilterTypeChange}
+                checked={filterType === "distance"} // No estará marcado inicialmente
+              />
+              <label htmlFor="filterByDistance" className="filterTypeLabel">
+                Filtrar por distancia
+              </label>
+            </div>
+
+            {filterType === "distance" && (
+              <>
+                <label htmlFor="customRange1" className="form-label">
+                  Km de distancia
+                </label>
+                <input
+                  type="range"
+                  className="form-range"
+                  id="customRange1"
+                  min="1"
+                  max="300"
+                  step="1"
+                  value={rangeValue}
+                  onChange={handleRangeChange}
+                  onMouseUp={handleChangeFilterKmValue}
+                />
+                <output id="rangevalue" className="range">
+                  {rangeValue}
+                </output>
+              </>
+            )}
+          </div>
+
+          <div class="filter-row-cat">
+            <div>
+              <select
+                onChange={handleSelectChangeSubCategory}
+                className="custom-select"
+              >
+                <option value="" disabled selected>
+                  Seleccionar Subcategoría
+                </option>
+                <option value="todo">Todo</option>
+                <option value="gomeria">
+                  Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
+                </option>
+                <option value="taller">
+                  Talleres Mecánicos (Mecánico, Chapistas, Electricistas)
+                </option>
+                <option value="repuestos">Repuestos (Autopartes)</option>
+                <option value="lubricentro">Lubricentros</option>
+              </select>
+            </div>
+          </div>
+          {filterType === "state" && (
+            <div className="filtro-provincias">
+              <div>
+                <select
+                  onChange={handleSelectChangeState}
+                  value={selectedProvince}
+                >
+                  <option value="" disabled>
+                    Seleccionar Provincia
+                  </option>
+                  <option value="todo">Todas las Provincias</option>
+                  <option value="Buenos Aires">Buenos Aires</option>
+                  <option value="Ciudad Autónoma de Buenos Aires">CABA</option>
+                  <option value="Catamarca">Catamarca</option>
+                  <option value="Chaco">Chaco</option>
+                  <option value="Chubut">Chubut</option>
+                  <option value="Córdoba">Córdoba</option>
+                  <option value="Corrientes">Corrientes</option>
+                  <option value="Entre Ríos">Entre Ríos</option>
+                  <option value="Formosa">Formosa</option>
+                  <option value="Jujuy">Jujuy</option>
+                  <option value="La Pampa">La Pampa</option>
+                  <option value="La Rioja">La Rioja</option>
+                  <option value="Mendoza">Mendoza</option>
+                  <option value="Misiones">Misiones</option>
+                  <option value="Neuquén">Neuquén</option>
+                  <option value="Río Negro">Río Negro</option>
+                  <option value="Salta">Salta</option>
+                  <option value="San Juan">San Juan</option>
+                  <option value="San Luis">San Luis</option>
+                  <option value="Santa Cruz">Santa Cruz</option>
+                  <option value="Santa Fe">Santa Fe</option>
+                  <option value="Santiago del Estero">
+                    Santiago del Estero
+                  </option>
+                  <option value="Tierra del Fuego">Tierra del Fuego</option>
+                  <option value="Tucumán">Tucumán</option>
+                </select>
+              </div>
+            </div>
+          )}
+
+          {data.length && totalNumberOfPages > 1 ? (
+            <div className="pagination-controls">
+              <button
+                onClick={() => handleChangePage(false)}
+                className="pagination-control-button"
+              >
+                -
+              </button>
+              <p>
+                {actualPage} de {totalNumberOfPages}
+              </p>
+              <button
+                onClick={() => handleChangePage(true)}
+                className="pagination-control-button"
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          <div className="grid-categories">{data}</div>
         </div>
+      </div>
     );
 };
 

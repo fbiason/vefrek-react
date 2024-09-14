@@ -212,53 +212,64 @@ const Negocios = ({ limitedTo300Km = false }) => {
     };
 
     return (
-        <div className="negocios-recomendados" data-aos="fade-up">
-            <div>
-                <h5>Encontra lo que tu vehículo necesita</h5>
-                <div className="filterTypeContRecomendados">
-                    <input
-                        type="checkbox"
-                        name="distance"
-                        className="filterTypeInputRecomendados"
-                    />
-                    <p>Solo empresas con ofertas</p>
-                    <label className="filterTypeLabelRecomendados"></label>
-                </div>
-                <h1>Negocios recomendados</h1>
+      <div className="negocios-recomendados" data-aos="fade-up">
+        <div>
+          <h5>Encontra lo que tu vehículo necesita</h5>
+          <div className="filter-options">
+            <div className="filterTypeContRecomendados">
+              <input
+                type="checkbox"
+                name="services"
+                className="filterTypeInputRecomendados"
+              />
+              <p>Solo empresas con ofertas</p>
             </div>
-
-            <div className="row-recomendados">
-                <div className="filter-recomendados">
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            className={`filter-btn-recomendados ${filter === category.toLowerCase()
-                                ? "filter-btn-recomendados-active"
-                                : ""
-                                }`}
-                            onClick={() => applyFilter(category.toLowerCase())}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="filter-img-negocios">
-                    {images.map((image, index) => (
-                        <div
-                            key={index}
-                            className={`filter ${filter === "all" ? "" : `filter-${filter}`}`}
-                        >
-                            <img src={image} alt={`Im ${index + 1}`} />
-                        </div>
-                    ))}
-                </div>
+            <div className="filterTypeContRecomendados">
+              <input
+                type="checkbox"
+                name="services"
+                className="filterTypeInputRecomendados"
+              />
+              <p>Servicios 24hs</p>
             </div>
-
-            <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
-                {data}
-            </div>
+          </div>
         </div>
+
+        <div className="row-recomendados">
+          <div className="filter-recomendados">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`filter-btn-recomendados ${
+                  filter === category.toLowerCase()
+                    ? "filter-btn-recomendados-active"
+                    : ""
+                }`}
+                onClick={() => applyFilter(category.toLowerCase())}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="filter-img-negocios">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`filter ${
+                  filter === "all" ? "" : `filter-${filter}`
+                }`}
+              >
+                <img src={image} alt={`Im ${index + 1}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
+          {data}
+        </div>
+      </div>
     );
 };
 

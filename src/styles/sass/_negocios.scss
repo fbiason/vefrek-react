@@ -23,6 +23,33 @@
   text-align: center;
   padding-top: 2rem;
   background-color: #f8f9fa;
+  
+.negocios-recomendados > div {
+  display: flex;
+  flex-direction: column; 
+}
+
+.filterTypeContRecomendados {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem; 
+  margin-top: 0.5rem; 
+}
+
+.filterTypeInputRecomendados {
+  margin-right: 0.5rem; 
+}
+
+h5 {
+  margin-bottom: 0.5rem;
+}
+
 
   h5 {
     color: #333;

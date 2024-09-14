@@ -865,6 +865,27 @@ button {
   padding-top: 2rem;
   background-color: #f8f9fa;
 }
+.negocios-recomendados .negocios-recomendados > div {
+  display: flex;
+  flex-direction: column;
+}
+.negocios-recomendados .filterTypeContRecomendados {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.negocios-recomendados .filter-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.negocios-recomendados .filterTypeInputRecomendados {
+  margin-right: 0.5rem;
+}
+.negocios-recomendados h5 {
+  margin-bottom: 0.5rem;
+}
 .negocios-recomendados h5 {
   color: #333;
   font-size: 1.5rem;
@@ -2283,16 +2304,16 @@ button {
 }
 
 .grid-categories {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-top: 3rem;
   padding: 0 1rem;
-  align-items: start;
 }
 
 .grid-categories > * {
-  width: 100%;
+  flex: 1 1 calc(25% - 2rem);
+  box-sizing: border-box;
 }
 
 @media (min-width: 576px) {
