@@ -363,17 +363,18 @@
 }
 
 .grid-categories {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap; 
   gap: 2rem;
   margin-top: 3rem;
   padding: 0 1rem;
-  align-items: start;
 }
 
 .grid-categories > * {
-  width: 100%;
+  flex: 1 1 calc(25% - 2rem); 
+  box-sizing: border-box; 
 }
+
 
 @media (min-width: 576px) {
   .grid-categories {
