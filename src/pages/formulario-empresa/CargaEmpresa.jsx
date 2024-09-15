@@ -44,7 +44,6 @@ const formDataInitialValues = {
         same_email: false,
         none: true,
     },
-    logo_image_name: "",
     schedules: {
         scheduleType: "LaV",
         personalized: {
@@ -73,6 +72,7 @@ const CargaEmpresa = () => {
     const [logoSrc, setLogoSrc] = useState("");
     const [images, setImages] = useState([]);
     const [imagesNames, setImagesNames] = useState([]);
+    const [logoName, setLogoName] = useState("");
 
     // PopUp
     // const [showPopup, setShowPopup] = useState(false);
@@ -127,14 +127,10 @@ const CargaEmpresa = () => {
         setLogoSrc(stringBase64);
     }
 
-    const handleFileChange = (e) => {
-        const { name, files } = e.target;
-        setFormData({
-            ...formData,
-            [name]: files[0] ? files[0].name : "",
-        });
-
+    const handleLogoChange = (e) => {
+        const { files } = e.target;
         if (files && files.length) {
+            setLogoName(files[0].name);
             changeLogoImage (files[0]);
         }
     };
@@ -150,26 +146,47 @@ const CargaEmpresa = () => {
         });
     };
 
+    const clearFileInInput = (fileName) => {
+        const input = document.querySelector(".carga-company-images-input");
+        const files = input.files;
+        
+        const filesArr = Array.from(files);
+        const index = filesArr.findIndex((file) => file.name === fileName);
+        filesArr.splice(index, 1);
+
+        if (!filesArr.length) {
+            setImagesNames([]);
+            setImages([]);
+        }
+  
+        const dataTransfer = new DataTransfer();
+        filesArr.forEach((file) => dataTransfer.items.add(file));
+                
+        input.files = dataTransfer.files;
+        const event = new Event('change', { bubbles: true });
+        input.dispatchEvent(event);
+    };
+
     const handleFilesChange = async (e) => {
         const { files } = e.target;
-        if (files[0]) {
+        if (files && files.length) {
             const filesArr = Array.from(files);
             const filesArrNames = filesArr.map((file, index) => <p key={index}>{file.name}</p>);
             setImagesNames(filesArrNames);
-        }
 
-        const filesJSX_Arr = [];
-        if (files && files.length) {
+            const filesJSX_Arr = [];
             for (const file of files) {
                 const fileBase64 = await fileToBase64(file);
-
                 filesJSX_Arr.push(
-                    <img
-                        key={file.name}
-                        src={fileBase64}
-                        alt={file.name}
-                        className="carga-images-preview"
-                    />
+                    <div onClick={() => clearFileInInput(file.name)} className="carga-image-cont">
+                        <img src="/images/icons/delete.png" alt="Eliminar Imagen" className="carga-image-deleteIcon" />
+                        <img
+                            key={file.name}
+                            src={fileBase64}
+                            alt={file.name}
+                            className="carga-image-preview"
+                        />
+                    </div>
                 )
             };
             setImages(filesJSX_Arr);
@@ -1039,14 +1056,14 @@ const CargaEmpresa = () => {
                                 Cargar
                             </button>
                             <input
-                                onChange={handleFileChange}
+                                onChange={handleLogoChange}
                                 className="carga-company-logo-input"
                                 type="file"
                                 name="logo_image_name"
                                 accept="image/*"
                                 single="true"
                             />
-                            {formData.logo_image_name}
+                            {logoName}
                         </div>
 
                         <div className="carga-images-section">
