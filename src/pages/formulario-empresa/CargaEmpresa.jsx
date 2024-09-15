@@ -154,8 +154,8 @@ const CargaEmpresa = () => {
         const index = filesArr.findIndex((file) => file.name === fileName);
         filesArr.splice(index, 1);
 
-        if (!filesArr.length) {
-            setImagesNames([]);
+        if (!filesArr.length) {                                                     //Por alguna razon al eliminar el ultimo archivo, no se detecta el change en el input y queda la imagen generada en base 64.
+            setImagesNames([]);                                                     // Eliminamos la imagen y su nombre mostrados, manualmente    
             setImages([]);
         }
   
@@ -167,8 +167,8 @@ const CargaEmpresa = () => {
         input.dispatchEvent(event);
     };
 
-    const handleFilesChange = async (e) => {
-        const { files } = e.target;
+    const handleFilesChange = async (e) => {                                        //Generacion de imagenes adjuntadas al input
+        const { files } = e.target; 
         if (files && files.length) {
             const filesArr = Array.from(files);
             const filesArrNames = filesArr.map((file, index) => <p key={index}>{file.name}</p>);
