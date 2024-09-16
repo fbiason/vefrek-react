@@ -2890,6 +2890,26 @@ select::placeholder {
   margin-bottom: 2rem;
 }
 
+.carga-logo-preview {
+  height: 150px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+}
+
+.carga-images-preview-cont{
+  width: 100%;
+  gap: 20px;
+}
+
+.carga-images-preview {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+  background-color: white;
+}
+
 .carga-seclogo {
   display: flex;
   flex-direction: column;
