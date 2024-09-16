@@ -1094,6 +1094,16 @@ button {
     max-width: 25%;
   }
 }
+@media (max-width: 576px) {
+  .filterTypeContRecomendados {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .filterTypeContRecomendados p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+}
 .businessCard-container {
   margin-bottom: 20px;
   padding: 1rem;
@@ -1873,10 +1883,6 @@ button {
 }
 
 /*Btns Carga Empresa*/
-.btn-guardar-carga {
-  margin: 1rem;
-}
-
 .btn-cancelar-carga {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -2443,6 +2449,7 @@ select::placeholder {
 }
 
 .btn-guardar {
+  margin: 1rem;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   color: #1a2a3a !important;
@@ -2905,6 +2912,7 @@ select::placeholder {
   margin-bottom: 2rem;
 }
 
+<<<<<<< HEAD
 .carga-logo-preview {
   height: 150px;
   aspect-ratio: 1/1;
@@ -2939,6 +2947,8 @@ select::placeholder {
   background-color: white;
 }
 
+=======
+>>>>>>> e7b64e231085388d05292c51efab6ffaf7f05668
 .carga-seclogo {
   display: flex;
   flex-direction: column;
@@ -3024,10 +3034,6 @@ select::placeholder {
 }
 
 /*Btns Carga Empresa*/
-.btn-guardar-carga {
-  margin: 1rem;
-}
-
 .btn-cancelar-carga {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;

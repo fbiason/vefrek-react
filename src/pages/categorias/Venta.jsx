@@ -348,18 +348,17 @@ const Venta = () => {
                 name="state"
                 className="filterTypeInput"
                 onClick={handleFilterTypeChange}
-                checked={filterType === "state"} // Está seleccionado por defecto
+                checked={filterType === "state"}
               />
               <label htmlFor="filterByState" className="filterTypeLabel">
                 Filtrar por provincia
               </label>
-
               <input
                 type="checkbox"
                 name="distance"
                 className="filterTypeInput"
                 onClick={handleFilterTypeChange}
-                checked={filterType === "distance"} // No está seleccionado inicialmente
+                checked={filterType === "distance"}
               />
               <label htmlFor="filterByDistance" className="filterTypeLabel">
                 Filtrar por distancia

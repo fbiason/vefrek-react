@@ -875,11 +875,6 @@ export default function EditarEmpresa() {
               </div>
             </div>
           </div>
-          <div className="btn-carga-edicion">
-            <button type="submit" className="btn-guardar">
-              Guardar seccion
-            </button>
-          </div>
 
           <div className="linea-divisoria"></div>
 
@@ -901,11 +896,6 @@ export default function EditarEmpresa() {
             {!hDef && horarioPersJSX}
           </div>
 
-          <div className="btn-carga-edicion">
-            <button type="submit" className="btn-guardar">
-              Guardar seccion
-            </button>
-          </div>
           <div className="linea-divisoria"></div>
 
           {/*rrss*/}
@@ -1019,11 +1009,6 @@ export default function EditarEmpresa() {
             </form>
           </div>
 
-          <div className="btn-carga-edicion">
-            <button type="submit" className="btn-guardar">
-              Guardar seccion
-            </button>
-          </div>
           <div className="linea-divisoria"></div>
           {/*logo*/}
           <div className="logo-section">
