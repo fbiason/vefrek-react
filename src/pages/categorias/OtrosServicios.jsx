@@ -352,16 +352,6 @@ const OtrosServicios = () => {
               <div className="filterType">
                 <input
                   type="checkbox"
-                  name="distance"
-                  className="filterTypeInput"
-                  onClick={handleFilterTypeChange}
-                  checked={filterType === "distance"}
-                />
-                <label htmlFor="filterByDistance" className="filterTypeLabel">
-                  Filtrar por distancia
-                </label>
-                <input
-                  type="checkbox"
                   name="state"
                   className="filterTypeInput"
                   onClick={handleFilterTypeChange}
@@ -369,6 +359,16 @@ const OtrosServicios = () => {
                 />
                 <label htmlFor="filterByState" className="filterTypeLabel">
                   Filtrar por provincia
+                </label>
+                <input
+                  type="checkbox"
+                  name="distance"
+                  className="filterTypeInput"
+                  onClick={handleFilterTypeChange}
+                  checked={filterType === "distance"}
+                />
+                <label htmlFor="filterByDistance" className="filterTypeLabel">
+                  Filtrar por distancia
                 </label>
               </div>
               {filterType === "distance" && (
