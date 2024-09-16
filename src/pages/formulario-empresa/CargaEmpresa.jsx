@@ -99,7 +99,7 @@ const CargaEmpresa = () => {
         const ciudadesList = localidadesData.localidades
             .filter((localidad) => localidad.provincia.nombre === stateSelect)
             .map((localidad) => localidad.nombre);
-        setCiudades(ciudadesList);
+        setCiudades(ciudadesList.sort());
     }
 
     const handleProvinciaChange = (e) => {
