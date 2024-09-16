@@ -23,6 +23,7 @@ const formDataInitialValues = {
     vefrek_website: "",
     category: "",
     subcategory: "",
+    servicio_24hs: false,
     closing: "",
     social: {
         email: "",
@@ -823,6 +824,18 @@ const CargaEmpresa = () => {
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            {/*Servicio 24hs*/}
+                            <div className="filterTypeContRecomendados emergencia-form">
+                                <input
+                                    type="checkbox"
+                                    name="servicio_24hs"
+                                    id="servicio-24hs"
+                                    checked={formData.servicio_24hs || false}
+                                    onChange={handleChange}
+                                    className="filterTypeInputRecomendados"
+                                />
+                                <p>Ofrece Servicio 24hs</p>
                             </div>
                         </div>
                     </div>

@@ -873,6 +873,18 @@ export default function EditarEmpresa() {
                   </select>
                 </div>
               </div>
+              {/*Servicio 24hs*/}
+              <div className="filterTypeContRecomendados emergencia-form">
+                <input
+                  type="checkbox"
+                  name="servicio_24hs"
+                  id="servicio-24hs"
+                  checked={formData.servicio_24hs || false}
+                  onChange={handleChange}
+                  className="filterTypeInputRecomendados"
+                />
+                <p>Ofrece Servicio 24hs</p>
+              </div>
             </div>
           </div>
 
@@ -1064,8 +1076,7 @@ export default function EditarEmpresa() {
                     max={6}
                   />
                 </label>
-                <span className="file-upload-info">
-                </span>
+                <span className="file-upload-info"></span>
               </div>
 
               <p>PNG, JPG, GIF up to 10MB</p>
