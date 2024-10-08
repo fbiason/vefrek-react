@@ -3423,7 +3423,7 @@ select::placeholder {
 }
 .mapa-google {
   width: 100%;
-  border-radius: 50%;
+  border-radius: 10%;
   overflow: hidden;
   border: 1px solid #000;
   height: 400px;
