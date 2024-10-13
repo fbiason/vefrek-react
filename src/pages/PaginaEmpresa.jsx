@@ -554,15 +554,15 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true, // Autoplay activado
-  autoplaySpeed: 3000, // Velocidad del autoplay (3 segundos)
-  arrows: true, // Flechas de navegación activadas
-  nextArrow: <SampleNextArrow />, // Flecha personalizada hacia adelante
-  prevArrow: <SamplePrevArrow />, // Flecha personalizada hacia atrás
+  autoplay: true,
+  autoplaySpeed: 3000, 
+  arrows: true, 
+  nextArrow: <SampleNextArrow />, 
+  prevArrow: <SamplePrevArrow />, 
 };
 
   return (
-    <section className="contenedor-principal">
+    <section className="contenedor-principal background">
       {/* Columna A */}
       <div className="columnaA">
         {/* Fila 1: Logo, nombre y carrusel */}

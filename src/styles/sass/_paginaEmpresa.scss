@@ -2,10 +2,8 @@
 .columnaA {
   display: flex;
   flex-direction: column;
-  width: 70%; 
-  padding: 20px; 
+  width: 70%;  
 }
-
 
 .fila-logo-carrusel {
   display: flex;
@@ -23,21 +21,79 @@
   width: 150px;
   height: 150px;
 }
+
 .logo-empresa-img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid #000;
-  height: 400px;
+  border: 2px solid #ddd;
 }
 
+/* Nombre y slogan de la empresa */
+.empresa-nombre-slogan {
+  text-align: start;
+}
 
+.empresa-nombre {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
 
+.empresa-slogan {
+  font-size: 16px;
+  color: #777;
+  margin-top: 5px;
+}
 
-@media (max-width: 552px) {
-  .background-empresa {
-    padding-top: 3rem;
-  }
+/* Carrusel de imágenes */
+.carrusel-imagenes {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrusel-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.carrusel-img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para la fila de información */
+.fila-informacion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px; 
+}
+
+.informacion-titulo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.informacion-descripcion {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 /* Estilos para la fila de opiniones */
@@ -127,7 +183,7 @@
   gap: 20px;
   width: 30%;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: rgb(147, 147, 147);
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -215,22 +271,21 @@
 /* Contenedor principal */
 .contenedor-principal {
   display: flex;
-  gap: 20px; /* Espacio entre las columnas */
+  gap: 20px; 
   padding: 20px;
-  margin-top: 80px; /* Ajusta este valor según la altura de tu header */
-  align-items: flex-start; /* Alinea las columnas al inicio (parte superior) */
-  justify-content: space-between; /* Asegura que las columnas se distribuyan correctamente */
-  height: auto; /* Asegura que ambas columnas se ajusten dinámicamente a su contenido */
+  padding-top: 10rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: auto;
 }
-
 
 /* Columna A */
 .columnaA {
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espacio entre filas */
-  justify-content: flex-start; /* Asegura que el contenido esté alineado al principio */
+  gap: 20px; 
+  justify-content: flex-start; 
   height: auto;
 }
 
@@ -246,7 +301,7 @@
 
 /* Otras clases existentes para las filas y elementos */
 .fila {
-  background-color: #ffffff;
+  background-color: rgb(147, 147, 147);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -265,6 +320,7 @@
   width: 150px;
   height: 150px;
 }
+
 .logo-empresa-img {
   width: 100%;
   height: 100%;
@@ -294,7 +350,6 @@
   margin-top: 5px;
 }
 
-/* Estilos base para las flechas */
 /* Estilos base para las flechas */
 .custom-arrow {
   z-index: 1;
@@ -335,75 +390,76 @@
   height: 40px;
 }
 
-/* Estilos generales para versiones móviles */
+/* Estilos para versiones móviles */
 @media (max-width: 768px) {
   /* Asegura que la columna A y B estén una debajo de la otra en pantallas pequeñas */
   .contenedor-principal {
     flex-direction: column;
-    gap: 10px; /* Espacio reducido en móviles */
+    padding-top: 1rem;
+    gap: 10px;
   }
 
   /* Ajustes para la columna A */
   .columnaA {
-    width: 100%; /* Toma todo el ancho en móviles */
-    padding: 10px; /* Reducir padding */
+    width: 100%;
+    padding: 10px;
   }
 
   /* Ajustes para la columna B */
   .columnaB {
-    width: 100%; /* Toma todo el ancho en móviles */
-    padding: 10px; /* Reducir padding */
+    width: 100%; 
+    padding: 10px;
   }
 
   /* Ajustar el logo y nombre de la empresa */
   .logo-nombre-contenedor {
-    flex-direction: column; /* Colocar el logo y nombre en columna */
-    align-items: center; /* Centrar los elementos */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .empresa-nombre-slogan {
-    text-align: center; /* Centrar el texto en móviles */
+    text-align: center;
   }
 
   .logo-empresa {
-    width: 120px; /* Ajustar el tamaño del logo para móviles */
+    width: 120px; 
     height: 120px;
   }
 
   /* Ajustes para el carrusel de imágenes */
   .carrusel-imagenes {
-    width: 100%; /* Ajustar el carrusel al ancho completo en móviles */
+    width: 100%; 
   }
 
   /* Ajustes de las flechas del carrusel en móviles */
   .prev-arrow,
   .next-arrow {
-    width: 30px; /* Ajustar tamaño de las flechas en móviles */
+    width: 30px;
     height: 30px;
-    font-size: 16px; /* Ajustar el tamaño del ícono de la flecha */
+    font-size: 16px;
   }
 
   .prev-arrow {
-    left: -30px; /* Ajustar la posición de la flecha en móviles */
+    left: -30px; 
   }
 
   .next-arrow {
-    right: -30px; /* Ajustar la posición de la flecha en móviles */
+    right: -30px; 
   }
 
   /* Ajustes de la fila de información */
   .fila-informacion {
-    padding: 15px; /* Reducir padding en móviles */
+    padding: 15px; 
   }
 
   /* Ajustes de la fila de opiniones */
   .fila-opiniones {
-    padding: 15px; /* Reducir padding en móviles */
+    padding: 15px; 
   }
 
   /* Ajustes para el mapa */
   .ubicacion-container {
-    height: 250px; /* Reducir la altura del mapa en móviles */
+    height: 250px;
   }
 
   /* Ajustes para los elementos de contacto */
@@ -411,13 +467,13 @@
   .datos-telefono,
   .datos-sitio-web,
   .datos-horario {
-    font-size: 14px; /* Reducir el tamaño de fuente en móviles */
+    font-size: 14px;
   }
 
   /* Ajustes para la tabla de horarios */
   .horario-table th,
   .horario-table td {
-    padding: 6px 8px; /* Reducir padding en la tabla */
+    padding: 6px 8px; 
   }
 }
 
@@ -425,24 +481,24 @@
 @media (max-width: 480px) {
   /* Ajustar el logo en pantallas muy pequeñas */
   .logo-empresa {
-    width: 100px; /* Reducir aún más el logo */
+    width: 100px;
     height: 100px;
   }
 
   /* Ajustes para el carrusel en pantallas muy pequeñas */
   .carrusel-imagenes {
-    width: 100%; /* Mantener el ancho completo */
-    height: 250px; /* Reducir la altura del carrusel */
+    width: 100%; 
+    height: 250px; 
   }
 
   .carrusel-img {
-    height: 250px; /* Reducir la altura de las imágenes del carrusel */
+    height: 250px;
   }
 
   /* Ajustar las flechas en pantallas pequeñas */
   .prev-arrow,
   .next-arrow {
-    width: 25px; /* Reducir el tamaño de las flechas */
+    width: 25px; 
     height: 25px;
     font-size: 14px;
   }
@@ -458,7 +514,7 @@
   /* Ajustes de la fila de información y opiniones en pantallas pequeñas */
   .fila-informacion,
   .fila-opiniones {
-    padding: 10px; /* Reducir el padding aún más */
+    padding: 10px;
   }
 
   /* Ajustes para los elementos de contacto */
@@ -466,6 +522,6 @@
   .datos-telefono,
   .datos-sitio-web,
   .datos-horario {
-    font-size: 12px; /* Reducir el tamaño de fuente en pantallas muy pequeñas */
+    font-size: 12px; 
   }
 }
