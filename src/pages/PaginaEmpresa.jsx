@@ -580,8 +580,15 @@ const settings = {
 
             {/* Nombre y slogan de la empresa */}
             <div className="empresa-nombre-slogan">
+              <div className="empresa-nombre-fav"></div>
               <h2 className="empresa-nombre">{companyData.name}</h2>
               <p className="empresa-slogan">{companyData.slogan}</p>
+              <label
+                className="businessCard-favoriteLabel"
+                onClick={handleFavorites}
+              >
+                <BsStarFill className="businessCard-starIcon" />
+              </label>
             </div>
           </div>
 
