@@ -140,17 +140,17 @@ const Dashboard = () => {
             (company, index) => (
               <Link
                 key={index}
-                className="col mb-4"
+                className="custom-column"
                 to={`/${company.vefrek_website}`}
               >
-                <div className={`image-container img-${index + 1}`}>
+                <div className="business-card">
                   <img
                     src={company.images.images[0].url}
                     alt={"company" + company._id}
-                    className="img-fluid"
+                    className="custom-image"
                   />
-                  <div className="overlay">
-                    <h3 className="text-white">{company.name}</h3>
+                  <div className="custom-overlay">
+                    <h3 className="custom-text">{company.name}</h3>
                   </div>
                 </div>
               </Link>
@@ -283,95 +283,81 @@ const Dashboard = () => {
         Salir
       </button>
 
-      <section className="content">
+      <section className="content-dash">
         <div className="left-content">
-          <div className="container col-xl-12">
-            <div className="row fila1">
-              <div className="col-md-12">
-                <div className="mas-consultados">
-                  <h1>Negocios más consultados</h1>
-                  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-                    {activityData}
+          <div className="consultados-container">
+            <div className="consultados-header">
+              <h1>Negocios más consultados</h1>
+              <div className="consultados-grid">{activityData}</div>
+            </div>
+          </div>
+
+          <div className="descuentos-container">
+            <div className="descuentos-header">
+              <h1>Próximos descuentos</h1>
+              <div className="descuentos-list">
+                {scheduleData.map((item, index) => (
+                  <div key={index} className="descuento-item">
+                    <div className="day">
+                      <h1>{item.day}</h1>
+                      <p>{item.dayName}</p>
+                    </div>
+                    <div className="activity">
+                      <h2>{item.activity}</h2>
+                      <p>{item.empresa}</p>
+                      <div className="participants"></div>
+                    </div>
+                    <button className="btn-descuentos">Más info</button>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
+          </div>
 
-            <div className="container">
-              <div className="row fila2">
-                <div className="col-xl-12 order-md-1 order-2">
-                  <div className="left-bottom">
-                    <div className="descuentos">
-                      <h1 className="mb-4">Próximos descuentos</h1>
-                      <div>
-                        {scheduleData.map((item, index) => (
-                          <div key={index} className="prox-desc mb-3">
-                            <div className="day">
-                              <h1>{item.day}</h1>
-                              <p>{item.dayName}</p>
-                            </div>
-                            <div className="activity">
-                              <h2>{item.activity}</h2>
-                              <p>{item.empresa}</p>
-                              <div className="participants"></div>
-                            </div>
-                            <button className="btn-descuentos">Más info</button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-12 order-md-2 order-1 mt-5">
-                  <div className="notifi-box" id="box">
-                    <h2>
-                      Comentarios recibidos{" "}
-                      <span className="badge bg-secondary">3</span>
-                    </h2>
-                    <div className="comentarios-container">
-                      <div className="notifi-item mb-3">
-                        <div className="text">
-                          <h5>Biason Automotores</h5>
-                          <h4>Biason Franco</h4>
-                          <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Ratione, vel veritatis facilis, enim natus
-                            debitis asperiores molestiae alias illo nulla,
-                            quaerat optio repellendus! Dolorem temporibus
-                            voluptates animi vero soluta illum.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="notifi-item mb-3">
-                        <div className="text">
-                          <h5>BiWeb</h5>
-                          <h4>Ariel Conrado</h4>
-                          <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Voluptates odio ipsam, iste odit quis velit
-                            eius voluptatem rerum error deleniti vero adipisci
-                            minima voluptatum unde ex, veniam a quo nisi?
-                          </p>
-                        </div>
-                      </div>
-                      <div className="notifi-item mb-3">
-                        <div className="text">
-                          <h5>YPF</h5>
-                          <h4>Reyes Denis</h4>
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Magni eligendi dicta harum excepturi
-                            voluptatem eveniet magnam, temporibus tenetur minima
-                            voluptate quo assumenda quia repellendus cumque
-                            modi. Placeat consequuntur dolores ea!
-                          </p>
-                        </div>
-                      </div>
-                      <h5 className="p-3">Ver más comentarios...</h5>
-                    </div>
-                  </div>
+          <div className="notificaciones-container">
+            <h2>
+              Comentarios recibidos <span className="badge">3</span>
+            </h2>
+            <div className="comentarios-list">
+              <div className="comentario-item">
+                <div className="text">
+                  <h5>Biason Automotores</h5>
+                  <h4>Biason Franco</h4>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Ratione, vel veritatis facilis, enim natus debitis
+                    asperiores molestiae alias illo nulla, quaerat optio
+                    repellendus! Dolorem temporibus voluptates animi vero soluta
+                    illum.
+                  </p>
                 </div>
               </div>
+              <div className="comentario-item">
+                <div className="text">
+                  <h5>BiWeb</h5>
+                  <h4>Ariel Conrado</h4>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Voluptates odio ipsam, iste odit quis velit eius voluptatem
+                    rerum error deleniti vero adipisci minima voluptatum unde
+                    ex, veniam a quo nisi?
+                  </p>
+                </div>
+              </div>
+              <div className="comentario-item">
+                <div className="text">
+                  <h5>YPF</h5>
+                  <h4>Reyes Denis</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Magni eligendi dicta harum excepturi voluptatem eveniet
+                    magnam, temporibus tenetur minima voluptate quo assumenda
+                    quia repellendus cumque modi. Placeat consequuntur dolores
+                    ea!
+                  </p>
+                </div>
+              </div>
+              <h5 className="more-comments">Ver más comentarios...</h5>
             </div>
           </div>
         </div>
@@ -383,16 +369,13 @@ const Dashboard = () => {
                 <h5>{userInfo.name}</h5>
               </div>
               <div>
-                <div className="user-info mt-4">
+                <div className="user-info avatar-section">
                   <img src={userInfo.avatarImageSrc} alt="user" />
                 </div>
               </div>
-              <div>
-                <div className="user-info"></div>
-              </div>
             </div>
 
-            <div className="recomendaciones mt-4">
+            <div className="recomendaciones-section">
               <h1>Recomendaciones</h1>
               <div className="card-container">{recommendedCompanys}</div>
             </div>

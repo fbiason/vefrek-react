@@ -141,7 +141,7 @@ const NegociosDash = () => {
     <main className="dashboardMain">
       <NavBarDash></NavBarDash>
       <button
-        className="btn btn-primary dashboardClose"
+        className="dashboardCloseBtn"
         onClick={() => {
           const previousSaved = localStorage.getItem("previousPathToDash");
           previousSaved ? navigate(previousSaved) : navigate("/");

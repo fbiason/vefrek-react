@@ -65,33 +65,33 @@ const Favoritos = () => {
     }, [userData.isLogged]);
 
     return (
-        <main className="dashboardMain">
-            <NavBarDash />
-            <button
-                className="btn btn-primary dashboardClose"
-                onClick={() => {
-                    const previousSaved = localStorage.getItem("previousPathToDash");
-                    previousSaved
-                        ? navigate(localStorage.getItem("previousPathToDash"))
-                        : navigate("/");
-                }}
-            >
-                Salir
-            </button>
+      <main className="dashboardMain">
+        <NavBarDash />
+        <button
+          className="dashboardCloseBtn"
+          onClick={() => {
+            const previousSaved = localStorage.getItem("previousPathToDash");
+            previousSaved
+              ? navigate(localStorage.getItem("previousPathToDash"))
+              : navigate("/");
+          }}
+        >
+          Salir
+        </button>
 
-            <section className="favoritos">
-                <div>
-                    <h1 className="titulo-dash">Favoritos</h1>
-                </div>
-                <div className="row content-fav">
-                    {favoritesCompanys.length > 0 ? (
-                        favoritesCompanys
-                    ) : (
-                        <p className="col">No hay resultados</p>
-                    )}
-                </div>
-            </section>
-        </main>
+        <section className="favoritos">
+          <div>
+            <h1 className="titulo-dash">Favoritos</h1>
+          </div>
+          <div className="row content-fav">
+            {favoritesCompanys.length > 0 ? (
+              favoritesCompanys
+            ) : (
+              <p className="col">No hay resultados</p>
+            )}
+          </div>
+        </section>
+      </main>
     );
 };
 

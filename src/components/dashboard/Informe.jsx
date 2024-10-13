@@ -246,96 +246,100 @@ const Informe = () => {
     }, [userData.email]);
         
     return (
-        <main className="dashboardMain">
-            <NavBarDash></NavBarDash>
-            <button
-                className="btn btn-primary dashboardClose"
-                onClick={() => {
-                    const previousSaved = localStorage.getItem("previousPathToDash");
-                    previousSaved
-                        ? navigate(localStorage.getItem("previousPathToDash"))
-                        : navigate("/");
-                }}
-            >
-                Salir
-            </button>
+      <main className="dashboardMain">
+        <NavBarDash></NavBarDash>
+        <button
+          className="dashboardCloseBtn"
+          onClick={() => {
+            const previousSaved = localStorage.getItem("previousPathToDash");
+            previousSaved
+              ? navigate(localStorage.getItem("previousPathToDash"))
+              : navigate("/");
+          }}
+        >
+          Salir
+        </button>
 
-            <div className="info">
-                <div>
-                    <div>
-                        <h1 className="titulo-dash">Informe</h1>
-                    </div>
-                    <div className="container card-informe row">
-                        {show && (
-                            <>
-                                <div className="col-md-12">
-                                    <p>Seleccione su empresa:</p>
-                                </div>
-                                <div className="col-md-12 mt-3">
-                                    <select
-                                        className="form-select"
-                                        onChange={(e) => setReport(e.target.value)}
-                                    >
-                                        {selectOptions}
-                                    </select>
-                                </div>
-                            </>
-                        )}
-
-                        <div className="row mt-4">
-                            <div className="informe-datos">
-                                <div className="icono-y-numero">
-                                    <FontAwesomeIcon icon={faStar} className="icono" />
-                                    <h1>{reportInfo.myFavoritesCount}</h1>
-                                </div>
-                                <p>Guardados</p>
-                            </div>
-
-                            <div className="informe-datos">
-                                <div className="icono-y-numero">
-                                    <FontAwesomeIcon icon={faComment} className="icono" />
-                                    <h1>
-                                        {reportInfo.averageReviewsScore || (
-                                            <span style={{ fontSize: "18px" }}>Sin valoraciones</span>
-                                        )}
-                                    </h1>
-                                </div>
-                                <p>Promedio de valoraciones</p>
-                            </div>
-
-                            <div className="informe-datos">
-                                <div className="icono-y-numero">
-                                    <FontAwesomeIcon icon={faCommentAlt} className="icono" />
-                                    <h1>
-                                        {reportInfo.reviewsCount || (
-                                            <span style={{ fontSize: "18px" }}>Sin comentarios</span>
-                                        )}
-                                    </h1>
-                                </div>
-                                <p>Comentarios recibidos</p>
-                            </div>
-
-                            <div className="informe-datos">
-                                <div className="icono-y-numero">
-                                    <FontAwesomeIcon icon={faEye} className="icono" />
-                                    <h1>{reportInfo.visitsCount}</h1>
-                                </div>
-                                <p>Visitas</p>
-                            </div>
-                        </div>
-
-                        {show && (
-                            <div className="col-md-6 mt-5 visitas">
-                                <div className="card custom-card">
-                                    <h3 className="chart-lbl">Visitas mensaules</h3>
-                                    <div id="chart"></div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
+        <div className="info">
+          <div>
+            <div>
+              <h1 className="titulo-dash">Informe</h1>
             </div>
-        </main>
+            <div className="container card-informe row">
+              {show && (
+                <>
+                  <div className="col-md-12">
+                    <p>Seleccione su empresa:</p>
+                  </div>
+                  <div className="col-md-12 mt-3">
+                    <select
+                      className="form-select"
+                      onChange={(e) => setReport(e.target.value)}
+                    >
+                      {selectOptions}
+                    </select>
+                  </div>
+                </>
+              )}
+
+              <div className="row mt-4">
+                <div className="informe-datos">
+                  <div className="icono-y-numero">
+                    <FontAwesomeIcon icon={faStar} className="icono" />
+                    <h1>{reportInfo.myFavoritesCount}</h1>
+                  </div>
+                  <p>Guardados</p>
+                </div>
+
+                <div className="informe-datos">
+                  <div className="icono-y-numero">
+                    <FontAwesomeIcon icon={faComment} className="icono" />
+                    <h1>
+                      {reportInfo.averageReviewsScore || (
+                        <span style={{ fontSize: "18px" }}>
+                          Sin valoraciones
+                        </span>
+                      )}
+                    </h1>
+                  </div>
+                  <p>Promedio de valoraciones</p>
+                </div>
+
+                <div className="informe-datos">
+                  <div className="icono-y-numero">
+                    <FontAwesomeIcon icon={faCommentAlt} className="icono" />
+                    <h1>
+                      {reportInfo.reviewsCount || (
+                        <span style={{ fontSize: "18px" }}>
+                          Sin comentarios
+                        </span>
+                      )}
+                    </h1>
+                  </div>
+                  <p>Comentarios recibidos</p>
+                </div>
+
+                <div className="informe-datos">
+                  <div className="icono-y-numero">
+                    <FontAwesomeIcon icon={faEye} className="icono" />
+                    <h1>{reportInfo.visitsCount}</h1>
+                  </div>
+                  <p>Visitas</p>
+                </div>
+              </div>
+
+              {show && (
+                <div className="col-md-6 mt-5 visitas">
+                  <div className="card custom-card">
+                    <h3 className="chart-lbl">Visitas mensaules</h3>
+                    <div id="chart"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </main>
     );
 };
 
