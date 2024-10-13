@@ -1,719 +1,524 @@
-.background-empresa {
-  padding-top: 10rem;
-  padding-right: 3rem;
-  padding-bottom: 3rem;
-  min-height: fit-content;
-  align-items: center;
-  justify-content: center;
-  background-color: hsl(218deg, 41%, 15%);
-  background-image: radial-gradient(
-      650px circle at 0% 0%,
-      hsl(218deg, 41%, 35%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    ),
-    radial-gradient(
-      1250px circle at 100% 100%,
-      hsl(218deg, 41%, 45%) 15%,
-      hsl(218deg, 41%, 30%) 35%,
-      hsl(218deg, 41%, 20%) 75%,
-      hsl(218deg, 41%, 19%) 80%,
-      transparent 100%
-    );
-}
-.informacion-container h2,
-.reseña-container h2 {
-  font-size: xx-large;
-  margin-bottom: 1rem;
-}
-
-//* CóDIGO NUEVO
-.business-row {
+/* Estilos para la columna A */
+.columnaA {
   display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 70%; 
+  padding: 20px; 
 }
 
-.business-column {
-  flex: 0 0 66.66667%;  
-  max-width: 66.66667%; 
-  
-  @media (max-width: 576px) {
-    flex: 0 0 50%;  
-    max-width: 50%;
-  }
+
+.fila-logo-carrusel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; 
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.business-cont {
-  padding-left: 2rem;
+/* Logo de la empresa */
+.logo-empresa {
+  width: 150px;
+  height: 150px;
 }
-
-@media (max-width: 768px) {
-  .business-cont {
-    padding: 0;
-  }
-}
-
-//* CóDIGO VIEJO
-.mapa-google {
+.logo-empresa-img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* Nombre y slogan de la empresa */
+.empresa-nombre-slogan {
+  text-align: center;
+}
+.empresa-nombre {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+.empresa-slogan {
+  font-size: 16px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Carrusel de imágenes */
+.carrusel-imagenes {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #000;
-  height: 400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.carrusel-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.carrusel-img:hover {
+  transform: scale(1.05);
 }
 
-
-
-
-@media (max-width: 552px) {
-  .background-empresa {
-    padding-top: 3rem;
-  }
+/* Estilos para la fila de información */
+.fila-informacion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* Espacio entre los elementos */
 }
 
-/* --- Lapiz comentarios ---*/
+.informacion-titulo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.informacion-descripcion {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* Estilos para la fila de opiniones */
+.fila-opiniones {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+}
+
+/* Encabezado de la sección de opiniones */
 .opiniones-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.opiniones-titulo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
 }
 
 .btn-icon {
-  background: none;
-  border-radius: 1rem;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  width: auto;
-  height: auto;
+  color: #555;
+  transition: color 0.3s ease;
 }
 
-.btn-icon .MuiSvgIcon-root {
-  font-size: 1.5rem;
+.btn-icon:hover {
   color: #000;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
-/*--- Nombre y Slogan Empresa ---*/
-
-.logo-nombre-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.nombre-slogan-container {
+/* Lista de opiniones */
+.opiniones-lista {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  text-align: start;
-  padding: 0 1rem;
+  gap: 15px;
 }
 
-.nombre-slogan-container h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+/* Cada tarjeta de opinión */
+.opinion-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.nombre-slogan-container p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-/*--- Logo Empresa ---*/
-
-.perfil-card-element1 .logo-empresa {
-  padding: 1rem;
-  width: 80%;
-  height: 80%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.fecha-carga {
-  align-items: start;
-  padding-bottom: 1rem;
-}
-
-/*---  ---*/
-
-.image-container {
-  width: auto;
-  height: 400px;
-}
-
-.card-empresa {
-  background-color: rgb(186, 185, 185);
-  padding: 2rem;
-  margin: 1rem;
-  border-radius: 2rem;
-}
-
-.pagina-empresa-container {
+/* Estilos para cada opinión */
+.opinion-header {
   display: flex;
   justify-content: space-between;
-  margin: 2rem;
-}
-
-.column-1 {
-  flex: 1;
-  max-width: 70%;
-}
-
-.column-1 .perfil-card {
-  flex-basis: 100%;
-}
-
-.slick-slider img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-}
-
-.informacion-container,
-.reseña-container,
-.nombre-slogan-container {
-  margin-top: 20px;
-}
-
-.slick-list {
-  box-sizing: none;
-}
-
-.logo-container img {
-  border-radius: 15rem;
-}
-
-.perfil-card-element1 img {
-  width: 100%;
-  height: auto;
-  max-width: 1280px;
-  max-height: 720px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.imagen-seleccionada {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  border: 2px solid rgb(0, 197, 142);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.max-w-lg {
-  background-color: rgb(223, 223, 223);
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.imagen-seleccionada {
-  border: 2px solid rgb(0, 197, 142);
-}
-
-.img-fluid {
-  border-radius: 2rem;
-  max-width: 100%;
-  height: auto;
-}
-
-.first-image-carousel {
-  border-radius: 2rem;
-  display: block;
-  margin: 0 auto;
-}
-
-.image-container img {
-  border-radius: 2rem;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.informacion-container,
-.reseña-container {
-  margin-top: 20px;
-}
-
-.slick-prev,
-.slick-next {
-  font-size: 3rem !important;
-  z-index: 2;
-  color: #000;
-  top: 50%;
-  position: absolute;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  font-size: 3rem !important;
-  color: #fff8f8;
-}
-
-.slick-list {
-  box-sizing: none;
-}
-
-.perfil-card-element1 img {
-  width: 100%;
-  height: auto;
-  max-width: 1280px;
-  max-height: 720px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.imagen-seleccionada {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  border: 2px solid rgb(0, 197, 142);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-/*================*/
-
-.table-headline .opening-hours {
-  width: 100%;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos para la clase "table-open" */
-.table-open {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-}
-
-.table-open th,
-.table-open td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid #dee2e6;
-}
-
-.table-open thead th {
-  vertical-align: bottom;
-  border: none;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.table-open tbody + tbody {
-  border-top: 2px solid #dee2e6;
-}
-
-/*================*/
-* .max-w-lg {
-  background-color: rgb(223, 223, 223);
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.img-negocio img {
-  border-radius: 2rem;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.imagen-seleccionada {
-  border: 2px solid rgb(0, 197, 142);
-}
-
-.reportar {
-  background-color: whitesmoke;
-  color: red;
-  transition: 0.4s;
-  font-weight: 700;
-  width: 50%;
-  padding: 10px;
-  display: block;
-  margin: auto;
-  text-align: center;
-  white-space: nowrap; /* Evita el salto de línea del texto */
-  overflow: hidden; /* Oculta el texto que no cabe */
-  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si el texto se corta */
-}
-
-.reportar:hover {
-  background-color: red;
-  color: whitesmoke;
-}
-
-.redes-sociales-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.redes-sociales-container a {
-  margin: 5px;
-}
-
-.redes-sociales-container i {
-  font-size: 36px;
-  transition: color 0.3s ease-in-out;
-}
-
-.redes-sociales-container i:hover {
-  color: rgb(0, 197, 142);
-}
-
-.google-map {
-  width: 430px;
-  height: 250px;
-  border: 0;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-/*==== INICIO STAR ======*/
-
-.rating {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  overflow: hidden;
-  flex-direction: row-reverse;
-  position: relative;
-}
-
-.rating-0 {
-  filter: grayscale(100%);
-}
-
-.rating > input {
-  display: none;
-}
-
-.rating > label {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  margin-top: auto;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23e3e3e3' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 76%;
-  transition: 0.3s;
-}
-
-.rating > input:checked ~ label,
-.rating > input:checked ~ label ~ label {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fcd93a' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
-}
-
-.rating > input:not(:checked) ~ label:hover,
-.rating > input:not(:checked) ~ label:hover ~ label {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23d8b11e' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
-}
-
-.feedback {
-  max-width: 60%;
-  background-color: #00000055;
-  padding: 0.5rem;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-}
-
-/*===FIN STAR ===*/
-
-@media (max-width: 768px) {
-  .perfil-card-element1 {
-    padding: 1.5rem;
-    margin: 0.5rem;
-    border-radius: 2rem;
-  }
-
-  .sitio-web-container a {
-    font-size: 12px;
-    margin: 5px 0;
-  }
-
-  .image-container {
-    width: auto;
-    height: auto;
-  }
-
-  .card-empresa {
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 2rem;
-  }
-
-  .logo-nombre-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nombre-slogan-container {
-    text-align: center;
-  }
-  .reportar {
-    width: 100%;
-  }
-}
-
-@media (max-width: 1400px) {
-  .perfil-card-element1 .logo-empresa {
-    padding: 0.5rem;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .reportar {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1400px) {
-  .sitio-web-container a {
-    font-size: 14px;
-  }
-
-  .perfil-card-element2 {
-    width: 100%;
-  }
-
-  .perfil-card-element1 .logo-empresa {
-    padding: 0.5rem;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-}
-
-.r-star {
-  display: flex;
-  padding: 0.5rem;
-  padding-bottom: 1rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.starsCont {
-  display: inline-flex;
-  align-items: flex-end;
-  justify-content: start;
-  margin-bottom: 0.8rem;
-}
-
-.starsComponentCont {
-  margin: 0 0.5rem;
-  align-items: flex-end;
-}
-
-.starsNumbers {
-  margin: 0;
-  color: #241e4e !important;
-  font-weight: 500;
-}
-
-.commentsData {
-  align-items: baseline;
-  display: flex;
-}
-
-.comentario-t {
-  margin-top: 1rem;
-}
-
-.commentsData h5:first-child {
   font-weight: bold;
 }
 
-.commentsData h5:last-child {
-  font-family: "Poppins", sans-serif;
-  margin-left: 16px;
+.opinion-usuario {
+  color: #333;
+}
+
+.opinion-fecha {
+  font-size: 14px;
+  color: #777;
+}
+
+.opinion-comentario {
+  margin-top: 10px;
   font-size: 16px;
+  color: #555;
 }
 
-/*************************/
-
-.googleMapFrame {
-  width: 400px;
-  height: 400px;
+.opiniones-no-disponibles {
+  color: #888;
+  font-size: 16px;
+  text-align: center;
 }
 
-.data-neg p,
-.data-neg a,
-.telefono-container,
-.informacion-container p,
-.commentsData h5,
-.comentario-t p,
-.nombre-slogan-container p {
-  color: black;
-  text-align: justify;
-  margin: 0.1rem;
-}
-
-.espacio-business {
-  display: none;
-}
-
-/*--- Colmnas negocio ---*/
-
-.negocio-2 {
+/* Estilos para la columna B */
+.columnaB {
   display: flex;
-  overflow-x: hidden;
+  flex-direction: column;
+  gap: 20px;
+  width: 30%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.business-pag {
-  padding: 4rem;
+/* Ubicación (mapa) */
+.ubicacion-container {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/*===RESPONSIVE===*/
+.ubicacion-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Datos de contacto */
+.datos-direccion,
+.datos-telefono,
+.datos-sitio-web,
+.datos-horario {
+  font-size: 16px;
+  color: #555;
+}
+
+.datos-direccion p,
+.datos-telefono p,
+.datos-sitio-web p {
+  margin: 5px 0;
+}
+
+.datos-telefono a,
+.datos-sitio-web a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.datos-telefono a:hover,
+.datos-sitio-web a:hover {
+  text-decoration: underline;
+}
+
+/* Redes sociales */
+.redes-sociales-container {
+  display: flex;
+  gap: 10px;
+}
+
+.redes-sociales-container a {
+  font-size: 24px;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.redes-sociales-container a:hover {
+  color: #000;
+}
+
+/* Horario de atención */
+.datos-horario h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.horario-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.horario-table th,
+.horario-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.horario-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+  display: flex;
+  gap: 20px; /* Espacio entre las columnas */
+  padding: 20px;
+  margin-top: 80px; /* Ajusta este valor según la altura de tu header */
+  align-items: flex-start; /* Alinea las columnas al inicio (parte superior) */
+  justify-content: space-between; /* Asegura que las columnas se distribuyan correctamente */
+  height: auto; /* Asegura que ambas columnas se ajusten dinámicamente a su contenido */
+}
+
+
+/* Columna A */
+.columnaA {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre filas */
+  justify-content: flex-start; /* Asegura que el contenido esté alineado al principio */
+  height: auto;
+}
+
+/* Columna B */
+.columnaB {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start; /* Asegura que el contenido esté alineado al principio */
+  height: auto;
+}
+
+/* Otras clases existentes para las filas y elementos */
+.fila {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor que agrupa el logo y el nombre */
+.logo-nombre-contenedor {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el logo y el nombre */
+  gap: 20px; /* Espacio entre el logo y el nombre */
+  width: 100%;
+}
+
+/* Logo de la empresa */
+.logo-empresa {
+  width: 150px;
+  height: 150px;
+}
+.logo-empresa-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* Nombre y slogan de la empresa */
+.empresa-nombre-slogan {
+  display: flex;
+  flex-direction: column; /* El nombre va encima del slogan */
+  justify-content: center; /* Centra verticalmente el nombre y el slogan */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.empresa-nombre {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.empresa-slogan {
+  font-size: 16px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Estilos base para las flechas */
+/* Estilos base para las flechas */
+.custom-arrow {
+  z-index: 1;
+  background: #333; /* Fondo oscuro */
+  border-radius: 50%; /* Forma circular */
+  width: 40px; /* Aumentar el tamaño de la flecha */
+  height: 40px; /* Aumentar el tamaño de la flecha */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px; /* Tamaño del ícono de la flecha */
+  color: #fff; /* Color de la flecha */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: #555; /* Cambia el color de fondo al hacer hover */
+}
+
+/* Flecha izquierda */
+.prev-arrow {
+  left: -45px; /* Ajusta la posición a la izquierda fuera del carrusel */
+}
+
+/* Flecha derecha */
+.next-arrow {
+  right: -45px; /* Ajusta la posición a la derecha fuera del carrusel */
+}
+
+/* Asegurar que las flechas están posicionadas correctamente */
+.slick-prev,
+.slick-next {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+/* Estilos generales para versiones móviles */
 @media (max-width: 768px) {
-  .background-empresa {
-    padding: 2rem;
-  }
-
-  .business-responsive {
-    margin: 0;
-    padding: 0;
-  }
-
-
-  .nombre-slogan-container {
+  /* Asegura que la columna A y B estén una debajo de la otra en pantallas pequeñas */
+  .contenedor-principal {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 10px; /* Espacio reducido en móviles */
   }
 
-  .nombre-slogan-container h2 {
-    margin-bottom: 0.2rem;
-    font-size: 1.5rem;
-    font-weight: 600;
+  /* Ajustes para la columna A */
+  .columnaA {
+    width: 100%; /* Toma todo el ancho en móviles */
+    padding: 10px; /* Reducir padding */
   }
 
-  .nombre-slogan-container p {
-    margin-bottom: 0.5rem;
+  /* Ajustes para la columna B */
+  .columnaB {
+    width: 100%; /* Toma todo el ancho en móviles */
+    padding: 10px; /* Reducir padding */
   }
 
-  .starsCont {
-    flex-direction: column;
-    align-items: center;
+  /* Ajustar el logo y nombre de la empresa */
+  .logo-nombre-contenedor {
+    flex-direction: column; /* Colocar el logo y nombre en columna */
+    align-items: center; /* Centrar los elementos */
   }
 
-  .starsComponentCont {
-    margin-top: 0.5rem;
+  .empresa-nombre-slogan {
+    text-align: center; /* Centrar el texto en móviles */
   }
 
-  .commentsData {
-    flex-direction: column;
-    align-items: center;
+  .logo-empresa {
+    width: 120px; /* Ajustar el tamaño del logo para móviles */
+    height: 120px;
   }
 
-  .nro-star {
-    margin-top: 1rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  /* Ajustes para el carrusel de imágenes */
+  .carrusel-imagenes {
+    width: 100%; /* Ajustar el carrusel al ancho completo en móviles */
   }
 
-  .img-negocio {
-    display: none;
+  /* Ajustes de las flechas del carrusel en móviles */
+  .prev-arrow,
+  .next-arrow {
+    width: 30px; /* Ajustar tamaño de las flechas en móviles */
+    height: 30px;
+    font-size: 16px; /* Ajustar el tamaño del ícono de la flecha */
   }
 
-  .data-neg p,
-  .data-neg a {
-    margin-top: 1px;
+  .prev-arrow {
+    left: -30px; /* Ajustar la posición de la flecha en móviles */
   }
 
-  .espacio-business {
-    display: inline;
+  .next-arrow {
+    right: -30px; /* Ajustar la posición de la flecha en móviles */
   }
 
-  .r-star {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 1rem;
+  /* Ajustes de la fila de información */
+  .fila-informacion {
+    padding: 15px; /* Reducir padding en móviles */
   }
 
-  .feedback {
-    max-width: 100%;
+  /* Ajustes de la fila de opiniones */
+  .fila-opiniones {
+    padding: 15px; /* Reducir padding en móviles */
   }
 
-  .opening-hours {
-    width: 50%;
-    border-collapse: collapse;
-    white-space: nowrap;
-    margin: 0;
-    overflow-x: auto;
+  /* Ajustes para el mapa */
+  .ubicacion-container {
+    height: 250px; /* Reducir la altura del mapa en móviles */
   }
 
-  .table-headline .opening-hours td {
-    display: block;
+  /* Ajustes para los elementos de contacto */
+  .datos-direccion,
+  .datos-telefono,
+  .datos-sitio-web,
+  .datos-horario {
+    font-size: 14px; /* Reducir el tamaño de fuente en móviles */
+  }
+
+  /* Ajustes para la tabla de horarios */
+  .horario-table th,
+  .horario-table td {
+    padding: 6px 8px; /* Reducir padding en la tabla */
   }
 }
-/*=== Horizontal === **/
 
-@media (max-width: 992px) and (min-width: 769px) {
-  .logo-container {
-    width: 30%;
-    height: 30%;
+/* Estilos para pantallas más pequeñas (hasta 480px) */
+@media (max-width: 480px) {
+  /* Ajustar el logo en pantallas muy pequeñas */
+  .logo-empresa {
+    width: 100px; /* Reducir aún más el logo */
+    height: 100px;
   }
 
-  .background-empresa {
-    padding-top: 2rem;
-    padding-right: 1rem;
+  /* Ajustes para el carrusel en pantallas muy pequeñas */
+  .carrusel-imagenes {
+    width: 100%; /* Mantener el ancho completo */
+    height: 250px; /* Reducir la altura del carrusel */
   }
 
-  .negocio-2 {
-    padding: 0;
+  .carrusel-img {
+    height: 250px; /* Reducir la altura de las imágenes del carrusel */
   }
 
-  .perfil-card-element2 {
-    padding: 1rem;
+  /* Ajustar las flechas en pantallas pequeñas */
+  .prev-arrow,
+  .next-arrow {
+    width: 25px; /* Reducir el tamaño de las flechas */
+    height: 25px;
+    font-size: 14px;
   }
 
-  .sitio-web-container a {
-    font-size: 12px;
-    margin: 5px 0;
+  .prev-arrow {
+    left: -25px;
   }
 
-  .opening-hours {
-    width: 50%;
-    display: block;
-    border-collapse: collapse;
-    white-space: nowrap;
-    margin: 0;
-    overflow-x: auto;
+  .next-arrow {
+    right: -25px;
   }
 
-  .reportar {
-    width: 100%;
+  /* Ajustes de la fila de información y opiniones en pantallas pequeñas */
+  .fila-informacion,
+  .fila-opiniones {
+    padding: 10px; /* Reducir el padding aún más */
   }
 
-  .r-star {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 1rem;
-  }
-
-  .feedback {
-    max-width: 100%;
+  /* Ajustes para los elementos de contacto */
+  .datos-direccion,
+  .datos-telefono,
+  .datos-sitio-web,
+  .datos-horario {
+    font-size: 12px; /* Reducir el tamaño de fuente en pantallas muy pequeñas */
   }
 }
