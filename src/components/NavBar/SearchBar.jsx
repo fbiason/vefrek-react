@@ -78,6 +78,14 @@ export default function SearchBar() {
 
     useEffect(() => {
         getcompanysFullCollection();
+
+        /***********************************************/ 
+        
+        const searchBarResultsContainer = document.querySelector(".searchBar-resultsContainer");
+        const searchBarSearchInput = document.querySelector(".searchBar-searchInput");
+        const searchBarSearchInputWidth = searchBarSearchInput.offsetWidth;
+        searchBarResultsContainer.style.transform = `translateX(calc(-50% + ${searchBarSearchInputWidth / 2}px))`;
+         
     }, []);
 
     return (
