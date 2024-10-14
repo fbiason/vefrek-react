@@ -1,5 +1,5 @@
 /* --- General --- */
-.contenidoNegocios {
+.negocioDash-contenido {
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -8,23 +8,23 @@
   border-radius: 0px 10px 10px 0px;
 }
 
-.tituloDash {
+.negocioDash-titulo {
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.businessGrid {
+.negocioDash-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   width: 100%;
 }
 
-.businessCard {
+.negocioDash-card {
   background-color: white;
-  padding: 15px; 
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -32,60 +32,71 @@
   justify-content: space-between;
 }
 
-.companyDetails {
-  margin-bottom: 0.5rem;  /* Reducido para disminuir la distancia */
+.negocioDash-details {
+  margin-bottom: 0.5rem; /* Reducido para disminuir la distancia */
   color: black;
 }
 
-.companyActions {
+.negocioDash-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.negocioDash-location {
+  font-size: 1rem;
+  color: #555;
+}
+
+.negocioDash-actions {
   display: flex;
   justify-content: space-between;
 }
 
-.editBtn,
-.pauseBtn,
-.reactivateBtn,
-.deleteBtn {
-  padding: 8px;  /* Reducido el padding de los botones */
+.negocioDash-btn-editar,
+.negocioDash-btn-pausar,
+.negocioDash-btn-reactivar,
+.negocioDash-btn-eliminar {
+  padding: 8px; /* Reducido el padding de los botones */
   border-radius: 5px;
   cursor: pointer;
 }
 
-.editBtn {
+.negocioDash-btn-editar {
   background-color: #007bff;
   color: white;
 }
 
-.pauseBtn {
+.negocioDash-btn-pausar {
   background-color: #ffc107;
   color: white;
 }
 
-.reactivateBtn {
+.negocioDash-btn-reactivar {
   background-color: #28a745;
   color: white;
 }
 
-.deleteBtn {
+.negocioDash-btn-eliminar {
   background-color: #dc3545;
   color: white;
 }
 
 /* --- Responsive adjustments for smaller screens --- */
 @media (max-width: 1200px) {
-  .businessGrid {
+  .negocioDash-grid {
     grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
   }
 }
 
 @media (max-width: 768px) {
-  .businessGrid {
+  .negocioDash-grid {
     grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
   }
 }
 
 @media (max-width: 576px) {
-  .businessGrid {
+  .negocioDash-grid {
     grid-template-columns: 1fr; /* 1 columna en pantallas extra pequeñas */
   }
 }

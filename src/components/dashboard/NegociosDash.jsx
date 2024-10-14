@@ -75,34 +75,35 @@ const NegociosDash = () => {
     if (response.success && response.companysData) {
       const companysDataFromDB = response.companysData;
       const companysDataJSX = companysDataFromDB.map((company) => (
-        <div className="businessCard" key={company._id}>
-          <div className="companyDetails">
-            <div className="companyName">{company.name}</div>{" "}
-            {/* Nombre en su propia fila */}
-            <div className="companyLocation">{company.location}</div>{" "}
-            {/* Dirección en su propia fila */}
+        <div className="negocioDash-card" key={company._id}>
+          <div className="negocioDash-details">
+            <div className="negocioDash-name">{company.name}</div>
+            <div className="negocioDash-location">{company.location}</div>
           </div>
-          <div className="companyActions">
-            <Link to={`/EditarEmpresa/${company._id}`} className="editBtn">
+          <div className="negocioDash-actions">
+            <Link
+              to={`/EditarEmpresa/${company._id}`}
+              className="negocioDash-btn-editar"
+            >
               ✏️ Editar
             </Link>
             {company.play ? (
               <button
-                className="pauseBtn"
+                className="negocioDash-btn-pausar"
                 onClick={handleCompnayState(company._id, false)}
               >
                 ⏸️ Pausar
               </button>
             ) : (
               <button
-                className="reactivateBtn"
+                className="negocioDash-btn-reactivar"
                 onClick={handleCompnayState(company._id, true)}
               >
                 ▶️ Reactivar
               </button>
             )}
             <button
-              className="deleteBtn"
+              className="negocioDash-btn-eliminar"
               onClick={() => deleteCompanyConfirm(company._id)}
             >
               🗑️ Eliminar
@@ -144,11 +145,11 @@ const NegociosDash = () => {
         Salir
       </button>
 
-      <div className="contenidoNegocios">
+      <div className="negocioDash-contenido">
         <div>
-          <h1 className="tituloDash">Mis Negocios</h1>
+          <h1 className="negocioDash-titulo">Mis Negocios</h1>
         </div>
-        <div className="businessGrid">
+        <div className="negocioDash-grid">
           {companysData.length ? companysData : <></>}
         </div>
       </div>
