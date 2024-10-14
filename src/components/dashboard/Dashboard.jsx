@@ -272,7 +272,7 @@ const Dashboard = () => {
       <NavBarDash></NavBarDash>
 
       <button
-        className="btn dashboardClose"
+        className="dashboardCloseBtn"
         onClick={() => {
           const previousSaved = localStorage.getItem("previousPathToDash");
           previousSaved

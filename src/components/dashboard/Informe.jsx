@@ -247,7 +247,7 @@ const Informe = () => {
         
     return (
       <main className="dashboardMain">
-        <NavBarDash></NavBarDash>
+        <NavBarDash />
         <button
           className="dashboardCloseBtn"
           onClick={() => {
@@ -260,20 +260,21 @@ const Informe = () => {
           Salir
         </button>
 
-        <div className="info">
+        <div className="infoSection">
           <div>
             <div>
-              <h1 className="titulo-dash">Informe</h1>
+              <h1 className="tituloInforme">Informe</h1>
             </div>
-            <div className="container card-informe row">
+
+            <div className="containerInforme cardInforme">
               {show && (
                 <>
-                  <div className="col-md-12">
-                    <p>Seleccione su empresa:</p>
+                  <div className="fullWidth">
+                    <p className="informeText">Seleccione su empresa:</p>
                   </div>
-                  <div className="col-md-12 mt-3">
+                  <div className="fullWidth mt-3">
                     <select
-                      className="form-select"
+                      className="customSelect"
                       onChange={(e) => setReport(e.target.value)}
                     >
                       {selectOptions}
@@ -282,56 +283,52 @@ const Informe = () => {
                 </>
               )}
 
-              <div className="row mt-4">
-                <div className="informe-datos">
-                  <div className="icono-y-numero">
+              <div className="informeGrid mt-4">
+                <div className="informeDatos">
+                  <div className="iconoYNumeros">
                     <FontAwesomeIcon icon={faStar} className="icono" />
                     <h1>{reportInfo.myFavoritesCount}</h1>
                   </div>
-                  <p>Guardados</p>
+                  <p className="descripcionInforme">Guardados</p>
                 </div>
 
-                <div className="informe-datos">
-                  <div className="icono-y-numero">
+                <div className="informeDatos">
+                  <div className="iconoYNumeros">
                     <FontAwesomeIcon icon={faComment} className="icono" />
                     <h1>
                       {reportInfo.averageReviewsScore || (
-                        <span style={{ fontSize: "18px" }}>
-                          Sin valoraciones
-                        </span>
+                        <span className="noValoraciones">Sin valoraciones</span>
                       )}
                     </h1>
                   </div>
-                  <p>Promedio de valoraciones</p>
+                  <p className="descripcionInforme">Promedio de valoraciones</p>
                 </div>
 
-                <div className="informe-datos">
-                  <div className="icono-y-numero">
+                <div className="informeDatos">
+                  <div className="iconoYNumeros">
                     <FontAwesomeIcon icon={faCommentAlt} className="icono" />
                     <h1>
                       {reportInfo.reviewsCount || (
-                        <span style={{ fontSize: "18px" }}>
-                          Sin comentarios
-                        </span>
+                        <span className="noValoraciones">Sin comentarios</span>
                       )}
                     </h1>
                   </div>
-                  <p>Comentarios recibidos</p>
+                  <p className="descripcionInforme">Comentarios recibidos</p>
                 </div>
 
-                <div className="informe-datos">
-                  <div className="icono-y-numero">
+                <div className="informeDatos">
+                  <div className="iconoYNumeros">
                     <FontAwesomeIcon icon={faEye} className="icono" />
                     <h1>{reportInfo.visitsCount}</h1>
                   </div>
-                  <p>Visitas</p>
+                  <p className="descripcionInforme">Visitas</p>
                 </div>
               </div>
 
               {show && (
-                <div className="col-md-6 mt-5 visitas">
-                  <div className="card custom-card">
-                    <h3 className="chart-lbl">Visitas mensaules</h3>
+                <div className="visitasContainer mt-5">
+                  <div className="customCard">
+                    <h3 className="chartLabel">Visitas mensuales</h3>
                     <div id="chart"></div>
                   </div>
                 </div>

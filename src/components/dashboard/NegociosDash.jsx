@@ -75,41 +75,34 @@ const NegociosDash = () => {
     if (response.success && response.companysData) {
       const companysDataFromDB = response.companysData;
       const companysDataJSX = companysDataFromDB.map((company) => (
-        <div className="row row-editar-empresa" key={company._id}>
-          <div className="col-12 col-md-6 mb-2 mt-3">
-            <span>{company.name}</span>
+        <div className="businessCard" key={company._id}>
+          <div className="companyDetails">
+            <div className="companyName">{company.name}</div>{" "}
+            {/* Nombre en su propia fila */}
+            <div className="companyLocation">{company.location}</div>{" "}
+            {/* Dirección en su propia fila */}
           </div>
-          <div className="col-12 col-md-6 mb-2 mt-3">
-            <span>{company.location}</span>
-          </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
-            <Link
-              to={`/EditarEmpresa/${company._id}`}
-              className="btn btn-primary btn-editar"
-            >
+          <div className="companyActions">
+            <Link to={`/EditarEmpresa/${company._id}`} className="editBtn">
               ✏️ Editar
             </Link>
-          </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
-            {(company.play && (
+            {company.play ? (
               <button
-                className="btn btn-warning btn-pausar"
+                className="pauseBtn"
                 onClick={handleCompnayState(company._id, false)}
               >
                 ⏸️ Pausar
               </button>
-            )) || (
+            ) : (
               <button
-                className="btn btn-success btn-eliminar"
+                className="reactivateBtn"
                 onClick={handleCompnayState(company._id, true)}
               >
                 ▶️ Reactivar
               </button>
             )}
-          </div>
-          <div className="col-12 col-md-4 mb-2 mt-3">
             <button
-              className="btn btn-danger btn-mobile"
+              className="deleteBtn"
               onClick={() => deleteCompanyConfirm(company._id)}
             >
               🗑️ Eliminar
@@ -137,9 +130,10 @@ const NegociosDash = () => {
     if (userData.isLogged) find();
     // eslint-disable-next-line
   }, [userData]);
+
   return (
     <main className="dashboardMain">
-      <NavBarDash></NavBarDash>
+      <NavBarDash />
       <button
         className="dashboardCloseBtn"
         onClick={() => {
@@ -150,20 +144,12 @@ const NegociosDash = () => {
         Salir
       </button>
 
-      <div className="contenido-negocios">
-        <div className="container">
-          <div>
-            <h1 className="titulo-dash">Mis Negocios</h1>
-          </div>
-          <div className="editar-empresa-container">
-            {companysData.length ? (
-              <div className="card-editar-empresa row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                {companysData}
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
+      <div className="contenidoNegocios">
+        <div>
+          <h1 className="tituloDash">Mis Negocios</h1>
+        </div>
+        <div className="businessGrid">
+          {companysData.length ? companysData : <></>}
         </div>
       </div>
     </main>

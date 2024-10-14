@@ -35,7 +35,7 @@ const Favoritos = () => {
         const response = await findCompanys(matchJSON, aggregateQueryJSON);
         if (response.success && response.companysData) {
             const jsxArr = response.companysData.map((company) => (
-                <div className="col-md-3 col-sm-6 mb-4" key={company._id}>
+                <div  key={company._id}>
                     <CardNegocio
                         subcategory={company.subcategory}
                         name={company.name}
@@ -79,15 +79,15 @@ const Favoritos = () => {
           Salir
         </button>
 
-        <section className="favoritos">
+        <section className="favoritosSection">
           <div>
-            <h1 className="titulo-dash">Favoritos</h1>
+            <h1 className="tituloFavoritos">Favoritos</h1>
           </div>
-          <div className="row content-fav">
+          <div className="favoritosGrid">
             {favoritesCompanys.length > 0 ? (
               favoritesCompanys
             ) : (
-              <p className="col">No hay resultados</p>
+              <p className="noResults">No hay resultados</p>
             )}
           </div>
         </section>

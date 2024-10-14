@@ -1,0 +1,91 @@
+/* --- General --- */
+.contenidoNegocios {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.tituloDash {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.businessGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.businessCard {
+  background-color: white;
+  padding: 15px; 
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.companyDetails {
+  margin-bottom: 0.5rem;  /* Reducido para disminuir la distancia */
+  color: black;
+}
+
+.companyActions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editBtn,
+.pauseBtn,
+.reactivateBtn,
+.deleteBtn {
+  padding: 8px;  /* Reducido el padding de los botones */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editBtn {
+  background-color: #007bff;
+  color: white;
+}
+
+.pauseBtn {
+  background-color: #ffc107;
+  color: white;
+}
+
+.reactivateBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.deleteBtn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* --- Responsive adjustments for smaller screens --- */
+@media (max-width: 1200px) {
+  .businessGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .businessGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .businessGrid {
+    grid-template-columns: 1fr; /* 1 columna en pantallas extra pequeñas */
+  }
+}
