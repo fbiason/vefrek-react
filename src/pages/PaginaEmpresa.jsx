@@ -22,6 +22,7 @@ import { Rating } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Slider from "react-slick";
 import { BsStarFill } from "react-icons/bs";
+import Review from "../components/review/Review";
 
 const PaginaEmpresa = () => {
     const [map, setMap] = useState(null);
@@ -33,6 +34,7 @@ const PaginaEmpresa = () => {
     const [comments, setComments] = useState();
     const heartRef = useRef();
     const [reviewsJSX, setReviewsJSX] = useState([<></>]);
+    const [showEditReviewPencil, setShowEditReviewPencil] = useState(false);
     const [showEditReview, setShowEditReview] = useState(false);
 
     const sendReport = async (reason) => {
@@ -110,6 +112,7 @@ const PaginaEmpresa = () => {
     const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
     const [imagenes, setImagenes] = useState([]);
     const [companyData, setCompanyData] = useState({
+        _id: "",
         name: "",
         slogan: "",
         location: "",
@@ -160,7 +163,7 @@ const PaginaEmpresa = () => {
         const response = await findCompany(
             "vefrek_website",
             vefrek_website,
-            "-reviews.userEmail"
+            ""
         );
         if (response.success) {
             const companyData = response.companyData;
@@ -170,6 +173,7 @@ const PaginaEmpresa = () => {
             companyDataRef.current = companyData; //Datos para envio de reportes
             setImagenes(imagesUrlsArr);
             setCompanyData({
+                _id: companyData._id,
                 name: companyData.name,
                 slogan: companyData.slogan,
                 location: companyData.location,
@@ -203,6 +207,7 @@ const PaginaEmpresa = () => {
                 },
                 creationdate: companyData.creationdate,
                 schedules: companyData.schedules,
+                reviews: companyData.reviews
             });
 
             if (!companyData.geo.googleMapUrl) {
@@ -274,6 +279,11 @@ const PaginaEmpresa = () => {
                     </div>
                 ));
                 setReviewsJSX(reviewsArrJSX);
+
+                /*********** Seteo de boton de edicion de comentario ********/
+
+                const isUserComment = reviewsArr.find((review) => review.userEmail === userData.email);
+                setShowEditReviewPencil(isUserComment ? true : false);
                 
             }
         } else if (!response.success) {
@@ -552,9 +562,22 @@ const PaginaEmpresa = () => {
         initialSlide: imagenSeleccionada,
         afterChange: (current) => setImagenSeleccionada(current),
     };
-
+    
     return (
         <section className="background-empresa">
+            {
+                showEditReview &&
+                <div className="pagina_empresa_edit_review flex">
+                    <Review
+                        cb={find}
+                        companyId={companyData._id}
+                        newReview={false}
+                        userData={userData}
+                        closeFn={() => setShowEditReview(false)}
+                        comment={companyData && companyData.reviews ? companyData.reviews.find((review) => review.userEmail === userData.email)?.comment : ""}
+                    />
+                </div>
+            }
             <div>
                 <div className="business-row">
                     {/* Columna 1 - Imágenes de la empresa */}
@@ -662,8 +685,11 @@ const PaginaEmpresa = () => {
                                     <div className="reseña-container text-left">
                                         <div className="opiniones-header">
                                             <h2>Opiniones Destacadas</h2>
-                                            <button className="btn-icon">
-                                                <Edit />
+                                            <button className="btn-icon" onClick={() => setShowEditReview(true)} title="Editar reseña">
+                                                {
+                                                    showEditReviewPencil &&
+                                                    <Edit />  
+                                                }
                                             </button>
                                         </div>
                                         {comments}
@@ -938,7 +964,17 @@ const PaginaEmpresa = () => {
                                     <button className="reportar">Reportar Negocio</button>
                                 </div>
 
-                                <div className="max-w-lg shadow-md mt-4">
+                                {
+                                    companyData._id &&
+                                    <Review
+                                        cb={find}
+                                        companyId={companyData._id}
+                                        newReview={true}
+                                        userData={userData}
+                                    />
+                                }            
+
+                                {/* <div className="max-w-lg shadow-md mt-4">
                                     <form action="" className="w-full p-2">
                                         <div className="mb-2">
                                             <label
@@ -1004,7 +1040,7 @@ const PaginaEmpresa = () => {
                                             Comentar
                                         </button>
                                     </form>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

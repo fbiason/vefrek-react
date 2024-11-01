@@ -198,3 +198,15 @@ export const addReview = async (numberOfStars, companyId, comment) => {
     return responseOBJ;
 }
 
+export const editReview = async (numberOfStars, companyId, comment) => {
+    const responseJSON = await fetch(`${process.env.REACT_APP_API_URL}api/reviews`, {
+        method: 'put',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ numberOfStars, companyId, comment }),
+    });
+    const responseOBJ = await responseJSON.json();
+    return responseOBJ;
+}

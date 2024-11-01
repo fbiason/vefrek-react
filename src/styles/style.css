@@ -3795,6 +3795,16 @@ iframe[title=map] {
   color: #000;
 }
 
+.pagina_empresa_edit_review {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5490196078);
+}
+
 /*===FIN STAR ===*/
 @media (max-width: 768px) {
   .perfil-card-element1 {
