@@ -46,7 +46,7 @@ export default function Review({userData, companyId, newReview, cb, closeFn, com
                 return;
             }
         } catch (err) {
-            swalPopUp("Ops!", err.message, "error");
+            swalPopUp("Ops!", err.message, "error"); 
             showSpinner(false);
             return;
         }
