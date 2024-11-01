@@ -58,14 +58,22 @@
   }
 }
 
-//* CóDIGO VIEJO
-.mapa-google {
+iframe[title="map"] {
   width: 100%;
   border-radius: 10%;
   overflow: hidden;
   border: 1px solid #000;
   height: 400px;
 }
+
+//* CóDIGO VIEJO
+// .mapa-google {
+//   width: 100%;
+//   border-radius: 10%;
+//   overflow: hidden;
+//   border: 1px solid #000;
+//   height: 400px;
+// }
 
 @media (max-width: 552px) {
   .background-empresa {

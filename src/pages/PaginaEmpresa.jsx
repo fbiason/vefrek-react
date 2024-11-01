@@ -17,9 +17,9 @@ import {
 import { SpinnerContext } from "../context/spinnerContext";
 import { reportCompany } from "../utils/report";
 import { UserContext } from "../context/userContext";
+import { Star, Edit } from "@mui/icons-material";
 import { Rating } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Star, Edit } from "@mui/icons-material";
 import Slider from "react-slick";
 import { BsStarFill } from "react-icons/bs";
 
@@ -215,7 +215,6 @@ const PaginaEmpresa = () => {
             src={companyData.geo.googleMapUrl}
             width="100%"
             height={400}
-            style={{ border: 0, borderRadius: "10%" }}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

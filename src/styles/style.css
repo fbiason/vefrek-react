@@ -3421,7 +3421,7 @@ select::placeholder {
     padding: 0;
   }
 }
-.mapa-google {
+iframe[title=map] {
   width: 100%;
   border-radius: 10%;
   overflow: hidden;
