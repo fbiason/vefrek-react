@@ -438,6 +438,14 @@ iframe[title="map"] {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
+.pagina_empresa_ver_mas {
+  cursor: pointer;
+}
+
+.pagina_empresa_ver_mas:hover {
+  color: #000;
+}
+
 /*===FIN STAR ===*/
 
 @media (max-width: 768px) {

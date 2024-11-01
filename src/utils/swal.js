@@ -1,18 +1,21 @@
 import Swal from "sweetalert2";
 
+const confirmButtonColor = "#00c58d"
+
 export const swalPopUpSuccessTemporal = (title) => {
     Swal.fire({
         position: "top",
         icon: "success",
         title: title,
+        confirmButtonColor,
         showConfirmButton: false,
         timer: 1500
     });
 }
 
 export const swalPopUpWithInputAndCb = async (text, noInputText, cb) => {
-
     const { value: message } = await Swal.fire({
+        confirmButtonColor,
         text: text,
         input: "text",
     });
@@ -28,7 +31,7 @@ const swalPopUp = (title, text, icon) => {
         icon: icon,
         title: title,
         text: text,
-        confirmButtonColor: '#71706f',
+        confirmButtonColor,
         color: '#71706f',       
         scrollbarPadding: false,     
         allowOutsideClick: false,   
@@ -47,7 +50,7 @@ export const swalPopUpWithCallback = (title, text, icon, cb) => {
         icon: icon,
         title: title,
         text: text,
-        confirmButtonColor: '#71706f',
+        confirmButtonColor,
         color: '#71706f',       
         scrollbarPadding: false,     
         allowOutsideClick: false,
@@ -64,13 +67,14 @@ export const swalPopUpWithCallbacks = (title, text, icon, cbConfirmed, cbCancel)
         icon: icon,
         title: title,
         text: text,
-        confirmButtonColor: '#71706f',
+        confirmButtonColor,
         showDenyButton: true,
         color: '#71706f',       
         scrollbarPadding: false,     
         allowOutsideClick: false,
         customClass: {      
-            confirmButton: 'sweetConfirmBoton',        
+            confirmButton: 'sweetConfirmBoton',   
+            denyButton: 'sweetDenyBoton',     
         },
     }).then((result) => {
         result.isConfirmed ? cbConfirmed() : cbCancel();
@@ -99,6 +103,7 @@ export const swalPopUpWhitOptionsAndCallback = (
         showDenyButton: textBcancel ? true : false,
         showCancelButton: false,
         confirmButtonText: textBConfirm,
+        confirmButtonColor,
         denyButtonText: textBcancel,
         scrollbarPadding: false,
         allowOutsideClick: false,
