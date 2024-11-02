@@ -208,7 +208,7 @@ const Admin = () => {
     <main className="dashboardMain">
       <NavBarDash />
       <button
-        className="btn btn-primary dashboardClose"
+        className="dashboardCloseBtn"
         onClick={() => {
           const previousSaved = localStorage.getItem("previousPathToDash");
           previousSaved

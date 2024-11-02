@@ -35,7 +35,7 @@ const Favoritos = () => {
         const response = await findCompanys(matchJSON, aggregateQueryJSON);
         if (response.success && response.companysData) {
             const jsxArr = response.companysData.map((company) => (
-                <div className="col-md-3 col-sm-6 mb-4" key={company._id}>
+                <div  key={company._id}>
                     <CardNegocio
                         subcategory={company.subcategory}
                         name={company.name}
@@ -65,33 +65,33 @@ const Favoritos = () => {
     }, [userData.isLogged]);
 
     return (
-        <main className="dashboardMain">
-            <NavBarDash />
-            <button
-                className="btn btn-primary dashboardClose"
-                onClick={() => {
-                    const previousSaved = localStorage.getItem("previousPathToDash");
-                    previousSaved
-                        ? navigate(localStorage.getItem("previousPathToDash"))
-                        : navigate("/");
-                }}
-            >
-                Salir
-            </button>
+      <main className="dashboardMain">
+        <NavBarDash />
+        <button
+          className="dashboardCloseBtn"
+          onClick={() => {
+            const previousSaved = localStorage.getItem("previousPathToDash");
+            previousSaved
+              ? navigate(localStorage.getItem("previousPathToDash"))
+              : navigate("/");
+          }}
+        >
+          Salir
+        </button>
 
-            <section className="favoritos">
-                <div>
-                    <h1 className="titulo-dash">Favoritos</h1>
-                </div>
-                <div className="row content-fav">
-                    {favoritesCompanys.length > 0 ? (
-                        favoritesCompanys
-                    ) : (
-                        <p className="col">No hay resultados</p>
-                    )}
-                </div>
-            </section>
-        </main>
+        <section className="favoritosSection">
+          <div>
+            <h1 className="tituloFavoritos">Favoritos</h1>
+          </div>
+          <div className="favoritosGrid">
+            {favoritesCompanys.length > 0 ? (
+              favoritesCompanys
+            ) : (
+              <p className="noResults">No hay resultados</p>
+            )}
+          </div>
+        </section>
+      </main>
     );
 };
 

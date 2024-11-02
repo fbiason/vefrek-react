@@ -22,7 +22,6 @@ const NavBarDash = () => {
     { icon: "fa-calendar", to: "/Calendario", text: "Calendario" },
     { icon: "fa-star", to: "/Favoritos", text: "Favoritos" },
     { icon: "fa-building", to: "/NegociosDash", text: "Negocios" },
-    //{ icon: "fa-user-tie", to: "/Admin", text: "Admin" },
   ];
 
   return (
