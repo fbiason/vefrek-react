@@ -27,6 +27,7 @@ export default function EditarEmpresa() {
     city: "",
     state: "",
     postal_code: "",
+    cuit_code: "",
     phone: "",
     phone2: "",
     website: "",
@@ -240,6 +241,7 @@ export default function EditarEmpresa() {
       city: companyData.city,
       state: companyData.state,
       postal_code: companyData.postal_code,
+      cuit_code: companyData.cuit_code,
       phone: companyData.phone,
       phone2: companyData.phone2,
       website: companyData.website,
@@ -682,15 +684,15 @@ export default function EditarEmpresa() {
               </div>
               {/* CUIT*/}
               <div className="campo-formEmpresa">
-                <label htmlFor="postal-code">CUIT</label>
+                <label htmlFor="cuit_code">CUIT</label>
                 <div className="input-container">
                   <input
                     onChange={handleChange}
-                    value={formData.postal_code}
+                    value={formData.cuit_code}
                     type="text"
-                    name="postal_code"
-                    id="postal-code"
-                    autoComplete="postal-code"
+                    name="cuit_code"
+                    id="cuit_code"
+                    autoComplete="cuit_code"
                     placeholder="Ejemplo: 20-12345678-9"
                   />
                 </div>
