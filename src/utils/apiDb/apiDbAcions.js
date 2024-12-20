@@ -210,3 +210,38 @@ export const editReview = async (numberOfStars, companyId, comment) => {
     const responseOBJ = await responseJSON.json();
     return responseOBJ;
 }
+
+export const savePromotion = async (promotionData) => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/promotions`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(promotionData),
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al guardar la promoción:", error);
+        return {
+            success: false,
+            message: "Error al guardar la promoción",
+        };
+    }
+};
+
+export const getPromotions = async () => {
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/promotions`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error al obtener las promociones:", error);
+        return {
+            success: false,
+            message: "Error al obtener las promociones",
+            promotions: [],
+        };
+    }
+};
