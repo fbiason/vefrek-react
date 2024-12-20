@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 import "tailwindcss/tailwind.css";
+import { UserContext } from "../../context/userContext";
+import { findCompanys } from "../../utils/apiDb/apiDbAcions";
+import { SpinnerContext } from "../../context/spinnerContext";
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);
@@ -10,8 +13,11 @@ const Calendario = () => {
   const [mesesDelAnio, setMesesDelAnio] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [comment, setComment] = useState("");
-  const [selectedCompany, setSelectedCompany] = useState("empresa1");
+  const [selectedCompany, setSelectedCompany] = useState("");
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [companysData, setCompanysData] = useState([]);
+  const { userData } = useContext(UserContext);
+  const { showSpinner } = useContext(SpinnerContext);
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -73,6 +79,26 @@ const Calendario = () => {
     setMesesDelAnio(generarMesesDelAnio());
   }, [selectedMonth]);
 
+  useEffect(() => {
+    const fetchCompanys = async () => {
+      showSpinner(true);
+      const matchJSON = JSON.stringify({ registeremail: userData.email });
+      const aggregateQueryJSON = JSON.stringify([
+        { $project: { name: 1, location: 1, play: 1 } },
+      ]);
+      const response = await findCompanys(matchJSON, aggregateQueryJSON);
+
+      if (response.success && response.companysData) {
+        setCompanysData(response.companysData);
+      }
+      showSpinner(false);
+    };
+
+    if (userData.email) {
+      fetchCompanys();
+    }
+  }, [userData.email]);
+
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
@@ -91,14 +117,14 @@ const Calendario = () => {
   const handleCancelClick = () => {
     setSelectedDate(null);
     setComment("");
-    setSelectedCompany("empresa1");
+    setSelectedCompany("");
   };
 
   const handleSubmitComment = () => {
     console.log("Comentario:", comment);
     console.log("Empresa seleccionada:", selectedCompany);
     setComment("");
-    setSelectedCompany("empresa1");
+    setSelectedCompany("");
     setSelectedDate(null);
   };
 
@@ -185,9 +211,16 @@ const Calendario = () => {
                 <select
                   value={selectedCompany}
                   onChange={(e) => setSelectedCompany(e.target.value)}
+                  className="w-full p-2 border rounded"
                 >
-                  <option value="empresa1">Empresa 1</option>
-                  <option value="empresa2">Empresa 2</option>
+                  <option value="" disabled>
+                    Seleccione una empresa
+                  </option>
+                  {companysData.map((company) => (
+                    <option key={company._id} value={company._id}>
+                      {company.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="mt-3">
