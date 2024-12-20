@@ -1,0 +1,109 @@
+/* Estilos para la sección de comentarios */
+.comentarios-container {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.comentarios-titulo {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.comentario-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.comentario-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.comentario-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.comentario-submit {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+}
+
+.comentario-submit:hover {
+  background-color: #0056b3;
+}
+
+.comentarios-lista {
+  margin-top: 20px;
+}
+
+.comentarios-lista h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.comentario-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.comentario-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.comentario-usuario {
+  font-weight: 500;
+  color: #007bff;
+}
+
+.comentario-fecha {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.comentario-texto {
+  color: #333;
+  line-height: 1.5;
+}
+
+.sin-comentarios {
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comentarios-container {
+    padding: 15px;
+  }
+
+  .comentario-submit {
+    width: 100%;
+  }
+}

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 const NavBarDash = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { userData } = useContext(UserContext);
   const location = useLocation();
 
   const handleNavItemClick = (index) => {
@@ -23,6 +24,11 @@ const NavBarDash = () => {
     { icon: "fa-star", to: "/Favoritos", text: "Favoritos" },
     { icon: "fa-building", to: "/NegociosDash", text: "Negocios" },
   ];
+
+  // Solo agregar el ítem de Admin si el usuario es administrador
+  if (userData && userData.role === "admin") {
+    menuItems.push({ icon: "fa-user-tie", to: "/Admin", text: "Administrador" });
+  }
 
   return (
     <nav className="menuDash">

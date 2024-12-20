@@ -22,20 +22,24 @@ import { styled } from "@mui/material/styles";
 import { Star, Edit } from "@mui/icons-material";
 import Slider from "react-slick";
 import { BsStarFill } from "react-icons/bs";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-// Flecha hacia adelante
+// Flechas
 const SampleNextArrow = (props) => {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return (
-    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick} />
+    <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
+      <BsChevronRight style={{ fontSize: "24px", color: "#333" }} />
+    </div>
   );
 };
 
-// Flecha hacia atrás
 const SamplePrevArrow = (props) => {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return (
-    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick} />
+    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
+      <BsChevronLeft style={{ fontSize: "24px", color: "#333" }} />
+    </div>
   );
 };
 
@@ -548,19 +552,29 @@ const PaginaEmpresa = () => {
   }, [userData.isLogged, companyDataRef.current]);
 
   // Configuración del carrusel
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 3000, 
-  arrows: true, 
-  nextArrow: <SampleNextArrow />, 
-  prevArrow: <SamplePrevArrow />, 
-};
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    fade: true,
+    cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false
+        }
+      }
+    ]
+  };
+  
   return (
     <section className="contenedor-principal background">
       {/* Columna A */}

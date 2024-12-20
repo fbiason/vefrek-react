@@ -1,0 +1,87 @@
+/* Estilos para el carrusel */
+.carrusel-imagenes {
+  margin: 20px 0;
+  position: relative;
+}
+
+.carrusel-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Estilos mejorados para las flechas de navegación */
+.custom-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 2 !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-arrow:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+.next-arrow {
+  right: 20px !important;
+}
+
+.prev-arrow {
+  left: 20px !important;
+}
+
+/* Estilos para los puntos de navegación */
+.slick-dots {
+  bottom: -25px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #fff;
+}
+
+/* Efecto hover en las imágenes */
+.carrusel-img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carrusel-img {
+    height: 300px;
+  }
+  
+  .custom-arrow {
+    display: none !important;
+  }
+}
+
+/* Animación de transición */
+.slick-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slick-slide.slick-active {
+  opacity: 1;
+}
