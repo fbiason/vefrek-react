@@ -217,7 +217,10 @@ export const savePromotion = async (promotionData) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Origin": window.location.origin
             },
+            credentials: "include",
             body: JSON.stringify(promotionData),
         });
         const data = await response.json();
@@ -233,7 +236,13 @@ export const savePromotion = async (promotionData) => {
 
 export const getPromotions = async () => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/promotions`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/promotions`, {
+            headers: {
+                "Accept": "application/json",
+                "Origin": window.location.origin
+            },
+            credentials: "include"
+        });
         const data = await response.json();
         return data;
     } catch (error) {

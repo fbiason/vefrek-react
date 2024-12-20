@@ -320,11 +320,11 @@ const Reparacion = () => {
     }, [filterType]);
 
     useEffect(() => {
-        const filterTypeInputDistance = document.querySelector(
-            ".filterTypeInput[name='distance']"
+        const filterTypeInputState = document.querySelector(
+            ".filterTypeInput[name='state']"
         );
-        if (filterTypeInputDistance) filterTypeInputDistance.checked = true;
-    }, [showDistanceFilter]);
+        if (filterTypeInputState) filterTypeInputState.checked = true;
+    }, []);
 
     return (
       <div className="background">
