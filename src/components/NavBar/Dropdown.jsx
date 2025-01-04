@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { swalPopUp } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
@@ -8,10 +8,33 @@ const Dropdown = () => {
   const thisLocation = useLocation();
   const navigate = useNavigate();
   const { updateUserData } = useContext(UserContext);
+  const timerRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+    
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    
+    // Set new timer if opening the dropdown
+    if (!isOpen) {
+      timerRef.current = setTimeout(() => {
+        setIsOpen(false);
+        timerRef.current = null;
+      }, 5000);
+    }
   };
+
+  // Cleanup timer on component unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   const exit = async (e) => {
     e.preventDefault();
@@ -28,7 +51,10 @@ const Dropdown = () => {
 
   return (
     <div className="dropdown-container">
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <button 
+        className="dropdown-button" 
+        onClick={toggleDropdown}
+      >
         <i className="fas fa-user-circle" /> Perfil
       </button>
 

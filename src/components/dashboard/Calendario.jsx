@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 import "tailwindcss/tailwind.css";
+import { UserContext } from "../../context/userContext";
+import { findCompanys } from "../../utils/apiDb/apiDbAcions";
+import { SpinnerContext } from "../../context/spinnerContext";
+import { savePromotion } from "../../utils/apiDb/apiDbAcions"; // Import the savePromotion function
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);
@@ -10,8 +14,11 @@ const Calendario = () => {
   const [mesesDelAnio, setMesesDelAnio] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [comment, setComment] = useState("");
-  const [selectedCompany, setSelectedCompany] = useState("empresa1");
+  const [selectedCompany, setSelectedCompany] = useState("");
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [companysData, setCompanysData] = useState([]);
+  const { userData } = useContext(UserContext);
+  const { showSpinner } = useContext(SpinnerContext);
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -73,6 +80,26 @@ const Calendario = () => {
     setMesesDelAnio(generarMesesDelAnio());
   }, [selectedMonth]);
 
+  useEffect(() => {
+    const fetchCompanys = async () => {
+      showSpinner(true);
+      const matchJSON = JSON.stringify({ registeremail: userData.email });
+      const aggregateQueryJSON = JSON.stringify([
+        { $project: { name: 1, location: 1, play: 1 } },
+      ]);
+      const response = await findCompanys(matchJSON, aggregateQueryJSON);
+
+      if (response.success && response.companysData) {
+        setCompanysData(response.companysData);
+      }
+      showSpinner(false);
+    };
+
+    if (userData.email) {
+      fetchCompanys();
+    }
+  }, [userData.email]);
+
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
   };
@@ -91,15 +118,47 @@ const Calendario = () => {
   const handleCancelClick = () => {
     setSelectedDate(null);
     setComment("");
-    setSelectedCompany("empresa1");
+    setSelectedCompany("");
   };
 
-  const handleSubmitComment = () => {
-    console.log("Comentario:", comment);
-    console.log("Empresa seleccionada:", selectedCompany);
-    setComment("");
-    setSelectedCompany("empresa1");
-    setSelectedDate(null);
+  const handleSubmitComment = async () => {
+    if (!selectedCompany || !comment || !startDate || !endDate || !startTime || !endTime) {
+      alert("Por favor complete todos los campos");
+      return;
+    }
+
+    const selectedCompanyData = companysData.find(company => company._id === selectedCompany);
+    if (!selectedCompanyData) {
+      alert("Error: No se encontró la empresa seleccionada");
+      return;
+    }
+    
+    const promotionData = {
+      companyId: selectedCompany,
+      companyName: selectedCompanyData.name,
+      description: comment,
+      startDate: `${startDate}T${startTime}:00`,
+      endDate: `${endDate}T${endTime}:00`,
+      createdBy: userData.email
+    };
+
+    try {
+      showSpinner(true);
+      const response = await savePromotion(promotionData);
+      showSpinner(false);
+
+      if (response.success) {
+        alert("Promoción guardada exitosamente");
+        handleCancelClick();
+      } else {
+        alert(`Error al guardar la promoción: ${response.message || 'Error desconocido'}`);
+        console.error("Error response:", response);
+      }
+    } catch (error) {
+      showSpinner(false);
+      alert("Error al intentar guardar la promoción");
+      console.error("Error al guardar promoción:", error);
+    }
   };
 
   const menuItems = [
@@ -185,9 +244,16 @@ const Calendario = () => {
                 <select
                   value={selectedCompany}
                   onChange={(e) => setSelectedCompany(e.target.value)}
+                  className="w-full p-2 border rounded"
                 >
-                  <option value="empresa1">Empresa 1</option>
-                  <option value="empresa2">Empresa 2</option>
+                  <option value="" disabled>
+                    Seleccione una empresa
+                  </option>
+                  {companysData.map((company) => (
+                    <option key={company._id} value={company._id}>
+                      {company.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="mt-3">

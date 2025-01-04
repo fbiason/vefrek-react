@@ -516,12 +516,25 @@ const PaginaEmpresa = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: imagenSeleccionada,
-        afterChange: (current) => setImagenSeleccionada(current),
-    };
+        autoplay: true,
+        autoplaySpeed: 4000,
+        arrows: true,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+        fade: true,
+        cssEase: "cubic-bezier(0.7, 0, 0.3, 1)",
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false
+            }
+          }
+        ]
+      };
     
     return (
         <section className="background-empresa">

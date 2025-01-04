@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
-import { findUser, findCompanys2 } from "../../utils/apiDb/apiDbAcions";
+import { findUser, findCompanys2, getPromotions } from "../../utils/apiDb/apiDbAcions";
 import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
 import { editUserByQuery, findCompanys } from "../../utils/apiDb/apiDbAcions";
@@ -16,6 +16,7 @@ const Dashboard = () => {
   const { userData } = useContext(UserContext);
   const [userInfo, setUserInfo] = useState({ name: "", avatarImageSrc: "" });
   const [recommendedCompanys, setRecommendedCompanys] = useState([]);
+  const [promotions, setPromotions] = useState([]);
 
   const handleNavItemClick = (index) => {
     setActiveNavItem(index);
@@ -240,6 +241,15 @@ const Dashboard = () => {
       setRecommendedCompanys(recommendedCompanysJSXArr);
     })();
 
+    const loadPromotions = async () => {
+      const response = await getPromotions();
+      if (response.success) {
+        setPromotions(response.promotions);
+      }
+    };
+
+    loadPromotions();
+
     // eslint-disable-next-line
   }, [userData.email]);
 
@@ -311,6 +321,33 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          <div className="promociones-container">
+            <div className="bg-white rounded-lg p-6 mb-6">
+              <h2 className="text-xl font-semibold mb-4">Próximos descuentos</h2>
+              {promotions.map((promotion, index) => (
+                <div key={index} className="flex items-center justify-between mb-4 pb-4 border-b last:border-b-0">
+                  <div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-2xl font-bold">
+                        {new Date(promotion.startDate).getDate()}
+                      </div>
+                      <div>
+                        <div className="font-medium">{promotion.description}</div>
+                        <div className="text-gray-500 text-sm">{promotion.companyName}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600"
+                    onClick={() => {/* Aquí puedes agregar la funcionalidad para más info */}}
+                  >
+                    Más info
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
