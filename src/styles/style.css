@@ -1198,7 +1198,6 @@ button {
 
 /*==== INICIO FAVORITOS ======*/
 .businessCard-favorite {
-  position: absolute;
   top: 10px;
   right: 10px;
 }
@@ -3409,6 +3408,7 @@ select::placeholder {
 
 /* Nombre y slogan de la empresa */
 .empresa-nombre-slogan {
+  position: relative;
   text-align: start;
 }
 
