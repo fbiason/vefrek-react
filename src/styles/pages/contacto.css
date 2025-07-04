@@ -1,0 +1,144 @@
+/* Estilos para la página de contacto */
+
+.contacto-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 4rem 15px;
+}
+
+.contacto-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contacto-title {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.contacto-description {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.contacto-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.contacto-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contacto-form {
+  flex: 2;
+  min-width: 300px;
+}
+
+.contacto-info-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contacto-info-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 197, 142, 0.1);
+  color: var(--primary-color);
+  border-radius: 50%;
+  font-size: 1.25rem;
+}
+
+.contacto-info-text {
+  flex: 1;
+}
+
+.contacto-info-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--secondary-color);
+}
+
+.contacto-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.contacto-social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.contacto-social-link:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.contacto-form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contacto-map {
+  height: 400px;
+  margin-top: 3rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .contacto-content {
+    flex-direction: column;
+  }
+  
+  .contacto-info,
+  .contacto-form {
+    width: 100%;
+  }
+  
+  .contacto-map {
+    height: 300px;
+  }
+}

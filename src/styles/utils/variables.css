@@ -1,0 +1,11 @@
+/* Paleta de colores y variables CSS */
+:root {
+  --primary-color: rgb(0, 197, 142);
+  --secondary-color: #2e3b4e;
+  --text-color: #333333;
+  --light-text: #ffffff;
+  --dark-bg: hsl(218, 41%, 15%);
+  --light-bg: rgb(239, 234, 234);
+  --border-color: #ced4da;
+  --shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

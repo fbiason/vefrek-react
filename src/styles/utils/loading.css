@@ -1,0 +1,49 @@
+/* Estilos para mejorar la experiencia de carga */
+
+/* Asegura que el cuerpo de la página siempre tenga un color de fondo mientras carga */
+body {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  transition: opacity 0.3s ease;
+}
+
+/* Clase para el contenedor principal durante la carga */
+.app-loading {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Clase para el contenedor principal cuando ya está cargado */
+.app-loaded {
+  opacity: 1;
+}
+
+/* Estilo para un spinner de carga simple */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--dark-bg);
+  z-index: 9999;
+}
+
+.loading-spinner::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

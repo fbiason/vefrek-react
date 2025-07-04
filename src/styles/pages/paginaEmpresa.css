@@ -1,0 +1,258 @@
+/* Estilos para la página de empresa */
+
+.empresa-hero {
+  position: relative;
+  height: 400px;
+  background-color: var(--secondary-color);
+  overflow: hidden;
+}
+
+.empresa-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.empresa-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  color: #fff;
+}
+
+.empresa-hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.empresa-hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.empresa-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.empresa-hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.empresa-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 15px;
+}
+
+.empresa-navigation {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+}
+
+.empresa-nav {
+  display: flex;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.empresa-nav-item {
+  white-space: nowrap;
+}
+
+.empresa-nav-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.empresa-nav-link:hover,
+.empresa-nav-link.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.empresa-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.empresa-section-title {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.empresa-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.empresa-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.empresa-info-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.empresa-info-value {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.empresa-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.empresa-gallery-item {
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.empresa-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.empresa-gallery-item:hover .empresa-gallery-img {
+  transform: scale(1.1);
+}
+
+.empresa-reviews {
+  margin-top: 2rem;
+}
+
+.empresa-review {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.empresa-review:last-child {
+  border-bottom: none;
+}
+
+.empresa-review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.empresa-review-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.empresa-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.empresa-review-name {
+  font-weight: 500;
+}
+
+.empresa-review-date {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.empresa-review-rating {
+  color: #ffc107;
+}
+
+.empresa-review-content {
+  line-height: 1.6;
+}
+
+.empresa-contact-form {
+  margin-top: 1.5rem;
+}
+
+.empresa-map {
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.description-section {
+  margin-bottom: 2rem;
+}
+
+.description-section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .empresa-hero {
+    height: 300px;
+  }
+  
+  .empresa-hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .empresa-hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .empresa-nav-link {
+    padding: 0.75rem 1rem;
+  }
+  
+  .empresa-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .empresa-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

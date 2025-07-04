@@ -40,18 +40,16 @@
     "react-time-picker": "^6.6.0",
     "sitemap": "^8.0.0",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.10.1",
+    "sweetalert2": "^11.6.13",
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-react\" \"npm run watch-css\"",
-    "start-react": "env-cmd -f ./env/dev.env react-scripts start",
+    "start": "env-cmd -f ./env/dev.env react-scripts start",
+    "dev": "env-cmd -f ./env/dev.env react-scripts start",
     "build": "env-cmd -f ./env/prod.env react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build-css": "sass src/styles/sass:src/styles",
-    "watch-css": "sass --watch src/styles/sass:src/styles"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

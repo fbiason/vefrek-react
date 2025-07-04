@@ -46,6 +46,7 @@ button {
   min-height: fit-content;
   background-color: hsl(218, 41%, 15%);
   background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+  padding-top: 110px; /* Añadido para compensar la altura del navbar */
 }
 
 .background h1,
@@ -186,7 +187,6 @@ button {
     font-size: 18px;
   }
 }
-.btn-publica,
 .btnCategorias {
   width: auto;
   font-size: 13px;
@@ -206,13 +206,48 @@ button {
   border: none;
 }
 
-.btn-publica:hover,
+.btn-publica {
+  width: auto;
+  font-size: 13px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  color: rgb(0, 197, 142);
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  transition: all 0.4s ease-in-out;
+  background-color: whitesmoke;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgb(0, 197, 142);
+}
+
 .btnCategorias:hover {
   background-color: rgb(0, 197, 142);
   color: rgba(234, 234, 0, 0.886);
   border-color: rgb(0, 197, 142);
 }
 
+.btn-publica:hover {
+  background: linear-gradient(135deg, rgb(0, 197, 142), rgb(62, 51, 132));
+  color: whitesmoke;
+  border-color: transparent;
+  border-radius: 30px;
+}
+
+@media (max-width: 576px) {
+  .btnCategorias,
+  .btn-publica,
+  .ingresa {
+    width: 100%;
+    padding: 1rem;
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+}
 .ingresa {
   background-color: rgb(173, 255, 232);
   color: #241e4e;
@@ -689,7 +724,7 @@ button {
 /*Page home*/
 #hero {
   width: 100%;
-  background: url("/public/images/hero.jpeg") top center;
+  background: url("/public/images/hero.webp") top center;
   background-size: cover;
   position: relative;
 }
@@ -703,8 +738,13 @@ button {
   right: 0;
 }
 #hero .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
   position: relative;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 #hero h1 {
   margin: 0;
@@ -868,7 +908,7 @@ button {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   padding: 20px;
   margin-right: auto;
   margin-left: auto;
@@ -1115,6 +1155,8 @@ button {
 .businessCard-container {
   margin-bottom: 20px;
   padding: 1rem;
+  height: 100%;
+  display: flex;
 }
 
 .businessCard {
@@ -1128,6 +1170,9 @@ button {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .businessCard:hover {
@@ -1144,11 +1189,15 @@ button {
   width: 100%;
   height: 210px;
   display: block;
+  object-fit: cover;
 }
 
 .businessCard-content {
   text-align: center;
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .businessCard-content h3 {
@@ -1181,7 +1230,7 @@ button {
 .businessCard-content a {
   display: inline-block;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: auto;
   text-decoration: none;
   color: rgb(0, 197, 142);
   border: 1.5px solid white;
@@ -1270,115 +1319,25 @@ button {
 }
 /* src/styles/sass/_about.scss */
 /*=== ABOUT ===*/
-.about {
-  margin: 2rem;
-  background-color: #f8f9fa;
-  padding: 80px 0;
-  border-radius: 2rem;
-}
-
-.container-about {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.row-about {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.col-lg-6-about {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 15px;
-}
-
-.order-lg-1-about {
-  order: 1;
-}
-
-.order-lg-2-about {
-  order: 2;
-}
-
-.pt-4-about {
-  padding-top: 1.5rem;
-}
-
-.pt-lg-0-about {
-  padding-top: 0;
-}
+/* Todos los estilos de la sección about han sido movidos a src/styles/pages/about.css */
 
 .img-fluid {
   max-width: 100%;
   height: auto;
 }
 
-.about h3 {
-  font-size: 2.5rem;
-  color: #333;
-}
+/* Los estilos de la sección about han sido movidos a src/styles/pages/about.css */
 
-.about p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-  text-align: justify;
-}
-
-.about p + p {
-  margin-top: 20px;
-}
-
-.about ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.about ul li {
-  margin-bottom: 15px;
-}
-
-.about ul li i {
-  color: rgb(0, 197, 142);
-  margin-right: 10px;
-  font-size: x-large;
-}
-
-@media (max-width: 768px) {
-  .about {
-    padding: 60px 0;
-  }
-  .container-about {
-    padding: 0 10px;
-  }
-  .row-about {
-    flex-direction: column;
-    text-align: center;
-  }
-  .col-lg-6-about {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-  .about h3 {
-    font-size: 2rem;
-  }
-  .about p {
-    font-size: 1rem;
-  }
-}
+/* Los media queries para la sección about han sido movidos a src/styles/pages/about.css */
 .ppc-section {
-  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("/public/images/ppc.jpg") fixed center center;
+  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("/public/images/ppc.webp") fixed center center;
   background-size: cover;
   padding: 60px 0;
   text-align: center;
 }
 
-.container-ppc {
-  max-width: 1240px;
+.ppc-section .container {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -1419,59 +1378,64 @@ button {
   }
 }
 .values-section {
-  margin-top: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  background-color: #fff;
 }
 
-.container-values {
-  max-width: 1140px;
+.values-section .container {
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 1rem;
   padding: 0 15px;
 }
 
-.row-values {
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.value-item {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(0, 197, 142, 0.15);
+  display: flex;
   align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
 }
 
-.col-lg-6-values {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 15px;
-}
-
-.image-values {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 400px;
-}
-
-.icon-box-values {
-  display: flex;
-  margin-top: 2rem;
-}
-
-.icon-box-values .icon {
-  flex: 0 0 auto;
-  margin-right: 15px;
-}
-
-.icon-box-values .icon i {
-  font-size: 56px;
+.value-icon i {
+  font-size: 24px;
   color: rgb(0, 197, 142);
 }
 
-.icon-box-values h4 {
+.value-content h4 {
   font-size: 20px;
   font-weight: 700;
-  margin: 0;
+  color: #333;
+  margin: 0 0 10px 0;
 }
 
-.icon-box-values p {
+.value-content p {
   font-size: 15px;
   color: #848484;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1497,8 +1461,8 @@ button {
 .contact-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin: 1rem auto 2rem;
   padding: 2rem;
   background-color: #f9f9f9;
   border-radius: 3rem;

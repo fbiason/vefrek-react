@@ -328,7 +328,7 @@ const Reparacion = () => {
 
     return (
       <div className="background">
-        <div className="custom-container">
+        <div className="container">
           <div className="custom-row ">
             <div className="custom-col">
               <h1 className="custom-title">Reparación y Mantenimiento</h1>

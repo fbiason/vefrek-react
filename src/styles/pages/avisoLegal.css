@@ -1,0 +1,108 @@
+/* Estilos para la página de Aviso Legal */
+
+.aviso-legal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 15px;
+}
+
+.aviso-legal-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.aviso-legal-title {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.aviso-legal-fecha {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.aviso-legal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.aviso-legal-section {
+  margin-bottom: 2rem;
+}
+
+.aviso-legal-section:last-child {
+  margin-bottom: 0;
+}
+
+.aviso-legal-subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.aviso-legal-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.aviso-legal-list {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.aviso-legal-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.aviso-legal-contact {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.aviso-legal-contact p {
+  margin-bottom: 0.5rem;
+}
+
+.aviso-legal-contact strong {
+  color: var(--secondary-color);
+}
+
+.aviso-legal-back {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.aviso-legal-back:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .aviso-legal-container {
+    padding: 2rem 15px;
+  }
+  
+  .aviso-legal-content {
+    padding: 1.5rem;
+  }
+  
+  .aviso-legal-title {
+    font-size: 1.75rem;
+  }
+  
+  .aviso-legal-subtitle {
+    font-size: 1.25rem;
+  }
+}

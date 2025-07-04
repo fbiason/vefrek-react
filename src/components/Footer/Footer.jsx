@@ -210,11 +210,10 @@ const Footer = () => {
 
             <div className="container">
                 <div className="copyright">
-                    &copy; Copyright 2024{" "}
-                    <strong>
-                        <span>Vefrek</span>
+                    &copy; 2025 <strong>
+                        <a href="https://francobiason.com.ar/" target="_blank" rel="noopener noreferrer">FBDev</a>
                     </strong>
-                    . Todos los derechos reservados.
+                    . All Rights Reserved.
                 </div>
             </div>
 

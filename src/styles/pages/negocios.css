@@ -1,0 +1,213 @@
+/* Estilos para la sección de negocios */
+
+.negocios-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 15px;
+}
+
+.negocios-header {
+  margin-bottom: 2rem;
+}
+
+.negocios-title {
+  font-size: 1.75rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.negocios-subtitle {
+  color: #6c757d;
+}
+
+.negocios-filters {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+
+.filter-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-btn-reset {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.filter-btn-apply {
+  background-color: var(--primary-color);
+  border: none;
+  color: #fff;
+}
+
+.filter-img-negocios {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+.filter-type {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.filterTypeLabel {
+  margin-left: 0.5rem;
+  padding-right: 5rem;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.negocios-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.negocios-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.negocios-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.negocios-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.negocios-card-body {
+  padding: 1.5rem;
+}
+
+.negocios-card-title {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.negocios-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.negocios-card-description {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.negocios-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.negocios-card-category {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(0, 197, 142, 0.1);
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.negocios-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ffc107;
+}
+
+.negocios-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-item:hover,
+.pagination-item.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+  .negocios-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .negocios-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,94 @@
+/* Estilos de la barra de navegación */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo img {
+  max-height: 50px;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-links a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.navbar .dropdown {
+  position: relative;
+}
+
+.navbar .dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--secondary-color);
+  min-width: 200px;
+  display: none;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  z-index: 1001;
+}
+
+.navbar .dropdown ul li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .dropdown ul li a {
+  color: var(--light-text);
+  text-decoration: none;
+  display: block;
+}
+
+.navbar .dropdown ul li:hover > a {
+  background-color: var(--primary-color);
+}
+
+.navbar .dropdown:hover > ul {
+  display: block;
+}
+
+.icon-burger {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .icon-burger {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-color);
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .nav-links.show {
+    display: flex !important;
+  }
+}

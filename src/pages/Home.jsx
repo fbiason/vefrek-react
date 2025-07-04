@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
+import "../styles/pages/about.css";
 import SearchBar from "../components/NavBar/SearchBar";
 import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
@@ -149,21 +150,20 @@ const Home = () => {
             {negocios}
 
             <section id="about" className="about">
-                <div className="container-about" data-aos="fade-up">
-                    <div className="row-about">
+                <div className="container" data-aos="fade-up">
+                    <div className="about-content">
                         <div
-                            className="col-lg-6-about order-lg-1-about"
+                            className="about-image"
                             data-aos="fade-right"
                             data-aos-delay="100"
                         >
                             <img
-                                src="images/about.png"
-                                className="img-fluid"
+                                src="images/about.webp"
                                 alt="Sobre Vefrek"
                             />
                         </div>
                         <div
-                            className="col-lg-6-about pt-4-about pt-lg-0-about order-lg-2-about"
+                            className="about-text"
                             data-aos="fade-left"
                             data-aos-delay="100"
                         >
@@ -198,7 +198,7 @@ const Home = () => {
             </section>
 
             <section id="ppc" className="ppc-section">
-                <div className="container-ppc" data-aos="zoom-in">
+                <div className="container" data-aos="zoom-in">
                     <div className="text-center">
                         <h3>POTENCIA AÚN MÁS A TU EMPRESA</h3>
                         <p>
@@ -213,82 +213,56 @@ const Home = () => {
             </section>
 
             <section id="values" className="values-section">
-                <div className="container-values" data-aos="fade-up">
-                    <div className="row-values">
-                        <div className="col-lg-6-values">
-                            <div
-                                className="icon-box-values"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <div className="icon">
-                                    <i className="bx bx-user"></i>
-                                </div>
-                                <div className="text">
-                                    <h4>Responsabilidad</h4>
-                                    <p>
-                                        Cumplimos con todas las obligaciones que nos comprometemos a
-                                        realizar tanto con nuestros empleados como con nuestros
-                                        clientes.
-                                    </p>
-                                </div>
+                <div className="container" data-aos="fade-up">
+                    <div className="values-grid">
+                        <div className="value-item" data-aos="fade-up" data-aos-delay="100">
+                            <div className="value-icon">
+                                <i className="bx bx-user"></i>
                             </div>
-                            <div
-                                className="icon-box-values"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <div className="icon">
-                                    <i className="bx bx-cube-alt"></i>
-                                </div>
-                                <div className="text">
-                                    <h4>Simplicidad</h4>
-                                    <p>Ofrecemos un servicio claro y de fácil acceso.</p>
-                                </div>
-                            </div>
-                            <div
-                                className="icon-box-values"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <div className="icon">
-                                    <i className="bx bx-compass"></i>
-                                </div>
-                                <div className="text">
-                                    <h4>Orientación al cliente</h4>
-                                    <p>
-                                        Trabajamos para que las empresas puedan mejorar la difusión
-                                        de sus negocios y logren un mayor alcance.
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                className="icon-box-values"
-                                data-aos="zoom-in"
-                                data-aos-delay="150"
-                            >
-                                <div className="icon">
-                                    <i className="bx bx-star"></i>
-                                </div>
-                                <div className="text">
-                                    <h4>Excelencia</h4>
-                                    <p>
-                                        Buscamos superarnos día a día y que los resultados se
-                                        reflejen en la calidad de atención a los clientes.
-                                    </p>
-                                </div>
+                            <div className="value-content">
+                                <h4>Responsabilidad</h4>
+                                <p>
+                                    Cumplimos con todas las obligaciones que nos comprometemos a
+                                    realizar tanto con nuestros empleados como con nuestros
+                                    clientes.
+                                </p>
                             </div>
                         </div>
-                        <div
-                            className="col-lg-6-about"
-                            data-aos="fade-right"
-                            data-aos-delay="100"
-                        >
-                            <img
-                                src="images/valores.jpg"
-                                className="img-fluid"
-                                alt="Sobre Vefrek"
-                            />
+                        
+                        <div className="value-item" data-aos="fade-up" data-aos-delay="200">
+                            <div className="value-icon">
+                                <i className="bx bx-cube-alt"></i>
+                            </div>
+                            <div className="value-content">
+                                <h4>Simplicidad</h4>
+                                <p>Ofrecemos un servicio claro y de fácil acceso.</p>
+                            </div>
+                        </div>
+                        
+                        <div className="value-item" data-aos="fade-up" data-aos-delay="300">
+                            <div className="value-icon">
+                                <i className="bx bx-compass"></i>
+                            </div>
+                            <div className="value-content">
+                                <h4>Orientación al cliente</h4>
+                                <p>
+                                    Trabajamos para que las empresas puedan mejorar la difusión
+                                    de sus negocios y logren un mayor alcance.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div className="value-item" data-aos="fade-up" data-aos-delay="400">
+                            <div className="value-icon">
+                                <i className="bx bx-star"></i>
+                            </div>
+                            <div className="value-content">
+                                <h4>Excelencia</h4>
+                                <p>
+                                    Buscamos superarnos día a día y que los resultados se
+                                    reflejen en la calidad de atención a los clientes.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -297,7 +271,6 @@ const Home = () => {
             <section id="contact" className="contact">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
-                        <h2>Comunícate con nosotros</h2>
                         <p>CONTACTANOS</p>
                     </div>
 
@@ -319,7 +292,7 @@ const Home = () => {
                                         <i className="fas fa-map-marker-alt contact-icon"></i>
                                         <div>
                                             <h4>Dirección:</h4>
-                                            <p>Alberdi 1144, Depto 4, Río Gallegos, Santa Cruz</p>
+                                            <p>Argentina, CABA</p>
                                         </div>
                                     </div>
                                     <div className="contact-item">

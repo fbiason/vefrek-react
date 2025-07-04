@@ -36,6 +36,7 @@ function App() {
   ReactGA.initialize("G-J1JT10S65V");
   const { updateUserData, setShow, userData, show } = useContext(UserContext);
   const { spinner } = useContext(SpinnerContext);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
     const verifiLog = async () => {
@@ -46,10 +47,22 @@ function App() {
         updateUserData({ email: "", name: "", isLogged: false });
       }
       setShow(true);
+      
+      // Agregamos un pequeño delay para asegurarnos de que los estilos CSS se carguen correctamente
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     };
     verifiLog();
     // eslint-disable-next-line
   }, []);
+
+  // Si está cargando, mostramos un indicador visual
+  if (isLoading) {
+    return (
+      <div className="loading-spinner"></div>
+    );
+  }
 
   return (
     <BrowserRouter>
