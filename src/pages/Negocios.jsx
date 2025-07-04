@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { findCompanys, findCompanys2 } from "../utils/apiDb/apiDbAcions";
 import { swalPopUp } from "../utils/swal";
 import { SpinnerContext } from "../context/spinnerContext";
@@ -8,6 +8,8 @@ import { calculateDistanceInKm } from "../utils/geo/calculateDistanceInKm";
 const Negocios = ({ limitedTo300Km = false }) => {
     const [filter, setFilter] = useState("all");
     const [data, setData] = useState([]);
+    const [selectedBusiness, setSelectedBusiness] = useState(null);
+    const [map, setMap] = useState(null);
     const { showSpinner } = useContext(SpinnerContext);
     const images = [];
 
@@ -66,18 +68,20 @@ const Negocios = ({ limitedTo300Km = false }) => {
             if (response.success && response.companysData) {
                 const jsxArr = response.companysData.map((company) => (
                     <div className="negocio-card-col" key={company._id}>
-                        <CardNegocio
-                            subcategory={company.subcategory}
-                            name={company.name}
-                            imgUrl={
-                                company.images.images[0] ? company.images.images[0].url : ""
-                            }
-                            location={company.location}
-                            phone={company.phone}
-                            id={company._id}
-                            vefrek_website={company.vefrek_website}
-                            favorites={company.favorites}
-                        />
+                        <div onClick={() => handleSelectBusiness(company)} style={{ cursor: "pointer" }}>
+                          <CardNegocio
+                              subcategory={company.subcategory}
+                              name={company.name}
+                              imgUrl={
+                                  company.images.images[0] ? company.images.images[0].url : ""
+                              }
+                              location={company.location}
+                              phone={company.phone}
+                              id={company._id}
+                              vefrek_website={company.vefrek_website}
+                              favorites={company.favorites}
+                          />
+                        </div>
                     </div>
                 ));
                 setData(jsxArr);
@@ -155,20 +159,22 @@ const Negocios = ({ limitedTo300Km = false }) => {
                         if (response.success && response.companysData) {
                             const jsxArr = response.companysData.map((company) => (
                                 <div className="card-portfolio" key={company._id}>
-                                    <CardNegocio
-                                        subcategory={company.subcategory}
-                                        name={company.name}
-                                        imgUrl={
-                                            company.images.images[0]
-                                                ? company.images.images[0].url
-                                                : ""
-                                        }
-                                        location={company.location}
-                                        phone={company.phone}
-                                        id={company._id}
-                                        vefrek_website={company.vefrek_website}
-                                        favorites={company.favorites}
-                                    />
+                                    <div onClick={() => handleSelectBusiness(company)} style={{ cursor: "pointer" }}>
+                                        <CardNegocio
+                                            subcategory={company.subcategory}
+                                            name={company.name}
+                                            imgUrl={
+                                                company.images.images[0]
+                                                    ? company.images.images[0].url
+                                                    : ""
+                                            }
+                                            location={company.location}
+                                            phone={company.phone}
+                                            id={company._id}
+                                            vefrek_website={company.vefrek_website}
+                                            favorites={company.favorites}
+                                        />
+                                    </div>
                                 </div>
                             ));
                             setData(jsxArr);
@@ -211,9 +217,71 @@ const Negocios = ({ limitedTo300Km = false }) => {
         setFilter(newFilter);
     };
 
+    // Función para obtener la ubicación desde la dirección
+    const getLocationFromAddress = async (address) => {
+        try {
+            const responseJSON = await fetch(
+                `${process.env.REACT_APP_API_URL}api/getmap?address=${address}`,
+                {
+                    method: "GET",
+                }
+            );
+
+            const responseOBJ = await responseJSON.json();
+            if (responseOBJ.success) {
+                return {
+                    success: true,
+                    url: responseOBJ.url
+                };
+            } else {
+                return {
+                    success: false,
+                    message: "No se pudo obtener la ubicación"
+                };
+            }
+        } catch (error) {
+            console.error("Error al obtener el mapa:", error);
+            return {
+                success: false,
+                message: "Error al conectar con el servicio de mapas"
+            };
+        }
+    };
+
+    // Función para mostrar el mapa cuando se selecciona un negocio
+    const handleSelectBusiness = async (business) => {
+        setSelectedBusiness(business);
+        showSpinner(true);
+        
+        const mapResult = await getLocationFromAddress(business.location);
+        
+        if (mapResult.success) {
+            setMap(
+                <iframe
+                    className="mapa-google"
+                    title="map"
+                    src={mapResult.url}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    style={{ width: "100%", height: "300px", borderRadius: "8px" }}
+                />
+            );
+        } else {
+            setMap(
+                <div className="googleMapFrame flex" style={{ padding: "20px", background: "#eee", borderRadius: "8px", textAlign: "center" }}>
+                    <p>No se pudo obtener la ubicación</p>
+                    <p>Dirección: {business.location}</p>
+                </div>
+            );
+        }
+        
+        showSpinner(false);
+    };
+
     return (
-      <div className="negocios-recomendados" data-aos="fade-up">
-        <div>
+      <div className="negocios-section">
+        <div className="container">
           <h5>Encontra lo que tu vehículo necesita</h5>
           <div className="filter-options">
             <div className="filterTypeContRecomendados">
@@ -233,41 +301,63 @@ const Negocios = ({ limitedTo300Km = false }) => {
               <p>Servicios 24hs</p>
             </div>
           </div>
-        </div>
 
-        <div className="row-recomendados">
-          <div className="filter-recomendados">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`filter-btn-recomendados ${
-                  filter === category.toLowerCase()
-                    ? "filter-btn-recomendados-active"
-                    : ""
-                }`}
-                onClick={() => applyFilter(category.toLowerCase())}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="row-recomendados">
+            <div className="filter-recomendados">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`filter-btn-recomendados ${
+                    filter === category.toLowerCase()
+                      ? "filter-btn-recomendados-active"
+                      : ""
+                  }`}
+                  onClick={() => applyFilter(category.toLowerCase())}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            <div className="filter-img-negocios">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`filter ${
+                    filter === "all" ? "" : `filter-${filter}`
+                  }`}
+                >
+                  <img src={image} alt={`Im ${index + 1}`} />
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="filter-img-negocios">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`filter ${
-                  filter === "all" ? "" : `filter-${filter}`
-                }`}
-              >
-                <img src={image} alt={`Im ${index + 1}`} />
+          {selectedBusiness && (
+            <div className="selected-business-map" style={{ marginBottom: "20px", padding: "20px", border: "1px solid #ddd", borderRadius: "8px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+                <h4>{selectedBusiness.name}</h4>
+                <button 
+                  onClick={() => setSelectedBusiness(null)} 
+                  style={{ background: "none", border: "none", cursor: "pointer", color: "#777" }}
+                >
+                  ✕
+                </button>
               </div>
-            ))}
-          </div>
-        </div>
+              <div style={{ marginBottom: "15px" }}>
+                <p><strong>Dirección:</strong> {selectedBusiness.location}</p>
+                <p><strong>Teléfono:</strong> {selectedBusiness.phone}</p>
+                <p><strong>Categoría:</strong> {selectedBusiness.subcategory}</p>
+              </div>
+              <div className="ubicacion-container" style={{ borderRadius: "8px", overflow: "hidden" }}>
+                {map ? map : <p>Cargando mapa...</p>}
+              </div>
+            </div>
+          )}
 
-        <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
-          {data}
+          <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
+            {data}
+          </div>
         </div>
       </div>
     );

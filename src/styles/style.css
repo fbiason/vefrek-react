@@ -1079,13 +1079,15 @@ button {
 }
 
 .row-cards > * {
-  flex: 0 1 calc(25% - 30px);
+  flex: 0 1 calc(33.333% - 30px);
   margin-bottom: 2rem;
+  min-width: 300px;
 }
 
 @media (max-width: 992px) {
   .row-cards > * {
-    flex: 0 1 calc(33.333% - 20px);
+    flex: 0 1 calc(50% - 20px);
+    min-width: 280px;
   }
 }
 @media (max-width: 768px) {
@@ -1157,6 +1159,7 @@ button {
   padding: 1rem;
   height: 100%;
   display: flex;
+  width: 100%;
 }
 
 .businessCard {
@@ -1171,6 +1174,7 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   height: 100%;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
 }
@@ -1983,10 +1987,15 @@ button {
 .custom-title {
   font-size: 4rem;
   margin-top: 1rem;
-  padding-top: 0;
   text-align: center;
   line-height: 1.1;
   word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .custom-title {
+    padding-top: 5rem;
+  }
 }
 
 @media (max-width: 768px) {
