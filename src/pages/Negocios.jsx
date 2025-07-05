@@ -281,8 +281,10 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
     return (
       <div className="negocios-section">
-        <div className="container">
-          <h5>Encontra lo que tu vehículo necesita</h5>
+        <div className="container" data-aos="fade-up">
+          <div className="section-title">
+            <p>Encontra lo que tu vehículo necesita</p>
+          </div>
           <div className="filter-options">
             <div className="filterTypeContRecomendados">
               <input

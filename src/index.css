@@ -77,6 +77,12 @@ a:hover {
   margin: 0 auto;
 }
 
+/* Estilo específico para la sección de negocios */
+.negocios-section .section-title {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .section-title p {
   margin-top: 2rem;
   font-size: 36px;

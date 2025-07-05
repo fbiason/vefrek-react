@@ -139,7 +139,11 @@ const Calendario = () => {
       description: comment,
       startDate: `${startDate}T${startTime}:00`,
       endDate: `${endDate}T${endTime}:00`,
-      createdBy: userData.email
+      createdBy: userData.email,
+      location: selectedCompanyData.location || '',
+      province: selectedCompanyData.province || '',
+      city: selectedCompanyData.city || '',
+      coordinates: selectedCompanyData.coordinates || {}
     };
 
     try {

@@ -234,9 +234,14 @@ export const savePromotion = async (promotionData) => {
     }
 };
 
-export const getPromotions = async () => {
+export const getPromotions = async (userProvince = null) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/promotions`, {
+        // Añadimos el parámetro de provincia como query string si está disponible
+        const url = userProvince 
+            ? `${process.env.REACT_APP_API_URL}/promotions?province=${encodeURIComponent(userProvince)}` 
+            : `${process.env.REACT_APP_API_URL}/promotions`;
+        
+        const response = await fetch(url, {
             headers: {
                 "Accept": "application/json",
                 "Origin": window.location.origin

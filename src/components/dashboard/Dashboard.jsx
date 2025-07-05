@@ -242,7 +242,13 @@ const Dashboard = () => {
     })();
 
     const loadPromotions = async () => {
-      const response = await getPromotions();
+      // Obtener la provincia del usuario si está disponible
+      let userProvince = null;
+      if (userData && userData.province) {
+        userProvince = userData.province;
+      }
+      
+      const response = await getPromotions(userProvince);
       if (response.success) {
         setPromotions(response.promotions);
       }
@@ -336,7 +342,11 @@ const Dashboard = () => {
                       </div>
                       <div>
                         <div className="font-medium">{promotion.description}</div>
-                        <div className="text-gray-500 text-sm">{promotion.companyName}</div>
+                        <div className="text-gray-500 text-sm">{promotion.companyName}
+                          {userData.province && promotion.province && userData.province === promotion.province && (
+                            <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Local</span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>

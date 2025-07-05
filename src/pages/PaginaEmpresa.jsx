@@ -280,6 +280,12 @@ const PaginaEmpresa = () => {
                             <div className="commentsData">
                                 <h5>{review.name}</h5>
                                 <h5>({new Date(review.date).toLocaleString()})</h5>
+                                {/* Mostrar el botón de edición solo si el email del usuario coincide con el email del autor */}
+                                {userData.isLogged && userData.email === review.email && (
+                                    <button className="btn-icon" onClick={() => handleEditOpinion(review._id)}>
+                                        <Edit />
+                                    </button>
+                                )}
                             </div>
                         </div>
                         <div className="nro-star">
@@ -290,6 +296,14 @@ const PaginaEmpresa = () => {
                         </div>
                     </div>
                 ));
+                
+                // Función para manejar la edición de opiniones
+                const handleEditOpinion = (opinionId) => {
+                    // Aquí iría la lógica para editar la opinión
+                    // Por ejemplo, abrir un modal o navegar a una página de edición
+                    console.log("Editando opinión:", opinionId);
+                    // Implementar lógica de edición según necesidades
+                };
                 setComments(reviewsArrJSX);
             }
         } else if (!response.success) {
@@ -648,9 +662,6 @@ const PaginaEmpresa = () => {
                 <div className="fila fila-opiniones">
                     <div className="opiniones-header">
                         <h2 className="opiniones-titulo">Opiniones Destacadas</h2>
-                        <button className="btn-icon">
-                            <Edit />
-                        </button>
                     </div>
 
                     <div className="opiniones-lista">
