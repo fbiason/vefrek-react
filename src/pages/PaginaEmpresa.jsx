@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../styles/PaginaEmpresa.css";
 import { useParams, useNavigate } from "react-router-dom";
 import {
     findCompany,
@@ -589,231 +590,287 @@ const PaginaEmpresa = () => {
     };
 
     return (
-        <section className="contenedor-principal background">
-            {/* Columna A */}
-            <div className="columnaA">
-                {/* Fila 1: Logo, nombre y carrusel */}
-                <div className="fila fila-logo-carrusel">
-                    {/* Contenedor del logo y el nombre */}
-                    <div className="logo-nombre-contenedor">
+        <>
+            <section className="contenedor-principal background">
+                {/* Columna 1: Contenido principal de la empresa */}
+                <div className="columna columna-principal">
+                    {/* Fila 1: Logo, nombre, slogan y favorito */}
+                    <div className="fila fila-logo-nombre">
                         {/* Logo de la empresa */}
                         <div className="logo-empresa">
                             <img
                                 src={companyData.images.logo.url}
-                                alt="Logo de la empresa"
+                                alt={`Logo de ${companyData.name}`}
                                 className="logo-empresa-img"
                             />
                         </div>
 
                         {/* Nombre y slogan de la empresa */}
-                        <div className="empresa-nombre-slogan">
-                            <div className="empresa-nombre-fav"></div>
+                        <div className="empresa-info">
                             <h2 className="empresa-nombre">{companyData.name}</h2>
                             <p className="empresa-slogan">{companyData.slogan}</p>
-                            <div className="businessCard-favorite">
-                                <input
-                                    name="favorito"
-                                    type="checkbox"
-                                    ref={heartRef}
-                                    defaultChecked={false}
-                                />
-                                <label
-                                    className="businessCard-favoriteLabel"
-                                    onClick={handleFavorites}
-                                >
-                                    <BsStarFill className="businessCard-starIcon" />
-                                </label>
-                            </div>
+                        </div>
+
+                        {/* Botón de favorito */}
+                        <div className="businessCard-favorite">
+                            <input
+                                name="favorito"
+                                id="favoritoCheckbox"
+                                type="checkbox"
+                                ref={heartRef}
+                                defaultChecked={false}
+                            />
+                            <label
+                                className="businessCard-favoriteLabel"
+                                onClick={handleFavorites}
+                                htmlFor="favoritoCheckbox"
+                            >
+                                <BsStarFill className="businessCard-starIcon" />
+                            </label>
                         </div>
                     </div>
 
-                    {/* Carrusel de imágenes */}
-                    <div className="carrusel-imagenes">
-                        <Slider {...settings}>
-                            {imagenes.map((imagen, index) => (
-                                <div key={index}>
-                                    <img
-                                        className={`carrusel-img ${imagenSeleccionada === index ? "imagen-seleccionada" : ""
-                                            }`}
-                                        src={imagen}
-                                        alt={`Imagen ${index + 1} de la empresa`}
-                                        onClick={() => {
-                                            setImagenSeleccionada(index);
-                                            intercambiarImagen(index);
-                                        }}
+                    {/* Fila 2: Carrusel de imágenes */}
+                    <div className="fila">
+                        <div className="carrusel-contenedor">
+                            <Slider {...settings}>
+                                {imagenes.map((imagen, index) => (
+                                    <div key={index}>
+                                        <img
+                                            className="carrusel-img"
+                                            src={imagen}
+                                            alt={`Imagen ${index + 1} de ${companyData.name}`}
+                                            onClick={() => {
+                                                setImagenSeleccionada(index);
+                                                intercambiarImagen(index);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
+                        </div>
+                    </div>
+
+                    {/* Fila 3: Información general */}
+                    <div className="fila">
+                        <h2 className="informacion-titulo">Información</h2>
+                        <p className="informacion-descripcion">
+                            {companyData.description || "Descripción no disponible."}
+                        </p>
+                    </div>
+
+                    {/* Fila 4: Opiniones destacadas */}
+                    <div className="fila">
+                        <div className="opiniones-header">
+                            <h2 className="opiniones-titulo">Opiniones Destacadas</h2>
+                            {stars && <div className="opiniones-estrellas">{stars}</div>}
+                        </div>
+
+                        <div className="opiniones-lista">
+                            {comments && comments.length > 0 ? (
+                                comments
+                            ) : (
+                                <p className="opiniones-no-disponibles">
+                                    No hay opiniones disponibles.
+                                </p>
+                            )}
+                        </div>
+
+                        {userData.isLogged && (
+                            <div className="escribir-resena">
+                                <h3 className="escribir-resena-titulo">Escribe tu opinión</h3>
+                                <div className="starsFeedback">
+                                    <StyledRating
+                                        name="star-rating-write"
+                                        precision={1}
+                                        size="large"
                                     />
                                 </div>
-                            ))}
-                        </Slider>
-                    </div>
-                </div>
-
-                {/* Fila 2: Información sobre la empresa */}
-                <div className="fila fila-informacion">
-                    <h2 className="informacion-titulo">Información</h2>
-                    <p className="informacion-descripcion">
-                        {companyData.description
-                            ? companyData.description
-                            : "Descripción no disponible."}
-                    </p>
-                </div>
-
-                {/* Fila 3: Opiniones Destacadas */}
-                <div className="fila fila-opiniones">
-                    <div className="opiniones-header">
-                        <h2 className="opiniones-titulo">Opiniones Destacadas</h2>
-                    </div>
-
-                    <div className="opiniones-lista">
-                        {comments && comments.length > 0 ? (
-                            comments
-                        ) : (
-                            <p className="opiniones-no-disponibles">
-                                No hay opiniones disponibles.
-                            </p>
+                                <textarea 
+                                    className="commentFeedback" 
+                                    placeholder="Comparte tu experiencia..."
+                                    maxLength={500}
+                                />
+                                <button 
+                                    className="btn-enviar-resena" 
+                                    onClick={sendFeedback}
+                                >
+                                    Enviar opinión
+                                </button>
+                            </div>
                         )}
                     </div>
                 </div>
-            </div>
 
-            {/* Columna B: Ubicación y datos de la empresa */}
-            <div className="columnaB">
-                {/* Ubicación (mapa) */}
-                <div className="ubicacion-container">
-                    {map ? map : <p>No se pudo cargar la ubicación.</p>}
-                </div>
+                {/* Columna 2: Información de contacto */}
+                <div className="columna columna-contacto">
+                    {/* Fila 1: Mapa de ubicación */}
+                    <div className="fila">
+                        <div className="ubicacion-container">
+                            {map ? map : <p>No se pudo cargar la ubicación.</p>}
+                        </div>
+                    </div>
 
-                {/* Dirección */}
-                <div className="datos-direccion">
-                    <p>
-                        <strong>Dirección:</strong> {companyData.location},{" "}
-                        {companyData.city}, {companyData.state}
-                    </p>
-                </div>
-
-                {/* Teléfono */}
-                <div className="datos-telefono">
-                    <p>
-                        <strong>Teléfono:</strong>
-                        <a href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}>
-                            {companyData.phone}
-                        </a>
-                    </p>
-                    {companyData.phone2 && (
+                    {/* Fila 2: Dirección completa */}
+                    <div className="fila datos-direccion">
                         <p>
-                            <strong>Teléfono 2:</strong>
-                            <a href={`tel:${companyData.phone2.replace(/[\s-]/g, "")}`}>
-                                {companyData.phone2}
+                            <strong>Dirección:</strong> {companyData.location},{" "}
+                            {companyData.city}, {companyData.state}
+                        </p>
+                    </div>
+
+                    {/* Fila 3: Teléfonos de contacto */}
+                    <div className="fila datos-telefono">
+                        <p>
+                            <strong>Teléfono:</strong>
+                            <a href={`tel:${companyData.phone.replace(/[\s-]/g, "")}`}>
+                                {companyData.phone}
                             </a>
                         </p>
-                    )}
-                </div>
+                        {companyData.phone2 && (
+                            <p>
+                                <strong>Teléfono 2:</strong>
+                                <a href={`tel:${companyData.phone2.replace(/[\s-]/g, "")}`}>
+                                    {companyData.phone2}
+                                </a>
+                            </p>
+                        )}
+                    </div>
 
-                {/* Redes sociales */}
-                <div className="redes-sociales-container">
-                    {companyData.social.whatsapp && (
-                        <a
-                            href={`https://wa.me/${companyData.social.whatsapp.replace(
-                                /[\s-]/g,
-                                ""
-                            )}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-whatsapp"></i>
-                        </a>
-                    )}
-                    {companyData.social.facebook && (
-                        <a
-                            href={`https://${companyData.social.facebook}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-facebook"></i>
-                        </a>
-                    )}
-                    {companyData.social.instagram && (
-                        <a
-                            href={`https://${companyData.social.instagram}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-instagram"></i>
-                        </a>
-                    )}
-                    {companyData.social.linkedIn && (
-                        <a
-                            href={`https://${companyData.social.linkedIn}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-linkedin"></i>
-                        </a>
-                    )}
-                    {companyData.social.youtube && (
-                        <a
-                            href={`https://${companyData.social.youtube}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-youtube"></i>
-                        </a>
-                    )}
-                </div>
-
-                {/* Sitio web */}
-                <div className="datos-sitio-web">
-                    {companyData.website && (
-                        <p>
-                            <strong>Sitio Web:</strong>
+                    {/* Fila 4: Iconos de redes sociales */}
+                    <div className="fila redes-sociales-container">
+                        {companyData.social.whatsapp && (
                             <a
-                                href={
-                                    companyData.website.includes("http")
-                                        ? companyData.website
-                                        : `https://${companyData.website}`
-                                }
+                                className="red-social-link whatsapp"
+                                href={`https://wa.me/${companyData.social.whatsapp.replace(/[\s-]/g, "")}`}
                                 target="_blank"
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
+                                title="WhatsApp"
                             >
-                                {companyData.website}
+                                <i className="fab fa-whatsapp"></i>
                             </a>
-                        </p>
-                    )}
-                </div>
+                        )}
+                        {companyData.social.facebook && (
+                            <a
+                                className="red-social-link facebook"
+                                href={`https://${companyData.social.facebook}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Facebook"
+                            >
+                                <i className="fab fa-facebook-f"></i>
+                            </a>
+                        )}
+                        {companyData.social.instagram && (
+                            <a
+                                className="red-social-link instagram"
+                                href={`https://${companyData.social.instagram}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Instagram"
+                            >
+                                <i className="fab fa-instagram"></i>
+                            </a>
+                        )}
+                        {companyData.social.linkedIn && (
+                            <a
+                                className="red-social-link linkedin"
+                                href={`https://${companyData.social.linkedIn}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="LinkedIn"
+                            >
+                                <i className="fab fa-linkedin-in"></i>
+                            </a>
+                        )}
+                        {companyData.social.youtube && (
+                            <a
+                                className="red-social-link youtube"
+                                href={`https://${companyData.social.youtube}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="YouTube"
+                            >
+                                <i className="fab fa-youtube"></i>
+                            </a>
+                        )}
+                    </div>
 
-                {/* Horario */}
-                <div className="datos-horario">
-                    <h3>Horario de atención</h3>
-                    {companyData.schedules && companyData.schedules.personalized ? (
-                        <table className="horario-table">
-                            <thead>
-                                <tr>
-                                    <th>Día</th>
-                                    <th>Horarios</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {Object.keys(companyData.schedules.personalized).map((day) => {
-                                    const schedule = companyData.schedules.personalized[day];
-                                    return (
-                                        <tr key={day}>
-                                            <td>{day}</td>
-                                            <td>
-                                                {schedule.open1
-                                                    ? `${schedule.open1} - ${schedule.close1}`
-                                                    : "Cerrado"}
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p>No hay horario disponible.</p>
-                    )}
+                    {/* Fila 5: Sitio web */}
+                    <div className="fila datos-sitio-web">
+                        {companyData.website && (
+                            <p>
+                                <strong>Sitio Web:</strong>
+                                <a
+                                    href={
+                                        companyData.website.includes("http")
+                                            ? companyData.website
+                                            : `https://${companyData.website}`
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    {companyData.website}
+                                </a>
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Fila 6: Horarios de atención */}
+                    <div className="fila datos-horario">
+                        <h3>Horario de atención</h3>
+                        {companyData.schedules && companyData.schedules.personalized ? (
+                            <table className="horario-table">
+                                <thead>
+                                    <tr>
+                                        <th>Día</th>
+                                        <th>Horarios</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {Object.keys(companyData.schedules.personalized)
+                                        .filter(day => day !== '_id') // Filtrar el campo _id
+                                        .map((day) => {
+                                            const schedule = companyData.schedules.personalized[day];
+                                            return schedule.open1 ? (
+                                                <tr key={day}>
+                                                    <td>{day.charAt(0).toUpperCase() + day.slice(1)}</td>
+                                                    <td>
+                                                        {schedule.open1 && schedule.close1 && 
+                                                            `${schedule.open1} - ${schedule.close1}`}
+                                                        {schedule.open2 && schedule.close2 && 
+                                                            `, ${schedule.open2} - ${schedule.close2}`}
+                                                    </td>
+                                                </tr>
+                                            ) : null;
+                                        })}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>No hay horario disponible.</p>
+                        )}
+                    </div>
+
+                    {/* Botón para reportar empresa */}
+                    <button className="reporte-empresa" onClick={report}>
+                        Reportar información incorrecta
+                    </button>
                 </div>
-            </div>
-        </section>
+            </section>
+            
+            {/* Botón de contacto rápido (WhatsApp) */}
+            {companyData.social.whatsapp && (
+                <a
+                    className="contacto-rapido"
+                    href={`https://wa.me/${companyData.social.whatsapp.replace(/[\s-]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Contacto rápido por WhatsApp"
+                >
+                    <i className="fab fa-whatsapp"></i>
+                </a>
+            )}
+        </>
     );
 };
 
