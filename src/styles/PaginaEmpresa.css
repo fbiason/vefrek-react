@@ -1,18 +1,38 @@
 /* Estilos para PaginaEmpresa.jsx */
 
+/* Ajuste de margen superior para evitar superposición con navbar */
 .contenedor-principal {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  margin: 5rem auto 3rem; /* Margen superior aumentado */
+  padding: 0 1rem 2rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 2.5rem; /* Aumentado el espacio entre columnas */
   box-sizing: border-box;
+  position: relative;
 }
 
+/* Fondo degradado que cubre todo el ancho */
+body {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Media query para escritorio */
 @media (min-width: 992px) {
   .contenedor-principal {
     grid-template-columns: 2fr 1fr;
+  }
+  
+  /* Columna de contacto sticky en escritorio */
+  .columna-contacto {
+    position: sticky;
+    top: 5rem; /* Alineado con el margen superior del contenedor */
+    height: max-content;
+    max-height: calc(100vh - 6rem); /* Altura máxima para evitar desbordamiento */
+    overflow-y: auto; /* Permite scroll si el contenido es muy largo */
   }
 }
 
@@ -20,18 +40,35 @@
 .columna {
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
   overflow: hidden;
+  margin-bottom: 2rem; /* Espacio al final de cada columna */
 }
 
 /* Estilos para las filas dentro de las columnas */
 .fila {
-  padding: 1.5rem;
+  padding: 1.8rem;
   border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 0.5rem; /* Espacio entre filas */
 }
 
 .fila:last-child {
   border-bottom: none;
+  margin-bottom: 1.5rem; /* Espacio al final del último elemento */
+}
+
+/* Añadir espacio entre secciones específicas */
+.fila + .fila {
+  padding-top: 1rem;
+}
+
+/* Mejoras visuales para bloques específicos */
+.fila-informacion, .fila-opiniones, .datos-horario {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Fila de Logo y Nombre */
@@ -118,44 +155,64 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
 .carrusel-img {
   width: 100%;
-  height: 300px;
+  height: 350px; /* Altura aumentada */
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
+/* Ocultar las flechas por defecto de slick para evitar duplicados */
+.slick-prev, .slick-next {
+  display: none !important;
+}
+
 /* Flechas personalizadas del carrusel */
 .custom-arrow {
   position: absolute;
-  z-index: 1;
+  z-index: 10; /* Aumentar z-index para estar sobre otros elementos */
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.7);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .custom-arrow:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .next-arrow {
-  right: 10px;
+  right: 15px;
 }
 
 .prev-arrow {
-  left: 10px;
+  left: 15px;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 767px) {
+  .carrusel-img {
+    height: 250px;
+  }
+  
+  .custom-arrow {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* Información general */
@@ -196,11 +253,21 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
 .opinion-card {
   background-color: #f9f9f9;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.opinion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .commentsData {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
@@ -257,7 +324,17 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
 .datos-sitio-web p {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.datos-direccion strong,
+.datos-telefono strong,
+.datos-sitio-web strong {
+  margin-bottom: 0.3rem;
+  color: #333;
+  font-weight: 600;
 }
 
 @media (min-width: 576px) {
@@ -265,7 +342,15 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
   .datos-telefono p,
   .datos-sitio-web p {
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  .datos-direccion strong,
+  .datos-telefono strong,
+  .datos-sitio-web strong {
+    margin-bottom: 0;
+    min-width: 90px; /* Ancho fijo para alineación */
   }
 }
 
@@ -284,23 +369,28 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
 .redes-sociales-container {
   display: flex;
   gap: 1rem;
+  padding: 0.8rem 0;
+  align-items: center;
 }
 
 .red-social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background-color: #f0f0f0;
   color: #444444;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .red-social-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .red-social-link.whatsapp:hover {
@@ -328,21 +418,33 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
   color: white;
 }
 
+/* Alineación vertical con los textos de contacto */
+.fila.redes-sociales-container {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
 /* Horarios */
 .datos-horario h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #333333;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.8rem;
 }
 
 .horario-table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 1rem;
 }
 
 .horario-table th,
 .horario-table td {
-  padding: 0.75rem;
+  padding: 0.8rem;
   border-bottom: 1px solid #eeeeee;
   text-align: left;
 }
@@ -350,6 +452,16 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
 .horario-table th {
   font-weight: 600;
   color: #333333;
+  background-color: #f5f5f5;
+}
+
+/* Mejorar la visualización en filas alternas */
+.horario-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.horario-table tbody tr:hover {
+  background-color: #f0f0f0;
 }
 
 /* Botón de contacto rápido (mejora) */
@@ -365,15 +477,50 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 100;
+  z-index: 1000; /* Valor alto para asegurar que esté sobre todo */
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 .contacto-rapido:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes para dispositivo móvil */
+@media (max-width: 767px) {
+  .contacto-rapido {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  /* Ajustamos el margen superior para móvil */
+  .contenedor-principal {
+    margin: 4rem auto 1rem;
+  }
+  
+  /* Aseguramos que las columnas se apilen correctamente */
+  .contenedor-principal {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* La columna principal debe ir primero */
+  .columna-principal {
+    order: 1;
+  }
+  
+  /* La columna de contacto debe ir segunda */
+  .columna-contacto {
+    order: 2;
+  }
 }
 
 /* Botón para reportar empresa */

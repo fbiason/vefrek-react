@@ -25,20 +25,20 @@ import Slider from "react-slick";
 import { BsStarFill } from "react-icons/bs";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-// Flechas
+// Flechas personalizadas
 const SampleNextArrow = (props) => {
-    const { className, onClick } = props;
+    const { onClick } = props;
     return (
-        <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
+        <div className="custom-arrow next-arrow" onClick={onClick}>
             <BsChevronRight style={{ fontSize: "24px", color: "#333" }} />
         </div>
     );
 };
 
 const SamplePrevArrow = (props) => {
-    const { className, onClick } = props;
+    const { onClick } = props;
     return (
-        <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
+        <div className="custom-arrow prev-arrow" onClick={onClick}>
             <BsChevronLeft style={{ fontSize: "24px", color: "#333" }} />
         </div>
     );
@@ -702,7 +702,7 @@ const PaginaEmpresa = () => {
                     </div>
                 </div>
 
-                {/* Columna 2: Información de contacto */}
+                {/* Columna 2: Datos de contacto, mapa y horarios */}
                 <div className="columna columna-contacto">
                     {/* Fila 1: Mapa de ubicación */}
                     <div className="fila">
