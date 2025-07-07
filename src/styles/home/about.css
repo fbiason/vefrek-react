@@ -1,8 +1,10 @@
-/* Estilos para la página About */
-
 .about {
   padding: 60px 0;
   position: relative;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
 }
 
 .about .container {
@@ -50,6 +52,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  margin-bottom: 0;
 }
 
 .about-text {
@@ -67,6 +74,8 @@
   margin-bottom: 1rem;
   line-height: 1.6;
   color: var(--text-color);
+  color: #4a5568;
+  line-height: 1.7;
 }
 
 .about-image {
@@ -103,3 +112,12 @@
     width: 100%;
   }
 }
+
+/* About Section */
+.about-text h3 {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+

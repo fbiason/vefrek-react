@@ -8,7 +8,7 @@ import "../styles/style.css"
 import "../styles/pages/negocios.css";
 import "../styles/components/cardNegocio.css";
 
-const Negocios = ({ limitedTo300Km = false }) => {
+const Negocios = ({ limitedTo300Km = false, randomCompanies = null }) => {
     const [filter, setFilter] = useState("all");
     const [data, setData] = useState([]);
     const [selectedBusiness, setSelectedBusiness] = useState(null);
@@ -42,6 +42,30 @@ const Negocios = ({ limitedTo300Km = false }) => {
             { "Est. de Servicios": "Estación de Servicio" },
             { "Estética Automotor": "Estética del automotor" },
         ];
+
+        // Si tenemos randomCompanies, los mostramos inmediatamente
+        if (randomCompanies) {
+            const jsxArr = randomCompanies.map((company) => (
+                <div className="negocio-card-col" key={company._id}>
+                    <div onClick={() => handleSelectBusiness(company)} className="business-card-clickable">
+                        <CardNegocio
+                            subcategory={company.subcategory}
+                            name={company.name}
+                            imgUrl={
+                                company.images.images[0] ? company.images.images[0].url : ""
+                            }
+                            location={company.location}
+                            phone={company.phone}
+                            id={company._id}
+                            vefrek_website={company.vefrek_website}
+                            favorites={company.favorites}
+                        />
+                    </div>
+                </div>
+            ));
+            setData(jsxArr);
+            return; // Salimos temprano si ya tenemos los negocios aleatorios
+        }
 
         const setCompanys = async (subcategory) => {
             const queryToAppy = dbQuerys.find(
@@ -201,7 +225,10 @@ const Negocios = ({ limitedTo300Km = false }) => {
             showSpinner(false);
         };
 
-        limitedTo300Km ? setCompanysLimitedTo300Km("Todos") : setCompanys("Todos");
+        // Si no hay randomCompanies, cargamos según la opción de ubicación
+        if (!randomCompanies) {
+            limitedTo300Km ? setCompanysLimitedTo300Km("Todos") : setCompanys("Todos");
+        }
 
         const filtersButtons = document.querySelectorAll(
             ".filter-btn-recomendados"
@@ -214,7 +241,7 @@ const Negocios = ({ limitedTo300Km = false }) => {
             });
         });
         // eslint-disable-next-line
-    }, []);
+    }, [randomCompanies]);
 
     const applyFilter = (newFilter) => {
         setFilter(newFilter);
@@ -284,9 +311,6 @@ const Negocios = ({ limitedTo300Km = false }) => {
     return (
       <div className="negocios-section">
         <div className="container negocios-container" data-aos="fade-up">
-          <div className="section-title">
-            <h3>Encontrá lo que tu vehículo necesita</h3>
-          </div>
           <div className="filter-options">
             <div className="filter-checkbox-container">
               <input

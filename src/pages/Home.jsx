@@ -12,9 +12,53 @@ import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
 import { swalPopUp, swalPopUpWithCallbacks } from "../utils/swal";
 import { SpinnerContext } from "../context/spinnerContext";
+import { findCompanys } from "../utils/apiDb/apiDbAcions";
 
 const Home = () => {
     const [negocios, setNegocios] = useState(<></>);
+    const { showSpinner } = useContext(SpinnerContext);
+
+    // Cargar negocios aleatorios
+    const cargarNegociosAleatorios = async () => {
+        showSpinner(true);
+        
+        try {
+            // Definimos una consulta para obtener negocios aleatorios
+            const randomQuery = JSON.stringify({ status: "active" });
+            
+            // Usamos un aggregate para obtener una muestra aleatoria
+            const aggregateQueryJSON = JSON.stringify([
+                { $sample: { size: 8 } },
+                {
+                    $project: {
+                        subcategory: 1,
+                        name: 1,
+                        "images.images": 1,
+                        location: 1,
+                        phone: 1,
+                        _id: 1,
+                        vefrek_website: 1,
+                        favorites: 1,
+                    },
+                },
+            ]);
+            
+            const response = await findCompanys(randomQuery, aggregateQueryJSON);
+            
+            if (response.success && response.companysData) {
+                // Establecemos los negocios usando el componente Negocios con la prop showRandomCompanies
+                setNegocios(<Negocios randomCompanies={response.companysData} />);
+            } else {
+                // Si hay un error, mostramos el componente Negocios normal sin ubicación
+                setNegocios(<Negocios limitedTo300Km={false} />);
+            }
+        } catch (error) {
+            console.error("Error al cargar negocios aleatorios:", error);
+            setNegocios(<Negocios limitedTo300Km={false} />);
+        } finally {
+            showSpinner(false);
+        }
+    };
 
     useEffect(() => {
         const setNegociosUpTo300Km = (opc) => {
@@ -22,7 +66,8 @@ const Home = () => {
                 setNegocios(<Negocios limitedTo300Km={true} />);
                 localStorage.setItem("negociosUpTo300Km", true);
             } else {
-                setNegocios(<Negocios limitedTo300Km={false} />);
+                // Cuando el usuario no comparte ubicación, cargamos negocios aleatorios
+                cargarNegociosAleatorios();
                 localStorage.setItem("negociosUpTo300Km", false);
             }
         };
@@ -32,6 +77,9 @@ const Home = () => {
         );
 
         if (optionCompanysUpTo300Km === null) {
+            // Si es la primera vez, cargar negocios aleatorios por defecto mientras se muestra el modal
+            cargarNegociosAleatorios();
+            
             swalPopUpWithCallbacks(
                 "Quieres compartir tu ubicación?",
                 "Filtraremos los anuncios por cercanía",
@@ -42,13 +90,12 @@ const Home = () => {
         } else if (optionCompanysUpTo300Km === true) {
             setNegociosUpTo300Km(true);
         } else if (optionCompanysUpTo300Km === false) {
-            setNegociosUpTo300Km(false);
+            cargarNegociosAleatorios();
         }
     }, []);
 
     /***************************** Formulario de contacto ************************************/
 
-    const { showSpinner } = useContext(SpinnerContext);
     const formRef = useRef(null);
 
     const validateForm = async () => {
@@ -149,10 +196,13 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>D
+            </section>
 
             <section className="business-section">
+            <div className="section-title">
+            <h3>Encontrá lo que tu vehículo necesita</h3>
                 {negocios}
+                </div>
             </section>
 
             <section id="about" className="about">

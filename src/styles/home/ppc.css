@@ -1,8 +1,10 @@
 /* PPC Section */
 .ppc-section {
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    color: #333333;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
   }
   
   .ppc-content {
