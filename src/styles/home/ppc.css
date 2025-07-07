@@ -1,0 +1,82 @@
+/* PPC Section */
+.ppc-section {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333333;
+  }
+  
+  .ppc-content {
+    text-align: center;
+  }
+  
+  .ppc-content h3 {
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.75rem;
+  }
+  
+  .ppc-btn {
+    background-color: #0056b3;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    display: inline-block;
+    box-shadow: 0 4px 6px -1px rgba(0, 86, 179, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .ppc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px -1px rgba(0, 86, 179, 0.4);
+    border-radius: 0.375rem;
+  }
+
+  .ppc-section {
+    background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url("/public/images/ppc.webp") fixed center center;
+    background-size: cover;
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .ppc-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .ppc-section h3 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .ppc-section p {
+    color: #fff;
+  }
+  
+  .ppc-btn {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 4px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+  }
+  
+  .ppc-btn:hover {
+    background: rgb(0, 197, 142);
+    border-color: rgb(0, 197, 142);
+    color: #151515;
+  }
+  
+  @media (max-width: 768px) {
+    .ppc-section {
+      padding: 60px 10px;
+    }
+  }

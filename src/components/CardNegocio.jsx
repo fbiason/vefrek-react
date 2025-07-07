@@ -81,7 +81,24 @@ const CardNegocio = (props) => {
                     </figure>
                     <div className="businessCard-content">
                         <h5>{props.subcategory}</h5>
-                        <h4>{truncateText(props.name, maxLength)}</h4>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <h4>{truncateText(props.name, maxLength)}</h4>
+                            {props.servicio_24hs && (
+                                <div style={{
+                                    backgroundColor: '#28a745',
+                                    color: 'white',
+                                    padding: '1px 4px',
+                                    borderRadius: '4px',
+                                    fontSize: '0.6rem',
+                                    fontWeight: 'bold',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    lineHeight: 1,
+                                }}>
+                                    24HS
+                                </div>
+                            )}
+                        </div>
                         <p>{`📍: ${truncateText(props.location, maxLength)}`}</p>
                         <p>{`📞: ${props.phone}`}</p>
                         <Link to={`/${props.vefrek_website}`}> Más Info </Link>

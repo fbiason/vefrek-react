@@ -1,0 +1,256 @@
+.section-title h3 {
+  margin-top: 2rem;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #151515;
+}
+
+/* Alineación a la izquierda para los títulos en business-section */
+.negocios-section .section-title h3 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.page-wrapper {
+  background-color: #f5f5f5;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: fit-content;
+  background-color: var(--dark-bg);
+  background-image: radial-gradient(650px circle at 0% 0%, 
+    hsl(218, 41%, 35%) 15%, 
+    hsl(218, 41%, 30%) 35%, 
+    hsl(218, 41%, 20%) 75%, 
+    hsl(218, 41%, 19%) 80%, 
+    transparent 100%), 
+    radial-gradient(1250px circle at 100% 100%, 
+    hsl(218, 41%, 45%) 15%, 
+    hsl(218, 41%, 30%) 35%, 
+    hsl(218, 41%, 20%) 75%, 
+    hsl(218, 41%, 19%) 80%, 
+    transparent 100%);
+}
+
+/* Common section styling with white background and shadows */
+.hero-section,
+.business-section,
+.about,
+.ppc-section,
+.values-section,
+.contact {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+/* Overriding the default blue background for Home page */
+.page-wrapper .background {
+  background-color: #ffffff;
+  background-image: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.page-wrapper .background h1,
+.page-wrapper .background h2,
+.page-wrapper .background h3,
+.page-wrapper .background p {
+  color: #333333;
+  text-shadow: none;
+}
+
+.page-wrapper .background p {
+  color: #555555;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-bottom: 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.hero-section .categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.hero-section .category-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 200px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.hero-section .category-card:hover {
+  transform: translateY(-10px);
+  background-color: rgba(0, 197, 142, 0.2);
+}
+
+.hero-section .category-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+  }
+  
+  .hero-section .category-card {
+    width: 150px;
+    padding: 1rem;
+  }
+}
+
+/* Business Section */
+.business-section {
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Estilos personalizados para los filtros */
+.negocios-section .filter-options {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.negocios-section .filter-checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.negocios-section .filter-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #00c58e;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+  background-color: transparent;
+}
+
+.negocios-section .filter-checkbox-input:checked {
+  background-color: #00c58e;
+  border-color: #00c58e;
+  position: relative;
+}
+
+.negocios-section .filter-checkbox-input:checked::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.negocios-section .filter-checkbox-input:focus {
+  outline: none;
+}
+
+.negocios-section .filter-checkbox-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+  margin-left: 0.25rem;
+}
+
+/* Estilos para los botones de filtro */
+.negocios-section .filter-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.negocios-section .filter-btn-recomendados {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.negocios-section .filter-btn-recomendados:hover {
+  background-color: #e9e9e9;
+}
+
+.negocios-section .filter-btn-recomendados.active {
+  background-color: #00c58e;
+  border-color: #00c58e;
+  color: white;
+}
+
+/* About Section */
+.about {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.about-content {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  margin-bottom: 0;
+}
+
+.about-text h3 {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+.about-text p {
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+

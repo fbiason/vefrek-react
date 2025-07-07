@@ -4,6 +4,9 @@ import { swalPopUp } from "../utils/swal";
 import { SpinnerContext } from "../context/spinnerContext";
 import CardNegocio from "../components/CardNegocio";
 import { calculateDistanceInKm } from "../utils/geo/calculateDistanceInKm";
+import "../styles/style.css"
+import "../styles/pages/negocios.css";
+import "../styles/components/cardNegocio.css";
 
 const Negocios = ({ limitedTo300Km = false }) => {
     const [filter, setFilter] = useState("all");
@@ -68,7 +71,7 @@ const Negocios = ({ limitedTo300Km = false }) => {
             if (response.success && response.companysData) {
                 const jsxArr = response.companysData.map((company) => (
                     <div className="negocio-card-col" key={company._id}>
-                        <div onClick={() => handleSelectBusiness(company)} style={{ cursor: "pointer" }}>
+                        <div onClick={() => handleSelectBusiness(company)} className="business-card-clickable">
                           <CardNegocio
                               subcategory={company.subcategory}
                               name={company.name}
@@ -158,8 +161,8 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
                         if (response.success && response.companysData) {
                             const jsxArr = response.companysData.map((company) => (
-                                <div className="card-portfolio" key={company._id}>
-                                    <div onClick={() => handleSelectBusiness(company)} style={{ cursor: "pointer" }}>
+                                <div className="negocio-card-col" key={company._id}>
+                                    <div onClick={() => handleSelectBusiness(company)} className="business-card-clickable">
                                         <CardNegocio
                                             subcategory={company.subcategory}
                                             name={company.name}
@@ -264,12 +267,11 @@ const Negocios = ({ limitedTo300Km = false }) => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    style={{ width: "100%", height: "300px", borderRadius: "8px" }}
                 />
             );
         } else {
             setMap(
-                <div className="googleMapFrame flex" style={{ padding: "20px", background: "#eee", borderRadius: "8px", textAlign: "center" }}>
+                <div className="map-error-container">
                     <p>No se pudo obtener la ubicación</p>
                     <p>Dirección: {business.location}</p>
                 </div>
@@ -281,40 +283,36 @@ const Negocios = ({ limitedTo300Km = false }) => {
 
     return (
       <div className="negocios-section">
-        <div className="container" data-aos="fade-up">
+        <div className="container negocios-container" data-aos="fade-up">
           <div className="section-title">
-            <p>Encontra lo que tu vehículo necesita</p>
+            <h3>Encontrá lo que tu vehículo necesita</h3>
           </div>
           <div className="filter-options">
-            <div className="filterTypeContRecomendados">
+            <div className="filter-checkbox-container">
               <input
                 type="checkbox"
-                name="services"
-                className="filterTypeInputRecomendados"
+                name="offers"
+                className="filter-checkbox-input"
               />
-              <p>Solo empresas con ofertas</p>
+              <p className="filter-checkbox-text">Solo empresas con ofertas</p>
             </div>
-            <div className="filterTypeContRecomendados">
+            <div className="filter-checkbox-container">
               <input
                 type="checkbox"
                 name="services"
-                className="filterTypeInputRecomendados"
+                className="filter-checkbox-input"
               />
-              <p>Servicios 24hs</p>
+              <p className="filter-checkbox-text">Servicios 24hs</p>
             </div>
           </div>
 
           <div className="row-recomendados">
-            <div className="filter-recomendados">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className={`filter-btn-recomendados ${
-                    filter === category.toLowerCase()
-                      ? "filter-btn-recomendados-active"
-                      : ""
-                  }`}
-                  onClick={() => applyFilter(category.toLowerCase())}
+            <div className="filter-buttons-container">
+              {categories.map((category, index) => (
+                <button 
+                  key={index}
+                  className={`filter-btn-recomendados ${filter === category ? 'active' : ''}`}
+                  onClick={() => applyFilter(category)}
                 >
                   {category}
                 </button>
@@ -336,28 +334,28 @@ const Negocios = ({ limitedTo300Km = false }) => {
           </div>
 
           {selectedBusiness && (
-            <div className="selected-business-map" style={{ marginBottom: "20px", padding: "20px", border: "1px solid #ddd", borderRadius: "8px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-                <h4>{selectedBusiness.name}</h4>
+            <div className="selected-business-map">
+              <div className="selected-business-header">
+                <h4 className="selected-business-title">{selectedBusiness.name}</h4>
                 <button 
                   onClick={() => setSelectedBusiness(null)} 
-                  style={{ background: "none", border: "none", cursor: "pointer", color: "#777" }}
+                  className="close-button"
                 >
                   ✕
                 </button>
               </div>
-              <div style={{ marginBottom: "15px" }}>
-                <p><strong>Dirección:</strong> {selectedBusiness.location}</p>
-                <p><strong>Teléfono:</strong> {selectedBusiness.phone}</p>
-                <p><strong>Categoría:</strong> {selectedBusiness.subcategory}</p>
+              <div className="business-details">
+                <p className="business-detail"><strong>Dirección:</strong> {selectedBusiness.location}</p>
+                <p className="business-detail"><strong>Teléfono:</strong> {selectedBusiness.phone}</p>
+                <p className="business-detail"><strong>Categoría:</strong> {selectedBusiness.subcategory}</p>
               </div>
-              <div className="ubicacion-container" style={{ borderRadius: "8px", overflow: "hidden" }}>
+              <div className="ubicacion-container">
                 {map ? map : <p>Cargando mapa...</p>}
               </div>
             </div>
           )}
 
-          <div className="row-cards" data-aos="fade-up" data-aos-delay="200">
+          <div className="row-cards cards-container" data-aos="fade-up" data-aos-delay="200">
             {data}
           </div>
         </div>

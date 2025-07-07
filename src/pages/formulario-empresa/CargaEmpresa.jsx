@@ -104,10 +104,10 @@ const CargaEmpresa = () => {
     // Fin Api
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: type === 'checkbox' ? checked : value,
         });
     };
 

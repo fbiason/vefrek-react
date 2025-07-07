@@ -1,0 +1,165 @@
+#hero {
+    width: 100%;
+    background: url("/public/images/hero.webp") top center;
+    background-size: cover;
+    position: relative;
+  }
+  #hero:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  #hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+    max-width: 1200px;
+  }
+  #hero h1 {
+    margin: 0;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 64px;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+  }
+  #hero h2,
+  #hero h3 {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 12px 0 0 0;
+    font-size: 26px;
+  }
+  #hero h3 {
+    font-size: 22px;
+  }
+  #hero .icon-box {
+    padding: 15px 5%;
+    border-radius: 1rem;
+    transition: ease-in-out 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  #hero .icon-box:hover {
+    border: 2px solid rgba(0, 0, 0, 0.44);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  #hero .icon-box i {
+    font-size: 32px;
+    line-height: 1;
+    color: #ffffff;
+  }
+  #hero .icon-box h3 {
+    font-weight: 700;
+    margin: 10px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 20px;
+    color: white;
+  }
+  #hero .icon-box h3:hover {
+    color: rgb(0, 197, 142);
+  }
+  @media (max-width: 1024px) {
+    #hero {
+      background-attachment: fixed;
+    }
+  }
+  @media (max-width: 992px) {
+    #hero .hero-section {
+      padding: 4rem;
+    }
+  }
+  @media (max-width: 768px) {
+    #hero {
+      padding-top: 6rem;
+    }
+    #hero h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    #hero h2 {
+      font-size: 22px;
+      line-height: 24px;
+    }
+    #hero h3 {
+      font-size: 18px;
+    }
+    #hero .cat-hero {
+      margin-top: 2rem;
+    }
+    #hero .logo-hero img {
+      width: 240px;
+    }
+    #hero .hero-section {
+      padding: 3rem;
+      overflow: hidden;
+      box-sizing: none;
+    }
+  }
+  
+  .hero-section {
+    padding: 12rem 3rem 3rem 3rem;
+    box-sizing: none;
+  }
+  .hero-section .logo-hero {
+    text-align: center;
+  }
+  .hero-section .logo-hero img {
+    display: block;
+    margin: 0 auto;
+    width: 480px;
+  }
+  .hero-section .hero-title {
+    margin-top: 20px;
+  }
+  .hero-section .hero-title h2 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 26px;
+  }
+  .hero-section .search-bar-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-section .categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .hero-section .category-item {
+    margin: 10px;
+    flex: 1 1 200px;
+    max-width: 300px;
+    text-align: center;
+  }
+  .hero-section .category-item .btn-categoria {
+    background: rgba(20, 186, 117, 0.4039215686);
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  .hero-section .category-item .btn-categoria:hover {
+    background: rgba(36, 30, 78, 0.6509803922);
+  }
+  .hero-section .category-item .btn-categoria i {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  .hero-section .category-item .btn-categoria h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  

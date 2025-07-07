@@ -1,7 +1,12 @@
 import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import "../styles/style.css";
-import "../styles/pages/about.css";
+import "../styles/home/home.css";
+import "../styles/home/hero.css";
+import "../styles/home/about.css";
+import "../styles/home/ppc.css";
+import "../styles/home/values.css";
+import "../styles/home/contacto.css";
 import SearchBar from "../components/NavBar/SearchBar";
 import Negocios from "./Negocios";
 import { useEffect, useState } from "react";
@@ -98,16 +103,15 @@ const Home = () => {
             );
         }
     };
-
     /*****************************************************************/
 
     return (
-        <>
+        <div className="page-wrapper">
             <section id="hero" className="hero-section">
                 <div className="container">
                     <div className="logo-hero">
                         <img
-                            src="/images/logos/logo-vefrek-white.png"
+                            src="/images/logos/logo-vefrek.png"
                             alt="Vefrek"
                             className="logo-image"
                         />
@@ -145,9 +149,11 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>D
 
-            {negocios}
+            <section className="business-section">
+                {negocios}
+            </section>
 
             <section id="about" className="about">
                 <div className="container" data-aos="fade-up">
@@ -198,8 +204,8 @@ const Home = () => {
             </section>
 
             <section id="ppc" className="ppc-section">
-                <div className="container" data-aos="zoom-in">
-                    <div className="text-center">
+                <div>
+                    <div className="ppc-content">
                         <h3>POTENCIA AÚN MÁS A TU EMPRESA</h3>
                         <p>
                             Te brindamos la posibilidad de difundir a tu empresa e incrementar
@@ -213,7 +219,10 @@ const Home = () => {
             </section>
 
             <section id="values" className="values-section">
-                <div className="container" data-aos="fade-up">
+            <div className="container" data-aos="fade-up">
+            <div className="section-title">
+                        <h3>NUESTROS VALORES</h3>
+                    </div>
                     <div className="values-grid">
                         <div className="value-item" data-aos="fade-up" data-aos-delay="100">
                             <div className="value-icon">
@@ -271,7 +280,7 @@ const Home = () => {
             <section id="contact" className="contact">
                 <div className="container" data-aos="fade-up">
                     <div className="section-title">
-                        <p>CONTACTANOS</p>
+                        <h3>CONTACTANOS</h3>
                     </div>
 
                     <div className="row">
@@ -281,7 +290,6 @@ const Home = () => {
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.5367865926187!2d-69.230385!3d-51.6133755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdb6fea979bfadd3%3A0x40864ca79df574a8!2sAlberdi%201118%20Depto%204%2C%20R%C3%ADo%20Gallegos%2C%20Santa%20Cruz!5e0!3m2!1ses-419!2sar!4v1654740207616!5m2!1ses-419!2sar"
                                     width="100%"
                                     height="150"
-                                    style={{ border: 0 }}
                                     allowFullScreen=""
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
@@ -348,7 +356,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 

@@ -607,7 +607,52 @@ const PaginaEmpresa = () => {
 
                         {/* Nombre y slogan de la empresa */}
                         <div className="empresa-info">
-                            <h2 className="empresa-nombre">{companyData.name}</h2>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <h2 className="empresa-nombre">{companyData.name}</h2>
+                                {companyData.servicio_24hs && (
+                                    <div className="servicio-24hs-badge" style={{
+                                        backgroundColor: '#28a745',
+                                        color: 'white',
+                                        padding: '3px 10px',
+                                        borderRadius: '20px',
+                                        fontSize: '0.75rem',
+                                        fontWeight: 'bold',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '4px',
+                                        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <span className="clock-icon" style={{
+                                            display: 'inline-block',
+                                            width: '14px',
+                                            height: '14px',
+                                            borderRadius: '50%',
+                                            border: '2px solid white',
+                                            position: 'relative',
+                                        }}>
+                                            <span style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
+                                                width: '1px',
+                                                height: '5px',
+                                                backgroundColor: 'white',
+                                            }}></span>
+                                            <span style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%) rotate(90deg)',
+                                                width: '1px',
+                                                height: '4px',
+                                                backgroundColor: 'white',
+                                            }}></span>
+                                        </span>
+                                        SERVICIO 24HS
+                                    </div>
+                                )}
+                            </div>
                             <p className="empresa-slogan">{companyData.slogan}</p>
                         </div>
 
