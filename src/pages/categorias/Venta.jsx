@@ -15,7 +15,7 @@ const Venta = () => {
   const [filterKmValue, setFilterKmValue] = useState(300);
   const [rangeValue, setRangeValue] = useState(300);
   const [selectedProvince, setSelectedProvince] = useState("todo");
-  const [selectedSubCategory, setSelectedSubCategory] = useState(["Agencia", "Rent a Car"]);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(["Agencia", "Rent a Car", "Concesionaria", "Distribuidor"]);
   const [actualPage, setActualPage] = useState(1);
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
   const [showDistanceFilter, setShowDistanceFilter] = useState(false);
