@@ -296,8 +296,8 @@
 }
 
 .negocio-card-col {
-  flex: 0 0 calc(33.333% - 1rem);
-  min-width: 300px;
+  flex: 0 0 calc(25% - 1rem);
+  min-width: 250px;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 12px;
@@ -382,6 +382,11 @@
   padding: 0.5rem;
 }
 @media (min-width: 768px) {
+  .negocio-card-col {
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
   .negocio-card-col {
     width: 33.3333333333%;
   }

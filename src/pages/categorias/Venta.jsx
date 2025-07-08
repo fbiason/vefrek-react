@@ -5,14 +5,17 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { swalPopUpWithCallbacks } from "../../utils/swal";
 import { calculateDistanceInKm } from "../../utils/geo/calculateDistanceInKm";
+import "../../styles/categorias/categorias.css";
+import "../../styles/components/cardNegocio.css";
+import "../../styles/style.css";
 
 const Venta = () => {
   const { showSpinner } = useContext(SpinnerContext);
   const [data, setData] = useState([]);
   const [filterKmValue, setFilterKmValue] = useState(300);
   const [rangeValue, setRangeValue] = useState(300);
-  const [selectedProvince, setSelectedProvince] = useState("");
-  const [selectedSubCategory, setSelectedSubCategory] = useState([]);
+  const [selectedProvince, setSelectedProvince] = useState("todo");
+  const [selectedSubCategory, setSelectedSubCategory] = useState(["Agencia", "Rent a Car"]);
   const [actualPage, setActualPage] = useState(1);
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
   const [showDistanceFilter, setShowDistanceFilter] = useState(false);

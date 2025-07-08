@@ -1,3 +1,21 @@
+.background {
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 110px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #00152A 0%, #00365B 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+}
+
 h1,
 h2,
 h3,
@@ -24,12 +42,6 @@ a:hover {
   color: #ffd584;
   text-decoration: none;
 }
-
-/*section {
-  padding: 10rem 3rem 3rem 3rem;
-  overflow: hidden;
-  box-sizing: none;
-}*/
 
 @media (max-width: 768px) {
   section {
@@ -153,30 +165,6 @@ button {
 .italic {
   font-style: italic;
 }
-
-.background {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: fit-content;
-  background-color: #001F3F;
-  background-image: 
-    /* Degradado principal mejorado */
-    linear-gradient(135deg, #001F3F 0%, #003366 100%),
-    /* Textura sutil con opacidad */
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"),
-    /* Efecto brillante en la parte superior */
-    radial-gradient(800px circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%),
-    /* Efecto de profundidad */
-    radial-gradient(1250px circle at 100% 100%, rgba(25, 69, 116, 0.6) 0%, rgba(25, 69, 116, 0) 70%);
-  background-blend-mode: normal, overlay, screen, normal;
-  padding-top: 110px; /* Añadido para compensar la altura del navbar */
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-}
-
 
 .background h1,
 .background h2,
@@ -1716,139 +1704,6 @@ button {
   margin-top: 1rem;
 }
 
-.custom-select {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.custom-select:focus {
-  border-color: #80bdff;
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.custom-select option {
-  padding: 1rem;
-  color: #333;
-  background-color: #fff;
-}
-
-.custom-select option:hover {
-  background-color: rgba(0, 123, 255, 0.1);
-}
-
-@media (max-width: 767px) {
-  .custom-select {
-    width: 100%;
-    max-width: 100%;
-  }
-  .custom-select option {
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  select.custom-select {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-.filtro-provincias {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.filtro-provincias select {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.filtro-provincias select:focus {
-  border-color: #80bdff;
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.filtro-provincias select option {
-  padding: 1rem;
-  color: #333;
-  background-color: #fff;
-}
-
-.filtro-provincias select option:hover {
-  background-color: rgba(0, 123, 255, 0.1);
-}
-
-.pagination-controls {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pagination-control-button {
-  width: 40px;
-  background-color: #3dd697;
-  margin: 0 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.pagination-control-button:hover {
-  background-color: #32b882;
-}
-
-.grid-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 3rem;
-  padding: 0 1rem;
-}
-
-.grid-categories > * {
-  flex: 1 1 calc(25% - 2rem);
-  box-sizing: border-box;
-}
-
-@media (min-width: 576px) {
-  .grid-categories {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 992px) {
-  .grid-categories {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
 /*Page Formulario Empresa*/
 /* General */
 .bg-formEmpresa {
