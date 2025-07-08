@@ -306,3 +306,140 @@
     display: block;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .dashboardMainAdmin {
+    grid-template-columns: 100%;
+    margin: 0;
+    min-width: auto;
+    position: relative;
+  }
+  .datos-user {
+    max-width: 100%;
+  }
+  .datos-business {
+    max-width: 100%;
+  }
+  .button-page button {
+    width: 25px;
+    height: 25px;
+  }
+  /* Estilos para los detalles de la empresa */
+  .business-details button {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+@media (max-width: 992px) {
+  .datos-user {
+    max-width: 100%;
+  }
+  .datos-business {
+    max-width: 100%;
+  }
+}
+
+.sweetDenyBoton {
+  background-color: black !important;
+}
+
+/* --- General --- */
+.negocioDash-contenido {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.negocioDash-titulo {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.negocioDash-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.negocioDash-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.negocioDash-details {
+  margin-bottom: 0.5rem; /* Reducido para disminuir la distancia */
+  color: black;
+}
+
+.negocioDash-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.negocioDash-location {
+  font-size: 1rem;
+  color: #555;
+}
+
+.negocioDash-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.negocioDash-btn-editar,
+.negocioDash-btn-pausar,
+.negocioDash-btn-reactivar,
+.negocioDash-btn-eliminar {
+  padding: 8px; /* Reducido el padding de los botones */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.negocioDash-btn-editar {
+  background-color: #007bff;
+  color: white;
+}
+
+.negocioDash-btn-pausar {
+  background-color: #ffc107;
+  color: white;
+}
+
+.negocioDash-btn-reactivar {
+  background-color: #28a745;
+  color: white;
+}
+
+.negocioDash-btn-eliminar {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* --- Responsive adjustments for smaller screens --- */
+@media (max-width: 1200px) {
+  .negocioDash-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+  }
+}
+@media (max-width: 768px) {
+  .negocioDash-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+  }
+}
+@media (max-width: 576px) {
+  .negocioDash-grid {
+    grid-template-columns: 1fr; /* 1 columna en pantallas extra pequeñas */
+  }
+}

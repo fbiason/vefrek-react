@@ -5,7 +5,7 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { swalPopUpWithCallbacks } from "../../utils/swal";
 import { calculateDistanceInKm } from "../../utils/geo/calculateDistanceInKm";
-import "../../styles/categorias/categorias.css";
+import "../../styles/pages/categorias.css";
 import "../../styles/components/cardNegocio.css";
 import "../../styles/style.css";
 
@@ -254,7 +254,7 @@ const OtrosServicios = () => {
             );
 
             const jsxArr = response.companysData.map((company) => (
-                <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
+                <div className="col-md-6 col-xl-4 card-portfolio" key={company._id}>
                     <CardNegocio
                         subcategory={company.subcategory}
                         name={company.name}
@@ -410,8 +410,8 @@ const OtrosServicios = () => {
                             onChange={handleSelectChangeSubCategory}
                             className="custom-select"
                         >
-                            <option value="" disabled selected>
-                                Seleccionar Subcategoría
+                            <option value="todo" selected>
+                                Todo
                             </option>
                             <option value="todo">Todo</option>
                             <option value="aseguradoras">Aseguradoras</option>

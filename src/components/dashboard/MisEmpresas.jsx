@@ -12,6 +12,7 @@ import {
 } from "../../utils/swal";
 import { UserContext } from "../../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
+import "../../styles/dashboard/dashboard.css";
 
 const MisEmpresas = () => {
   const { showSpinner } = useContext(SpinnerContext);

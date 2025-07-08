@@ -16,6 +16,7 @@ import {
     faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "../../styles/dashboard/dashboard.css";
 
 const Informe = () => {
     const [show, setShow] = useState(true);

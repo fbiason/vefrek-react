@@ -6,6 +6,7 @@ import { UserContext } from "../../context/userContext";
 import { Link } from "react-router-dom";
 import { editUserByQuery, findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { recommendedTexts } from "../../data/recommendedTexts";
+import "../../styles/dashboard/dashboard.css";
 
 const Dashboard = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);

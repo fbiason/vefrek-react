@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import "../../styles/dashboard/dashboard.css";
 
 const NavBarDash = () => {
   const [activeNavItem, setActiveNavItem] = useState(0);

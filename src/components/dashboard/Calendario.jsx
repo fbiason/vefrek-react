@@ -5,7 +5,8 @@ import "tailwindcss/tailwind.css";
 import { UserContext } from "../../context/userContext";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { SpinnerContext } from "../../context/spinnerContext";
-import { savePromotion } from "../../utils/apiDb/apiDbAcions"; // Import the savePromotion function
+import { savePromotion } from "../../utils/apiDb/apiDbAcions"; 
+import "../../styles/dashboard/dashboard.css";
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);

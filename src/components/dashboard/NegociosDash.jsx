@@ -13,6 +13,7 @@ import {
 import { UserContext } from "../../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
+import "../../styles/dashboard/dashboard.css";
 
 const NegociosDash = () => {
   const [companysData, setCompanysData] = useState([]);
