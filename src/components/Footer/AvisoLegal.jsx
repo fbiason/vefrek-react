@@ -26,9 +26,8 @@ const AvisoLegal = () => {
             {/* Contenido del Aviso Legal */}
             <h5 className="modal-title2">1. Titularidad del Sitio:</h5>
             <li>Titular: Biason Franco</li>
-            <li>Domicilio: Cacique Yatel 1895</li>
             <li>Email: administracion@vefrek.com</li>
-            <li>Teléfono: 2966 23-1074</li>
+            <li>Teléfono: 2966 15 22-8570</li>
             <h5 className="modal-title2">2. Propiedad Intelectual:</h5>
             <p>
               Todo el contenido presente en este sitio web, incluyendo pero no

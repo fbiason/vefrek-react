@@ -321,10 +321,14 @@ const Venta = () => {
   }, [filterType]);
 
   useEffect(() => {
+    // Marcar el filtro por provincia como seleccionado
     const filterTypeInputState = document.querySelector(
       ".filterTypeInput[name='state']"
     );
     if (filterTypeInputState) filterTypeInputState.checked = true;
+    
+    // Cargar todos los negocios de todas las provincias por defecto
+    setCompanys(selectedSubCategory, "todo", actualPage);
   }, []);
 
   return (
@@ -398,10 +402,7 @@ const Venta = () => {
               onChange={handleSelectChangeSubCategory}
               className="custom-select"
             >
-              <option value="todo" selected>
-                Todo
-              </option>
-              <option value="todo">Todo</option>
+              <option value="todo" selected>Todo</option>
               <option value="agencias">Agencias</option>
               <option value="rent">Rent a Car</option>
             </select>

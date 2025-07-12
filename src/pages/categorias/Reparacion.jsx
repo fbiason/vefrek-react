@@ -15,7 +15,7 @@ const Reparacion = () => {
     const [filterKmValue, setFilterKmValue] = useState(300);
     const [rangeValue, setRangeValue] = useState(300);
     const [selectedProvince, setSelectedProvince] = useState("todo");
-    const [selectedSubCategory, setSelectedSubCategory] = useState(["Mecánica", "Eléctrica", "Chapa y pintura", "Diagnóstico", "Suspención", "Motor", "Embrague", "Caja"]);
+    const [selectedSubCategory, setSelectedSubCategory] = useState(["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"]);
     const [actualPage, setActualPage] = useState(1);
     const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
     const [showDistanceFilter, setShowDistanceFilter] = useState(false);
@@ -71,11 +71,12 @@ const Reparacion = () => {
     }, [filterKmValue, selectedProvince, selectedSubCategory]);
 
     const dbQuerys = {
-        todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro"],
+        todo: ["Gomería", "Taller mecánico", "Repuestos", "Lubricentro", "Reparación"],
         gomeria: ["Gomería"],
         taller: ["Taller mecánico"],
         repuestos: ["Repuestos"],
         lubricentro: ["Lubricentro"],
+        reparacion: ["Reparación"],
     };
 
     const setCompanysUpTo300Km = async (
@@ -205,72 +206,96 @@ const Reparacion = () => {
     };
 
     const setCompanys = async (subcategorysArr, selectedProvince, actualPage) => {
-        if (!subcategorysArr.length || !selectedProvince) return;
-
-        const matchJSON =
-            selectedProvince === "todo"
-                ? JSON.stringify({ subcategory: { $in: subcategorysArr } })
-                : JSON.stringify({
-                    subcategory: { $in: subcategorysArr },
-                    state: selectedProvince,
-                });
-
-        showSpinner(true);
-
-        const aggregateQueryJSON = JSON.stringify([
-            // { $sample: { size: 8 } },
-            {
-                $project: {
-                    subcategory: 1,
-                    name: 1,
-                    "images.images": 1,
-                    location: 1,
-                    phone: 1,
-                    _id: 1,
-                    vefrek_website: 1,
-                    favorites: 1,
-                },
-            },
-        ]);
-
-        showSpinner(true);
-        const response = await findCompanys(matchJSON, aggregateQueryJSON);
-
-        if (response.success && response.companysData) {
-            setTotalNumberOfPages(
-                Math.ceil(response.companysData.length / companysForPage)
-            );
-
-            const jsxArr = response.companysData.map((company) => (
-                <div className="col-md-6 col-xl-4 card-portfolio" key={company._id}>
-                    <CardNegocio
-                        subcategory={company.subcategory}
-                        name={company.name}
-                        imgUrl={
-                            company.images.images[0] ? company.images.images[0].url : ""
-                        }
-                        location={company.location}
-                        phone={company.phone}
-                        id={company._id}
-                        vefrek_website={company.vefrek_website}
-                        favorites={company.favorites}
-                    />
-                </div>
-            ));
-            setData(
-                jsxArr.slice(
-                    (actualPage - 1) * companysForPage,
-                    (actualPage - 1) * companysForPage + companysForPage
-                )
-            );
-        } else if (response.success && !response.companysData) {
-            setData(
-                <p className="infoLocationFilter flex">{`No se encontraron empresas con los filtros seleccionados`}</p>
-            );
-        } else {
-            swalPopUp("Ops!", response.message, "error");
+        if (!subcategorysArr || !subcategorysArr.length || !selectedProvince) {
+            console.log('Datos inválidos:', { subcategorysArr, selectedProvince });
+            return;
         }
-        showSpinner(false);
+
+        try {
+            const matchJSON =
+                selectedProvince === "todo"
+                    ? JSON.stringify({ subcategory: { $in: subcategorysArr } })
+                    : JSON.stringify({
+                        subcategory: { $in: subcategorysArr },
+                        state: selectedProvince,
+                    });
+    
+            console.log('Consultando con:', matchJSON);
+            showSpinner(true);
+    
+            const aggregateQueryJSON = JSON.stringify([
+                // { $sample: { size: 8 } },
+                {
+                    $project: {
+                        subcategory: 1,
+                        name: 1,
+                        "images.images": 1,
+                        location: 1,
+                        phone: 1,
+                        _id: 1,
+                        vefrek_website: 1,
+                        favorites: 1,
+                        category: 1, // Aseguramos que se incluya la categoría
+                    },
+                },
+            ]);
+    
+            const response = await findCompanys(matchJSON, aggregateQueryJSON);
+            console.log('Respuesta API:', response);
+    
+            if (response && response.success && response.companysData && response.companysData.length > 0) {
+                setTotalNumberOfPages(
+                    Math.ceil(response.companysData.length / companysForPage)
+                );
+    
+                const jsxArr = response.companysData.map((company) => (
+                    <div className="col-md-4 col-xl-3 card-portfolio" key={company._id}>
+                        <CardNegocio
+                            subcategory={company.subcategory}
+                            name={company.name}
+                            imgUrl={
+                                company.images && company.images.images && company.images.images[0] 
+                                ? company.images.images[0].url : ""
+                            }
+                            location={company.location || ''}
+                            phone={company.phone || ''}
+                            id={company._id}
+                            vefrek_website={company.vefrek_website || ''}
+                            favorites={company.favorites || []}
+                        />
+                    </div>
+                ));
+                
+                if (jsxArr.length > 0) {
+                    setData(
+                        jsxArr.slice(
+                            (actualPage - 1) * companysForPage,
+                            (actualPage - 1) * companysForPage + companysForPage
+                        )
+                    );
+                } else {
+                    setData(
+                        <p className="infoLocationFilter flex">No se encontraron empresas con los filtros seleccionados</p>
+                    );
+                }
+            } else if (response && response.success && (!response.companysData || response.companysData.length === 0)) {
+                console.log('No se encontraron empresas');
+                setData(
+                    <p className="infoLocationFilter flex">No se encontraron empresas con los filtros seleccionados</p>
+                );
+            } else {
+                console.error('Error en la respuesta:', response);
+                swalPopUp("Ops!", response && response.message ? response.message : "Error al cargar datos", "error");
+            }
+        } catch (error) {
+            console.error('Error al cargar empresas:', error);
+            setData(
+                <p className="infoLocationFilter flex">Ocurrió un error al cargar las empresas. Por favor, intente nuevamente.</p>
+            );
+            swalPopUp("Ops!", "Error al procesar la solicitud", "error");
+        } finally {
+            showSpinner(false);
+        }
     };
 
     const handleSelectChangeSubCategory = (e) => {
@@ -323,10 +348,15 @@ const Reparacion = () => {
     }, [filterType]);
 
     useEffect(() => {
+        // Marcar el filtro por provincia como seleccionado
         const filterTypeInputState = document.querySelector(
             ".filterTypeInput[name='state']"
         );
         if (filterTypeInputState) filterTypeInputState.checked = true;
+        
+        // Cargar todos los negocios de todas las provincias por defecto
+        setCompanys(selectedSubCategory, "todo", actualPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -397,10 +427,7 @@ const Reparacion = () => {
                 onChange={handleSelectChangeSubCategory}
                 className="custom-select"
               >
-                <option value="todo" selected>
-                  Todo
-                </option>
-                <option value="todo">Todo</option>
+                <option value="todo" selected>Todo</option>
                 <option value="gomeria">
                   Gomerías (arreglo y venta de cubiertas, alineación y balanceo)
                 </option>

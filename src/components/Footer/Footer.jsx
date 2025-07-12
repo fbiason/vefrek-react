@@ -102,12 +102,8 @@ const Footer = () => {
                         <div className="col-lg-3 col-md-6">
                             <div className="footer-info">
                                 <p className="mt-3">
-                                    Cacique Yatel 1895
                                     <br />
-                                    Rio Gallegos, Santa Cruz
-                                    <br />
-                                    <br />
-                                    <strong>Teléfono:</strong> 2966 15 23-1074
+                                    <strong>Teléfono:</strong> 2966 15 22-8570
                                     <br />
                                     <strong>Email:</strong> administracion@vefrek.com
                                     <br />

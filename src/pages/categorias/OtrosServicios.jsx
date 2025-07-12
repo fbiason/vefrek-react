@@ -71,10 +71,14 @@ const OtrosServicios = () => {
     }, [filterKmValue, selectedProvince, selectedSubCategory]);
 
     useEffect(() => {
+        // Marcar el filtro por provincia como seleccionado
         const filterTypeInputState = document.querySelector(
             ".filterTypeInput[name='state']"
         );
         if (filterTypeInputState) filterTypeInputState.checked = true;
+        
+        // Cargar todos los negocios de todas las provincias por defecto
+        setCompanys(selectedSubCategory, "todo", actualPage);
     }, []);
 
     const dbQuerys = {
@@ -320,12 +324,6 @@ const OtrosServicios = () => {
         setFilterType(e.target.name);
     };
 
-    useEffect(() => {
-        const filterTypeInputState = document.querySelector(
-            ".filterTypeInput[name='state']"
-        );
-        if (filterTypeInputState) filterTypeInputState.checked = true;
-    }, []);
 
     useEffect(() => {
         if (filterType === "distance") {
@@ -410,10 +408,7 @@ const OtrosServicios = () => {
                             onChange={handleSelectChangeSubCategory}
                             className="custom-select"
                         >
-                            <option value="todo" selected>
-                                Todo
-                            </option>
-                            <option value="todo">Todo</option>
+                            <option value="todo" selected>Todo</option>
                             <option value="aseguradoras">Aseguradoras</option>
                             <option value="estaciones">Estaciones de Servicios</option>
                             <option value="estetica">

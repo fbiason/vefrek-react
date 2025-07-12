@@ -311,7 +311,7 @@ const Negocios = ({ limitedTo300Km = false, randomCompanies = null }) => {
     return (
       <div className="negocios-section">
         <div className="container negocios-container" data-aos="fade-up">
-          <div className="filter-options">
+          {/* <div className="filter-options">
             <div className="filter-checkbox-container">
               <input
                 type="checkbox"
@@ -328,7 +328,7 @@ const Negocios = ({ limitedTo300Km = false, randomCompanies = null }) => {
               />
               <p className="filter-checkbox-text">Servicios 24hs</p>
             </div>
-          </div>
+          </div> */}
 
           <div className="row-recomendados">
             <div className="filter-buttons-container">

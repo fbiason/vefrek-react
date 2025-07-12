@@ -62,7 +62,7 @@ const CardNegocio = (props) => {
         <div key={props._id}>
             <div className="businessCard-container">
                 <div className="businessCard">
-                    <figure style={{ position: "relative" }}>
+                    <figure>
                         <div className="businessCard-favorite flex justify-end absolute">
                             <input
                                 name="favorito"
@@ -81,20 +81,10 @@ const CardNegocio = (props) => {
                     </figure>
                     <div className="businessCard-content">
                         <h5>{props.subcategory}</h5>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <div>
                             <h4>{truncateText(props.name, maxLength)}</h4>
                             {props.servicio_24hs && (
-                                <div style={{
-                                    backgroundColor: '#28a745',
-                                    color: 'white',
-                                    padding: '1px 4px',
-                                    borderRadius: '4px',
-                                    fontSize: '0.6rem',
-                                    fontWeight: 'bold',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    lineHeight: 1,
-                                }}>
+                                <div>
                                     24HS
                                 </div>
                             )}

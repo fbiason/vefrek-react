@@ -34,9 +34,10 @@
 }
 
 .businessCard-container {
-  padding: 0.5rem;
+  padding: 0;
   height: 100%;
   display: flex;
+  width: 100%;
 }
 
 .card-negocio-body {
