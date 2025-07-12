@@ -57,7 +57,6 @@
 .empresa-navigation {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: var(--shadow);
   margin-bottom: 2rem;
   position: sticky;
   top: 70px;
@@ -255,4 +254,715 @@
   .empresa-gallery {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
+}
+
+/* Estilos para PaginaEmpresa.jsx */
+
+/* Ajuste de margen superior para evitar superposición con navbar */
+.contenedor-principal {
+  max-width: 1200px;
+  margin: 5rem auto 3rem; /* Margen superior aumentado */
+  padding: 0 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem; /* Aumentado el espacio entre columnas */
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Fondo degradado que cubre todo el ancho */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Media query para escritorio */
+@media (min-width: 992px) {
+  .contenedor-principal {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  /* Columna de contacto sticky en escritorio */
+  .columna-contacto {
+    position: sticky;
+    top: 5rem; /* Alineado con el margen superior del contenedor */
+    height: max-content;
+    max-height: calc(100vh - 6rem); /* Altura máxima para evitar desbordamiento */
+    overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+  }
+}
+
+/* Estilos para las columnas */
+.columna {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* Mejoras visuales para bloques específicos */
+.fila-informacion, .datos-horario {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Fila de Logo y Nombre */
+.fila-logo-nombre {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+/* Logo de la empresa */
+.logo-empresa {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ffffff;
+}
+
+.logo-empresa-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nombre y slogan */
+.empresa-info {
+  flex-grow: 1;
+}
+
+.empresa-nombre {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #333333;
+}
+
+.empresa-slogan {
+  font-size: 1rem;
+  display: flex;
+  text-align: start;
+  color: #666666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Estrellas de favoritos */
+.businessCard-favorite {
+  margin-left: auto;
+}
+
+.businessCard-favorite input {
+  display: none;
+}
+
+.businessCard-favoriteLabel {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.businessCard-favoriteLabel:hover {
+  background-color: rgba(252, 217, 58, 0.2);
+}
+
+.businessCard-starIcon {
+  font-size: 1.6rem;
+  color: #dddddd;
+  transition: color 0.3s ease;
+}
+
+input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
+  color: #FCD93A;
+}
+
+/* Carrusel de imágenes */
+.carrusel-contenedor {
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.carrusel-img {
+  width: 100%;
+  height: 350px; /* Altura aumentada */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Ocultar las flechas por defecto de slick para evitar duplicados */
+.slick-prev, .slick-next {
+  display: none !important;
+}
+
+/* Flechas personalizadas del carrusel */
+.custom-arrow {
+  position: absolute;
+  z-index: 10; /* Aumentar z-index para estar sobre otros elementos */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-arrow:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.next-arrow {
+  right: 15px;
+}
+
+.prev-arrow {
+  left: 15px;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 767px) {
+  .carrusel-img {
+    height: 250px;
+  }
+  
+  .custom-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+/* Opiniones destacadas */
+.opiniones-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.opiniones-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333333;
+}
+
+.opiniones-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.opinion-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.opinion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.commentsData {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.commentsData h5 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.nro-star {
+  margin-bottom: 0.5rem;
+}
+
+.nro-star h5 {
+  margin: 0;
+  color: #FCD93A;
+}
+
+.comentario-t {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  text-align: start;
+}
+
+.comentario-t p {
+  margin: 0;
+}
+
+/* Columna de información de contacto */
+.ubicacion-container {
+  height: 250px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ubicacion-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+.datos-direccion,
+.datos-telefono,
+.redes-sociales-container,
+.datos-sitio-web,
+.datos-horario {
+  padding: 1rem 0;
+}
+
+.datos-subtitulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: flex;
+  text-align: start;
+}
+
+.datos-valor {
+  font-size: 1rem;
+  color: #e0e0e0;
+  display: flex;
+  text-align: start;
+}
+
+.datos-direccion p,
+.datos-telefono p,
+.datos-sitio-web p {
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: start;
+}
+
+.datos-direccion strong,
+.datos-telefono strong,
+.datos-sitio-web strong {
+  margin-bottom: 0.3rem;
+  color: #333;
+  font-weight: 600;
+}
+
+@media (min-width: 576px) {
+  .datos-direccion p,
+  .datos-telefono p,
+  .datos-sitio-web p {
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  .datos-direccion strong,
+  .datos-telefono strong,
+  .datos-sitio-web strong {
+    margin-bottom: 0;
+    min-width: 90px; /* Ancho fijo para alineación */
+  }
+}
+
+.datos-telefono a,
+.datos-sitio-web a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.datos-telefono a:hover,
+.datos-sitio-web a:hover {
+  text-decoration: underline;
+}
+
+/* Redes sociales */
+.redes-sociales-container {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  align-items: center;
+}
+
+.red-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #444444;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.red-social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.red-social-link.whatsapp:hover {
+  background-color: #25D366;
+  color: white;
+}
+
+.red-social-link.facebook:hover {
+  background-color: #3b5998;
+  color: white;
+}
+
+.red-social-link.instagram:hover {
+  background-color: #C13584;
+  color: white;
+}
+
+.red-social-link.linkedin:hover {
+  background-color: #0077b5;
+  color: white;
+}
+
+.red-social-link.youtube:hover {
+  background-color: #FF0000;
+  color: white;
+}
+
+/* Alineación vertical con los textos de contacto */
+.fila.redes-sociales-container {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+/* Horarios */
+.datos-horario h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: black;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.8rem;
+}
+
+.horario-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.horario-table th,
+.horario-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eeeeee;
+  text-align: left;
+}
+
+.horario-table th {
+  font-weight: 600;
+  color: #333333;
+  background-color: #f5f5f5;
+}
+
+/* Mejorar la visualización en filas alternas */
+.horario-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.horario-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Botón de contacto rápido (mejora) */
+.contacto-rapido {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000; /* Valor alto para asegurar que esté sobre todo */
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.contacto-rapido:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Ajustes para dispositivo móvil */
+@media (max-width: 767px) {
+  .contacto-rapido {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  /* Ajustamos el margen superior para móvil */
+  .contenedor-principal {
+    margin: 4rem auto 1rem;
+  }
+  
+  /* Aseguramos que las columnas se apilen correctamente */
+  .contenedor-principal {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* La columna principal debe ir primero */
+  .columna-principal {
+    order: 1;
+  }
+  
+  /* La columna de contacto debe ir segunda */
+  .columna-contacto {
+    order: 2;
+  }
+}
+
+/* Botón para reportar empresa */
+.reporte-empresa {
+  border: none;
+  color: red;
+  font-size: 0.9rem;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-color: rgb(215, 143, 143);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.reporte-empresa:hover {
+  color: #d32f2f;
+}
+
+/* Estilos para escribir una reseña */
+.escribir-resena {
+  margin-top: 2rem;
+}
+
+.escribir-resena-titulo {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.starsFeedback {
+  margin-bottom: 1rem;
+}
+
+.commentFeedback {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.btn-enviar-resena {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enviar-resena:hover {
+  background-color: #1557b0;
+}
+
+.columna-principal {
+  background-color: rgb(147, 147, 147);
+  padding: 20px;
+  border-radius: 10px;
+}
+/* Información general */
+.fila-pagina-negocios,
+.fila-opiniones {
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.info-contenedor {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Línea divisora */
+.info-separador {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Título */
+.informacion-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Descripción */
+.informacion-descripcion {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f1f1f1;
+  display: flex;
+  text-align: start;
+}
+
+/* Reutilización del mismo contenedor */
+.info-contenedor {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Línea divisora */
+.info-separador {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Título de opiniones */
+.opiniones-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Estrellas al lado del título */
+.opiniones-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Lista de opiniones */
+.opiniones-lista {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+  text-align: left;
+}
+
+/* Texto cuando no hay opiniones */
+.opiniones-no-disponibles {
+  color: #bbbbbb;
+  font-style: italic;
+  text-align: start;
+  display: flex;
+}
+
+/* Escribir reseña */
+.escribir-resena {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.escribir-resena-titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.commentFeedback {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 1rem 0;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.btn-enviar-resena {
+  background-color: #00cc99;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-enviar-resena:hover {
+  background-color: #00b386;
 }
