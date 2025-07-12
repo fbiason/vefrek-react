@@ -297,12 +297,13 @@
 .filter-row-km {
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(var(--bs-gutter-x, 0.75rem) * -0.5);
-  margin-left: calc(var(--bs-gutter-x, 0.75rem) * -0.5);
+  max-width: 1200px;
+  width: 100%;
+  margin: 1rem auto;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 1rem;
+  padding: 0 15px;
 }
 
 .filter-row-km > * {
