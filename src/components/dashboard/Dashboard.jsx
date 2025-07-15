@@ -302,6 +302,7 @@ const Dashboard = () => {
 
       <section className="content-dash">
         <div className="left-content">
+          {/* 1. Sección Negocios más consultados */}
           <div className="consultados-container">
             <div className="consultados-header">
               <h1>Negocios más consultados</h1>
@@ -309,105 +310,65 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="descuentos-container">
-            <div className="descuentos-header">
-              <h1>Próximos descuentos</h1>
-              <div className="descuentos-list">
-                {scheduleData.map((item, index) => (
-                  <div key={index} className="descuento-item">
-                    <div className="day">
-                      <h1>{item.day}</h1>
-                      <p>{item.dayName}</p>
-                    </div>
-                    <div className="activity">
-                      <h2>{item.activity}</h2>
-                      <p>{item.empresa}</p>
-                      <div className="participants"></div>
-                    </div>
-                    <button className="btn-descuentos">Más info</button>
-                  </div>
-                ))}
+          {/* 2. Sección de Recomendaciones */}
+          <div className="recomendaciones-container">
+            <div className="recomendaciones-header">
+              <h1>Recomendaciones</h1>
+              <div className="recomendaciones-cards">
+                {recommendedCompanys}
               </div>
             </div>
           </div>
 
-          <div className="promociones-container">
-            <div className="bg-white rounded-lg p-6 mb-6">
-              <h2 className="text-xl font-semibold mb-4">Próximos descuentos</h2>
-              {promotions.map((promotion, index) => (
-                <div key={index} className="flex items-center justify-between mb-4 pb-4 border-b last:border-b-0">
-                  <div>
-                    <div className="flex items-center gap-4">
-                      <div className="text-2xl font-bold">
-                        {new Date(promotion.startDate).getDate()}
-                      </div>
-                      <div>
-                        <div className="font-medium">{promotion.description}</div>
-                        <div className="text-gray-500 text-sm">{promotion.companyName}
-                          {userData.province && promotion.province && userData.province === promotion.province && (
-                            <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Local</span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+          {/* 3. Sección de Comentarios recibidos - solo visible para usuarios que cargaron empresas */}
+          {userData && userData.companysPublished && userData.companysPublished.length > 0 && (
+            <div className="notificaciones-container">
+              <h2>
+                Comentarios recibidos <span className="badge">3</span>
+              </h2>
+              <div className="comentarios-list">
+                <div className="comentario-item">
+                  <div className="text">
+                    <h5>Biason Automotores</h5>
+                    <h4>Biason Franco</h4>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Ratione, vel veritatis facilis, enim natus debitis
+                      asperiores molestiae alias illo nulla, quaerat optio
+                      repellendus! Dolorem temporibus voluptates animi vero soluta
+                      illum.
+                    </p>
                   </div>
-                  <button
-                    className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600"
-                    onClick={() => {/* Aquí puedes agregar la funcionalidad para más info */}}
-                  >
-                    Más info
-                  </button>
                 </div>
-              ))}
+                <div className="comentario-item">
+                  <div className="text">
+                    <h5>BiWeb</h5>
+                    <h4>Ariel Conrado</h4>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Voluptates odio ipsam, iste odit quis velit eius voluptatem
+                      rerum error deleniti vero adipisci minima voluptatum unde
+                      ex, veniam a quo nisi?
+                    </p>
+                  </div>
+                </div>
+                <div className="comentario-item">
+                  <div className="text">
+                    <h5>YPF</h5>
+                    <h4>Reyes Denis</h4>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Magni eligendi dicta harum excepturi voluptatem eveniet
+                      magnam, temporibus tenetur minima voluptate quo assumenda
+                      quia repellendus cumque modi. Placeat consequuntur dolores
+                      ea!
+                    </p>
+                  </div>
+                </div>
+                <h5 className="more-comments">Ver más comentarios...</h5>
+              </div>
             </div>
-          </div>
-
-          <div className="notificaciones-container">
-            <h2>
-              Comentarios recibidos <span className="badge">3</span>
-            </h2>
-            <div className="comentarios-list">
-              <div className="comentario-item">
-                <div className="text">
-                  <h5>Biason Automotores</h5>
-                  <h4>Biason Franco</h4>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Ratione, vel veritatis facilis, enim natus debitis
-                    asperiores molestiae alias illo nulla, quaerat optio
-                    repellendus! Dolorem temporibus voluptates animi vero soluta
-                    illum.
-                  </p>
-                </div>
-              </div>
-              <div className="comentario-item">
-                <div className="text">
-                  <h5>BiWeb</h5>
-                  <h4>Ariel Conrado</h4>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Voluptates odio ipsam, iste odit quis velit eius voluptatem
-                    rerum error deleniti vero adipisci minima voluptatum unde
-                    ex, veniam a quo nisi?
-                  </p>
-                </div>
-              </div>
-              <div className="comentario-item">
-                <div className="text">
-                  <h5>YPF</h5>
-                  <h4>Reyes Denis</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Magni eligendi dicta harum excepturi voluptatem eveniet
-                    magnam, temporibus tenetur minima voluptate quo assumenda
-                    quia repellendus cumque modi. Placeat consequuntur dolores
-                    ea!
-                  </p>
-                </div>
-              </div>
-              <h5 className="more-comments">Ver más comentarios...</h5>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="right-content">
@@ -422,11 +383,13 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-
+            {/* Comentamos la sección de recomendaciones del panel lateral ya que ahora está en el contenido principal */}
+            {/* 
             <div className="recomendaciones-section">
               <h1>Recomendaciones</h1>
               <div className="card-container">{recommendedCompanys}</div>
             </div>
+            */}
           </div>
         </div>
       </section>

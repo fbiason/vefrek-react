@@ -172,7 +172,7 @@ button {
 }
 
 .background h3 {
-  color: rgb(117, 116, 116);
+  color: #333;
 }
 
 .background li {
@@ -242,14 +242,20 @@ button {
 
 .businessCard-favoriteLabel {
   cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transform: translateZ(0); /* Mantiene el elemento en su lugar durante transformaciones */
 }
 
 .businessCard-starIcon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   background: rgba(36, 30, 78, 0.6039215686);
   border: 1px solid black;
   padding: 1px 5px;
   border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  transform: translateZ(0); /* Evita que se desplace durante el hover */
 }
 
 .businessCard-favorite > input {
