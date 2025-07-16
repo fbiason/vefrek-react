@@ -1,0 +1,37 @@
+.background-item {
+    background-color: whitesmoke;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+  
+  .titulo-dash {
+    font-size: 3rem;
+    text-align: center;
+    color: grey;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Estilos para las diferentes clases de estado */
+.datos-user .table .status-activo,
+.datos-user .table .status-inactivo,
+.datos-user .table .status-banneado,
+.datos-user .table .status-suspendido {
+  text-align: center;
+}
+
+.datos-user .table .status-activo {
+  background-color: #33ad33;
+}
+
+.datos-user .table .status-inactivo {
+  background-color: #ffff99;
+}
+
+.datos-user .table .status-banneado {
+  background-color: #ff6666;
+}
+
+.datos-user .table .status-suspendido {
+  background-color: #66b3ff;
+}

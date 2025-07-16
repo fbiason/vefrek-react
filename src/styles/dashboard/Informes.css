@@ -1,0 +1,104 @@
+/* --- General Styles --- */
+.infoSection {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    background: whitesmoke;
+    border-radius: 0px 10px 10px 0px;
+  }
+  
+  .tituloInforme {
+    font-size: 3rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .containerInforme {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- Informe Select --- */
+  .customSelect {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .informeText {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 600;
+  }
+  
+  /* --- Informe Stats --- */
+  .informeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .iconoYNumeros {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icono {
+    font-size: 2.5rem;
+    color: #00c58e;
+  }
+  
+  .descripcionInforme {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #777;
+  }
+  
+  .noValoraciones {
+    font-size: 1rem;
+    color: #999;
+  }
+
+  /* --- Responsive --- */
+@media (max-width: 768px) {
+    .informeGrid {
+      grid-template-columns: 1fr;
+    }
+    .tituloInforme {
+      font-size: 2rem;
+    }
+    .customSelect {
+      font-size: 0.9rem;
+    }
+    .descripcionInforme {
+      font-size: 1rem;
+    }
+  }
+
+  /* --- Visitas Card --- */
+.visitasContainer {
+    width: 100%;
+  }
+  
+  .customCard {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chartLabel {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+  }

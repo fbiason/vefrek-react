@@ -6,7 +6,8 @@ import { swalPopUp } from "../../utils/swal";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import NavBarDash from "./NavBarDash";
-import "../../styles/dashboard/dashboard.css";
+import "../../styles/dashboard/Dashboard.css";
+import "../../styles/dashboard/Favoritos.css";
 
 const Favoritos = () => {
     const { userData } = useContext(UserContext);

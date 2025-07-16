@@ -1,0 +1,60 @@
+
+.negocioDash-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .negocioDash-details {
+    margin-bottom: 0.5rem; /* Reducido para disminuir la distancia */
+    color: black;
+  }
+  
+  .negocioDash-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .negocioDash-location {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .negocioDash-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .negocioDash-btn-editar,
+  .negocioDash-btn-pausar,
+  .negocioDash-btn-reactivar,
+  .negocioDash-btn-eliminar {
+    padding: 8px; 
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .negocioDash-btn-editar {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .negocioDash-btn-pausar {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .negocioDash-btn-reactivar {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .negocioDash-btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+  }

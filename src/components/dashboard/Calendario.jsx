@@ -6,7 +6,8 @@ import { UserContext } from "../../context/userContext";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { savePromotion } from "../../utils/apiDb/apiDbAcions"; 
-import "../../styles/dashboard/dashboard.css";
+import "../../styles/dashboard/Dashboard.css";
+import "../../styles/dashboard/Calendario.css";
 
 const Calendario = () => {
   const [activeNavItem, setActiveNavItem] = useState(3);

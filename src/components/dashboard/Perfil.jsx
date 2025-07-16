@@ -9,7 +9,8 @@ import { verifyIfHasChanges } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import NavBarDash from "./NavBarDash";
 import localidadesData from "../../pages/formulario-empresa/localidades.json";
-import "../../styles/dashboard/dashboard.css";
+import "../../styles/dashboard/Dashboard.css";
+import "../../styles/dashboard/Perfil.css";
 
 const Perfil = () => {
   const [activeNavItem, setActiveNavItem] = useState(1);

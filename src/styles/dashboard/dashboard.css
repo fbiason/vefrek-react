@@ -1,5 +1,71 @@
-/* Estilos para el Dashboard */
+.dashboardMain {
+  position: absolute;
+  margin: 2vw;
+  min-width: 90vw;
+  z-index: 1100;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  border-radius: 20px;
+  padding-bottom: 3rem;
+}
 
+@media screen and (max-width: 992px) {
+  .dashboardMain {
+    grid-template-columns: 100%;
+    margin: 0;
+    min-width: auto;
+    position: relative;
+  }
+}
+
+/* --- General --- */
+.dashboardMainPerfil {
+  grid-template-columns: 5% 95%;
+  position: absolute;
+  margin: 2vw;
+  min-width: 90vw;
+  z-index: 1100;
+  display: grid;
+  border-radius: 20px;
+  background-color: grey;
+}
+
+@media screen and (max-width: 992px) {
+  .dashboardMainPerfil {
+    grid-template-columns: 100%;
+    margin: 0;
+    min-width: auto;
+    position: relative;
+  }
+}
+
+/* Botón Salir */
+.dashboardCloseBtn {
+  background-color: #ff4d4f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.dashboardCloseBtn:hover {
+  background-color: #ff7875;
+}
+
+@media (max-width: 768px) {
+  .dashboardCloseBtn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+
+/* Estilos para el Dashboard */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
@@ -367,66 +433,6 @@
   width: 100%;
 }
 
-.negocioDash-card {
-  background-color: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.negocioDash-details {
-  margin-bottom: 0.5rem; /* Reducido para disminuir la distancia */
-  color: black;
-}
-
-.negocioDash-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.negocioDash-location {
-  font-size: 1rem;
-  color: #555;
-}
-
-.negocioDash-actions {
-  display: flex;
-  justify-content: space-between;
-}
-
-.negocioDash-btn-editar,
-.negocioDash-btn-pausar,
-.negocioDash-btn-reactivar,
-.negocioDash-btn-eliminar {
-  padding: 8px; 
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.negocioDash-btn-editar {
-  background-color: #007bff;
-  color: white;
-}
-
-.negocioDash-btn-pausar {
-  background-color: #ffc107;
-  color: white;
-}
-
-.negocioDash-btn-reactivar {
-  background-color: #28a745;
-  color: white;
-}
-
-.negocioDash-btn-eliminar {
-  background-color: #dc3545;
-  color: white;
-}
-
 /* --- Responsive adjustments for smaller screens --- */
 @media (max-width: 1200px) {
   .negocioDash-grid {
@@ -444,7 +450,6 @@
   }
 }
 
-
 /* Dashboard Main */
 .dashboardMainAdmin {
   position: absolute;
@@ -456,6 +461,28 @@
   border-radius: 20px;
   padding-bottom: 3rem;
 }
+
+  /* Estilos para la sección de datos de usuario */
+  .datos-user {
+    margin: 0 auto;
+    max-width: 60%;
+    background-color: #aab3c5;
+    padding: 1rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+  }
+  
+  .datos-user .btn-descarga {
+    color: rgb(32, 31, 31);
+    background-color: rgb(0, 197, 142);
+    width: 30%;
+    justify-content: center;
+  }
+  
+  .datos-user h2 {
+    font-size: xx-large;
+    font-weight: 500;
+  }
 
 /* Estilos para la sección de datos de usuario */
 .datos-user {
@@ -549,30 +576,6 @@
   color: #cccccc; /* Color gris para las flechas deshabilitadas */
 }
 
-/* Estilos para las diferentes clases de estado */
-.datos-user .table .status-activo,
-.datos-user .table .status-inactivo,
-.datos-user .table .status-banneado,
-.datos-user .table .status-suspendido {
-  text-align: center;
-}
-
-.datos-user .table .status-activo {
-  background-color: #33ad33;
-}
-
-.datos-user .table .status-inactivo {
-  background-color: #ffff99;
-}
-
-.datos-user .table .status-banneado {
-  background-color: #ff6666;
-}
-
-.datos-user .table .status-suspendido {
-  background-color: #66b3ff;
-}
-
 /* Datos Empresa */
 .datos-business {
   margin: 0 auto;
@@ -647,31 +650,433 @@
   border-color: #c82333;
 }
 
+/* Estilos para los botones de carga y cancelar */
+.btn-reclamar {
+  margin-top: 1rem;
+  background-color: red;
+  color: white;
+  font-weight: 600;
+  border: 2px solid #000;
+  width: 100%;
+  text-align: center;
+}
 
-.background-calendario {
-  background-color: whitesmoke;
+.btn-container .btn-reclamar:hover {
+  background-color: #4e2b1e;
+  color: white;
+}
+
+.popCarga .btn-cancelar {
+  background-color: rgb(115, 111, 111);
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #000;
+  border: 2px solid #000;
+  width: 100%;
+  text-align: center;
+}
+
+.popCarga .btn-cancelar:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Estilos para los botones de carga y cancelar */
+.btn-container .btn-cargar {
+  background-color: #241e4e;
+  font-weight: 600;
+  border: 2px solid #000;
+  padding: 16px 24px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-container .btn-cargar:hover {
+  background-color: rgb(0, 197, 142);
+  color: black;
+}
+
+.btn-container .btn-cancelar {
+  background-color: rgb(117, 23, 23);
+  font-weight: 600;
+  border: 2px solid #000;
+  padding: 16px 24px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-container .btn-cancelar:hover {
+  background-color: #a71c00;
+  color: white;
+}
+
+/* --- General --- */
+.dashMain {
+  position: absolute;
+  margin: 2vw;
+  min-width: 90vw;
+  z-index: 1100;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  border-radius: 20px;
+  padding-bottom: 3rem;
+}
+
+/* --- Contenido principal (Content) --- */
+.content-dash {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  height: 100%;
+  background: #dbdbdb;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
 
-.calendario {
-  padding: 3rem;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.5rem;
+.left-content {
+  grid-row: 1;
+  grid-column: 1;
+  background: #f6f7fb;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
 }
 
-.dia-calendario {
+.right-content {
+  grid-column: 2;
+  background: #f6f7fb;
+  margin: 15px;
+  padding-top: 2rem;
   padding: 1rem;
-  
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
+  border-radius: 15px;
 }
 
-.dia-calendario:hover {
+@media (max-width: 768px) {
+  .content-dash {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .right-content {
+    grid-row: 1;
+  }
+  .left-content {
+    grid-row: 2;
+  }
+  .left-content,
+  .right-content {
+    margin: 0;
+    padding: 5px;
+  }
+}
+
+/* --- Right Content --- */
+.right-content {
+  grid-column: 2;
+  background: #f6f7fb;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* --- Consultados --- */
+.consultados-container {
+  margin-bottom: 40px;
+}
+
+.consultados-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.consultados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.mas-consultados h1 {
+  margin: 0 0 20px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* --- Custom Column (for replacing Bootstrap 'col') --- */
+.custom-column {
+  flex: 1 1 100%; /* Ajuste basado en el comportamiento de columnas */
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; /* Centrar la tarjeta */
+}
+
+/* --- Business Card (tarjetas con el mismo tamaño de alto) --- */
+.business-card {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative; /* Necesario para posicionar el overlay */
+  transition: transform 0.3s ease;
+}
+
+.business-card:hover {
+  transform: scale(1.05);
+}
+
+/* --- Custom Image --- */
+.custom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0; /* Solo las esquinas superiores redondeadas */
+}
+
+/* --- Custom Overlay and Text --- */
+.custom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+  color: #fff; /* Texto blanco */
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, padding 0.3s ease; /* Transición suave */
+}
+
+.business-card:hover .custom-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  font-size: 1.3rem;
+}
+
+/* --- Extra para ajustar el contenedor --- */
+.custom-text {
+  transition: font-size 0.3s ease;
+}
+
+
+/* --- Recomendaciones --- */
+.recomendaciones {
+  display: flex;
+  flex-direction: column;
+}
+
+.recomendaciones h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Card de negocio recomendado */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  max-width: 300px;
+  height: 100%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-user-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.card-user-info h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* --- Mobile Styles --- */
+@media screen and (max-width: 992px) {
+  .content-fav {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 15px;
+  }
+  main {
+    grid-template-columns: 100%;
+    margin: 20px;
+  }
+  .contenido-consultados {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 150px);
+  }
+}
+@media (max-width: 700px) {
+  .prox-desc {
+    max-width: 100%;
+  }
+  main {
+    grid-template-columns: 15% 85%;
+  }
+  .mas-consultados,
+  .descuentos {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 572px) {
+  .prox-desc {
+    grid-template-columns: auto;
+  }
+}
+/* --- Otros elementos personalizados --- */
+.dashboardClose {
+  position: absolute;
+  background-color: rgb(0, 197, 142);
+  top: 10px;
   color: white;
-  background-color: #241e4e;
+  font-weight: 600;
+  padding: 1rem;
+  right: 10px;
+  border-radius: 50%;
+  width: fit-content;
+  border: 1px solid black;
 }
 
+.personal-bests-container {
+  grid-template-rows: repeat(3, 98px);
+  gap: 15px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* --- Notificaciones y Comentarios --- */
+.notificaciones-container {
+  margin-top: 40px;
+}
+
+.notificaciones-container h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.notificaciones-container .badge {
+  background-color: rgb(0, 197, 142);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+.comentarios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comentario-item {
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.comentario-item .text h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.comentario-item .text h4 {
+  font-size: 1rem;
+  color: rgb(0, 197, 142);
+  margin-top: 5px;
+}
+
+.comentario-item .text p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.more-comments {
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(0, 197, 142);
+}
+
+
+/* --- User Info Section --- */
+.user-info {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.avatar-section {
+  margin-top: 20px;
+}
+
+.avatar-section img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}

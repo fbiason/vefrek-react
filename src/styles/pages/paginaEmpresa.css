@@ -404,7 +404,7 @@ input:checked + .businessCard-favoriteLabel .businessCard-starIcon {
 }
 
 .businessCard-starIcon {
-  font-size: 3.5rem;
+  font-size: 2rem;
   background: rgba(36, 30, 78, 0.6039215686);
   border: 1px solid black;
   padding: 1px 5px;

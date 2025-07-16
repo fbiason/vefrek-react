@@ -1,0 +1,368 @@
+@media (max-width: 768px) {
+    .background-calendario {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    .background-calendario {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .seleccion-mes select {
+      width: 100%;
+    }
+    .calendario {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+    }
+    .dia-calendario {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+    }
+    /* PopUp Fecha */
+    .popup-container {
+      width: 100%;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    .popup {
+      padding: 1rem;
+    }
+    .popup h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .popup textarea {
+      width: 100%; /* Ancho del textarea al 100% */
+      max-width: 100%; /* Ancho máximo del textarea */
+      margin-bottom: 1rem; /* Ajuste del margen inferior */
+    }
+    .popup select,
+    .popup input[type=date],
+    .popup input[type=time] {
+      width: 100%; /* Ancho al 100% */
+      max-width: 100%; /* Ancho máximo */
+      margin-bottom: 1rem; /* Ajuste del margen inferior */
+    }
+    .btn-container {
+      display: flex; /* Cambia a un diseño de flexbox */
+      flex-direction: column; /* Dirección de columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+    }
+    .btn-container button {
+      width: 100%; /* Ancho al 100% */
+      max-width: 100%; /* Ancho máximo */
+      margin-bottom: 0.5rem; /* Ajuste del margen inferior */
+    }
+  }
+
+  .texto-mes {
+    font-size: x-large;
+  }
+
+  
+.background-calendario {
+    background-color: whitesmoke;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+  }
+  
+  .calendario {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .dia-calendario {
+    padding: 1rem;
+    
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .dia-calendario:hover {
+    color: white;
+    background-color: #241e4e;
+  }
+  
+  /* Estilos para el componente de calendario */
+
+.calendario-container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  
+  .calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  
+  .calendario-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  .calendario-nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .calendario-nav-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calendario-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .calendario-weekday {
+    padding: 0.75rem 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #6c757d;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .calendario-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 0.875rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calendario-day:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .calendario-day.disabled {
+    color: #ced4da;
+    cursor: not-allowed;
+  }
+  
+  .calendario-day.today {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  
+  .calendario-day.selected {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  
+  .calendario-day.has-event::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+  
+  .calendario-day.selected.has-event::after {
+    background-color: #fff;
+  }
+  
+  .calendario-events {
+    padding: 1rem;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  
+  .calendario-event {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    background-color: #f8f9fa;
+    border-left: 3px solid var(--primary-color);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+  }
+  
+  .calendario-event:hover {
+    transform: translateY(-2px);
+  }
+  
+  .calendario-event:last-child {
+    margin-bottom: 0;
+  }
+  
+  .calendario-event-time {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+  }
+  
+  .calendario-event-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--secondary-color);
+  }
+  
+  .calendario-event-description {
+    font-size: 0.875rem;
+    color: var(--text-color);
+  }
+  
+  .calendario-no-events {
+    text-align: center;
+    padding: 2rem 0;
+    color: #6c757d;
+    font-style: italic;
+  }
+  
+  @media (max-width: 576px) {
+    .calendario-day {
+      font-size: 0.75rem;
+    }
+    
+    .calendario-weekday {
+      font-size: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    
+    .calendario-header {
+      padding: 0.75rem;
+    }
+    
+    .calendario-title {
+      font-size: 1rem;
+    }
+  }
+  
+  
+.popup-container {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 999;
+    max-width: 80%;
+    max-width: 400px;
+    overflow-y: auto;
+    margin-top: 4rem;
+  }
+  
+  .popup-container h2 {
+    margin-bottom: 10px;
+    color: #333333;
+    font-size: 1.5rem;
+  }
+  
+  .popup-container textarea {
+    width: calc(100% - 40px);
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .popup-container input[type=date],
+  .popup-container input[type=time] {
+    width: calc(100% - 20px);
+  }
+  
+  .popup-container button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .popup-container button.cancel {
+    background-color: #f44336;
+  }
+  
+  .popup-container button:hover {
+    opacity: 0.8;
+  }
+  
+  .popup select {
+    margin-top: 10px; /* Espacio entre el textarea y el select */
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+  }
+  
+  /* Estilos para los campos de inicio y fin de promoción */
+  .popup-container input[type=date] {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  .popup-container input[type=date]:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Estilos para los campos de entrada de hora y sus etiquetas */
+  .popup-container input[type=time] {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  .popup-container input[type=time]:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .popup-container p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  

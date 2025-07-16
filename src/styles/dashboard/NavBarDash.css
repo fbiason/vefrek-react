@@ -1,0 +1,180 @@
+/*Dash Mis Empresas*/
+.menuDash {
+    position: relative;
+    background: rgb(45, 45, 46);
+    padding-top: 10px;
+    border-radius: 15px 0 0 15px;
+    text-align: center;
+    width: auto;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .menuDash h1 {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .menuDash ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menuDash ul.active {
+    display: block;
+  }
+  
+  @media (max-width: 1500px) {
+    .menuDash h1 {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .menuDash ul {
+      display: none;
+    }
+    .menuDash ul.active {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .menuDash {
+      border-radius: 0px;
+      padding-top: 0;
+    }
+    .menuDash ul {
+      display: none;
+    }
+    .menuDash ul.active {
+      display: block;
+    }
+  }
+  .logo-dash {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 20%;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .logo-dash {
+      display: none;
+    }
+  }
+  .nav-item {
+    position: relative;
+    display: block;
+  }
+  
+  .nav-item a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 4rem;
+    margin: 1rem;
+    text-decoration: none;
+  }
+  
+  .nav-item i::after {
+    content: attr(title); /* Utilizamos el atributo 'title' como contenido del elemento después del ícono */
+    position: absolute;
+    bottom: -20px; /* Ajusta esto según sea necesario para la posición deseada */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+    color: #fff; /* Color del texto */
+    padding: 5px 10px; /* Ajusta esto según sea necesario */
+    border-radius: 5px;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Efecto de transición */
+    font-size: 1rem;
+  }
+  
+  .nav-item i:hover::after {
+    opacity: 1;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .nav-item a {
+      padding: 10px 0;
+      margin-left: 0;
+      border-radius: 0;
+    }
+  }
+  .nav-item.active b:nth-child(1),
+  .nav-item.active b:nth-child(2) {
+    display: block;
+  }
+  
+  .nav-item.active a {
+    text-decoration: none;
+    color: #000;
+    background: rgb(254, 254, 254);
+    border-radius: 18px;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .nav-item.active a {
+      border-radius: 3rem;
+      width: auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+  .nav-icon {
+    height: 30px;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .nav-icon {
+      width: 60px;
+      height: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  .nav-text {
+    display: none;
+  }
+  
+  
+.icon-burger {
+    color: rgb(0, 197, 142);
+    width: 60px;
+    height: 60px;
+    display: none;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .icon-burger {
+      display: block;
+      cursor: pointer;
+    }
+    #menu-toggle {
+      visibility: hidden;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .icon-burger {
+      display: block;
+      cursor: pointer;
+    }
+    #menu-toggle {
+      visibility: hidden;
+    }
+  }
