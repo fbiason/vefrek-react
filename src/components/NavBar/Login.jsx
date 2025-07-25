@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../../styles/style.css";
-import "../../styles/components/login.css";
+import "../../styles/Navbar/Login.css";
 
 const Login = () => {
   const myModalAvisoRef = useRef(null);

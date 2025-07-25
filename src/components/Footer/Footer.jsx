@@ -4,7 +4,7 @@ import AvisoLegal from "./AvisoLegal";
 import PoliticaPrivacidad from "./PoliticaPrivacidad";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { swalPopUp } from "../../utils/swal";
-import "../../styles/components/footer.css";
+import "../../styles/Footer/footer.css";
 
 const Footer = () => {
     const myModalAvisoRef = useRef(null);

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { findCompanys } from "../../utils/apiDb/apiDbAcions";
+import "../../styles/Navbar/SearchBar.css";
 
 export default function SearchBar() {
     const [results, setResults] = useState(null);

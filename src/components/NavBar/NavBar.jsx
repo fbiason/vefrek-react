@@ -9,8 +9,9 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import Dropdown from "./Dropdown";
 import SearchBar from "./SearchBar";
-import "../../styles/components/navbar.css";
-import "../../styles/components/login.css";
+import "../../styles/Navbar/Navbar.css";
+import "../../styles/Navbar/Login.css";
+import "../../styles/Navbar/SearchBar.css";
 
 const NavBar = () => {
   const navigate = useNavigate();

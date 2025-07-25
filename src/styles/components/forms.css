@@ -39,15 +39,6 @@
   box-shadow: var(--shadow);
 }
 
-.login-card {
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  background-color: var(--light-bg);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-
 .form-check {
   display: flex;
   align-items: center;

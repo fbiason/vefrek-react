@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/Footer/footer.css";
 
 const PoliticaPrivacidad = () => {
   return (
